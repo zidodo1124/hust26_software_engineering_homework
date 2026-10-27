@@ -3,7 +3,7 @@
 - 小组：花园鳗。
 - 更新日期：2026-10-27。
 - 依据：用户允许根据项目需要选择语言和框架，并要求集中说明实际采用的技术。
-- 当前版本：第二轮 `0.2.0`，`versionCode = 2`，Room schema v2。来源标签、自定义字段、日历、批量管理、过期整理及图片附件已接入；本轮构建、测试及 CI 结论见[测试报告](test-report.md)。用户暂不连接实机。
+- 当前版本：第二轮 `0.2.0`，`versionCode = 2`，Room schema v2。来源标签、自定义字段、日历、批量管理、过期整理及图片附件已接入；本轮构建、测试及 CI 结论见[测试报告](test-report.md)。荣耀 X50 已连接，安装启动及后续功能实测分批记录。
 
 本文用于回答“项目使用什么技术、各自负责什么、为什么选择、实际使用哪个版本”。后续新增、替换或移除依赖时同步更新，具体模块和接口见[设计文档](design.md)。
 
@@ -11,7 +11,7 @@
 
 第一版面向 Android，采用离线单机模式，需要访问系统通知、定时任务、图片选择和本地存储。因此采用 Android 原生方案，直接使用平台能力。小组熟悉 Python、C++、Java，用户未限定实现语言；本轮选择 Kotlin 配合 Compose 编写应用，不将成员熟悉的语言全部列为项目依赖。
 
-Kotlin 支持与 Java 互操作，Compose 提供基于 Kotlin 的原生界面开发方式。本轮延续既有方案，不新增第三方依赖或升级依赖版本；日历和分类页面使用已有 Compose 组件，图片使用 Android 平台接口。构建与自动检查在开发机进行，荣耀 X50 的实机结果后续单独记录。[Kotlin 官方说明](https://kotlinlang.org/docs/android-overview.html)、[Compose 官方介绍](https://developer.android.com/compose)。
+Kotlin 支持与 Java 互操作，Compose 提供基于 Kotlin 的原生界面开发方式。本轮延续既有方案，不新增第三方依赖或升级依赖版本；日历和分类页面使用已有 Compose 组件，图片使用 Android 平台接口。构建与自动检查在开发机进行，荣耀 X50 的实机结果按独立 RUN 批次记录。[Kotlin 官方说明](https://kotlinlang.org/docs/android-overview.html)、[Compose 官方介绍](https://developer.android.com/compose)。
 
 ## 2. 应用与测试技术
 
@@ -30,7 +30,7 @@ Kotlin 支持与 Java 互操作，Compose 提供基于 Kotlin 的原生界面开
 | 业务规则测试 | JUnit、Coroutines Test | 时间边界、状态规则、组合查询、字段与附件元数据校验 | 已补充第二轮测试；执行结果见测试报告 | JUnit 4.13.2；Coroutines Test 1.10.2 |
 | 本地 Android 行为测试 | Robolectric、AndroidX Test Core、Room Testing | 在开发机 JVM 中检查 Room 事务、真实 v1 文件迁移、附件平台行为及重开持久化 | 已补充第二轮测试；不能替代实机验证 | Robolectric 4.14.1；Test Core 1.6.1；Room Testing 2.7.1 |
 | 本地界面流程测试 | Compose UI Test JUnit4、测试宿主 Manifest | 在 Robolectric 中操作基础与第二轮界面，检查草稿、筛选、批量及重建流程 | 已补充第二轮测试；执行结果见测试报告 | 由 Compose BOM 2025.04.01 管理 |
-| 实机与设备测试 | Android 设备测试、人工检查 | 后续验证荣耀 X50 安装、交互、权限、附件和通知表现 | 本轮暂不连接实机，尚未验证 | 实际系统与所用测试工具后续记录 |
+| 实机与设备测试 | ADB、UIAutomator 界面采集、Python 操作助手与截图审阅 | 在荣耀 X50 顺序操作真实页面并记录结果 | 安装启动及本轮六类功能实测已执行；TC-05 整例通过，其余按子场景与 OBS-01 记录 | Android 15／API 35、MagicOS 9.0.0；Platform Tools 37.0.1 |
 
 版本依据为根目录 [build.gradle.kts](../build.gradle.kts)、[app/build.gradle.kts](../app/build.gradle.kts)和 [Gradle Wrapper 配置](../gradle/wrapper/gradle-wrapper.properties)。以上“已集成”表示依赖或代码已加入工程，不单独代表构建、测试或实机检查通过。文本复制和图片 URI 粘贴已接入；能否从某个外部应用复制图片，取决于其剪贴板内容及访问授权，普通图片网址不直接导入。
 
@@ -67,14 +67,27 @@ Room 是 SQLite 的访问封装，适合本项目的本地结构化数据；数�
 | 项目 | 已知信息或记录要求 |
 | --- | --- |
 | 演示设备 | 荣耀 X50，用户已确认 |
-| 实际系统 | 用户本轮暂不连接实机；MagicOS、Android 版本及 API 级别后续从设备读取，不用出厂配置代替 |
+| 实际系统 | 已从设备读取 HONOR ALI-AN00、Android 15／API 35、MagicOS 9.0.0；构建为 `ALI-AN00 9.0.0.230(CNC00E206R8P4)` |
 | 权限与电量设置 | 每个通知测试批次记录通知权限、定时访问条件及电量优化设置 |
 | 系统时间 | 记录设备时区；应用业务日期统一按北京时间解释 |
 | SDK 范围 | `minSdk = 26`、`targetSdk = 35`、`compileSdk = 35`；声明范围不代表所有设备已测 |
 | 应用版本 | 第二轮 `versionName = 0.2.0`、`versionCode = 2`；包名 `cn.edu.hust.ddlsaver`；schema v2 |
 | 构建证据 | 保存实际依赖版本、构建命令、代码提交号和 APK 标识，关联[测试记录](test-records.md) |
 
-## 5. 更新约定
+## 5. 实机测试辅助工具
+
+以下工具只服务于测试，不是发布 App 的运行依赖；本轮产品 Kotlin、Compose、Room 及其他依赖版本保持不变。
+
+| 工具 | 实际用途与版本 | 位置与边界 |
+| --- | --- | --- |
+| 原生 Java 测试夹具 | 独立 Activity 与只读 ContentProvider，将固定合成图片 URI 放入系统剪贴板 | [clipboard-fixture](../test-tools/clipboard-fixture/README.md)，独立包名；不参与产品 Gradle 构建 |
+| JDK 与 Android SDK 构建工具 | JDK 17、Platform 35、Build Tools 35.0.0；使用 javac、d8、aapt2、zipalign、apksigner 构建并核验夹具 | [build_fixture.py](../test-tools/clipboard-fixture/build_fixture.py)；生成 APK 与密钥留在本机忽略目录 |
+| Python | 本机 3.12.4；顺序执行设备测试、读取 UTF-8 记录、整理样本与产物标识 | 操作助手留在本机忽略目录，实际证据按 RUN 导出 |
+| Pillow | 本机 12.1.1；生成纯合成横图、竖图及 EXIF 方向样本 | [generate_fixtures.py](../test-tools/clipboard-fixture/generate_fixtures.py)；正常夹具构建直接核验现有资源，无需重新生成 |
+
+夹具源码及合成资源已提交 `db28277`，资源换行保护在 `8ea56b5` 单独提交。它们只证明工具准备可复核；真实粘贴能力仍须以设备上实际跨应用操作判定，不能把夹具结果推广到所有第三方相册。
+
+## 6. 更新约定
 
 1. 集成某项技术时，将“未集成”改为实际状态，填写版本及配置文件位置。
 2. 引入新的第三方库时，补充用途、官方来源和许可说明；不把仅阅读过的资料列为已使用依赖。

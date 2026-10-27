@@ -1,0 +1,203 @@
+{
+  "createdUtc": "2026-10-27T13:42:49.457489+00:00",
+  "scope": "Approved machine-readable evidence and original screenshots only; README is not included in this hash set",
+  "stepsOriginalSha256": "48E20E9E1BFA7C8860D29298B391AA79C0A8E5D96ED9E521D6BBA53DC571FA78",
+  "stepRecordCount": 45,
+  "resultCounts": {
+    "pass": 40,
+    "interrupted": 1,
+    "prepared": 1,
+    "rejected": 1,
+    "tool-protection": 2
+  },
+  "countingNote": "Step records include setup, interruption and rejected-input observations; they are not unit-test methods or complete TC cases",
+  "firstRecordedUtc": "2026-10-27T12:53:14.562823+00:00",
+  "lastRecordedUtc": "2026-10-27T13:40:58.644171+00:00",
+  "files": [
+    {
+      "file": "01-test-tag.png",
+      "bytes": 182610,
+      "sha256": "D22823FA5D2C4462036CABF297B83B50F1F912584D252DF999FCA49467157C4F"
+    },
+    {
+      "file": "02-required-errors.png",
+      "bytes": 376847,
+      "sha256": "93DFDD70442808970282E77830EFDB387AF5BBB7B34FCE96A43A19B055439223"
+    },
+    {
+      "file": "06-reopened-A-fields.png",
+      "bytes": 218557,
+      "sha256": "72665982A1D8A13C08046224AD199E5D35A18553CF9BB09EB0CE65554D98CE0F"
+    },
+    {
+      "file": "07-unsaved-confirm.png",
+      "bytes": 293263,
+      "sha256": "D988F464FCF4E73F39F5E14F089CAC22006EBAEC2DB6CF546B3CDBCA8533130C"
+    },
+    {
+      "file": "08b-clean-edited-fields.png",
+      "bytes": 226586,
+      "sha256": "E704600012510B383971AE8171E7BF857EB4E71E8DD6F3BEDA5F3D90D2DCC78E"
+    },
+    {
+      "file": "09-source-tag-intersection.png",
+      "bytes": 314017,
+      "sha256": "7FA516FDF0C0FEA17BA14304834294A6A09680809E1B6F104ED8F5B99D5E7370"
+    },
+    {
+      "file": "11-calendar-28-A.png",
+      "bytes": 281957,
+      "sha256": "2E21247916FDDD3BBE229894E24EF3E66CCC8C8F3EF520518622A041CFB0A592"
+    },
+    {
+      "file": "12-calendar-29-B.png",
+      "bytes": 266802,
+      "sha256": "A766950A9B40028F2214F9D1D201C3809861DC51C291A1BD5D3A8DA767148852"
+    },
+    {
+      "file": "15-control-C-remains-todo.png",
+      "bytes": 272916,
+      "sha256": "1992635CE81724C4D688F8998983A6295D18CF9C12CD8BB050B31D3FBF2809EF"
+    },
+    {
+      "file": "16-batch-archive-preserves-completion.png",
+      "bytes": 245516,
+      "sha256": "81CAC100D6A3757C25046F2A6749D025EDB536A043E4D2DCA2517AEBE0E23D5A"
+    },
+    {
+      "file": "17-batch-delete-confirm.png",
+      "bytes": 317231,
+      "sha256": "E3EA00D22F2A4FC59B0C41327970F7410A2ED534275E863EF15A3D744B8CC194"
+    },
+    {
+      "file": "18-gallery-three-synthetic-images.png",
+      "bytes": 262817,
+      "sha256": "978979FF26604E16648CA0CADD91466B3166C98A5C99A3B26FF9E3EB2EE5FD78"
+    },
+    {
+      "file": "19-blue-preview.png",
+      "bytes": 97265,
+      "sha256": "3B63163AEE406293C5FA8F4DAE96A024E04338E7908829A6A7A4771E80458751"
+    },
+    {
+      "file": "20-orange-preview.png",
+      "bytes": 110168,
+      "sha256": "BEDC7DE2CCA0DCD8E6D2A9BE8E13E476193B575D67C552D36D1A4DB53DF747B1"
+    },
+    {
+      "file": "21-exif6-preview.png",
+      "bytes": 270309,
+      "sha256": "7EEA0EB78EA25E62052230D8D3BD5EEAA48B430CED5ADF8369DF462AC78158B6"
+    },
+    {
+      "file": "22-gallery-after-process-reopen.png",
+      "bytes": 262126,
+      "sha256": "53EB3CF732A8804E711A57ABC79D3BD3BCD711982D2178C62554640A0AEDC3EB"
+    },
+    {
+      "file": "23-gallery-after-removal-saved.png",
+      "bytes": 240396,
+      "sha256": "004252852A9BFB1C5705B1195391B302237BE88129B29BE4E16FF80B1675D01E"
+    },
+    {
+      "file": "24-two-clipboard-images-draft.png",
+      "bytes": 329483,
+      "sha256": "65219A9965F56CC9F03C92EDD9A9A4635ECFAAE8AFB9EA77B09C1053668B8117"
+    },
+    {
+      "file": "25-broken-image-rejected-retains-draft.png",
+      "bytes": 249643,
+      "sha256": "6E1EAD58E1B9576579D0CA396AEA6B91C2CF300BCE134D9E4A892CC366EC6731"
+    },
+    {
+      "file": "26-saved-clipboard-A.png",
+      "bytes": 196296,
+      "sha256": "95C1B1FE3EF7DBD1C5F31393C92B4EF9C2541E53CD418AD615F2BCF8424DAE0D"
+    },
+    {
+      "file": "27-batch-delete-B-and-D-confirm.png",
+      "bytes": 317621,
+      "sha256": "584953D902A2391A580A1908ED5537406E94EAAB548A314DB3313238AEEF61A6"
+    },
+    {
+      "file": "28-clipboard-preview-after-provider-uninstall.png",
+      "bytes": 106336,
+      "sha256": "A37C3645B2814F603A3698C90C96651175979E9AD85C2BA81AAF04A38DC87D75"
+    },
+    {
+      "file": "29-second-clipboard-preview-after-provider-uninstall.png",
+      "bytes": 118778,
+      "sha256": "69E2889C29B1F924099D68138E705C15993847073CF20997AD43D3610AF820EE"
+    },
+    {
+      "file": "30-gallery-preview-after-source-removal.png",
+      "bytes": 113868,
+      "sha256": "E5236F6BA84F2F7352D13659A365B7F34F308068716DC92F49A8447381BB95DA"
+    },
+    {
+      "file": "31-second-gallery-preview-after-source-removal.png",
+      "bytes": 97279,
+      "sha256": "A4FF6245C828E85D43D205530AC868FCD2B022BFAE72C850A4E102911F6EA0AE"
+    },
+    {
+      "file": "ci-verification.json",
+      "bytes": 6256,
+      "sha256": "01DC0F34F2834834F2FC88499F68401D397BD7616E03A9EC4D608121A2D31B7B"
+    },
+    {
+      "file": "evidence-map.json",
+      "bytes": 3191,
+      "sha256": "61AB49C1F98E3893E2D87CAA056185CF2784215D9D3407A54F9E6EDFB6DD63FE"
+    },
+    {
+      "file": "final-summary.json",
+      "bytes": 3070,
+      "sha256": "174A0F9081F07A74837E3683D068530A7CE952814121286D6ABAB6D7918FA23E"
+    },
+    {
+      "file": "media-date-check.json",
+      "bytes": 612,
+      "sha256": "FCE27C841B7AA2281F1000D63AAFF85FEB2B5E9DF70E7E8D82959D970601BF06"
+    },
+    {
+      "file": "qa-state-after-cancelled-new-draft.json",
+      "bytes": 3022,
+      "sha256": "6944221C2D86E63C4738EE45A08508E7E52559BF09AD14763B49B5E0AF118A30"
+    },
+    {
+      "file": "qa-state-after-delete.json",
+      "bytes": 2718,
+      "sha256": "0A2C37A8D12F1050EC9F09CEAE6DF77DB49338105B1FA17492F9643EFA80A750"
+    },
+    {
+      "file": "qa-state-after-gallery.json",
+      "bytes": 2542,
+      "sha256": "8EC1B0630D6D892060DF35D0D9F5CE6366BDA3A8821741DD8FA7A092ECC1D8FE"
+    },
+    {
+      "file": "qa-state-after-removal.json",
+      "bytes": 2093,
+      "sha256": "02240954C5A0B563CF9997759CA354AD54F0EC9AE867CEA85CDCBA0ED8A73D98"
+    },
+    {
+      "file": "qa-state-before-delete.json",
+      "bytes": 3784,
+      "sha256": "657265BFD6E4DF00D6FD5DD0D8BBB3B540361364B5EFEAB740AEFA83F7697DAD"
+    },
+    {
+      "file": "qa-state-final.json",
+      "bytes": 2775,
+      "sha256": "35949D85D565B03253D367ACC4D1FE27D1F2E529F4367A6E347C7AEA44C136B0"
+    },
+    {
+      "file": "qa-state-provider-uninstalled.json",
+      "bytes": 2718,
+      "sha256": "3988B6A166DEFBE69F68964EA8DA54454055CD31696E240A1D397A869F3DDEFA"
+    },
+    {
+      "file": "steps.json",
+      "bytes": 16736,
+      "sha256": "48E20E9E1BFA7C8860D29298B391AA79C0A8E5D96ED9E521D6BBA53DC571FA78"
+    }
+  ]
+}

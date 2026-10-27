@@ -1,0 +1,81 @@
+{
+  "checkedUtc": "2026-10-27T13:40:51.928800+00:00",
+  "scope": "QA event content and anonymous non-QA event count only; temporary database copy removed",
+  "events": [
+    {
+      "id": "2edd9d06-2abe-44d2-a4a4-edbc1afc42dc",
+      "title": "QA1027-1249-A",
+      "description": "https://example.invalid/qa",
+      "deadlineAt": 1793191860000,
+      "completedAt": null,
+      "archivedAt": 1793108357852,
+      "revision": 8,
+      "fields": [
+        {
+          "label": "Location",
+          "value": "West12-QA",
+          "position": 0
+        }
+      ],
+      "attachments": [
+        {
+          "id": "25b19070-9c29-41b4-8cec-e26c2f86a976",
+          "relativePath": "25b19070-9c29-41b4-8cec-e26c2f86a976.img",
+          "displayName": "QA1027-blue-landscape.png",
+          "byteSize": 5407,
+          "width": 640,
+          "height": 360,
+          "position": 0,
+          "sha256": "471670516B4E0E9D2F7F92A7BC1B70C836A2C49222AC56F3B82ACB2941FC475F",
+          "syntheticFixture": "QA1027-blue-landscape.png"
+        },
+        {
+          "id": "a3719dd4-0025-4b54-990b-5b904b6a1062",
+          "relativePath": "a3719dd4-0025-4b54-990b-5b904b6a1062.img",
+          "displayName": "QA1027-orange-portrait.png",
+          "byteSize": 5351,
+          "width": 320,
+          "height": 640,
+          "position": 1,
+          "sha256": "99ADFB3E876EFEAA0CD61A039893ECE9AA918A8D3BD3ACF25DC407279548DEA2",
+          "syntheticFixture": "QA1027-orange-portrait.png"
+        }
+      ]
+    },
+    {
+      "id": "cd6d1c3c-9944-448b-aba7-150175104b27",
+      "title": "QA1027-1249-C",
+      "description": "",
+      "deadlineAt": 1793365440000,
+      "completedAt": null,
+      "archivedAt": 1793108334366,
+      "revision": 4,
+      "fields": [],
+      "attachments": [
+        {
+          "id": "c11cfe43-b02e-41fc-926b-4ccf828f9c0d",
+          "relativePath": "c11cfe43-b02e-41fc-926b-4ccf828f9c0d.img",
+          "displayName": "1000044666.png",
+          "byteSize": 5351,
+          "width": 320,
+          "height": 640,
+          "position": 0,
+          "sha256": "99ADFB3E876EFEAA0CD61A039893ECE9AA918A8D3BD3ACF25DC407279548DEA2",
+          "syntheticFixture": "QA1027-orange-portrait.png"
+        },
+        {
+          "id": "5d4b5a63-b309-4200-a8b7-e8ff9686cd05",
+          "relativePath": "5d4b5a63-b309-4200-a8b7-e8ff9686cd05.img",
+          "displayName": "1000044664.png",
+          "byteSize": 5407,
+          "width": 640,
+          "height": 360,
+          "position": 1,
+          "sha256": "471670516B4E0E9D2F7F92A7BC1B70C836A2C49222AC56F3B82ACB2941FC475F",
+          "syntheticFixture": "QA1027-blue-landscape.png"
+        }
+      ]
+    }
+  ],
+  "nonQaEventCount": 1
+}

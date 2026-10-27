@@ -1,0 +1,52 @@
+{
+  "finishedUtc": "2026-10-27T13:40:58.645774+00:00",
+  "product": {
+    "version": "0.2.0",
+    "versionCode": 2,
+    "sha256": "6B5167424691BD218E10314689990C37969FCD8018FBCAA282A2917B67B594A9",
+    "productSourceOrApkChanged": false
+  },
+  "device": {
+    "model": "HONOR X50 / ALI-AN00",
+    "android": 15,
+    "api": 35,
+    "magicOs": "9.0.0",
+    "uniqueIdentifierExcluded": true
+  },
+  "groups": {
+    "eventForms": "Blank mandatory fields rejected; A/B/C/D saved through UI; A detail/edit, keep-editing/discard, process restart verified.",
+    "sourceTags": "QA source/tag created, attached, renamed with relationship retained; keyword+source+tag intersection; deactivated at cleanup.",
+    "customFields": "A two text fields saved; URL copied into description, Location edited, URL removed; B isolated; process restart verified.",
+    "calendar": "A October28 and B October29 each independently listed; next/previous month; today summary independent of selected day; category intersection empty result verified.",
+    "batch": "Explicit A/B complete/archive while C untouched; A archive/completion restored; B delete cancellation; explicit B+D two-item delete confirmed; A/C snapshots unchanged and D private image removed.",
+    "images": "User-assisted PhotoPicker selected 3 synthetic images; all saved/previewed including EXIF6; restart persistence; removal cancel/save; cross-UID clipboard two-image import; broken/text/empty rejection retained draft; cancelled new-image draft cleaned; provider uninstall and public-source removal with restart preserved saved private previews."
+  },
+  "finalState": {
+    "A": "archived, 2 clipboard-derived synthetic images",
+    "C": "archived, 2 gallery-derived synthetic images",
+    "B": "permanently deleted",
+    "D": "permanently deleted",
+    "sourceTag": "QA categories inactive",
+    "nonQaEventCount": 1,
+    "qaHelper": "uninstalled",
+    "ownClipboard": "cleared",
+    "publicFixtures": "3 removed",
+    "home": "normal unfiltered todo home"
+  },
+  "limitations": [
+    "System PhotoPicker multi-selection was assisted by 支盟渊; QA helper installation confirmation was also performed by 支盟渊.",
+    "One reuse of a pre-force-stop clipboard URI was rejected with a generic import error. Fresh Copy blue succeeded with form retained; cause undetermined, temporary URI grant expiry is only a hypothesis.",
+    "Cross-UID clipboard compatibility was tested with the reviewed synthetic provider, not every third-party application.",
+    "No original-event full-content baseline fingerprint was collected; only no non-QA edit/delete actions and final anonymous count of one are asserted.",
+    "This is a bounded real-device functional run, not blanket completion of every test-plan case."
+  ],
+  "evidence": [
+    "steps.json",
+    "qa-state-final.json",
+    "qa-state-before-delete.json",
+    "qa-state-after-delete.json",
+    "qa-state-provider-uninstalled.json",
+    "qa-state-after-cancelled-new-draft.json"
+  ],
+  "confirmedProductDefects": []
+}

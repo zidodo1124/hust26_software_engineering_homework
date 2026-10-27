@@ -1,0 +1,4 @@
+# Preserve original evidence bytes so SHA-256 checks remain valid after checkout.
+# Accept the original Windows CRLF endings while still checking real whitespace errors.
+*.json -text whitespace=trailing-space,space-before-tab,cr-at-eol
+*.png -text

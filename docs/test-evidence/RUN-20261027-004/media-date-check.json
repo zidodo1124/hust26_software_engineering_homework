@@ -1,0 +1,22 @@
+{
+  "checkedUtc": "2026-10-27T13:18:07.517449+00:00",
+  "allOriginalDatesUnchanged": true,
+  "checks": [
+    {
+      "fixture": "QA1027-blue-landscape.png",
+      "datetakenUnchanged": true,
+      "dateModifiedUnchanged": true
+    },
+    {
+      "fixture": "QA1027-exif-rotate90.jpg",
+      "datetakenUnchanged": true,
+      "dateModifiedUnchanged": true
+    },
+    {
+      "fixture": "QA1027-orange-portrait.png",
+      "datetakenUnchanged": true,
+      "dateModifiedUnchanged": true
+    }
+  ],
+  "note": "Attempted MediaStore datetaken update was ignored. No mtime change was performed."
+}

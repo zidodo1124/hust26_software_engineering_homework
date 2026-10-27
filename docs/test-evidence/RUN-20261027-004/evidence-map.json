@@ -1,0 +1,93 @@
+{
+  "purpose": "Availability of evidence filenames referenced by original steps; no missing file is treated as exported evidence",
+  "references": {
+    "01-test-tag.png": {
+      "exported": true,
+      "reason": "Reviewed evidence exported byte-for-byte"
+    },
+    "02-required-errors.png": {
+      "exported": true,
+      "reason": "Reviewed evidence exported byte-for-byte"
+    },
+    "06-reopened-A-fields.png": {
+      "exported": true,
+      "reason": "Reviewed evidence exported byte-for-byte"
+    },
+    "07-unsaved-confirm.png": {
+      "exported": true,
+      "reason": "Reviewed evidence exported byte-for-byte"
+    },
+    "08b-clean-edited-fields.png": {
+      "exported": true,
+      "reason": "Reviewed evidence exported byte-for-byte"
+    },
+    "08-edited-field-and-copied-description.png": {
+      "exported": false,
+      "reason": "Not exported: system banner obscured this screenshot; use 08b-clean-edited-fields.png"
+    },
+    "15-control-C-remains-todo.png": {
+      "exported": true,
+      "reason": "Reviewed evidence exported byte-for-byte"
+    },
+    "18-gallery-three-synthetic-images.png": {
+      "exported": true,
+      "reason": "Reviewed evidence exported byte-for-byte"
+    },
+    "19-blue-preview.png": {
+      "exported": true,
+      "reason": "Reviewed evidence exported byte-for-byte"
+    },
+    "20-orange-preview.png": {
+      "exported": true,
+      "reason": "Reviewed evidence exported byte-for-byte"
+    },
+    "21-exif6-preview.png": {
+      "exported": true,
+      "reason": "Reviewed evidence exported byte-for-byte"
+    },
+    "qa-state-after-gallery.json": {
+      "exported": true,
+      "reason": "Reviewed evidence exported byte-for-byte"
+    },
+    "23-gallery-after-removal-saved.png": {
+      "exported": true,
+      "reason": "Reviewed evidence exported byte-for-byte"
+    },
+    "qa-state-after-removal.json": {
+      "exported": true,
+      "reason": "Reviewed evidence exported byte-for-byte"
+    },
+    "qa-state-after-cancelled-new-draft.json": {
+      "exported": true,
+      "reason": "Reviewed evidence exported byte-for-byte"
+    },
+    "27-batch-delete-B-and-D-confirm.png": {
+      "exported": true,
+      "reason": "Reviewed evidence exported byte-for-byte"
+    },
+    "qa-state-after-delete.json": {
+      "exported": true,
+      "reason": "Reviewed evidence exported byte-for-byte"
+    },
+    "28-clipboard-preview-after-provider-uninstall.png": {
+      "exported": true,
+      "reason": "Reviewed evidence exported byte-for-byte"
+    },
+    "29-second-clipboard-preview-after-provider-uninstall.png": {
+      "exported": true,
+      "reason": "Reviewed evidence exported byte-for-byte"
+    },
+    "qa-state-provider-uninstalled.json": {
+      "exported": true,
+      "reason": "Reviewed evidence exported byte-for-byte"
+    },
+    "30-gallery-preview-after-source-removal.png": {
+      "exported": true,
+      "reason": "Reviewed evidence exported byte-for-byte"
+    },
+    "31-second-gallery-preview-after-source-removal.png": {
+      "exported": true,
+      "reason": "Reviewed evidence exported byte-for-byte"
+    }
+  }
+}

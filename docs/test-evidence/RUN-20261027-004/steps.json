@@ -1,0 +1,546 @@
+[
+  {
+    "atUtc": "2026-10-27T12:53:14.562823+00:00",
+    "step": "create-A-with-source-tag-two-fields",
+    "result": "pass",
+    "details": {
+      "deadline": "2026-10-28 20:51 Beijing",
+      "source": "QA1027-1249-source",
+      "tag": "QA1027-1249-tag",
+      "fields": {
+        "Location": "East9-QA",
+        "URL": "https://example.invalid/qa"
+      }
+    }
+  },
+  {
+    "atUtc": "2026-10-27T12:53:47.430708+00:00",
+    "step": "create-B-minimal-fields",
+    "result": "pass",
+    "details": null
+  },
+  {
+    "atUtc": "2026-10-27T12:54:15.439315+00:00",
+    "step": "category-creation",
+    "result": "pass",
+    "details": {
+      "evidence": "01-test-tag.png",
+      "operationTime": "prior to screenshot capture; this timestamp is record time"
+    }
+  },
+  {
+    "atUtc": "2026-10-27T12:54:15.451311+00:00",
+    "step": "blank-required-fields-rejected",
+    "result": "pass",
+    "details": {
+      "evidence": "02-required-errors.png",
+      "errors": [
+        "请填写事项标题。",
+        "请选择完整的截止日期和时间。"
+      ],
+      "operationTime": "prior to screenshot capture; this timestamp is record time"
+    }
+  },
+  {
+    "atUtc": "2026-10-27T12:55:15.562632+00:00",
+    "step": "process-reopen-preserves-A-fields-and-classifications",
+    "result": "pass",
+    "details": {
+      "evidence": "06-reopened-A-fields.png",
+      "harnessNote": "record reader changed from Windows default encoding to explicit UTF-8 after Chinese text; application checks had passed before record write failed"
+    }
+  },
+  {
+    "atUtc": "2026-10-27T12:56:19.828436+00:00",
+    "step": "unsaved-continue-and-discard",
+    "result": "pass",
+    "details": {
+      "evidence": "07-unsaved-confirm.png",
+      "originalTitlePreserved": true
+    }
+  },
+  {
+    "atUtc": "2026-10-27T12:57:07.949525+00:00",
+    "step": "text-copy-paste-edit-remove-fields",
+    "result": "pass",
+    "details": {
+      "remainingField": "Location=West12-QA",
+      "removedField": "URL",
+      "description": "https://example.invalid/qa",
+      "evidence": "08b-clean-edited-fields.png",
+      "excludedScreenshot": "08-edited-field-and-copied-description.png"
+    }
+  },
+  {
+    "atUtc": "2026-10-27T12:58:34.496425+00:00",
+    "step": "rename-source-tag-retains-relations-and-filter-intersection",
+    "result": "pass",
+    "details": {
+      "source": "QA1027-1249-src2",
+      "tag": "QA1027-1249-tag2",
+      "filteredCount": 1,
+      "onlyEvent": "QA1027-1249-A"
+    }
+  },
+  {
+    "atUtc": "2026-10-27T12:59:56.075202+00:00",
+    "step": "calendar-retains-category-intersection",
+    "result": "pass",
+    "details": {
+      "date": "2026-10-29",
+      "source": "QA1027-1249-src2",
+      "tag": "QA1027-1249-tag2",
+      "expectedCount": 0,
+      "harnessNote": "initial calendar assertion expected B without resetting category filters; corrected precondition"
+    }
+  },
+  {
+    "atUtc": "2026-10-27T13:01:39.835284+00:00",
+    "step": "unexpected-foreground-interruption",
+    "result": "interrupted",
+    "details": {
+      "scope": "test environment",
+      "action": "stopped input; discarded private diagnostic; added foreground allowlist",
+      "businessDefect": false
+    }
+  },
+  {
+    "atUtc": "2026-10-27T13:04:29.995190+00:00",
+    "step": "calendar-two-dates-month-navigation-and-today",
+    "result": "pass",
+    "details": {
+      "date28": "A only, count1",
+      "date29": "B only, count1",
+      "months": [
+        "2026年11月",
+        "2026年10月"
+      ],
+      "todayTile": [
+        "1",
+        "今日 DDL"
+      ],
+      "harnessNote": "IME restored after bringing app forward; scroll helper now checks and hides IME"
+    }
+  },
+  {
+    "atUtc": "2026-10-27T13:05:07.482265+00:00",
+    "step": "create-C-control-for-batch-and-images",
+    "result": "pass",
+    "details": null
+  },
+  {
+    "atUtc": "2026-10-27T13:06:46.953195+00:00",
+    "step": "batch-complete-two-preserves-control-C",
+    "result": "pass",
+    "details": {
+      "selected": [
+        "A",
+        "B"
+      ],
+      "remainingTodo": [
+        "C"
+      ],
+      "evidence": "15-control-C-remains-todo.png"
+    }
+  },
+  {
+    "atUtc": "2026-10-27T13:07:34.579811+00:00",
+    "step": "batch-archive-two-preserves-completion",
+    "result": "pass",
+    "details": {
+      "archivedCount": 2,
+      "ACompleted": true
+    }
+  },
+  {
+    "atUtc": "2026-10-27T13:08:17.731152+00:00",
+    "step": "restore-A-archive-and-completion",
+    "result": "pass",
+    "details": {
+      "remainingField": "Location=West12-QA",
+      "evidence": "08b-clean-edited-fields.png"
+    }
+  },
+  {
+    "atUtc": "2026-10-27T13:08:51.408821+00:00",
+    "step": "batch-delete-cancel-preserves-B",
+    "result": "pass",
+    "details": null
+  },
+  {
+    "atUtc": "2026-10-27T13:10:10.200275+00:00",
+    "step": "upload-synthetic-image-fixtures",
+    "result": "prepared",
+    "details": {
+      "directory": "/sdcard/Pictures/DDL-Saver-QA1027-1249",
+      "files": [
+        "QA1027-blue-landscape.png",
+        "QA1027-exif-rotate90.jpg",
+        "QA1027-orange-portrait.png"
+      ]
+    }
+  },
+  {
+    "atUtc": "2026-10-27T13:18:07.520472+00:00",
+    "step": "fixture-original-dates-confirmed-unchanged",
+    "result": "pass",
+    "details": {
+      "checkedUtc": "2026-10-27T13:18:07.517449+00:00",
+      "allOriginalDatesUnchanged": true,
+      "checks": [
+        {
+          "fixture": "QA1027-blue-landscape.png",
+          "datetakenUnchanged": true,
+          "dateModifiedUnchanged": true
+        },
+        {
+          "fixture": "QA1027-exif-rotate90.jpg",
+          "datetakenUnchanged": true,
+          "dateModifiedUnchanged": true
+        },
+        {
+          "fixture": "QA1027-orange-portrait.png",
+          "datetakenUnchanged": true,
+          "dateModifiedUnchanged": true
+        }
+      ],
+      "note": "Attempted MediaStore datetaken update was ignored. No mtime change was performed."
+    }
+  },
+  {
+    "atUtc": "2026-10-27T13:19:50.132245+00:00",
+    "step": "photo-picker-user-assisted-three-images-save-preview",
+    "result": "pass",
+    "details": {
+      "selectorActor": "支盟渊",
+      "saveAndPreviewActor": "AI助手",
+      "providerNames": {
+        "1000044664.png": "QA1027-blue-landscape.png",
+        "1000044666.png": "QA1027-orange-portrait.png",
+        "1000044665.jpg": "QA1027-exif-rotate90.jpg"
+      },
+      "savedCount": 3,
+      "evidence": [
+        "18-gallery-three-synthetic-images.png",
+        "19-blue-preview.png",
+        "20-orange-preview.png",
+        "21-exif6-preview.png"
+      ]
+    }
+  },
+  {
+    "atUtc": "2026-10-27T13:21:18.251349+00:00",
+    "step": "image-viewer-next-previous-and-EXIF6",
+    "result": "pass",
+    "details": {
+      "blue": "landscape; white block left/yellow circle right",
+      "orange": "portrait; triangle up; BOTTOM below",
+      "exif6": "portrait; red band above; arrow down",
+      "evidence": [
+        "19-blue-preview.png",
+        "20-orange-preview.png",
+        "21-exif6-preview.png"
+      ]
+    }
+  },
+  {
+    "atUtc": "2026-10-27T13:22:43.476645+00:00",
+    "step": "gallery-private-copy-hashes-and-process-reopen",
+    "result": "pass",
+    "details": {
+      "count": 3,
+      "allHashesMatchFixtures": true,
+      "evidence": "qa-state-after-gallery.json",
+      "harnessNote": "exact search text initially collided with event title; selector now prefers non-editable nodes"
+    }
+  },
+  {
+    "atUtc": "2026-10-27T13:23:11.481272+00:00",
+    "step": "remove-image-then-cancel-preserves-three",
+    "result": "pass",
+    "details": null
+  },
+  {
+    "atUtc": "2026-10-27T13:23:39.575010+00:00",
+    "step": "remove-image-and-save-keeps-two",
+    "result": "pass",
+    "details": {
+      "removed": "1000044665.jpg",
+      "evidence": "23-gallery-after-removal-saved.png"
+    }
+  },
+  {
+    "atUtc": "2026-10-27T13:24:03.710738+00:00",
+    "step": "removed-private-file-cleaned-source-images-unchanged",
+    "result": "pass",
+    "details": {
+      "removedFixture": "QA1027-exif-rotate90.jpg",
+      "sources": [
+        {
+          "file": "QA1027-blue-landscape.png",
+          "sha256Unchanged": true
+        },
+        {
+          "file": "QA1027-exif-rotate90.jpg",
+          "sha256Unchanged": true
+        },
+        {
+          "file": "QA1027-orange-portrait.png",
+          "sha256Unchanged": true
+        }
+      ],
+      "evidence": "qa-state-after-removal.json"
+    }
+  },
+  {
+    "atUtc": "2026-10-27T13:24:16.531753+00:00",
+    "step": "install-isolated-clipboard-fixture",
+    "result": "pass",
+    "details": {
+      "package": "cn.edu.hust.ddlsaver.qa.clipboard",
+      "sha256": "FED09852FED3B1B114BAFFBEB0166AA122FE9849ADA71C5C87DAA11BDAA822C2",
+      "previouslyInstalled": false,
+      "adbInstallResult": "Success",
+      "userConfirmedInstallation": true,
+      "confirmationActor": "支盟渊"
+    }
+  },
+  {
+    "atUtc": "2026-10-27T13:28:01.282812+00:00",
+    "step": "paste-previous-test-url-rejected",
+    "result": "pass",
+    "details": {
+      "observedImageCount": 0,
+      "message": "剪贴板中没有可读取的图片；图片网址不能直接导入。"
+    }
+  },
+  {
+    "atUtc": "2026-10-27T13:28:14.615645+00:00",
+    "step": "cross-uid-two-image-paste",
+    "result": "pass",
+    "details": {
+      "providerPackage": "cn.edu.hust.ddlsaver.qa.clipboard",
+      "count": 2,
+      "usesStandardClipDataUriGrant": true
+    }
+  },
+  {
+    "atUtc": "2026-10-27T13:29:03.516167+00:00",
+    "step": "clipboard-copy-broken-image-rejected",
+    "result": "pass",
+    "details": {
+      "message": "文件不是可解码的图片，或图片已经损坏。",
+      "attachmentCountRetained": 2,
+      "customFieldRetained": "West12-QA",
+      "newPrivateFiles": 0
+    }
+  },
+  {
+    "atUtc": "2026-10-27T13:29:30.543707+00:00",
+    "step": "clipboard-copy-text-rejected",
+    "result": "pass",
+    "details": {
+      "message": "剪贴板中没有可读取的图片。请先在支持复制图片的应用中复制；图片网址不能直接导入。",
+      "attachmentCountRetained": 2,
+      "customFieldRetained": "West12-QA",
+      "newPrivateFiles": 0
+    }
+  },
+  {
+    "atUtc": "2026-10-27T13:29:51.952368+00:00",
+    "step": "clipboard-clear-clipboard-rejected",
+    "result": "pass",
+    "details": {
+      "message": "剪贴板中没有可读取的图片。请先在支持复制图片的应用中复制；图片网址不能直接导入。",
+      "attachmentCountRetained": 2,
+      "customFieldRetained": "West12-QA",
+      "newPrivateFiles": 0
+    }
+  },
+  {
+    "atUtc": "2026-10-27T13:30:11.205068+00:00",
+    "step": "save-two-cross-uid-clipboard-images",
+    "result": "pass",
+    "details": {
+      "event": "QA1027-1249-A",
+      "count": 2
+    }
+  },
+  {
+    "atUtc": "2026-10-27T13:30:56.887267+00:00",
+    "step": "cancel-new-event-after-image-import",
+    "result": "pass",
+    "details": {
+      "draftTitle": "QA1027-1249-D-CANCEL",
+      "newPrivateCopyCount": 1,
+      "remainingNewPrivateCopies": 0,
+      "eventNotPersisted": true,
+      "evidence": "qa-state-after-cancelled-new-draft.json"
+    }
+  },
+  {
+    "atUtc": "2026-10-27T13:32:28.357982+00:00",
+    "step": "reuse-pre-force-stop-clipboard-uri",
+    "result": "rejected",
+    "details": {
+      "message": "图片导入失败，请确认图片可读取且本机存储空间充足。",
+      "attachmentCount": 0,
+      "interpretation": "Possible expired temporary URI grant after force-stop; not yet a confirmed product defect"
+    }
+  },
+  {
+    "atUtc": "2026-10-27T13:32:50.974445+00:00",
+    "step": "save-temporary-D-with-one-clipboard-image",
+    "result": "pass",
+    "details": {
+      "event": "QA1027-1249-D",
+      "count": 1,
+      "freshClipboardCopyAfterProcessRestart": true
+    }
+  },
+  {
+    "atUtc": "2026-10-27T13:34:28.920711+00:00",
+    "step": "batch-helper-selector-guard",
+    "result": "tool-protection",
+    "details": {
+      "reason": "Navigation tabs also exposed checkbox role; selector paused before any selection or delete. Scoped subsequent selector to the visible selection label."
+    }
+  },
+  {
+    "atUtc": "2026-10-27T13:36:03.187290+00:00",
+    "step": "confirm-batch-delete-B-and-D",
+    "result": "pass",
+    "details": {
+      "explicitSelection": [
+        "QA1027-1249-B",
+        "QA1027-1249-D"
+      ],
+      "confirmationCount": 2,
+      "afterDeletionVisibleCountForD": 0,
+      "exitedBatchMode": true,
+      "evidence": "27-batch-delete-B-and-D-confirm.png"
+    }
+  },
+  {
+    "atUtc": "2026-10-27T13:36:03.205650+00:00",
+    "step": "batch-delete-postcondition-adjustment",
+    "result": "tool-protection",
+    "details": {
+      "reason": "Successful deletion exits batch mode, so no zero-selected label remains. Correctly checked normal batch button and zero results instead."
+    }
+  },
+  {
+    "atUtc": "2026-10-27T13:36:05.184211+00:00",
+    "step": "delete-B-D-preserves-A-C-and-cleans-D-private-copy",
+    "result": "pass",
+    "details": {
+      "deletedEvents": [
+        "QA1027-1249-B",
+        "QA1027-1249-D"
+      ],
+      "privateCopiesRemoved": 1,
+      "AandCFullQaSnapshotsUnchanged": true,
+      "evidence": "qa-state-after-delete.json"
+    }
+  },
+  {
+    "atUtc": "2026-10-27T13:36:25.557477+00:00",
+    "step": "clear-own-clipboard-and-uninstall-QA-helper",
+    "result": "pass",
+    "details": {
+      "package": "cn.edu.hust.ddlsaver.qa.clipboard",
+      "adbUninstallResult": "Success",
+      "packageAbsentVerified": true,
+      "note": "pm path absent-package nonzero exit required shell predicate; uninstall itself succeeded on first attempt."
+    }
+  },
+  {
+    "atUtc": "2026-10-27T13:37:03.661659+00:00",
+    "step": "clipboard-private-images-preview-after-provider-uninstall-and-process-restart",
+    "result": "pass",
+    "details": {
+      "event": "QA1027-1249-A",
+      "previewCount": 2,
+      "evidence": [
+        "28-clipboard-preview-after-provider-uninstall.png",
+        "29-second-clipboard-preview-after-provider-uninstall.png",
+        "qa-state-provider-uninstalled.json"
+      ]
+    }
+  },
+  {
+    "atUtc": "2026-10-27T13:38:12.227070+00:00",
+    "step": "remove-only-three-verified-public-synthetic-images",
+    "result": "pass",
+    "details": {
+      "names": [
+        "QA1027-blue-landscape.png",
+        "QA1027-exif-rotate90.jpg",
+        "QA1027-orange-portrait.png"
+      ],
+      "rowIdentityPathHashAndDatesCheckedBeforeDeletion": true,
+      "mediaRowsAndFilesAbsent": true
+    }
+  },
+  {
+    "atUtc": "2026-10-27T13:38:45.398893+00:00",
+    "step": "gallery-private-copy-preview-after-public-source-deletion-and-restart",
+    "result": "pass",
+    "details": {
+      "event": "QA1027-1249-C",
+      "previewCount": 2,
+      "evidence": [
+        "30-gallery-preview-after-source-removal.png",
+        "31-second-gallery-preview-after-source-removal.png"
+      ]
+    }
+  },
+  {
+    "atUtc": "2026-10-27T13:39:23.576652+00:00",
+    "step": "archive-A-and-C-as-review-samples",
+    "result": "pass",
+    "details": {
+      "events": [
+        "QA1027-1249-A",
+        "QA1027-1249-C"
+      ],
+      "eachRetainsImages": 2
+    }
+  },
+  {
+    "atUtc": "2026-10-27T13:40:33.600249+00:00",
+    "step": "deactivate-only-QA-categories",
+    "result": "pass",
+    "details": {
+      "source": "QA1027-1249-src2",
+      "tag": "QA1027-1249-tag2",
+      "reason": "Keep saved relation while removing QA options from new forms"
+    }
+  },
+  {
+    "atUtc": "2026-10-27T13:40:58.644171+00:00",
+    "step": "final-cleanup-and-preservation-check",
+    "result": "pass",
+    "details": {
+      "archivedQaSamples": [
+        "QA1027-1249-A",
+        "QA1027-1249-C"
+      ],
+      "imagesEach": 2,
+      "deletedQaSamples": [
+        "QA1027-1249-B",
+        "QA1027-1249-D"
+      ],
+      "nonQaEventCount": 1,
+      "nonQaContentPrintedOrExported": false,
+      "nonQaEventsEditedOrDeleted": false,
+      "originalContentFingerprintAvailable": false,
+      "productApkSha256Unchanged": "6B5167424691BD218E10314689990C37969FCD8018FBCAA282A2917B67B594A9",
+      "qaHelperAbsent": true,
+      "ownTestClipboardClearedBeforeHelperUninstall": true,
+      "publicSyntheticImagesRemoved": 3,
+      "temporaryUiXmlRemoved": true,
+      "homeRestored": true
+    }
+  }
+]
