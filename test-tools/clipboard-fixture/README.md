@@ -15,6 +15,8 @@
 
 工具不申请网络、存储或其他敏感权限，不读取原有剪贴板、公共存储、产品数据库或个人图片。四个自带文件仅复制到工具自身缓存；Provider 设置 `exported=false`、`grantUriPermissions=true`，拒绝任意路径、额外路径段、查询参数、片段及写入。复制使用 `ClipData.newUri` 与 `addItem`，**不另行显式授权给产品**，因此粘贴通过依赖 Android 正常剪贴板 URI 授权流程。
 
+所有 `assets/` 夹具必须按原字节保留；本目录的 `.gitattributes` 对其禁用换行转换，包括内容刻意为文本的坏图，以保证 Windows 检出后的清单哈希一致。
+
 ## Windows 构建复现
 
 准备 Python 3、JDK 17 或更高版本，以及已安装 Platform 35 和 Build Tools 35.0.0 的 Android SDK。脚本依次使用 `javac` 编译、`d8` 生成 DEX、`aapt2` 打包、`zipalign` 对齐及 `apksigner` 签名与核验，不改产品依赖或版本。实际验证环境为 Windows、JDK 17、Build Tools 35.0.0；脚本兼容非 Windows 工具命名，但尚未据此声明其他系统验证通过。
