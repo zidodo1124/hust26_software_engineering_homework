@@ -60,6 +60,8 @@ HUSTer's DDL Saver 是一款面向大学生的 Android 截止日期（DDL）管�
 | 文档 | 内容 |
 | --- | --- |
 | [项目状态](STATUS.md) | 当前阶段、待确认事项、后续工作与课程交付约束 |
+| [实现计划](docs/implementation-plan.md) | 分轮目标、首轮范围、质量要求与后续衔接 |
+| [小组任务板](team/README.md) | 四位成员的任务、交付物、领取与审核方式 |
 | [需求分析文档](docs/requirements.md) | 完整功能需求、业务规则和验收场景 |
 | [设计文档](docs/design.md) | 候选架构、模块职责、数据结构、接口及关键流程 |
 | [技术栈说明](docs/technology-stack.md) | 设计选定的语言、框架与组件及其用途、版本登记和验证状态 |
