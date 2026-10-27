@@ -5,7 +5,7 @@
 | 版本与日期 | v0.3；2026-10-27 |
 | 依据 | [测试计划与用例](test-plan.md)、[设计文档](design.md)、[需求分析](requirements.md) |
 | 实际软件测试批次 | 第一、二轮分别建立本地验证批次；CI 按对应源码另行核对，失败与复测分别保留 |
-| 当前内容 | 第 1—6 节为可复用模板；第 7 节为第一轮，第 8 节为第二轮。荣耀 X50 尚未连接 |
+| 当前内容 | 第 1—6 节为可复用模板；第 7 节为第一轮，第 8 节为第二轮；第 9 节记录荣耀 X50 连接准备，尚未开始实机业务测试 |
 
 ## 1. 填写原则
 
@@ -221,3 +221,22 @@ powershell -ExecutionPolicy Bypass -File scripts/gradle.ps1 :app:assembleDebug :
 - CI Lint：0 错误、12 条警告，类型为 `GradleDependency`、`ExifInterface`、`OldTargetApi`；比本机 11 条多一个目标 API 提示，两边独立记录。
 - [APK 产物](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40500794045/artifacts/12733885228)、[报告产物](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40500794045/artifacts/12733560898)均已生成；详见[复核 JSON](test-evidence/RUN-20261027-002/ci-verification.json)。没有输出或保存认证凭证。
 - 同源码独立运行不累计为更多不同测试方法，也不增加荣耀 X50 实测次数；本地 APK 哈希不代替 CI 产物标识。
+
+## 9. 实机连接准备（未开始业务测试）
+
+整理时间：2026-10-27 05:29:40（America/Los_Angeles，UTC-07:00），对应 12:29:40 UTC；该时间为记录整理时间，不代替用户消息发送时间。
+
+支盟渊接入荣耀 X50、选择文件传输，并反馈“已开启 USB 调试，并允许这台电脑”。AI 助手执行电脑端检查、官方资料核对和驱动包准备。本节仅记录连接环境排查，不计入已完成的软件测试批次或实机业务测试次数。
+
+| 检查项 | 实际观察与处理 |
+| --- | --- |
+| USB 文件传输 | Windows 正常识别 HONOR 的 MTP 接口 |
+| 调试接口 | 开启 USB 调试后出现 `ADB Interface`，设备状态正常；当前绑定 Microsoft 通用 `winusb.inf` |
+| ADB 检查 | Platform Tools 37.0.1 默认后端未列出设备；重启连接服务，以及仅在当前启动进程设置 `ADB_USB_LEGACY=1` 后改用原生后端检查，列表仍为空；未修改系统环境变量 |
+| 官方驱动包 | 从[荣耀官方 Suite 页面](https://www.honor.com/cn/tech/honor-suite/)获取 11.0.0.736，安装器 SHA-256 为 `1052AAC09E9085D0F6FA989BD3CDB87D6FEC8C431165568B8788E47291B29CEA`，与官网公布值一致；安装器数字签名状态为 `Valid` |
+| 驱动匹配核对 | 已发现包内官方复合 USB 过滤驱动具有当前型号接口的精确匹配项，并定位到配套 ADB 驱动链；仍属于安装前核对，不据此宣称连接已恢复 |
+| 安装准备 | 已提取 7 个必要驱动文件，核对父复合驱动的精确匹配和数字签名；本机安装脚本包含固定 SHA-256、签名和管理员检查，依次执行三步 PnPUtil 命令，不自行提权或自动重启；语法解析为 0 错误，尚未执行安装 |
+| 当前限制 | 当前命令会话不是管理员，尚未安装驱动；[Microsoft PnPUtil 文档](https://learn.microsoft.com/en-us/windows-hardware/drivers/devtest/pnputil-command-syntax)要求在管理员终端执行驱动管理命令 |
+| 交互与下一步 | 排查中曾请用户暂时切换至“传输照片（PTP）”，尚未取得该步骤反馈；随后已说明管理员权限要求并给出本机安装脚本命令，当前等待用户执行官方配套驱动安装、重新连接并反馈结果 |
+
+诊断、下载和解包核对未改动手机数据、驱动绑定或注册表；下载工具及驱动包保存在本机忽略目录。手机实际系统版本、应用安装、启动及页面操作尚未取得结果，不能填写为通过。第一、二轮已有自动检查及 CI 结论保持不变；后续连接可用时，再按真实环境和操作建立实机测试记录。

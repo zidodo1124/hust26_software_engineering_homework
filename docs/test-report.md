@@ -16,12 +16,12 @@
 | SDK | compile／target 35，最低 26；声明最低 API 不代表所有系统已经验证 |
 | 本地 Android 环境 | Robolectric 4.14.1；Room 及迁移 API 28；图片 API 28、35；Compose API 35，原生 SQLite 后端 |
 | 数据 | 自建示例事项、固定或受控时钟、测试生成的 PNG；不是私人相册材料 |
-| 实机 | 用户选择暂不连接，实机批次 0；MagicOS、系统版本及权限尚未实测 |
+| 实机 | 2026-10-27 已接入荣耀 X50，用户确认开启 USB 调试并允许电脑；ADB 尚未发现可用设备，安装、启动和业务实测仍为未执行；实际 MagicOS／Android 版本尚未核实 |
 | APK | `11,190,058` 字节；v0.2.0／2；包名 `cn.edu.hust.ddlsaver` |
 | SHA-256 | `6B5167424691BD218E10314689990C37969FCD8018FBCAA282A2917B67B594A9` |
 | 工具核查 | 包名、版本、启动入口、API 声明与 v2 签名核查完成；不等于手机安装通过 |
 
-命令与使用说明见[开发说明](development.md)。[汇总 JSON](test-evidence/RUN-20261027-002/summary.json)、[最终日志](test-evidence/RUN-20261027-002/attempt-06.txt)和[原始 JUnit XML](test-evidence/RUN-20261027-002/final-results/)可用于复核。
+命令与使用说明见[开发说明](development.md)。[汇总 JSON](test-evidence/RUN-20261027-002/summary.json)、[最终日志](test-evidence/RUN-20261027-002/attempt-06.txt)和[原始 JUnit XML](test-evidence/RUN-20261027-002/final-results/)可用于复核。[实机连接准备](test-records.md#9-实机连接准备未开始业务测试)单独记录设备连接排查，不增加软件测试批次或通过数。
 
 ## 3. 测试范围与结果
 
