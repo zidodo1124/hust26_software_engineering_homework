@@ -1,0 +1,62 @@
+{
+  "createdUtc": "2026-10-27T12:49:22.515426+00:00",
+  "purpose": "Synthetic image fixtures for HONOR X50 attachment UI tests",
+  "deviceOperationsPerformed": false,
+  "files": [
+    {
+      "file": "QA1027-blue-landscape.png",
+      "byteSize": 5407,
+      "sha256": "471670516B4E0E9D2F7F92A7BC1B70C836A2C49222AC56F3B82ACB2941FC475F",
+      "synthetic": true,
+      "expectedValidImage": true,
+      "mimeType": "image/png",
+      "encodedWidth": 640,
+      "encodedHeight": 360,
+      "exifOrientation": 1,
+      "expectedOrientedDimensions": [
+        640,
+        360
+      ]
+    },
+    {
+      "file": "QA1027-broken.png",
+      "byteSize": 46,
+      "sha256": "3B249A0CE4A36F74FA4D7D347BE2C9A75EB75B919C311EA2CDB7060027FD536C",
+      "synthetic": true,
+      "expectedValidImage": false,
+      "mimeTypeHint": "image/png",
+      "expectedImport": "reject_and_preserve_existing_draft",
+      "decoderRejectionVerified": true
+    },
+    {
+      "file": "QA1027-exif-rotate90.jpg",
+      "byteSize": 10641,
+      "sha256": "7923C165AAEA51A2D37A4C90127D1253F7E2DC0B61B6706ECD65FEA6989BAF17",
+      "synthetic": true,
+      "expectedValidImage": true,
+      "mimeType": "image/jpeg",
+      "encodedWidth": 480,
+      "encodedHeight": 240,
+      "exifOrientation": 6,
+      "expectedOrientedDimensions": [
+        240,
+        480
+      ]
+    },
+    {
+      "file": "QA1027-orange-portrait.png",
+      "byteSize": 5351,
+      "sha256": "99ADFB3E876EFEAA0CD61A039893ECE9AA918A8D3BD3ACF25DC407279548DEA2",
+      "synthetic": true,
+      "expectedValidImage": true,
+      "mimeType": "image/png",
+      "encodedWidth": 320,
+      "encodedHeight": 640,
+      "exifOrientation": 1,
+      "expectedOrientedDimensions": [
+        320,
+        640
+      ]
+    }
+  ]
+}
