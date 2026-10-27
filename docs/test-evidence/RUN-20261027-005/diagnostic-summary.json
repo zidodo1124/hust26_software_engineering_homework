@@ -1,0 +1,25 @@
+{
+  "evidenceType": "Derived diagnostic summary, not the full original thread dump or bytecode listing",
+  "run": "RUN-20261027-005",
+  "attempt": 1,
+  "observedCallChain": [
+    "org.robolectric.shadows.ShadowPausedLooper$IdlingRunnable.doRun",
+    "org.robolectric.android.internal.RoboMonitoringInstrumentation.waitForIdleSync",
+    "androidx.test.core.app.ActivityScenario.waitForActivityToBecomeAnyOf",
+    "androidx.test.core.app.ActivityScenario.recreate",
+    "cn.edu.hust.ddlsaver.ui.SaverAppFlowTest.reminderTapResetsHomeFiltersAndRoutesToLatestDetailOnce"
+  ],
+  "originalThreadDumpSha256": "85C621D07F2A47E500C899C64EC67DA2B505FB70C593384323DB5D099C71B339",
+  "androidxTestCoreVersion": "1.6.1",
+  "verifiedBytecodeComparisons": [
+    "Activity.getIntent",
+    "Intent.action",
+    "Intent.data"
+  ],
+  "originalBytecodeListingSha256": "DF3562852276D7A7E354514C2824723B01E40F06C8DE76EF9A0455AFE2ED7AB4",
+  "diagnosis": "Replacing the initial Activity Intent with a hot reminder Intent changed the action/data identity used by ActivityScenario to match recreation lifecycle events.",
+  "action": "Captured thread dump, then terminated only the confirmed owned Gradle test worker; attempt 1 is not a passing or complete JUnit run.",
+  "resolution": "Consume new reminder Intents into saved ViewModel navigation requests while retaining the initial launch Intent identity; preserve real recreation and assert a new Activity instance and single consumption.",
+  "verification": "Targeted attempt 2 passed three real UI scenarios; final full attempt 6 passed 132 configured executions.",
+  "privateDeviceDataIncluded": false
+}

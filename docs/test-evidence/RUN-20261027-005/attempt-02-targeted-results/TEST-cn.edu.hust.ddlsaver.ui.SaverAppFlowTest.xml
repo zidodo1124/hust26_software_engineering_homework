@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-10-27T14:52:13" hostname="LAPTOP-7OF0K1SP" time="20.193">
+  <properties/>
+  <testcase name="reminderTapResetsHomeFiltersAndRoutesToLatestDetailOnce" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="17.856"/>
+  <testcase name="reminderTapDuringDraftCanBeDeferredAcrossRotationWithoutLosingInput" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="1.665"/>
+  <testcase name="coldReminderLaunchOpensDetailAndRotationDoesNotReplayIt" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="0.672"/>
+  <system-out><![CDATA[UI-RECREATE-BEGIN
+UI-RECREATE-END
+UI-RECREATE-BEGIN
+UI-RECREATE-END
+UI-RECREATE-BEGIN
+UI-RECREATE-END
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

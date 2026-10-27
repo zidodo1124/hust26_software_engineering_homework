@@ -1,0 +1,31 @@
+{
+  "checkedAtUtc": "2026-10-27T15:21:59.885412+00:00",
+  "product": {
+    "package": "cn.edu.hust.ddlsaver",
+    "version": "0.3.0",
+    "versionCode": 3,
+    "schema": 3,
+    "minSdk": 26,
+    "targetSdk": 35,
+    "apkBytes": 12590695,
+    "apkSha256": "12E9D11A03623630F99F4AF35449EB119B5226D866CC0E7E56A1A7A9339DBD05",
+    "sameSignerAsRoundTwo": true,
+    "signerCertificateSha256": "978833BCAF0FC001248F5D8501BFA1F9D1273922474ED601F2C60A4548A652B9",
+    "noInternetPermission": true,
+    "bundledUpstreamFilesByteVerified": 7
+  },
+  "lintSnapshot": {
+    "severityCounts": {
+      "Warning": 16
+    },
+    "issueCounts": {
+      "ExifInterface": 1,
+      "InlinedApi": 1,
+      "GradleDependency": 10,
+      "ObsoleteSdkInt": 1,
+      "StaticFieldLeak": 1,
+      "UseKtx": 2
+    }
+  },
+  "sourceCommit": "857ca5faf29af4c2b861bf4529634ec66e3e13bd"
+}

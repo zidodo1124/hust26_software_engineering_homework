@@ -1,0 +1,316 @@
+{
+  "repository": "zidodo1124/hust26_software_engineering_homework",
+  "sha": "857ca5faf29af4c2b861bf4529634ec66e3e13bd",
+  "checkedAtUtc": "2026-10-27T15:35:26.529071+00:00",
+  "found": true,
+  "runId": 40530551146,
+  "attempt": 1,
+  "status": "completed",
+  "conclusion": "success",
+  "runUrl": "https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40530551146",
+  "jobs": [
+    {
+      "name": "Build APK, run local tests and lint",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check out source",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Set up JDK 17",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Set up Android SDK",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Build and check",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Upload checked debug APK",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Upload test and lint reports",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Set up JDK 17",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Check out source",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "reportEvidence": {
+    "archiveSha256": "e9c5c2f27d66fc5d7af5418722d9f6927130caeb9c1adfc8446d24ab3eb93340",
+    "suites": [
+      {
+        "suite": "cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest",
+        "tests": 10,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "actualTestCases": 10,
+        "actualFailures": 0,
+        "actualErrors": 0,
+        "actualSkipped": 0,
+        "countsAgree": true
+      },
+      {
+        "suite": "cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest",
+        "tests": 13,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "actualTestCases": 13,
+        "actualFailures": 0,
+        "actualErrors": 0,
+        "actualSkipped": 0,
+        "countsAgree": true
+      },
+      {
+        "suite": "cn.edu.hust.ddlsaver.data.SaverDatabaseMigrationTest",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "actualTestCases": 2,
+        "actualFailures": 0,
+        "actualErrors": 0,
+        "actualSkipped": 0,
+        "countsAgree": true
+      },
+      {
+        "suite": "cn.edu.hust.ddlsaver.domain.CharacterFeedbackTest",
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "actualTestCases": 9,
+        "actualFailures": 0,
+        "actualErrors": 0,
+        "actualSkipped": 0,
+        "countsAgree": true
+      },
+      {
+        "suite": "cn.edu.hust.ddlsaver.domain.EventQueryTest",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "actualTestCases": 5,
+        "actualFailures": 0,
+        "actualErrors": 0,
+        "actualSkipped": 0,
+        "countsAgree": true
+      },
+      {
+        "suite": "cn.edu.hust.ddlsaver.domain.EventValidationTest",
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "actualTestCases": 7,
+        "actualFailures": 0,
+        "actualErrors": 0,
+        "actualSkipped": 0,
+        "countsAgree": true
+      },
+      {
+        "suite": "cn.edu.hust.ddlsaver.domain.ExtendedEventValidationTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "actualTestCases": 4,
+        "actualFailures": 0,
+        "actualErrors": 0,
+        "actualSkipped": 0,
+        "countsAgree": true
+      },
+      {
+        "suite": "cn.edu.hust.ddlsaver.domain.UrgencyRulesTest",
+        "tests": 10,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "actualTestCases": 10,
+        "actualFailures": 0,
+        "actualErrors": 0,
+        "actualSkipped": 0,
+        "countsAgree": true
+      },
+      {
+        "suite": "cn.edu.hust.ddlsaver.platform.AttachmentStoreTest",
+        "tests": 26,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "actualTestCases": 26,
+        "actualFailures": 0,
+        "actualErrors": 0,
+        "actualSkipped": 0,
+        "countsAgree": true
+      },
+      {
+        "suite": "cn.edu.hust.ddlsaver.reminders.AndroidReminderPlatformTest",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "actualTestCases": 6,
+        "actualFailures": 0,
+        "actualErrors": 0,
+        "actualSkipped": 0,
+        "countsAgree": true
+      },
+      {
+        "suite": "cn.edu.hust.ddlsaver.reminders.ReminderEngineTest",
+        "tests": 15,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "actualTestCases": 15,
+        "actualFailures": 0,
+        "actualErrors": 0,
+        "actualSkipped": 0,
+        "countsAgree": true
+      },
+      {
+        "suite": "cn.edu.hust.ddlsaver.reminders.ReminderRulesTest",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "actualTestCases": 6,
+        "actualFailures": 0,
+        "actualErrors": 0,
+        "actualSkipped": 0,
+        "countsAgree": true
+      },
+      {
+        "suite": "cn.edu.hust.ddlsaver.ui.CalendarGridTest",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "actualTestCases": 2,
+        "actualFailures": 0,
+        "actualErrors": 0,
+        "actualSkipped": 0,
+        "countsAgree": true
+      },
+      {
+        "suite": "cn.edu.hust.ddlsaver.ui.CharacterAssetsTest",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "actualTestCases": 1,
+        "actualFailures": 0,
+        "actualErrors": 0,
+        "actualSkipped": 0,
+        "countsAgree": true
+      },
+      {
+        "suite": "cn.edu.hust.ddlsaver.ui.ReminderColdLaunchTest",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "actualTestCases": 1,
+        "actualFailures": 0,
+        "actualErrors": 0,
+        "actualSkipped": 0,
+        "countsAgree": true
+      },
+      {
+        "suite": "cn.edu.hust.ddlsaver.ui.SaverAppFlowTest",
+        "tests": 14,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "actualTestCases": 14,
+        "actualFailures": 0,
+        "actualErrors": 0,
+        "actualSkipped": 0,
+        "countsAgree": true
+      },
+      {
+        "suite": "cn.edu.hust.ddlsaver.ui.SaverViewModelFeedbackTest",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "actualTestCases": 1,
+        "actualFailures": 0,
+        "actualErrors": 0,
+        "actualSkipped": 0,
+        "countsAgree": true
+      }
+    ],
+    "totals": {
+      "tests": 132,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "actualTestCases": 132
+    },
+    "countsAgree": true,
+    "lint": {
+      "errors": 0,
+      "warnings": 17,
+      "issueIds": [
+        "ExifInterface",
+        "GradleDependency",
+        "InlinedApi",
+        "ObsoleteSdkInt",
+        "OldTargetApi",
+        "StaticFieldLeak",
+        "UseKtx"
+      ]
+    }
+  },
+  "artifacts": [
+    {
+      "kind": "apk",
+      "id": 12746207092,
+      "name": "ddl-saver-debug-857ca5faf29af4c2b861bf4529634ec66e3e13bd",
+      "bytes": 11787555,
+      "url": "https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40530551146/artifacts/12746207092"
+    },
+    {
+      "kind": "reports",
+      "id": 12745413579,
+      "name": "android-check-reports-857ca5faf29af4c2b861bf4529634ec66e3e13bd",
+      "bytes": 78768,
+      "url": "https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40530551146/artifacts/12745413579"
+    }
+  ]
+}

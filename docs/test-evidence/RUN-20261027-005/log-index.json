@@ -1,0 +1,119 @@
+{
+  "archive": "attempt-logs.zip",
+  "format": "ZIP/DEFLATE; six fixed basenames only",
+  "bytePreservation": "Archive extraction returns exact original log bytes; original trailing spaces and CRLF are retained.",
+  "reasonForArchive": "Each original log has a real trailing space on line 2; evidence is not trimmed and ordinary text whitespace checks remain enabled.",
+  "sourceBinding": "Only attempt 6 belongs to the final committed source; all earlier attempts are historical working-tree states.",
+  "files": [
+    {
+      "name": "attempt-01.log",
+      "bytes": 6288,
+      "sha256": "28FBC04494131EDF9D8B3A9A4E35CBDA5C4FCA51E335D59C8C83E922C2DD3FC2",
+      "attempt": 1,
+      "correspondsToSourceCommit": null,
+      "historicalWorkingTree": true,
+      "result": {
+        "attempt": 1,
+        "scope": "assemble/test/lint",
+        "exitCode": 1,
+        "elapsed": "12m18s",
+        "unitResult": "Controlled termination after captured ActivityScenario loop; no complete JUnit result",
+        "productionBuild": "success",
+        "lintErrors": 0,
+        "lintWarnings": 16
+      }
+    },
+    {
+      "name": "attempt-02-targeted.log",
+      "bytes": 2002,
+      "sha256": "F4E4504C4E1A6579F0BBEDDCE5175DAD977B0BF5AC6576B1D5494D1B026919FB",
+      "attempt": 2,
+      "correspondsToSourceCommit": null,
+      "historicalWorkingTree": true,
+      "result": {
+        "attempt": 2,
+        "scope": "3 notification recreation UI scenarios",
+        "exitCode": 0,
+        "elapsed": "1m27s",
+        "executions": 3,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0
+      }
+    },
+    {
+      "name": "attempt-03-full.log",
+      "bytes": 5142,
+      "sha256": "7E2C59587C86FBE7F19E34B455978C222E800F8A0C536314B29B559CBAA42F42",
+      "attempt": 3,
+      "correspondsToSourceCommit": null,
+      "historicalWorkingTree": true,
+      "result": {
+        "attempt": 3,
+        "scope": "assemble/test/lint",
+        "exitCode": 1,
+        "elapsed": "3m15s",
+        "executions": 125,
+        "uniqueMethods": 112,
+        "failures": 2,
+        "errors": 0,
+        "skips": 0
+      }
+    },
+    {
+      "name": "attempt-04-targeted.log",
+      "bytes": 3423,
+      "sha256": "A0610FFDD35A8B1E5642C5FEFA5FC900DABAE02E768DFF9DC65A5583B3EEC6FE",
+      "attempt": 4,
+      "correspondsToSourceCommit": null,
+      "historicalWorkingTree": true,
+      "result": {
+        "attempt": 4,
+        "scope": "3 UI scenarios and platform bridge on API28/35",
+        "exitCode": 1,
+        "elapsed": "1m42s",
+        "executions": 9,
+        "failures": 1,
+        "errors": 0,
+        "skips": 0
+      }
+    },
+    {
+      "name": "attempt-05-feedback.log",
+      "bytes": 2046,
+      "sha256": "9DEE14B43C3C04C440CF0E3E8EC13D74477C69FD05270F3132265962395565C7",
+      "attempt": 5,
+      "correspondsToSourceCommit": null,
+      "historicalWorkingTree": true,
+      "result": {
+        "attempt": 5,
+        "scope": "feedback timing integration",
+        "exitCode": 0,
+        "elapsed": "1m14s",
+        "executions": 1,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0
+      }
+    },
+    {
+      "name": "attempt-06-full.log",
+      "bytes": 3602,
+      "sha256": "D7C1E4D50995B8735315DC078AF78B783FA2106025E25855490B8F2FE0AFF4E6",
+      "attempt": 6,
+      "correspondsToSourceCommit": "857ca5faf29af4c2b861bf4529634ec66e3e13bd",
+      "historicalWorkingTree": false,
+      "result": {
+        "attempt": 6,
+        "scope": "assemble/test/lint",
+        "exitCode": 0,
+        "elapsed": "3m34s",
+        "executions": 132,
+        "uniqueMethods": 116,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0
+      }
+    }
+  ]
+}

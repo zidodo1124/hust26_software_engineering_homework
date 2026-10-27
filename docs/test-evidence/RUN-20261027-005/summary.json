@@ -1,0 +1,213 @@
+{
+  "run": "RUN-20261027-005",
+  "checkedAtUtc": "2026-10-27T15:25:19.663320+00:00",
+  "sourceCommit": "857ca5faf29af4c2b861bf4529634ec66e3e13bd",
+  "sourceBinding": "Only final attempt 6 corresponds to this frozen committed source; earlier attempts are historical working-tree states.",
+  "product": {
+    "package": "cn.edu.hust.ddlsaver",
+    "version": "0.3.0",
+    "versionCode": 3,
+    "schema": 3,
+    "minSdk": 26,
+    "targetSdk": 35,
+    "apkBytes": 12590695,
+    "apkSha256": "12E9D11A03623630F99F4AF35449EB119B5226D866CC0E7E56A1A7A9339DBD05",
+    "sameSignerAsRoundTwo": true,
+    "signerCertificateSha256": "978833BCAF0FC001248F5D8501BFA1F9D1273922474ED601F2C60A4548A652B9",
+    "noInternetPermission": true,
+    "bundledUpstreamFilesByteVerified": 7
+  },
+  "final": {
+    "executions": 132,
+    "uniqueMethods": 116,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "reportFiles": 17,
+    "lintErrors": 0,
+    "lintWarnings": 16,
+    "lintIssueCounts": {
+      "ExifInterface": 1,
+      "InlinedApi": 1,
+      "GradleDependency": 10,
+      "ObsoleteSdkInt": 1,
+      "StaticFieldLeak": 1,
+      "UseKtx": 2
+    }
+  },
+  "suites": [
+    {
+      "file": "TEST-cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest.xml",
+      "class": "cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest",
+      "executions": 10,
+      "seconds": "10.747"
+    },
+    {
+      "file": "TEST-cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest.xml",
+      "class": "cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest",
+      "executions": 13,
+      "seconds": "3.507"
+    },
+    {
+      "file": "TEST-cn.edu.hust.ddlsaver.data.SaverDatabaseMigrationTest.xml",
+      "class": "cn.edu.hust.ddlsaver.data.SaverDatabaseMigrationTest",
+      "executions": 2,
+      "seconds": "0.687"
+    },
+    {
+      "file": "TEST-cn.edu.hust.ddlsaver.domain.CharacterFeedbackTest.xml",
+      "class": "cn.edu.hust.ddlsaver.domain.CharacterFeedbackTest",
+      "executions": 9,
+      "seconds": "0.031"
+    },
+    {
+      "file": "TEST-cn.edu.hust.ddlsaver.domain.EventQueryTest.xml",
+      "class": "cn.edu.hust.ddlsaver.domain.EventQueryTest",
+      "executions": 5,
+      "seconds": "0.013"
+    },
+    {
+      "file": "TEST-cn.edu.hust.ddlsaver.domain.EventValidationTest.xml",
+      "class": "cn.edu.hust.ddlsaver.domain.EventValidationTest",
+      "executions": 7,
+      "seconds": "0.011"
+    },
+    {
+      "file": "TEST-cn.edu.hust.ddlsaver.domain.ExtendedEventValidationTest.xml",
+      "class": "cn.edu.hust.ddlsaver.domain.ExtendedEventValidationTest",
+      "executions": 4,
+      "seconds": "0.004"
+    },
+    {
+      "file": "TEST-cn.edu.hust.ddlsaver.domain.UrgencyRulesTest.xml",
+      "class": "cn.edu.hust.ddlsaver.domain.UrgencyRulesTest",
+      "executions": 10,
+      "seconds": "0.005"
+    },
+    {
+      "file": "TEST-cn.edu.hust.ddlsaver.platform.AttachmentStoreTest.xml",
+      "class": "cn.edu.hust.ddlsaver.platform.AttachmentStoreTest",
+      "executions": 26,
+      "seconds": "21.652"
+    },
+    {
+      "file": "TEST-cn.edu.hust.ddlsaver.reminders.AndroidReminderPlatformTest.xml",
+      "class": "cn.edu.hust.ddlsaver.reminders.AndroidReminderPlatformTest",
+      "executions": 6,
+      "seconds": "2.873"
+    },
+    {
+      "file": "TEST-cn.edu.hust.ddlsaver.reminders.ReminderEngineTest.xml",
+      "class": "cn.edu.hust.ddlsaver.reminders.ReminderEngineTest",
+      "executions": 15,
+      "seconds": "5.496"
+    },
+    {
+      "file": "TEST-cn.edu.hust.ddlsaver.reminders.ReminderRulesTest.xml",
+      "class": "cn.edu.hust.ddlsaver.reminders.ReminderRulesTest",
+      "executions": 6,
+      "seconds": "0.011"
+    },
+    {
+      "file": "TEST-cn.edu.hust.ddlsaver.ui.CalendarGridTest.xml",
+      "class": "cn.edu.hust.ddlsaver.ui.CalendarGridTest",
+      "executions": 2,
+      "seconds": "0.009"
+    },
+    {
+      "file": "TEST-cn.edu.hust.ddlsaver.ui.CharacterAssetsTest.xml",
+      "class": "cn.edu.hust.ddlsaver.ui.CharacterAssetsTest",
+      "executions": 1,
+      "seconds": "0.214"
+    },
+    {
+      "file": "TEST-cn.edu.hust.ddlsaver.ui.ReminderColdLaunchTest.xml",
+      "class": "cn.edu.hust.ddlsaver.ui.ReminderColdLaunchTest",
+      "executions": 1,
+      "seconds": "11.335"
+    },
+    {
+      "file": "TEST-cn.edu.hust.ddlsaver.ui.SaverAppFlowTest.xml",
+      "class": "cn.edu.hust.ddlsaver.ui.SaverAppFlowTest",
+      "executions": 14,
+      "seconds": "27.687"
+    },
+    {
+      "file": "TEST-cn.edu.hust.ddlsaver.ui.SaverViewModelFeedbackTest.xml",
+      "class": "cn.edu.hust.ddlsaver.ui.SaverViewModelFeedbackTest",
+      "executions": 1,
+      "seconds": "0.588"
+    }
+  ],
+  "attempts": [
+    {
+      "attempt": 1,
+      "scope": "assemble/test/lint",
+      "exitCode": 1,
+      "elapsed": "12m18s",
+      "unitResult": "Controlled termination after captured ActivityScenario loop; no complete JUnit result",
+      "productionBuild": "success",
+      "lintErrors": 0,
+      "lintWarnings": 16
+    },
+    {
+      "attempt": 2,
+      "scope": "3 notification recreation UI scenarios",
+      "exitCode": 0,
+      "elapsed": "1m27s",
+      "executions": 3,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0
+    },
+    {
+      "attempt": 3,
+      "scope": "assemble/test/lint",
+      "exitCode": 1,
+      "elapsed": "3m15s",
+      "executions": 125,
+      "uniqueMethods": 112,
+      "failures": 2,
+      "errors": 0,
+      "skips": 0
+    },
+    {
+      "attempt": 4,
+      "scope": "3 UI scenarios and platform bridge on API28/35",
+      "exitCode": 1,
+      "elapsed": "1m42s",
+      "executions": 9,
+      "failures": 1,
+      "errors": 0,
+      "skips": 0
+    },
+    {
+      "attempt": 5,
+      "scope": "feedback timing integration",
+      "exitCode": 0,
+      "elapsed": "1m14s",
+      "executions": 1,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0
+    },
+    {
+      "attempt": 6,
+      "scope": "assemble/test/lint",
+      "exitCode": 0,
+      "elapsed": "3m34s",
+      "executions": 132,
+      "uniqueMethods": 116,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0
+    }
+  ],
+  "device": {
+    "thirdRoundAdbActions": false,
+    "newApkInstalled": false,
+    "userDecision": "Deliver this round; continue phone tests next time.",
+    "futureRun": "RUN-20261027-006 not executed"
+  },
+  "countingNote": "Configured executions are not distinct methods or full TC cases; targeted and CI repeats are not added to method counts."
+}

@@ -1,0 +1,4 @@
+# Preserve exact evidence bytes, including original Windows CRLF endings.
+*.json -text whitespace=trailing-space,space-before-tab,cr-at-eol
+*.xml -text whitespace=trailing-space,space-before-tab,cr-at-eol
+*.zip -text

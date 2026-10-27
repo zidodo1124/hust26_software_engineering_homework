@@ -327,3 +327,93 @@ TC-05 的多图保存、逐张预览、进程重开与删除测试原图后的�
 ### 11.4 自动检查复核
 
 [CI 40508515218](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40508515218) 对应 `8ea56b5d77d98c599932ddd17479d9ff716b5949`，13:17:56 UTC 核对为 `completed / success`。实际 XML 为 87 个 testcase、0 失败／错误／跳过，声明与节点计数一致；Lint 0 错误、12 条警告。[复核 JSON](test-evidence/RUN-20261027-004/ci-verification.json)保留完整计数与产物入口。测试支持提交不改变产品源码或手机安装包；这次再执行不累计为新增方法数或实机次数。
+
+
+## 12. RUN-20261027-005：第三轮提醒与角色本机验证
+
+### 12.1 范围与初始状态
+
+2026-10-27，支盟渊授权继续第三轮通知、角色表情和预设台词。以 `114ea44`／v0.2.0／schema 2 为已验证基线，启动计划已提交 `7278d0c`，目标 v0.3.0／3 和 schema 3。AI 助手分工实现提醒核心、页面集成、角色及记录；成员任务仍待实际领取，不将辅助实现记成成员个人成果。
+
+本批次计划见 [RUN-005](test-evidence/RUN-20261027-005/README.md)。进入本批次时仍在实现和整合，尚无中央结果；随后实际尝试、发现、修复及复测分列如下。第二轮 87 次通过仅作历史基线，不能代替新代码验证。
+
+第三轮手机尚未重新连接。前轮手机测试结束后，支盟渊询问是否还需要设备，AI 助手答可以拔线，通知、后台和角色验证前会提前告知；本轮设备结果另建 RUN-006，不混入本机结果。
+
+
+### 12.2 中央检查尝试
+
+- attempt-01：主线程执行 `:app:assembleDebug :app:testDebugUnitTest :app:lintDebug --continue --max-workers=2`。生产与测试 Kotlin 编译、assembleDebug 均成功；Lint 为 0 错误／16 警告。`testDebugUnitTest` 在 `reminderTapResetsHomeFiltersAndRoutesToLatestDetailOnce` 的 `ActivityScenario.recreate`（当时源第 439 行）等待界面空闲超过 6 分钟且 CPU 持续占用，未结束。主线程用 jcmd 保留 owned test worker 线程快照，再停止该测试 worker；测试进程返回 -1，整次 Gradle 退出 1，耗时 12 分 18 秒。本次没有完整 JUnit 结论，不登记全量通过；控制终止不改写成编译失败或真机产品崩溃。
+- 业务边界：保留第二轮自动归档的启动／前台／分钟刷新执行方式，不让后台提醒 Receiver 自动归档；每日汇总按当时有效数据查询，可包含今日逾期项，不额外修改事项状态。
+
+
+### 12.3 代码审查发现与修复跟踪
+
+| 编号 | 发现方式与影响 | 已确定的修复方向 | 当前状态 |
+| --- | --- | --- | --- |
+| BUG-R3-001 | 代码审查：系统时间跨日回拨时，dailyDate 游标可能仍停留在更远未来，导致当前日期应有的每日汇总被跳过 | 回拨后按北京时间当前日及有效发送记录重新确定下一次汇总；补回归测试 | 已修改；attempt-03 对应回归通过，本机范围关闭；整轮仍有独立 UI 失败 |
+| BUG-R3-002 | 代码审查：已经 SENT 的计划仅因描述编辑而重建时，lastAttemptAt 可能被清空，丢失尝试记录；该字段不表示用户实际收到时间 | 保留已发送计划的原尝试时间，并补编辑后审计字段仍在的回归 | 已修改；attempt-03 对应回归通过，本机范围关闭；整轮仍有独立 UI 失败 |
+| BUG-R3-003 | 代码审查：每日汇总发送后，下一次校对建立次日计划，可能立即取消当天已显示的汇总 | 保留当天已发送汇总；跨日或关闭对应提醒时再取消，补回归测试 | 已修改；attempt-03 对应回归通过，本机范围关闭；整轮仍有独立 UI 失败 |
+
+主线程已向支盟渊发出手机重连提示，用户反馈“稍后连接，你先继续”；当前继续开发机检查与修复，新 APK 尚未安装。提前准备连接不代表第三轮整体检查或设备测试通过。
+
+
+### 12.4 attempt-01 的诊断边界
+
+Lint 的 16 条提示分别为 ExifInterface 1、InlinedApi 1、GradleDependency 10、ObsoleteSdkInt 1、StaticFieldLeak 1、UseKtx 2；这是该次实际结果，后续更改后须以新报告核对。旧 JUnit XML 时间属于前轮，不能当作本次通过证据。
+
+重建阻塞的线程快照保存在本机忽略目录，暂不整份导出。首轮终止时尚未确定原因，没有据一次 Robolectric 等待就断言荣耀 X50 会卡死，也未把未定位问题当作纯环境误报。随后字节码定位、一般路径修复及定向复测见第 12.5 节；通知核心同窗口修复上述三项问题并加入回归。
+
+
+### 12.5 修复窗口与后续检查安排
+
+通知核心已修改 BUG-R3-001—003，并增加三个引擎回归方法，随后在 attempt-03 对应检查通过。提醒规则 6 个、引擎 15 个、真实 v2 迁移 1 个构成 22 个新增核心方法；方法与配置执行的最终总数仍由全量 XML 核验。
+
+UI 代理核对本机 AndroidX Test Core 1.6.1 字节码，定位到 ActivityScenario 按初始 Intent action/data 关联 Activity，而 onNewIntent 的 setIntent 改变了关联条件。修复从应用的一般路径直接把新通知 Intent 消费到 ViewModel，保留初始启动 Intent 及待处理路由、当前页面；保留 recreate 断言，增加不同 Activity 实例和启动身份核对，没有加入测试环境分支。修复冻结后先定向重建场景，再执行全量检查；结果分列如下。
+
+
+- attempt-02-targeted：Gradle 退出 0，耗时 1 分 27 秒。主线程解析实际 JUnit XML 为恰好 3 个 testcase，失败、错误、跳过均为 0；分别覆盖热通知清筛选后重建、草稿暂缓跳转跨重建、冷通知后重建。XML 已在本机按尝试单独保留。这是三个已有方法的定向复测，不增加不同方法数，也不等于全量检查通过。
+- attempt-03-full：Gradle 耗时 3 分 15 秒，退出 1。实际 XML 为 112 个不同方法、125 次配置执行，123 通过、2 失败、0 错误／跳过；源码编译与 APK 构建成功，Lint 仍为 0 错误／16 警告。失败仅在 UI：`onlySuccessfulCompletionShowsFeedbackAndRestoreClearsIt`（当时第 503 行）等待 20 秒，以及 `coldReminderLaunchOpensDetailAndRotationDoesNotReplayIt`（当时第 456 行）等待详情 20 秒。后者定向曾通过，需继续定位隔离与时序，不能把定向通过扩大为全量通过。核心 22 个新增方法及三项 BUG 回归均通过。新 APK 暂未安装，用户表示稍后连接。
+
+
+### 12.6 attempt-03 失败与新增权限入口检查
+
+UI 代理继续定位完成反馈及冷启动详情的两条失败，根因尚未确定，不将隔离／时序猜测写成事实。另补充用户永久拒绝 POST_NOTIFICATIONS 后的恢复入口：除运行时申请外，提供直接打开本包通知系统设置的操作，避免反复申请但系统不再弹框时无法恢复。该入口仍待实际验证；本轮尚未全量通过。
+
+
+- attempt-04-targeted：Gradle 耗时 1 分 42 秒，退出 1。实际 XML 为 9 次执行，8 通过、1 失败，错误／跳过均为 0。平台桥接三个方法在 SDK 28／35 共 6 次、独立冷启动 1 次、永久拒绝后的系统设置入口 1 次均通过；仅反馈生命周期在 idleFor(4999) 后仍应为 true 的断言失败。短暂 true 的观察阻塞已解决，精确计时的起点仍需核对，未据此判定生产 5 秒功能有缺陷。XML 按尝试单独保留。
+
+### 12.7 UI 检查调整及生产平台桥接
+
+冷启动检查从默认已启动 Activity 的 Compose Rule 移到 `createEmptyComposeRule`，只启动被测的唯一 Activity，继续验证冷通知进入详情、不同重建实例和重建后不重放。完成反馈改用 PAUSED 主 Looper 的受控时钟，在真实 Activity／Room／ViewModel 中核对 4999／5000 ms 的自然结束、恢复未完成立即清除以及操作失败不庆祝；生产反馈时长保持 5 秒。
+
+生产界面新增“打开系统通知设置”按钮，直接指向本包设置页，补充永久拒绝后运行时请求不再弹框的恢复路径。平台桥接直接调用生产 `AndroidReminderPlatform`，检查 Robolectric 框架服务中的 PendingIntent／通知身份、取消重排和精确能力降级，不再仅验证 FakePlatform。该桥接仍是开发机环境，不代表真实手机权限、送达时刻或后台表现通过。
+
+
+### 12.8 反馈计时基准复核
+
+主线程将反馈失败限定为 requestAt、观察到保存成功时的 uptime 及测试计时基准的诊断；生产反馈 5000 ms 保持不变。UI 代理先执行单个反馈方法的定向检查，通过后再全量；其余功能源码冻结、不新增范围，此时手机仍未安装新版本。
+
+
+- attempt-05-feedback：Gradle 1 分 14 秒，退出 0。实际 JUnit 为 1 个 testcase，失败／错误／跳过均 0。诊断值为 requestAt=105、successObservedAt=260，成功发生的异步观察窗口为 155 ms；推进至 requestAt+4999=5104 时仍为 true，再推进至 observedAt+5000=5260 时已为 false。按成功窗口上下界核对自然结束，消除“观察后再完整计 4999 ms”超出实际计时范围的偏差；生产 5000 ms 未改变。数据库状态、恢复立即清除和失败不庆祝亦在该方法中通过。
+- attempt-06-full：Gradle 3 分 34 秒、退出 0，Debug 构建、全量测试及 Lint 完成。主线程解析 17 组真实 JUnit XML，共 116 个不同方法／132 次执行，失败、错误、跳过均为 0；Lint 0 错误／16 警告。
+
+
+### 12.9 最终本机结果及本轮交付
+
+| 项目 | 核对结果 |
+| --- | --- |
+| 被测源码 | [857ca5f](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/857ca5faf29af4c2b861bf4529634ec66e3e13bd)；仅 attempt-06 的冻结源码与此提交一致，早期尝试单列历史状态 |
+| 全量结果 | attempt-06：116 方法、132 次执行，全部通过；定向尝试是复测，不增加不同方法数 |
+| 构建与 Lint | Debug APK 成功；Lint 0 错误／16 警告，分类仍为 ExifInterface 1、InlinedApi 1、GradleDependency 10、ObsoleteSdkInt 1、StaticFieldLeak 1、UseKtx 2 |
+| APK | 0.3.0／3、schema 3，12,590,695 字节；SHA-256 `12E9D11A03623630F99F4AF35449EB119B5226D866CC0E7E56A1A7A9339DBD05` |
+| 其他静态证据 | minSdk 26／targetSdk 35；无 INTERNET；与 v0.2.0 相同签名证书；APK 内七份上游原件哈希一致 |
+| 设备与用户选择 | 支盟渊选择“这轮先交付，手机测试下次继续”；本轮无 ADB 和新 APK 安装，设备批次下次实际发生后建立 |
+
+三项核心审查回归、冷通知重建、成功反馈生命周期、永久拒绝通知设置入口和平台桥接均纳入最终全量通过。该结论覆盖开发机实际方法，不等于系统后台送达、通知时间偏差、用户视觉审核或完整 TC-01—TC-30 验收通过。前轮 OBS-01 图片旧 URI 现象仍按未定位保留，没有被本轮新功能测试自动关闭。
+
+APK 静态采集曾把 aapt2 的 `minSdkVersion` 字段按 `sdkVersion` 匹配，导致校验脚本断言失败；按实际 badging 字段修正后全部核验通过。该问题属于采集脚本字段适配，不是产品 minSdk 声明错误，未登记为产品缺陷。
+
+
+### 12.10 同源码 CI 复核
+
+[CI 40530551146](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40530551146) 已核对为 completed／success；实际下载报告解析 17 组 XML，声明与实际均 132 次执行，失败／错误／跳过均 0。CI Lint 0 错误／17 提示，比本机 16 条多一条 OldTargetApi；两边分别保留实际结果，不累计新增方法。 核对时刻为 2026-10-27 15:35:26.529071 UTC，证据见 [ci-verification.json](test-evidence/RUN-20261027-005/ci-verification.json)。JSON 保留报告 ZIP 的 SHA-256、逐套声明及实际计数一致性；本机 16 与 CI 17 不混写，不把线上重复执行当作新增方法或手机验证。

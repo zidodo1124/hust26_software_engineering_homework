@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.ui.SaverViewModelFeedbackTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-10-27T15:15:46" hostname="LAPTOP-7OF0K1SP" time="19.408">
+  <properties/>
+  <testcase name="onlySuccessfulCompletionShowsFeedbackAndRestoreClearsIt" classname="cn.edu.hust.ddlsaver.ui.SaverViewModelFeedbackTest" time="19.408"/>
+  <system-out><![CDATA[FEEDBACK-CLOCK requestAt=105 successObservedAt=260 observationWindow=155
+FEEDBACK-CLOCK phase=strict-before-expiry beforeAdvance=260 target=5104
+FEEDBACK-CLOCK phase=strict-before-expiry afterAdvance=5104
+FEEDBACK-CLOCK phase=latest-possible-expiry beforeAdvance=5104 target=5260
+FEEDBACK-CLOCK phase=latest-possible-expiry afterAdvance=5260
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

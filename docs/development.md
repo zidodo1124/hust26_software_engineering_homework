@@ -1,6 +1,6 @@
 # 开发、构建与安装升级
 
-本文对应仓库根目录的 Android 工程，第二轮应用版本为 `0.2.0`、`versionCode = 2`，包名为 `cn.edu.hust.ddlsaver`，数据库为 schema v2。功能范围及未完成项见[实现计划](implementation-plan.md)和[项目状态](../STATUS.md)；分工见[小组任务板](../team/README.md)。
+本文对应第三轮 Android 工程 `0.3.0`、`versionCode = 3`、schema v3，包名 `cn.edu.hust.ddlsaver`；源码 [857ca5f](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/857ca5faf29af4c2b861bf4529634ec66e3e13bd) 已完成本机构建及 116 方法／132 次执行，详细证据见 RUN-005。功能范围及未完成项见[实现计划](implementation-plan.md)和[项目状态](../STATUS.md)；分工见[小组任务板](../team/README.md)。
 
 ## 1. 准备环境
 
@@ -30,7 +30,7 @@ $env:ANDROID_HOME = 'C:\path\to\Android\Sdk'
 
 ## 2. 构建与检查
 
-每轮实现后执行构建、自动测试和 Lint。第二轮新增数据库升级、分类关联、字段隔离、组合查询、批量事务、图片生命周期及界面测试，实际通过数、失败修复、维护提示、被测提交和 APK 标识统一记入[测试报告](test-report.md)与[测试记录](test-records.md)。本文给出复现入口，具体结果以对应提交的报告为准。
+每轮实现后执行构建、自动测试和 Lint。第三轮补充提醒、真实 v2 迁移、平台桥接、通知路由／重建和角色检查，并回归既有数据、图片及界面，实际通过数、失败修复、维护提示、被测提交和 APK 标识统一记入[测试报告](test-report.md)与[测试记录](test-records.md)。本文给出复现入口，具体结果以对应提交的报告为准。
 
 在仓库根目录执行：
 
@@ -54,13 +54,17 @@ macOS／Linux 使用 `./gradlew` 并配置各自的 JDK 17 与 SDK 路径。开�
 | JVM／Robolectric 测试报告 | `app/build/reports/tests/testDebugUnitTest/index.html` |
 | JUnit XML | `app/build/test-results/testDebugUnitTest/` |
 | Android Lint 报告 | `app/build/reports/lint-results-debug.html` |
-| Room schema | `app/schemas/cn.edu.hust.ddlsaver.data.SaverDatabase/`；保留 `1.json`，编译导出 `2.json`，结构变更随代码提交并检查迁移 |
+| Room schema | `app/schemas/cn.edu.hust.ddlsaver.data.SaverDatabase/`；保留 `1.json`、`2.json`，第三轮编译导出 `3.json`，结构变更随代码提交并检查迁移 |
 
 `build/` 产物和工具缓存不提交 Git；与验证结论相关的精简证据保存到 `docs/test-evidence/`，实际结果见[测试记录](test-records.md)。
 
 ### GitHub 自动构建与下载
 
-[同源码 GitHub Actions](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40500794045)已通过，下载报告核对为 87 次执行全部通过。CI Lint 为 0 错误、12 条警告，比本机多一条 `OldTargetApi` 提示，分别保留两边实际结果。[第二轮 Debug APK](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40500794045/artifacts/12733885228)及[测试／Lint 报告](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40500794045/artifacts/12733560898)可供有仓库访问权限的成员下载。
+第三轮源码 [857ca5f](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/857ca5faf29af4c2b861bf4529634ec66e3e13bd) 的 [CI 40530551146](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40530551146) 已核对成功：实际 132 次执行通过，CI Lint 0 错误／17 提示，比本机 16 多一条 OldTargetApi；详见 [CI 证据](test-evidence/RUN-20261027-005/ci-verification.json)。本机构建与 CI 分别打包，哈希和签名须各自核对，不能用一个包的标识代替另一个。线上 [Debug 产物](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40530551146/artifacts/12746207092)和[报告产物](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40530551146/artifacts/12745413579)可供有仓库权限者下载。
+
+当前已有 v0.2.0 的手机下次升级应使用本机已核验同签名包 `.local-tools/artifacts/ddl-saver-0.3.0-857ca5f-debug.apk`，不入 Git；其哈希、证书及版本在 [RUN-005](test-evidence/RUN-20261027-005/README.md) 登记。不要为安装不同签名的 CI 包卸载产品或清空用户数据。
+
+**第二轮历史产物：** [对应源码的 GitHub Actions](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40500794045)已通过，下载报告核对为 87 次执行全部通过。CI Lint 为 0 错误、12 条警告，比本机多一条 `OldTargetApi` 提示，分别保留两边实际结果。[第二轮 Debug APK](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40500794045/artifacts/12733885228)及[测试／Lint 报告](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40500794045/artifacts/12733560898)可供有仓库访问权限的成员下载。
 
 [Android 工作流](../.github/workflows/android.yml)在推送 `main` 或提交 PR 时运行同样的构建、自动测试与 Lint。三项检查成功后上传 `ddl-saver-debug-提交号` 安装包；测试和 Lint 报告另存为构建产物，保留 14 天。
 
@@ -91,6 +95,21 @@ powershell -ExecutionPolicy Bypass -File scripts/gradle.ps1 :app:testDebugUnitTe
 
 迁移测试直接使用仓库的历史 schema，需从仓库根目录执行。不要为使测试通过而修改 `1.json`、清空旧库或启用破坏性重建。Room 升级和迁移验证的官方依据见 [Room 迁移说明](https://developer.android.com/training/data-storage/room/migrating-db-versions)。
 
+### 第三轮测试入口
+
+以下代码入口用于复现检查，是否通过仍以 RUN-005 的实际 XML 和日志为准。
+
+| 测试入口 | 本轮重点 |
+| --- | --- |
+| [ReminderRulesTest](../app/src/test/java/cn/edu/hust/ddlsaver/reminders/ReminderRulesTest.kt) | 北京每日时刻、危险／临近触发点、开关和汇总范围 |
+| [ReminderEngineTest](../app/src/test/java/cn/edu/hust/ddlsaver/reminders/ReminderEngineTest.kt) | 同事务、重复与同刻、旧回调、状态失效、平台失败、取消快照和未确定提交窗口 |
+| [SaverDatabaseMigrationTest](../app/src/test/java/cn/edu/hust/ddlsaver/data/SaverDatabaseMigrationTest.kt) | 真实 v1／v2 schema 升级，旧数据和新设置默认值 |
+| [AndroidReminderPlatformTest](../app/src/test/java/cn/edu/hust/ddlsaver/reminders/AndroidReminderPlatformTest.kt) | 在 SDK 28／35 调用生产适配器，检查框架服务中的通知、PendingIntent、重排取消和降级 |
+| [ReminderColdLaunchTest](../app/src/test/java/cn/edu/hust/ddlsaver/ui/ReminderColdLaunchTest.kt)、[SaverViewModelFeedbackTest](../app/src/test/java/cn/edu/hust/ddlsaver/ui/SaverViewModelFeedbackTest.kt) | 唯一 Activity 冷启动重建及受控时钟下的真实反馈生命周期 |
+| [CharacterFeedbackTest](../app/src/test/java/cn/edu/hust/ddlsaver/domain/CharacterFeedbackTest.kt) | 有效事项优先级、边界、明确成功完成反馈和稳定台词 |
+| [CharacterAssetsTest](../app/src/test/java/cn/edu/hust/ddlsaver/ui/CharacterAssetsTest.kt) | 固定文件哈希和 Android 平台离线解码 |
+| [SaverAppFlowTest](../app/src/test/java/cn/edu/hust/ddlsaver/ui/SaverAppFlowTest.kt) | 设置校验、通知热路由、草稿暂缓、失效目标及真实 Activity 重建；冷启动和精确反馈另有独立类 |
+
 ## 3. 安装、升级与实机检查
 
 Debug APK 用于本组开发和课程演示准备。可将实际构建产物传入手机安装，或在手机开启 USB 调试并确认授权后执行：
@@ -119,7 +138,7 @@ adb install -r app/build/outputs/apk/debug/app-debug.apk
 5. 在支持复制图片的外部应用中复制图片，再主动点击“粘贴图片”；普通图片网址或纯文本应提示无法直接导入。系统选择器、剪贴板授权与不同来源应用需要在荣耀 X50 实测。[Photo Picker](https://developer.android.com/training/data-storage/shared/photo-picker)、[复制粘贴](https://developer.android.com/develop/ui/views/touch-and-input/copy-paste)。
 6. 检查损坏／不可读图片、超限图片及重建页面后的草稿；错误不应清空已填文本。当前工程保护为单张 20 MiB、100 MP，缩略／预览采样目标为 320／1600 像素；这些值和 24 小时孤儿清理等待期需结合实机与审核调整，未作为用户已确认的需求上限。
 
-本轮未实现系统通知和角色资源，不能在记录中填写后台提醒或角色反馈通过。每次实机检查均按测试模板登记应用版本、设备、实际步骤、结果和必要截图。
+以上六步保留第二轮检查入口；第三轮提醒和角色代码已加入，当前后台提醒、角色渲染是否通过仍须以本轮实际结果为准。每次实机检查均按测试模板登记应用版本、设备、实际步骤、结果和必要截图。
 
 自动归档启用后，恢复一条已过期且未完成的事项，下一次分钟或前台检查仍会按同一规则将其归档；如果需要继续保留在待办列表，应先把过期策略改为“保留”。
 
@@ -127,15 +146,29 @@ adb install -r app/build/outputs/apk/debug/app-debug.apk
 
 为复现跨应用 `content://` 图片粘贴，仓库提供[独立测试夹具](../test-tools/clipboard-fixture/README.md)。它使用单独包名，只提供合成图片和明确的复制／清空按钮，不属于发布 App，也不参与产品 Gradle 构建。构建命令、资源哈希、安装边界和仅卸载夹具包的清理方式均见该目录；实机结果应注明实际来源应用和 APK 标识，不能推广为所有第三方相册均兼容。
 
+### 第三轮提醒与角色使用步骤
+
+第三轮 v0.3.0／3、schema 3 已通过本机检查，安装新版本前以 [RUN-005](test-evidence/RUN-20261027-005/README.md) 的实际 APK 标识为准。用户选择本轮先交付、手机测试下次继续，本轮未安装新包。已有 v0.2.0 应保留数据并使用同签名覆盖安装，不卸载或清空产品来绕过迁移。
+
+1. 打开“设置”，分别检查每日汇总、危险期、临近截止三个开关；默认都开启，汇总按北京时间 08:00、临近提前 60 分钟，普通橙色阈值仍独立。汇总输入为 HH:mm，提前量须为正分钟数。
+2. 点击“设置系统通知权限”，按实际手机提示允许或进入系统设置；若权限请求不再弹框，可使用“打开系统通知设置”直接进入本包设置页。通知关闭和提醒通道关闭都会影响显示。应用不在启动时自动弹出所有授权。
+3. 查看“调度方式”。Android 12 及以上可通过“允许精确提醒”进入专门访问设置；未允许时显示“近似提醒，可能延迟”，该权限不能代替通知权限。
+4. 返回应用或点击“重新检查并安排提醒”，核对状态和待安排／重试数量。事项和设置保存成功但提醒失败时分别提示；不要反复新建同一事项来重试安排。
+5. 首页展示鲸鱼娘状态和本地台词；成功完成后短暂显示快乐反馈。点击“素材与署名”查看非官方关系、创作链、许可及来源。
+
+下次实际连接荣耀 X50 时再建立设备批次（拟 RUN-006，当前未执行）；实际记录通知权限、精确／近似模式、后台和省电限制、计划时刻与显示时刻。Doze 有调度频率限制，精确访问不代表任何系统条件下都准点。强制停止期间不保证送达；重新主动打开后恢复校对。每个通知点击都重新查数据，失效目标回到列表并说明，不能进入其他事项。运行条件依据 [AlarmManager](https://developer.android.com/develop/background-work/services/alarms)、[通知权限](https://developer.android.com/develop/ui/compose/notifications/notification-permission)及 [Android 15 强停状态说明](https://developer.android.com/about/versions/15/behavior-changes-all#stopped-state)。
+
 ## 4. 代码入口
 
 | 位置 | 职责 |
 | --- | --- |
-| `MainActivity.kt` | 应用启动、Compose 内容和 ViewModel 创建 |
+| `MainActivity.kt` | 启动、Compose 和 ViewModel，消费新通知 Intent、保存待处理路由与恢复页面 |
 | `ui/` | 首页、日历、分类、字段表单、附件交互、批量管理、页面状态及错误反馈 |
 | `domain/` | 事项和设置模型、输入约束、北京时间规则、组合查询、仓库接口 |
 | `data/` | Room 实体、DAO、显式迁移、事务与仓库实现 |
 | `platform/AttachmentStore.kt` | 图片副本导入、校验、采样预览及受管文件清理 |
+| `reminders/` | 业务计划兼发送账本、统一最早 Alarm、平台通知、Receiver 与应用级恢复 |
+| `ui/ReminderSettingsPanel.kt`、`CharacterPanel.kt` | 三类开关与权限入口、四表情和署名 |
 | `app/src/test/` | 规则、迁移、存储、图片及本地界面测试；不能替代荣耀 X50 验证 |
 
-完整包路径为 `app/src/main/java/cn/edu/hust/ddlsaver/`。图片平台能力已经接入，后续通知适配继续按设计扩展，不把 Android 系统调用放入纯时间规则中。图片采样采用平台解码选项，依据见 [Android 大图加载说明](https://developer.android.com/topic/performance/graphics/load-bitmap)。
+完整包路径为 `app/src/main/java/cn/edu/hust/ddlsaver/`。图片与第三轮通知平台能力已按设计分开封装，不把 Android 系统调用放入纯时间规则中。图片采样采用平台解码选项，依据见 [Android 大图加载说明](https://developer.android.com/topic/performance/graphics/load-bitmap)。

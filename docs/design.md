@@ -2,12 +2,12 @@
 
 | 项目 | 内容 |
 | --- | --- |
-| 文档版本 | v0.3 |
-| 文档状态 | 完整目标设计及第二轮代码映射；构建与测试结论见测试报告，实机未测 |
+| 文档版本 | v0.4 |
+| 文档状态 | 第三轮提醒与角色代码映射；本轮中央检查及设备结果分别记录 |
 | 更新日期 | 2026-10-27 |
 | 项目小组 | 花园鳗：支盟渊、付泽文、岳羽泉、石倚铭 |
 | 需求依据 | [需求分析 v0.2](requirements.md)，整体审核尚未完成 |
-| 适用范围 | Android 离线单机应用；荣耀 X50 本轮暂不连接，实际系统后续登记；依赖与分工已有独立记录 |
+| 适用范围 | Android 离线单机；荣耀 X50 已记录 Android 15／API 35、MagicOS 9.0.0；第三轮设备验证待另行连接 |
 
 ## 1. 文档目的与设计依据
 
@@ -15,7 +15,7 @@
 
 文档按 [arc42 提纲](https://arc42.org/overview/)裁剪，采用模块图、数据关系图和关键时序图解释方案。[C4 官方说明](https://c4model.com/diagrams)并不要求项目绘制全部层级；本文件也不以图的数量代替设计内容。参考标准的公开信息不代表已逐条遵循完整标准；[ISO/IEC/IEEE 42010:2022 公开摘要](https://www.iso.org/standard/74393.html)亦未规定唯一的文档格式。
 
-用户已授权选择技术方案，并要求按计划开展第二轮，补齐来源标签、自定义字段、日历、批量管理和图片附件。小组熟悉 Python、C++、Java，演示设备为荣耀 X50；用户暂不连接实机。当前采用的依赖及版本见[技术清单](technology-stack.md)，任务分配见[小组任务板](../team/README.md)。后续结构调整应记录理由。本文不新增账号、服务器、云同步、OCR、AI 对话或多角色切换等功能。
+用户已授权选择技术方案，并要求按计划继续第三轮提醒、角色表情和台词。第二轮信息组织与图片已取得本机及实机证据；小组熟悉 Python、C++、Java，演示设备为荣耀 X50，第三轮需要实机时另行通知连接。当前采用的依赖及版本见[技术清单](technology-stack.md)，任务分配见[小组任务板](../team/README.md)。后续结构调整应记录理由。本文不新增账号、服务器、云同步、OCR、AI 对话或多角色切换等功能。
 
 ### 1.1 待审核的业务假设
 
@@ -29,28 +29,30 @@
 | A-04 | 同事项同截止时间的同类提醒去重；危险期与临近提醒同刻合并；新建或恢复后已临近的有效事项立即提醒一次；通知点击分别进入今日列表或详情 |
 | A-05 | 标题去除首尾空白后非空；重要程度默认中；来源与标签可维护；搜索包含标题、描述和自定义文本，不同筛选条件取交集 |
 
-### 1.2 第二轮实际代码与完整目标的关系
+### 1.2 第三轮实际代码与验证范围
 
-第二轮应用版本为 `0.2.0`，`versionCode = 2`，数据库为 schema v2。本轮延续首轮基础流程，增加分类、组合筛选、日历、批量处理、过期整理和图片附件，具体范围见[实现计划](implementation-plan.md)。第 7—8 节的系统通知和角色资源仍是后续目标，不能据设计内容判断已经实现。本轮构建、自动测试和 CI 的实际结论以[测试报告](test-report.md)及[测试记录](test-records.md)为准；荣耀 X50 尚未进行实机验证。
+第三轮目标版本为 `0.3.0`、`versionCode = 3`、schema v3，保留前两轮事项、分类、日历、批量和图片流程，并接入第 7—8 节提醒与角色。源码 [857ca5f](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/857ca5faf29af4c2b861bf4529634ec66e3e13bd) 已通过 RUN-005 的本机构建与 132 次自动执行；以下表示实际职责，不扩大为完整设备验证。用户选择手机测试下次继续，未来实际连接后再建立设备批次。第二轮实机记录仍对应 v0.2.0，不能代替新通知能力验证。
 
-| 设计职责 | 第二轮实际代码 | 当前范围及后续衔接 |
+| 设计职责 | 当前代码 | 当前范围及衔接 |
 | --- | --- | --- |
 | 入口与页面，D-01 / D-04 | [MainActivity](../app/src/main/java/cn/edu/hust/ddlsaver/MainActivity.kt)、[SaverApp](../app/src/main/java/cn/edu/hust/ddlsaver/ui/SaverApp.kt)、[HomeScreen](../app/src/main/java/cn/edu/hust/ddlsaver/ui/HomeScreen.kt)、[EventEditor](../app/src/main/java/cn/edu/hust/ddlsaver/ui/EventEditor.kt)、[CategoryManager](../app/src/main/java/cn/edu/hust/ddlsaver/ui/CategoryManager.kt) | 创建、详情、待办／完成／归档、分类管理、日历、组合筛选、批量操作和设置 |
 | 操作与界面状态，D-04 / D-08 | [SaverViewModel](../app/src/main/java/cn/edu/hust/ddlsaver/ui/SaverViewModel.kt) | 观察数据、协调保存与状态操作、图片导入及清理、过期整理；错误保留输入，观察到保存后的修订再进入详情；草稿保存与返回确认由 Compose 管理 |
 | 模型与校验，D-02 / D-03 | [EventModels](../app/src/main/java/cn/edu/hust/ddlsaver/domain/EventModels.kt)、[EventValidation](../app/src/main/java/cn/edu/hust/ddlsaver/domain/EventValidation.kt) | 原有事项字段及来源、标签、自定义文本、附件元数据、过期策略；校验分类名称、字段标识及安全附件文件名 |
 | 时间与查询，D-03 / D-04 | [UrgencyRules](../app/src/main/java/cn/edu/hust/ddlsaver/domain/UrgencyRules.kt)、[EventQuery](../app/src/main/java/cn/edu/hust/ddlsaver/domain/EventQuery.kt) | 北京时间日期、普通紧急与危险期、逾期；统一组合筛选与截止时间排序 |
 | 数据访问，D-02 / D-08 | [EventRepository](../app/src/main/java/cn/edu/hust/ddlsaver/domain/EventRepository.kt)、[RoomEventRepository](../app/src/main/java/cn/edu/hust/ddlsaver/data/RoomEventRepository.kt) | 关系保存、分类维护、批量事务、设置原子保存及过期整理；修订号防止旧编辑覆盖新信息，已删除事项不重新创建 |
-| 数据库，D-02 | [SaverDatabase](../app/src/main/java/cn/edu/hust/ddlsaver/data/SaverDatabase.kt)、[Entities](../app/src/main/java/cn/edu/hust/ddlsaver/data/Entities.kt)、[SaverDao](../app/src/main/java/cn/edu/hust/ddlsaver/data/SaverDao.kt) | schema v2，显式 `MIGRATION_1_2` 保留旧数据；关联列表使用事务查询 |
+| 数据库，D-02 | [SaverDatabase](../app/src/main/java/cn/edu/hust/ddlsaver/data/SaverDatabase.kt)、[Entities](../app/src/main/java/cn/edu/hust/ddlsaver/data/Entities.kt)、[SaverDao](../app/src/main/java/cn/edu/hust/ddlsaver/data/SaverDao.kt) | schema v3，保留 `MIGRATION_1_2` 并新增 `MIGRATION_2_3`；关联与提醒重建使用事务 |
 | 图片，D-05 | [AttachmentStore](../app/src/main/java/cn/edu/hust/ddlsaver/platform/AttachmentStore.kt)、[AttachmentUi](../app/src/main/java/cn/edu/hust/ddlsaver/ui/AttachmentUi.kt) | 系统相册多选、主动粘贴图片 URI、私有副本、缩略图／预览、取消编辑与删除后的文件回收 |
-| 提醒与角色，D-06 / D-07 | 尚未接入 | 保留为后续轮次目标；不宣称已经具备后台提醒或角色反馈 |
+| 提醒，D-06 / D-08 | [ReminderModels](../app/src/main/java/cn/edu/hust/ddlsaver/reminders/ReminderModels.kt)、[ReminderPlanStore](../app/src/main/java/cn/edu/hust/ddlsaver/reminders/ReminderPlanStore.kt)、[ReminderEngine](../app/src/main/java/cn/edu/hust/ddlsaver/reminders/ReminderEngine.kt) | 持久化计划兼发送键、同事务重建、当前数据复核、同刻合并与失败状态 |
+| Android 调度，D-06 | [AndroidReminderPlatform](../app/src/main/java/cn/edu/hust/ddlsaver/reminders/AndroidReminderPlatform.kt)、[ReminderRuntime](../app/src/main/java/cn/edu/hust/ddlsaver/reminders/ReminderRuntime.kt) | 单一最早 Alarm、通知通道、能力检查、两个 Receiver 和应用级串行恢复 |
+| 设置与角色，D-04 / D-07 | [ReminderSettingsPanel](../app/src/main/java/cn/edu/hust/ddlsaver/ui/ReminderSettingsPanel.kt)、[CharacterFeedback](../app/src/main/java/cn/edu/hust/ddlsaver/domain/CharacterFeedback.kt)、[CharacterPanel](../app/src/main/java/cn/edu/hust/ddlsaver/ui/CharacterPanel.kt) | 提醒设置、权限入口、四表情、36 台词与素材署名 |
 
-本轮沿用 A-01 的时间和输入规则、A-02 的今日计数范围，并实现 A-03 的完成标记保留与可选自动归档、A-05 的分类和自定义文本查询；这些待审细节仍可调整。A-04 的通知规则尚未实现。搜索覆盖标题、描述、自定义字段名称及内容。
+本轮沿用 A-01 的时间和输入规则、A-02 的今日计数范围，并实现 A-03 的完成标记保留与可选自动归档、A-05 的分类和自定义文本查询；这些待审细节仍可调整。A-04 对应提醒代码在第三轮加入，实际覆盖与边界由测试记录说明。搜索覆盖标题、描述、自定义字段名称及内容。
 
 ## 2. D-01 总体架构与离线运行
 
 本次设计选用 **Kotlin + Jetpack Compose** 构建原生 Android 界面，以 **Room / SQLite** 保存结构化数据，用应用私有目录保存图片副本，并通过 Android 系统接口安排与展示通知。选择原生方案是为了直接处理手机通知、权限和图片访问，减少跨平台适配范围；小组仍需熟悉 Kotlin 与 Compose 的使用方式，并在荣耀 X50 上验证关键能力。
 
-代码采用单个 App 工程，现有 `ui`、`domain`、`data`、`platform` 四个分包。分包用于划分职责，不要求拆成多个独立构建模块。界面负责呈现和输入，ViewModel 协调数据操作及图片生命周期，领域层提供纯规则与查询，数据层负责数据库事务，平台层封装图片文件与解码。下图包含后续提醒和角色模块；实际已落地范围以第 1.2 节为准。这一组织方式参考 [Android 架构指南](https://developer.android.com/topic/architecture)，具体模块划分由本项目决定。
+代码采用单个 App 工程，现有 `ui`、`domain`、`data`、`platform`、`reminders` 分包。分包用于划分职责，不要求拆成多个独立构建模块。界面负责呈现和输入，ViewModel 协调数据操作及图片生命周期，领域层提供纯规则与查询，数据层负责数据库事务，平台层封装图片文件与解码。下图包含第三轮提醒和角色模块；实际已落地范围以第 1.2 节为准。这一组织方式参考 [Android 架构指南](https://developer.android.com/topic/architecture)，具体模块划分由本项目决定。
 
 ```mermaid
 flowchart LR
@@ -69,13 +71,13 @@ flowchart LR
     UI --> Assets[本地角色与台词资源]
 ```
 
-数据库中的有效事项是业务数据的统一依据。界面缓存和后续系统闹钟都不能独立决定事项状态；回调必须重新查询数据。正常使用不请求网络服务，角色和台词接入时保存在本地。最终交付形态为 Android 安装包；首轮构建工具与依赖版本已锁定，声明 `minSdk 26`、`targetSdk 35`、`compileSdk 35`。荣耀 X50 的实际 Android／MagicOS 版本与运行结果仍待连接后登记，不能从手机型号推断。
+数据库中的有效事项是业务数据的统一依据。界面缓存和系统闹钟都不能独立决定事项状态；回调必须重新查询数据。正常使用不请求网络服务，角色和台词保存在本地。最终交付形态为 Android 安装包；首轮构建工具与依赖版本已锁定，声明 `minSdk 26`、`targetSdk 35`、`compileSdk 35`。荣耀 X50 已实际记录 Android 15／API 35、MagicOS 9.0.0；本轮新版本的通知和后台表现仍需独立验证。
 
 ## 3. D-02 数据模型与持久化
 
 ### 3.1 主要数据对象
 
-下表区分 schema v2 已保存的数据与后续提醒设计。[Room 官方文档](https://developer.android.com/training/data-storage/room)将本地数据组织为数据库、实体和数据访问对象；实际映射见第 1.2 节。
+下表列出 schema v3 的实际数据对象。[Room 官方文档](https://developer.android.com/training/data-storage/room)将本地数据组织为数据库、实体和数据访问对象；实际映射见第 1.2 节。
 
 | 对象 | 主要字段与约束 | 关系及用途 |
 | --- | --- | --- |
@@ -85,9 +87,9 @@ flowchart LR
 | EventTag | `eventId`、`tagId`，联合唯一 | 表达事项与标签的多对多关系 |
 | CustomField 自定义字段 | `id`、`eventId`、`label`、`value`、`position` | 一个事项可有多组名称与文本，按顺序显示；不跨事项复用 |
 | Attachment 图片附件 | `id`、`eventId`、`relativePath`、`mimeType`、`displayName`、`byteSize`、`width`、`height`、`position` | v2 已建表；相对路径为安全的 `UUID.img` 文件名，路径唯一，不保存外部临时 URI |
-| Settings 应用设置 | 单例 `id = 1`；`urgentMinutes`；`expiredPolicy` | v2 已保存；默认 1440 分钟及 `KEEP`；每日汇总时刻、提前提醒量和设置修订号待后续扩展 |
-| ReminderPlan 调度计划 | `planId`；事项或每日汇总标识；`kind`；`triggerAt`；事项与设置修订号；`deadlineSnapshot`；`scheduleState`；`lastError` | 尚未建表；目标状态区分待调度、已调度、待取消、已取消和待重试；事项删除后仍可暂存取消所需快照 |
-| ReminderDelivery 发送记录 | `deliveryKey`；`notificationId`；`attemptState`；`attemptedAt`；`submittedAt`；`lastError` | 尚未建表；用于去重与故障排查，提交给系统不等于用户已看到或阅读 |
+| Settings 应用设置 | 单例 `id = 1`；普通阈值、过期策略；每日开关及分钟时刻、危险开关、临近开关及提前分钟数 | 新提醒默认开启、08:00／60 分钟；普通阈值独立；发送前读取当前设置，不另存虚构的设置修订号 |
+| ReminderPlan 计划及发送账本 | `key`、`kind`、`eventId`、`deadlineAt`、`eventRevision`、`triggerAt`、`day`、`notificationTag`、`active`、`state`、尝试时间／错误、`cancelPending` | `reminder_plans`；每个业务原因稳定主键兼去重依据；取消或发送后保留记录，不随事项级联删除 |
+| ReminderControl 系统调度状态 | 单例 `id = 1`；固定 Alarm 标识；每日目标日期／时刻、系统已排时间、期望时间、实际模式、脏标记和错误 | `reminder_control`；统一最早唤醒与取消／重排失败快照，不为每个事项单独建立系统 Alarm |
 
 ```mermaid
 erDiagram
@@ -98,10 +100,10 @@ erDiagram
     EVENT ||--o{ ATTACHMENT : owns
     EVENT o|--o{ REMINDER_PLAN : schedules
     SETTINGS ||--o{ REMINDER_PLAN : configures
-    REMINDER_PLAN ||--o{ REMINDER_DELIVERY : tracks
+    REMINDER_CONTROL ||--o{ REMINDER_PLAN : wakes
 ```
 
-图中的提醒关系是业务关联：每日汇总没有单个事项，发送记录需保留其去重依据，不能一律随调度计划重建而删除。具体外键约束应与这一生命周期一致。
+图中的提醒关系是业务关联，不为计划设置随事项级联删除的外键。每日汇总没有单个事项；计划本身保留发送和取消依据，重建时不清空账本。
 
 ### 3.2 保存与删除规则
 
@@ -111,16 +113,18 @@ erDiagram
 - 自定义字段使用 `(eventId, id)` 联合主键，按 `position` 保存顺序；同事项字段 ID 不重复，名称非空，文本可为空。不同事项即使字段 ID 相同，也不会相互覆盖。
 - 附件相对路径必须等于自身 UUID 标识加 `.img`，ID 与相对路径不能借用其他事项的关联，同事项也不能重复。永久删除通过外键级联删除标签关联、自定义字段和附件元数据；分类目录保留。
 - 批量操作冻结所选 ID，在事务中先验证所有事项仍存在，再执行完成、归档或删除；任一缺失或执行异常均不部分提交。归档保留完成标记，删除仍由页面明确确认。
-- `saveSettings(AppSettings)` 先校验再原子保存两项设置；旧单项设置接口各自保留另一项。执行自动归档使用独立、可重试的 `applyExpiredPolicy()`，设置保存成功不被后续整理失败改写为保存失败。
+- `saveSettings(AppSettings)` 先校验再原子保存完整设置；旧单项设置接口保留其他设置。执行自动归档使用独立、可重试的 `applyExpiredPolicy()`，设置保存成功不被后续整理失败改写为保存失败。
 - 数据库事务不包含文件系统调用。ViewModel 在保存或删除提交后，按最新数据库引用清理应用图片副本；文件清理失败单独提示，后续重试，不删除相册原图。
 
-后续接入提醒时，保存事务还需记录待调度计划，完成／归档／删除事务记录待取消状态。调度计划保留取消所需标识与截止快照，不随事项级联删除；系统调用成功后再更新计划状态。设置修订号、发送去重记录及恢复流程属于第 7 节后续设计，本轮尚未实现。
+第三轮保存、完成／归档／删除及相关设置变更在同一 Room 事务调用 `ReminderPlanStore.rebuild`；取消所需标识与截止快照不随事项删除。事务提交后再请求系统校对，保存成功与通知安排失败分别反馈；发送与取消的细节见第 7 节。
 
-### 3.3 schema v1 → v2 升级
+### 3.3 schema v1 → v2 → v3 升级
 
 `SaverDatabase.MIGRATION_1_2` 在原 `events` 表增加可空 `sourceId`，在原 `settings` 表增加默认值为 `KEEP` 的 `expiredPolicy`，建立 `sources`、`tags`、`event_tags`、`custom_fields`、`attachments` 表及所需索引。原事项 ID、文字、截止时间、速通时长、重要程度、完成／归档标记、创建／更新时间、修订号及普通紧急阈值均保留。未使用破坏性重建回退。
 
 历史 [1.json](../app/schemas/cn.edu.hust.ddlsaver.data.SaverDatabase/1.json) 保持不变，v2 schema 由 KSP 导出。迁移测试按该历史文件实际创建 v1 SQLite 数据库，经过 Room 升级和结构校验后，检查旧数据、增补关联并关闭重开；执行结果见测试报告。保留历史 schema 和测试真实升级路径的依据见 [Room 数据库迁移说明](https://developer.android.com/training/data-storage/room/migrating-db-versions)。
+
+`MIGRATION_2_3` 在 settings 增加三类开关、每日分钟时刻、临近提前量，建立 `reminder_plans` 和 `reminder_control`；原表、附件路径和原设置均保留。提醒计划由迁移后首次恢复从当前数据重建，不靠升级时的旧闹钟快照发送。真实 v2 文件迁移、默认值和重开结果须由 RUN-005 核验，不以迁移代码存在代替通过。
 
 ## 4. D-03 时间规则与事项状态
 
@@ -142,10 +146,10 @@ erDiagram
 | 完成／恢复未完成 | 设置／清空 `completedAt` | 重算列表与计数，取消或重新评估提醒 |
 | 归档／恢复归档 | 设置／清空 `archivedAt` | 归档后停止提醒并移出首页；恢复时按当前时间计算，按 A-03 保留完成标记 |
 | 修改截止时间或速通时间 | 更新字段并递增修订号 | 重算紧急度，取消旧计划并生成新计划 |
-| 过期自动归档 | 设置为 `AUTO_ARCHIVE` 时，仅归档已过期、未完成、未归档事项并递增修订号 | 启动、恢复前台及应用运行期间每分钟刷新时执行；设置保存后也尝试执行，失败可重试 |
+| 过期自动归档 | 设置为 `AUTO_ARCHIVE` 时，仅归档已过期、未完成、未归档事项并递增修订号 | 启动、恢复前台及应用运行期间每分钟刷新时执行；设置保存后也尝试执行，失败可重试；后台通知 Receiver 不自动归档 |
 | 一键清理过期 | 将全部已过期且未归档事项归档并递增修订号，包括已完成事项 | 保留原完成标记；当前页面明确确认后执行，不永久删除 |
 
-前台页面在分钟边界、返回前台和数据变化后更新显示。当前时间不长期缓存为固定值；后台被停止或进程退出时不保证执行整理，下次打开会按当前时间重新评估。本轮没有后台定时服务。后续接入系统时间变更与提醒恢复时复用相同规则；普通紧急阈值与未来的临近通知提前量分别计算。
+前台页面在分钟边界、返回前台和数据变化后更新显示。当前时间不长期缓存为固定值；后台被停止或进程退出时不保证执行整理，下次打开会按当前时间重新评估。本轮通过系统闹钟回调触发提醒校对，不运行常驻后台服务；时间变更及恢复复用相同规则；普通紧急阈值与未来的临近通知提前量分别计算。
 
 ## 5. D-04 页面、导航与内部接口
 
@@ -153,18 +157,18 @@ erDiagram
 
 | 页面 | 主要内容与入口 |
 | --- | --- |
-| 首页 | 时钟、今日／危险期计数、待办卡片；提供创建、搜索、筛选、日历和批量选择入口；角色后续接入 |
+| 首页 | 时钟、今日／危险期计数、待办卡片；提供创建、搜索、筛选、日历和批量选择入口；第三轮接入角色卡片 |
 | 创建／编辑 | 标题与日期时间必填；其余字段按需填写；附件导入、自定义文本字段、保存或取消 |
-| 事项详情 | 完整文字、分类、自定义字段与图片；可复制文本，进入编辑、完成／恢复、归档／恢复或删除确认；角色提示后续接入 |
+| 事项详情 | 完整文字、分类、自定义字段与图片；可复制文本，进入编辑、完成／恢复、归档／恢复或删除确认；角色反馈复用首页全局状态 |
 | 日历与筛选列表 | 按日期、来源、标签和关键词组织事项；列表与统计共用查询服务 |
 | 历史／归档 | 分别提供完成事项和归档事项的查看及恢复入口；可区分同时完成且归档的事项 |
-| 设置 | 已有普通紧急阈值和过期处理；每日汇总时刻、临近提醒提前量、通知权限状态与素材说明为后续目标 |
+| 设置 | 普通紧急阈值、过期策略、三类提醒开关、每日时刻、临近提前量、通知／精确能力状态和署名入口 |
 
 页面路由只传事项 ID、日期或筛选参数，进入时重新取数，不通过路由携带可能过期的完整事项副本。删除后收到旧通知点击时，按 A-04 返回列表并说明事项已不存在。
 
 ### 5.2 当前接口契约与后续衔接
 
-下列为第二轮实际内部接口；应用没有网络服务端。界面、日历与分类筛选复用 `EventQuery.select`，避免分别实现时间或筛选规则。
+下列为延续第二轮并扩展的实际内部接口；应用没有网络服务端。界面、日历与分类筛选复用 `EventQuery.select`，避免分别实现时间或筛选规则。
 
 | 接口 | 输入 → 输出 | 失败或边界处理 |
 | --- | --- | --- |
@@ -173,14 +177,14 @@ erDiagram
 | `setCompleted(id, completed)` / `setArchived(id, archived)` | 单项 ID 与目标状态 → 完成操作 | 两个状态独立，重复请求幂等，已删除事项报错 |
 | `applyBatch(ids, operation)` | 冻结的 ID 集合，`COMPLETE`／`ARCHIVE`／`DELETE` → 完成操作 | 全部存在才执行，事务失败回滚；删除确认由 UI 提供，数据层不弹框 |
 | `saveSource` / `saveTag` / `setSourceActive` / `setTagActive` | 分类 ID、名称或启用状态 → 分类／完成操作 | 去空白、同类重名校验；目录 Flow 包含停用项 |
-| `saveSettings(settings)` | 紧急阈值和过期策略 → 完成操作 | 校验失败不修改任何设置；设置保存与过期整理分别处理结果 |
+| `saveSettings(settings)` | 紧急阈值、过期策略及三类提醒设置 → 完成操作 | 完整校验，保存和计划重建同事务；过期整理与系统调度失败分别处理 |
 | `archiveExpired()` / `applyExpiredPolicy()` | 当前时钟及保存策略 → 本次归档数量 | 手动整理包括已完成的过期事项，自动整理只处理未完成；重复执行不重复变更 |
 | `UrgencyRules.classify(event, now, urgentMinutes)` | 事项、时刻、普通紧急阈值 → `Urgency` | 纯函数，完成、归档、过期及未填速通时间有明确分支 |
 | `AttachmentStore.importImages` / `discardUnreferenced` / `cleanupOrphans` | URI／候选附件／当前引用 → 私有副本或清理结果 | 文件 IO 在平台层；取消、导入失败和延迟清理见第 6 节 |
 
 列表模式为 `TODO`、`COMPLETED`、`ARCHIVED`：待办排除完成与归档；完成列表排除归档；归档列表保留其中的完成事项。关键词去首尾空白后，不区分大小写匹配标题、描述、自定义字段名称或内容；日期按北京时间截止日期匹配。结果先按 `deadlineAt`、再按 ID 排序。筛选不会改变数据库或自动扩展批量选择范围。
 
-后续提醒层拟提供 `reconcileReminders(reason)`，读取最新数据库后生成或取消计划，失败留待重试，不改写已保存事项；本轮没有该接口的实现。
+提醒入口为 `ReminderRuntime.requestReconcile()`／`reconcileNow()`。业务提交、应用前台恢复、权限结果、系统闹钟和恢复广播触发校对；引擎读取最新数据库，失败保留状态，不改写已经保存的事项。
 
 ## 6. D-05 图片导入与附件生命周期
 
@@ -201,7 +205,7 @@ erDiagram
 
 ## 7. D-06 通知计划、触发与恢复
 
-本节为后续实现目标，第二轮尚未接入系统闹钟或通知，也不声称会在后台提醒。
+第三轮实现采用 `reminders/` 五个文件及 schema v3。系统只保留最早一次到期 Alarm，其余业务计划与发送状态保存在 Room；开发机和手机证据分别登记，不能据代码推演声称设备已准时提醒。
 
 ### 7.1 三类计划
 
@@ -211,7 +215,9 @@ erDiagram
 | 危险期提醒 | `deadlineAt - sprintMinutes` | 仅适用于填写速通时间的未完成、未归档事项；点击详情 |
 | 临近截止提醒 | `deadlineAt - leadMinutes` | 与普通紧急阈值独立；点击详情 |
 
-每日汇总计算下一次北京时间触发时刻，使用一次性计划，在触发或恢复时安排下一次；不把每隔 24 小时的后台任务当作固定北京时间调度。新建或恢复时目标时刻已过但截止尚未到，按 A-04 生成一次即时提醒；过期事项不补发截止前提醒。
+每日汇总按当时数据库中的有效状态查询，可包含今天已逾期但未完成、未归档的事项；后台回调不为生成汇总而额外归档或修改业务状态。计算下一次北京时间触发时刻，使用一次性计划，在触发或恢复时安排下一次；不把每隔 24 小时的后台任务当作固定北京时间调度。新建或恢复时目标时刻已过但截止尚未到，按 A-04 生成一次即时提醒；过期事项不补发截止前提醒。
+
+每日目标游标须与当前北京时间最近一次候选时刻核对，不能在系统时间跨日回拨后继续保留更远未来日期。当天已经发送的汇总在安排次日计划时继续保留显示；跨日或关闭每日提醒时再取消。当日已消费的发送键不因改设置而重复发送。
 
 同一事项同一截止时刻的同类发送键采用 `(eventId, deadlineAt, kind)`，每日汇总采用北京时间日期作为发送键。危险期与临近提醒同时触发时，按 A-04 合并展示，但分别保存两个原因的发送状态；不同事项的提醒不因同刻触发而混成同一事项。
 
@@ -240,29 +246,33 @@ sequenceDiagram
     end
 ```
 
-系统闹钟使用稳定且可重建的标识，例如包含事项 ID 与提醒类型的 Intent 数据 URI；更新时取消旧标识，避免只更改时间却留下旧任务。回调必须重新读取最新有效的 `ReminderPlan`、相关事项和设置，不能只信任回调携带的修订号或截止快照：稳定 `PendingIntent` 更新后，迟到的旧回调可能携带新的附加数据。计划不存在或已取消、修订不符，或单项提醒对应的事项不存在、已完成、已归档、已过期时，结束该回调并按需要校对计划。
+系统闹钟使用固定 `ddl-saver://reminders/wake` 数据 URI 和不可变 PendingIntent；每次只安排所有有效计划中最早一次唤醒，到期后处理该批并安排下一次。回调只表示需要校对，不携带可信的事项快照或修订号；事项级发送键仍独立保存，稳定通知 tag 防止将不同事项混为一条；取消／重新设置失败时保留 `scheduledTriggerAt`、期望时间、脏标记和错误，后续打开或回调重试。回调必须重新读取最新有效的 `ReminderPlan`、相关事项和设置，不能只信任回调携带的修订号或截止快照：稳定 `PendingIntent` 更新后，迟到的旧回调可能携带新的附加数据。计划不存在或已取消、修订不符，或单项提醒对应的事项不存在、已完成、已归档、已过期时，结束该回调并按需要校对计划。
 
 发送前必须满足 `now >= 最新计划的 triggerAt`，并按最新事项与设置重新确认当前仍在对应的危险期或临近截止范围；尚未到新触发时刻时直接退出并校对未来计划，不提前发送。每日汇总同样核对最新计划的北京时间日期及目标时刻，并检查该日发送记录，避免提前或重复汇总。检查通过后，以唯一发送键原子领取待发记录，同一事项的回调串行处理；同刻合并时一次领取两类发送键，避免分别发出通知。提交系统通知后保存提交状态，失败则记录原因以供重试。数据库更新与系统通知不构成同一事务，进程崩溃可能留下未确定的发送窗口，不能宣称严格“恰好发送一次”。恢复时使用稳定通知 ID 重试仍可能重复提示，因此该窗口及恢复行为必须实测。
 
+计划的 `state` 兼作持久发送记录：PENDING 等待，CLAIMED 已领取但提交尚未确定，SENT 已向系统提交或当日空汇总已消费，FAILED 待重试。FAILED／CLAIMED 按至少 5 分钟间隔再评估，不能因不断刷新而密集提交；同事项、截止时间、原因的 SENT 键不会因普通编辑或恢复而清空。系统通知使用稳定 tag，危险和临近在不同时刻各自提示、同刻才合并；同一未确定发送尝试重试复用标识，不把更新通知条目等同于用户只响铃一次。
+
+`cancelPending` 与发送状态分开保存。事项删除后仍保留原因、截止快照和通知 tag；取消失败不丢弃记录，后续校对继续尝试。通知权限或通道关闭时保留业务计划并暂停系统 Alarm，避免无意义定时唤醒；用户授权并返回应用后重新核对当前有效计划。系统调用与 Room 提交边界均记录失败，原业务保存不因平台失败变成虚假失败。
+
 ### 7.3 Android 运行条件
 
-定时能力拟由 `AlarmManager` 适配器封装。Android 对精确闹钟有特殊权限要求，调用前需检查能力；设备重启后原闹钟需要重建。申请何种能力及可接受延迟须结合用途与设备验证，不能以普通后台任务替代分钟级时刻保证。[Android 闹钟官方说明](https://developer.android.com/develop/background-work/services/alarms)。
+定时能力由 `AndroidReminderPlatform` 的 `AlarmManager` 适配器封装。Android 对精确闹钟有特殊权限要求，调用前需检查能力；设备重启后原闹钟需要重建。申请何种能力及可接受延迟须结合用途与设备验证，不能以普通后台任务替代分钟级时刻保证。[Android 闹钟官方说明](https://developer.android.com/develop/background-work/services/alarms)。
 
 | 条件 | 设计处理与验证要求 |
 | --- | --- |
-| 通知权限未授予或通知被关闭 | 保留事项功能，说明无法展示系统通知；授权后重新核对有效计划，不批量补发历史无效提醒 |
-| 精确调度能力不可用 | 不静默声称已设置精确提醒；显示当前能力，候选降级为可能延迟的非精确提醒，需用户审核可接受程度 |
+| 通知权限未授予或通知被关闭 | 保留事项功能，说明无法展示系统通知；运行时申请之外提供本包通知系统设置入口，覆盖不再弹框的拒绝状态；授权后重新核对有效计划，不批量补发历史无效提醒 |
+| 精确调度能力不可用 | 不静默声称已设置精确提醒；显示当前能力，采用明确标示可能延迟的非精确提醒；时间偏差及验收容忍度仍待设备观察和审核 |
 | 锁屏、后台或省电模式 | 使用系统调度接口并实机测量触发延迟，不以应用前台测试代替后台验证 |
 | 设备重启、系统时间调整 | 在系统允许接收的相应事件及应用启动时，从数据库重建计划；重新按北京时间计算日界线 |
 | 用户强制停止应用 | 不保证继续送达；再次主动打开后执行恢复检查，并说明需检查系统设置 |
 
-Android 13 及以上的常规通知涉及 `POST_NOTIFICATIONS` 运行时权限，应与精确闹钟权限分开检查。[Android 通知权限说明](https://developer.android.com/develop/ui/compose/notifications/notification-permission)。`WorkManager` 可作为后续非精确维护任务的候选，不作为准点提醒的承诺；本稿不要求引入常驻前台服务。
+Android 13 及以上的常规通知涉及 `POST_NOTIFICATIONS` 运行时权限，应与精确闹钟权限分开检查。[Android 通知权限说明](https://developer.android.com/develop/ui/compose/notifications/notification-permission)。本轮未引入 WorkManager 或常驻前台服务。恢复 Receiver 使用受限异步执行，未完成任务仍在数据库中；Android 15 强停会取消 PendingIntent，用户主动恢复后重新注册，见[系统说明](https://developer.android.com/about/versions/15/behavior-changes-all#stopped-state)。稳定标识仍需按 [PendingIntent](https://developer.android.com/reference/android/app/PendingIntent) 的匹配规则构造，Doze 条件见[低电耗模式说明](https://developer.android.com/training/monitoring-device-state/doze-standby)。
 
 ## 8. D-07 角色资源与台词
 
-第一版目标采用一个角色及多种表情，图片和预设台词在本地读取；第二轮尚未集成角色资源。资源清单按状态映射到表情与台词集合，例如普通、临近、危险、完成反馈；显示规则由 D-03 的结果驱动，不能另写一套紧急度算法。台词选择可记录上次使用项，减少连续重复；用户仍需审核风格、数量和语气。
+第三轮采用四张原字节鲸鱼娘 WebP 与 36 条本项目预设台词。`selectCharacterFeedback` 复用 D-03，排除完成／归档后按危险、逾期、紧急、普通选取全局状态，成功完成操作短暂显示快乐反馈。台词由状态、稳定事项 ID 及 10 分钟时段决定，不联网、不使用随机数；历史已完成记录不会自动庆祝。
 
-具体鲸鱼娘素材尚未选定，来源与许可依据见[角色素材调研](character-assets.md)。入库时保存文件名、来源、许可和修改说明，在应用说明页提供署名；许可核对与表情资源缺失检查属于验收准备。资源加载失败时仍显示事项信息和文本提示，角色动画不作为核心提醒的前提。
+四张具体素材与上游完整提交、SHA-256、字节数和 CC BY-NC-SA 4.0 署名链见[角色素材记录](character-assets.md)。应用内署名弹框说明同人、非官方及徽记边界；`CharacterPanel` 在 IO 线程采样解码，图片缺失时仍显示状态与台词，不把角色图片当作系统通知必达的前提。用户尚需审核实际视觉和语气。
 
 ## 9. D-08 异常处理与可测试性
 
@@ -292,10 +302,10 @@ Android 13 及以上的常规通知涉及 `POST_NOTIFICATIONS` 运行时权限�
 
 ## 11. 待确认与后续验证
 
-- 根据小组已提供的 Python、C++、Java 基础熟悉首轮 Kotlin／Compose 代码；依赖与 SDK 声明已登记，荣耀 X50 的实际系统及电量管理设置在后续连接时核对。
+- 根据小组已提供的 Python、C++、Java 基础熟悉首轮 Kotlin／Compose 代码；依赖与 SDK 声明已登记，荣耀 X50 系统版本已记录，第三轮权限及电量管理设置在再次连接时核对。
 - 审核 A-01 至 A-05，确认提示延迟可接受范围，以及权限受限时的降级方式。
 - 优先验证通知授权、锁屏与重启恢复、图片选择和粘贴路径，再补充实测限制及必要数据上限。
-- 确定角色文件与台词方案；成员按[任务板](../team/README.md)领取任务，形成实际修改、验证和个人提交。
+- 审核已入库角色文件与台词在设备上的表现；成员按[任务板](../team/README.md)领取任务，形成实际修改、验证和个人提交。
 
 后续实现若与本稿不同，应记录原因并同步设计、需求追踪和测试用例。实际测试结果及遗留问题写入测试记录与测试报告，不能用设计推演代替执行证据。
 
@@ -306,3 +316,4 @@ Android 13 及以上的常规通知涉及 `POST_NOTIFICATIONS` 运行时权限�
 | v0.1 | 2026-10-27 | 根据需求 v0.2、官方资料及用户提供的语言经验和荣耀 X50 设备信息，形成总体及关键模块设计并选用技术路线 | 设计草案，待审核和验证 |
 | v0.2 | 2026-10-27 | 按用户授权开展首轮实现，补充实际代码映射、依赖与 SDK 声明，并区分后续目标模块 | 首轮本机构建与自动检查完成；维护提示已记录，本轮暂不连接实机 |
 | v0.3 | 2026-10-27 | 同步第二轮 0.2.0、schema v2、显式迁移、分类和字段、统一查询、批量事务、过期整理及图片生命周期；保留后续通知与角色目标 | 工程保护值待实机验证及审核；执行结论见测试报告 |
+| v0.4 | 2026-10-27 | 同步第三轮 schema 3、持久计划兼发送账本、统一最早 Alarm、能力与恢复、角色四表情及 36 台词；前轮实机环境据实更新 | 源码 857ca5f 本机 116 方法／132 次执行通过；设备下次继续 |

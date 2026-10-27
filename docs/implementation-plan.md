@@ -88,3 +88,13 @@
 通知采用平台 AlarmManager、NotificationManager 和独立 Receiver，不引入服务器或常驻前台服务。精确访问不可用时采用明确标示的近似调度；即使具备精确访问，Doze 等系统条件仍可能限制频率，实际延迟以目标机记录为准。系统通知与数据库提交不属于同一事务，保留失败和未确定发送窗口，不承诺跨系统严格恰好一次。
 
 本轮由 AI 辅助实现，四位成员的复核方向在[任务板](../team/README.md)公开。未发生的成员领取、开发与验收不登记为完成。阶段按执行安排、实际功能、验证及修复形成真实提交；新代码通过检查后再安排实机安装。
+
+
+### 第三轮执行结果（开发机验证完成）
+
+第三轮已加入提醒核心、权限与设置页面、角色状态、四张原字节表情图和 36 条原创台词；素材与许可检查见[角色记录](character-assets.md)。经过六次尝试、三项通知审查修复、Activity 重建定位及反馈时钟核对，attempt-06 最终构建／全量测试／Lint 成功：116 方法、132 次配置执行全部通过，失败／错误／跳过均 0，Lint 0 错误／16 提示。实际过程及 APK 标识见 [RUN-005](test-evidence/RUN-20261027-005/README.md)，已验证源码提交并推送为 [857ca5f](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/857ca5faf29af4c2b861bf4529634ec66e3e13bd)。
+
+荣耀 X50 的 Android 15／API 35、MagicOS 9.0.0 已由前轮实测取得。支盟渊明确选择“这轮先交付，手机测试下次继续”，本轮不等待连接，也未进行 ADB／新 APK 安装。第三轮真实通知、时间偏差、后台及角色视觉下次另建批次，未测条件不预填通过。
+
+
+[CI 40530551146](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40530551146) 已核对为 completed／success；实际下载报告解析 17 组 XML，声明与实际均 132 次执行，失败／错误／跳过均 0。CI Lint 0 错误／17 提示，比本机 16 条多一条 OldTargetApi；两边分别保留实际结果，不累计新增方法。 这次线上验证对应已提交源码 857ca5f；后续文档提交不改变被测 App 源码。
