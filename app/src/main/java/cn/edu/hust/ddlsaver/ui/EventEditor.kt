@@ -28,6 +28,8 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -43,6 +45,10 @@ import androidx.compose.ui.unit.dp
 import cn.edu.hust.ddlsaver.domain.DdlEvent
 import cn.edu.hust.ddlsaver.domain.EventDraft
 import cn.edu.hust.ddlsaver.domain.Importance
+import cn.edu.hust.ddlsaver.domain.Category
+import cn.edu.hust.ddlsaver.domain.AttachmentRef
+import cn.edu.hust.ddlsaver.domain.ExpiredPolicy
+import android.net.Uri
 import java.time.Instant
 import java.time.LocalDate
 import java.time.LocalTime
@@ -57,6 +63,13 @@ internal fun EventEditor(
     now: Instant,
     busy: Boolean,
     operationError: String?,
+    sources: List<Category>,
+    tags: List<Category>,
+    imageResult: ImageImportResult?,
+    onImagesConsumed: (Long) -> Unit,
+    onImportImages: (List<Uri>) -> Unit,
+    onImageError: (String) -> Unit,
+    onRegisterDraft: (List<AttachmentRef>, List<AttachmentRef>) -> Unit,
     onCancel: () -> Unit,
     onSave: (EventDraft) -> Unit,
 ) {
@@ -72,6 +85,25 @@ internal fun EventEditor(
         mutableStateOf<String?>(initialDateTime?.toLocalTime()?.format(DateTimeFormatter.ofPattern("HH:mm")))
     }
     val expectedRevision by rememberSaveable(session) { mutableStateOf<Long?>(initial?.revision) }
+    val initialSource by rememberSaveable(session) { mutableStateOf(initial?.source?.id) }
+    val initialTags = rememberSaveable(session) { DraftJson.ids(initial?.tags.orEmpty().map { it.id }) }
+    val initialFields = rememberSaveable(session) { DraftJson.fields(initial?.customFields.orEmpty()) }
+    val initialImages = rememberSaveable(session) { DraftJson.attachments(initial?.attachments.orEmpty()) }
+    var sourceId by rememberSaveable(session) { mutableStateOf(initialSource) }
+    var tagsJson by rememberSaveable(session) { mutableStateOf(initialTags) }
+    var fieldsJson by rememberSaveable(session) { mutableStateOf(initialFields) }
+    var imagesJson by rememberSaveable(session) { mutableStateOf(initialImages) }
+    val tagIds = remember(tagsJson) { DraftJson.ids(tagsJson) }
+    val fields = remember(fieldsJson) { DraftJson.fields(fieldsJson) }
+    val images = remember(imagesJson) { DraftJson.attachments(imagesJson) }
+    val originalImages = remember(initialImages) { DraftJson.attachments(initialImages) }
+    SideEffect { onRegisterDraft(originalImages, images) }
+    LaunchedEffect(imageResult?.token) {
+        imageResult?.takeIf { it.session == session }?.let { result ->
+            imagesJson = DraftJson.attachments((images + result.attachments).distinctBy { it.id })
+            onImagesConsumed(result.token)
+        }
+    }
     var title by rememberSaveable(session) { mutableStateOf(initialTitle) }
     var description by rememberSaveable(session) { mutableStateOf(initialDescription) }
     var sprint by rememberSaveable(session) { mutableStateOf(initialSprint) }
@@ -81,7 +113,8 @@ internal fun EventEditor(
     var submitted by rememberSaveable(session) { mutableStateOf(false) }
     var discardDialog by rememberSaveable(session) { mutableStateOf(false) }
     val dirty = title != initialTitle || description != initialDescription || sprint != initialSprint ||
-        importanceName != initialImportance || date != initialDate || time != initialTime
+        importanceName != initialImportance || date != initialDate || time != initialTime ||
+        sourceId != initialSource || tagsJson != initialTags || fieldsJson != initialFields || imagesJson != initialImages
     val sprintValue = sprint.trim().toLongOrNull()
     val invalidSprint = sprint.isNotBlank() && (sprintValue == null || sprintValue <= 0L || sprintValue > MaxDurationMinutes)
     val back: () -> Unit = {
@@ -163,6 +196,12 @@ internal fun EventEditor(
                 label = { Text("事项描述（选填）") }, placeholder = { Text("任务要求、提交方式或相关网址") },
                 modifier = Modifier.fillMaxWidth().testTag("event-description"), minLines = 5, maxLines = 12, shape = RoundedCornerShape(16.dp),
             )
+            EventCategories(sources, tags, sourceId, tagIds, initialSource, DraftJson.ids(initialTags), busy,
+                onSource = { sourceId = it }, onTags = { tagsJson = DraftJson.ids(it) })
+            CustomFieldEditor(fields, busy) { fieldsJson = DraftJson.fields(it) }
+            AttachmentEditor(images, busy, onImportImages,
+                onRemove = { id -> imagesJson = DraftJson.attachments(images.filterNot { it.id == id }) },
+                onError = onImageError)
             operationError?.let { ErrorNotice(it) }
             Button(
                 onClick = {
@@ -175,6 +214,7 @@ internal fun EventEditor(
                                 sprintMinutes = if (sprint.isBlank()) null else sprintValue,
                                 description = description, importance = Importance.valueOf(importanceName),
                                 expectedRevision = expectedRevision,
+                                sourceId = sourceId, tagIds = tagIds, customFields = fields, attachments = images,
                             ),
                         )
                     }
@@ -195,20 +235,26 @@ internal fun EventEditor(
 @Composable
 internal fun SettingsScreen(
     currentMinutes: Long,
+    currentPolicy: ExpiredPolicy,
     busy: Boolean,
     operationError: String?,
     onBack: () -> Unit,
-    onSave: (Long) -> Unit,
+    onSave: (Long, ExpiredPolicy) -> Unit,
+    onCategories: () -> Unit,
+    onArchiveExpired: () -> Unit,
 ) {
     val original = rememberSaveable { currentMinutes.toString() }
     var minutes by rememberSaveable { mutableStateOf(original) }
+    val originalPolicy = rememberSaveable { currentPolicy.name }
+    var policy by rememberSaveable { mutableStateOf(originalPolicy) }
+    var confirmArchive by rememberSaveable { mutableStateOf(false) }
     var submitted by rememberSaveable { mutableStateOf(false) }
     var discardDialog by rememberSaveable { mutableStateOf(false) }
     val parsed = minutes.trim().toLongOrNull()
     val invalid = parsed == null || parsed <= 0 || parsed > MaxDurationMinutes
     val back: () -> Unit = {
         if (!busy) {
-            if (minutes != original) discardDialog = true else onBack()
+            if (minutes != original || policy != originalPolicy) discardDialog = true else onBack()
         }
     }
     BackHandler(onBack = back)
@@ -232,10 +278,21 @@ internal fun SettingsScreen(
                 }
             }
             operationError?.let { ErrorNotice(it) }
-            Button(onClick = { submitted = true; if (!invalid) onSave(checkNotNull(parsed)) }, enabled = !busy, modifier = Modifier.fillMaxWidth()) {
+            Text("过期事项处理", fontWeight = FontWeight.SemiBold)
+            Column {
+                FilterChip(policy == ExpiredPolicy.KEEP.name, { policy = ExpiredPolicy.KEEP.name },
+                    enabled = !busy, label = { Text("灰显保留") }, modifier = Modifier.testTag("policy-keep"))
+                FilterChip(policy == ExpiredPolicy.AUTO_ARCHIVE.name, { policy = ExpiredPolicy.AUTO_ARCHIVE.name },
+                    enabled = !busy, label = { Text("自动归档过期未完成事项") }, modifier = Modifier.testTag("policy-auto"))
+                Text("保存设置后立即生效，并在进入应用及分钟刷新时检查。归档可恢复。", color = Muted,
+                    style = MaterialTheme.typography.bodySmall)
+            }
+            Button(onClick = { submitted = true; if (!invalid) onSave(checkNotNull(parsed), ExpiredPolicy.valueOf(policy)) }, enabled = !busy, modifier = Modifier.fillMaxWidth()) {
                 if (busy) CircularProgressIndicator(Modifier.size(18.dp), color = MaterialTheme.colorScheme.onPrimary, strokeWidth = 2.dp)
                 else Text("保存设置")
             }
+            OutlinedButton(onClick = onCategories, enabled = !busy, modifier = Modifier.fillMaxWidth().testTag("manage-categories")) { Text("分类管理：来源与标签") }
+            OutlinedButton(onClick = { confirmArchive = true }, enabled = !busy, modifier = Modifier.fillMaxWidth().testTag("archive-expired")) { Text("一键归档过期事项") }
             Spacer(Modifier.height(8.dp))
             Text("时间与数据", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.SemiBold)
             Text("所有事项按北京时间展示。事项和设置保存在本机，无需注册即可使用。", color = Muted, style = MaterialTheme.typography.bodyMedium)
@@ -245,6 +302,12 @@ internal fun SettingsScreen(
     if (discardDialog) {
         DiscardDialog(onKeepEditing = { discardDialog = false }, onDiscard = { discardDialog = false; onBack() })
     }
+    if (confirmArchive) AlertDialog(
+        onDismissRequest = { confirmArchive = false }, title = { Text("归档全部过期事项？") },
+        text = { Text("所有已过截止时间且未归档的事项将移入归档列表，包括已完成事项。完成标记保留，之后可以恢复归档。") },
+        confirmButton = { TextButton({ confirmArchive = false; onArchiveExpired() }) { Text("确认归档") } },
+        dismissButton = { TextButton({ confirmArchive = false }) { Text("取消") } },
+    )
 }
 
 @Composable

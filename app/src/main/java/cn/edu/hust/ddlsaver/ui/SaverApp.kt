@@ -3,11 +3,9 @@ package cn.edu.hust.ddlsaver.ui
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.consumeWindowInsets
@@ -19,8 +17,6 @@ import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -32,11 +28,9 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExtendedFloatingActionButton
-import androidx.compose.material3.FilterChip
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
@@ -92,11 +86,23 @@ fun SaverApp(model: SaverViewModel) {
     var screen by rememberSaveable { mutableStateOf("home") }
     var selectedId by rememberSaveable { mutableStateOf<String?>(null) }
     var editorSession by rememberSaveable { mutableLongStateOf(0L) }
+    var batchToken by rememberSaveable { mutableLongStateOf(0L) }
+    var categoryToken by rememberSaveable { mutableLongStateOf(0L) }
     val snackbar = remember { SnackbarHostState() }
     val snackbarScope = rememberCoroutineScope()
     val homeState = rememberSaveableStateHolder()
     val owner = LocalLifecycleOwner.current
-    val working = state.busy || state.actionResult != null
+    val working = state.busy || state.actionResult != null || state.imageImportResult != null
+
+    LaunchedEffect(state.loading, screen) {
+        if (!state.loading && screen != "editor") model.cleanupOldAttachments()
+    }
+    LaunchedEffect(state.cleanupWarning) {
+        state.cleanupWarning?.let { warning ->
+            model.acknowledgeCleanupWarning()
+            snackbarScope.launch { snackbar.showSnackbar(warning, withDismissAction = true) }
+        }
+    }
 
     DisposableEffect(owner, model) {
         val observer = LifecycleEventObserver { _, event ->
@@ -112,6 +118,8 @@ fun SaverApp(model: SaverViewModel) {
             it.id == result.eventId && it.revision >= (result.savedRevision ?: 0L)
         }) return@LaunchedEffect
         when (result.kind) {
+            "batch" -> batchToken = result.token
+            "category" -> categoryToken = result.token
             "save" -> {
                 homeState.removeState("editor-$editorSession")
                 selectedId = result.eventId
@@ -130,6 +138,8 @@ fun SaverApp(model: SaverViewModel) {
                     "save" -> "事项已保存"
                     "delete" -> "事项已删除"
                     "settings" -> "设置已保存"
+                    "batch" -> "批量操作已完成"
+                    "category" -> "分类已更新"
                     else -> "事项状态已更新"
                 },
                 withDismissAction = true,
@@ -147,11 +157,13 @@ fun SaverApp(model: SaverViewModel) {
                 ExtendedFloatingActionButton(
                     modifier = Modifier.testTag("create-event"),
                     onClick = {
+                        if (!working) {
                         selectedId = null
                         homeState.removeState("editor-$editorSession")
                         editorSession++
                         model.clearOperationError()
                         screen = "editor"
+                        }
                     },
                     containerColor = Ocean,
                     contentColor = Color.White,
@@ -171,13 +183,16 @@ fun SaverApp(model: SaverViewModel) {
                 screen == "home" -> homeState.SaveableStateProvider("home") {
                     HomeScreen(
                         state,
+                        batchToken = batchToken,
                         onSettings = { model.clearOperationError(); screen = "settings" },
                         onOpen = { selectedId = it; model.clearOperationError(); screen = "detail" },
+                        onBatch = model::applyBatch,
                     )
                 }
                 screen == "settings" -> homeState.SaveableStateProvider("settings") {
                     SettingsScreen(
                         currentMinutes = state.settings.urgentMinutes,
+                        currentPolicy = state.settings.expiredPolicy,
                         busy = working,
                         operationError = state.operationError,
                         onBack = {
@@ -185,9 +200,18 @@ fun SaverApp(model: SaverViewModel) {
                             model.clearOperationError()
                             screen = "home"
                         },
-                        onSave = model::saveUrgentMinutes,
+                        onSave = model::saveSettings,
+                        onCategories = { model.clearOperationError(); screen = "categories" },
+                        onArchiveExpired = model::archiveExpired,
                     )
                 }
+                screen == "categories" -> CategoryManager(
+                    sources = state.sources, tags = state.tags, busy = working,
+                    operationError = state.operationError, successToken = categoryToken,
+                    onBack = { model.clearOperationError(); screen = "settings" },
+                    onSave = model::saveCategory, onToggle = model::setCategoryActive,
+                    onClearError = model::clearOperationError,
+                )
                 else -> {
                     val selected = state.events.firstOrNull { it.id == selectedId }
                     if (selectedId != null && selected == null) {
@@ -202,12 +226,22 @@ fun SaverApp(model: SaverViewModel) {
                                 now = state.now,
                                 busy = working,
                                 operationError = state.operationError,
+                                sources = state.sources, tags = state.tags,
+                                imageResult = state.imageImportResult,
+                                onImagesConsumed = model::acknowledgeImages,
+                                onImportImages = { model.importImages(editorSession, it) },
+                                onImageError = model::reportError,
+                                onRegisterDraft = { originals, current ->
+                                    model.registerDraft(editorSession, originals, current)
+                                    model.cleanupOldAttachments()
+                                },
                                 onCancel = {
+                                    model.discardDraft(editorSession)
                                     homeState.removeState("editor-$editorSession")
                                     model.clearOperationError()
                                     screen = if (selectedId == null) "home" else "detail"
                                 },
-                                onSave = model::save,
+                                onSave = { model.save(it, editorSession) },
                             )
                         }
                     } else if (selected != null) {
@@ -238,123 +272,7 @@ fun SaverApp(model: SaverViewModel) {
 }
 
 @Composable
-private fun HomeScreen(state: SaverUiState, onSettings: () -> Unit, onOpen: (String) -> Unit) {
-    var mode by rememberSaveable { mutableStateOf("todo") }
-    var quickFilter by rememberSaveable { mutableStateOf("all") }
-    var query by rememberSaveable { mutableStateOf("") }
-    val active = state.events.filter(UrgencyRules::isActive)
-    val todayCount = active.count { UrgencyRules.isToday(it, state.now) }
-    val dangerCount = active.count {
-        UrgencyRules.classify(it, state.now, state.settings.urgentMinutes) == Urgency.DANGER
-    }
-    val filtered = state.events.filter { event ->
-        val inMode = when (mode) {
-            "done" -> event.completedAt != null && event.archivedAt == null
-            "archive" -> event.archivedAt != null
-            else -> UrgencyRules.isActive(event)
-        }
-        val inQuickFilter = mode != "todo" || when (quickFilter) {
-            "today" -> UrgencyRules.isToday(event, state.now)
-            "danger" -> UrgencyRules.classify(event, state.now, state.settings.urgentMinutes) == Urgency.DANGER
-            else -> true
-        }
-        val keyword = query.trim()
-        inMode && inQuickFilter && (keyword.isEmpty() ||
-            event.title.contains(keyword, ignoreCase = true) || event.description.contains(keyword, ignoreCase = true))
-    }.sortedWith(compareBy<DdlEvent> { it.deadlineAt }.thenBy { it.id })
-    val overdue = if (mode == "todo") filtered.filter { it.deadlineAt <= state.now.toEpochMilli() } else emptyList()
-    val current = if (mode == "todo") filtered.filter { it.deadlineAt > state.now.toEpochMilli() } else filtered
-
-    LazyColumn(
-        modifier = Modifier.fillMaxSize().testTag("event-list"),
-        contentPadding = PaddingValues(start = 20.dp, end = 20.dp, top = 14.dp, bottom = 104.dp),
-        verticalArrangement = Arrangement.spacedBy(12.dp),
-    ) {
-        item {
-            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
-                Column(Modifier.weight(1f)) {
-                    Text("HUSTer's", color = Muted, style = MaterialTheme.typography.labelLarge)
-                    Text("DDL Saver", color = Ink, fontSize = 28.sp, fontWeight = FontWeight.Bold)
-                }
-                TextButton(onClick = onSettings) { Text("设置") }
-            }
-        }
-        item {
-            Surface(color = Ink, shape = RoundedCornerShape(24.dp)) {
-                Column(Modifier.fillMaxWidth().padding(22.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                    Text("把重要的事，安排妥当。", color = Color.White, fontSize = 20.sp, fontWeight = FontWeight.SemiBold)
-                    Text(
-                        DateTimeFormatter.ofPattern("M月d日 EEEE  HH:mm", Locale.CHINA).withZone(BeijingZone).format(state.now) + " · 北京时间",
-                        color = Color(0xFFCBDCEB), style = MaterialTheme.typography.bodySmall,
-                    )
-                    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                        CountTile("今日 DDL", todayCount, Modifier.weight(1f), Color(0xFFD6EEF6)) {
-                            mode = "todo"; quickFilter = "today"; query = ""
-                        }
-                        CountTile("速通危险期", dangerCount, Modifier.weight(1f), Color(0xFFFFD7CE)) {
-                            mode = "todo"; quickFilter = "danger"; query = ""
-                        }
-                    }
-                }
-            }
-        }
-        item {
-            Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                listOf("todo" to "待办", "done" to "已完成", "archive" to "归档").forEach { (key, label) ->
-                    FilterChip(selected = mode == key, onClick = { mode = key; quickFilter = "all" }, label = { Text(label) })
-                }
-            }
-            OutlinedTextField(
-                value = query, onValueChange = { query = it }, singleLine = true,
-                label = { Text("搜索标题或描述") }, modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(16.dp),
-                trailingIcon = if (query.isNotEmpty()) { { TextButton(onClick = { query = "" }) { Text("清除") } } } else null,
-            )
-        }
-        item {
-            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-                Text(
-                    when {
-                        mode == "done" -> "已完成事项"
-                        mode == "archive" -> "归档事项"
-                        quickFilter == "today" -> "今日待办"
-                        quickFilter == "danger" -> "危险期待办"
-                        else -> "全部待办"
-                    } + " · ${filtered.size}",
-                    modifier = Modifier.weight(1f), fontWeight = FontWeight.SemiBold,
-                )
-                if (mode == "todo" && quickFilter != "all") {
-                    TextButton(onClick = { quickFilter = "all" }) { Text("查看全部") }
-                } else {
-                    Text("按截止时间", color = Muted, style = MaterialTheme.typography.labelSmall)
-                }
-            }
-        }
-        if (filtered.isEmpty()) {
-            item {
-                Surface(color = Color.White, shape = RoundedCornerShape(20.dp)) {
-                    Column(Modifier.fillMaxWidth().padding(28.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                        Text(if (query.isNotBlank()) "没有找到相关事项" else "这里暂时没有事项", fontWeight = FontWeight.SemiBold)
-                        Text(
-                            if (query.isNotBlank()) "试试其他关键词，或清除搜索条件。"
-                            else if (mode == "todo" && quickFilter == "all") "点击“新建事项”，记录下一件需要完成的事。"
-                            else "符合当前条件的事项会显示在这里。",
-                            color = Muted, style = MaterialTheme.typography.bodyMedium,
-                        )
-                    }
-                }
-            }
-        }
-        items(current, key = { it.id }) { event -> EventCard(event, state, onOpen) }
-        if (overdue.isNotEmpty()) {
-            item { Text("已逾期 · ${overdue.size}", color = Muted, style = MaterialTheme.typography.titleSmall, modifier = Modifier.padding(top = 8.dp)) }
-            items(overdue, key = { it.id }) { event -> EventCard(event, state, onOpen) }
-        }
-    }
-}
-
-@Composable
-private fun CountTile(label: String, count: Int, modifier: Modifier, tint: Color, onClick: () -> Unit) {
+internal fun CountTile(label: String, count: Int, modifier: Modifier, tint: Color, onClick: () -> Unit) {
     Surface(modifier = modifier, onClick = onClick, color = Color(0xFF29415C), shape = RoundedCornerShape(16.dp)) {
         Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
             Text(count.toString(), color = tint, fontSize = 30.sp, fontWeight = FontWeight.Bold)
@@ -364,10 +282,11 @@ private fun CountTile(label: String, count: Int, modifier: Modifier, tint: Color
 }
 
 @Composable
-private fun EventCard(event: DdlEvent, state: SaverUiState, onOpen: (String) -> Unit) {
+internal fun EventCard(event: DdlEvent, state: SaverUiState, onOpen: (String) -> Unit) {
     val urgency = UrgencyRules.classify(event, state.now, state.settings.urgentMinutes)
     val colors = urgencyColors(urgency)
     Card(
+        modifier = Modifier.testTag("event-card-${event.id}"),
         onClick = { onOpen(event.id) },
         shape = RoundedCornerShape(20.dp),
         colors = CardDefaults.cardColors(containerColor = if (urgency == Urgency.OVERDUE) Color(0xFFEBEFF4) else Color.White),
@@ -380,6 +299,11 @@ private fun EventCard(event: DdlEvent, state: SaverUiState, onOpen: (String) -> 
                 Text(importanceLabel(event.importance), color = Muted, style = MaterialTheme.typography.labelSmall)
             }
             Text(event.title, fontSize = 18.sp, fontWeight = FontWeight.SemiBold, maxLines = 2, overflow = TextOverflow.Ellipsis)
+            val classification = listOfNotNull(event.source?.name) + event.tags.map { "#${it.name}" }
+            if (classification.isNotEmpty()) {
+                Text(classification.joinToString(" · "), color = Ocean, maxLines = 2,
+                    overflow = TextOverflow.Ellipsis, style = MaterialTheme.typography.labelMedium)
+            }
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Box(Modifier.size(6.dp).background(colors.first, CircleShape))
                 Spacer(Modifier.width(8.dp))
@@ -420,6 +344,8 @@ private fun DetailScreen(
                     DetailLine("速通时间", event.sprintMinutes?.let(::formatDuration) ?: "未填写")
                     DetailLine("完成状态", if (event.completedAt == null) "未完成" else "已完成")
                     DetailLine("归档状态", if (event.archivedAt == null) "未归档" else "已归档")
+                    DetailLine("来源", event.source?.let { it.name + if (it.isActive) "" else "（已停用）" } ?: "未指定")
+                    DetailLine("标签", event.tags.joinToString("、") { it.name + if (it.isActive) "" else "（已停用）" }.ifEmpty { "未指定" })
                 }
             }
             Surface(color = Color.White, shape = RoundedCornerShape(20.dp)) {
@@ -435,6 +361,21 @@ private fun DetailScreen(
                     }
                 }
             }
+            if (event.customFields.isNotEmpty()) Surface(color = Color.White, shape = RoundedCornerShape(20.dp)) {
+                Column(Modifier.fillMaxWidth().padding(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                    Text("自定义字段", fontWeight = FontWeight.SemiBold)
+                    event.customFields.forEach { field ->
+                        Column {
+                            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                                Text(field.label, fontWeight = FontWeight.SemiBold, modifier = Modifier.weight(1f))
+                                TextButton({ clipboard.setText(AnnotatedString(field.value)) }, modifier = Modifier.testTag("copy-field-${field.id}")) { Text("复制") }
+                            }
+                            SelectionContainer { Text(field.value, modifier = Modifier.testTag("detail-field-${field.id}")) }
+                        }
+                    }
+                }
+            }
+            if (event.attachments.isNotEmpty()) AttachmentGallery(event.attachments)
             state.operationError?.let { ErrorNotice(it) }
             Button(onClick = onComplete, enabled = !busy, modifier = Modifier.fillMaxWidth()) {
                 Text(if (event.completedAt == null) "标记完成" else "恢复为未完成")

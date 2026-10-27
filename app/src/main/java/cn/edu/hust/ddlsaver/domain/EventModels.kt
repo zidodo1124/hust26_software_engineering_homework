@@ -4,6 +4,24 @@ enum class Importance { LOW, NORMAL, HIGH }
 
 enum class Urgency { NORMAL, SOON, DANGER, OVERDUE, COMPLETED, ARCHIVED }
 
+enum class ExpiredPolicy { KEEP, AUTO_ARCHIVE }
+
+enum class BatchOperation { COMPLETE, ARCHIVE, DELETE }
+
+data class Category(val id: String, val name: String, val isActive: Boolean = true)
+
+data class CustomField(val id: String, val label: String, val value: String)
+
+data class AttachmentRef(
+    val id: String,
+    val relativePath: String,
+    val mimeType: String,
+    val displayName: String,
+    val byteSize: Long = 0,
+    val width: Int = 0,
+    val height: Int = 0,
+)
+
 data class DdlEvent(
     val id: String,
     val title: String,
@@ -16,6 +34,10 @@ data class DdlEvent(
     val createdAt: Long,
     val updatedAt: Long,
     val revision: Long,
+    val source: Category? = null,
+    val tags: List<Category> = emptyList(),
+    val customFields: List<CustomField> = emptyList(),
+    val attachments: List<AttachmentRef> = emptyList(),
 )
 
 data class EventDraft(
@@ -26,9 +48,16 @@ data class EventDraft(
     val description: String = "",
     val importance: Importance = Importance.NORMAL,
     val expectedRevision: Long? = null,
+    val sourceId: String? = null,
+    val tagIds: Set<String> = emptySet(),
+    val customFields: List<CustomField> = emptyList(),
+    val attachments: List<AttachmentRef> = emptyList(),
 )
 
-data class AppSettings(val urgentMinutes: Long = 24 * 60L)
+data class AppSettings(
+    val urgentMinutes: Long = 24 * 60L,
+    val expiredPolicy: ExpiredPolicy = ExpiredPolicy.KEEP,
+)
 
 class EventValidationException(message: String) : IllegalArgumentException(message)
 
