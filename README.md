@@ -1,4 +1,4 @@
-# HUSTer`s DDL Saver
+# HUSTer's DDL Saver
 
 面向大学生的 Android DDL 管理与提醒应用。通过二次元角色、气泡卡片和系统通知，把分散的截止事项集中起来，让用户知道有哪些事、什么时候截止，以及哪些事需要尽快开始。
 
