@@ -1,8 +1,11 @@
 package cn.edu.hust.ddlsaver.ui
 
+import android.Manifest
+import android.provider.Settings
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Context
+import android.content.Intent
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.DialogInterface
@@ -24,11 +27,14 @@ import androidx.compose.ui.test.performScrollToNode
 import androidx.compose.ui.test.performTextInput
 import androidx.compose.ui.test.performTextReplacement
 import androidx.test.core.app.ApplicationProvider
+import androidx.test.core.app.ActivityScenario
 import androidx.lifecycle.ViewModelProvider
 import cn.edu.hust.ddlsaver.MainActivity
 import cn.edu.hust.ddlsaver.data.RoomEventRepository
 import cn.edu.hust.ddlsaver.data.SaverDatabase
 import cn.edu.hust.ddlsaver.domain.DdlEvent
+import cn.edu.hust.ddlsaver.domain.AppSettings
+import cn.edu.hust.ddlsaver.reminders.ReminderRuntime
 import cn.edu.hust.ddlsaver.domain.EventDraft
 import cn.edu.hust.ddlsaver.domain.CustomField
 import cn.edu.hust.ddlsaver.domain.ExpiredPolicy
@@ -55,6 +61,7 @@ import org.robolectric.annotation.LooperMode
 import org.robolectric.annotation.GraphicsMode
 import org.robolectric.annotation.SQLiteMode
 import org.robolectric.shadows.ShadowDialog
+import org.robolectric.Shadows.shadowOf
 import java.time.Instant
 import java.time.YearMonth
 import java.io.File
@@ -71,6 +78,7 @@ class SaverAppFlowTest {
         override fun after() = removeTestDatabase()
 
         private fun removeTestDatabase() {
+            ReminderRuntime.resetForTests()
             val context = ApplicationProvider.getApplicationContext<Context>()
             context.deleteDatabase("ddl-saver.db")
             File(context.filesDir, "attachments").listFiles().orEmpty().forEach { it.delete() }
@@ -172,7 +180,7 @@ class SaverAppFlowTest {
         compose.onNodeWithTag("field-add").performScrollTo().performClick()
         compose.onNodeWithTag("field-label-0").performScrollTo().performTextInput("地点")
         compose.onNodeWithTag("field-value-0").performScrollTo().performTextInput("东九楼")
-        compose.activityRule.scenario.recreate()
+        recreateAndVerifyLaunchIdentity(compose.activityRule.scenario)
         compose.onNodeWithTag("event-title").performScrollTo().assertTextContains("尚未保存的标题")
         compose.onNodeWithTag("event-description").performScrollTo().assertTextContains("旋转后仍需保留的描述")
         compose.onNodeWithTag("field-label-0").performScrollTo().assertTextContains("地点")
@@ -343,7 +351,7 @@ class SaverAppFlowTest {
         awaitImportedImage()
         val imported = privateImageFiles().single()
         assertTrue(imported.exists())
-        compose.activityRule.scenario.recreate()
+        recreateAndVerifyLaunchIdentity(compose.activityRule.scenario)
         compose.onNodeWithText("图片附件 · 1 张").assertExists()
         compose.onNodeWithText("‹ 返回").performClick()
         compose.onNodeWithText("放弃修改").performClick()
@@ -383,6 +391,137 @@ class SaverAppFlowTest {
         assertTrue(storedEvents().single().attachments.isEmpty())
         compose.waitUntil(20_000) { !privateCopy.exists() }
         assertTrue(original.exists())
+    }
+
+    @Test
+    fun reminderSettingsValidateAndPreserveIndependentOptions() {
+        val original = AppSettings(urgentMinutes = 120, dailySummaryEnabled = false, dailySummaryMinuteOfDay = 547,
+            dangerReminderEnabled = false, deadlineReminderEnabled = true, deadlineLeadMinutes = 45)
+        withRepository { saveSettings(original) }
+        reloadModel()
+        compose.onNodeWithText("设置").performClick()
+        compose.onNodeWithTag("settings-urgent-minutes").performScrollTo().performTextReplacement("480")
+        compose.onNodeWithTag("settings-save").performScrollTo().performClick()
+        awaitText("DDL Saver")
+        assertEquals(original.copy(urgentMinutes = 480), withRepository { settings.first() })
+        compose.onNodeWithText("设置").performClick()
+        compose.onNodeWithTag("settings-summary-time").performScrollTo().performTextReplacement("24:00")
+        compose.onNodeWithTag("settings-save").performScrollTo().performClick()
+        compose.onNodeWithText("请输入 00:00 至 23:59 的时间。").assertExists()
+        assertEquals(original.copy(urgentMinutes = 480), withRepository { settings.first() })
+        compose.onNodeWithTag("settings-summary-time").performScrollTo().performTextReplacement("07:15")
+        compose.onNodeWithTag("settings-deadline-lead").performScrollTo().performTextReplacement("0")
+        compose.onNodeWithTag("settings-save").performScrollTo().performClick()
+        compose.onNodeWithText("请输入有效的正整数分钟数。").assertExists()
+        compose.onNodeWithTag("settings-deadline-lead").performScrollTo().performTextReplacement("30")
+        compose.onNodeWithTag("settings-daily-enabled").performScrollTo().performClick()
+        compose.onNodeWithTag("settings-save").performScrollTo().performClick()
+        awaitText("DDL Saver")
+        assertEquals(original.copy(urgentMinutes = 480, dailySummaryEnabled = true,
+            dailySummaryMinuteOfDay = 435, deadlineLeadMinutes = 30), withRepository { settings.first() })
+    }
+
+    @Test
+    fun reminderTapResetsHomeFiltersAndRoutesToLatestDetailOnce() {
+        val today = Instant.now().atZone(BeijingZone).toLocalDate()
+        val target = withRepository { save(EventDraft(title = "通知目标事项", deadlineAt = today.atTime(23, 59).atZone(BeijingZone).toInstant().toEpochMilli())) }
+        withRepository { save(EventDraft(title = "另一天事项", deadlineAt = today.plusDays(2).atTime(12, 0).atZone(BeijingZone).toInstant().toEpochMilli())) }
+        reloadModel()
+        compose.onNodeWithTag("event-search").performTextInput("没有匹配的搜索词")
+        scrollHomeTag("toggle-batch")
+        compose.onNodeWithTag("toggle-batch").performClick()
+        sendReminderIntent(today = true)
+        scrollHomeTag("toggle-batch")
+        compose.onNodeWithText("批量管理").assertExists()
+        compose.onNodeWithText("退出批量").assertDoesNotExist()
+        scrollHomeTag("list-summary")
+        compose.onNodeWithTag("list-summary").assertTextEquals("今日待办 · 1")
+        sendReminderIntent(eventId = target.id)
+        awaitText("事项详情")
+        awaitText("通知目标事项")
+        recreateAndVerifyLaunchIdentity(compose.activityRule.scenario)
+        awaitText("事项详情")
+        assertNull(ViewModelProvider(compose.activity)[SaverViewModel::class.java].state.value.reminderNavigation)
+        assertEquals(2, storedEvents().size)
+    }
+
+    @Test
+    fun reminderTapDuringDraftCanBeDeferredAcrossRotationWithoutLosingInput() {
+        val target = withRepository { save(EventDraft(title = "稍后查看的事项", deadlineAt = Instant.now().plusSeconds(86400).toEpochMilli())) }
+        reloadModel()
+        openNewEvent()
+        compose.onNodeWithTag("event-title").performTextInput("尚未保存的草稿")
+        sendReminderIntent(eventId = target.id)
+        awaitText("查看通知中的事项？")
+        compose.onNodeWithTag("reminder-defer").performClick()
+        compose.onNodeWithTag("event-title").assertTextContains("尚未保存的草稿")
+        recreateAndVerifyLaunchIdentity(compose.activityRule.scenario)
+        compose.onNodeWithTag("event-title").assertTextContains("尚未保存的草稿")
+        compose.onNodeWithText("查看通知中的事项？").assertDoesNotExist()
+        compose.onNodeWithText("‹ 返回").performClick()
+        compose.onNodeWithText("放弃修改").performClick()
+        awaitText("事项详情")
+        awaitText("稍后查看的事项")
+        assertEquals(listOf(target.id), storedEvents().map { it.id })
+    }
+
+    @Test
+    fun missingReminderTargetReturnsHomeWithExplanation() {
+        awaitText("DDL Saver")
+        sendReminderIntent(eventId = "deleted-test-item")
+        awaitText("这条提醒对应的事项已不存在。")
+        compose.onNodeWithText("DDL Saver").assertExists()
+        assertNull(ViewModelProvider(compose.activity)[SaverViewModel::class.java].state.value.reminderNavigation)
+        assertTrue(storedEvents().isEmpty())
+    }
+
+    @Test
+    fun deniedNotificationPermissionAlwaysHasDirectSystemSettingsRecovery() {
+        val application = compose.activity.application
+        shadowOf(application).denyPermissions(Manifest.permission.POST_NOTIFICATIONS)
+        val model = ViewModelProvider(compose.activity)[SaverViewModel::class.java]
+        compose.runOnIdle { model.refreshReminders() }
+        compose.waitUntil(20_000) { !model.reminderHealth.value.canPost }
+        awaitText("DDL Saver")
+        compose.onNodeWithText("设置").performClick()
+        compose.onNodeWithTag("open-notification-settings").performScrollTo().performClick()
+        val launched = shadowOf(compose.activity).nextStartedActivity
+        assertNotNull("A denied permission must have a recovery route independent from RequestPermission", launched)
+        assertEquals(Settings.ACTION_APP_NOTIFICATION_SETTINGS, checkNotNull(launched).action)
+        assertEquals(application.packageName, checkNotNull(launched).getStringExtra(Settings.EXTRA_APP_PACKAGE))
+    }
+
+    private fun sendReminderIntent(eventId: String? = null, today: Boolean = false) {
+        val launchIdentity = Intent(compose.activity.intent)
+        compose.runOnIdle {
+            compose.activity.onNewIntent(Intent(compose.activity, MainActivity::class.java)
+                .setAction("cn.edu.hust.ddlsaver.OPEN_REMINDER")
+                .setData(Uri.parse("ddlsaver://test-reminder/${eventId ?: "today"}"))
+                .putExtra("reminder_event_id", eventId).putExtra("reminder_today", today))
+        }
+        compose.waitForIdle()
+        // ActivityScenario tracks lifecycle by its original action/data identity. Fail immediately
+        // if a delivery replaces it, before recreate() can enter an unbounded paused-looper wait.
+        assertTrue("A notification delivery must preserve the Activity launch identity",
+            launchIdentity.filterEquals(compose.activity.intent))
+    }
+
+    private fun recreateAndVerifyLaunchIdentity(scenario: ActivityScenario<MainActivity>) {
+        var previousIdentity = 0
+        var launchIdentity: Intent? = null
+        scenario.onActivity { activity ->
+            previousIdentity = System.identityHashCode(activity)
+            launchIdentity = Intent(activity.intent)
+        }
+        println("UI-RECREATE-BEGIN")
+        scenario.recreate()
+        scenario.onActivity { activity ->
+            assertTrue("recreate() must construct a different Activity instance",
+                previousIdentity != System.identityHashCode(activity))
+            assertTrue("Recreation must retain the original launch identity",
+                checkNotNull(launchIdentity).filterEquals(activity.intent))
+        }
+        println("UI-RECREATE-END")
     }
 
     private fun pasteTestImage(): File {

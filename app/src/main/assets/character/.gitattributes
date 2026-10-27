@@ -1,0 +1,4 @@
+# Keep the exact licensed source bytes and hashes on every platform.
+*.webp -text
+*.txt -text whitespace=trailing-space,space-before-tab,cr-at-eol
+upstream-NOTICE.md -text whitespace=trailing-space,space-before-tab,cr-at-eol

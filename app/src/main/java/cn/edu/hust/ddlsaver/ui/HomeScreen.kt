@@ -26,9 +26,10 @@ import java.util.Locale
 internal fun HomeScreen(
     state: SaverUiState, batchToken: Long, onSettings: () -> Unit, onOpen: (String) -> Unit,
     onBatch: (Set<String>, BatchOperation) -> Unit,
+    initiallyToday: Boolean = false, reminderWarning: String? = null,
 ) {
     var modeName by rememberSaveable { mutableStateOf(EventListMode.TODO.name) }
-    var quickFilter by rememberSaveable { mutableStateOf("all") }
+    var quickFilter by rememberSaveable { mutableStateOf(if (initiallyToday) "today" else "all") }
     var query by rememberSaveable { mutableStateOf("") }
     var sourceId by rememberSaveable { mutableStateOf<String?>(null) }
     var tagsJson by rememberSaveable { mutableStateOf("[]") }
@@ -102,6 +103,13 @@ internal fun HomeScreen(
                 TextButton({ selecting = !selecting; selectionJson = "[]" }, enabled = !busy, modifier = Modifier.testTag("toggle-batch")) { Text(if (selecting) "退出批量" else "批量管理") }
             }
         }
+        item { CharacterPanel(selectCharacterFeedback(state.events, state.now, state.settings, state.justCompleted)) }
+        reminderWarning?.let { warning -> item {
+            Surface(color = Color(0xFFFFF2D9), shape = RoundedCornerShape(14.dp)) {
+                Text(warning, Modifier.fillMaxWidth().padding(14.dp).testTag("home-reminder-warning"), color = Ink,
+                    style = MaterialTheme.typography.bodySmall)
+            }
+        } }
         if (filtersOpen) item {
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Text("来源（单选）", fontWeight = FontWeight.SemiBold)

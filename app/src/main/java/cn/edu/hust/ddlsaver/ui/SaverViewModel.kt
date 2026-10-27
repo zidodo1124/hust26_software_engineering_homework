@@ -11,6 +11,7 @@ import cn.edu.hust.ddlsaver.data.SaverDatabase
 import cn.edu.hust.ddlsaver.domain.*
 import cn.edu.hust.ddlsaver.platform.AttachmentStore
 import cn.edu.hust.ddlsaver.platform.AttachmentException
+import cn.edu.hust.ddlsaver.reminders.ReminderRuntime
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -22,6 +23,8 @@ import kotlinx.coroutines.launch
 import java.time.Instant
 
 data class ActionResult(val token: Long, val kind: String, val eventId: String?, val savedRevision: Long? = null)
+data class ReminderNavigation(val token: Long, val eventId: String?, val today: Boolean, val deferred: Boolean = false)
+
 data class ImageImportResult(val token: Long, val session: Long, val attachments: List<AttachmentRef>)
 data class SaverUiState(
     val loading: Boolean = true,
@@ -36,6 +39,8 @@ data class SaverUiState(
     val busy: Boolean = false,
     val actionResult: ActionResult? = null,
     val imageImportResult: ImageImportResult? = null,
+    val reminderNavigation: ReminderNavigation? = null,
+    val justCompleted: Boolean = false,
 )
 
 /** Owns pending IO across Activity recreation; UI callbacks never own an import task. */
@@ -43,10 +48,14 @@ class SaverViewModel(application: Application) : AndroidViewModel(application) {
     private val database = SaverDatabase.create(application)
     private val repository = RoomEventRepository(database)
     private val attachments = AttachmentStore(application)
+    private val reminders = ReminderRuntime.get(application)
+    val reminderHealth = reminders.health
     private val mutableState = MutableStateFlow(SaverUiState())
     val state = mutableState.asStateFlow()
     private var observation: Job? = null
     private var nextActionToken = 0L
+    private var nextNavigationToken = 0L
+    private var completionFeedbackJob: Job? = null
     private var policyJob: Job? = null
     private var orphanCleanupStarted = false
     private data class DraftFiles(val originals: List<AttachmentRef>, val candidates: MutableMap<String, AttachmentRef>)
@@ -73,13 +82,31 @@ class SaverViewModel(application: Application) : AndroidViewModel(application) {
                 }.collect { loaded ->
                     mutableState.update { it.copy(events = loaded.events, settings = loaded.settings,
                         sources = loaded.sources, tags = loaded.tags, loading = false, loadError = null) }
+                    reminders.requestReconcile()
                 }
             } catch (cancelled: CancellationException) { throw cancelled }
             catch (_: Exception) { mutableState.update { it.copy(loading = false, loadError = "暂时无法读取本机数据，请重试。") } }
         }
     }
 
+    fun refreshReminders() = reminders.requestReconcile()
+
+    fun requestReminderNavigation(eventId: String?, today: Boolean) {
+        if (eventId == null && !today) return
+        mutableState.update { it.copy(reminderNavigation = ReminderNavigation(++nextNavigationToken, eventId, today)) }
+    }
+
+    fun deferReminderNavigation(token: Long) = mutableState.update {
+        val request = it.reminderNavigation
+        if (request != null && request.token == token) it.copy(reminderNavigation = request.copy(deferred = true)) else it
+    }
+
+    fun acknowledgeReminderNavigation(token: Long) = mutableState.update {
+        if (it.reminderNavigation?.token == token) it.copy(reminderNavigation = null) else it
+    }
+
     fun refreshTime() {
+        reminders.requestReconcile()
         mutableState.update { it.copy(now = Instant.now()) }
         if (policyJob?.isActive == true) return
         policyJob = viewModelScope.launch {
@@ -155,7 +182,11 @@ class SaverViewModel(application: Application) : AndroidViewModel(application) {
         cleanCandidates(files?.let { it.originals + it.candidates.values } ?: emptyList())
         saved.id to saved.revision
     }
-    fun setCompleted(event: DdlEvent) = perform("state") { repository.setCompleted(event.id, event.completedAt == null); event.id to null }
+    fun setCompleted(event: DdlEvent) = perform("state", completionFeedback = event.completedAt == null) {
+        repository.setCompleted(event.id, event.completedAt == null)
+        if (event.completedAt != null) { completionFeedbackJob?.cancel(); mutableState.update { it.copy(justCompleted = false) } }
+        event.id to null
+    }
     fun setArchived(event: DdlEvent) = perform("state") { repository.setArchived(event.id, event.archivedAt == null); event.id to null }
     fun delete(event: DdlEvent) = perform("delete") {
         repository.delete(event.id)
@@ -165,15 +196,16 @@ class SaverViewModel(application: Application) : AndroidViewModel(application) {
     fun applyBatch(ids: Set<String>, operation: BatchOperation) {
         val frozen = ids.toSet()
         val oldAttachments = mutableState.value.events.filter { it.id in frozen }.flatMap { it.attachments }
-        perform("batch") {
+        val newlyCompleted = operation == BatchOperation.COMPLETE && mutableState.value.events.any { it.id in frozen && it.completedAt == null }
+        perform("batch", completionFeedback = newlyCompleted) {
             repository.applyBatch(frozen, operation)
             if (operation == BatchOperation.DELETE) cleanCandidates(oldAttachments)
             null to null
         }
     }
     fun archiveExpired() = perform("batch") { repository.archiveExpired(); null to null }
-    fun saveSettings(minutes: Long, policy: ExpiredPolicy) = perform("settings") {
-        repository.saveSettings(AppSettings(minutes, policy))
+    fun saveSettings(settings: AppSettings) = perform("settings") {
+        repository.saveSettings(settings)
         try { repository.applyExpiredPolicy() }
         catch (cancelled: CancellationException) { throw cancelled }
         catch (_: Exception) { mutableState.update { it.copy(cleanupWarning = "设置已保存，过期事项暂未归档，将在下次刷新时重试。") } }
@@ -196,12 +228,21 @@ class SaverViewModel(application: Application) : AndroidViewModel(application) {
         catch (_: Exception) { cleanupFailed() }
     }
     private fun cleanupFailed() = mutableState.update { it.copy(cleanupWarning = "数据操作已完成，部分闲置图片暂未清理，将在后续启动时重试。") }
-    private fun perform(kind: String, action: suspend () -> Pair<String?, Long?>) {
+    private fun perform(kind: String, completionFeedback: Boolean = false, action: suspend () -> Pair<String?, Long?>) {
         if (mutableState.value.busy || mutableState.value.actionResult != null || mutableState.value.imageImportResult != null) return
         mutableState.update { it.copy(busy = true, operationError = null) }
         viewModelScope.launch {
             try {
                 val (id, revision) = action()
+                reminders.requestReconcile()
+                if (completionFeedback) {
+                    completionFeedbackJob?.cancel()
+                    mutableState.update { it.copy(justCompleted = true) }
+                    completionFeedbackJob = viewModelScope.launch {
+                        delay(5_000)
+                        mutableState.update { it.copy(justCompleted = false) }
+                    }
+                }
                 mutableState.update { it.copy(busy = false, actionResult = ActionResult(++nextActionToken, kind, id, revision)) }
             } catch (cancelled: CancellationException) { mutableState.update { it.copy(busy = false) }; throw cancelled }
             catch (error: Exception) {

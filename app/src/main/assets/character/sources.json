@@ -1,0 +1,70 @@
+{
+  "checkedDate": "2026-10-27",
+  "repository": "https://github.com/JAdpp/dsh-whale-galgame",
+  "commit": "046b848f244450e6e636335766276bf3343fe84b",
+  "license": "CC BY-NC-SA 4.0",
+  "modifications": "Byte-identical copies; no image edits or metadata changes.",
+  "files": [
+    {
+      "file": "maid-left.webp",
+      "upstreamPath": "assets/default/maid-left.webp",
+      "sourceUrl": "https://raw.githubusercontent.com/JAdpp/dsh-whale-galgame/046b848f244450e6e636335766276bf3343fe84b/assets/default/maid-left.webp",
+      "bytes": 286224,
+      "sha256": "AF7BFD2E18505FC9D6F94CEFD9FEBC92B31C1B2B66C756982D91FC7B93FB184C",
+      "width": 1122,
+      "height": 2019,
+      "hasAlpha": true
+    },
+    {
+      "file": "whale-cheerful.webp",
+      "upstreamPath": "assets/default/whale-cheerful.webp",
+      "sourceUrl": "https://raw.githubusercontent.com/JAdpp/dsh-whale-galgame/046b848f244450e6e636335766276bf3343fe84b/assets/default/whale-cheerful.webp",
+      "bytes": 314854,
+      "sha256": "117ED691623DA550075056963764CEE7A4CD14318D5AB87CE63D11926B83AA4B",
+      "width": 935,
+      "height": 1682,
+      "hasAlpha": true
+    },
+    {
+      "file": "whale-serious.webp",
+      "upstreamPath": "assets/default/whale-serious.webp",
+      "sourceUrl": "https://raw.githubusercontent.com/JAdpp/dsh-whale-galgame/046b848f244450e6e636335766276bf3343fe84b/assets/default/whale-serious.webp",
+      "bytes": 283052,
+      "sha256": "2974CC4A814F6B1F95D907D22F62D9E0094DD7E538B6145E7C8A1DBB6154DE34",
+      "width": 935,
+      "height": 1682,
+      "hasAlpha": true
+    },
+    {
+      "file": "whale-angry.webp",
+      "upstreamPath": "assets/default/whale-angry.webp",
+      "sourceUrl": "https://raw.githubusercontent.com/JAdpp/dsh-whale-galgame/046b848f244450e6e636335766276bf3343fe84b/assets/default/whale-angry.webp",
+      "bytes": 321758,
+      "sha256": "63BB54126CF3ACC785B251A19D465A8E388865BADBDC7BAF17BBAD4B68057A02",
+      "width": 935,
+      "height": 1683,
+      "hasAlpha": true
+    },
+    {
+      "file": "upstream-NOTICE.md",
+      "upstreamPath": "NOTICE.md",
+      "sourceUrl": "https://raw.githubusercontent.com/JAdpp/dsh-whale-galgame/046b848f244450e6e636335766276bf3343fe84b/NOTICE.md",
+      "bytes": 11777,
+      "sha256": "1428A1740DFF86038EF4C0E9AB73D7E0B9CEBD170F4EF8615E8B4322CC097F81"
+    },
+    {
+      "file": "dsh-deep-whale-LICENSE.txt",
+      "upstreamPath": "assets/default/licenses/dsh-deep-whale-LICENSE.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/JAdpp/dsh-whale-galgame/046b848f244450e6e636335766276bf3343fe84b/assets/default/licenses/dsh-deep-whale-LICENSE.txt",
+      "bytes": 20849,
+      "sha256": "1349A4B6148492B44F629E64EED676612E234FE9A839E4F3B277C1482C8849F1"
+    },
+    {
+      "file": "dsh-deep-whale-NOTICE.txt",
+      "upstreamPath": "assets/default/licenses/dsh-deep-whale-NOTICE.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/JAdpp/dsh-whale-galgame/046b848f244450e6e636335766276bf3343fe84b/assets/default/licenses/dsh-deep-whale-NOTICE.txt",
+      "bytes": 1325,
+      "sha256": "45E48BA5C3FC59E03C1A9559EAA04686F8D340D684F2970CE384A7578E7EF6DD"
+    }
+  ]
+}

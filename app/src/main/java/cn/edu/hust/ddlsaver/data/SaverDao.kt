@@ -7,6 +7,8 @@ import androidx.room.Query
 import androidx.room.Transaction
 import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
+import cn.edu.hust.ddlsaver.reminders.ReminderPlanEntity
+import cn.edu.hust.ddlsaver.reminders.ReminderControlEntity
 
 @Dao
 interface SaverDao {
@@ -101,4 +103,22 @@ interface SaverDao {
 
     @Query("SELECT relativePath FROM attachments")
     suspend fun referencedAttachmentPaths(): List<String>
+
+    @Query("SELECT * FROM events ORDER BY deadlineAt, id")
+    suspend fun readAllEventEntities(): List<EventEntity>
+
+    @Query("SELECT * FROM reminder_plans ORDER BY triggerAt, `key`")
+    suspend fun readReminderPlans(): List<ReminderPlanEntity>
+
+    @Query("SELECT * FROM reminder_plans WHERE `key` = :key")
+    suspend fun readReminderPlan(key: String): ReminderPlanEntity?
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun putReminderPlan(plan: ReminderPlanEntity)
+
+    @Query("SELECT * FROM reminder_control WHERE id = 1")
+    suspend fun readReminderControl(): ReminderControlEntity?
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun putReminderControl(control: ReminderControlEntity)
 }

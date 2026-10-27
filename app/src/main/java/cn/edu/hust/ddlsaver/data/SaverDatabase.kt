@@ -7,11 +7,13 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
+import cn.edu.hust.ddlsaver.reminders.ReminderPlanEntity
+import cn.edu.hust.ddlsaver.reminders.ReminderControlEntity
 
 @Database(
     entities = [EventEntity::class, SettingsEntity::class, SourceEntity::class, TagEntity::class,
-        EventTagEntity::class, CustomFieldEntity::class, AttachmentEntity::class],
-    version = 2,
+        EventTagEntity::class, CustomFieldEntity::class, AttachmentEntity::class, ReminderPlanEntity::class, ReminderControlEntity::class],
+    version = 3,
     exportSchema = true,
 )
 @TypeConverters(SaverConverters::class)
@@ -34,10 +36,22 @@ abstract class SaverDatabase : RoomDatabase() {
             }
         }
 
+        val MIGRATION_2_3 = object : Migration(2, 3) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE settings ADD COLUMN dailySummaryEnabled INTEGER NOT NULL DEFAULT 1")
+                db.execSQL("ALTER TABLE settings ADD COLUMN dailySummaryMinuteOfDay INTEGER NOT NULL DEFAULT 480")
+                db.execSQL("ALTER TABLE settings ADD COLUMN dangerReminderEnabled INTEGER NOT NULL DEFAULT 1")
+                db.execSQL("ALTER TABLE settings ADD COLUMN deadlineReminderEnabled INTEGER NOT NULL DEFAULT 1")
+                db.execSQL("ALTER TABLE settings ADD COLUMN deadlineLeadMinutes INTEGER NOT NULL DEFAULT 60")
+                db.execSQL("CREATE TABLE IF NOT EXISTS reminder_plans (`key` TEXT NOT NULL, kind TEXT NOT NULL, eventId TEXT, deadlineAt INTEGER, eventRevision INTEGER, triggerAt INTEGER NOT NULL, day TEXT, notificationTag TEXT NOT NULL, active INTEGER NOT NULL, state TEXT NOT NULL, lastAttemptAt INTEGER, lastError TEXT, cancelPending INTEGER NOT NULL, PRIMARY KEY(`key`))")
+                db.execSQL("CREATE TABLE IF NOT EXISTS reminder_control (id INTEGER NOT NULL, alarmIdentity TEXT NOT NULL, dailyDate TEXT, dailyMinuteOfDay INTEGER, scheduledTriggerAt INTEGER, desiredTriggerAt INTEGER, scheduleMode TEXT, alarmDirty INTEGER NOT NULL, lastError TEXT, PRIMARY KEY(id))")
+            }
+        }
+
         fun create(context: Context): SaverDatabase = Room.databaseBuilder(
             context.applicationContext,
             SaverDatabase::class.java,
             "ddl-saver.db",
-        ).addMigrations(MIGRATION_1_2).build()
+        ).addMigrations(MIGRATION_1_2, MIGRATION_2_3).build()
     }
 }

@@ -47,7 +47,6 @@ import cn.edu.hust.ddlsaver.domain.EventDraft
 import cn.edu.hust.ddlsaver.domain.Importance
 import cn.edu.hust.ddlsaver.domain.Category
 import cn.edu.hust.ddlsaver.domain.AttachmentRef
-import cn.edu.hust.ddlsaver.domain.ExpiredPolicy
 import android.net.Uri
 import java.time.Instant
 import java.time.LocalDate
@@ -233,85 +232,7 @@ internal fun EventEditor(
 }
 
 @Composable
-internal fun SettingsScreen(
-    currentMinutes: Long,
-    currentPolicy: ExpiredPolicy,
-    busy: Boolean,
-    operationError: String?,
-    onBack: () -> Unit,
-    onSave: (Long, ExpiredPolicy) -> Unit,
-    onCategories: () -> Unit,
-    onArchiveExpired: () -> Unit,
-) {
-    val original = rememberSaveable { currentMinutes.toString() }
-    var minutes by rememberSaveable { mutableStateOf(original) }
-    val originalPolicy = rememberSaveable { currentPolicy.name }
-    var policy by rememberSaveable { mutableStateOf(originalPolicy) }
-    var confirmArchive by rememberSaveable { mutableStateOf(false) }
-    var submitted by rememberSaveable { mutableStateOf(false) }
-    var discardDialog by rememberSaveable { mutableStateOf(false) }
-    val parsed = minutes.trim().toLongOrNull()
-    val invalid = parsed == null || parsed <= 0 || parsed > MaxDurationMinutes
-    val back: () -> Unit = {
-        if (!busy) {
-            if (minutes != original || policy != originalPolicy) discardDialog = true else onBack()
-        }
-    }
-    BackHandler(onBack = back)
-    Column(Modifier.fillMaxSize()) {
-        ScreenHeader("应用设置", back, enabled = !busy)
-        Column(
-            Modifier.weight(1f).verticalScroll(rememberScrollState()).padding(horizontal = 20.dp).padding(bottom = 24.dp),
-            verticalArrangement = Arrangement.spacedBy(18.dp),
-        ) {
-            Surface(color = Color.White, shape = RoundedCornerShape(20.dp)) {
-                Column(Modifier.fillMaxWidth().padding(20.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
-                    Text("普通紧急程度", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold)
-                    Text("距离截止时间进入这个范围时，事项显示为橙色。速通危险期仍使用每件事项自己的速通时间。", color = Muted)
-                    OutlinedTextField(
-                        value = minutes, onValueChange = { minutes = it }, enabled = !busy,
-                        label = { Text("提前多少分钟") }, modifier = Modifier.fillMaxWidth(),
-                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number), singleLine = true,
-                        isError = submitted && invalid,
-                        supportingText = { Text(if (submitted && invalid) "请输入有效的正整数分钟数。" else "默认 1440 分钟，即 24 小时。") },
-                    )
-                }
-            }
-            operationError?.let { ErrorNotice(it) }
-            Text("过期事项处理", fontWeight = FontWeight.SemiBold)
-            Column {
-                FilterChip(policy == ExpiredPolicy.KEEP.name, { policy = ExpiredPolicy.KEEP.name },
-                    enabled = !busy, label = { Text("灰显保留") }, modifier = Modifier.testTag("policy-keep"))
-                FilterChip(policy == ExpiredPolicy.AUTO_ARCHIVE.name, { policy = ExpiredPolicy.AUTO_ARCHIVE.name },
-                    enabled = !busy, label = { Text("自动归档过期未完成事项") }, modifier = Modifier.testTag("policy-auto"))
-                Text("保存设置后立即生效，并在进入应用及分钟刷新时检查。归档可恢复。", color = Muted,
-                    style = MaterialTheme.typography.bodySmall)
-            }
-            Button(onClick = { submitted = true; if (!invalid) onSave(checkNotNull(parsed), ExpiredPolicy.valueOf(policy)) }, enabled = !busy, modifier = Modifier.fillMaxWidth()) {
-                if (busy) CircularProgressIndicator(Modifier.size(18.dp), color = MaterialTheme.colorScheme.onPrimary, strokeWidth = 2.dp)
-                else Text("保存设置")
-            }
-            OutlinedButton(onClick = onCategories, enabled = !busy, modifier = Modifier.fillMaxWidth().testTag("manage-categories")) { Text("分类管理：来源与标签") }
-            OutlinedButton(onClick = { confirmArchive = true }, enabled = !busy, modifier = Modifier.fillMaxWidth().testTag("archive-expired")) { Text("一键归档过期事项") }
-            Spacer(Modifier.height(8.dp))
-            Text("时间与数据", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.SemiBold)
-            Text("所有事项按北京时间展示。事项和设置保存在本机，无需注册即可使用。", color = Muted, style = MaterialTheme.typography.bodyMedium)
-            Text("HUSTer's DDL Saver · 花园鳗", color = Muted, style = MaterialTheme.typography.labelMedium)
-        }
-    }
-    if (discardDialog) {
-        DiscardDialog(onKeepEditing = { discardDialog = false }, onDiscard = { discardDialog = false; onBack() })
-    }
-    if (confirmArchive) AlertDialog(
-        onDismissRequest = { confirmArchive = false }, title = { Text("归档全部过期事项？") },
-        text = { Text("所有已过截止时间且未归档的事项将移入归档列表，包括已完成事项。完成标记保留，之后可以恢复归档。") },
-        confirmButton = { TextButton({ confirmArchive = false; onArchiveExpired() }) { Text("确认归档") } },
-        dismissButton = { TextButton({ confirmArchive = false }) { Text("取消") } },
-    )
-}
-
-@Composable
-private fun DiscardDialog(onKeepEditing: () -> Unit, onDiscard: () -> Unit) {
+internal fun DiscardDialog(onKeepEditing: () -> Unit, onDiscard: () -> Unit) {
     AlertDialog(
         onDismissRequest = onKeepEditing,
         title = { Text("放弃尚未保存的修改？") },

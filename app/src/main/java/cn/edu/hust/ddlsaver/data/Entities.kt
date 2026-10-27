@@ -9,6 +9,7 @@ import androidx.room.Junction
 import androidx.room.PrimaryKey
 import androidx.room.Relation
 import androidx.room.TypeConverter
+import cn.edu.hust.ddlsaver.domain.AppSettings
 import cn.edu.hust.ddlsaver.domain.AttachmentRef
 import cn.edu.hust.ddlsaver.domain.Category
 import cn.edu.hust.ddlsaver.domain.CustomField
@@ -42,7 +43,20 @@ data class SettingsEntity(
     @PrimaryKey val id: Int = 1,
     val urgentMinutes: Long,
     @ColumnInfo(defaultValue = "'KEEP'") val expiredPolicy: ExpiredPolicy = ExpiredPolicy.KEEP,
-)
+    @ColumnInfo(defaultValue = "1") val dailySummaryEnabled: Boolean = true,
+    @ColumnInfo(defaultValue = "480") val dailySummaryMinuteOfDay: Int = 480,
+    @ColumnInfo(defaultValue = "1") val dangerReminderEnabled: Boolean = true,
+    @ColumnInfo(defaultValue = "1") val deadlineReminderEnabled: Boolean = true,
+    @ColumnInfo(defaultValue = "60") val deadlineLeadMinutes: Long = 60,
+) {
+    fun toDomain() = AppSettings(urgentMinutes, expiredPolicy, dailySummaryEnabled,
+        dailySummaryMinuteOfDay, dangerReminderEnabled, deadlineReminderEnabled, deadlineLeadMinutes)
+}
+
+internal fun AppSettings.toEntity() = SettingsEntity(urgentMinutes = urgentMinutes,
+    expiredPolicy = expiredPolicy, dailySummaryEnabled = dailySummaryEnabled,
+    dailySummaryMinuteOfDay = dailySummaryMinuteOfDay, dangerReminderEnabled = dangerReminderEnabled,
+    deadlineReminderEnabled = deadlineReminderEnabled, deadlineLeadMinutes = deadlineLeadMinutes)
 
 @Entity(tableName = "sources")
 data class SourceEntity(@PrimaryKey val id: String, val name: String, val isActive: Boolean = true) {

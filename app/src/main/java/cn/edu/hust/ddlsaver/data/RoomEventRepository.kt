@@ -1,6 +1,7 @@
 package cn.edu.hust.ddlsaver.data
 
 import androidx.room.withTransaction
+import cn.edu.hust.ddlsaver.reminders.ReminderPlanStore
 import cn.edu.hust.ddlsaver.domain.AppSettings
 import cn.edu.hust.ddlsaver.domain.BatchOperation
 import cn.edu.hust.ddlsaver.domain.Category
@@ -25,14 +26,14 @@ class RoomEventRepository(
 
     override val events: Flow<List<DdlEvent>> = dao.observeEvents().map { rows -> rows.map { it.toDomain() } }
     override val settings: Flow<AppSettings> = dao.observeSettings().map { row ->
-        row?.let { AppSettings(it.urgentMinutes, it.expiredPolicy) } ?: AppSettings()
+        row?.toDomain() ?: AppSettings()
     }
     override val sources: Flow<List<Category>> = dao.observeSources().map { rows -> rows.map { it.toDomain() } }
     override val tags: Flow<List<Category>> = dao.observeTags().map { rows -> rows.map { it.toDomain() } }
 
     override suspend fun save(draft: EventDraft): DdlEvent {
         val normalized = EventValidation.normalize(draft)
-        return database.withTransaction {
+        return reminderTransaction {
             val now = clock.millis()
             val id = normalized.id ?: UUID.randomUUID().toString()
             val previous = normalized.id?.let { dao.findEvent(it) ?: throw EventNotFoundException() }
@@ -93,7 +94,7 @@ class RoomEventRepository(
     }
 
     override suspend fun setCompleted(id: String, completed: Boolean) {
-        database.withTransaction {
+        reminderTransaction {
             val row = dao.findEvent(id) ?: throw EventNotFoundException()
             if ((row.completedAt != null) != completed) {
                 val now = clock.millis()
@@ -106,7 +107,7 @@ class RoomEventRepository(
     }
 
     override suspend fun setArchived(id: String, archived: Boolean) {
-        database.withTransaction {
+        reminderTransaction {
             val row = dao.findEvent(id) ?: throw EventNotFoundException()
             if ((row.archivedAt != null) != archived) {
                 val now = clock.millis()
@@ -119,7 +120,7 @@ class RoomEventRepository(
     }
 
     override suspend fun delete(id: String) {
-        database.withTransaction {
+        reminderTransaction {
             if (dao.deleteEvent(id) != 1) throw EventNotFoundException()
         }
     }
@@ -127,7 +128,7 @@ class RoomEventRepository(
     override suspend fun applyBatch(ids: Set<String>, operation: BatchOperation) {
         val selected = ids.toSet()
         if (selected.isEmpty()) return
-        database.withTransaction {
+        reminderTransaction {
             // Resolve the entire frozen selection before the first mutation; stale selections roll back.
             val rows = dao.findEvents(selected)
             if (rows.size != selected.size) throw EventNotFoundException()
@@ -148,31 +149,31 @@ class RoomEventRepository(
 
     override suspend fun setUrgentMinutes(minutes: Long) {
         EventValidation.validateMinutes(minutes)
-        database.withTransaction {
+        reminderTransaction {
             val previous = dao.readSettings() ?: SettingsEntity(urgentMinutes = 1440)
             dao.saveSettings(previous.copy(urgentMinutes = minutes))
         }
     }
 
     override suspend fun setExpiredPolicy(policy: ExpiredPolicy) {
-        database.withTransaction {
+        reminderTransaction {
             val previous = dao.readSettings() ?: SettingsEntity(urgentMinutes = 1440)
             dao.saveSettings(previous.copy(expiredPolicy = policy))
         }
     }
 
     override suspend fun saveSettings(settings: AppSettings) {
-        EventValidation.validateMinutes(settings.urgentMinutes)
-        database.withTransaction {
-            dao.saveSettings(SettingsEntity(urgentMinutes = settings.urgentMinutes, expiredPolicy = settings.expiredPolicy))
+        EventValidation.validateSettings(settings)
+        reminderTransaction {
+            dao.saveSettings(settings.toEntity())
         }
     }
 
-    override suspend fun archiveExpired(): Int = database.withTransaction {
+    override suspend fun archiveExpired(): Int = reminderTransaction {
         archiveExpiredRows(includeCompleted = true)
     }
 
-    override suspend fun applyExpiredPolicy(): Int = database.withTransaction {
+    override suspend fun applyExpiredPolicy(): Int = reminderTransaction {
         if (dao.readSettings()?.expiredPolicy != ExpiredPolicy.AUTO_ARCHIVE) 0
         else archiveExpiredRows(includeCompleted = false)
     }
@@ -192,7 +193,7 @@ class RoomEventRepository(
 
     override suspend fun saveSource(id: String?, name: String): Category {
         val normalized = EventValidation.normalizeCategoryName(name)
-        return database.withTransaction {
+        return reminderTransaction {
             if (dao.readSources().any { it.id != id && it.name.equals(normalized, ignoreCase = true) }) {
                 throw EventValidationException("已有同名来源，请使用或恢复原来源。")
             }
@@ -206,7 +207,7 @@ class RoomEventRepository(
     }
 
     override suspend fun setSourceActive(id: String, active: Boolean) {
-        database.withTransaction {
+        reminderTransaction {
             val row = dao.findSource(id) ?: throw EventValidationException("来源已不存在。")
             if (dao.updateSource(row.copy(isActive = active)) != 1) throw EventValidationException("来源已不存在。")
         }
@@ -214,7 +215,7 @@ class RoomEventRepository(
 
     override suspend fun saveTag(id: String?, name: String): Category {
         val normalized = EventValidation.normalizeCategoryName(name)
-        return database.withTransaction {
+        return reminderTransaction {
             if (dao.readTags().any { it.id != id && it.name.equals(normalized, ignoreCase = true) }) {
                 throw EventValidationException("已有同名标签，请使用或恢复原标签。")
             }
@@ -228,11 +229,17 @@ class RoomEventRepository(
     }
 
     override suspend fun setTagActive(id: String, active: Boolean) {
-        database.withTransaction {
+        reminderTransaction {
             val row = dao.findTag(id) ?: throw EventValidationException("标签已不存在。")
             if (dao.updateTag(row.copy(isActive = active)) != 1) throw EventValidationException("标签已不存在。")
         }
     }
 
     override suspend fun referencedAttachmentPaths(): Set<String> = dao.referencedAttachmentPaths().toSet()
+
+    private suspend fun <T> reminderTransaction(action: suspend () -> T): T = database.withTransaction {
+        val result = action()
+        ReminderPlanStore.rebuild(dao, clock.millis())
+        result
+    }
 }

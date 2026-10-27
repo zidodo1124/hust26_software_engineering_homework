@@ -61,6 +61,14 @@ object EventValidation {
         if (it.isBlank()) throw EventValidationException("请填写分类名称。")
     }
 
+    fun validateSettings(settings: AppSettings) {
+        validateMinutes(settings.urgentMinutes)
+        validateMinutes(settings.deadlineLeadMinutes, "临近通知提前量")
+        if (settings.dailySummaryMinuteOfDay !in 0..1439) {
+            throw EventValidationException("每日汇总时刻必须在 00:00 至 23:59 之间。")
+        }
+    }
+
     fun validateMinutes(minutes: Long, fieldName: String = "普通紧急阈值") {
         if (minutes <= 0) throw EventValidationException("${fieldName}必须大于 0 分钟。")
         if (minutes > MAX_DURATION_MINUTES) throw EventValidationException("${fieldName}过大，请缩短时长。")

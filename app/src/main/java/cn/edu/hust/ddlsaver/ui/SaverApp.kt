@@ -66,6 +66,7 @@ import cn.edu.hust.ddlsaver.domain.DdlEvent
 import cn.edu.hust.ddlsaver.domain.Importance
 import cn.edu.hust.ddlsaver.domain.Urgency
 import cn.edu.hust.ddlsaver.domain.UrgencyRules
+import cn.edu.hust.ddlsaver.domain.selectCharacterFeedback
 import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
@@ -83,16 +84,43 @@ internal fun formatDeadline(value: Long): String = DeadlineFormat.format(Instant
 @Composable
 fun SaverApp(model: SaverViewModel) {
     val state by model.state.collectAsStateWithLifecycle()
+    val reminderHealth by model.reminderHealth.collectAsStateWithLifecycle()
     var screen by rememberSaveable { mutableStateOf("home") }
     var selectedId by rememberSaveable { mutableStateOf<String?>(null) }
     var editorSession by rememberSaveable { mutableLongStateOf(0L) }
     var batchToken by rememberSaveable { mutableLongStateOf(0L) }
     var categoryToken by rememberSaveable { mutableLongStateOf(0L) }
+    var homeGeneration by rememberSaveable { mutableLongStateOf(0L) }
+    var todayOnHome by rememberSaveable { mutableStateOf(false) }
     val snackbar = remember { SnackbarHostState() }
     val snackbarScope = rememberCoroutineScope()
     val homeState = rememberSaveableStateHolder()
     val owner = LocalLifecycleOwner.current
     val working = state.busy || state.actionResult != null || state.imageImportResult != null
+
+    fun openReminder(request: ReminderNavigation) {
+        homeState.removeState("home-$homeGeneration")
+        homeGeneration++
+        todayOnHome = request.today
+        model.clearOperationError()
+        val target = request.eventId?.let { id -> state.events.firstOrNull { it.id == id } }
+        if (target != null) {
+            selectedId = target.id
+            screen = "detail"
+        } else {
+            selectedId = null
+            screen = "home"
+            if (request.eventId != null) snackbarScope.launch {
+                snackbar.showSnackbar("这条提醒对应的事项已不存在。", withDismissAction = true)
+            }
+        }
+        model.acknowledgeReminderNavigation(request.token)
+    }
+    val editingScreen = screen == "editor" || screen == "settings" || screen == "categories"
+    LaunchedEffect(state.reminderNavigation, state.loading, working, screen, state.events) {
+        val request = state.reminderNavigation ?: return@LaunchedEffect
+        if (!state.loading && state.loadError == null && !working && !editingScreen) openReminder(request)
+    }
 
     LaunchedEffect(state.loading, screen) {
         if (!state.loading && screen != "editor") model.cleanupOldAttachments()
@@ -180,10 +208,15 @@ fun SaverApp(model: SaverViewModel) {
                     actionLabel = "重新读取",
                     onAction = model::reload,
                 )
-                screen == "home" -> homeState.SaveableStateProvider("home") {
+                screen == "home" -> homeState.SaveableStateProvider("home-$homeGeneration") {
                     HomeScreen(
                         state,
                         batchToken = batchToken,
+                        initiallyToday = todayOnHome,
+                        reminderWarning = if (!(state.settings.dailySummaryEnabled || state.settings.dangerReminderEnabled || state.settings.deadlineReminderEnabled)) null
+                            else reminderHealth.lastError?.let { "数据已保存，提醒安排尚未完成：$it" }
+                                ?: if (!reminderHealth.canPost) "系统通知尚未开启，提醒不会显示。可在设置中开启。"
+                                else if (!reminderHealth.canScheduleExact) "当前使用近似提醒，省电限制可能导致延迟。可在设置中允许精确提醒。" else null,
                         onSettings = { model.clearOperationError(); screen = "settings" },
                         onOpen = { selectedId = it; model.clearOperationError(); screen = "detail" },
                         onBatch = model::applyBatch,
@@ -191,8 +224,8 @@ fun SaverApp(model: SaverViewModel) {
                 }
                 screen == "settings" -> homeState.SaveableStateProvider("settings") {
                     SettingsScreen(
-                        currentMinutes = state.settings.urgentMinutes,
-                        currentPolicy = state.settings.expiredPolicy,
+                        current = state.settings,
+                        health = reminderHealth,
                         busy = working,
                         operationError = state.operationError,
                         onBack = {
@@ -203,6 +236,7 @@ fun SaverApp(model: SaverViewModel) {
                         onSave = model::saveSettings,
                         onCategories = { model.clearOperationError(); screen = "categories" },
                         onArchiveExpired = model::archiveExpired,
+                        onRefreshReminders = model::refreshReminders,
                     )
                 }
                 screen == "categories" -> CategoryManager(
@@ -267,6 +301,24 @@ fun SaverApp(model: SaverViewModel) {
                     }
                 }
             }
+        }
+    }
+    state.reminderNavigation?.let { request ->
+        if (!state.loading && !working && editingScreen && !request.deferred) {
+            AlertDialog(
+                onDismissRequest = { model.deferReminderNavigation(request.token) },
+                title = { Text("查看通知中的事项？") },
+                text = { Text("当前页面可能有尚未保存的内容。可以完成当前编辑后再查看通知，或明确放弃当前修改后打开。") },
+                dismissButton = { TextButton({ model.deferReminderNavigation(request.token) }, modifier = Modifier.testTag("reminder-defer")) { Text("稍后查看") } },
+                confirmButton = { TextButton({
+                    if (screen == "editor") {
+                        model.discardDraft(editorSession)
+                        homeState.removeState("editor-$editorSession")
+                    }
+                    if (screen == "settings" || screen == "categories") homeState.removeState("settings")
+                    openReminder(request)
+                }, modifier = Modifier.testTag("reminder-discard-open")) { Text("放弃修改并打开") } },
+            )
         }
     }
 }
@@ -377,6 +429,7 @@ private fun DetailScreen(
             }
             if (event.attachments.isNotEmpty()) AttachmentGallery(event.attachments)
             state.operationError?.let { ErrorNotice(it) }
+            if (state.justCompleted) CharacterPanel(selectCharacterFeedback(state.events, state.now, state.settings, justCompleted = true))
             Button(onClick = onComplete, enabled = !busy, modifier = Modifier.fillMaxWidth()) {
                 Text(if (event.completedAt == null) "标记完成" else "恢复为未完成")
             }

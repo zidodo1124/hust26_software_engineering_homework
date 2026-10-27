@@ -57,6 +57,11 @@ data class EventDraft(
 data class AppSettings(
     val urgentMinutes: Long = 24 * 60L,
     val expiredPolicy: ExpiredPolicy = ExpiredPolicy.KEEP,
+    val dailySummaryEnabled: Boolean = true,
+    val dailySummaryMinuteOfDay: Int = 8 * 60,
+    val dangerReminderEnabled: Boolean = true,
+    val deadlineReminderEnabled: Boolean = true,
+    val deadlineLeadMinutes: Long = 60,
 )
 
 class EventValidationException(message: String) : IllegalArgumentException(message)
