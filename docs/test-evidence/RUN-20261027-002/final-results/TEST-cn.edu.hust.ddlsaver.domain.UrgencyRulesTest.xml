@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.domain.UrgencyRulesTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-10-27T12:01:48" hostname="LAPTOP-7OF0K1SP" time="0.003">
+  <properties/>
+  <testcase name="dangerTakesPriorityWhenSprintExceedsOrdinaryThreshold" classname="cn.edu.hust.ddlsaver.domain.UrgencyRulesTest" time="0.001"/>
+  <testcase name="ordinaryUrgencyIncludesExactThreshold" classname="cn.edu.hust.ddlsaver.domain.UrgencyRulesTest" time="0.0"/>
+  <testcase name="dangerStartsExactlyAtSprintBoundaryAndEndsAtDeadline" classname="cn.edu.hust.ddlsaver.domain.UrgencyRulesTest" time="0.001"/>
+  <testcase name="absentSprintNeverCreatesDanger" classname="cn.edu.hust.ddlsaver.domain.UrgencyRulesTest" time="0.0"/>
+  <testcase name="deviceTimeZoneDoesNotChangeBeijingDateMembership" classname="cn.edu.hust.ddlsaver.domain.UrgencyRulesTest" time="0.0"/>
+  <testcase name="todayMembershipDoesNotSilentlyDiscardCompletedOrOverdueEvents" classname="cn.edu.hust.ddlsaver.domain.UrgencyRulesTest" time="0.001"/>
+  <testcase name="importanceDoesNotChangeTimeClassification" classname="cn.edu.hust.ddlsaver.domain.UrgencyRulesTest" time="0.0"/>
+  <testcase name="completionAndArchiveAreIndependentAndExcludeActiveScope" classname="cn.edu.hust.ddlsaver.domain.UrgencyRulesTest" time="0.0"/>
+  <testcase name="ordinaryThresholdIsConfigurableIndependentlyOfSprint" classname="cn.edu.hust.ddlsaver.domain.UrgencyRulesTest" time="0.0"/>
+  <testcase name="beijingMidnightChangesTodayScope" classname="cn.edu.hust.ddlsaver.domain.UrgencyRulesTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

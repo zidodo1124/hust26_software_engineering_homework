@@ -2,10 +2,10 @@
 
 | 项目 | 当前情况 |
 | --- | --- |
-| 版本与日期 | v0.2；2026-10-27 |
+| 版本与日期 | v0.3；2026-10-27 |
 | 依据 | [测试计划与用例](test-plan.md)、[设计文档](design.md)、[需求分析](requirements.md) |
-| 实际软件测试批次 | 1 个本地验证批次及 1 次同源码的独立 CI 复核；本地批次包含失败、诊断和复测，见第 7 节 |
-| 当前内容 | 第 1—6 节为后续可复用模板；第 7 节为实际本地执行结果。荣耀 X50 尚未连接 |
+| 实际软件测试批次 | 第一、二轮分别建立本地验证批次；CI 按对应源码另行核对，失败与复测分别保留 |
+| 当前内容 | 第 1—6 节为可复用模板；第 7 节为第一轮，第 8 节为第二轮。荣耀 X50 尚未连接 |
 
 ## 1. 填写原则
 
@@ -68,7 +68,7 @@ MagicOS／Android／API 版本：<从实际设备读取，不使用出厂推测>
 
 ## 4. 证据保存约定
 
-证据按 `docs/test-evidence/<RUN>/` 保存；本轮已有构建日志、JUnit XML、Lint 报告和诊断摘录，见[首轮证据](test-evidence/RUN-20261027-001/README.md)。尚无实机截图或视频。
+证据按 `docs/test-evidence/<RUN>/` 保存；已有构建日志、JUnit XML、Lint 报告和诊断摘录，分别见[第一轮证据](test-evidence/RUN-20261027-001/README.md)和[第二轮证据](test-evidence/RUN-20261027-002/README.md)。尚无实机截图或视频。
 
 - 建议文件名：`TC-编号_子场景_序号.png`、`.mp4` 或 `.txt`；记录中使用相对于本文件的路径。
 - 规则测试保留测试命令、输出、代码版本与固定时钟参数；UI 和通知测试保留可核对内容及时间的证据。
@@ -169,3 +169,55 @@ powershell -ExecutionPolicy Bypass -File scripts/gradle.ps1 :app:assembleDebug :
 - 实际结果：工作流 `completed / success`；从报告产物读取 JUnit XML，30 项测试全部通过，失败、错误和跳过均为 0；构建和 Lint 步骤成功。
 - 产物：[Debug APK](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40490279525/artifacts/12728437151)、[测试与 Lint 报告](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40490279525/artifacts/12728172188)已生成，核对时未过期。元数据见[CI 复核记录](test-evidence/RUN-20261027-001/ci-verification.json)。
 - 统计边界：这是相同 30 个自动测试在第二种构建环境中的复核，不能累计为 60 个不同测试用例，也不增加实机执行次数。本节未将本机 APK 哈希用于 CI 安装包。
+
+## 8. RUN-20261027-002：第二轮信息组织与图片
+
+### 8.1 环境、范围与证据
+
+应用 `0.2.0`／versionCode 2，schema 2。沿用 Windows、Temurin JDK 17.0.20.1+1、Gradle 8.11.1、AGP 8.9.2、SDK 35；领域测试使用固定时间，Room 测试使用 Robolectric API 28，图片最终覆盖 API 28、35，Activity／Compose 测试使用 API 35。图片由测试生成 PNG，不使用私人相册数据。荣耀 X50 未连接。
+
+执行者为 AI 助手；支盟渊提供范围与继续实施授权，其他成员尚无本轮实测登记。本轮以真实 schema 1 建库迁移，检查来源标签、自定义字段、组合筛选、月历、批量、过期设置和附件生命周期，原有基础流程继续回归。原始输出保存在[第二轮证据目录](test-evidence/RUN-20261027-002/)。
+
+全量命令：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/gradle.ps1 :app:assembleDebug :app:testDebugUnitTest :app:lintDebug --console=plain --continue
+```
+
+### 8.2 尝试、发现与修复
+
+| 尝试 | 实际观察 | 处理及证据 |
+| --- | --- | --- |
+| 01：首次全量 | APK 构建成功；迁移测试无法打开旧库文件；UI 失败诊断再次等待空闲，测试进程持续空转，手动终止已确认身份的测试 worker | [日志](test-evidence/RUN-20261027-002/attempt-01.txt)、[线程快照](test-evidence/RUN-20261027-002/attempt-01-thread-dump.txt)。本次未生成完整新 XML，不用目录里残留的首轮报告代替本次结果 |
+| 02：修复后全量 | 74 次测试执行，69 通过、5 失败，错误及跳过为 0；旧库迁移、全部领域与 Room 测试、13 项图片平台测试均通过 | [完整日志](test-evidence/RUN-20261027-002/attempt-02.txt)保留 5 条 UI 失败及汇总；[JUnit XML](test-evidence/RUN-20261027-002/attempt-02-results/)保留其余 9 组，UI 原 XML 未保留，不用后续单跑报告冒充本次结果 |
+| 03：两条图片定向 | 2 次均失败；新增错误诊断显示私有图片重命名失败，并非剪贴板未读取；统一 Activity 剪贴板上下文未解决问题 | [日志](test-evidence/RUN-20261027-002/attempt-03.txt)、[XML](test-evidence/RUN-20261027-002/attempt-03-results/)。继续检查文件句柄，不删除图片生命周期断言 |
+| 04：全部界面定向 | 9 次执行，6 通过、3 失败；原生 SQLite 后端下批量及过期整理检查通过；分类页内输入已可执行，但来源选中断言失败；缩短图片测试名仍重命名失败 | [日志](test-evidence/RUN-20261027-002/attempt-04.txt)、[XML](test-evidence/RUN-20261027-002/attempt-04-results/)。补充滚动定位与选中断言，修正解码流生命周期，随后全量回归 |
+
+迁移测试原已创建父目录，首次异常不能写成“忘记建目录”。Robolectric 把测试方法名放入 Windows 临时路径，缩短测试方法及库名后真实文件迁移通过；记录为测试夹具路径修正，不归类为应用丢失数据。失败诊断改为先打印原始异常，不再进行可能再次阻塞的界面查询。
+
+分类编辑由弹窗改为页内可滚动表单，保存失败保留输入，编辑时锁定分类类型。来源／标签 chip 位于横向滚动容器中，原测试仅滚动最近的横向祖先，未保证外层纵向表单可见；修正为先滚动整行，再真实点击并断言已选中。未采用直接调用语义操作绕过真实点击。
+
+图片检查发现 SDK 28 的 `BitmapFactory.decodeFile` 使用并关闭 `FileInputStream`，SDK 35 则经 `IoBridge` 处理文件描述符；Robolectric Windows 后端的描述符处理差异与重命名失败相符。改为自有 `inputStream().use { decodeStream(...) }` 显式关闭流，仍保留同目录 `.part` 校验后重命名、整批失败回滚和资源限制。平台图片测试扩展至 API 28、35；未将此测试后端问题断言为荣耀 X50 已发生的问题。
+
+审阅还补齐附件 ID 与私有文件名一致的校验，并防止编辑器在保存完成、尚未导航时重新登记已结束的草稿。数据库保存成功后的图片清理或过期整理失败单独提示，不虚报保存失败。最终结果及提交号见下方第 8.3 节。
+
+### 8.3 最终本机结果与覆盖
+
+- 核对时间：2026-10-27 05:03:39（America/Los_Angeles，UTC-07:00）。
+- 被测源码：[6255f3b](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/6255f3bd3c36e2a605f963eb7a8bae9a6ad19842)；源码与测试在最后检查后原样提交。
+- 第 05 次：87 次执行，86 通过、1 失败；图片两种 API 与两条完整界面流程均通过。唯一失败为断言默认要求完整文本，却传入“· 1”；实际页面为“全部待办 · 1”。改为精确匹配完整预期文本。[日志](test-evidence/RUN-20261027-002/attempt-05.txt)、[XML](test-evidence/RUN-20261027-002/attempt-05-results/)。
+- 第 06 次：全量构建、测试和 Lint 成功，87 次执行通过，0 失败／错误／跳过。[日志](test-evidence/RUN-20261027-002/attempt-06.txt)、[XML](test-evidence/RUN-20261027-002/final-results/)、[汇总](test-evidence/RUN-20261027-002/summary.json)。
+- 方法／配置计数：26 个领域方法、24 个 Room／迁移方法、2 个月历方法、9 个界面方法各执行一次；13 个图片方法分别在 API 28、35 执行，共 74 个方法、87 次执行。
+- Lint：0 错误、11 条警告，含 10 条依赖更新和 1 条 ExifInterface 维护提示；编译另保留文本剪贴板接口弃用提示。未以关闭检查获得通过。
+- APK：v0.2.0／2，11,190,058 字节，SHA-256 `6B5167424691BD218E10314689990C37969FCD8018FBCAA282A2917B67B594A9`。包信息与签名见[工具检查](test-evidence/RUN-20261027-002/apk-inspection.txt)。
+
+当前证据对应 TC-01—TC-18 及 TC-30 中相关子场景，详见[第二轮检查安排](test-plan.md#5-第二轮增量检查安排)。未登记 30 个完整业务用例整例通过；手机安装、系统相册／外部剪贴板、系统杀进程、通知和角色仍无本轮实机结论。
+
+### 8.4 CI-40500794045：第二轮独立环境复核
+
+- 核对时间：2026-10-27 05:11:13（America/Los_Angeles，UTC-07:00）。
+- [运行](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40500794045)对应源码 `6255f3bd3c36e2a605f963eb7a8bae9a6ad19842`，状态 `completed / success`；Ubuntu 24.04，JDK 17、SDK 35。
+- 从实际报告 ZIP 解析 10 组 JUnit XML，87 个 testcase，0 失败／错误／跳过；XML 声明计数与节点计数一致。
+- CI Lint：0 错误、12 条警告，类型为 `GradleDependency`、`ExifInterface`、`OldTargetApi`；比本机 11 条多一个目标 API 提示，两边独立记录。
+- [APK 产物](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40500794045/artifacts/12733885228)、[报告产物](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40500794045/artifacts/12733560898)均已生成；详见[复核 JSON](test-evidence/RUN-20261027-002/ci-verification.json)。没有输出或保存认证凭证。
+- 同源码独立运行不累计为更多不同测试方法，也不增加荣耀 X50 实测次数；本地 APK 哈希不代替 CI 产物标识。

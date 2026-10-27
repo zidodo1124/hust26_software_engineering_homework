@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.platform.AttachmentStoreTest" tests="26" skipped="0" failures="0" errors="0" timestamp="2026-10-27T12:01:48" hostname="LAPTOP-7OF0K1SP" time="10.111">
+  <properties/>
+  <testcase name="startupCleanupRetainsFreshReferencedProtectedAndUnknownFiles[28]" classname="cn.edu.hust.ddlsaver.platform.AttachmentStoreTest" time="5.792"/>
+  <testcase name="startupCleanupRetainsFreshReferencedProtectedAndUnknownFiles" classname="cn.edu.hust.ddlsaver.platform.AttachmentStoreTest" time="0.21"/>
+  <testcase name="discardingDraftKeepsReferencedCopiesAndNeverTouchesSources[28]" classname="cn.edu.hust.ddlsaver.platform.AttachmentStoreTest" time="0.168"/>
+  <testcase name="discardingDraftKeepsReferencedCopiesAndNeverTouchesSources" classname="cn.edu.hust.ddlsaver.platform.AttachmentStoreTest" time="0.152"/>
+  <testcase name="previewsAreSampledAndHardClampedTo1600Pixels[28]" classname="cn.edu.hust.ddlsaver.platform.AttachmentStoreTest" time="0.53"/>
+  <testcase name="previewsAreSampledAndHardClampedTo1600Pixels" classname="cn.edu.hust.ddlsaver.platform.AttachmentStoreTest" time="0.507"/>
+  <testcase name="traversalIsRejectedBeforeAnyCandidateCanBeDeleted[28]" classname="cn.edu.hust.ddlsaver.platform.AttachmentStoreTest" time="0.115"/>
+  <testcase name="traversalIsRejectedBeforeAnyCandidateCanBeDeleted" classname="cn.edu.hust.ddlsaver.platform.AttachmentStoreTest" time="0.096"/>
+  <testcase name="importCopiesMultipleRealImagesAndRetainsSources[28]" classname="cn.edu.hust.ddlsaver.platform.AttachmentStoreTest" time="0.146"/>
+  <testcase name="importCopiesMultipleRealImagesAndRetainsSources" classname="cn.edu.hust.ddlsaver.platform.AttachmentStoreTest" time="0.164"/>
+  <testcase name="permissionFailureAfterOneImageLeavesNoNewCopies[28]" classname="cn.edu.hust.ddlsaver.platform.AttachmentStoreTest" time="0.17"/>
+  <testcase name="permissionFailureAfterOneImageLeavesNoNewCopies" classname="cn.edu.hust.ddlsaver.platform.AttachmentStoreTest" time="0.138"/>
+  <testcase name="plausibleImageHeaderWithoutPixelsIsRejected[28]" classname="cn.edu.hust.ddlsaver.platform.AttachmentStoreTest" time="0.086"/>
+  <testcase name="plausibleImageHeaderWithoutPixelsIsRejected" classname="cn.edu.hust.ddlsaver.platform.AttachmentStoreTest" time="0.092"/>
+  <testcase name="cancellationDuringCopyRollsBackBothCompletedAndTemporaryCopies[28]" classname="cn.edu.hust.ddlsaver.platform.AttachmentStoreTest" time="0.163"/>
+  <testcase name="cancellationDuringCopyRollsBackBothCompletedAndTemporaryCopies" classname="cn.edu.hust.ddlsaver.platform.AttachmentStoreTest" time="0.162"/>
+  <testcase name="oversizedImageIsStoppedByStreamingByteLimit[28]" classname="cn.edu.hust.ddlsaver.platform.AttachmentStoreTest" time="0.168"/>
+  <testcase name="oversizedImageIsStoppedByStreamingByteLimit" classname="cn.edu.hust.ddlsaver.platform.AttachmentStoreTest" time="0.146"/>
+  <testcase name="missingCopyHasVisibleErrorAndDoesNotChangeOtherAttachments[28]" classname="cn.edu.hust.ddlsaver.platform.AttachmentStoreTest" time="0.153"/>
+  <testcase name="missingCopyHasVisibleErrorAndDoesNotChangeOtherAttachments" classname="cn.edu.hust.ddlsaver.platform.AttachmentStoreTest" time="0.175"/>
+  <testcase name="extremePixelDimensionsAreRejectedWithoutAllocatingTheFullImage[28]" classname="cn.edu.hust.ddlsaver.platform.AttachmentStoreTest" time="0.11"/>
+  <testcase name="extremePixelDimensionsAreRejectedWithoutAllocatingTheFullImage" classname="cn.edu.hust.ddlsaver.platform.AttachmentStoreTest" time="0.112"/>
+  <testcase name="unreadableSecondImageRollsBackTheWholeBatchButKeepsExistingCopies[28]" classname="cn.edu.hust.ddlsaver.platform.AttachmentStoreTest" time="0.177"/>
+  <testcase name="unreadableSecondImageRollsBackTheWholeBatchButKeepsExistingCopies" classname="cn.edu.hust.ddlsaver.platform.AttachmentStoreTest" time="0.196"/>
+  <testcase name="declaredNonImageAndPlainWebAddressAreRejected[28]" classname="cn.edu.hust.ddlsaver.platform.AttachmentStoreTest" time="0.095"/>
+  <testcase name="declaredNonImageAndPlainWebAddressAreRejected" classname="cn.edu.hust.ddlsaver.platform.AttachmentStoreTest" time="0.085"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

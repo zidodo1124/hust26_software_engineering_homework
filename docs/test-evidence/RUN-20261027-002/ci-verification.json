@@ -1,0 +1,228 @@
+{
+  "repository": "zidodo1124/hust26_software_engineering_homework",
+  "sha": "6255f3bd3c36e2a605f963eb7a8bae9a6ad19842",
+  "checkedAtUtc": "2026-10-27T12:11:13.258378+00:00",
+  "found": true,
+  "runId": 40500794045,
+  "attempt": 1,
+  "status": "completed",
+  "conclusion": "success",
+  "runUrl": "https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40500794045",
+  "jobs": [
+    {
+      "name": "Build APK, run local tests and lint",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check out source",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Set up JDK 17",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Set up Android SDK",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Build and check",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Upload checked debug APK",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Upload test and lint reports",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Set up JDK 17",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Check out source",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "reportEvidence": {
+    "archiveSha256": "9705dcec231ae5d5291981ddfa2ee0b0c062e3dbdcf9a685e580c8ace719860f",
+    "suites": [
+      {
+        "suite": "cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest",
+        "tests": 10,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "actualTestCases": 10,
+        "actualFailures": 0,
+        "actualErrors": 0,
+        "actualSkipped": 0,
+        "countsAgree": true
+      },
+      {
+        "suite": "cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest",
+        "tests": 13,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "actualTestCases": 13,
+        "actualFailures": 0,
+        "actualErrors": 0,
+        "actualSkipped": 0,
+        "countsAgree": true
+      },
+      {
+        "suite": "cn.edu.hust.ddlsaver.data.SaverDatabaseMigrationTest",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "actualTestCases": 1,
+        "actualFailures": 0,
+        "actualErrors": 0,
+        "actualSkipped": 0,
+        "countsAgree": true
+      },
+      {
+        "suite": "cn.edu.hust.ddlsaver.domain.EventQueryTest",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "actualTestCases": 5,
+        "actualFailures": 0,
+        "actualErrors": 0,
+        "actualSkipped": 0,
+        "countsAgree": true
+      },
+      {
+        "suite": "cn.edu.hust.ddlsaver.domain.EventValidationTest",
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "actualTestCases": 7,
+        "actualFailures": 0,
+        "actualErrors": 0,
+        "actualSkipped": 0,
+        "countsAgree": true
+      },
+      {
+        "suite": "cn.edu.hust.ddlsaver.domain.ExtendedEventValidationTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "actualTestCases": 4,
+        "actualFailures": 0,
+        "actualErrors": 0,
+        "actualSkipped": 0,
+        "countsAgree": true
+      },
+      {
+        "suite": "cn.edu.hust.ddlsaver.domain.UrgencyRulesTest",
+        "tests": 10,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "actualTestCases": 10,
+        "actualFailures": 0,
+        "actualErrors": 0,
+        "actualSkipped": 0,
+        "countsAgree": true
+      },
+      {
+        "suite": "cn.edu.hust.ddlsaver.platform.AttachmentStoreTest",
+        "tests": 26,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "actualTestCases": 26,
+        "actualFailures": 0,
+        "actualErrors": 0,
+        "actualSkipped": 0,
+        "countsAgree": true
+      },
+      {
+        "suite": "cn.edu.hust.ddlsaver.ui.CalendarGridTest",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "actualTestCases": 2,
+        "actualFailures": 0,
+        "actualErrors": 0,
+        "actualSkipped": 0,
+        "countsAgree": true
+      },
+      {
+        "suite": "cn.edu.hust.ddlsaver.ui.SaverAppFlowTest",
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "actualTestCases": 9,
+        "actualFailures": 0,
+        "actualErrors": 0,
+        "actualSkipped": 0,
+        "countsAgree": true
+      }
+    ],
+    "totals": {
+      "tests": 87,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "actualTestCases": 87
+    },
+    "countsAgree": true,
+    "lint": {
+      "errors": 0,
+      "warnings": 12,
+      "issueIds": [
+        "ExifInterface",
+        "GradleDependency",
+        "OldTargetApi"
+      ]
+    }
+  },
+  "artifacts": [
+    {
+      "kind": "apk",
+      "id": 12733885228,
+      "name": "ddl-saver-debug-6255f3bd3c36e2a605f963eb7a8bae9a6ad19842",
+      "bytes": 10470506,
+      "url": "https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40500794045/artifacts/12733885228"
+    },
+    {
+      "kind": "reports",
+      "id": 12733560898,
+      "name": "android-check-reports-6255f3bd3c36e2a605f963eb7a8bae9a6ad19842",
+      "bytes": 55388,
+      "url": "https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40500794045/artifacts/12733560898"
+    }
+  ]
+}

@@ -1,0 +1,280 @@
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+> Task :app:processDebugResources UP-TO-DATE
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:mergeDebugShaders UP-TO-DATE
+> Task :app:compileDebugShaders NO-SOURCE
+> Task :app:generateDebugAssets UP-TO-DATE
+> Task :app:mergeDebugAssets UP-TO-DATE
+> Task :app:compressDebugAssets UP-TO-DATE
+> Task :app:desugarDebugFileDependencies UP-TO-DATE
+> Task :app:checkDebugDuplicateClasses UP-TO-DATE
+> Task :app:mergeExtDexDebug UP-TO-DATE
+> Task :app:mergeLibDexDebug UP-TO-DATE
+> Task :app:mergeDebugJniLibFolders UP-TO-DATE
+> Task :app:mergeDebugNativeLibs UP-TO-DATE
+> Task :app:stripDebugDebugSymbols UP-TO-DATE
+> Task :app:validateSigningDebug UP-TO-DATE
+> Task :app:writeDebugAppMetadata UP-TO-DATE
+> Task :app:writeDebugSigningConfigVersions UP-TO-DATE
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:javaPreCompileDebugUnitTest UP-TO-DATE
+> Task :app:packageDebugUnitTestForUnitTest UP-TO-DATE
+> Task :app:generateDebugUnitTestConfig UP-TO-DATE
+> Task :app:preDebugAndroidTestBuild SKIPPED
+> Task :app:generateDebugAndroidTestResValues UP-TO-DATE
+> Task :app:extractProguardFiles UP-TO-DATE
+> Task :app:kspDebugKotlin
+
+> Task :app:compileDebugKotlin
+w: file:///[workspace]/app/src/main/java/cn/edu/hust/ddlsaver/ui/SaverApp.kt:328:21 'val LocalClipboardManager: ProvidableCompositionLocal<ClipboardManager>' is deprecated. Use LocalClipboard instead which supports suspend functions.
+
+> Task :app:compileDebugJavaWithJavac NO-SOURCE
+> Task :app:dexBuilderDebug
+> Task :app:mergeDebugGlobalSynthetics UP-TO-DATE
+> Task :app:processDebugJavaRes UP-TO-DATE
+> Task :app:mergeDebugJavaResource UP-TO-DATE
+> Task :app:generateDebugLintReportModel
+> Task :app:bundleDebugClassesToRuntimeJar
+> Task :app:mergeProjectDexDebug
+> Task :app:packageDebug
+> Task :app:createDebugApkListingFileRedirect UP-TO-DATE
+> Task :app:assembleDebug
+> Task :app:bundleDebugClassesToCompileJar
+> Task :app:generateDebugAndroidTestLintModel
+> Task :app:generateDebugUnitTestLintModel
+> Task :app:kspDebugUnitTestKotlin
+> Task :app:lintAnalyzeDebugAndroidTest
+> Task :app:compileDebugUnitTestKotlin
+> Task :app:compileDebugUnitTestJavaWithJavac NO-SOURCE
+> Task :app:processDebugUnitTestJavaRes UP-TO-DATE
+> Task :app:lintAnalyzeDebug
+> Task :app:lintAnalyzeDebugUnitTest
+> Task :app:testDebugUnitTest
+
+--- Failed to create image decoder with message 'incomplete input'
+--- Failed to create image decoder with message 'incomplete input'
+
+> Task :app:testDebugUnitTest
+
+SaverAppFlowTest > savedImageIsKeptOnCancelledRemovalAndDeletedAfterSuccessfulSave FAILED
+    androidx.compose.ui.test.ComposeTimeoutException: Condition still not satisfied after 20000 ms
+        at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$AndroidComposeUiTestImpl.waitUntil(ComposeUiTest.android.kt:504)
+        at androidx.compose.ui.test.junit4.AndroidComposeTestRule.waitUntil(AndroidComposeTestRule.android.kt:339)
+        at cn.edu.hust.ddlsaver.ui.SaverAppFlowTest.awaitText(SaverAppFlowTest.kt:445)
+        at cn.edu.hust.ddlsaver.ui.SaverAppFlowTest.savedImageIsKeptOnCancelledRemovalAndDeletedAfterSuccessfulSave(SaverAppFlowTest.kt:357)
+
+SaverAppFlowTest > importedImageSurvivesRecreationAndDiscardRemovesOnlyPrivateCopy FAILED
+    androidx.compose.ui.test.ComposeTimeoutException: Condition still not satisfied after 20000 ms
+        at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$AndroidComposeUiTestImpl.waitUntil(ComposeUiTest.android.kt:504)
+        at androidx.compose.ui.test.junit4.AndroidComposeTestRule.waitUntil(AndroidComposeTestRule.android.kt:339)
+        at cn.edu.hust.ddlsaver.ui.SaverAppFlowTest.awaitText(SaverAppFlowTest.kt:445)
+        at cn.edu.hust.ddlsaver.ui.SaverAppFlowTest.importedImageSurvivesRecreationAndDiscardRemovesOnlyPrivateCopy(SaverAppFlowTest.kt:337)
+
+SaverAppFlowTest > categoryManagementAndCustomFieldsPersistThenFilterTogether FAILED
+    androidx.test.espresso.AppNotIdleException: Compose did not get idle after 161392 attempts in 60 SECONDS. Please check your measure/layout lambdas, they may be causing an infinite composition loop. Or set Espresso's master idling policy if you require a longer timeout. The following Idle Conditions failed .
+        at androidx.test.espresso.AppNotIdleException.create(AppNotIdleException.java:11)
+        at androidx.compose.ui.test.RobolectricIdlingStrategy$runUntilIdle$1.invoke(RobolectricIdlingStrategy.android.kt:72)
+        at androidx.compose.ui.test.RobolectricIdlingStrategy$runUntilIdle$1.invoke(RobolectricIdlingStrategy.android.kt:65)
+        at androidx.compose.ui.test.AndroidSynchronization_androidKt.runOnUiThread(AndroidSynchronization.android.kt:35)
+        at androidx.compose.ui.test.RobolectricIdlingStrategy.runUntilIdle(RobolectricIdlingStrategy.android.kt:65)
+        at androidx.compose.ui.test.AndroidComposeUiTestEnvironment.waitForIdle(ComposeUiTest.android.kt:383)
+        at androidx.compose.ui.test.AndroidComposeUiTestEnvironment.access$waitForIdle(ComposeUiTest.android.kt:235)
+        at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$AndroidTestOwner.getRoots(ComposeUiTest.android.kt:603)
+        at androidx.compose.ui.test.TestOwnerKt.getAllSemanticsNodes(TestOwner.kt:81)
+        at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNodes$ui_test_release(SemanticsNodeInteraction.kt:64)
+        at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:157)
+        at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+        at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+        at androidx.compose.ui.test.TextActionsKt.getNodeAndFocus(TextActions.kt:109)
+        at androidx.compose.ui.test.TextActionsKt.getNodeAndFocus$default(TextActions.kt:103)
+        at androidx.compose.ui.test.TextActionsKt.performTextInput(TextActions.kt:41)
+        at cn.edu.hust.ddlsaver.ui.SaverAppFlowTest.categoryManagementAndCustomFieldsPersistThenFilterTogether(SaverAppFlowTest.kt:194)
+
+SaverAppFlowTest > batchDeleteCancellationPreservesAllAndConfirmationOnlyDeletesSelected FAILED
+    android.database.sqlite.SQLiteDatabaseLockedException: DB[106] step() [BEGIN IMMEDIATE;]DB[106][C] [database is locked] (code 5 SQLITE_BUSY)
+        at org.robolectric.shadows.ShadowLegacySQLiteConnection$Connections.getSqliteException(ShadowLegacySQLiteConnection.java:849)
+        at org.robolectric.shadows.ShadowLegacySQLiteConnection$Connections.getFuture(ShadowLegacySQLiteConnection.java:715)
+        at org.robolectric.shadows.ShadowLegacySQLiteConnection$Connections.lambda$execute$5(ShadowLegacySQLiteConnection.java:702)
+        at app//org.robolectric.util.PerfStatsCollector.measure(PerfStatsCollector.java:51)
+        at org.robolectric.shadows.ShadowLegacySQLiteConnection$Connections.execute(ShadowLegacySQLiteConnection.java:702)
+        at org.robolectric.shadows.ShadowLegacySQLiteConnection$Connections.executeStatementOperation(ShadowLegacySQLiteConnection.java:688)
+        at org.robolectric.shadows.ShadowLegacySQLiteConnection$Connections.executeStatement(ShadowLegacySQLiteConnection.java:495)
+        at org.robolectric.shadows.ShadowLegacySQLiteConnection.nativeExecute(ShadowLegacySQLiteConnection.java:137)
+        at android.database.sqlite.SQLiteConnection.nativeExecute(SQLiteConnection.java)
+        at android.database.sqlite.SQLiteConnection.execute(SQLiteConnection.java:743)
+        at android.database.sqlite.SQLiteSession.beginTransactionUnchecked(SQLiteSession.java:332)
+        at android.database.sqlite.SQLiteSession.beginTransaction(SQLiteSession.java:311)
+        at android.database.sqlite.SQLiteDatabase.beginTransaction(SQLiteDatabase.java:819)
+        at android.database.sqlite.SQLiteDatabase.beginTransaction(SQLiteDatabase.java:802)
+        at android.database.sqlite.SQLiteDatabase.beginTransactionNonExclusive(SQLiteDatabase.java:677)
+        at androidx.sqlite.db.framework.FrameworkSQLiteDatabase.beginTransactionNonExclusive(FrameworkSQLiteDatabase.android.kt:56)
+        at androidx.room.driver.SupportSQLitePooledConnection.transaction(SupportSQLiteConnectionPool.android.kt:79)
+        at androidx.room.driver.SupportSQLitePooledConnection.withTransaction(SupportSQLiteConnectionPool.android.kt:66)
+        at androidx.room.TriggerBasedInvalidationTracker$syncTriggers$2$1.invokeSuspend(InvalidationTracker.kt:309)
+        at androidx.room.TriggerBasedInvalidationTracker$syncTriggers$2$1.invoke(InvalidationTracker.kt)
+        at androidx.room.driver.SupportSQLiteConnectionPool.useConnection(SupportSQLiteConnectionPool.android.kt:42)
+        at androidx.room.RoomConnectionManager.useConnection(RoomConnectionManager.android.kt:126)
+        at androidx.room.RoomDatabase.useConnection$room_runtime_release(RoomDatabase.android.kt:593)
+        at androidx.room.TriggerBasedInvalidationTracker.syncTriggers$room_runtime_release(InvalidationTracker.kt:300)
+        at androidx.room.TriggerBasedInvalidationTracker$createFlow$1$1.invokeSuspend(InvalidationTracker.kt:233)
+        at app//kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+        at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+        at java.base@17.0.20.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+        at java.base@17.0.20.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+        at java.base@17.0.20.1/java.lang.Thread.run(Thread.java:840)
+
+        Caused by:
+        java.util.concurrent.ExecutionException: com.almworks.sqlite4java.SQLiteBusyException: [5] DB[106] step() [BEGIN IMMEDIATE;]DB[106][C] [database is locked]
+            at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+            at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191)
+            at com.google.common.util.concurrent.Uninterruptibles.getUninterruptibly(Uninterruptibles.java:209)
+            at org.robolectric.shadows.ShadowLegacySQLiteConnection$Connections.getFuture(ShadowLegacySQLiteConnection.java:708)
+            at org.robolectric.shadows.ShadowLegacySQLiteConnection$Connections.lambda$execute$5(ShadowLegacySQLiteConnection.java:702)
+            at org.robolectric.util.PerfStatsCollector.measure(PerfStatsCollector.java:51)
+            at org.robolectric.shadows.ShadowLegacySQLiteConnection$Connections.execute(ShadowLegacySQLiteConnection.java:702)
+            at org.robolectric.shadows.ShadowLegacySQLiteConnection$Connections.executeStatementOperation(ShadowLegacySQLiteConnection.java:688)
+            at org.robolectric.shadows.ShadowLegacySQLiteConnection$Connections.executeStatement(ShadowLegacySQLiteConnection.java:495)
+            at org.robolectric.shadows.ShadowLegacySQLiteConnection.nativeExecute(ShadowLegacySQLiteConnection.java:137)
+            at android.database.sqlite.SQLiteConnection.nativeExecute(SQLiteConnection.java)
+            at android.database.sqlite.SQLiteConnection.$$robo$$android_database_sqlite_SQLiteConnection$execute(SQLiteConnection.java:743)
+            at android.database.sqlite.SQLiteConnection.execute(SQLiteConnection.java)
+            at android.database.sqlite.SQLiteSession.$$robo$$android_database_sqlite_SQLiteSession$beginTransactionUnchecked(SQLiteSession.java:332)
+            at android.database.sqlite.SQLiteSession.beginTransactionUnchecked(SQLiteSession.java)
+            at android.database.sqlite.SQLiteSession.$$robo$$android_database_sqlite_SQLiteSession$beginTransaction(SQLiteSession.java:311)
+            at android.database.sqlite.SQLiteSession.beginTransaction(SQLiteSession.java)
+            at android.database.sqlite.SQLiteDatabase.$$robo$$android_database_sqlite_SQLiteDatabase$beginTransaction(SQLiteDatabase.java:819)
+            at android.database.sqlite.SQLiteDatabase.beginTransaction(SQLiteDatabase.java)
+            at android.database.sqlite.SQLiteDatabase.$$robo$$android_database_sqlite_SQLiteDatabase$beginTransaction(SQLiteDatabase.java:802)
+            at android.database.sqlite.SQLiteDatabase.beginTransaction(SQLiteDatabase.java)
+            at android.database.sqlite.SQLiteDatabase.$$robo$$android_database_sqlite_SQLiteDatabase$beginTransactionNonExclusive(SQLiteDatabase.java:677)
+            at android.database.sqlite.SQLiteDatabase.beginTransactionNonExclusive(SQLiteDatabase.java)
+            at androidx.sqlite.db.framework.FrameworkSQLiteDatabase.beginTransactionNonExclusive(FrameworkSQLiteDatabase.android.kt:56)
+            at androidx.room.driver.SupportSQLitePooledConnection.transaction(SupportSQLiteConnectionPool.android.kt:79)
+            at androidx.room.driver.SupportSQLitePooledConnection.withTransaction(SupportSQLiteConnectionPool.android.kt:66)
+            at androidx.room.TriggerBasedInvalidationTracker$syncTriggers$2$1.invokeSuspend(InvalidationTracker.kt:309)
+            at androidx.room.TriggerBasedInvalidationTracker$syncTriggers$2$1.invoke(InvalidationTracker.kt)
+            ... 11 more
+
+            Caused by:
+            com.almworks.sqlite4java.SQLiteBusyException: [5] DB[106] step() [BEGIN IMMEDIATE;]DB[106][C] [database is locked]
+                at app//com.almworks.sqlite4java.SQLiteConnection.throwResult(SQLiteConnection.java:1432)
+                at app//com.almworks.sqlite4java.SQLiteConnection$BaseController.throwResult(SQLiteConnection.java:1689)
+                at app//com.almworks.sqlite4java.SQLiteStatement.stepResult(SQLiteStatement.java:1402)
+                at app//com.almworks.sqlite4java.SQLiteStatement.step(SQLiteStatement.java:301)
+                at app//com.almworks.sqlite4java.SQLiteStatement.stepThrough(SQLiteStatement.java:315)
+                at org.robolectric.shadows.ShadowLegacySQLiteConnection$Connections$7.call(ShadowLegacySQLiteConnection.java:501)
+                at org.robolectric.shadows.ShadowLegacySQLiteConnection$Connections$7.call(ShadowLegacySQLiteConnection.java:498)
+                at org.robolectric.shadows.ShadowLegacySQLiteConnection$Connections.lambda$executeStatementOperation$4(ShadowLegacySQLiteConnection.java:690)
+                at java.base@17.0.20.1/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+                ... 3 more
+
+SaverAppFlowTest > automaticAndManualExpiredArchiveKeepCompletionFlags FAILED
+    android.database.sqlite.SQLiteDatabaseLockedException: DB[118] step() [BEGIN IMMEDIATE;]DB[118][C] [database is locked] (code 5 SQLITE_BUSY)
+        at org.robolectric.shadows.ShadowLegacySQLiteConnection$Connections.getSqliteException(ShadowLegacySQLiteConnection.java:849)
+        at org.robolectric.shadows.ShadowLegacySQLiteConnection$Connections.getFuture(ShadowLegacySQLiteConnection.java:715)
+        at org.robolectric.shadows.ShadowLegacySQLiteConnection$Connections.lambda$execute$5(ShadowLegacySQLiteConnection.java:702)
+        at app//org.robolectric.util.PerfStatsCollector.measure(PerfStatsCollector.java:51)
+        at org.robolectric.shadows.ShadowLegacySQLiteConnection$Connections.execute(ShadowLegacySQLiteConnection.java:702)
+        at org.robolectric.shadows.ShadowLegacySQLiteConnection$Connections.executeStatementOperation(ShadowLegacySQLiteConnection.java:688)
+        at org.robolectric.shadows.ShadowLegacySQLiteConnection$Connections.executeStatement(ShadowLegacySQLiteConnection.java:495)
+        at org.robolectric.shadows.ShadowLegacySQLiteConnection.nativeExecute(ShadowLegacySQLiteConnection.java:137)
+        at android.database.sqlite.SQLiteConnection.nativeExecute(SQLiteConnection.java)
+        at android.database.sqlite.SQLiteConnection.execute(SQLiteConnection.java:743)
+        at android.database.sqlite.SQLiteSession.beginTransactionUnchecked(SQLiteSession.java:332)
+        at android.database.sqlite.SQLiteSession.beginTransaction(SQLiteSession.java:311)
+        at android.database.sqlite.SQLiteDatabase.beginTransaction(SQLiteDatabase.java:819)
+        at android.database.sqlite.SQLiteDatabase.beginTransaction(SQLiteDatabase.java:802)
+        at android.database.sqlite.SQLiteDatabase.beginTransactionNonExclusive(SQLiteDatabase.java:677)
+        at androidx.sqlite.db.framework.FrameworkSQLiteDatabase.beginTransactionNonExclusive(FrameworkSQLiteDatabase.android.kt:56)
+        at androidx.room.driver.SupportSQLitePooledConnection.transaction(SupportSQLiteConnectionPool.android.kt:79)
+        at androidx.room.driver.SupportSQLitePooledConnection.withTransaction(SupportSQLiteConnectionPool.android.kt:66)
+        at androidx.room.TriggerBasedInvalidationTracker$syncTriggers$2$1.invokeSuspend(InvalidationTracker.kt:309)
+        at androidx.room.TriggerBasedInvalidationTracker$syncTriggers$2$1.invoke(InvalidationTracker.kt)
+        at androidx.room.driver.SupportSQLiteConnectionPool.useConnection(SupportSQLiteConnectionPool.android.kt:42)
+        at androidx.room.RoomConnectionManager.useConnection(RoomConnectionManager.android.kt:126)
+        at androidx.room.RoomDatabase.useConnection$room_runtime_release(RoomDatabase.android.kt:593)
+        at androidx.room.TriggerBasedInvalidationTracker.syncTriggers$room_runtime_release(InvalidationTracker.kt:300)
+        at androidx.room.TriggerBasedInvalidationTracker$createFlow$1$1.invokeSuspend(InvalidationTracker.kt:233)
+        at app//kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+        at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+        at java.base@17.0.20.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+        at java.base@17.0.20.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+        at java.base@17.0.20.1/java.lang.Thread.run(Thread.java:840)
+
+        Caused by:
+        java.util.concurrent.ExecutionException: com.almworks.sqlite4java.SQLiteBusyException: [5] DB[118] step() [BEGIN IMMEDIATE;]DB[118][C] [database is locked]
+            at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+            at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191)
+            at com.google.common.util.concurrent.Uninterruptibles.getUninterruptibly(Uninterruptibles.java:209)
+            at org.robolectric.shadows.ShadowLegacySQLiteConnection$Connections.getFuture(ShadowLegacySQLiteConnection.java:708)
+            at org.robolectric.shadows.ShadowLegacySQLiteConnection$Connections.lambda$execute$5(ShadowLegacySQLiteConnection.java:702)
+            at org.robolectric.util.PerfStatsCollector.measure(PerfStatsCollector.java:51)
+            at org.robolectric.shadows.ShadowLegacySQLiteConnection$Connections.execute(ShadowLegacySQLiteConnection.java:702)
+            at org.robolectric.shadows.ShadowLegacySQLiteConnection$Connections.executeStatementOperation(ShadowLegacySQLiteConnection.java:688)
+            at org.robolectric.shadows.ShadowLegacySQLiteConnection$Connections.executeStatement(ShadowLegacySQLiteConnection.java:495)
+            at org.robolectric.shadows.ShadowLegacySQLiteConnection.nativeExecute(ShadowLegacySQLiteConnection.java:137)
+            at android.database.sqlite.SQLiteConnection.nativeExecute(SQLiteConnection.java)
+            at android.database.sqlite.SQLiteConnection.$$robo$$android_database_sqlite_SQLiteConnection$execute(SQLiteConnection.java:743)
+            at android.database.sqlite.SQLiteConnection.execute(SQLiteConnection.java)
+            at android.database.sqlite.SQLiteSession.$$robo$$android_database_sqlite_SQLiteSession$beginTransactionUnchecked(SQLiteSession.java:332)
+            at android.database.sqlite.SQLiteSession.beginTransactionUnchecked(SQLiteSession.java)
+            at android.database.sqlite.SQLiteSession.$$robo$$android_database_sqlite_SQLiteSession$beginTransaction(SQLiteSession.java:311)
+            at android.database.sqlite.SQLiteSession.beginTransaction(SQLiteSession.java)
+            at android.database.sqlite.SQLiteDatabase.$$robo$$android_database_sqlite_SQLiteDatabase$beginTransaction(SQLiteDatabase.java:819)
+            at android.database.sqlite.SQLiteDatabase.beginTransaction(SQLiteDatabase.java)
+            at android.database.sqlite.SQLiteDatabase.$$robo$$android_database_sqlite_SQLiteDatabase$beginTransaction(SQLiteDatabase.java:802)
+            at android.database.sqlite.SQLiteDatabase.beginTransaction(SQLiteDatabase.java)
+            at android.database.sqlite.SQLiteDatabase.$$robo$$android_database_sqlite_SQLiteDatabase$beginTransactionNonExclusive(SQLiteDatabase.java:677)
+            at android.database.sqlite.SQLiteDatabase.beginTransactionNonExclusive(SQLiteDatabase.java)
+            at androidx.sqlite.db.framework.FrameworkSQLiteDatabase.beginTransactionNonExclusive(FrameworkSQLiteDatabase.android.kt:56)
+            at androidx.room.driver.SupportSQLitePooledConnection.transaction(SupportSQLiteConnectionPool.android.kt:79)
+            at androidx.room.driver.SupportSQLitePooledConnection.withTransaction(SupportSQLiteConnectionPool.android.kt:66)
+            at androidx.room.TriggerBasedInvalidationTracker$syncTriggers$2$1.invokeSuspend(InvalidationTracker.kt:309)
+            at androidx.room.TriggerBasedInvalidationTracker$syncTriggers$2$1.invoke(InvalidationTracker.kt)
+            ... 11 more
+
+            Caused by:
+            com.almworks.sqlite4java.SQLiteBusyException: [5] DB[118] step() [BEGIN IMMEDIATE;]DB[118][C] [database is locked]
+                at app//com.almworks.sqlite4java.SQLiteConnection.throwResult(SQLiteConnection.java:1432)
+                at app//com.almworks.sqlite4java.SQLiteConnection$BaseController.throwResult(SQLiteConnection.java:1689)
+                at app//com.almworks.sqlite4java.SQLiteStatement.stepResult(SQLiteStatement.java:1402)
+                at app//com.almworks.sqlite4java.SQLiteStatement.step(SQLiteStatement.java:301)
+                at app//com.almworks.sqlite4java.SQLiteStatement.stepThrough(SQLiteStatement.java:315)
+                at org.robolectric.shadows.ShadowLegacySQLiteConnection$Connections$7.call(ShadowLegacySQLiteConnection.java:501)
+                at org.robolectric.shadows.ShadowLegacySQLiteConnection$Connections$7.call(ShadowLegacySQLiteConnection.java:498)
+                at org.robolectric.shadows.ShadowLegacySQLiteConnection$Connections.lambda$executeStatementOperation$4(ShadowLegacySQLiteConnection.java:690)
+                at java.base@17.0.20.1/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+                ... 3 more
+
+74 tests completed, 5 failed
+
+> Task :app:testDebugUnitTest FAILED
+> Task :app:lintReportDebug UP-TO-DATE
+> Task :app:lintDebug
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:testDebugUnitTest'.
+> There were failing tests. See the report at: file:///[workspace]/app/build/reports/tests/testDebugUnitTest/index.html
+
+* Try:
+> Run with --scan to get full insights.
+
+BUILD FAILED in 3m 28s
+55 actionable tasks: 17 executed, 38 up-to-date
