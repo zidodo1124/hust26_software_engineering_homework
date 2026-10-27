@@ -1,0 +1,52 @@
+{
+  "startedUtc": "2026-10-27T12:38:31.928943+00:00",
+  "package": "cn.edu.hust.ddlsaver",
+  "authorizedDeviceCount": 1,
+  "device": {
+    "ro.product.manufacturer": "HONOR",
+    "ro.product.model": "ALI-AN00",
+    "ro.build.version.release": "15",
+    "ro.build.version.sdk": "35",
+    "ro.build.display.id": "ALI-AN00 9.0.0.230(CNC00E206R8P4)",
+    "ro.build.version.magic": "MagicOS_9.0.0"
+  },
+  "apkSha256": "6B5167424691BD218E10314689990C37969FCD8018FBCAA282A2917B67B594A9",
+  "apkBytes": 11190058,
+  "previouslyInstalled": false,
+  "install": {
+    "exitCode": 0,
+    "stdout": "Performing Streamed Install\r\nSuccess",
+    "stderr": ""
+  },
+  "installedVersion": {
+    "versionName": "0.2.0",
+    "versionCode": "2"
+  },
+  "launch": {
+    "exitCode": 0,
+    "stdout": "Starting: Intent { cmp=cn.edu.hust.ddlsaver/.MainActivity }\r\nStatus: ok\r\nLaunchState: COLD\r\nActivity: cn.edu.hust.ddlsaver/.MainActivity\r\nTotalTime: 1565\r\nWaitTime: 1572\r\nComplete",
+    "stderr": ""
+  },
+  "appProcessRunning": true,
+  "foregroundComponent": "cn.edu.hust.ddlsaver/.MainActivity",
+  "result": "installed_and_started",
+  "completedUtc": "2026-10-27T12:39:24.044862+00:00",
+  "foregroundRecheck": {
+    "checkedUtc": "2026-10-27T12:39:22.895996+00:00",
+    "appProcessRunning": true,
+    "resumedComponents": [
+      "cn.edu.hust.ddlsaver/.MainActivity"
+    ],
+    "targetResumed": true,
+    "queryMatchesTopResumedActivity": true,
+    "pidScopedLog": {
+      "commandSucceeded": true,
+      "lineCount": 24,
+      "fatalExceptionObserved": false
+    }
+  },
+  "screenshot": "launch.png",
+  "screenshotBytes": 285815,
+  "initialForegroundCheckLimitation": "The target app is not confirmed running in the foreground; screenshot was not captured.",
+  "foregroundCollectorCorrection": "The initial collector matched only mResumedActivity. This device reports topResumedActivity; the corrected read-only query confirmed the target MainActivity without launching again. This was a collection limitation, not an observed application failure."
+}
