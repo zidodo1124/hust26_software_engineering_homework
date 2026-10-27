@@ -1,0 +1,63 @@
+{
+  "batch": "RUN-20261027-001",
+  "sourceCommit": "1655a70832f91bf79af157ab4c14d0edd3e23bb1",
+  "sourceNote": "The validated working tree was committed unchanged; documentation is separate.",
+  "checkedAt": "2026-10-27 03:39:39 America/Los_Angeles (UTC-07:00)",
+  "checkedAtUtc": "2026-10-27T10:39:39Z",
+  "host": "Microsoft Windows 11 家庭版 中文版",
+  "jdk": "Eclipse Temurin 17.0.20.1+1",
+  "gradle": "8.11.1",
+  "agp": "8.9.2",
+  "kotlin": "2.1.20",
+  "compileSdk": 35,
+  "targetSdk": 35,
+  "minSdk": 26,
+  "robolectric": "4.14.1",
+  "simulatedApiLevels": [
+    28,
+    35
+  ],
+  "physicalDevice": "Not connected by user choice",
+  "apk": {
+    "versionName": "0.1.0",
+    "versionCode": 1,
+    "bytes": 11122289,
+    "sha256": "81AD75067A2814AFD6F8F1ADC41810749A5CA412DAAB6EBF669C6B64496E9D78"
+  },
+  "automatedTests": [
+    {
+      "suite": "cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest",
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 5.605
+    },
+    {
+      "suite": "cn.edu.hust.ddlsaver.domain.EventValidationTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 0.012
+    },
+    {
+      "suite": "cn.edu.hust.ddlsaver.domain.UrgencyRulesTest",
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 0.007
+    },
+    {
+      "suite": "cn.edu.hust.ddlsaver.ui.SaverAppFlowTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 24.014
+    }
+  ],
+  "lintErrors": 0,
+  "lintWarnings": 10
+}

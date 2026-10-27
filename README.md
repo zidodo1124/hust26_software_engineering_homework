@@ -62,12 +62,14 @@ HUSTer's DDL Saver 是一款面向大学生的 Android 截止日期（DDL）管�
 | [项目状态](STATUS.md) | 当前阶段、待确认事项、后续工作与课程交付约束 |
 | [实现计划](docs/implementation-plan.md) | 分轮目标、首轮范围、质量要求与后续衔接 |
 | [小组任务板](team/README.md) | 四位成员的任务、交付物、领取与审核方式 |
+| [开发、构建与安装](docs/development.md) | 工具准备、构建命令、检查报告位置与安装方法 |
+| [首轮版本 v0.1.0](STATUS.md#第一轮-v010) | 已落地的基础功能、验证进展与后续范围 |
 | [需求分析文档](docs/requirements.md) | 完整功能需求、业务规则和验收场景 |
-| [设计文档](docs/design.md) | 候选架构、模块职责、数据结构、接口及关键流程 |
-| [技术栈说明](docs/technology-stack.md) | 设计选定的语言、框架与组件及其用途、版本登记和验证状态 |
+| [设计文档](docs/design.md) | 总体设计、首轮代码映射、数据结构、接口及关键流程 |
+| [技术栈说明](docs/technology-stack.md) | 已集成和计划使用的技术、用途、实际版本及验证状态 |
 | [测试计划与用例](docs/test-plan.md) | 测试范围、方法、执行条件及需求追踪用例 |
-| [测试执行记录](docs/test-records.md) | 执行批次、用例结果与缺陷记录模板 |
-| [测试报告](docs/test-report.md) | 测试统计与结论框架，实际结果待执行后填写 |
+| [测试执行记录](docs/test-records.md) | 首轮执行批次、实际结果及修复复测记录 |
+| [测试报告](docs/test-report.md) | 首轮本地检查结果、完整需求覆盖情况及未验证内容 |
 | [审核与修改记录](docs/review-log.md) | 用户确认、审核意见及相应修订 |
 | [交互记录](interaction-records/README.md) | 按参与者和日期整理的交流、实际工作与产物 |
 | [角色素材与授权调研](docs/character-assets.md) | 角色候选、来源与许可信息 |

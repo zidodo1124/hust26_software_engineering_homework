@@ -1,0 +1,18 @@
+{
+  "verificationId": "CI-40490279525",
+  "checkedAtUtc": "2026-10-27T10:47:52Z",
+  "sourceCommit": "1655a70832f91bf79af157ab4c14d0edd3e23bb1",
+  "runUrl": "https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40490279525",
+  "status": "completed",
+  "conclusion": "success",
+  "runner": "ubuntu-24.04",
+  "verificationMethod": "Read-only workflow status and JUnit XML from its report artifact",
+  "tests": 30,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "apkArtifact": "https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40490279525/artifacts/12728437151",
+  "reportArtifact": "https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40490279525/artifacts/12728172188",
+  "artifactsExpiredAtCheck": false,
+  "physicalDeviceTested": false
+}

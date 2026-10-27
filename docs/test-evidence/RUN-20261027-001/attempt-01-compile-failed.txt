@@ -1,0 +1,81 @@
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:checkDebugAarMetadata
+> Task :app:generateDebugResValues
+> Task :app:mapDebugSourceSetPaths
+> Task :app:generateDebugResources
+> Task :app:packageDebugResources
+> Task :app:createDebugCompatibleScreenManifests
+> Task :app:extractDeepLinksDebug
+> Task :app:parseDebugLocalResources
+> Task :app:processDebugMainManifest
+> Task :app:processDebugManifest
+> Task :app:mergeDebugResources
+> Task :app:javaPreCompileDebug
+> Task :app:mergeDebugShaders
+> Task :app:compileDebugShaders NO-SOURCE
+> Task :app:processDebugManifestForPackage
+> Task :app:generateDebugAssets UP-TO-DATE
+> Task :app:mergeDebugAssets
+> Task :app:compressDebugAssets
+> Task :app:desugarDebugFileDependencies
+> Task :app:processDebugResources
+> Task :app:checkDebugDuplicateClasses
+> Task :app:kspDebugKotlin
+> Task :app:mergeExtDexDebug
+> Task :app:mergeDebugJniLibFolders
+> Task :app:mergeLibDexDebug
+> Task :app:mergeDebugNativeLibs
+> Task :app:validateSigningDebug
+> Task :app:writeDebugAppMetadata
+> Task :app:writeDebugSigningConfigVersions
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:javaPreCompileDebugUnitTest
+
+> Task :app:stripDebugDebugSymbols
+Unable to strip the following libraries, packaging them as they are: libandroidx.graphics.path.so.
+
+> Task :app:packageDebugUnitTestForUnitTest
+> Task :app:preDebugAndroidTestBuild SKIPPED
+> Task :app:generateDebugAndroidTestResValues
+> Task :app:generateDebugUnitTestConfig
+> Task :app:extractProguardFiles
+> Task :app:compileDebugKotlin
+e: file:///<workspace>/app/src/main/java/cn/edu/hust/ddlsaver/ui/EventEditor.kt:70:23 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///<workspace>/app/src/main/java/cn/edu/hust/ddlsaver/ui/EventEditor.kt:70:51 Argument type mismatch: actual type is 'String?', but 'Any' was expected.
+e: file:///<workspace>/app/src/main/java/cn/edu/hust/ddlsaver/ui/EventEditor.kt:71:23 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///<workspace>/app/src/main/java/cn/edu/hust/ddlsaver/ui/EventEditor.kt:71:51 Argument type mismatch: actual type is 'String?', but 'Any' was expected.
+e: file:///<workspace>/app/src/main/java/cn/edu/hust/ddlsaver/ui/EventEditor.kt:72:28 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///<workspace>/app/src/main/java/cn/edu/hust/ddlsaver/ui/EventEditor.kt:72:56 Argument type mismatch: actual type is 'Long?', but 'Any' was expected.
+e: file:///<workspace>/app/src/main/java/cn/edu/hust/ddlsaver/ui/EventEditor.kt:77:17 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///<workspace>/app/src/main/java/cn/edu/hust/ddlsaver/ui/EventEditor.kt:77:17 Not enough information to infer type argument for 'T'.
+e: file:///<workspace>/app/src/main/java/cn/edu/hust/ddlsaver/ui/EventEditor.kt:77:17 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///<workspace>/app/src/main/java/cn/edu/hust/ddlsaver/ui/EventEditor.kt:77:17 Not enough information to infer type argument for 'T'.
+e: file:///<workspace>/app/src/main/java/cn/edu/hust/ddlsaver/ui/EventEditor.kt:77:45 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///<workspace>/app/src/main/java/cn/edu/hust/ddlsaver/ui/EventEditor.kt:77:45 Not enough information to infer type argument for 'T'.
+e: file:///<workspace>/app/src/main/java/cn/edu/hust/ddlsaver/ui/EventEditor.kt:78:17 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///<workspace>/app/src/main/java/cn/edu/hust/ddlsaver/ui/EventEditor.kt:78:17 Not enough information to infer type argument for 'T'.
+e: file:///<workspace>/app/src/main/java/cn/edu/hust/ddlsaver/ui/EventEditor.kt:78:17 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///<workspace>/app/src/main/java/cn/edu/hust/ddlsaver/ui/EventEditor.kt:78:17 Not enough information to infer type argument for 'T'.
+e: file:///<workspace>/app/src/main/java/cn/edu/hust/ddlsaver/ui/EventEditor.kt:78:45 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///<workspace>/app/src/main/java/cn/edu/hust/ddlsaver/ui/EventEditor.kt:78:45 Not enough information to infer type argument for 'T'.
+
+> Task :app:compileDebugKotlin FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:compileDebugKotlin'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 3m 6s
+34 actionable tasks: 34 executed

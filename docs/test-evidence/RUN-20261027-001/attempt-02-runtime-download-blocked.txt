@@ -1,0 +1,113 @@
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+> Task :app:processDebugResources UP-TO-DATE
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:mergeDebugShaders UP-TO-DATE
+> Task :app:compileDebugShaders NO-SOURCE
+> Task :app:generateDebugAssets UP-TO-DATE
+> Task :app:mergeDebugAssets UP-TO-DATE
+> Task :app:compressDebugAssets UP-TO-DATE
+> Task :app:desugarDebugFileDependencies UP-TO-DATE
+> Task :app:checkDebugDuplicateClasses UP-TO-DATE
+> Task :app:mergeExtDexDebug UP-TO-DATE
+> Task :app:mergeLibDexDebug UP-TO-DATE
+> Task :app:mergeDebugJniLibFolders UP-TO-DATE
+> Task :app:mergeDebugNativeLibs UP-TO-DATE
+> Task :app:stripDebugDebugSymbols UP-TO-DATE
+> Task :app:validateSigningDebug UP-TO-DATE
+> Task :app:writeDebugAppMetadata UP-TO-DATE
+> Task :app:writeDebugSigningConfigVersions UP-TO-DATE
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:javaPreCompileDebugUnitTest UP-TO-DATE
+> Task :app:packageDebugUnitTestForUnitTest UP-TO-DATE
+> Task :app:generateDebugUnitTestConfig UP-TO-DATE
+> Task :app:preDebugAndroidTestBuild SKIPPED
+> Task :app:generateDebugAndroidTestResValues UP-TO-DATE
+> Task :app:extractProguardFiles UP-TO-DATE
+> Task :app:kspDebugKotlin
+
+> Task :app:compileDebugKotlin
+w: file:///<workspace>/app/src/main/java/cn/edu/hust/ddlsaver/ui/SaverApp.kt:400:21 'val LocalClipboardManager: ProvidableCompositionLocal<ClipboardManager>' is deprecated. Use LocalClipboard instead which supports suspend functions.
+
+> Task :app:compileDebugJavaWithJavac NO-SOURCE
+> Task :app:dexBuilderDebug
+> Task :app:mergeDebugGlobalSynthetics
+> Task :app:processDebugJavaRes
+> Task :app:mergeProjectDexDebug
+> Task :app:bundleDebugClassesToRuntimeJar
+> Task :app:bundleDebugClassesToCompileJar
+> Task :app:mergeDebugJavaResource
+> Task :app:generateDebugLintReportModel
+> Task :app:packageDebug
+> Task :app:kspDebugUnitTestKotlin
+> Task :app:createDebugApkListingFileRedirect
+> Task :app:assembleDebug
+> Task :app:generateDebugAndroidTestLintModel
+> Task :app:compileDebugUnitTestKotlin
+> Task :app:generateDebugUnitTestLintModel
+> Task :app:compileDebugUnitTestJavaWithJavac NO-SOURCE
+> Task :app:processDebugUnitTestJavaRes
+
+> Task :app:testDebugUnitTest
+
+RoomEventRepositoryTest > repeatedStateRequestIsIdempotent FAILED
+    java.lang.AssertionError at MavenArtifactFetcher.java:129
+        Caused by: java.util.concurrent.ExecutionException at AbstractFuture.java:596
+            Caused by: java.net.ConnectException at Net.java:-2
+
+Unexpected exception thrown.
+org.gradle.internal.remote.internal.MessageIOException: Could not write '/127.0.0.1:54739'.
+	at org.gradle.internal.remote.internal.inet.SocketConnection.flush(SocketConnection.java:145)
+	at org.gradle.internal.remote.internal.hub.MessageHub$ConnectionDispatch.run(MessageHub.java:333)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.io.IOException: Connection reset by peer
+	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
+	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:54)
+	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:132)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:76)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:53)
+	at java.base/sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:532)
+	at org.gradle.internal.remote.internal.inet.SocketConnection$SocketOutputStream.writeWithNonBlockingRetry(SocketConnection.java:285)
+	at org.gradle.internal.remote.internal.inet.SocketConnection$SocketOutputStream.writeBufferToChannel(SocketConnection.java:272)
+	at org.gradle.internal.remote.internal.inet.SocketConnection$SocketOutputStream.flush(SocketConnection.java:266)
+	at org.gradle.internal.remote.internal.inet.SocketConnection.flush(SocketConnection.java:143)
+	... 6 more
+
+> Task :app:testDebugUnitTest FAILED
+
+2 tests completed, 1 failed, 1 skipped
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:testDebugUnitTest'.
+> Process 'Gradle Test Executor 1' finished with non-zero exit value -1
+  This problem might be caused by incorrect test process configuration.
+  For more on test execution, please refer to https://docs.gradle.org/8.11.1/userguide/java_testing.html#sec:test_execution in the Gradle documentation.
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 3m 6s
+50 actionable tasks: 18 executed, 32 up-to-date

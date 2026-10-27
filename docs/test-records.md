@@ -2,10 +2,10 @@
 
 | 项目 | 当前情况 |
 | --- | --- |
-| 版本与日期 | v0.1；2026-10-27 |
+| 版本与日期 | v0.2；2026-10-27 |
 | 依据 | [测试计划与用例](test-plan.md)、[设计文档](design.md)、[需求分析](requirements.md) |
-| 实际软件测试批次 | 0；尚未开始 App 的动态测试 |
-| 当前内容 | 执行记录与缺陷记录的空模板，不是测试结果 |
+| 实际软件测试批次 | 1 个本地验证批次及 1 次同源码的独立 CI 复核；本地批次包含失败、诊断和复测，见第 7 节 |
+| 当前内容 | 第 1—6 节为后续可复用模板；第 7 节为实际本地执行结果。荣耀 X50 尚未连接 |
 
 ## 1. 填写原则
 
@@ -20,7 +20,7 @@
 
 ## 2. 执行批次模板
 
-以下代码块是空模板。真正开始运行时复制并填写，当前没有实际 `RUN-001`。
+以下代码块仍是空模板。实际批次 `RUN-20261027-001` 另列于第 7 节，占位符不计入结果。
 
 ```text
 批次编号：<RUN-YYYYMMDD-序号>
@@ -68,7 +68,7 @@ MagicOS／Android／API 版本：<从实际设备读取，不使用出厂推测>
 
 ## 4. 证据保存约定
 
-实际产生证据后使用 `docs/test-evidence/<RUN>/` 保存；当前只是路径约定，未创建任何测试截图、视频或日志。
+证据按 `docs/test-evidence/<RUN>/` 保存；本轮已有构建日志、JUnit XML、Lint 报告和诊断摘录，见[首轮证据](test-evidence/RUN-20261027-001/README.md)。尚无实机截图或视频。
 
 - 建议文件名：`TC-编号_子场景_序号.png`、`.mp4` 或 `.txt`；记录中使用相对于本文件的路径。
 - 规则测试保留测试命令、输出、代码版本与固定时钟参数；UI 和通知测试保留可核对内容及时间的证据。
@@ -77,7 +77,7 @@ MagicOS／Android／API 版本：<从实际设备读取，不使用出厂推测>
 
 ## 5. 缺陷记录模板
 
-当前没有实际缺陷条目。未执行测试不能得出“没有缺陷”的结论。
+以下为后续通用缺陷模板，本轮实际发现与处理见第 7.4 节。未覆盖的功能不能据本轮结果推定“没有缺陷”。
 
 ```text
 缺陷编号／标题：<BUG-序号／简要问题>
@@ -103,3 +103,69 @@ MagicOS／Android／API 版本：<从实际设备读取，不使用出厂推测>
 一个 TC 的适用子场景全部通过才记为通过；存在失败则记为失败，并列出尚未完成的其他子场景。没有失败但被环境或预期阻断的记为阻塞；其余未完成的记为未执行，注明是否已有部分观察。
 
 同一个版本的结果按上述口径汇总到[测试报告](test-report.md)。不同代码版本和设备分别列明，不能用旧版本的成功覆盖新版本失败；回归运行次数也不能增加计划用例总数。
+
+## 7. RUN-20261027-001：第一轮本地构建与自动验证
+
+### 7.1 版本、执行者与环境
+
+| 字段 | 实际记录 |
+| --- | --- |
+| 执行角色 | AI 助手执行命令并核对报告；本轮无组员实机操作记录 |
+| 日期与最终核对时间 | 2026-10-27 03:39:39，America/Los_Angeles（UTC-07:00）；对应 10:39:39 UTC |
+| 对应源码 | [1655a70](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/1655a70832f91bf79af157ab4c14d0edd3e23bb1)；通过检查的工作树随后原样提交，记录文档另行提交 |
+| 应用 | `cn.edu.hust.ddlsaver`；`versionName 0.1.0`、`versionCode 1`，Debug APK |
+| 依据 | 需求 v0.2、设计 v0.2 的首轮映射；完整业务用例 TC-01—TC-30 按后续轮次继续验证 |
+| 开发机 | Windows 11；Temurin JDK 17.0.20.1+1、Gradle 8.11.1、AGP 8.9.2、Kotlin 2.1.20 |
+| SDK 与本地 Android 环境 | compile/target API 35、最低 API 26；Robolectric 4.14.1，Room 测试 API 28、界面测试 API 35 |
+| 设备与权限 | `adb devices` 无设备；支盟渊选择本轮暂不连接手机。手机系统、权限、省电及通知送达均未验证 |
+| 时钟 | 规则与存储测试用固定／可控时钟；界面测试运行实际 Activity，输入示例截止日期 2030-01-02 18:00（北京时间） |
+| 安装包 | 11,122,289 字节；SHA-256：`81AD75067A2814AFD6F8F1ADC41810749A5CA412DAAB6EBF669C6B64496E9D78` |
+
+完整命令：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/gradle.ps1 :app:assembleDebug :app:testDebugUnitTest :app:lintDebug --console=plain --continue
+```
+
+### 7.2 尝试、失败与复测
+
+| 步骤 | 实际结果 | 后续处理与证据 |
+| --- | --- | --- |
+| 第一次完整检查 | Kotlin 编译失败，未运行软件测试 | 修复表单可空状态的 `rememberSaveable` 用法；[原日志](test-evidence/RUN-20261027-001/attempt-01-compile-failed.txt) |
+| 第二次完整检查 | APK 构建成功；Robolectric 运行库下载出现 `ConnectException`，测试环境阻断 | 为避免重复下载超时，仅终止对应测试 JVM；日志中的进程断开不是 App 崩溃。配置官方支持的 Maven Central 地址后重试，未断言原域名持续不可达；[原日志](test-evidence/RUN-20261027-001/attempt-02-runtime-download-blocked.txt) |
+| 第三次完整检查 | 30 项自动测试中 28 通过、2 失败；Lint 0 错误、11 警告 | 两项界面失败进入诊断；备份规则提示另行处理；[日志](test-evidence/RUN-20261027-001/attempt-03-ui-failed.txt)、[界面失败 XML](test-evidence/RUN-20261027-001/attempt-03-results/TEST-cn.edu.hust.ddlsaver.ui.SaverAppFlowTest.xml) |
+| 针对性诊断 | 3 项界面测试中 1 通过、2 失败；定位提示条遮挡按钮 | 点击前后无忙碌或业务错误，数据库修订未变化；按钮与提示条位置重叠，见[诊断摘录](test-evidence/RUN-20261027-001/diagnosis-ui-overlap.txt) |
+| 第四次完整复测 | 构建成功；30 项自动测试全部通过，0 失败、0 错误、0 跳过；Lint 0 错误、10 条依赖更新提示 | 提示条改为占用底部布局空间；补齐 Android 备份规则；[成功日志](test-evidence/RUN-20261027-001/attempt-04-passed.txt)、[结构化汇总](test-evidence/RUN-20261027-001/summary.json) |
+
+最终 APK 的包名、版本、最低 API、启动入口及 v2 签名通过工具检查，见[APK 检查记录](test-evidence/RUN-20261027-001/apk-inspection.txt)。这不等于已经在手机安装或启动。
+
+### 7.3 自动测试与业务用例的对应范围
+
+| 自动测试组 | 最终结果 | 已覆盖的子场景及业务关联 | 尚不能据此判断的范围 |
+| --- | --- | --- | --- |
+| UrgencyRulesTest | 10/10 通过 | 危险期边界、未填速通、危险期优先、状态排除、北京时间跨日；关联 TC-09—TC-11、TC-13、TC-16 | 实机时间变化、全部页面表现与颜色审核 |
+| EventValidationTest | 7/7 通过 | 空白标题、时长校验、分钟规范化、编辑版本信息；关联 TC-02 | 全部表单输入组合及图片等后续字段 |
+| RoomEventRepositoryTest | 10/10 通过 | 文件数据库重开、设置保存、编辑身份与状态保持、旧修订拒绝、删除不复活、Flow 更新；关联 TC-01、TC-03、TC-15、TC-16、TC-18、TC-19 | 手机进程恢复、图片、通知、批量操作及数据库升级 |
+| SaverAppFlowTest | 3/3 通过 | 必填校验、创建编辑、完成与历史恢复、取消删除、Activity 重建保留草稿、放弃确认；关联 TC-02、TC-03、TC-15、TC-18 | 荣耀 X50 渲染和操作、系统杀进程恢复及其他页面流程 |
+
+自动测试包含真实 Room 数据断言，不单凭 LazyColumn 中没有某个可见节点判断数据不存在。**30 个自动测试方法与 30 个完整业务用例不是同一组统计**；当前业务用例仅获得部分子场景证据，尚未逐项完成完整验收。重复运行也不增加自动测试方法总数。
+
+### 7.4 实际问题与关闭依据
+
+| 编号 | 类型与影响 | 处理 | 当前结论 |
+| --- | --- | --- | --- |
+| BUILD-001 | 集成问题：可空初始状态不符合 Compose 保存状态接口，阻断编译 | 用显式可空 `MutableState` 保留原始日期、时间与修订号 | 后续构建及 Activity 重建测试通过 |
+| ENV-001 | 环境问题：测试运行库下载连接失败，无法完成测试 | 显式使用官方支持的 Maven Central 规范地址、增强错误输出后重试 | 后续下载及执行成功；未认定故障根因，也不归类为 App 功能缺陷 |
+| BUG-001 | 界面缺陷：成功提示条遮住底部保存和删除按钮，影响核心操作；高优先级 | Snackbar 放入占布局高度的底栏，内容避让，并增加关闭操作 | 原始失败已保留；同一真实触摸流程与全量 30 项测试复测通过。修复纳入源码提交 1655a70 |
+| CHECK-001 | 静态检查：缺少 Android 12+ 数据提取规则 | 增加明确的云备份及设备转移排除规则，保留禁用备份配置 | 该 Lint 提示已消失；实际厂商备份行为未测试 |
+
+仍保留 10 条 `GradleDependency` 更新提示，当前依赖按已验证组合固定，未忽略 Lint 错误。编译还有 `LocalClipboardManager` 弃用提示，文本复制使用现有接口，后续可迁移；它不是本轮测试失败。没有实机证据的项目继续保留待测。
+
+### 7.5 CI-40490279525：同源码的独立环境复核
+
+- 核对时间：2026-10-27 03:47:52（America/Los_Angeles，UTC-07:00）。
+- 运行：[GitHub Actions 40490279525](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40490279525)，对应源码 `1655a70832f91bf79af157ab4c14d0edd3e23bb1`。
+- 环境：Ubuntu 24.04，工作流准备 JDK 17 和 SDK 35；与 Windows 本机记录分开。
+- 实际结果：工作流 `completed / success`；从报告产物读取 JUnit XML，30 项测试全部通过，失败、错误和跳过均为 0；构建和 Lint 步骤成功。
+- 产物：[Debug APK](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40490279525/artifacts/12728437151)、[测试与 Lint 报告](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40490279525/artifacts/12728172188)已生成，核对时未过期。元数据见[CI 复核记录](test-evidence/RUN-20261027-001/ci-verification.json)。
+- 统计边界：这是相同 30 个自动测试在第二种构建环境中的复核，不能累计为 60 个不同测试用例，也不增加实机执行次数。本节未将本机 APK 哈希用于 CI 安装包。

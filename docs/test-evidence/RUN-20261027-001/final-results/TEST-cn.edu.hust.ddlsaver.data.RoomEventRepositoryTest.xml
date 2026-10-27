@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-10-27T10:39:14" hostname="LAPTOP-7OF0K1SP" time="5.605">
+  <properties/>
+  <testcase name="repeatedStateRequestIsIdempotent" classname="cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest" time="4.299"/>
+  <testcase name="invalidSaveAndSettingLeaveExistingDataUntouched" classname="cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest" time="0.135"/>
+  <testcase name="deletedEventCannotBeResurrectedByStaleSaveOrStateChange" classname="cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest" time="0.153"/>
+  <testcase name="editingPreservesIdentityCreationTimeAndIndependentStateFlags" classname="cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest" time="0.154"/>
+  <testcase name="staleEditIsRejectedWithoutOverwritingNewerState" classname="cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest" time="0.138"/>
+  <testcase name="concurrentEditsFromSameRevisionCannotBothSucceed" classname="cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest" time="0.145"/>
+  <testcase name="newDatabaseUsesDefaultUrgentThreshold" classname="cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest" time="0.102"/>
+  <testcase name="restoringArchiveDoesNotMarkCompletedEventAsUnfinished" classname="cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest" time="0.162"/>
+  <testcase name="eventAndSettingsSurviveClosingAndReopeningFileDatabase" classname="cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest" time="0.16"/>
+  <testcase name="flowEmitsSavedAndUpdatedRowsInDeadlineOrder" classname="cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest" time="0.156"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Oct 27, 2026 3:39:17 AM com.almworks.sqlite4java.Internal log
+WARNING: [sqlite] SQLite: cannot set library path, library already loaded
+]]></system-err>
+</testsuite>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-10-27T10:38:50" hostname="LAPTOP-7OF0K1SP" time="24.014">
+  <properties/>
+  <testcase name="requiredInputIsRejectedThenNewEventCanBeSavedAndEdited" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="21.077"/>
+  <testcase name="activityRecreationKeepsUnsavedDraftAndDiscardRequiresConfirmation" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="1.059"/>
+  <testcase name="completedItemCanBeRecoveredFromHistoryAndDeleteCancellationPreservesIt" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="1.878"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

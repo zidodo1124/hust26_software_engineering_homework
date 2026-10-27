@@ -1,0 +1,12 @@
+Diagnostic run used the same failing UI flows before the layout fix.
+Root cause: an enabled bottom button was covered by a visible Snackbar.
+Click and state excerpts below are copied from the local diagnostic log; successful test paths were later cleaned up.
+
+        |  |-Node #283 at (l=20.0, t=839.0, r=391.0, b=891.0)px, Tag: 'event-save'
+           |-Node #211 at (l=12.0, t=831.0, r=399.0, b=879.0)px
+    ViewModel: SaverUiState(loading=false, events=[DdlEvent(id=3e7868f1-10d4-4dfe-b472-59cbadee35a0, title=创建后编辑的事项, deadlineAt=1893578400000, sprintMinutes=null, description=第一次填写的描述, importance=NORMAL, completedAt=null, archivedAt=null, createdAt=1793097406323, updatedAt=1793097406323, revision=1)], settings=AppSettings(urgentMinutes=1440), now=2026-10-27T10:36:39.204432100Z, loadError=null, operationError=null, busy=false, actionResult=null)
+        |  |-Node #283 at (l=20.0, t=839.0, r=391.0, b=891.0)px, Tag: 'event-save'
+           |-Node #211 at (l=12.0, t=831.0, r=399.0, b=879.0)px
+    ViewModel: SaverUiState(loading=false, events=[DdlEvent(id=3e7868f1-10d4-4dfe-b472-59cbadee35a0, title=创建后编辑的事项, deadlineAt=1893578400000, sprintMinutes=null, description=第一次填写的描述, importance=NORMAL, completedAt=null, archivedAt=null, createdAt=1793097406323, updatedAt=1793097406323, revision=1)], settings=AppSettings(urgentMinutes=1440), now=2026-10-27T10:36:39.204432100Z, loadError=null, operationError=null, busy=false, actionResult=null)
+           |-Node #283 at (l=20.0, t=839.0, r=391.0, b=891.0)px, Tag: 'event-save'
+    ViewModel: SaverUiState(loading=false, events=[DdlEvent(id=3e7868f1-10d4-4dfe-b472-59cbadee35a0, title=创建后编辑的事项, deadlineAt=1893578400000, sprintMinutes=null, description=第一次填写的描述, importance=NORMAL, completedAt=null, archivedAt=null, createdAt=1793097406323, updatedAt=1793097406323, revision=1)], settings=AppSettings(urgentMinutes=1440), now=2026-10-27T10:36:39.204432100Z, loadError=null, operationError=null, busy=false, actionResult=null)

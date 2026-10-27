@@ -2,12 +2,12 @@
 
 | 项目 | 内容 |
 | --- | --- |
-| 文档版本 | v0.1 |
-| 文档状态 | 设计草案，技术路线已选用；尚未实现应用代码或完成实机验证 |
+| 文档版本 | v0.2 |
+| 文档状态 | 完整目标设计及首轮代码映射；首轮本机构建与自动检查已完成，实机未测 |
 | 更新日期 | 2026-10-27 |
 | 项目小组 | 花园鳗：支盟渊、付泽文、岳羽泉、石倚铭 |
 | 需求依据 | [需求分析 v0.2](requirements.md)，整体审核尚未完成 |
-| 适用范围 | Android 离线单机应用；演示设备为荣耀 X50，系统版本、具体分工与依赖版本待确定 |
+| 适用范围 | Android 离线单机应用；荣耀 X50 本轮暂不连接，实际系统后续登记；依赖与分工已有独立记录 |
 
 ## 1. 文档目的与设计依据
 
@@ -15,7 +15,7 @@
 
 文档按 [arc42 提纲](https://arc42.org/overview/)裁剪，采用模块图、数据关系图和关键时序图解释方案。[C4 官方说明](https://c4model.com/diagrams)并不要求项目绘制全部层级；本文件也不以图的数量代替设计内容。参考标准的公开信息不代表已逐条遵循完整标准；[ISO/IEC/IEEE 42010:2022 公开摘要](https://www.iso.org/standard/74393.html)亦未规定唯一的文档格式。
 
-用户已授权选择技术方案，并说明小组熟悉 Python、C++、Java，演示设备为荣耀 X50。以下技术路线已在本次设计中选用，内部结构属于本项目设计决定；尚未集成或实机验证，后续如需调整应记录理由。技术职责与学习入口另见[技术栈说明](technology-stack.md)。本文不新增账号、服务器、云同步、OCR、AI 对话或多角色切换等功能。
+用户已授权选择技术方案，并进一步要求分轮实施、立即开展第一轮。小组熟悉 Python、C++、Java，演示设备为荣耀 X50；用户本轮暂不连接实机。基础 Android 工程、页面和存储已落地，依赖用途及版本见[技术清单](technology-stack.md)，任务分配见[小组任务板](../team/README.md)。后续结构调整应记录理由。本文不新增账号、服务器、云同步、OCR、AI 对话或多角色切换等功能。
 
 ### 1.1 待审核的业务假设
 
@@ -29,11 +29,27 @@
 | A-04 | 同事项同截止时间的同类提醒去重；危险期与临近提醒同刻合并；新建或恢复后已临近的有效事项立即提醒一次；通知点击分别进入今日列表或详情 |
 | A-05 | 标题去除首尾空白后非空；重要程度默认中；来源与标签可维护；搜索包含标题、描述和自定义文本，不同筛选条件取交集 |
 
+### 1.2 首轮实际代码与完整目标的关系
+
+第 2—9 节保留完整产品的设计目标，不能据其内容判断功能已经实现。第一轮版本为 `0.1.0`，源码提交 [1655a70](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/1655a70)，先落实录入、保存、查看和处理事项的基本流程，具体范围见[实现计划](implementation-plan.md)。本机构建和 30 项自动测试通过，Lint 无错误并保留维护提示；这些结果不替代完整需求验收。实机及在线 CI 状态分别见[项目状态](../STATUS.md)和[测试记录](test-records.md)。
+
+| 设计职责 | 首轮实际代码 | 当前范围及后续衔接 |
+| --- | --- | --- |
+| 入口与页面，D-01 / D-04 | [MainActivity](../app/src/main/java/cn/edu/hust/ddlsaver/MainActivity.kt)、[SaverApp](../app/src/main/java/cn/edu/hust/ddlsaver/ui/SaverApp.kt)、[EventEditor](../app/src/main/java/cn/edu/hust/ddlsaver/ui/EventEditor.kt) | 首页、表单、详情、待办／完成／归档、基础设置；日历、分类筛选和批量操作后续加入 |
+| 操作与界面状态，D-04 / D-08 | [SaverViewModel](../app/src/main/java/cn/edu/hust/ddlsaver/ui/SaverViewModel.kt) | 观察数据、处理保存及状态操作；错误保留输入，观察到保存后的修订再进入详情；草稿与返回确认由 Compose 管理 |
+| 模型与输入校验，D-02 / D-03 | [EventModels](../app/src/main/java/cn/edu/hust/ddlsaver/domain/EventModels.kt)、[EventValidation](../app/src/main/java/cn/edu/hust/ddlsaver/domain/EventValidation.kt) | 标题、截止、速通、描述、重要程度及完成／归档；标题及正时长校验；尚无附件、来源、标签、自定义字段和提醒模型 |
+| 时间规则，D-03 | [UrgencyRules](../app/src/main/java/cn/edu/hust/ddlsaver/domain/UrgencyRules.kt) | 北京时间日期、普通紧急与危险期、逾期；完成与归档分别判定，首页计数排除二者 |
+| 数据访问，D-02 / D-08 | [EventRepository](../app/src/main/java/cn/edu/hust/ddlsaver/domain/EventRepository.kt)、[RoomEventRepository](../app/src/main/java/cn/edu/hust/ddlsaver/data/RoomEventRepository.kt) | 首轮接口为 `save`、`setCompleted`、`setArchived`、`delete`、`setUrgentMinutes` 及数据 Flow；编辑使用修订号防止覆盖，已删除事项不重新创建 |
+| 数据库，D-02 | [SaverDatabase](../app/src/main/java/cn/edu/hust/ddlsaver/data/SaverDatabase.kt)、[Entities](../app/src/main/java/cn/edu/hust/ddlsaver/data/Entities.kt)、[SaverDao](../app/src/main/java/cn/edu/hust/ddlsaver/data/SaverDao.kt) | schema v1 仅保存事项和普通紧急阈值；事务内处理保存及状态操作，后续扩表须提供迁移 |
+| 图片、提醒与角色，D-05 / D-06 / D-07 | 尚未接入 | 对应设计保留为后续轮次目标，首轮页面不提供不可用的占位操作 |
+
+第一轮采用 A-01 的时间和输入规则、A-02 的今日计数范围、A-03 的完成标记保留及 A-05 的标题／重要程度默认值；相应规则仍可审核调整。A-03 的自动归档、A-04 的通知规则和 A-05 的分类／自定义文本尚未实现。当前搜索只覆盖标题与描述。
+
 ## 2. D-01 总体架构与离线运行
 
 本次设计选用 **Kotlin + Jetpack Compose** 构建原生 Android 界面，以 **Room / SQLite** 保存结构化数据，用应用私有目录保存图片副本，并通过 Android 系统接口安排与展示通知。选择原生方案是为了直接处理手机通知、权限和图片访问，减少跨平台适配范围；小组仍需熟悉 Kotlin 与 Compose 的使用方式，并在荣耀 X50 上验证关键能力。
 
-代码先采用单个 App 工程，按 `ui`、`domain`、`data`、`platform`、`resources` 分包。分包用于划分职责，不要求拆成多个独立构建模块。界面负责呈现和输入，业务层负责规则与操作编排，数据层提供统一的数据访问，平台层封装 Android 能力。这一组织方式参考 [Android 架构指南](https://developer.android.com/topic/architecture)，具体模块划分由本项目决定。
+代码采用单个 App 工程，首轮已建立 `ui`、`domain`、`data`；后续接入图片和提醒时补充平台适配及资源组织。分包用于划分职责，不要求拆成多个独立构建模块。界面负责呈现和输入，业务层负责规则与操作编排，数据层提供统一的数据访问，平台层封装 Android 能力。下图是包含后续模块的完整目标架构。这一组织方式参考 [Android 架构指南](https://developer.android.com/topic/architecture)，具体模块划分由本项目决定。
 
 ```mermaid
 flowchart LR
@@ -51,13 +67,13 @@ flowchart LR
     UI --> Assets[本地角色与台词资源]
 ```
 
-数据库中的有效事项是业务数据的统一依据。界面缓存和系统闹钟都不能独立决定事项状态；回调必须重新查询数据。正常使用不请求网络服务，角色和台词随应用保存在本地。最终交付形态为 Android 安装包；工程建立时锁定构建工具及依赖版本，并核对荣耀 X50 的实际 Android／MagicOS 版本，不能从手机型号推断其当前系统版本。
+数据库中的有效事项是业务数据的统一依据。界面缓存和后续系统闹钟都不能独立决定事项状态；回调必须重新查询数据。正常使用不请求网络服务，角色和台词接入时保存在本地。最终交付形态为 Android 安装包；首轮构建工具与依赖版本已锁定，声明 `minSdk 26`、`targetSdk 35`、`compileSdk 35`。荣耀 X50 的实际 Android／MagicOS 版本与运行结果仍待连接后登记，不能从手机型号推断。
 
 ## 3. D-02 数据模型与持久化
 
 ### 3.1 主要数据对象
 
-以下是拟定的逻辑数据结构，字段名用于表达含义，不是已经存在的代码。[Room 官方文档](https://developer.android.com/training/data-storage/room)将本地数据组织为数据库、实体和数据访问对象；本项目拟据此实现查询与事务。
+以下为完整目标的逻辑数据结构，字段名用于表达设计含义。首轮实际仅保存事项及普通紧急阈值，映射见第 1.2 节；其余对象尚未建表。[Room 官方文档](https://developer.android.com/training/data-storage/room)将本地数据组织为数据库、实体和数据访问对象；首轮已据此编写查询与事务。
 
 | 对象 | 主要字段与约束 | 关系及用途 |
 | --- | --- | --- |
@@ -134,7 +150,7 @@ erDiagram
 
 ### 5.2 拟定接口契约
 
-下列接口是应用内部职责约定，不是网络接口，也不表示代码已经实现。
+下列接口是完整目标中的应用内部职责约定，不是网络接口。首轮实际接口名称及覆盖范围见第 1.2 节；附件、提醒和批量相关契约尚未落地。
 
 | 接口 | 输入 → 输出 | 失败或边界处理 |
 | --- | --- | --- |
@@ -148,6 +164,8 @@ erDiagram
 
 ## 6. D-05 图片导入与附件生命周期
 
+本节为后续实现目标，首轮尚未接入图片附件。
+
 相册入口优先使用系统图片选择器，多选不可用时按平台能力使用系统文档选择路径；只请求用户选中的文件。方案依据 [Android Photo picker](https://developer.android.com/training/data-storage/shared/photo-picker)，具体可用路径需在演示手机验证。
 
 粘贴入口由用户主动触发，检查剪贴板是否提供可读取的图片 URI，并通过内容解析器读取。Android 对复杂剪贴板内容采用引用与内容提供者机制，不能把任意复制文字或图片链接视为已取得图片数据。[Android 复制粘贴说明](https://developer.android.com/develop/ui/views/touch-and-input/copy-paste)支持这一接口边界。
@@ -160,6 +178,8 @@ erDiagram
 图片大小、数量和解码内存上限需结合设备确定；未经确认不写成既定产品限制。列表使用缩略展示，详情按需加载，原始图片副本不直接一次性全部解码。
 
 ## 7. D-06 通知计划、触发与恢复
+
+本节为后续实现目标，首轮尚未接入系统闹钟或通知，也不声称会在后台提醒。
 
 ### 7.1 三类计划
 
@@ -250,10 +270,10 @@ Android 13 及以上的常规通知涉及 `POST_NOTIFICATIONS` 运行时权限�
 
 ## 11. 待确认与后续验证
 
-- 根据小组已提供的 Python、C++、Java 基础安排 Kotlin／Compose 学习；核对荣耀 X50 的 Android／MagicOS 版本及电量管理设置，在工程建立时锁定构建工具、依赖和最低兼容版本。
+- 根据小组已提供的 Python、C++、Java 基础熟悉首轮 Kotlin／Compose 代码；依赖与 SDK 声明已登记，荣耀 X50 的实际系统及电量管理设置在后续连接时核对。
 - 审核 A-01 至 A-05，确认提示延迟可接受范围，以及权限受限时的降级方式。
 - 优先验证通知授权、锁屏与重启恢复、图片选择和粘贴路径，再补充实测限制及必要数据上限。
-- 确定角色文件与台词方案；按实际分工落实模块责任与个人提交，当前不代替成员安排任务。
+- 确定角色文件与台词方案；成员按[任务板](../team/README.md)领取任务，形成实际修改、验证和个人提交。
 
 后续实现若与本稿不同，应记录原因并同步设计、需求追踪和测试用例。实际测试结果及遗留问题写入测试记录与测试报告，不能用设计推演代替执行证据。
 
@@ -262,3 +282,4 @@ Android 13 及以上的常规通知涉及 `POST_NOTIFICATIONS` 运行时权限�
 | 版本 | 日期 | 内容 | 状态 |
 | --- | --- | --- | --- |
 | v0.1 | 2026-10-27 | 根据需求 v0.2、官方资料及用户提供的语言经验和荣耀 X50 设备信息，形成总体及关键模块设计并选用技术路线 | 设计草案，待审核和验证 |
+| v0.2 | 2026-10-27 | 按用户授权开展首轮实现，补充实际代码映射、依赖与 SDK 声明，并区分后续目标模块 | 首轮本机构建与自动检查完成；维护提示已记录，本轮暂不连接实机 |
