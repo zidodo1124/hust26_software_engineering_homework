@@ -1,0 +1,67 @@
+name: Android
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: android-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-check:
+    name: Build APK, run local tests and lint
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v4
+        with:
+          # SDK command-line tools 19.0, matching the local build environment.
+          cmdline-tools-version: '13114758'
+          packages: 'platform-tools platforms;android-35 build-tools;35.0.0'
+          log-accepted-android-sdk-licenses: false
+
+      - name: Build and check
+        run: >-
+          ./gradlew --no-daemon --console=plain --stacktrace --continue
+          --max-workers=2
+          :app:assembleDebug :app:testDebugUnitTest :app:lintDebug
+
+      - name: Upload checked debug APK
+        uses: actions/upload-artifact@v7
+        with:
+          name: ddl-saver-debug-${{ github.sha }}
+          path: app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Upload test and lint reports
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: android-check-reports-${{ github.sha }}
+          path: |
+            app/build/reports/tests/testDebugUnitTest/
+            app/build/test-results/testDebugUnitTest/TEST-*.xml
+            app/build/reports/lint-results-debug.html
+            app/build/reports/lint-results-debug.xml
+            app/build/reports/lint-results-debug.txt
+          if-no-files-found: warn
+          retention-days: 14
