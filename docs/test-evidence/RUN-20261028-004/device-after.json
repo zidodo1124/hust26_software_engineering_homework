@@ -1,0 +1,18 @@
+{
+  "atUtc": "2026-10-28T11:04:34.233776+00:00",
+  "model": "ALI-AN00",
+  "android": "15",
+  "api": "35",
+  "build": "ALI-AN00 9.0.0.230(CNC00E206R8P4)",
+  "fontScale": "1.0",
+  "displaySize": "Physical size: 1200x2652",
+  "displayDensity": "Physical density: 520",
+  "postNotificationsGranted": true,
+  "exactAlarmAppOp": "allow",
+  "installed": {
+    "versionCode": 5,
+    "versionName": "0.3.2",
+    "bytes": 15102307,
+    "sha256": "ADE517B79B21C83EE98524288F8151CBA536ECFC22624F5C449DA066C45069D3"
+  }
+}

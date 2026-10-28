@@ -1,0 +1,40 @@
+{
+  "atUtc": "2026-10-28T12:00:32.170016+00:00",
+  "screenshot": "25-fixed-q-serious.png",
+  "fontScale": "1.0",
+  "nameBounds": [
+    117,
+    1130,
+    355,
+    1195
+  ],
+  "imageBounds": [
+    117,
+    1312,
+    468,
+    1715
+  ],
+  "dialogueBounds": [
+    592,
+    1397,
+    1031,
+    1631
+  ],
+  "creditsBounds": [
+    806,
+    1787,
+    1044,
+    1852
+  ],
+  "fabTextBounds": [
+    819,
+    2477,
+    1083,
+    2542
+  ],
+  "line": "不确定还能不能交的话，联系相关人员问问吧。",
+  "fullCardAboveFab": true,
+  "imageAboveDialogue": false,
+  "layout": "side-by-side",
+  "scope": "Same verified QA-filtered home; production artwork; screenshot requires visual review"
+}

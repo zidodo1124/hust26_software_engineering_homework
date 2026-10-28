@@ -1,0 +1,39 @@
+{
+  "atUtc": "2026-10-28T11:26:16.704772+00:00",
+  "screenshot": "16b-q-large-font-full-card.png",
+  "fontScale": "1.5",
+  "nameBounds": [
+    117,
+    190,
+    495,
+    293
+  ],
+  "imageBounds": [
+    425,
+    448,
+    776,
+    851
+  ],
+  "dialogueBounds": [
+    169,
+    962,
+    1031,
+    1188
+  ],
+  "creditsBounds": [
+    667,
+    1287,
+    1044,
+    1390
+  ],
+  "fabTextBounds": [
+    667,
+    2458,
+    1083,
+    2561
+  ],
+  "line": "我们一步一步来，先完成最关键的部分。",
+  "fullCardAboveFab": true,
+  "imageAboveDialogue": true,
+  "scope": "Same verified QA-filtered home; production artwork; screenshot requires visual review"
+}

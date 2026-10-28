@@ -1,0 +1,12 @@
+{
+  "schema3To4": true,
+  "schema4": true,
+  "allBusinessRowsUnchanged": true,
+  "allAttachmentBytesUnchanged": true,
+  "oldSettingsUnchanged": true,
+  "characterStyle": "CLASSIC",
+  "allReminderRowsUnchanged": true,
+  "sentReminderRowsUnchanged": true,
+  "reminderControlUnchanged": true,
+  "permissionEnvironmentUnchanged": true
+}

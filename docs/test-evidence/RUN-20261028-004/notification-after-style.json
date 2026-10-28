@@ -1,0 +1,20 @@
+{
+  "atUtc": "2026-10-28T11:18:39.132453+00:00",
+  "matchingSignature": {
+    "deadlineAt": 1793196780000,
+    "triggerAt": 1793182380000,
+    "kind": "DANGER"
+  },
+  "records": [
+    {
+      "tag": "event:7ccc92cd-1058-4ba7-86cf-cd31acb8ab15:1793196780000:1793182380000:DANGER",
+      "deadlineAt": 1793196780000,
+      "kind": "DANGER",
+      "mCreationTimeMs": 1793186045078,
+      "mUpdateTimeMs": 1793186045078,
+      "mRankingTimeMs": 1793186045070
+    }
+  ],
+  "rawOutputRetained": false,
+  "eventIdentityPendingDatabaseCrossCheck": true
+}

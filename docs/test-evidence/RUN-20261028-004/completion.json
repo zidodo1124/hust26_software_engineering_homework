@@ -1,0 +1,19 @@
+{
+  "atUtc": "2026-10-28T12:03:23.093044+00:00",
+  "normalHomeRestored": true,
+  "temporaryPrivateDatabaseDirectories": 0,
+  "localTemporaryUiRemoved": true,
+  "phoneTemporaryUiRemoved": true,
+  "comparison": {
+    "atUtc": "2026-10-28T12:03:10.116802+00:00",
+    "originalBusinessTablesUnchanged": true,
+    "allOriginalAttachmentsUnchanged": true,
+    "settingsRestoredToUpgradeBaseline": true,
+    "fontScaleRestored": true,
+    "qaEventsRemaining": 0,
+    "qaReminderPlansInactive": true,
+    "qaReminderCancellationSettled": true,
+    "originalReminderRowsUnchanged": true,
+    "originalSentReminderRowsUnchanged": true
+  }
+}

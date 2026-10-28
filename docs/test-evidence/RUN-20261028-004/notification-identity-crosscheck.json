@@ -1,0 +1,7 @@
+{
+  "atUtc": "2026-10-28T12:03:07.668277+00:00",
+  "qaTitle": "QA-UI-CHAT-1028",
+  "qaId": "7ccc92cd-1058-4ba7-86cf-cd31acb8ab15",
+  "beforeAndAfterNotificationsBelongToQa": true,
+  "scope": "DB identity matches both exact-signature notification observations"
+}

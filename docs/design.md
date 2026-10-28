@@ -2,12 +2,12 @@
 
 | 项目 | 内容 |
 | --- | --- |
-| 文档版本 | v0.6 |
+| 文档版本 | v0.7 |
 | 文档状态 | 提醒、两种角色形象与聊天气泡代码映射；本机检查及设备结果分别记录 |
 | 更新日期 | 2026-10-28 |
 | 项目小组 | 花园鳗：支盟渊、付泽文、岳羽泉、石倚铭 |
 | 需求依据 | [需求分析 v0.4](requirements.md)，整体审核尚未完成 |
-| 适用范围 | Android 离线单机；荣耀 X50 已记录 Android 15／API 35、MagicOS 9.0.0；v0.3.0 已有设备分项证据；当前 v0.3.2 界面检查另行记录，尚未真机复验 |
+| 适用范围 | Android 离线单机；荣耀 X50 已记录 Android 15／API 35、MagicOS 9.0.0；v0.3.0 已有设备分项证据；0.3.2 已取得设备界面分项，v0.3.3 修复版已在同机覆盖、复验并完成收尾 |
 
 ## 1. 文档目的与设计依据
 
@@ -31,7 +31,7 @@
 
 ### 1.2 第三轮实际代码与验证范围
 
-第三轮目标版本为 `0.3.0`、`versionCode = 3`、schema v3，保留前两轮事项、分类、日历、批量和图片流程，并接入第 7—8 节提醒与角色。源码 [857ca5f](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/857ca5faf29af4c2b861bf4529634ec66e3e13bd) 已通过 RUN-005 的本机构建与 132 次自动执行；以下表示实际职责，不扩大为完整设备验证。v0.3.0 后续设备分项结果见 RUN-20261028-001。当前界面版本为 0.3.2／versionCode 5、schema 4，保留经典／Q 版并优化预设台词气泡；其本机结果另列，不能复用旧版设备截图证明新界面已实测。具体操作见[用户使用手册](user-guide.md)。
+第三轮目标版本为 `0.3.0`、`versionCode = 3`、schema v3，保留前两轮事项、分类、日历、批量和图片流程，并接入第 7—8 节提醒与角色。源码 [857ca5f](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/857ca5faf29af4c2b861bf4529634ec66e3e13bd) 已通过 RUN-005 的本机构建与 132 次自动执行；以下表示实际职责，不扩大为完整设备验证。v0.3.0 后续设备分项结果见 RUN-20261028-001。当前界面版本为 0.3.3／versionCode 6、schema 4，保留经典／Q 版与预设台词气泡，并修复真机发现的 Q 版表情边缘残片；本机和目标机的实际范围分别记录，不复用旧截图代替修复版复验。具体操作见[用户使用手册](user-guide.md)。
 
 | 设计职责 | 当前代码 | 当前范围及衔接 |
 | --- | --- | --- |
@@ -40,7 +40,7 @@
 | 模型与校验，D-02 / D-03 | [EventModels](../app/src/main/java/cn/edu/hust/ddlsaver/domain/EventModels.kt)、[EventValidation](../app/src/main/java/cn/edu/hust/ddlsaver/domain/EventValidation.kt) | 原有事项字段及来源、标签、自定义文本、附件元数据、过期策略；校验分类名称、字段标识及安全附件文件名 |
 | 时间与查询，D-03 / D-04 | [UrgencyRules](../app/src/main/java/cn/edu/hust/ddlsaver/domain/UrgencyRules.kt)、[EventQuery](../app/src/main/java/cn/edu/hust/ddlsaver/domain/EventQuery.kt) | 北京时间日期、普通紧急与危险期、逾期；统一组合筛选与截止时间排序 |
 | 数据访问，D-02 / D-08 | [EventRepository](../app/src/main/java/cn/edu/hust/ddlsaver/domain/EventRepository.kt)、[RoomEventRepository](../app/src/main/java/cn/edu/hust/ddlsaver/data/RoomEventRepository.kt) | 关系保存、分类维护、批量事务、设置原子保存及过期整理；修订号防止旧编辑覆盖新信息，已删除事项不重新创建 |
-| 数据库，D-02 | [SaverDatabase](../app/src/main/java/cn/edu/hust/ddlsaver/data/SaverDatabase.kt)、[Entities](../app/src/main/java/cn/edu/hust/ddlsaver/data/Entities.kt)、[SaverDao](../app/src/main/java/cn/edu/hust/ddlsaver/data/SaverDao.kt) | schema v4，保留 `MIGRATION_1_2`、`MIGRATION_2_3`、`MIGRATION_3_4`；关联与提醒重建使用事务；0.3.2 不改变数据库结构 |
+| 数据库，D-02 | [SaverDatabase](../app/src/main/java/cn/edu/hust/ddlsaver/data/SaverDatabase.kt)、[Entities](../app/src/main/java/cn/edu/hust/ddlsaver/data/Entities.kt)、[SaverDao](../app/src/main/java/cn/edu/hust/ddlsaver/data/SaverDao.kt) | schema v4，保留 `MIGRATION_1_2`、`MIGRATION_2_3`、`MIGRATION_3_4`；关联与提醒重建使用事务；0.3.2／0.3.3 不改变数据库结构 |
 | 图片，D-05 | [AttachmentStore](../app/src/main/java/cn/edu/hust/ddlsaver/platform/AttachmentStore.kt)、[AttachmentUi](../app/src/main/java/cn/edu/hust/ddlsaver/ui/AttachmentUi.kt) | 系统相册多选、主动粘贴图片 URI、私有副本、缩略图／预览、取消编辑与删除后的文件回收 |
 | 提醒，D-06 / D-08 | [ReminderModels](../app/src/main/java/cn/edu/hust/ddlsaver/reminders/ReminderModels.kt)、[ReminderPlanStore](../app/src/main/java/cn/edu/hust/ddlsaver/reminders/ReminderPlanStore.kt)、[ReminderEngine](../app/src/main/java/cn/edu/hust/ddlsaver/reminders/ReminderEngine.kt) | 持久化计划兼发送键、同事务重建、当前数据复核、同刻合并与失败状态 |
 | Android 调度，D-06 | [AndroidReminderPlatform](../app/src/main/java/cn/edu/hust/ddlsaver/reminders/AndroidReminderPlatform.kt)、[ReminderRuntime](../app/src/main/java/cn/edu/hust/ddlsaver/reminders/ReminderRuntime.kt) | 单一最早 Alarm、通知通道、能力检查、两个 Receiver 和应用级串行恢复 |
@@ -278,6 +278,8 @@ Android 13 及以上的常规通知涉及 `POST_NOTIFICATIONS` 运行时权限�
 
 0.3.2 沿用现有 Compose 组件，将台词显示为圆角聊天气泡，气泡指向角色图片，名称和状态标题单独呈现。可用宽度不足或系统字号较大时，图片与气泡改为纵向排列；台词允许换行并随内容增高，避免省略完整提醒。两种形象共用该布局和 36 条润色后的本地台词，状态优先级与选择规则保持不变。完成反馈只表示事项被标记完成，不声称作业已提交。该界面没有对话输入、模型服务或联网生成，不新增依赖及数据库字段。
 
+0.3.3 处理部分 Q 版源帧内的边缘残片：`CharacterArtworkSpec` 为已审阅的快乐、危险和认真帧登记固定排除矩形，解码后在可写位图副本上将这些像素置透明。保持 192×208 帧尺寸、人物位置与排除区外像素；普通帧不作此处理，经典立绘及所有上游资源文件不改动。矩形须通过帧内边界校验，源帧与整图仍按原生命周期释放。API 28／35 回归同时检查污染点被清除、邻近头发保留和其余像素一致；视觉选择依据与设备复验见 BUG-UI-001 记录。
+
 ## 9. D-08 异常处理与可测试性
 
 | 关注点 | 设计措施 | 验证方式 |
@@ -323,3 +325,4 @@ Android 13 及以上的常规通知涉及 `POST_NOTIFICATIONS` 运行时权限�
 | v0.4 | 2026-10-27 | 同步第三轮 schema 3、持久计划兼发送账本、统一最早 Alarm、能力与恢复、角色四表情及 36 台词；前轮实机环境据实更新 | 源码 857ca5f 本机 116 方法／132 次执行通过；设备下次继续 |
 | v0.5 | 2026-10-28 | 同步海蓝主题、经典／Q 版选择与预览、schema 4、原数据保留及本地渲染检查 | 0.3.1 源码 1a44059 本机 127 方法／145 次执行通过；新版设备检查待进行 |
 | v0.6 | 2026-10-28 | 同步 0.3.2 界面提示、36 条预设台词润色、两种形象的聊天气泡及用户使用手册；schema 4 与依赖不变 | 首次本机 131 方法／149 次执行通过；最终文字回归另见本批测试报告，0.3.2 尚未真机复验 |
+| v0.7 | 2026-10-28 | 同步 0.3.3 固定排除区的运行时透明处理，保留原图、画布与人物位置；无新依赖及数据库变化 | 本机 132 方法／151 次执行通过，设备二次覆盖、表情／字号分项及恢复收尾完成，见 RUN-20261028-004 |

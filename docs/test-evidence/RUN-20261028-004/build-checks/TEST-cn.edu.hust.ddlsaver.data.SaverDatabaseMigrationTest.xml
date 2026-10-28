@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.data.SaverDatabaseMigrationTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-10-28T11:30:22" hostname="LAPTOP-7OF0K1SP" time="0.785">
+  <properties/>
+  <testcase name="migratesV1FileAndKeepsData" classname="cn.edu.hust.ddlsaver.data.SaverDatabaseMigrationTest" time="0.395"/>
+  <testcase name="migratesV2AndKeepsRelations" classname="cn.edu.hust.ddlsaver.data.SaverDatabaseMigrationTest" time="0.39"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,40 @@
+{
+  "atUtc": "2026-10-28T11:58:28.422438+00:00",
+  "screenshot": "23-fixed-q-large-font-full-card.png",
+  "fontScale": "1.5",
+  "nameBounds": [
+    117,
+    190,
+    495,
+    293
+  ],
+  "imageBounds": [
+    425,
+    448,
+    776,
+    851
+  ],
+  "dialogueBounds": [
+    169,
+    962,
+    1031,
+    1188
+  ],
+  "creditsBounds": [
+    667,
+    1287,
+    1044,
+    1390
+  ],
+  "fabTextBounds": [
+    667,
+    2458,
+    1083,
+    2561
+  ],
+  "line": "先顾核心要求，细节按剩余时间安排。",
+  "fullCardAboveFab": true,
+  "imageAboveDialogue": true,
+  "layout": "stacked",
+  "scope": "Same verified QA-filtered home; production artwork; screenshot requires visual review"
+}

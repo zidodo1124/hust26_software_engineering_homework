@@ -3,7 +3,7 @@
 - 小组：花园鳗。
 - 更新日期：2026-10-28。
 - 依据：用户允许根据项目需要选择语言和框架，并要求集中说明实际采用的技术。
-- 当前版本：`0.3.2`、`versionCode = 5`、Room schema v4，保留海蓝主题与经典／Q 版选择，优化界面文案及 36 条预设台词的聊天气泡；数据库结构和依赖版本不变。实际检查结果见[测试报告](test-report.md)，v0.3.0 的通知设备证据仍单独保留，0.3.2 尚无真机复验结论。
+- 当前版本：`0.3.3`、`versionCode = 6`、Room schema v4，保留海蓝主题、经典／Q 版选择及 36 条台词气泡，修复 Q 版部分表情边缘残片；数据库结构和依赖版本不变。完整本机检查为 132 方法／151 次执行通过，实际设备范围见[测试报告](test-report.md)，各版证据分别保留。
 
 本文用于回答“项目使用什么技术、各自负责什么、为什么选择、实际使用哪个版本”。后续新增、替换或移除依赖时同步更新，具体模块和接口见[设计文档](design.md)，安装与日常操作见[用户使用手册](user-guide.md)。
 
@@ -18,7 +18,7 @@ Kotlin 支持与 Java 互操作，Compose 提供基于 Kotlin 的原生界面开
 | 类别 | 本轮选择 | 在项目中的用途 | 当前采用状态 | 版本记录 |
 | --- | --- | --- | --- | --- |
 | 实现语言 | Kotlin | 业务规则、界面状态和数据访问 | 已集成 | Kotlin 与 Compose 编译插件均为 2.1.20 |
-| 界面 | Jetpack Compose、Material 3 | 首页卡片、表单、详情、分类管理、月份日历、组合筛选、批量选择、设置和角色气泡 | 沿用现有组件绘制气泡并适配窄屏／大字号；0.3.2 首次本机检查完成，手机显示待复验 | Compose BOM 2025.04.01；库版本由 BOM 管理 |
+| 界面 | Jetpack Compose、Material 3 | 首页卡片、表单、详情、分类管理、月份日历、组合筛选、批量选择、设置和角色气泡 | 沿用现有组件绘制气泡并适配窄屏／大字号；0.3.2 已有目标机操作与 150% 字号分项，0.3.3 修复版也已复验气泡及字号布局 | Compose BOM 2025.04.01；库版本由 BOM 管理 |
 | Activity 与界面状态 | Activity Compose、AndroidX ViewModel / Lifecycle | Activity 入口、页面状态、生命周期感知订阅及操作协调 | 已集成 | Activity 1.10.1；Lifecycle 2.9.0 |
 | 异步与数据订阅 | Kotlin Coroutines / Flow | 数据库观察、后台数据操作和页面更新 | 已集成 | 1.10.2 |
 | 结构化存储 | Room / SQLite | 保存事项、分类关联、字段、附件元数据、设置及持久化提醒计划／系统调度状态；业务变化与计划重建同事务 | schema v4 新增角色形象字段，显式 `MIGRATION_3_4` 保留原迁移链 | Room 2.7.1；schema 版本 4 |
@@ -27,11 +27,11 @@ Kotlin 支持与 Java 互操作，Compose 提供基于 Kotlin 的原生界面开
 | 图片校验与展示 | BitmapFactory、android.media.ExifInterface、Matrix | 图片边界与真实解码校验、采样缩略图／预览、EXIF 方向处理 | 已集成 `platform/AttachmentStore.kt`；文件操作在 IO 调度器执行并由互斥锁协调 | Android 平台 API；未引入 Coil、Glide 或 AndroidX ExifInterface |
 | 提醒调度 | AlarmManager | 安排截止相关定时任务，处理取消和重建 | 第三轮统一最早到期 Alarm 已加入，具体检查见 RUN-005 | Android 平台 API；精确访问独立检查，无能力时明确近似模式 |
 | 通知呈现 | Android 通知接口 | 每日汇总和单项提醒，以及通知点击 | 第三轮使用平台 NotificationManager／NotificationChannel，稳定 tag 与点击路由已加入 | Android 平台 API；Android 13+ POST_NOTIFICATIONS，未新增兼容库 |
-| 角色反馈 | 本地 WebP、BitmapFactory、Bitmap 与纯 Kotlin 台词规则 | 经典立绘／Q 版选择、36 条本地预设台词、状态优先级与成功完成短暂反馈；台词以气泡呈现 | 图集在 IO 线程解码并提取显示区域，随后回收整图；逐文件来源、许可与署名随包保留 | 无新增第三方运行依赖，素材见[角色记录](character-assets.md) |
+| 角色反馈 | 本地 WebP、BitmapFactory、Bitmap 与纯 Kotlin 台词规则 | 经典立绘／Q 版选择、36 条本地预设台词、状态优先级与成功完成短暂反馈；台词以气泡呈现 | 图集在 IO 线程解码，提取帧并对固定排除区置透明，随后回收临时图；保持画布及其他像素，源文件、许可与署名随包保留 | 无新增第三方运行依赖，素材见[角色记录](character-assets.md) |
 | 业务规则测试 | JUnit、Coroutines Test | 时间边界、状态规则、组合查询、字段与附件元数据校验 | 当前结果见[测试报告](test-report.md)，不同方法与配置执行分别统计 | JUnit 4.13.2；Coroutines Test 1.10.2 |
 | 本地 Android 行为测试 | Robolectric、AndroidX Test Core、Room Testing | 在开发机 JVM 中检查 Room 事务、真实 v1／v2 文件迁移、附件平台行为及重开持久化 | 第三轮本机提醒、迁移及资源检查通过，不能替代实机验证 | Robolectric 4.14.1；Test Core 1.6.1；Room Testing 2.7.1 |
 | 本地界面流程测试 | Compose UI Test JUnit4、测试宿主 Manifest | 在 Robolectric 中操作界面，检查草稿、筛选、批量、重建及气泡长文本／字号布局 | 当前结果见[测试报告](test-report.md)，不同方法与配置执行分别统计；渲染图不作为实机截图 | 由 Compose BOM 2025.04.01 管理 |
-| 实机与设备测试 | ADB、UIAutomator 界面采集、Python 操作助手与截图审阅 | 在荣耀 X50 顺序操作真实页面并记录结果 | 第二轮安装启动及六类功能、v0.3.0 通知分项已有实测记录；0.3.2 尚未真机复验，未测条件仍按子场景和观察项保留 | Android 15／API 35、MagicOS 9.0.0；Platform Tools 37.0.1 |
+| 实机与设备测试 | ADB、UIAutomator 界面采集、Python 操作助手与截图审阅 | 在荣耀 X50 顺序操作真实页面并记录结果 | 第二轮功能、v0.3.0 通知和 v0.3.2 形象／字号分项已有记录；0.3.3 已完成覆盖、修复表情／字号复验和 QA 收尾，未测条件继续保留 | Android 15／API 35、MagicOS 9.0.0；Platform Tools 37.0.1 |
 
 版本依据为根目录 [build.gradle.kts](../build.gradle.kts)、[app/build.gradle.kts](../app/build.gradle.kts)和 [Gradle Wrapper 配置](../gradle/wrapper/gradle-wrapper.properties)。以上“已集成”表示依赖或代码已加入工程，不单独代表构建、测试或实机检查通过。文本复制和图片 URI 粘贴已接入；能否从某个外部应用复制图片，取决于其剪贴板内容及访问授权，普通图片网址不直接导入。
 
@@ -72,7 +72,7 @@ Room 是 SQLite 的访问封装，适合本项目的本地结构化数据；数�
 | 权限与电量设置 | 每个通知测试批次记录通知权限、定时访问条件及电量优化设置 |
 | 系统时间 | 记录设备时区；应用业务日期统一按北京时间解释 |
 | SDK 范围 | `minSdk = 26`、`targetSdk = 35`、`compileSdk = 35`；声明范围不代表所有设备已测 |
-| 应用版本 | 第二轮 `versionName = 0.2.0`、`versionCode = 2`；包名 `cn.edu.hust.ddlsaver`；schema v2 |
+| 应用版本 | 当前 `versionName = 0.3.3`、`versionCode = 6`；包名 `cn.edu.hust.ddlsaver`；schema v4；历史设备结果按各批实际版本记录 |
 | 构建证据 | 保存实际依赖版本、构建命令、代码提交号和 APK 标识，关联[测试记录](test-records.md) |
 
 ## 5. 实机测试辅助工具

@@ -1,0 +1,24 @@
+{
+  "atUtc": "2026-10-28T11:20:23.431653+00:00",
+  "originalFontScale": "1.0",
+  "home": {
+    "fontScale": "1.5",
+    "imageBounds": [
+      425,
+      1738,
+      776,
+      2141
+    ],
+    "dialogueBounds": [
+      169,
+      2252,
+      1031,
+      2478
+    ],
+    "line": "我们一步一步来，先完成最关键的部分。",
+    "stackedImageBeforeText": true,
+    "completeKnownLineInSemantics": true
+  },
+  "settingsSaveReachableAndActionable": true,
+  "restoredFontScale": "1.0"
+}

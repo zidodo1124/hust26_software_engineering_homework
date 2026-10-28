@@ -1,0 +1,83 @@
+{
+  "checkedUtc": "2026-10-28T11:54:54.663495+00:00",
+  "schemaVersion": 4,
+  "scope": "All original business rows and attachment bytes via private salted comparisons; no user content or identifiers",
+  "settings": {
+    "id": 1,
+    "urgentMinutes": 1440,
+    "expiredPolicy": "KEEP",
+    "dailySummaryEnabled": 1,
+    "dailySummaryMinuteOfDay": 480,
+    "dangerReminderEnabled": 1,
+    "deadlineReminderEnabled": 1,
+    "deadlineLeadMinutes": 60,
+    "characterStyle": "CHIBI"
+  },
+  "tableComparisons": {
+    "events": {
+      "count": 4,
+      "saltedDigest": "9C8E7970A38748152762EB015465B313F4AE1FD3DBB8C90447F6CEEDE20F889D"
+    },
+    "sources": {
+      "count": 1,
+      "saltedDigest": "AE38FB65E20C4DA844F1520072CC759D0FB7B83C8BCC4D6C4AFD5B6E29499FD7"
+    },
+    "tags": {
+      "count": 1,
+      "saltedDigest": "56E9038AF3705D917010863A4E86C1741CE82208757AD37A76BB51ACC205901C"
+    },
+    "event_tags": {
+      "count": 1,
+      "saltedDigest": "40C85D38E461AB0CE2FC869BB4866C6711959497B29F3B3AAAE15991AB186251"
+    },
+    "custom_fields": {
+      "count": 1,
+      "saltedDigest": "72542AA36438295F4900E6CBF8DA08D5DF191D14F4D429D33768DC83D208A07A"
+    },
+    "attachments": {
+      "count": 4,
+      "saltedDigest": "601B2C81B29E672F6E3DB3235A122021484E15D74A7E700B60E2A5054B82D4E5"
+    }
+  },
+  "attachmentComparisons": [
+    {
+      "identityDigest": "1E2AD6EC17C4E5B3A4E5581C1B9202428563EA129E1CC26EF1C33A62BF16E1FB",
+      "bytes": 5407,
+      "declaredBytes": 5407,
+      "contentDigest": "09BA9BD908AA6A10D1AEEBC66B3D0F4DBE0C988A83B95ABB82783877FA5B1DC3"
+    },
+    {
+      "identityDigest": "93E00DDD095DA683D51F92C4155BD82F00DB559024B328479D674FD3561BB635",
+      "bytes": 5407,
+      "declaredBytes": 5407,
+      "contentDigest": "09BA9BD908AA6A10D1AEEBC66B3D0F4DBE0C988A83B95ABB82783877FA5B1DC3"
+    },
+    {
+      "identityDigest": "70A8B16ED2EC5A0BBEC7D4D37F1B1F2484917774748D654C5D5CB1F7F04155A5",
+      "bytes": 5351,
+      "declaredBytes": 5351,
+      "contentDigest": "851B3DD8EF9B7D08D201FDE5D59088BC7367120EAAE7C059E4F5B137AEFC36ED"
+    },
+    {
+      "identityDigest": "1E28EE16585FCBD7F4522B5913CCE0922CBB1F05727B60DDCD8DEB80ED5A2554",
+      "bytes": 5351,
+      "declaredBytes": 5351,
+      "contentDigest": "851B3DD8EF9B7D08D201FDE5D59088BC7367120EAAE7C059E4F5B137AEFC36ED"
+    }
+  ],
+  "reminders": {
+    "count": 16,
+    "stateCounts": {
+      "PENDING": 8,
+      "SENT": 8
+    },
+    "activeCount": 4,
+    "cancelPendingCount": 0,
+    "allRowsDigest": "9D95F6196258C28FF1ED629F3DAA956ADB517C9D9E3DE2B19E469CE05635E0B0",
+    "sentRowsDigest": "9D206E5230FA8447C095602979BA4C679C5F6BD6FD3BFD1856FAB71863B81C66",
+    "controlDigest": "67EDABF0782E22982D92375AE1BC67DD2C4984D42E35805DDA3BDE701B03923F",
+    "errorCount": 0,
+    "controlHasError": false
+  },
+  "temporaryPrivateDatabaseRemoved": true
+}

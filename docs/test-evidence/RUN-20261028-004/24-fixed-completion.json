@@ -1,0 +1,26 @@
+{
+  "atUtc": "2026-10-28T11:59:25.788953+00:00",
+  "qaTitle": "QA-UI-CHAT-1028",
+  "completionControlBounds": [
+    505,
+    2261,
+    695,
+    2326
+  ],
+  "completedStateConfirmed": true,
+  "screenshotsForVisualReview": [
+    {
+      "file": "24-fixed-happy-1.png",
+      "elapsedAfterTapSeconds": 1.953
+    },
+    {
+      "file": "24-fixed-happy-2.png",
+      "elapsedAfterTapSeconds": 2.938
+    },
+    {
+      "file": "24-fixed-happy-3.png",
+      "elapsedAfterTapSeconds": 3.922
+    }
+  ],
+  "note": "Frames captured during real success feedback; visual result must be reviewed separately"
+}

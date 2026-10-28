@@ -1,0 +1,23 @@
+{
+  "atUtc": "2026-10-28T11:18:53.828726+00:00",
+  "originalFontScale": "1.0",
+  "home": {
+    "fontScale": "1.5",
+    "imageBounds": [
+      425,
+      448,
+      776,
+      851
+    ],
+    "dialogueBounds": [
+      169,
+      962,
+      1031,
+      1188
+    ],
+    "line": "冲刺也别漏了上传和提交确认。",
+    "stackedImageBeforeText": true,
+    "completeKnownLineInSemantics": true
+  },
+  "restoredFontScale": "1.0"
+}

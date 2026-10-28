@@ -1,0 +1,140 @@
+{
+  "run": "RUN-20261028-004",
+  "date": "2026-10-28",
+  "initialSourceCommit": "3a01cf380fe9792a07f30966c652bbd5722a5ef6",
+  "finalSourceCommit": "93118d6d7282fbf92d22e843d207233a84414947",
+  "upgradePath": "0.3.0 / schema 3 -> 0.3.2 / schema 4 -> 0.3.3 / schema 4",
+  "firstInstallReturnedSuccessUtc": "2026-10-28T11:04:12.435218+00:00",
+  "hotfixInstall": {
+    "sha256": "7B8F8D6872FCC1526DD5E64E9AC47A8F989BE71CD4CAC67230FA989409E3ECC8",
+    "bytes": 15102627,
+    "installedAtUtc": "2026-10-28T11:55:14.570150+00:00",
+    "versionCode": 6,
+    "versionName": "0.3.3"
+  },
+  "finalDevice": {
+    "atUtc": "2026-10-28T12:03:07.871908+00:00",
+    "model": "ALI-AN00",
+    "android": "15",
+    "api": "35",
+    "build": "ALI-AN00 9.0.0.230(CNC00E206R8P4)",
+    "fontScale": "1.0",
+    "displaySize": "Physical size: 1200x2652",
+    "displayDensity": "Physical density: 520",
+    "postNotificationsGranted": true,
+    "exactAlarmAppOp": "allow",
+    "installed": {
+      "versionCode": 6,
+      "versionName": "0.3.3",
+      "bytes": 15102627,
+      "sha256": "7B8F8D6872FCC1526DD5E64E9AC47A8F989BE71CD4CAC67230FA989409E3ECC8"
+    }
+  },
+  "phoneWorkCompletedUtc": "2026-10-28T12:03:23.093044+00:00",
+  "checks": {
+    "initialUpgrade": {
+      "schema3To4": true,
+      "schema4": true,
+      "allBusinessRowsUnchanged": true,
+      "allAttachmentBytesUnchanged": true,
+      "oldSettingsUnchanged": true,
+      "characterStyle": "CLASSIC",
+      "allReminderRowsUnchanged": true,
+      "sentReminderRowsUnchanged": true,
+      "reminderControlUnchanged": true,
+      "permissionEnvironmentUnchanged": true
+    },
+    "hotfixUpgrade": {
+      "atUtc": "2026-10-28T11:55:38.120423+00:00",
+      "checks": {
+        "schemaVersion": true,
+        "settings": true,
+        "tableComparisons": true,
+        "attachmentComparisons": true,
+        "reminders": true
+      },
+      "qaCount": 1
+    },
+    "cleanup": {
+      "atUtc": "2026-10-28T12:03:10.116802+00:00",
+      "originalBusinessTablesUnchanged": true,
+      "allOriginalAttachmentsUnchanged": true,
+      "settingsRestoredToUpgradeBaseline": true,
+      "fontScaleRestored": true,
+      "qaEventsRemaining": 0,
+      "qaReminderPlansInactive": true,
+      "qaReminderCancellationSettled": true,
+      "originalReminderRowsUnchanged": true,
+      "originalSentReminderRowsUnchanged": true
+    },
+    "notificationMetadataUnchanged": true,
+    "notificationIdentityConfirmed": true
+  },
+  "bug": {
+    "id": "BUG-UI-001",
+    "foundVersion": "0.3.2",
+    "fixedVersion": "0.3.3",
+    "status": "closed for the fixed atlas and tested device",
+    "cause": "Neighbor fragments already inside source atlas cells",
+    "fix": "Reviewed fixed transparent exclusions at runtime; source originals unchanged",
+    "beforeImages": [
+      "05-q-home-saved.png",
+      "15-q-danger-bubble.png"
+    ],
+    "afterImages": [
+      "20-fixed-q-danger.png",
+      "24-fixed-happy-2.png",
+      "25-fixed-q-serious.png"
+    ]
+  },
+  "automatedVerification": {
+    "methods": 132,
+    "executions": 151,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "lintErrors": 0,
+    "lintWarnings": 16,
+    "details": "build-checks/summary.json"
+  },
+  "deviceLimits": [
+    "One Honor X50 with existing handwritten font; no all-device claim",
+    "Editor bottom controls checked after hiding IME",
+    "No new complete notification timing, Doze, reboot or permission-combination verification",
+    "Normal pose shown in settings preview, not forced by editing original overdue events",
+    "No final user aesthetic acceptance or CI conclusion"
+  ],
+  "imageReview": {
+    "rootReviewed": [
+      "01",
+      "02",
+      "03",
+      "04",
+      "05",
+      "16",
+      "16b",
+      "20",
+      "21",
+      "22",
+      "23",
+      "24-2",
+      "25",
+      "26"
+    ],
+    "independentReadOnlyReviewer": [
+      "10",
+      "11",
+      "13",
+      "14",
+      "15",
+      "17",
+      "18",
+      "19"
+    ],
+    "allExportedImagesUnedited": true
+  },
+  "phoneScreenshots": 22,
+  "exportedDeviceJsonFiles": 33,
+  "rawDatabaseAndSaltExported": false,
+  "temporaryUiAndDatabaseRemoved": true
+}

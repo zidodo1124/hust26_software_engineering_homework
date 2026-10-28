@@ -1,0 +1,11 @@
+{
+  "atUtc": "2026-10-28T11:55:38.120423+00:00",
+  "checks": {
+    "schemaVersion": true,
+    "settings": true,
+    "tableComparisons": true,
+    "attachmentComparisons": true,
+    "reminders": true
+  },
+  "qaCount": 1
+}

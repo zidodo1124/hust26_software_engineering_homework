@@ -1,0 +1,327 @@
+[
+  {
+    "atUtc": "2026-10-28T11:03:47.005199+00:00",
+    "step": "baseline",
+    "result": "captured",
+    "details": {
+      "environmentFile": "device-before.json",
+      "snapshotFile": "before-upgrade.json"
+    }
+  },
+  {
+    "atUtc": "2026-10-28T11:04:01.049215+00:00",
+    "step": "upgrade",
+    "result": "started",
+    "details": {
+      "apkSha256": "ADE517B79B21C83EE98524288F8151CBA536ECFC22624F5C449DA066C45069D3",
+      "method": "adb install -r; retain product data"
+    }
+  },
+  {
+    "atUtc": "2026-10-28T11:04:12.435218+00:00",
+    "step": "upgrade",
+    "result": "installation-returned-success",
+    "details": null
+  },
+  {
+    "atUtc": "2026-10-28T11:04:46.626882+00:00",
+    "step": "upgrade",
+    "result": "passed",
+    "details": {
+      "schema3To4": true,
+      "schema4": true,
+      "allBusinessRowsUnchanged": true,
+      "allAttachmentBytesUnchanged": true,
+      "oldSettingsUnchanged": true,
+      "characterStyle": "CLASSIC",
+      "allReminderRowsUnchanged": true,
+      "sentReminderRowsUnchanged": true,
+      "reminderControlUnchanged": true,
+      "permissionEnvironmentUnchanged": true
+    }
+  },
+  {
+    "atUtc": "2026-10-28T11:09:19.662447+00:00",
+    "step": "style-preview-discard",
+    "result": "passed",
+    "details": {
+      "previewQ": true,
+      "continueEditingRetainsQ": true,
+      "discardKeepsClassicHomeAndSettings": true
+    }
+  },
+  {
+    "atUtc": "2026-10-28T11:10:52.928579+00:00",
+    "step": "q-style-save-reopen",
+    "result": "passed",
+    "details": {
+      "storedStyle": "CHIBI",
+      "realProcessReopen": true,
+      "creditsOpened": true
+    }
+  },
+  {
+    "atUtc": "2026-10-28T11:12:35.922052+00:00",
+    "step": "classic-style-save-and-credits",
+    "result": "passed",
+    "details": {
+      "homeStyle": "CLASSIC",
+      "creditsOpened": true
+    }
+  },
+  {
+    "atUtc": "2026-10-28T11:14:58.613581+00:00",
+    "step": "qa-create-and-input-prompts",
+    "result": "passed",
+    "details": {
+      "checkedUtc": "2026-10-28T11:14:58.601392+00:00",
+      "title": "QA-UI-CHAT-1028",
+      "deadlineBeijing": "2026-10-28T22:13:00+08:00",
+      "deadlineEpochMillis": 1793196780000,
+      "sprintMinutes": 240,
+      "minutesRemainingAtCheck": 178.02331013333333
+    }
+  },
+  {
+    "atUtc": "2026-10-28T11:15:54.996466+00:00",
+    "step": "qa-detail-prompts-and-delete-cancel",
+    "result": "checked",
+    "details": {
+      "emptyDescription": true,
+      "emptyImagesHintDisplayed": false,
+      "deleteCancelled": true,
+      "classicDangerDisplayed": true
+    }
+  },
+  {
+    "atUtc": "2026-10-28T11:18:39.136457+00:00",
+    "step": "q-danger-style-layout",
+    "result": "captured-for-review",
+    "details": {
+      "screenshot": "15-q-danger-bubble.png",
+      "notificationMetadata": {
+        "beforeCount": 1,
+        "afterCount": 1,
+        "metadataUnchanged": true,
+        "eventIdentityPendingDatabaseCrossCheck": true
+      }
+    }
+  },
+  {
+    "atUtc": "2026-10-28T11:18:53.989929+00:00",
+    "step": "font-scale",
+    "result": "temporarily-set",
+    "details": {
+      "from": "1.0",
+      "to": "1.5",
+      "otherDeviceSettingsChanged": false
+    }
+  },
+  {
+    "atUtc": "2026-10-28T11:19:22.337512+00:00",
+    "step": "font-scale",
+    "result": "restored",
+    "details": {
+      "fontScale": "1.0"
+    }
+  },
+  {
+    "atUtc": "2026-10-28T11:20:23.567462+00:00",
+    "step": "font-scale",
+    "result": "temporarily-set",
+    "details": {
+      "from": "1.0",
+      "to": "1.5",
+      "otherDeviceSettingsChanged": false
+    }
+  },
+  {
+    "atUtc": "2026-10-28T11:21:27.198266+00:00",
+    "step": "font-scale",
+    "result": "restored",
+    "details": {
+      "fontScale": "1.0"
+    }
+  },
+  {
+    "atUtc": "2026-10-28T11:23:38.499081+00:00",
+    "step": "font-scale-remaining",
+    "result": "temporarily-set",
+    "details": {
+      "from": "1.0",
+      "to": "1.5",
+      "resumedAfterUserInterruption": true
+    }
+  },
+  {
+    "atUtc": "2026-10-28T11:25:08.294552+00:00",
+    "step": "font-scale",
+    "result": "restored",
+    "details": {
+      "fontScale": "1.0"
+    }
+  },
+  {
+    "atUtc": "2026-10-28T11:25:18.970879+00:00",
+    "step": "large-font-layout",
+    "result": "checked",
+    "details": {
+      "atUtc": "2026-10-28T11:20:23.431653+00:00",
+      "originalFontScale": "1.0",
+      "home": {
+        "fontScale": "1.5",
+        "imageBounds": [
+          425,
+          1738,
+          776,
+          2141
+        ],
+        "dialogueBounds": [
+          169,
+          2252,
+          1031,
+          2478
+        ],
+        "line": "我们一步一步来，先完成最关键的部分。",
+        "stackedImageBeforeText": true,
+        "completeKnownLineInSemantics": true
+      },
+      "settingsSaveReachableAndActionable": true,
+      "restoredFontScale": "1.0",
+      "editorAsciiInputAndBottomControlsAfterImeHidden": true,
+      "discardPreservedEmptyDescription": true
+    }
+  },
+  {
+    "atUtc": "2026-10-28T11:26:17.533290+00:00",
+    "step": "font-scale-framing",
+    "result": "restored",
+    "details": {
+      "fontScale": "1.0"
+    }
+  },
+  {
+    "atUtc": "2026-10-28T11:54:55.300411+00:00",
+    "step": "hotfix-baseline",
+    "result": "captured",
+    "details": {
+      "qaCount": 1,
+      "style": "CHIBI",
+      "fontScale": "1.0"
+    }
+  },
+  {
+    "atUtc": "2026-10-28T11:54:55.825058+00:00",
+    "step": "hotfix-install",
+    "result": "started",
+    "details": {
+      "sha256": "7B8F8D6872FCC1526DD5E64E9AC47A8F989BE71CD4CAC67230FA989409E3ECC8",
+      "method": "adb install -r; preserve data"
+    }
+  },
+  {
+    "atUtc": "2026-10-28T11:55:14.590069+00:00",
+    "step": "hotfix-install",
+    "result": "returned-success",
+    "details": null
+  },
+  {
+    "atUtc": "2026-10-28T11:56:14.053841+00:00",
+    "step": "hotfix-upgrade",
+    "result": "verified",
+    "details": {
+      "version": "0.3.3",
+      "code": 6,
+      "checks": {
+        "schemaVersion": true,
+        "settings": true,
+        "tableComparisons": true,
+        "attachmentComparisons": true,
+        "reminders": true
+      },
+      "screenshot": "20-fixed-q-danger.png"
+    }
+  },
+  {
+    "atUtc": "2026-10-28T11:57:51.682825+00:00",
+    "step": "fixed-q-preview-and-credits",
+    "result": "checked",
+    "details": {
+      "preview": "21-fixed-q-preview.png",
+      "credits": "22-fixed-q-credits.png",
+      "runtimeTransparencyExplanationPresent": true
+    }
+  },
+  {
+    "atUtc": "2026-10-28T11:58:29.286998+00:00",
+    "step": "font-scale-framing",
+    "result": "restored",
+    "details": {
+      "fontScale": "1.0"
+    }
+  },
+  {
+    "atUtc": "2026-10-28T11:59:25.802930+00:00",
+    "step": "qa-completion",
+    "result": "saved-and-captured",
+    "details": {
+      "atUtc": "2026-10-28T11:59:25.788953+00:00",
+      "qaTitle": "QA-UI-CHAT-1028",
+      "completionControlBounds": [
+        505,
+        2261,
+        695,
+        2326
+      ],
+      "completedStateConfirmed": true,
+      "screenshotsForVisualReview": [
+        {
+          "file": "24-fixed-happy-1.png",
+          "elapsedAfterTapSeconds": 1.953
+        },
+        {
+          "file": "24-fixed-happy-2.png",
+          "elapsedAfterTapSeconds": 2.938
+        },
+        {
+          "file": "24-fixed-happy-3.png",
+          "elapsedAfterTapSeconds": 3.922
+        }
+      ],
+      "note": "Frames captured during real success feedback; visual result must be reviewed separately"
+    }
+  },
+  {
+    "atUtc": "2026-10-28T12:01:27.996563+00:00",
+    "step": "fixed-serious-and-classic",
+    "result": "captured-for-review",
+    "details": {
+      "qSerious": "25-fixed-q-serious.png",
+      "classic": "26-fixed-classic-restored.png"
+    }
+  },
+  {
+    "atUtc": "2026-10-28T12:03:23.214071+00:00",
+    "step": "cleanup",
+    "result": "completed",
+    "details": {
+      "atUtc": "2026-10-28T12:03:23.093044+00:00",
+      "normalHomeRestored": true,
+      "temporaryPrivateDatabaseDirectories": 0,
+      "localTemporaryUiRemoved": true,
+      "phoneTemporaryUiRemoved": true,
+      "comparison": {
+        "atUtc": "2026-10-28T12:03:10.116802+00:00",
+        "originalBusinessTablesUnchanged": true,
+        "allOriginalAttachmentsUnchanged": true,
+        "settingsRestoredToUpgradeBaseline": true,
+        "fontScaleRestored": true,
+        "qaEventsRemaining": 0,
+        "qaReminderPlansInactive": true,
+        "qaReminderCancellationSettled": true,
+        "originalReminderRowsUnchanged": true,
+        "originalSentReminderRowsUnchanged": true
+      }
+    }
+  }
+]

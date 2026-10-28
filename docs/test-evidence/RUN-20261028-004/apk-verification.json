@@ -1,0 +1,35 @@
+{
+  "sourceCommit": "93118d6d7282fbf92d22e843d207233a84414947",
+  "version": "0.3.3",
+  "versionCode": 6,
+  "schema": 4,
+  "package": "cn.edu.hust.ddlsaver",
+  "minSdk": 26,
+  "targetSdk": 35,
+  "apk": {
+    "bytes": 15102627,
+    "sha256": "7B8F8D6872FCC1526DD5E64E9AC47A8F989BE71CD4CAC67230FA989409E3ECC8"
+  },
+  "signatureVerified": true,
+  "certificateSha256": "978833BCAF0FC001248F5D8501BFA1F9D1273922474ED601F2C60A4548A652B9",
+  "sameAsEarlierLocalBuilds": true,
+  "permissions": [
+    "android.permission.POST_NOTIFICATIONS",
+    "android.permission.SCHEDULE_EXACT_ALARM",
+    "android.permission.RECEIVE_BOOT_COMPLETED",
+    "cn.edu.hust.ddlsaver.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+  ],
+  "verifiedOriginalAssetFiles": [
+    "character/maid-left.webp",
+    "character/whale-cheerful.webp",
+    "character/whale-serious.webp",
+    "character/whale-angry.webp",
+    "character/upstream-NOTICE.md",
+    "character/dsh-deep-whale-LICENSE.txt",
+    "character/dsh-deep-whale-NOTICE.txt",
+    "character/chibi/spritesheet.webp",
+    "character/chibi/upstream-atlas-source.json",
+    "character/chibi/upstream-LICENSE.txt",
+    "character/chibi/origin-LICENSE.txt"
+  ]
+}

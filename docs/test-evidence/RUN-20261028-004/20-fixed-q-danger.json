@@ -1,0 +1,40 @@
+{
+  "atUtc": "2026-10-28T11:56:13.911401+00:00",
+  "screenshot": "20-fixed-q-danger.png",
+  "fontScale": "1.0",
+  "nameBounds": [
+    117,
+    1693,
+    355,
+    1758
+  ],
+  "imageBounds": [
+    117,
+    1875,
+    468,
+    2278
+  ],
+  "dialogueBounds": [
+    592,
+    1960,
+    1031,
+    2194
+  ],
+  "creditsBounds": [
+    806,
+    2350,
+    1044,
+    2415
+  ],
+  "fabTextBounds": [
+    819,
+    2477,
+    1083,
+    2542
+  ],
+  "line": "先顾核心要求，细节按剩余时间安排。",
+  "fullCardAboveFab": true,
+  "imageAboveDialogue": false,
+  "layout": "side-by-side",
+  "scope": "Same verified QA-filtered home; production artwork; screenshot requires visual review"
+}

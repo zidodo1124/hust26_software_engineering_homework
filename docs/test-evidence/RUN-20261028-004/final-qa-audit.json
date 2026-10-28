@@ -1,0 +1,44 @@
+{
+  "atUtc": "2026-10-28T12:03:07.658546+00:00",
+  "qaIdentity": {
+    "id": "7ccc92cd-1058-4ba7-86cf-cd31acb8ab15",
+    "title": "QA-UI-CHAT-1028",
+    "deadlineAt": 1793196780000
+  },
+  "qaEvents": [],
+  "qaPlans": [
+    {
+      "key": "DANGER:7ccc92cd-1058-4ba7-86cf-cd31acb8ab15:1793196780000",
+      "kind": "DANGER",
+      "eventId": "7ccc92cd-1058-4ba7-86cf-cd31acb8ab15",
+      "deadlineAt": 1793196780000,
+      "eventRevision": 1,
+      "triggerAt": 1793182380000,
+      "day": null,
+      "notificationTag": "event:7ccc92cd-1058-4ba7-86cf-cd31acb8ab15:1793196780000:1793182380000:DANGER",
+      "active": 0,
+      "state": "SENT",
+      "lastAttemptAt": 1793186045040,
+      "lastError": null,
+      "cancelPending": 0
+    },
+    {
+      "key": "DEADLINE:7ccc92cd-1058-4ba7-86cf-cd31acb8ab15:1793196780000",
+      "kind": "DEADLINE",
+      "eventId": "7ccc92cd-1058-4ba7-86cf-cd31acb8ab15",
+      "deadlineAt": 1793196780000,
+      "eventRevision": 1,
+      "triggerAt": 1793193180000,
+      "day": null,
+      "notificationTag": "event:7ccc92cd-1058-4ba7-86cf-cd31acb8ab15:1793196780000:1793193180000:DEADLINE",
+      "active": 0,
+      "state": "PENDING",
+      "lastAttemptAt": null,
+      "lastError": null,
+      "cancelPending": 0
+    }
+  ],
+  "otherLedgerDigest": "A4B8D1C069BDAE1484AA2E36D0566F3A0C6E438CF5A300B4A6BF1C7F07712EB5",
+  "otherSentLedgerDigest": "B28CF68768E8603947BFD2B427C2C81F3E97E833FE8B692628EECC947A038BEC",
+  "temporaryPrivateDatabaseRemoved": true
+}
