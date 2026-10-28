@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest" tests="3" skipped="0" failures="2" errors="0" timestamp="2026-10-28T08:43:34" hostname="LAPTOP-7OF0K1SP" time="9.645">
+  <properties/>
+  <testcase name="bothStylesPersistAcrossDatabaseReopenAndUnknownValueFallsBack" classname="cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest" time="9.325"/>
+  <testcase name="emptyV3SettingsRemainAbsentAndUseClassicDefaults" classname="cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest" time="0.193">
+    <failure message="org.json.JSONException: No value for indices" type="org.json.JSONException">org.json.JSONException: No value for indices
+	at org.json.JSONObject.get(JSONObject.java:392)
+	at org.json.JSONObject.getJSONArray(JSONObject.java:587)
+	at cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest.createV3(CharacterStylePersistenceTest.kt:101)
+	at cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest.access$createV3(CharacterStylePersistenceTest.kt:22)
+	at cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest$emptyV3SettingsRemainAbsentAndUseClassicDefaults$1.invokeSuspend(CharacterStylePersistenceTest.kt:55)
+	at app//kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source)
+	at cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest.emptyV3SettingsRemainAbsentAndUseClassicDefaults(CharacterStylePersistenceTest.kt:53)
+	at java.base@17.0.20.1/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base@17.0.20.1/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base@17.0.20.1/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base@17.0.20.1/java.lang.reflect.Method.invoke(Method.java:569)
+	at app//org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at app//org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at app//org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at app//org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at app//org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at app//org.robolectric.RobolectricTestRunner$HelperTestRunner$1.evaluate(RobolectricTestRunner.java:502)
+	at app//org.robolectric.internal.SandboxTestRunner$2.lambda$evaluate$2(SandboxTestRunner.java:285)
+	at app//org.robolectric.internal.bytecode.Sandbox.lambda$runOnMainThread$0(Sandbox.java:104)
+	at java.base@17.0.20.1/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base@17.0.20.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base@17.0.20.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base@17.0.20.1/java.lang.Thread.run(Thread.java:840)
+</failure>
+  </testcase>
+  <testcase name="upgradeFromV3PreservesSettingsEventAndDeliveryLedgerWithClassicDefault" classname="cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest" time="0.127">
+    <failure message="org.json.JSONException: No value for indices" type="org.json.JSONException">org.json.JSONException: No value for indices
+	at org.json.JSONObject.get(JSONObject.java:392)
+	at org.json.JSONObject.getJSONArray(JSONObject.java:587)
+	at cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest.createV3(CharacterStylePersistenceTest.kt:101)
+	at cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest.access$createV3(CharacterStylePersistenceTest.kt:22)
+	at cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest$upgradeFromV3PreservesSettingsEventAndDeliveryLedgerWithClassicDefault$1.invokeSuspend(CharacterStylePersistenceTest.kt:29)
+	at app//kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source)
+	at cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest.upgradeFromV3PreservesSettingsEventAndDeliveryLedgerWithClassicDefault(CharacterStylePersistenceTest.kt:27)
+	at java.base@17.0.20.1/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base@17.0.20.1/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base@17.0.20.1/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base@17.0.20.1/java.lang.reflect.Method.invoke(Method.java:569)
+	at app//org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at app//org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at app//org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at app//org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at app//org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at app//org.robolectric.RobolectricTestRunner$HelperTestRunner$1.evaluate(RobolectricTestRunner.java:502)
+	at app//org.robolectric.internal.SandboxTestRunner$2.lambda$evaluate$2(SandboxTestRunner.java:285)
+	at app//org.robolectric.internal.bytecode.Sandbox.lambda$runOnMainThread$0(Sandbox.java:104)
+	at java.base@17.0.20.1/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base@17.0.20.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base@17.0.20.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base@17.0.20.1/java.lang.Thread.run(Thread.java:840)
+</failure>
+  </testcase>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

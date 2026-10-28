@@ -2,12 +2,12 @@
 
 | 项目 | 内容 |
 | --- | --- |
-| 文档版本 | v0.4 |
+| 文档版本 | v0.5 |
 | 文档状态 | 第三轮提醒与角色代码映射；本轮中央检查及设备结果分别记录 |
-| 更新日期 | 2026-10-27 |
+| 更新日期 | 2026-10-28 |
 | 项目小组 | 花园鳗：支盟渊、付泽文、岳羽泉、石倚铭 |
-| 需求依据 | [需求分析 v0.2](requirements.md)，整体审核尚未完成 |
-| 适用范围 | Android 离线单机；荣耀 X50 已记录 Android 15／API 35、MagicOS 9.0.0；第三轮设备验证待另行连接 |
+| 需求依据 | [需求分析 v0.4](requirements.md)，整体审核尚未完成 |
+| 适用范围 | Android 离线单机；荣耀 X50 已记录 Android 15／API 35、MagicOS 9.0.0；v0.3.0 已有设备分项证据；v0.3.1 界面检查另行记录 |
 
 ## 1. 文档目的与设计依据
 
@@ -31,7 +31,7 @@
 
 ### 1.2 第三轮实际代码与验证范围
 
-第三轮目标版本为 `0.3.0`、`versionCode = 3`、schema v3，保留前两轮事项、分类、日历、批量和图片流程，并接入第 7—8 节提醒与角色。源码 [857ca5f](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/857ca5faf29af4c2b861bf4529634ec66e3e13bd) 已通过 RUN-005 的本机构建与 132 次自动执行；以下表示实际职责，不扩大为完整设备验证。用户选择手机测试下次继续，未来实际连接后再建立设备批次。第二轮实机记录仍对应 v0.2.0，不能代替新通知能力验证。
+第三轮目标版本为 `0.3.0`、`versionCode = 3`、schema v3，保留前两轮事项、分类、日历、批量和图片流程，并接入第 7—8 节提醒与角色。源码 [857ca5f](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/857ca5faf29af4c2b861bf4529634ec66e3e13bd) 已通过 RUN-005 的本机构建与 132 次自动执行；以下表示实际职责，不扩大为完整设备验证。v0.3.0 后续设备分项结果见 RUN-20261028-001。当前界面版本为 0.3.1／versionCode 4、schema 4，其结果另列，不能复用旧版设备截图证明新界面已实测。
 
 | 设计职责 | 当前代码 | 当前范围及衔接 |
 | --- | --- | --- |
@@ -77,7 +77,7 @@ flowchart LR
 
 ### 3.1 主要数据对象
 
-下表列出 schema v3 的实际数据对象。[Room 官方文档](https://developer.android.com/training/data-storage/room)将本地数据组织为数据库、实体和数据访问对象；实际映射见第 1.2 节。
+下表列出 schema v4 的实际数据对象。[Room 官方文档](https://developer.android.com/training/data-storage/room)将本地数据组织为数据库、实体和数据访问对象；实际映射见第 1.2 节。
 
 | 对象 | 主要字段与约束 | 关系及用途 |
 | --- | --- | --- |
@@ -87,7 +87,7 @@ flowchart LR
 | EventTag | `eventId`、`tagId`，联合唯一 | 表达事项与标签的多对多关系 |
 | CustomField 自定义字段 | `id`、`eventId`、`label`、`value`、`position` | 一个事项可有多组名称与文本，按顺序显示；不跨事项复用 |
 | Attachment 图片附件 | `id`、`eventId`、`relativePath`、`mimeType`、`displayName`、`byteSize`、`width`、`height`、`position` | v2 已建表；相对路径为安全的 `UUID.img` 文件名，路径唯一，不保存外部临时 URI |
-| Settings 应用设置 | 单例 `id = 1`；普通阈值、过期策略；每日开关及分钟时刻、危险开关、临近开关及提前分钟数 | 新提醒默认开启、08:00／60 分钟；普通阈值独立；发送前读取当前设置，不另存虚构的设置修订号 |
+| Settings 应用设置 | 单例 `id = 1`；普通阈值、过期策略；每日开关及分钟时刻、危险开关、临近开关及提前分钟数；`characterStyle` | 新提醒默认开启、08:00／60 分钟；形象默认 CLASSIC；普通阈值独立；发送前读取当前设置，不另存虚构的设置修订号 |
 | ReminderPlan 计划及发送账本 | `key`、`kind`、`eventId`、`deadlineAt`、`eventRevision`、`triggerAt`、`day`、`notificationTag`、`active`、`state`、尝试时间／错误、`cancelPending` | `reminder_plans`；每个业务原因稳定主键兼去重依据；取消或发送后保留记录，不随事项级联删除 |
 | ReminderControl 系统调度状态 | 单例 `id = 1`；固定 Alarm 标识；每日目标日期／时刻、系统已排时间、期望时间、实际模式、脏标记和错误 | `reminder_control`；统一最早唤醒与取消／重排失败快照，不为每个事项单独建立系统 Alarm |
 
@@ -118,13 +118,15 @@ erDiagram
 
 第三轮保存、完成／归档／删除及相关设置变更在同一 Room 事务调用 `ReminderPlanStore.rebuild`；取消所需标识与截止快照不随事项删除。事务提交后再请求系统校对，保存成功与通知安排失败分别反馈；发送与取消的细节见第 7 节。
 
-### 3.3 schema v1 → v2 → v3 升级
+### 3.3 schema v1 → v2 → v3 → v4 升级
 
 `SaverDatabase.MIGRATION_1_2` 在原 `events` 表增加可空 `sourceId`，在原 `settings` 表增加默认值为 `KEEP` 的 `expiredPolicy`，建立 `sources`、`tags`、`event_tags`、`custom_fields`、`attachments` 表及所需索引。原事项 ID、文字、截止时间、速通时长、重要程度、完成／归档标记、创建／更新时间、修订号及普通紧急阈值均保留。未使用破坏性重建回退。
 
 历史 [1.json](../app/schemas/cn.edu.hust.ddlsaver.data.SaverDatabase/1.json) 保持不变，v2 schema 由 KSP 导出。迁移测试按该历史文件实际创建 v1 SQLite 数据库，经过 Room 升级和结构校验后，检查旧数据、增补关联并关闭重开；执行结果见测试报告。保留历史 schema 和测试真实升级路径的依据见 [Room 数据库迁移说明](https://developer.android.com/training/data-storage/room/migrating-db-versions)。
 
 `MIGRATION_2_3` 在 settings 增加三类开关、每日分钟时刻、临近提前量，建立 `reminder_plans` 和 `reminder_control`；原表、附件路径和原设置均保留。提醒计划由迁移后首次恢复从当前数据重建，不靠升级时的旧闹钟快照发送。真实 v2 文件迁移、默认值和重开结果须由 RUN-005 核验，不以迁移代码存在代替通过。
+
+`MIGRATION_3_4` 只在 settings 增加 `characterStyle TEXT NOT NULL DEFAULT 'CLASSIC'`。可选值为 CLASSIC／CHIBI，未知值读取时回退 CLASSIC；不清空通知账本，不改事项和附件表。历史 schema 1、2、3 原文件保留，新 [4.json](../app/schemas/cn.edu.hust.ddlsaver.data.SaverDatabase/4.json) 由 KSP 导出。真实旧库、无设置行、两种形象保存与重开以及切换不重复提醒的结果见 [RUN-20261028-002](test-evidence/RUN-20261028-002/README.md)。
 
 ## 4. D-03 时间规则与事项状态
 
@@ -162,7 +164,7 @@ erDiagram
 | 事项详情 | 完整文字、分类、自定义字段与图片；可复制文本，进入编辑、完成／恢复、归档／恢复或删除确认；角色反馈复用首页全局状态 |
 | 日历与筛选列表 | 按日期、来源、标签和关键词组织事项；列表与统计共用查询服务 |
 | 历史／归档 | 分别提供完成事项和归档事项的查看及恢复入口；可区分同时完成且归档的事项 |
-| 设置 | 普通紧急阈值、过期策略、三类提醒开关、每日时刻、临近提前量、通知／精确能力状态和署名入口 |
+| 设置 | 普通紧急阈值、过期策略、三类提醒开关、每日时刻、临近提前量、通知／精确能力状态、角色形象预览与选择、署名入口 |
 
 页面路由只传事项 ID、日期或筛选参数，进入时重新取数，不通过路由携带可能过期的完整事项副本。删除后收到旧通知点击时，按 A-04 返回列表并说明事项已不存在。
 
@@ -270,9 +272,9 @@ Android 13 及以上的常规通知涉及 `POST_NOTIFICATIONS` 运行时权限�
 
 ## 8. D-07 角色资源与台词
 
-第三轮采用四张原字节鲸鱼娘 WebP 与 36 条本项目预设台词。`selectCharacterFeedback` 复用 D-03，排除完成／归档后按危险、逾期、紧急、普通选取全局状态，成功完成操作短暂显示快乐反馈。台词由状态、稳定事项 ID 及 10 分钟时段决定，不联网、不使用随机数；历史已完成记录不会自动庆祝。
+经典立绘保留第三轮的四张原字节鲸鱼娘 WebP；0.3.1 新增 Q 版图集及持久化形象选择，统一角色名“蓝色大肥鱼”。两种形象共用 36 条本项目预设台词。`selectCharacterFeedback` 复用 D-03，排除完成／归档后按危险、逾期、紧急、普通选取全局状态，成功完成操作短暂显示快乐反馈。台词由状态、稳定事项 ID 及 10 分钟时段决定，不联网、不使用随机数；历史已完成记录不会自动庆祝。
 
-四张具体素材与上游完整提交、SHA-256、字节数和 CC BY-NC-SA 4.0 署名链见[角色素材记录](character-assets.md)。应用内署名弹框说明同人、非官方及徽记边界；`CharacterPanel` 在 IO 线程采样解码，图片缺失时仍显示状态与台词，不把角色图片当作系统通知必达的前提。用户尚需审核实际视觉和语气。
+四张具体素材与上游完整提交、SHA-256、字节数和 CC BY-NC-SA 4.0 署名链见[角色素材记录](character-assets.md)。应用内署名弹框说明同人、非官方及徽记边界；`CharacterPanel` 在 IO 线程采样解码，图片缺失时仍显示状态与台词，不把角色图片当作系统通知必达的前提。当前形象设置与预览、配色和窄屏策略见[界面方案](ui-visual-design.md)。schema 4 在设置中增加 characterStyle，3→4 默认 CLASSIC，未知值安全回退；原通知计划与发送账本保留。Q 版图集只在显示时读取选定区域，经典原图不变。实际视觉和语气继续接受审核。
 
 ## 9. D-08 异常处理与可测试性
 
@@ -317,3 +319,4 @@ Android 13 及以上的常规通知涉及 `POST_NOTIFICATIONS` 运行时权限�
 | v0.2 | 2026-10-27 | 按用户授权开展首轮实现，补充实际代码映射、依赖与 SDK 声明，并区分后续目标模块 | 首轮本机构建与自动检查完成；维护提示已记录，本轮暂不连接实机 |
 | v0.3 | 2026-10-27 | 同步第二轮 0.2.0、schema v2、显式迁移、分类和字段、统一查询、批量事务、过期整理及图片生命周期；保留后续通知与角色目标 | 工程保护值待实机验证及审核；执行结论见测试报告 |
 | v0.4 | 2026-10-27 | 同步第三轮 schema 3、持久计划兼发送账本、统一最早 Alarm、能力与恢复、角色四表情及 36 台词；前轮实机环境据实更新 | 源码 857ca5f 本机 116 方法／132 次执行通过；设备下次继续 |
+| v0.5 | 2026-10-28 | 同步海蓝主题、经典／Q 版选择与预览、schema 4、原数据保留及本地渲染检查 | 0.3.1 源码 1a44059 本机 127 方法／145 次执行通过；新版设备检查待进行 |

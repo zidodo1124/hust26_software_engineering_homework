@@ -1,0 +1,274 @@
+{
+  "run": "RUN-20261028-002",
+  "attempt": "attempt-02",
+  "version": "0.3.1",
+  "versionCode": 4,
+  "schema": 4,
+  "baseCommit": "3492b6fdf0c1a3f4adac18e7ec647bf4956e60b3",
+  "testExecutions": {
+    "tests": 144,
+    "failures": 8,
+    "errors": 0,
+    "skipped": 0
+  },
+  "uniqueMethods": 126,
+  "suites": [
+    {
+      "name": "cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest",
+      "tests": "3",
+      "failures": "2",
+      "errors": "0",
+      "skipped": "0",
+      "time": "9.645"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest",
+      "tests": "10",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "3.498"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest",
+      "tests": "13",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "3.513"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.data.SaverDatabaseMigrationTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.639"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.domain.CharacterFeedbackTest",
+      "tests": "9",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.032"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.domain.EventQueryTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.013"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.domain.EventValidationTest",
+      "tests": "7",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.015"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.domain.ExtendedEventValidationTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.002"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.domain.UrgencyRulesTest",
+      "tests": "10",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.004"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.platform.AttachmentStoreTest",
+      "tests": "26",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "22.907"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.reminders.AndroidReminderPlatformTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "2.081"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.reminders.ReminderEngineTest",
+      "tests": "16",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "3.955"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.reminders.ReminderRulesTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.013"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.CalendarGridTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.007"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.CharacterArtworkTest",
+      "tests": "4",
+      "failures": "4",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.633"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.CharacterAssetsTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.15"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.OceanThemeContrastTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.055"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.OceanUiRenderTest",
+      "tests": "2",
+      "failures": "2",
+      "errors": "0",
+      "skipped": "0",
+      "time": "6.592"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.ReminderColdLaunchTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "6.939"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.SaverAppFlowTest",
+      "tests": "15",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "18.454"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.SaverViewModelFeedbackTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.466"
+    }
+  ],
+  "lint": {
+    "errors": 0,
+    "warnings": 16,
+    "issues": [
+      {
+        "id": "ExifInterface",
+        "severity": "Warning"
+      },
+      {
+        "id": "InlinedApi",
+        "severity": "Warning"
+      },
+      {
+        "id": "GradleDependency",
+        "severity": "Warning"
+      },
+      {
+        "id": "GradleDependency",
+        "severity": "Warning"
+      },
+      {
+        "id": "GradleDependency",
+        "severity": "Warning"
+      },
+      {
+        "id": "GradleDependency",
+        "severity": "Warning"
+      },
+      {
+        "id": "GradleDependency",
+        "severity": "Warning"
+      },
+      {
+        "id": "GradleDependency",
+        "severity": "Warning"
+      },
+      {
+        "id": "GradleDependency",
+        "severity": "Warning"
+      },
+      {
+        "id": "GradleDependency",
+        "severity": "Warning"
+      },
+      {
+        "id": "GradleDependency",
+        "severity": "Warning"
+      },
+      {
+        "id": "GradleDependency",
+        "severity": "Warning"
+      },
+      {
+        "id": "ObsoleteSdkInt",
+        "severity": "Warning"
+      },
+      {
+        "id": "StaticFieldLeak",
+        "severity": "Warning"
+      },
+      {
+        "id": "UseKtx",
+        "severity": "Warning"
+      },
+      {
+        "id": "UseKtx",
+        "severity": "Warning"
+      }
+    ]
+  },
+  "apk": {
+    "bytes": 15085899,
+    "sha256": "4C0961F43B83B8557C637BD57B4A1D0CC208034E155296ACF05A6E5815B080F1"
+  },
+  "verifiedOriginalAssetFiles": [
+    "character/maid-left.webp",
+    "character/whale-cheerful.webp",
+    "character/whale-serious.webp",
+    "character/whale-angry.webp",
+    "character/upstream-NOTICE.md",
+    "character/dsh-deep-whale-LICENSE.txt",
+    "character/dsh-deep-whale-NOTICE.txt",
+    "character/chibi/spritesheet.webp",
+    "character/chibi/upstream-atlas-source.json",
+    "character/chibi/upstream-LICENSE.txt",
+    "character/chibi/origin-LICENSE.txt"
+  ],
+  "deviceTest": false,
+  "screenshots": "Production HomeScreen with synthetic events in Robolectric; no phone or Scaffold/FAB capture"
+}

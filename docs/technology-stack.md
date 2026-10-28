@@ -1,9 +1,9 @@
 # HUSTer's DDL Saver 技术清单
 
 - 小组：花园鳗。
-- 更新日期：2026-10-27。
+- 更新日期：2026-10-28。
 - 依据：用户允许根据项目需要选择语言和框架，并要求集中说明实际采用的技术。
-- 当前版本：第三轮 `0.3.0`、`versionCode = 3`、Room schema v3；源码 [857ca5f](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/857ca5faf29af4c2b861bf4529634ec66e3e13bd) 已通过本机构建、116 方法／132 次执行及 Lint（0 错误／16 提示）。用户选择本轮先交付开发机验证版，第三轮手机检查下次继续；前轮实机记录仍对应 v0.2.0。
+- 当前版本：`0.3.1`、`versionCode = 4`、Room schema v4，新增海蓝主题与两种角色形象选择；依赖版本不变。实际检查结果见[测试报告](test-report.md)，v0.3.0 的通知设备证据仍单独保留。
 
 本文用于回答“项目使用什么技术、各自负责什么、为什么选择、实际使用哪个版本”。后续新增、替换或移除依赖时同步更新，具体模块和接口见[设计文档](design.md)。
 
@@ -21,13 +21,13 @@ Kotlin 支持与 Java 互操作，Compose 提供基于 Kotlin 的原生界面开
 | 界面 | Jetpack Compose、Material 3 | 首页卡片、表单、详情、分类管理、月份日历、组合筛选、批量选择和设置 | 第三轮设置、路由与重建、反馈及资源本机检查完成，手机视觉待审核 | Compose BOM 2025.04.01；库版本由 BOM 管理 |
 | Activity 与界面状态 | Activity Compose、AndroidX ViewModel / Lifecycle | Activity 入口、页面状态、生命周期感知订阅及操作协调 | 已集成 | Activity 1.10.1；Lifecycle 2.9.0 |
 | 异步与数据订阅 | Kotlin Coroutines / Flow | 数据库观察、后台数据操作和页面更新 | 已集成 | 1.10.2 |
-| 结构化存储 | Room / SQLite | 保存事项、分类关联、字段、附件元数据、设置及持久化提醒计划／系统调度状态；业务变化与计划重建同事务 | 第三轮 schema v3 与显式 `MIGRATION_2_3` 已加入，保留原迁移链 | Room 2.7.1；schema 版本 3 |
+| 结构化存储 | Room / SQLite | 保存事项、分类关联、字段、附件元数据、设置及持久化提醒计划／系统调度状态；业务变化与计划重建同事务 | schema v4 新增角色形象字段，显式 `MIGRATION_3_4` 保留原迁移链 | Room 2.7.1；schema 版本 4 |
 | 代码生成 | KSP | 生成 Room 数据访问实现并导出 schema | 已配置 | 2.1.20-1.0.32 |
 | 文件与图片导入 | Activity Result、Photo Picker、ClipboardManager、ContentResolver | 相册多选、主动粘贴可读图片 URI，流式保存私有副本 | 已集成 `PickMultipleVisualMedia` / `ImageOnly`；兼容回退由 Activity 契约提供 | 使用既有 Activity 1.10.1 及 Android 平台 API；无新增依赖 |
 | 图片校验与展示 | BitmapFactory、android.media.ExifInterface、Matrix | 图片边界与真实解码校验、采样缩略图／预览、EXIF 方向处理 | 已集成 `platform/AttachmentStore.kt`；文件操作在 IO 调度器执行并由互斥锁协调 | Android 平台 API；未引入 Coil、Glide 或 AndroidX ExifInterface |
 | 提醒调度 | AlarmManager | 安排截止相关定时任务，处理取消和重建 | 第三轮统一最早到期 Alarm 已加入，具体检查见 RUN-005 | Android 平台 API；精确访问独立检查，无能力时明确近似模式 |
 | 通知呈现 | Android 通知接口 | 每日汇总和单项提醒，以及通知点击 | 第三轮使用平台 NotificationManager／NotificationChannel，稳定 tag 与点击路由已加入 | Android 平台 API；Android 13+ POST_NOTIFICATIONS，未新增兼容库 |
-| 角色反馈 | 本地 WebP、BitmapFactory 与纯 Kotlin 台词规则 | 四表情、36 条原创预设台词、状态优先级与成功完成短暂反馈 | 第三轮资源及代码已加入；逐文件来源与 CC 许可随包保留 | 无新增第三方运行依赖，素材见[角色记录](character-assets.md) |
+| 角色反馈 | 本地 WebP、BitmapFactory、Bitmap 与纯 Kotlin 台词规则 | 经典立绘／Q 版选择、36 条预设台词、状态优先级与成功完成短暂反馈 | 图集在 IO 线程解码并提取显示区域，随后回收整图；逐文件来源、许可与署名随包保留 | 无新增第三方运行依赖，素材见[角色记录](character-assets.md) |
 | 业务规则测试 | JUnit、Coroutines Test | 时间边界、状态规则、组合查询、字段与附件元数据校验 | 第三轮全量结果见 RUN-005，不同方法与配置执行分别统计 | JUnit 4.13.2；Coroutines Test 1.10.2 |
 | 本地 Android 行为测试 | Robolectric、AndroidX Test Core、Room Testing | 在开发机 JVM 中检查 Room 事务、真实 v1／v2 文件迁移、附件平台行为及重开持久化 | 第三轮本机提醒、迁移及资源检查通过，不能替代实机验证 | Robolectric 4.14.1；Test Core 1.6.1；Room Testing 2.7.1 |
 | 本地界面流程测试 | Compose UI Test JUnit4、测试宿主 Manifest | 在 Robolectric 中操作基础与第二轮界面，检查草稿、筛选、批量及重建流程 | 第三轮全量结果见 RUN-005，不同方法与配置执行分别统计 | 由 Compose BOM 2025.04.01 管理 |
@@ -37,7 +37,7 @@ Kotlin 支持与 Java 互操作，Compose 提供基于 Kotlin 的原生界面开
 
 Room 是 SQLite 的访问封装，适合本项目的本地结构化数据；数据及附件生命周期的具体安排属于项目设计，不由库自动解决。[Room 官方文档](https://developer.android.com/training/data-storage/room)。
 
-本轮通过 `addMigrations(MIGRATION_1_2, MIGRATION_2_3)` 执行显式升级，保留历史 schema 文件并测试旧库数据，不启用破坏性重建。[Room 迁移说明](https://developer.android.com/training/data-storage/room/migrating-db-versions)。图片选择只访问用户选定的内容，选择器不可用时由 Activity 契约回退；剪贴板中的图片引用通过 ContentResolver 读取。[Photo Picker](https://developer.android.com/training/data-storage/shared/photo-picker)、[复制粘贴](https://developer.android.com/develop/ui/views/touch-and-input/copy-paste)。
+本轮通过 `addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)` 执行显式升级，保留历史 schema 文件并测试旧库数据，不启用破坏性重建。[Room 迁移说明](https://developer.android.com/training/data-storage/room/migrating-db-versions)。图片选择只访问用户选定的内容，选择器不可用时由 Activity 契约回退；剪贴板中的图片引用通过 ContentResolver 读取。[Photo Picker](https://developer.android.com/training/data-storage/shared/photo-picker)、[复制粘贴](https://developer.android.com/develop/ui/views/touch-and-input/copy-paste)。
 
 解码前读取图片尺寸，再用采样控制预览内存；当前为 320 像素缩略目标及 1600 像素预览目标。[Android 大图加载说明](https://developer.android.com/topic/performance/graphics/load-bitmap)。20 MiB／100 MP 单图保护、24 小时孤儿副本保留期是本项目工程参数，不是新增第三方依赖、平台统一限制或用户已确认的业务上限，详见[图片设计](design.md#6-d-05-图片导入与附件生命周期)。
 

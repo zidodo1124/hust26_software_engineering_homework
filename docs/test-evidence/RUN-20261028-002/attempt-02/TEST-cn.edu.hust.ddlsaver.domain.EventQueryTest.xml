@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.domain.EventQueryTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-10-28T08:43:51" hostname="LAPTOP-7OF0K1SP" time="0.013">
+  <properties/>
+  <testcase name="expiredItemsRemainTodoWhileArchiveTakesPrecedenceOverCompletion" classname="cn.edu.hust.ddlsaver.domain.EventQueryTest" time="0.009"/>
+  <testcase name="filteringReturnsStableDeadlineThenIdOrderWithoutChangingInput" classname="cn.edu.hust.ddlsaver.domain.EventQueryTest" time="0.0"/>
+  <testcase name="combinedFiltersRequireEveryConditionAndEverySelectedTag" classname="cn.edu.hust.ddlsaver.domain.EventQueryTest" time="0.002"/>
+  <testcase name="dateUsesBeijingMidnightAndWorksWithCompletedOrArchivedModes" classname="cn.edu.hust.ddlsaver.domain.EventQueryTest" time="0.0"/>
+  <testcase name="keywordMatchesTitleDescriptionAndCustomFieldLabelsOrValuesIgnoringCase" classname="cn.edu.hust.ddlsaver.domain.EventQueryTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

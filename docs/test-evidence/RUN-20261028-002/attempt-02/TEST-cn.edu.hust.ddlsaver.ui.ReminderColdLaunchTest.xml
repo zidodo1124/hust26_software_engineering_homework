@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.ui.ReminderColdLaunchTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-10-28T08:44:28" hostname="LAPTOP-7OF0K1SP" time="6.939">
+  <properties/>
+  <testcase name="coldReminderLaunchOpensDetailAndRotationDoesNotReplayIt" classname="cn.edu.hust.ddlsaver.ui.ReminderColdLaunchTest" time="6.939"/>
+  <system-out><![CDATA[UI-COLD-RECREATE-BEGIN
+UI-COLD-RECREATE-END
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

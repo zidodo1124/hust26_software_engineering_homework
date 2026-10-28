@@ -1,0 +1,319 @@
+{
+  "files": [
+    {
+      "file": "attempt-01.log",
+      "bytes": 524,
+      "sha256": "56C72A6B46EABCF0F93CAF3EB38804D0D4E741F36FD15DD34106C73DB69A2667"
+    },
+    {
+      "file": "attempt-02/lint-results-debug.xml",
+      "bytes": 16713,
+      "sha256": "A11E76243DE7B82600134FD975FC0828E4EE3383ECEE4A9BD3ACD35E76E138A0"
+    },
+    {
+      "file": "attempt-02/summary.json",
+      "bytes": 6582,
+      "sha256": "41E112A7745CEB40C3D0352EB1728DCC6EA6DCF56AA14D82BBD8882738AEAB96"
+    },
+    {
+      "file": "attempt-02/TEST-cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest.xml",
+      "bytes": 6740,
+      "sha256": "8A10F4963498CBEEFC67089F751C4D1186EDD549C2F7D46653224D66BCB6FE14"
+    },
+    {
+      "file": "attempt-02/TEST-cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest.xml",
+      "bytes": 1796,
+      "sha256": "84642B715DBB6260D11EFAB5AF888E9D373C55BF68709794D2B02A6ACC2C759D"
+    },
+    {
+      "file": "attempt-02/TEST-cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest.xml",
+      "bytes": 2365,
+      "sha256": "AAA317F04675D437165DBADBD123F4ED419C535A29CB2140C66E7A4114FB5196"
+    },
+    {
+      "file": "attempt-02/TEST-cn.edu.hust.ddlsaver.data.SaverDatabaseMigrationTest.xml",
+      "bytes": 599,
+      "sha256": "43F84A85F522E4028E1C8E365041481AB88E6F19BCFD24D9133F6E93EAE304F0"
+    },
+    {
+      "file": "attempt-02/TEST-cn.edu.hust.ddlsaver.domain.CharacterFeedbackTest.xml",
+      "bytes": 1678,
+      "sha256": "FA033926FB6A3168E94DB1502A43C449E40036F58DC00AE758FBFE4A43F015A4"
+    },
+    {
+      "file": "attempt-02/TEST-cn.edu.hust.ddlsaver.domain.EventQueryTest.xml",
+      "bytes": 1091,
+      "sha256": "FA7D8AE465B8150FD80647D80A842452D21663D49763E3E5158C68D9F939532B"
+    },
+    {
+      "file": "attempt-02/TEST-cn.edu.hust.ddlsaver.domain.EventValidationTest.xml",
+      "bytes": 1363,
+      "sha256": "72A08E869FD9B0DDEB3A08BEB143D0AE5C37634A65590EB198008FFF35B6B7BA"
+    },
+    {
+      "file": "attempt-02/TEST-cn.edu.hust.ddlsaver.domain.ExtendedEventValidationTest.xml",
+      "bytes": 967,
+      "sha256": "0792EB762F014110EBF5698079EB6A2FBD85AC83D6B4EB8A2A3B58045685D11D"
+    },
+    {
+      "file": "attempt-02/TEST-cn.edu.hust.ddlsaver.domain.UrgencyRulesTest.xml",
+      "bytes": 1712,
+      "sha256": "3E2740231271D2343DA12418FA42551469B654DAEBFDD5EA7CFA586BF6E3089D"
+    },
+    {
+      "file": "attempt-02/TEST-cn.edu.hust.ddlsaver.platform.AttachmentStoreTest.xml",
+      "bytes": 4308,
+      "sha256": "8170004E3F82854758C66BC365F8A392412EB45887CCC94EBBEB9B2A668ED295"
+    },
+    {
+      "file": "attempt-02/TEST-cn.edu.hust.ddlsaver.reminders.AndroidReminderPlatformTest.xml",
+      "bytes": 1410,
+      "sha256": "D104937764629F78316EF58978C508AA43880331ED78942CD84C6077C17663B3"
+    },
+    {
+      "file": "attempt-02/TEST-cn.edu.hust.ddlsaver.reminders.ReminderEngineTest.xml",
+      "bytes": 2903,
+      "sha256": "3F530EC4DCB2EE70F9D41EA8A3120B17C28E05B0E21F53420D75C5E37F27AB27"
+    },
+    {
+      "file": "attempt-02/TEST-cn.edu.hust.ddlsaver.reminders.ReminderRulesTest.xml",
+      "bytes": 1225,
+      "sha256": "F46330AB39CE3AC2ED488F51202B577BFB29380C88FD1EC7B9D1890FADA5D27C"
+    },
+    {
+      "file": "attempt-02/TEST-cn.edu.hust.ddlsaver.ui.CalendarGridTest.xml",
+      "bytes": 610,
+      "sha256": "13DD338463234A7CCC9115CD798B7F050211848CAA7C964FDCA08EA64A40BE39"
+    },
+    {
+      "file": "attempt-02/TEST-cn.edu.hust.ddlsaver.ui.CharacterArtworkTest.xml",
+      "bytes": 8952,
+      "sha256": "03205C80085D396285F47DB62FADF7058ABC33B43ED6B0FCF9C1E1BACA99638D"
+    },
+    {
+      "file": "attempt-02/TEST-cn.edu.hust.ddlsaver.ui.CharacterAssetsTest.xml",
+      "bytes": 490,
+      "sha256": "02A8D8AA5588B0960B1A9578C7F9E99FC9715DE7CA14BDC2127644C9E3968CC4"
+    },
+    {
+      "file": "attempt-02/TEST-cn.edu.hust.ddlsaver.ui.OceanThemeContrastTest.xml",
+      "bytes": 485,
+      "sha256": "D5457EDA90010727C98B62E279F402ADFBADC94FAAE173B2EA03E5300B23228F"
+    },
+    {
+      "file": "attempt-02/TEST-cn.edu.hust.ddlsaver.ui.OceanUiRenderTest.xml",
+      "bytes": 10574,
+      "sha256": "55FAE9C931A52822240CB47991B01C62C76E8F76A73B4E87DE538B4E1F346695"
+    },
+    {
+      "file": "attempt-02/TEST-cn.edu.hust.ddlsaver.ui.ReminderColdLaunchTest.xml",
+      "bytes": 534,
+      "sha256": "D8A896BCEFE55853C82C01F4CC4647F148B731B0D34D5B6D7D6065F03F3AA9BB"
+    },
+    {
+      "file": "attempt-02/TEST-cn.edu.hust.ddlsaver.ui.SaverAppFlowTest.xml",
+      "bytes": 2726,
+      "sha256": "00D54C2FD819D4149F284BFFBDE41F85A9171021DCA074E94BCF3C7CC3B81A3A"
+    },
+    {
+      "file": "attempt-02/TEST-cn.edu.hust.ddlsaver.ui.SaverViewModelFeedbackTest.xml",
+      "bytes": 843,
+      "sha256": "81469AFD43EF2C14B4187612EB10D53D53683C6A322CEB7E51C30A8BAEC1C63E"
+    },
+    {
+      "file": "attempt-02/tested-files.json",
+      "bytes": 13174,
+      "sha256": "E277B7F554929E7FC8986FE2C0C63D34F2A95BBF7102C853C7C1B2F03301758D"
+    },
+    {
+      "file": "attempt-02.log",
+      "bytes": 12099,
+      "sha256": "7152C261E12FD452A7E0416A061DC56F2AC96556D24EC51755DDB2D54EECFFDC"
+    },
+    {
+      "file": "attempt-03/summary.json",
+      "bytes": 132,
+      "sha256": "2D81ABA154CCCE7D2A470EF286CAA7A5D4462913C4357DD913C6F4FF7BF255F3"
+    },
+    {
+      "file": "attempt-03/TEST-cn.edu.hust.ddlsaver.ui.OceanUiRenderTest.xml",
+      "bytes": 5144,
+      "sha256": "FAD8CBBF2FD64D462FA6E4803C7746715BC13F669617111DA0672D9C9502B90C"
+    },
+    {
+      "file": "attempt-04/summary.json",
+      "bytes": 133,
+      "sha256": "1065A3DD891230A988599D37A3DCBDEB3523FC683D1F1F1E55474134A0F0512F"
+    },
+    {
+      "file": "attempt-04/TEST-cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest.xml",
+      "bytes": 838,
+      "sha256": "8AA1173D9FBB3A9E97F9AFB593C515A85CB6B63B3BF55B3F7BE1716001874846"
+    },
+    {
+      "file": "attempt-04/TEST-cn.edu.hust.ddlsaver.ui.CharacterArtworkTest.xml",
+      "bytes": 968,
+      "sha256": "50D488CE3B38324DF5CF4182E6F8E4F55FCDF88A2F37708F58CA4C2EFC71216F"
+    },
+    {
+      "file": "attempt-04/TEST-cn.edu.hust.ddlsaver.ui.CharacterAssetsTest.xml",
+      "bytes": 633,
+      "sha256": "8DB54D252EE45A9EFCC985F7D9A4E8055D1263D438A0E43F4E827AEC914D0D1F"
+    },
+    {
+      "file": "attempt-04/TEST-cn.edu.hust.ddlsaver.ui.OceanUiRenderTest.xml",
+      "bytes": 1164,
+      "sha256": "FFBD6D19C5D913E96139AF412961D533B1A0FDE5DC45F9FDDBD56DE0840AC6AC"
+    },
+    {
+      "file": "attempt-04.log",
+      "bytes": 2002,
+      "sha256": "CBEFB7936B513FE0416D6E05BE657D2EDE73D7600BFCAA3CA6E1B4F8614BD7F1"
+    },
+    {
+      "file": "attempt-05.log",
+      "bytes": 3514,
+      "sha256": "EF12BB21A0EE0F6680721EA279A0E4964C4B0269C7B12D8784A00EC2C3EFCECB"
+    },
+    {
+      "file": "final-results/home-320dp-font150.png",
+      "bytes": 81315,
+      "sha256": "CBBF0A0150A6A90BC1C26D69CBF9F47843E0967CAE6C5101138884435213BF06"
+    },
+    {
+      "file": "final-results/home-chibi.png",
+      "bytes": 94189,
+      "sha256": "09C6AAD7256E02E49FDFCAAEA631259A34CA2EC0D44F07117E6CE503176C1BCC"
+    },
+    {
+      "file": "final-results/home-classic.png",
+      "bytes": 100093,
+      "sha256": "08968EA594FC1142FE23CCE743306926D7E1C042EF707BBA397CE3BBE776719E"
+    },
+    {
+      "file": "final-results/lint-results-debug.xml",
+      "bytes": 16713,
+      "sha256": "A11E76243DE7B82600134FD975FC0828E4EE3383ECEE4A9BD3ACD35E76E138A0"
+    },
+    {
+      "file": "final-results/summary.json",
+      "bytes": 6584,
+      "sha256": "3B3BEFA8734AC4CD30ABEB19B81B3CB2B85C0BE236F010E2A79A573D7F61C46C"
+    },
+    {
+      "file": "final-results/TEST-cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest.xml",
+      "bytes": 838,
+      "sha256": "270CFD72911B13DECE94E31650D8FF3F32439E39E953DA4B41ED6166921E53EE"
+    },
+    {
+      "file": "final-results/TEST-cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest.xml",
+      "bytes": 1798,
+      "sha256": "FB154335808C197B21D9A8B90478D92F87B42E7189BCE3EE2A258A1A330FD3E0"
+    },
+    {
+      "file": "final-results/TEST-cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest.xml",
+      "bytes": 2363,
+      "sha256": "0A0D6D3A0DCE18C321A61CFF0EF389495666975A3FA41102AA7C5332402FC301"
+    },
+    {
+      "file": "final-results/TEST-cn.edu.hust.ddlsaver.data.SaverDatabaseMigrationTest.xml",
+      "bytes": 598,
+      "sha256": "96D690333C61954478B3AF38B007F99DB29323742DF4653064E34251B9E7F7D8"
+    },
+    {
+      "file": "final-results/TEST-cn.edu.hust.ddlsaver.domain.CharacterFeedbackTest.xml",
+      "bytes": 1681,
+      "sha256": "8CF07B149C6C8F1E903B7C4D6E1289993E20F2A0A5A0855F45473ED6B4868463"
+    },
+    {
+      "file": "final-results/TEST-cn.edu.hust.ddlsaver.domain.EventQueryTest.xml",
+      "bytes": 1095,
+      "sha256": "1DC8D78A8318FF612D4998D2C2863A242A45CE548C54B97D427709C9511AA34E"
+    },
+    {
+      "file": "final-results/TEST-cn.edu.hust.ddlsaver.domain.EventValidationTest.xml",
+      "bytes": 1365,
+      "sha256": "AED12DC0228C664968674989165B6B1F31557CD39A112E39B262423E678D5B92"
+    },
+    {
+      "file": "final-results/TEST-cn.edu.hust.ddlsaver.domain.ExtendedEventValidationTest.xml",
+      "bytes": 967,
+      "sha256": "7A33B3F73BC36A36F6A1FC147BD3997297B16FCAF40A0E3FA21D796599EE39F4"
+    },
+    {
+      "file": "final-results/TEST-cn.edu.hust.ddlsaver.domain.UrgencyRulesTest.xml",
+      "bytes": 1718,
+      "sha256": "431915692510DF11A57EA39F1FBC791EA2A6DC3C159879D1015173912963050F"
+    },
+    {
+      "file": "final-results/TEST-cn.edu.hust.ddlsaver.platform.AttachmentStoreTest.xml",
+      "bytes": 4309,
+      "sha256": "DB1C3FF46DE6158DD67D7419237715F71B420F1182A2A54673F867D7C1DCBEC6"
+    },
+    {
+      "file": "final-results/TEST-cn.edu.hust.ddlsaver.reminders.AndroidReminderPlatformTest.xml",
+      "bytes": 1410,
+      "sha256": "452D190D835813DCE78AE0C05952A9D6498156E075D303F8724DEA26572C92AF"
+    },
+    {
+      "file": "final-results/TEST-cn.edu.hust.ddlsaver.reminders.ReminderEngineTest.xml",
+      "bytes": 2903,
+      "sha256": "02C0E57FE9ACDD4947B5C0FE9440B108957EEBE6AEE8526C12179C7338F8A60D"
+    },
+    {
+      "file": "final-results/TEST-cn.edu.hust.ddlsaver.reminders.ReminderRulesTest.xml",
+      "bytes": 1226,
+      "sha256": "160A37BCF862FE8833F2B513BA15C2AF9270D052416BD3F4B9F216CD028959AB"
+    },
+    {
+      "file": "final-results/TEST-cn.edu.hust.ddlsaver.ui.CalendarGridTest.xml",
+      "bytes": 610,
+      "sha256": "F83D6D9786E5CFEDEA23AB1430095EEE1257957C59BDB26A1C4177A46B5CF123"
+    },
+    {
+      "file": "final-results/TEST-cn.edu.hust.ddlsaver.ui.CharacterArtworkTest.xml",
+      "bytes": 970,
+      "sha256": "2CC53E5A97D4046CE5B32A441AD7B1BE0AC5CC7EB8F87C2E429D5DA43367E97B"
+    },
+    {
+      "file": "final-results/TEST-cn.edu.hust.ddlsaver.ui.CharacterAssetsTest.xml",
+      "bytes": 633,
+      "sha256": "DE1A90BFC91803A880B1829195AE7BBD42E9D0518EF011821EB1117D73846766"
+    },
+    {
+      "file": "final-results/TEST-cn.edu.hust.ddlsaver.ui.OceanThemeContrastTest.xml",
+      "bytes": 485,
+      "sha256": "35EFCED3AC294AEF74CD5062572C285DA9D50A5890452368DA1DCE5BE47B1CEA"
+    },
+    {
+      "file": "final-results/TEST-cn.edu.hust.ddlsaver.ui.OceanUiRenderTest.xml",
+      "bytes": 1162,
+      "sha256": "0B3ADC36C156AFEA982B6C567653031DE002C8B204E9BC52591FD51EA42ED58F"
+    },
+    {
+      "file": "final-results/TEST-cn.edu.hust.ddlsaver.ui.ReminderColdLaunchTest.xml",
+      "bytes": 582,
+      "sha256": "06C44DADFEB495ABA07904DF5CABD77B5F4E26CBF69DC4BBCF6042E88522223B"
+    },
+    {
+      "file": "final-results/TEST-cn.edu.hust.ddlsaver.ui.SaverAppFlowTest.xml",
+      "bytes": 3516,
+      "sha256": "720F556C2301503BEBFF2D29773DF6AF5EFBE77CC7A6C06A6E00DED296B537D9"
+    },
+    {
+      "file": "final-results/TEST-cn.edu.hust.ddlsaver.ui.SaverViewModelFeedbackTest.xml",
+      "bytes": 867,
+      "sha256": "F0A7B1307F0F7D37053389E455250C45885BDD41678DCAB9C56BED337595B8BB"
+    },
+    {
+      "file": "final-results/tested-files.json",
+      "bytes": 13174,
+      "sha256": "B7611EA7A7D1E725B9EA60C635EC572FDB8A50D1A8E8C713137A80153657FEC1"
+    },
+    {
+      "file": "render-attempt-03.log",
+      "bytes": 2992,
+      "sha256": "10C0404DDEE7F66CA7213FA0FB8BBC32DE91CAE603DDB6E5F133670C3CC81E21"
+    }
+  ]
+}

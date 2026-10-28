@@ -1,0 +1,4 @@
+*.json -text whitespace=cr-at-eol
+*.xml -text whitespace=cr-at-eol
+*.png -text
+*.log -text whitespace=-trailing-space,cr-at-eol

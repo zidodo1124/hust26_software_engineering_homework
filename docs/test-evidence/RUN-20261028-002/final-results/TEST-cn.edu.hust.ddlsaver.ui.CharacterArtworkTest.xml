@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.ui.CharacterArtworkTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-10-28T08:56:42" hostname="LAPTOP-7OF0K1SP" time="1.179">
+  <properties/>
+  <testcase name="everyStateAndStyleDecodesAndSelectedSpritePixelsMatchOriginalSheet[28]" classname="cn.edu.hust.ddlsaver.ui.CharacterArtworkTest" time="0.593"/>
+  <testcase name="everyStateAndStyleDecodesAndSelectedSpritePixelsMatchOriginalSheet" classname="cn.edu.hust.ddlsaver.ui.CharacterArtworkTest" time="0.518"/>
+  <testcase name="unreadableArtworkReturnsNullSoTextualStatusCanRemainAvailable[28]" classname="cn.edu.hust.ddlsaver.ui.CharacterArtworkTest" time="0.036"/>
+  <testcase name="unreadableArtworkReturnsNullSoTextualStatusCanRemainAvailable" classname="cn.edu.hust.ddlsaver.ui.CharacterArtworkTest" time="0.032"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

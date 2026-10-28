@@ -1,6 +1,6 @@
 # 开发、构建与安装升级
 
-本文对应第三轮 Android 工程 `0.3.0`、`versionCode = 3`、schema v3，包名 `cn.edu.hust.ddlsaver`；源码 [857ca5f](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/857ca5faf29af4c2b861bf4529634ec66e3e13bd) 已完成本机构建及 116 方法／132 次执行，详细证据见 RUN-005。功能范围及未完成项见[实现计划](implementation-plan.md)和[项目状态](../STATUS.md)；分工见[小组任务板](../team/README.md)。
+本文当前对应 `0.3.1`、`versionCode = 4`、schema v4，包名 `cn.edu.hust.ddlsaver`；源码 [1a44059](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/1a44059abc8bef12e8fdb648ad9c4353eba375d3)。127 个不同测试方法／145 次执行全部通过，失败、错误、跳过均为 0；Debug APK 构建成功，Lint 0 错误／16 条维护警告，详见 [RUN-20261028-002](test-evidence/RUN-20261028-002/README.md)。第三轮 v0.3.0 的设备结果保留为独立历史批次。功能及未完成项见[实现计划](implementation-plan.md)和[项目状态](../STATUS.md)；分工见[小组任务板](../team/README.md)。
 
 ## 1. 准备环境
 
@@ -174,3 +174,8 @@ adb install -r app/build/outputs/apk/debug/app-debug.apk
 | `app/src/test/` | 规则、迁移、存储、图片及本地界面测试；不能替代荣耀 X50 验证 |
 
 完整包路径为 `app/src/main/java/cn/edu/hust/ddlsaver/`。图片与第三轮通知平台能力已按设计分开封装，不把 Android 系统调用放入纯时间规则中。图片采样采用平台解码选项，依据见 [Android 大图加载说明](https://developer.android.com/topic/performance/graphics/load-bitmap)。
+
+
+### 从 0.3.0 升级到 0.3.1
+
+使用同签名 Debug APK 执行覆盖安装，Room 自动运行 `MIGRATION_3_4`，新增形象默认经典立绘，旧数据及提醒账本保留。升级后进入设置，选择“Q 版形象”并保存；再次进入可切回经典立绘。两套素材均随包离线提供，无需额外下载。开发机已验证旧库迁移及设置保持，本批尚未执行荣耀 X50 升级。

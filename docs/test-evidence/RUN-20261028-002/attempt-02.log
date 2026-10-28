@@ -1,0 +1,187 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.11.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest
+> Task :app:processDebugManifest
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:mergeDebugShaders UP-TO-DATE
+> Task :app:compileDebugShaders NO-SOURCE
+> Task :app:generateDebugAssets UP-TO-DATE
+> Task :app:mergeDebugAssets
+> Task :app:processDebugManifestForPackage
+> Task :app:compressDebugAssets
+> Task :app:desugarDebugFileDependencies UP-TO-DATE
+> Task :app:processDebugResources
+> Task :app:checkDebugDuplicateClasses UP-TO-DATE
+> Task :app:mergeExtDexDebug UP-TO-DATE
+> Task :app:mergeLibDexDebug UP-TO-DATE
+> Task :app:mergeDebugJniLibFolders UP-TO-DATE
+> Task :app:mergeDebugNativeLibs UP-TO-DATE
+> Task :app:stripDebugDebugSymbols UP-TO-DATE
+> Task :app:validateSigningDebug UP-TO-DATE
+> Task :app:writeDebugAppMetadata UP-TO-DATE
+> Task :app:writeDebugSigningConfigVersions UP-TO-DATE
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:javaPreCompileDebugUnitTest UP-TO-DATE
+> Task :app:packageDebugUnitTestForUnitTest
+> Task :app:generateDebugUnitTestConfig
+> Task :app:preDebugAndroidTestBuild SKIPPED
+> Task :app:generateDebugAndroidTestResValues UP-TO-DATE
+> Task :app:extractProguardFiles UP-TO-DATE
+> Task :app:kspDebugKotlin
+> Task :app:compileDebugKotlin
+w: file:///C:/Users/lx/Desktop/sw_teamwork/app/src/main/java/cn/edu/hust/ddlsaver/ui/SaverApp.kt:380:21 'val LocalClipboardManager: ProvidableCompositionLocal<ClipboardManager>' is deprecated. Use LocalClipboard instead which supports suspend functions.
+w: file:///C:/Users/lx/Desktop/sw_teamwork/app/src/main/java/cn/edu/hust/ddlsaver/ui/SaverApp.kt:380:21 'val LocalClipboardManager: ProvidableCompositionLocal<ClipboardManager>' is deprecated. Use LocalClipboard instead which supports suspend functions.
+
+> Task :app:compileDebugJavaWithJavac NO-SOURCE
+> Task :app:dexBuilderDebug
+> Task :app:mergeDebugGlobalSynthetics UP-TO-DATE
+> Task :app:processDebugJavaRes UP-TO-DATE
+> Task :app:mergeDebugJavaResource UP-TO-DATE
+> Task :app:bundleDebugClassesToRuntimeJar
+> Task :app:mergeProjectDexDebug
+> Task :app:bundleDebugClassesToCompileJar
+> Task :app:packageDebug
+> Task :app:createDebugApkListingFileRedirect
+> Task :app:assembleDebug
+> Task :app:generateDebugAndroidTestLintModel
+> Task :app:generateDebugLintReportModel
+> Task :app:generateDebugUnitTestLintModel
+> Task :app:kspDebugUnitTestKotlin
+
+> Task :app:compileDebugUnitTestKotlin
+w: file:///C:/Users/lx/Desktop/sw_teamwork/app/src/test/java/cn/edu/hust/ddlsaver/ui/OceanUiRenderTest.kt:110:9 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'File?'.
+
+> Task :app:compileDebugUnitTestJavaWithJavac NO-SOURCE
+> Task :app:processDebugUnitTestJavaRes UP-TO-DATE
+> Task :app:lintAnalyzeDebug
+
+> Task :app:testDebugUnitTest
+
+CharacterStylePersistenceTest > emptyV3SettingsRemainAbsentAndUseClassicDefaults FAILED
+    org.json.JSONException: No value for indices
+        at org.json.JSONObject.get(JSONObject.java:392)
+        at org.json.JSONObject.getJSONArray(JSONObject.java:587)
+        at cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest.createV3(CharacterStylePersistenceTest.kt:101)
+        at cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest.access$createV3(CharacterStylePersistenceTest.kt:22)
+        at cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest$emptyV3SettingsRemainAbsentAndUseClassicDefaults$1.invokeSuspend(CharacterStylePersistenceTest.kt:55)
+        at app//kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+        at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+        at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+        at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+        at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+        at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source)
+        at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+        at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source)
+        at cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest.emptyV3SettingsRemainAbsentAndUseClassicDefaults(CharacterStylePersistenceTest.kt:53)
+
+CharacterStylePersistenceTest > upgradeFromV3PreservesSettingsEventAndDeliveryLedgerWithClassicDefault FAILED
+    org.json.JSONException: No value for indices
+        at org.json.JSONObject.get(JSONObject.java:392)
+        at org.json.JSONObject.getJSONArray(JSONObject.java:587)
+        at cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest.createV3(CharacterStylePersistenceTest.kt:101)
+        at cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest.access$createV3(CharacterStylePersistenceTest.kt:22)
+        at cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest$upgradeFromV3PreservesSettingsEventAndDeliveryLedgerWithClassicDefault$1.invokeSuspend(CharacterStylePersistenceTest.kt:29)
+        at app//kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+        at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+        at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+        at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+        at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+        at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source)
+        at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+        at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source)
+        at cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest.upgradeFromV3PreservesSettingsEventAndDeliveryLedgerWithClassicDefault(CharacterStylePersistenceTest.kt:27)
+
+--- Failed to create image decoder with message 'incomplete input'
+--- Failed to create image decoder with message 'incomplete input'
+
+> Task :app:testDebugUnitTest
+
+CharacterArtworkTest > everyStateAndStyleDecodesAndSelectedSpritePixelsMatchOriginalSheet[28] FAILED
+    java.lang.AssertionError: Region pixels must come from the selected source frame expected:<-3354> but was:<0>
+        at org.junit.Assert.fail(Assert.java:89)
+        at org.junit.Assert.failNotEquals(Assert.java:835)
+        at org.junit.Assert.assertEquals(Assert.java:120)
+        at cn.edu.hust.ddlsaver.ui.CharacterArtworkTest.everyStateAndStyleDecodesAndSelectedSpritePixelsMatchOriginalSheet(CharacterArtworkTest.kt:37)
+
+CharacterArtworkTest > everyStateAndStyleDecodesAndSelectedSpritePixelsMatchOriginalSheet FAILED
+    java.lang.AssertionError: Region pixels must come from the selected source frame expected:<-3354> but was:<0>
+        at org.junit.Assert.fail(Assert.java:89)
+        at org.junit.Assert.failNotEquals(Assert.java:835)
+        at org.junit.Assert.assertEquals(Assert.java:120)
+        at cn.edu.hust.ddlsaver.ui.CharacterArtworkTest.everyStateAndStyleDecodesAndSelectedSpritePixelsMatchOriginalSheet(CharacterArtworkTest.kt:37)
+
+CharacterArtworkTest > unreadableArtworkReturnsNullSoTextualStatusCanRemainAvailable[28] FAILED
+    java.lang.AssertionError: expected null, but was:<android.graphics.Bitmap@2dd6a436>
+        at org.junit.Assert.fail(Assert.java:89)
+        at org.junit.Assert.failNotNull(Assert.java:756)
+        at org.junit.Assert.assertNull(Assert.java:738)
+        at org.junit.Assert.assertNull(Assert.java:748)
+        at cn.edu.hust.ddlsaver.ui.CharacterArtworkTest.unreadableArtworkReturnsNullSoTextualStatusCanRemainAvailable(CharacterArtworkTest.kt:53)
+
+CharacterArtworkTest > unreadableArtworkReturnsNullSoTextualStatusCanRemainAvailable FAILED
+    java.lang.AssertionError: expected null, but was:<android.graphics.Bitmap@7e5f4efe>
+        at org.junit.Assert.fail(Assert.java:89)
+        at org.junit.Assert.failNotNull(Assert.java:756)
+        at org.junit.Assert.assertNull(Assert.java:738)
+        at org.junit.Assert.assertNull(Assert.java:748)
+        at cn.edu.hust.ddlsaver.ui.CharacterArtworkTest.unreadableArtworkReturnsNullSoTextualStatusCanRemainAvailable(CharacterArtworkTest.kt:53)
+
+OceanUiRenderTest > bothCharacterStylesRenderOnTheActualHomeScreen FAILED
+    androidx.compose.ui.test.ComposeTimeoutException: Condition still not satisfied after 2000 ms
+        at androidx.compose.ui.test.android.WindowCapture_androidKt.waitUntil(WindowCapture.android.kt:178)
+        at androidx.compose.ui.test.android.WindowCapture_androidKt.forceRedraw(WindowCapture.android.kt:124)
+        at androidx.compose.ui.test.android.WindowCapture_androidKt$captureRegionToImage$1$1.invoke(WindowCapture.android.kt:49)
+        at androidx.compose.ui.test.android.WindowCapture_androidKt$captureRegionToImage$1$1.invoke(WindowCapture.android.kt:47)
+        at androidx.compose.ui.test.android.WindowCapture_androidKt.withDrawingEnabled(WindowCapture.android.kt:89)
+        at androidx.compose.ui.test.android.WindowCapture_androidKt.access$withDrawingEnabled(WindowCapture.android.kt:1)
+        at androidx.compose.ui.test.android.WindowCapture_androidKt$captureRegionToImage$1.invoke(WindowCapture.android.kt:47)
+        at androidx.compose.ui.test.android.WindowCapture_androidKt$captureRegionToImage$1.invoke(WindowCapture.android.kt:45)
+        at androidx.compose.ui.test.android.WindowCapture_androidKt.runWithRetryWhenNoData(WindowCapture.android.kt:64)
+        at androidx.compose.ui.test.android.WindowCapture_androidKt.captureRegionToImage(WindowCapture.android.kt:45)
+        at androidx.compose.ui.test.AndroidImageHelpers_androidKt.captureToImage(AndroidImageHelpers.android.kt:101)
+        at cn.edu.hust.ddlsaver.ui.OceanUiRenderTest.saveScreenshot(OceanUiRenderTest.kt:112)
+        at cn.edu.hust.ddlsaver.ui.OceanUiRenderTest.bothCharacterStylesRenderOnTheActualHomeScreen(OceanUiRenderTest.kt:52)
+
+OceanUiRenderTest > narrowScreenWithLargeTextKeepsStatisticsReadableAndBothFiltersWork FAILED
+    java.lang.AssertionError: Text must not be clipped: 今日 DDL
+        at org.junit.Assert.fail(Assert.java:89)
+        at org.junit.Assert.assertTrue(Assert.java:42)
+        at org.junit.Assert.assertFalse(Assert.java:65)
+        at cn.edu.hust.ddlsaver.ui.OceanUiRenderTest.assertFullText(OceanUiRenderTest.kt:95)
+        at cn.edu.hust.ddlsaver.ui.OceanUiRenderTest.narrowScreenWithLargeTextKeepsStatisticsReadableAndBothFiltersWork(OceanUiRenderTest.kt:73)
+
+144 tests completed, 8 failed
+
+> Task :app:testDebugUnitTest FAILED
+> Task :app:lintAnalyzeDebugAndroidTest
+> Task :app:lintAnalyzeDebugUnitTest
+
+> Task :app:lintReportDebug
+Wrote HTML report to file:///C:/Users/lx/Desktop/sw_teamwork/app/build/reports/lint-results-debug.html
+
+> Task :app:lintDebug
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:testDebugUnitTest'.
+> There were failing tests. See the report at: file:///C:/Users/lx/Desktop/sw_teamwork/app/build/reports/tests/testDebugUnitTest/index.html
+
+* Try:
+> Run with --scan to get full insights.
+
+BUILD FAILED in 4m 55s
+55 actionable tasks: 28 executed, 27 up-to-date

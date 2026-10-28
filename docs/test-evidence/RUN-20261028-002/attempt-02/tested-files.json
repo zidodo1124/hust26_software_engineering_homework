@@ -1,0 +1,318 @@
+[
+  {
+    "path": "app/src/main/AndroidManifest.xml",
+    "sha256": "220E6293AAAABD85C05673CA8BA1ABC327A3BA277B07874EAFE72B01CAA40689"
+  },
+  {
+    "path": "app/src/main/assets/character/.gitattributes",
+    "sha256": "8549D2C3750F45F90D6D3E1F2A5C6F84C198288F8472DC6CAB11D28E63C87106"
+  },
+  {
+    "path": "app/src/main/assets/character/chibi/.gitattributes",
+    "sha256": "C4899D50CA4C8041274628CF626F85CFC939F66840EF04FB8D3B5725EF2B6534"
+  },
+  {
+    "path": "app/src/main/assets/character/chibi/NOTICE.md",
+    "sha256": "585C7701B3CD3E6119A23C18DC17BD1BDE30467CE4725BF45E7AB033C6403F4E"
+  },
+  {
+    "path": "app/src/main/assets/character/chibi/origin-LICENSE.txt",
+    "sha256": "E9C7575C5CCF1BE7D9D94509D3C268436624EB35344F5F96C33F92BC44C51C23"
+  },
+  {
+    "path": "app/src/main/assets/character/chibi/sources.json",
+    "sha256": "16624EC089A2CD5489E23E3CCDAB5CA8A0340A7E44B2ECE0A7F4AFB5EFD7296E"
+  },
+  {
+    "path": "app/src/main/assets/character/chibi/spritesheet.webp",
+    "sha256": "234F24A97C18195A00C6093DA0090773E675993C169E92E7E13A24C37B323FA2"
+  },
+  {
+    "path": "app/src/main/assets/character/chibi/upstream-atlas-source.json",
+    "sha256": "332BC90765C18139992911563ACD93C1E2EC871F67573AF73769ADFFFE93FF06"
+  },
+  {
+    "path": "app/src/main/assets/character/chibi/upstream-LICENSE.txt",
+    "sha256": "85465F5B70D7843382115858F4F191349BDFD5E8C6478ABB6967869124CA33AD"
+  },
+  {
+    "path": "app/src/main/assets/character/dsh-deep-whale-LICENSE.txt",
+    "sha256": "1349A4B6148492B44F629E64EED676612E234FE9A839E4F3B277C1482C8849F1"
+  },
+  {
+    "path": "app/src/main/assets/character/dsh-deep-whale-NOTICE.txt",
+    "sha256": "45E48BA5C3FC59E03C1A9559EAA04686F8D340D684F2970CE384A7578E7EF6DD"
+  },
+  {
+    "path": "app/src/main/assets/character/maid-left.webp",
+    "sha256": "AF7BFD2E18505FC9D6F94CEFD9FEBC92B31C1B2B66C756982D91FC7B93FB184C"
+  },
+  {
+    "path": "app/src/main/assets/character/NOTICE.md",
+    "sha256": "86052677C1013B79557C430B70FACD1D3E3AA14CE91462B670D09C0D505F875E"
+  },
+  {
+    "path": "app/src/main/assets/character/sources.json",
+    "sha256": "72FA610C42997AD2C627EF742812AC05C872AA1D541F12721500385C15DB6D9A"
+  },
+  {
+    "path": "app/src/main/assets/character/upstream-NOTICE.md",
+    "sha256": "1428A1740DFF86038EF4C0E9AB73D7E0B9CEBD170F4EF8615E8B4322CC097F81"
+  },
+  {
+    "path": "app/src/main/assets/character/whale-angry.webp",
+    "sha256": "63BB54126CF3ACC785B251A19D465A8E388865BADBDC7BAF17BBAD4B68057A02"
+  },
+  {
+    "path": "app/src/main/assets/character/whale-cheerful.webp",
+    "sha256": "117ED691623DA550075056963764CEE7A4CD14318D5AB87CE63D11926B83AA4B"
+  },
+  {
+    "path": "app/src/main/assets/character/whale-serious.webp",
+    "sha256": "2974CC4A814F6B1F95D907D22F62D9E0094DD7E538B6145E7C8A1DBB6154DE34"
+  },
+  {
+    "path": "app/src/main/java/cn/edu/hust/ddlsaver/data/Entities.kt",
+    "sha256": "F707FA9B4540459C3CF6F4EC64AD1C2748F10F30E4A5BE95D362F7DB3A96225C"
+  },
+  {
+    "path": "app/src/main/java/cn/edu/hust/ddlsaver/data/RoomEventRepository.kt",
+    "sha256": "4D741246C81B889B7E0291BBE660BAE611D6251F61184CD7302DBB4A3E7F886A"
+  },
+  {
+    "path": "app/src/main/java/cn/edu/hust/ddlsaver/data/SaverDao.kt",
+    "sha256": "F91FA2E51FF97C81397BA8C0E7FFE2ADC8CD7B8E5D0E5F18498466AF9520D730"
+  },
+  {
+    "path": "app/src/main/java/cn/edu/hust/ddlsaver/data/SaverDatabase.kt",
+    "sha256": "CA358F16E38E6A14A3B1E0ECA368C78C2A636B90978922750B54A4C8F55A2345"
+  },
+  {
+    "path": "app/src/main/java/cn/edu/hust/ddlsaver/domain/CharacterFeedback.kt",
+    "sha256": "4E4360795F01547471B4D1B56E78A6C607FEA860A23B2A5B5D8204B249EEE883"
+  },
+  {
+    "path": "app/src/main/java/cn/edu/hust/ddlsaver/domain/CharacterStyle.kt",
+    "sha256": "48E3D6B7EC1FF08ED76BA32DE43AF9B6339AC08B4917EF15D1E19BC1B9D548D5"
+  },
+  {
+    "path": "app/src/main/java/cn/edu/hust/ddlsaver/domain/EventModels.kt",
+    "sha256": "EB655DA18316837284B340BD9E69712A35FFD208DAA152266BFD3DA129BA638A"
+  },
+  {
+    "path": "app/src/main/java/cn/edu/hust/ddlsaver/domain/EventQuery.kt",
+    "sha256": "8ECB960909EB3E73871FC060F899884D4CB4D2E29E61F20A110966B9DCD98BFE"
+  },
+  {
+    "path": "app/src/main/java/cn/edu/hust/ddlsaver/domain/EventRepository.kt",
+    "sha256": "0218AE8948DA8E70602A01501938D3C53812A894DF6E16B9A8FE3C92DBFB0193"
+  },
+  {
+    "path": "app/src/main/java/cn/edu/hust/ddlsaver/domain/EventValidation.kt",
+    "sha256": "FED46F387F69A1EBC1339E9B7F1361296CD21654D9BA26A28371EE977479026C"
+  },
+  {
+    "path": "app/src/main/java/cn/edu/hust/ddlsaver/domain/UrgencyRules.kt",
+    "sha256": "F2127C50EB5E1294DC2EB3E110E5BE5E050F46E6CC1FC6D83F3175655C180DF4"
+  },
+  {
+    "path": "app/src/main/java/cn/edu/hust/ddlsaver/MainActivity.kt",
+    "sha256": "80039B3DCAB213C15A624C690E97CEEC0BF1394B8C53162B2E495E74CFC66321"
+  },
+  {
+    "path": "app/src/main/java/cn/edu/hust/ddlsaver/platform/AttachmentStore.kt",
+    "sha256": "F06889F78F8E81864F283E63E6F80A049B31A191D86E7B78F82E7AC5E36B8EA9"
+  },
+  {
+    "path": "app/src/main/java/cn/edu/hust/ddlsaver/reminders/AndroidReminderPlatform.kt",
+    "sha256": "6501BED8500483CDC331C88CE896BF27300F4141169B368148FE76932CA4EF49"
+  },
+  {
+    "path": "app/src/main/java/cn/edu/hust/ddlsaver/reminders/ReminderEngine.kt",
+    "sha256": "1C7DBD7252CA1872CA3DFF2B7656C662DE1253DE5E6C3F664F2B142996027E09"
+  },
+  {
+    "path": "app/src/main/java/cn/edu/hust/ddlsaver/reminders/ReminderModels.kt",
+    "sha256": "CB80B9A3061F43BA0046CD62FDD72C5FF5E0FB7F4C0A0589ED2E45D3FFE97667"
+  },
+  {
+    "path": "app/src/main/java/cn/edu/hust/ddlsaver/reminders/ReminderPlanStore.kt",
+    "sha256": "C76EE05E0C7E813EBB284A20320F9DE8A13EEF9BCC723DA2A375E97316CE760E"
+  },
+  {
+    "path": "app/src/main/java/cn/edu/hust/ddlsaver/reminders/ReminderRuntime.kt",
+    "sha256": "B6D860A6789463B15EF2E1E289A2601F386F0D1AEE05D839C6CD95A88E532E27"
+  },
+  {
+    "path": "app/src/main/java/cn/edu/hust/ddlsaver/ui/AttachmentUi.kt",
+    "sha256": "170BCE9274E3C9F731D2EFA745C4A64B1723550EE4D267EC4A595E5801B240D8"
+  },
+  {
+    "path": "app/src/main/java/cn/edu/hust/ddlsaver/ui/CategoryManager.kt",
+    "sha256": "52845F5BC82D9DD979098B9FB4C53F0AD49053D8B61061AC610580A2065B26B1"
+  },
+  {
+    "path": "app/src/main/java/cn/edu/hust/ddlsaver/ui/CharacterPanel.kt",
+    "sha256": "33A9B395D5512A22D11911884DA70338B4283D5D3E1B1D4B5253630FD723D0DA"
+  },
+  {
+    "path": "app/src/main/java/cn/edu/hust/ddlsaver/ui/EditorExtras.kt",
+    "sha256": "1DCC33487AE2A630E337307872E1788D6A1E8324BDB2CA2CD0B629F749A3D233"
+  },
+  {
+    "path": "app/src/main/java/cn/edu/hust/ddlsaver/ui/EventEditor.kt",
+    "sha256": "704C6AA6C4D139A7443901C8FE9D7F46B929362C5D1D56788B58E186711DC8CB"
+  },
+  {
+    "path": "app/src/main/java/cn/edu/hust/ddlsaver/ui/HomeScreen.kt",
+    "sha256": "0FDFD2D46627934E5DF3CC9000DF93F7851CDC0F120C2ABAC27938AB8FC82A4D"
+  },
+  {
+    "path": "app/src/main/java/cn/edu/hust/ddlsaver/ui/ReminderSettingsPanel.kt",
+    "sha256": "1FE38FB8C5A3956CE4C4B771D1543B928F34DA6677DBFC2EF591C84597601AD5"
+  },
+  {
+    "path": "app/src/main/java/cn/edu/hust/ddlsaver/ui/SaverApp.kt",
+    "sha256": "1BB9D599421EC990602455AC6B05769C972D45E09F20C94876F5E53AE408A3FC"
+  },
+  {
+    "path": "app/src/main/java/cn/edu/hust/ddlsaver/ui/SaverTheme.kt",
+    "sha256": "2D7401CC9778F0D00CA08B12FA73D66F8B61F2E785BBC94E6DCD36410A132496"
+  },
+  {
+    "path": "app/src/main/java/cn/edu/hust/ddlsaver/ui/SaverViewModel.kt",
+    "sha256": "4643E1A095E783CA1394B890D36BD6F93B7A8F2EED99131DDE8277C8674C9C6F"
+  },
+  {
+    "path": "app/src/main/res/drawable/ic_launcher.xml",
+    "sha256": "7713A091C3729AE93D3A87B8D3A50C57FC4979152C79792290BFF9717D6ECE29"
+  },
+  {
+    "path": "app/src/main/res/values/strings.xml",
+    "sha256": "BC3CE40CFB4E26A52DB4FE8EC9089601DC220765DE428DD8FDF3EC392EDF2669"
+  },
+  {
+    "path": "app/src/main/res/values/themes.xml",
+    "sha256": "BDB19F5F8D58BF00CEEC2EB51945B7C894912E5161BE7D5ED3C57DD89E0D1B06"
+  },
+  {
+    "path": "app/src/main/res/xml/data_extraction_rules.xml",
+    "sha256": "1AA32FB5D3D45D711C2DA0634C5F9A1823527E78128307C74626DB235550882B"
+  },
+  {
+    "path": "app/src/test/java/cn/edu/hust/ddlsaver/data/CharacterStylePersistenceTest.kt",
+    "sha256": "06487E48FD229B5B28F86ED83BCCEF5646C30E5FFE7006EA678634614A99EB95"
+  },
+  {
+    "path": "app/src/test/java/cn/edu/hust/ddlsaver/data/RoomEventRepositoryTest.kt",
+    "sha256": "A6A92C7698E34DFBA1E89773A66CC63145581654CFB453EFE234B62870EFDBFA"
+  },
+  {
+    "path": "app/src/test/java/cn/edu/hust/ddlsaver/data/RoundTwoRepositoryTest.kt",
+    "sha256": "D3F227D8F96DCB5693A0DA723E4212513F60491D32993AE89E31DC3EE795096B"
+  },
+  {
+    "path": "app/src/test/java/cn/edu/hust/ddlsaver/data/SaverDatabaseMigrationTest.kt",
+    "sha256": "F9FC48BAA39F16354E323E25D1851B9137487F59556B9119E39291F2A96F0005"
+  },
+  {
+    "path": "app/src/test/java/cn/edu/hust/ddlsaver/domain/CharacterFeedbackTest.kt",
+    "sha256": "E050B49F4FE1C522D327F6D8AFC43CC5069CAA44F989D23E31CD63990FC48D41"
+  },
+  {
+    "path": "app/src/test/java/cn/edu/hust/ddlsaver/domain/EventQueryTest.kt",
+    "sha256": "6013B494BC6655D944049838372E05756B47F49AC6BA3C9F661CC4BE55CE7820"
+  },
+  {
+    "path": "app/src/test/java/cn/edu/hust/ddlsaver/domain/EventValidationTest.kt",
+    "sha256": "EA48F2BFD8BE609CAAF3076DBDEA7C1848D80B44060FD268E21DCC578049F4DD"
+  },
+  {
+    "path": "app/src/test/java/cn/edu/hust/ddlsaver/domain/ExtendedEventValidationTest.kt",
+    "sha256": "714B66A7FAD6E7BD7A932202E671D2F99ADDC25023C340E05AA5688F186D0814"
+  },
+  {
+    "path": "app/src/test/java/cn/edu/hust/ddlsaver/domain/UrgencyRulesTest.kt",
+    "sha256": "23555BFBA8988939C6EB634CA83B44F679181EB354ABA5F208FDA3D802E82AB6"
+  },
+  {
+    "path": "app/src/test/java/cn/edu/hust/ddlsaver/platform/AttachmentStoreTest.kt",
+    "sha256": "AB2FB3F9EBF3B04D6D7D9A3343DEF2D79A7A5CA23B6DA45E2647266F448F8EA6"
+  },
+  {
+    "path": "app/src/test/java/cn/edu/hust/ddlsaver/reminders/AndroidReminderPlatformTest.kt",
+    "sha256": "22A4230211F2995948CA574225BBE84F3EA685555766F15D8A37DE2C90E0187F"
+  },
+  {
+    "path": "app/src/test/java/cn/edu/hust/ddlsaver/reminders/ReminderEngineTest.kt",
+    "sha256": "F24B2D3F630BC8616EB1487B552ABDD327B86479A05194351AE8FFED75E04979"
+  },
+  {
+    "path": "app/src/test/java/cn/edu/hust/ddlsaver/reminders/ReminderRulesTest.kt",
+    "sha256": "A623B82B425505A0ABE34FF5F8CACA36169C65EF490A23F6253B1DCB073BF9B1"
+  },
+  {
+    "path": "app/src/test/java/cn/edu/hust/ddlsaver/ui/CalendarGridTest.kt",
+    "sha256": "42EA9D533F0F57ACD5A5227EE9B4D9E5D99FBF45B5A34DE1EF6485AE2DA4650A"
+  },
+  {
+    "path": "app/src/test/java/cn/edu/hust/ddlsaver/ui/CharacterArtworkTest.kt",
+    "sha256": "FCC0A21D164055730DAB95828D944A065977B777D0D531B00470445DD2A30D44"
+  },
+  {
+    "path": "app/src/test/java/cn/edu/hust/ddlsaver/ui/CharacterAssetsTest.kt",
+    "sha256": "5B20D8680423B9280B36F82097A043B23506ABC5C9CF3BC4E57CC42876EA9ED3"
+  },
+  {
+    "path": "app/src/test/java/cn/edu/hust/ddlsaver/ui/OceanThemeContrastTest.kt",
+    "sha256": "E09FD250435F8C2EF0FF64E651008BDF8753CD0D532A028EF8D78AECD7795761"
+  },
+  {
+    "path": "app/src/test/java/cn/edu/hust/ddlsaver/ui/OceanUiRenderTest.kt",
+    "sha256": "EC70B0BE12747C4DAB8168D31E7DF00D35F236C6EB5AB2A803EBF2E83245418F"
+  },
+  {
+    "path": "app/src/test/java/cn/edu/hust/ddlsaver/ui/ReminderColdLaunchTest.kt",
+    "sha256": "224F12610D1C5982AFB727DFCBD979879D97E5DB2DAE76C7C79F503CEC659896"
+  },
+  {
+    "path": "app/src/test/java/cn/edu/hust/ddlsaver/ui/SaverAppFlowTest.kt",
+    "sha256": "7C443601E4823F15B9316FBEFAC03AFCFBC6815CE14B00A5B264068FE6398870"
+  },
+  {
+    "path": "app/src/test/java/cn/edu/hust/ddlsaver/ui/SaverViewModelFeedbackTest.kt",
+    "sha256": "5082CB230385949328F8886F35F3D7D081C1FFC9AF513C34A16F96F3291A0B1A"
+  },
+  {
+    "path": "app/schemas/cn.edu.hust.ddlsaver.data.SaverDatabase/1.json",
+    "sha256": "F1DA82911704B4874E9289F9D89A7B135B24CA6EF18189393AA09FECE37E8804"
+  },
+  {
+    "path": "app/schemas/cn.edu.hust.ddlsaver.data.SaverDatabase/2.json",
+    "sha256": "9D720A3D1CDC88FB0E2DD27EB6333630D61C2AB03106244CFAA3C1D9D76B7EF8"
+  },
+  {
+    "path": "app/schemas/cn.edu.hust.ddlsaver.data.SaverDatabase/3.json",
+    "sha256": "2750DABE27120980671B0950BF24D21DFAFA2E558BD4636F5A3912A607AECF08"
+  },
+  {
+    "path": "app/schemas/cn.edu.hust.ddlsaver.data.SaverDatabase/4.json",
+    "sha256": "5CDCF7292D65FD7721087B938DBD47D1F72E1AD49D49A4F2B29AA37A43F9B032"
+  },
+  {
+    "path": "app/build.gradle.kts",
+    "sha256": "6EB5D8D8C9B982714025EBDE2258E886E9EAC0AEA7DB150AD8EB304587ED6ABB"
+  },
+  {
+    "path": "build.gradle.kts",
+    "sha256": "E9C288FB1E35E4B888F72A0F6DFB330F6A4B20E749FE6446B723D7573EAA1BF7"
+  },
+  {
+    "path": "settings.gradle.kts",
+    "sha256": "7F870BAA698F04002D7F546C5307BCA97661DBA5742BEFCEA0E3B718DB5F8AD2"
+  },
+  {
+    "path": "gradle.properties",
+    "sha256": "77ADB33471C3AD8CF7D628A77E3EB7EE0335EA6A111D7981F16A84CEFB4299BC"
+  }
+]

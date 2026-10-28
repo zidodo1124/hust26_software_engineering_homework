@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2026-10-28T08:43:47" hostname="LAPTOP-7OF0K1SP" time="3.513">
+  <properties/>
+  <testcase name="manualCleanupArchivesExpiredCompletedItemsAndKeepsCompletionFlag" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.354"/>
+  <testcase name="observedRelationsAreCompleteSnapshotsDuringEdits" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.284"/>
+  <testcase name="staleEditorCannotEraseNewCustomFieldsOrAttachments" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.273"/>
+  <testcase name="completeV2EventCatalogsAndSettingsSurviveReopening" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.348"/>
+  <testcase name="settingsUpdatesAreIndependentAndAtomicValidationPreventsPartialSave" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.254"/>
+  <testcase name="renamedAndDisabledCategoriesRemainLinkedButCannotBeNewlyAssigned" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.398"/>
+  <testcase name="batchUsesOnlySelectedIdsPreservesIndependentFlagsAndDeletesTheirRelations" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.289"/>
+  <testcase name="autoArchiveIncludesOnlyExpiredUnfinishedRowsAndInvalidatesOldEdits" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.294"/>
+  <testcase name="failureInsideBatchTransactionRollsBackEarlierMutations" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.222"/>
+  <testcase name="attachmentIdsAndPathsCannotBeBorrowedFromAnotherEvent" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.207"/>
+  <testcase name="customFieldsBelongToEachEventEvenWhenTheirIdsMatch" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.214"/>
+  <testcase name="missingBatchMemberRejectsEveryOperationWithoutPartialChanges" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.214"/>
+  <testcase name="namesAreTrimmedAndDuplicateNamesCannotBypassInactiveCatalogItems" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.158"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
