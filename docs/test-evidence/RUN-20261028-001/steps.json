@@ -1,0 +1,307 @@
+[
+  {
+    "atUtc": "2026-10-28T07:33:15.876367+00:00",
+    "step": "connection-and-baseline",
+    "result": "captured",
+    "details": {
+      "atUtc": "2026-10-28T07:33:13.028383+00:00",
+      "model": "ALI-AN00",
+      "android": "15",
+      "api": "35",
+      "build": "ALI-AN00 9.0.0.230(CNC00E206R8P4)",
+      "version": {
+        "versionCode": 2,
+        "versionName": "0.2.0"
+      },
+      "apk": {
+        "bytes": 11190058,
+        "sha256": "6B5167424691BD218E10314689990C37969FCD8018FBCAA282A2917B67B594A9"
+      },
+      "snapshotAtUtc": "2026-10-28T07:33:15.843605+00:00"
+    }
+  },
+  {
+    "atUtc": "2026-10-28T07:33:24.052375+00:00",
+    "step": "upgrade",
+    "result": "started",
+    "details": {
+      "sha256": "12E9D11A03623630F99F4AF35449EB119B5226D866CC0E7E56A1A7A9339DBD05",
+      "bytes": 12590695,
+      "mode": "install -r, retain app data"
+    }
+  },
+  {
+    "atUtc": "2026-10-28T07:33:41.010955+00:00",
+    "step": "upgrade",
+    "result": "passed",
+    "details": {
+      "atUtc": "2026-10-28T07:33:35.850288+00:00",
+      "version": {
+        "versionCode": 3,
+        "versionName": "0.3.0"
+      },
+      "apk": {
+        "bytes": 12590695,
+        "sha256": "12E9D11A03623630F99F4AF35449EB119B5226D866CC0E7E56A1A7A9339DBD05"
+      },
+      "oldQaSamplesUnchanged": true,
+      "anonymousOtherEventCountUnchanged": true,
+      "allRetainedEventAndRelatedRowsUnchanged": true
+    }
+  },
+  {
+    "atUtc": "2026-10-28T07:39:38.236633+00:00",
+    "step": "user-granted-permissions",
+    "result": "verified",
+    "details": {
+      "atUtc": "2026-10-28T07:39:38.234629+00:00",
+      "canPostText": true,
+      "canScheduleExactText": true
+    }
+  },
+  {
+    "atUtc": "2026-10-28T07:43:44.851626+00:00",
+    "step": "setup-default-lead-immediate",
+    "result": "observed",
+    "details": {
+      "leadMinutes": 60,
+      "qaNotifications": [],
+      "note": "Initial QA creation used default 60-minute lead; separate from later future-scheduled experiment. Recreate controlled sample after setting lead=2."
+    }
+  },
+  {
+    "atUtc": "2026-10-28T07:45:40.296347+00:00",
+    "step": "short-time-reminder-settings",
+    "result": "saved-through-ui",
+    "details": {
+      "dailyBeijing": "15:53",
+      "leadMinutes": 2
+    }
+  },
+  {
+    "atUtc": "2026-10-28T07:48:05.324898+00:00",
+    "step": "create-QA-R3-MERGE",
+    "result": "saved-through-ui",
+    "details": {
+      "deadline": {
+        "atUtc": "2026-10-28T07:57:00+00:00",
+        "beijing": "2026-10-28T15:57:00+08:00",
+        "epochMillis": 1793174220000
+      },
+      "sprintMinutes": 2
+    }
+  },
+  {
+    "atUtc": "2026-10-28T07:48:55.719684+00:00",
+    "step": "short-time-reminder-settings",
+    "result": "saved-through-ui",
+    "details": {
+      "dailyBeijing": "15:56",
+      "leadMinutes": 2
+    }
+  },
+  {
+    "atUtc": "2026-10-28T07:49:55.149341+00:00",
+    "step": "create-QA-R3-NEAR",
+    "result": "saved-through-ui",
+    "details": {
+      "deadline": {
+        "atUtc": "2026-10-28T07:59:00+00:00",
+        "beijing": "2026-10-28T15:59:00+08:00",
+        "epochMillis": 1793174340000
+      },
+      "sprintMinutes": null
+    }
+  },
+  {
+    "atUtc": "2026-10-28T07:50:44.801138+00:00",
+    "step": "create-QA-R3-COMPLETE",
+    "result": "saved-through-ui",
+    "details": {
+      "deadline": {
+        "atUtc": "2026-10-28T07:58:00+00:00",
+        "beijing": "2026-10-28T15:58:00+08:00",
+        "epochMillis": 1793174280000
+      },
+      "sprintMinutes": null
+    }
+  },
+  {
+    "atUtc": "2026-10-28T07:51:33.111211+00:00",
+    "step": "create-QA-R3-DELETE",
+    "result": "saved-through-ui",
+    "details": {
+      "deadline": {
+        "atUtc": "2026-10-28T07:58:00+00:00",
+        "beijing": "2026-10-28T15:58:00+08:00",
+        "epochMillis": 1793174280000
+      },
+      "sprintMinutes": null
+    }
+  },
+  {
+    "atUtc": "2026-10-28T07:52:21.333865+00:00",
+    "step": "create-QA-R3-EDIT",
+    "result": "saved-through-ui",
+    "details": {
+      "deadline": {
+        "atUtc": "2026-10-28T07:58:00+00:00",
+        "beijing": "2026-10-28T15:58:00+08:00",
+        "epochMillis": 1793174280000
+      },
+      "sprintMinutes": null
+    }
+  },
+  {
+    "atUtc": "2026-10-28T07:53:09.475440+00:00",
+    "step": "complete-control",
+    "result": "saved-through-ui",
+    "details": {
+      "qaTitle": "QA-R3-COMPLETE"
+    }
+  },
+  {
+    "atUtc": "2026-10-28T07:53:23.434243+00:00",
+    "step": "delete-control",
+    "result": "confirmed-through-ui",
+    "details": {
+      "qaTitle": "QA-R3-DELETE"
+    }
+  },
+  {
+    "atUtc": "2026-10-28T07:54:03.678829+00:00",
+    "step": "edit-control",
+    "result": "saved-through-ui",
+    "details": {
+      "qaTitle": "QA-R3-EDIT",
+      "newDeadline": {
+        "atUtc": "2026-10-28T08:01:00+00:00",
+        "beijing": "2026-10-28T16:01:00+08:00",
+        "epochMillis": 1793174460000
+      }
+    }
+  },
+  {
+    "atUtc": "2026-10-28T07:54:43.423742+00:00",
+    "step": "timed-observation-start",
+    "result": "foreground",
+    "details": {
+      "plannedFirstReminderUtc": "2026-10-28T07:55:00+00:00",
+      "forceStopDuringObservation": false
+    }
+  },
+  {
+    "atUtc": "2026-10-28T07:55:30.122099+00:00",
+    "step": "timed-background",
+    "result": "home-key",
+    "details": {
+      "screenLockNotChanged": true,
+      "forceStop": false
+    }
+  },
+  {
+    "atUtc": "2026-10-28T08:07:53.281302+00:00",
+    "step": "create-QA-R3-CLICK",
+    "result": "saved-through-ui",
+    "details": {
+      "deadline": {
+        "beijing": "2026-10-28T16:32:00+08:00",
+        "epochMillis": 1793176320000
+      },
+      "sprintMinutes": 30
+    }
+  },
+  {
+    "atUtc": "2026-10-28T08:07:53.905636+00:00",
+    "step": "long-click-sample-ready",
+    "result": "background",
+    "details": {
+      "qaTitle": "QA-R3-CLICK",
+      "deadlineBeijing": "2026-10-28T16:32:00+08:00",
+      "sprintMinutes": 30,
+      "purpose": "Immediate evaluation and real notification click, not future timing observation."
+    }
+  },
+  {
+    "atUtc": "2026-10-28T08:09:15.720377+00:00",
+    "step": "real-notification-click",
+    "result": "device-detail-verified",
+    "details": {
+      "qaTitle": "QA-R3-CLICK",
+      "inputInjected": false
+    }
+  },
+  {
+    "atUtc": "2026-10-28T08:10:41.818965+00:00",
+    "step": "force-stop-after-timing-and-reopen",
+    "result": "ledger-checked",
+    "details": {
+      "qaEvents": 5,
+      "notificationCountAfterReopen": 0,
+      "outsideTimedWindow": true,
+      "clickEventUnexpired": true
+    }
+  },
+  {
+    "atUtc": "2026-10-28T08:12:28.954930+00:00",
+    "step": "cleanup-待办",
+    "result": "deleted-only-filtered-qa-through-ui",
+    "details": {
+      "prefix": "QA-R3-",
+      "count": 4
+    }
+  },
+  {
+    "atUtc": "2026-10-28T08:13:41.246795+00:00",
+    "step": "cleanup-已完成",
+    "result": "deleted-only-filtered-qa-through-ui",
+    "details": {
+      "prefix": "QA-R3-",
+      "count": 1
+    }
+  },
+  {
+    "atUtc": "2026-10-28T08:14:30.628395+00:00",
+    "step": "restore-settings",
+    "result": "effective-defaults-saved-through-ui",
+    "details": {
+      "urgentMinutes": 1440,
+      "expiredPolicy": "KEEP",
+      "dailySummaryEnabled": true,
+      "dailySummaryMinuteOfDay": 480,
+      "dangerReminderEnabled": true,
+      "deadlineReminderEnabled": true,
+      "deadlineLeadMinutes": 60
+    }
+  },
+  {
+    "atUtc": "2026-10-28T08:14:57.771550+00:00",
+    "step": "final-state",
+    "result": "verified",
+    "details": {
+      "roundThreeEvents": 0,
+      "oldQaAndAttachmentsUnchanged": true,
+      "retainedEventAndRelationsUnchanged": true,
+      "effectiveDefaultSettingsRestored": true,
+      "apk": {
+        "bytes": 12590695,
+        "sha256": "12E9D11A03623630F99F4AF35449EB119B5226D866CC0E7E56A1A7A9339DBD05"
+      }
+    }
+  },
+  {
+    "atUtc": "2026-10-28T08:15:29.671544+00:00",
+    "step": "device-phase-complete",
+    "result": "verified",
+    "details": {
+      "completedUtc": "2026-10-28T08:15:29.668190+00:00",
+      "normalHomeRestored": true,
+      "temporaryUiXmlRemoved": true,
+      "temporaryPrivateDatabaseDirectoriesRemaining": 0,
+      "installedVersion": "0.3.0",
+      "roundThreeQaEventsRemaining": 0,
+      "productSourceUnchanged": true,
+      "phoneNoLongerNeeded": true
+    }
+  }
+]

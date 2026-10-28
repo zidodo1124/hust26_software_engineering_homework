@@ -1,0 +1,14 @@
+{
+  "atUtc": "2026-10-28T07:33:35.850288+00:00",
+  "version": {
+    "versionCode": 3,
+    "versionName": "0.3.0"
+  },
+  "apk": {
+    "bytes": 12590695,
+    "sha256": "12E9D11A03623630F99F4AF35449EB119B5226D866CC0E7E56A1A7A9339DBD05"
+  },
+  "oldQaSamplesUnchanged": true,
+  "anonymousOtherEventCountUnchanged": true,
+  "allRetainedEventAndRelatedRowsUnchanged": true
+}

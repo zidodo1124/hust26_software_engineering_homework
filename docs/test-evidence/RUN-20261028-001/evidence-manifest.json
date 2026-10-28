@@ -1,0 +1,129 @@
+{
+  "run": "RUN-20261028-001",
+  "createdAtUtc": "2026-10-28T08:19:12.034246+00:00",
+  "sourceCommit": "857ca5faf29af4c2b861bf4529634ec66e3e13bd",
+  "scope": "Root-reviewed allowlist of 7 unchanged screenshots, scoped observations/snapshots and derived summaries. No raw DB/UI, salt, script directory, exit-info or phone serial.",
+  "excludedFromManifest": [
+    "README.md",
+    ".gitattributes",
+    "evidence-manifest.json"
+  ],
+  "fileCount": 23,
+  "files": [
+    {
+      "file": "before-upgrade.json",
+      "bytes": 1679,
+      "sha256": "6C187BF38340B2B7AF3D255A6B158C8C0ECB008452870420E1F8D83E9971E3CF"
+    },
+    {
+      "file": "after-upgrade.json",
+      "bytes": 2424,
+      "sha256": "E1D0CE1EF3EC74E1EDEAE27414043D6486DDE042432DF44253EAE6CE2919510B"
+    },
+    {
+      "file": "device-and-install-before.json",
+      "bytes": 413,
+      "sha256": "C3E805C640083B1298540CE83E50C846AB64B868D0F2C6ABDFA491A49C394AB7"
+    },
+    {
+      "file": "device-and-install-after.json",
+      "bytes": 380,
+      "sha256": "0FA1643C360486E91CD16E5F18884A960691D462F8A6245453F785E54523A9F6"
+    },
+    {
+      "file": "setup-default-lead.json",
+      "bytes": 3781,
+      "sha256": "D44BD4F0701AA55EC16EC36838C6497314C788FCE8061D59036412ACCC710692"
+    },
+    {
+      "file": "actual-plan.json",
+      "bytes": 3577,
+      "sha256": "2BBACA00BCEFDF5DE4256C2FA528A4A5FD2D078666F59E0920E0DC65F152F154"
+    },
+    {
+      "file": "prepared-events.json",
+      "bytes": 7637,
+      "sha256": "8842F994CE9F868DDF018F53C53BEB77ADF53BA69E7F8F333722C3F0811044E7"
+    },
+    {
+      "file": "after-timing-before-cleanup.json",
+      "bytes": 10901,
+      "sha256": "98571E83A75CA8522E21422A0C9B68E00273508A4AA1FCB3AA56B8867166AD28"
+    },
+    {
+      "file": "final-state.json",
+      "bytes": 9544,
+      "sha256": "93AFC7B21F0FC72070B8423ACCB668D5D259FCC5B9B3FF7E8AF19B6D7BE97DF2"
+    },
+    {
+      "file": "notification-observations.json",
+      "bytes": 61445,
+      "sha256": "E9F38A669CE6C2F683E74E8540A906464E8B99F6F0A6D8891A40D4C7D685E3F8"
+    },
+    {
+      "file": "notification-summary.json",
+      "bytes": 3365,
+      "sha256": "7116DAA668F9DB0829D96646CEE186789F645A1E63C5313A03A2847702239955"
+    },
+    {
+      "file": "timed-polls.json",
+      "bytes": 14239,
+      "sha256": "2CCB4DC96CE7B39165C7BAD7A58A5131CFACD8A70069FB75AF692365AC718C39"
+    },
+    {
+      "file": "clock-comparison.json",
+      "bytes": 276,
+      "sha256": "744DF6E23751399E236B3DAD2D7EBBDDA8E04750EADDD14E49F70B2618BDE784"
+    },
+    {
+      "file": "steps.json",
+      "bytes": 8520,
+      "sha256": "9FEA3C598370A18EB68F8D674B2156FE4A205020FCC7AB2A4914087B9A45C967"
+    },
+    {
+      "file": "completion.json",
+      "bytes": 313,
+      "sha256": "0284C35E3255BBF9DE38D01A350702FB8440CE55E3050C297BAC412055E6B4EC"
+    },
+    {
+      "file": "summary.json",
+      "bytes": 6328,
+      "sha256": "0D4BDF846CC701F5D0338B9CEDC86642C887E3779327AEFDC8BED1F2E594F60B"
+    },
+    {
+      "file": "01-permissions-before.png",
+      "bytes": 413781,
+      "sha256": "B6EBC79A38615A8B8481924F006A10E5C2C5CF9FC738EE34935C524D1A4A4E4E"
+    },
+    {
+      "file": "02-permissions-allowed.png",
+      "bytes": 379129,
+      "sha256": "4ED13372C6798386EE7DCDA569BD064E922441D348C73A4D1ACB5E1AE0A58121"
+    },
+    {
+      "file": "04-completion-feedback.png",
+      "bytes": 340681,
+      "sha256": "2FBAB487AD544FED092AD71C24B6721A404E03E14F29290A74D162DCB7BD9F16"
+    },
+    {
+      "file": "05-role-overdue.png",
+      "bytes": 487763,
+      "sha256": "682119CB3E557EAD8281EE954F9D8EE84D6C1DB023697E3DA919CD64312F2BAD"
+    },
+    {
+      "file": "06-role-danger.png",
+      "bytes": 521269,
+      "sha256": "40E04BF6E718D2EADB86D2D96F59C48D7B459235AFE8EF855A4BB50A47DC4457"
+    },
+    {
+      "file": "07-real-notification-detail.png",
+      "bytes": 250444,
+      "sha256": "753D1A6EFC9E7F984B4F163EB38C3A6DC49FBA3B65FDF9ECFEE28A8BA6CEC399"
+    },
+    {
+      "file": "08-character-credits.png",
+      "bytes": 479214,
+      "sha256": "DB5704AE1A4A3A135937A57DD6430926631D6E91CE991532F48150DD59B7E746"
+    }
+  ]
+}

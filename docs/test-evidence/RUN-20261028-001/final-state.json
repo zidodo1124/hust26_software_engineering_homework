@@ -1,0 +1,288 @@
+{
+  "checkedUtc": "2026-10-28T08:14:55.052038+00:00",
+  "schemaVersion": 3,
+  "scope": "QA-R3 content, known previous QA sample status, settings and anonymous remaining-event count only",
+  "settings": {
+    "id": 1,
+    "urgentMinutes": 1440,
+    "expiredPolicy": "KEEP",
+    "dailySummaryEnabled": 1,
+    "dailySummaryMinuteOfDay": 480,
+    "dangerReminderEnabled": 1,
+    "deadlineReminderEnabled": 1,
+    "deadlineLeadMinutes": 60
+  },
+  "events": [],
+  "previousQaSamples": [
+    {
+      "title": "QA1027-1249-A",
+      "completedAt": null,
+      "archivedAt": 1793108357852,
+      "revision": 8,
+      "attachmentCount": 2,
+      "attachmentFiles": [
+        {
+          "bytes": 5407,
+          "declaredBytes": 5407,
+          "sha256": "471670516B4E0E9D2F7F92A7BC1B70C836A2C49222AC56F3B82ACB2941FC475F"
+        },
+        {
+          "bytes": 5351,
+          "declaredBytes": 5351,
+          "sha256": "99ADFB3E876EFEAA0CD61A039893ECE9AA918A8D3BD3ACF25DC407279548DEA2"
+        }
+      ]
+    },
+    {
+      "title": "QA1027-1249-C",
+      "completedAt": null,
+      "archivedAt": 1793108334366,
+      "revision": 4,
+      "attachmentCount": 2,
+      "attachmentFiles": [
+        {
+          "bytes": 5351,
+          "declaredBytes": 5351,
+          "sha256": "99ADFB3E876EFEAA0CD61A039893ECE9AA918A8D3BD3ACF25DC407279548DEA2"
+        },
+        {
+          "bytes": 5407,
+          "declaredBytes": 5407,
+          "sha256": "471670516B4E0E9D2F7F92A7BC1B70C836A2C49222AC56F3B82ACB2941FC475F"
+        }
+      ]
+    }
+  ],
+  "anonymousOtherEventCount": 1,
+  "temporaryPrivateDatabaseRemoved": true,
+  "retainedDataComparison": {
+    "scope": "All non-round-three events and attachment/tag/custom-field rows; salted comparison only",
+    "eventCount": 3,
+    "saltedDigestSha256": "9590A298C64159437F73C790917F9678E9439D93B4A332429827DFBCACCC4F71"
+  },
+  "reminderPlans": [
+    {
+      "key": "CANCEL:event:64ff8bc7-58e8-46f1-81cf-ea022c0af649:1793174040000:1793173920000:DANGER",
+      "kind": "DANGER",
+      "eventId": "64ff8bc7-58e8-46f1-81cf-ea022c0af649",
+      "deadlineAt": 1793174040000,
+      "eventRevision": 1,
+      "triggerAt": 1793173920000,
+      "day": null,
+      "notificationTag": "event:64ff8bc7-58e8-46f1-81cf-ea022c0af649:1793174040000:1793173920000:DANGER",
+      "active": 0,
+      "state": "PENDING",
+      "lastAttemptAt": null,
+      "lastError": null,
+      "cancelPending": 0
+    },
+    {
+      "key": "DAILY:2026-10-28",
+      "kind": "DAILY",
+      "eventId": null,
+      "deadlineAt": null,
+      "eventRevision": null,
+      "triggerAt": 1793174160000,
+      "day": "2026-10-28",
+      "notificationTag": "daily:2026-10-28",
+      "active": 1,
+      "state": "SENT",
+      "lastAttemptAt": 1793174160033,
+      "lastError": null,
+      "cancelPending": 0
+    },
+    {
+      "key": "DAILY:2026-10-29",
+      "kind": "DAILY",
+      "eventId": null,
+      "deadlineAt": null,
+      "eventRevision": null,
+      "triggerAt": 1793232000000,
+      "day": "2026-10-29",
+      "notificationTag": "daily:2026-10-29",
+      "active": 1,
+      "state": "PENDING",
+      "lastAttemptAt": null,
+      "lastError": null,
+      "cancelPending": 0
+    },
+    {
+      "key": "DANGER:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000",
+      "kind": "DANGER",
+      "eventId": "4662133a-721b-49ab-9304-eaab5e76d99f",
+      "deadlineAt": 1793174220000,
+      "eventRevision": 1,
+      "triggerAt": 1793174100000,
+      "day": null,
+      "notificationTag": "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE",
+      "active": 0,
+      "state": "SENT",
+      "lastAttemptAt": 1793174100024,
+      "lastError": null,
+      "cancelPending": 0
+    },
+    {
+      "key": "DANGER:64ff8bc7-58e8-46f1-81cf-ea022c0af649:1793174040000",
+      "kind": "DANGER",
+      "eventId": "64ff8bc7-58e8-46f1-81cf-ea022c0af649",
+      "deadlineAt": 1793174040000,
+      "eventRevision": 1,
+      "triggerAt": 1793173920000,
+      "day": null,
+      "notificationTag": "event:64ff8bc7-58e8-46f1-81cf-ea022c0af649:1793174040000:1793173920000:DANGER+DEADLINE",
+      "active": 0,
+      "state": "PENDING",
+      "lastAttemptAt": null,
+      "lastError": null,
+      "cancelPending": 0
+    },
+    {
+      "key": "DANGER:8c6a2b5b-a693-4bb0-9485-2176d9503271:1793176320000",
+      "kind": "DANGER",
+      "eventId": "8c6a2b5b-a693-4bb0-9485-2176d9503271",
+      "deadlineAt": 1793176320000,
+      "eventRevision": 1,
+      "triggerAt": 1793174520000,
+      "day": null,
+      "notificationTag": "event:8c6a2b5b-a693-4bb0-9485-2176d9503271:1793176320000:1793174520000:DANGER",
+      "active": 0,
+      "state": "SENT",
+      "lastAttemptAt": 1793174868489,
+      "lastError": null,
+      "cancelPending": 0
+    },
+    {
+      "key": "DEADLINE:00cc0688-63c1-4478-990f-e419e7d20dd9:1793174280000",
+      "kind": "DEADLINE",
+      "eventId": "00cc0688-63c1-4478-990f-e419e7d20dd9",
+      "deadlineAt": 1793174280000,
+      "eventRevision": 1,
+      "triggerAt": 1793174160000,
+      "day": null,
+      "notificationTag": "event:00cc0688-63c1-4478-990f-e419e7d20dd9:1793174280000:1793174160000:DEADLINE",
+      "active": 0,
+      "state": "PENDING",
+      "lastAttemptAt": null,
+      "lastError": null,
+      "cancelPending": 0
+    },
+    {
+      "key": "DEADLINE:0418e2c6-2bfa-4714-80ad-2bb530ee8668:1793174280000",
+      "kind": "DEADLINE",
+      "eventId": "0418e2c6-2bfa-4714-80ad-2bb530ee8668",
+      "deadlineAt": 1793174280000,
+      "eventRevision": 1,
+      "triggerAt": 1793174160000,
+      "day": null,
+      "notificationTag": "event:0418e2c6-2bfa-4714-80ad-2bb530ee8668:1793174280000:1793174160000:DEADLINE",
+      "active": 0,
+      "state": "PENDING",
+      "lastAttemptAt": null,
+      "lastError": null,
+      "cancelPending": 0
+    },
+    {
+      "key": "DEADLINE:091d7c2a-4a52-455d-8472-ddcfb42b4cfb:1793174280000",
+      "kind": "DEADLINE",
+      "eventId": "091d7c2a-4a52-455d-8472-ddcfb42b4cfb",
+      "deadlineAt": 1793174280000,
+      "eventRevision": 1,
+      "triggerAt": 1793174160000,
+      "day": null,
+      "notificationTag": "event:091d7c2a-4a52-455d-8472-ddcfb42b4cfb:1793174280000:1793174160000:DEADLINE",
+      "active": 0,
+      "state": "PENDING",
+      "lastAttemptAt": null,
+      "lastError": null,
+      "cancelPending": 0
+    },
+    {
+      "key": "DEADLINE:091d7c2a-4a52-455d-8472-ddcfb42b4cfb:1793174460000",
+      "kind": "DEADLINE",
+      "eventId": "091d7c2a-4a52-455d-8472-ddcfb42b4cfb",
+      "deadlineAt": 1793174460000,
+      "eventRevision": 2,
+      "triggerAt": 1793174340000,
+      "day": null,
+      "notificationTag": "event:091d7c2a-4a52-455d-8472-ddcfb42b4cfb:1793174460000:1793174340000:DEADLINE",
+      "active": 0,
+      "state": "SENT",
+      "lastAttemptAt": 1793174340066,
+      "lastError": null,
+      "cancelPending": 0
+    },
+    {
+      "key": "DEADLINE:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000",
+      "kind": "DEADLINE",
+      "eventId": "4662133a-721b-49ab-9304-eaab5e76d99f",
+      "deadlineAt": 1793174220000,
+      "eventRevision": 1,
+      "triggerAt": 1793174100000,
+      "day": null,
+      "notificationTag": "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE",
+      "active": 0,
+      "state": "SENT",
+      "lastAttemptAt": 1793174100024,
+      "lastError": null,
+      "cancelPending": 0
+    },
+    {
+      "key": "DEADLINE:64ff8bc7-58e8-46f1-81cf-ea022c0af649:1793174040000",
+      "kind": "DEADLINE",
+      "eventId": "64ff8bc7-58e8-46f1-81cf-ea022c0af649",
+      "deadlineAt": 1793174040000,
+      "eventRevision": 1,
+      "triggerAt": 1793173920000,
+      "day": null,
+      "notificationTag": "event:64ff8bc7-58e8-46f1-81cf-ea022c0af649:1793174040000:1793170440000:DEADLINE",
+      "active": 0,
+      "state": "SENT",
+      "lastAttemptAt": 1793173380798,
+      "lastError": null,
+      "cancelPending": 0
+    },
+    {
+      "key": "DEADLINE:8c6a2b5b-a693-4bb0-9485-2176d9503271:1793176320000",
+      "kind": "DEADLINE",
+      "eventId": "8c6a2b5b-a693-4bb0-9485-2176d9503271",
+      "deadlineAt": 1793176320000,
+      "eventRevision": 1,
+      "triggerAt": 1793176200000,
+      "day": null,
+      "notificationTag": "event:8c6a2b5b-a693-4bb0-9485-2176d9503271:1793176320000:1793176200000:DEADLINE",
+      "active": 0,
+      "state": "PENDING",
+      "lastAttemptAt": null,
+      "lastError": null,
+      "cancelPending": 0
+    },
+    {
+      "key": "DEADLINE:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000",
+      "kind": "DEADLINE",
+      "eventId": "e13bb471-421a-4b13-beaf-0bfef560d7a6",
+      "deadlineAt": 1793174340000,
+      "eventRevision": 1,
+      "triggerAt": 1793174220000,
+      "day": null,
+      "notificationTag": "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+      "active": 0,
+      "state": "SENT",
+      "lastAttemptAt": 1793174220059,
+      "lastError": null,
+      "cancelPending": 0
+    }
+  ],
+  "reminderControl": [
+    {
+      "id": 1,
+      "alarmIdentity": "ddl-saver://reminders/wake",
+      "dailyDate": "2026-10-29",
+      "dailyMinuteOfDay": 480,
+      "scheduledTriggerAt": 1793232000000,
+      "desiredTriggerAt": 1793232000000,
+      "scheduleMode": "exact",
+      "alarmDirty": 0,
+      "lastError": null
+    }
+  ]
+}

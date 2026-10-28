@@ -1,0 +1,110 @@
+{
+  "preparedUtc": "2026-10-28T07:46:41.098423+00:00",
+  "status": "plan only, no device operation performed",
+  "setupBudgetMinutes": 6,
+  "leadMinutes": 2,
+  "dailySummaryAt": {
+    "atUtc": "2026-10-28T07:56:00+00:00",
+    "beijing": "2026-10-28T15:56:00+08:00",
+    "epochMillis": 1793174160000
+  },
+  "events": [
+    {
+      "title": "QA-R3-MERGE",
+      "deadline": {
+        "atUtc": "2026-10-28T07:57:00+00:00",
+        "beijing": "2026-10-28T15:57:00+08:00",
+        "epochMillis": 1793174220000
+      },
+      "sprintMinutes": 2,
+      "deadlineReminderAt": {
+        "atUtc": "2026-10-28T07:55:00+00:00",
+        "beijing": "2026-10-28T15:55:00+08:00",
+        "epochMillis": 1793174100000
+      },
+      "dangerReminderAt": {
+        "atUtc": "2026-10-28T07:55:00+00:00",
+        "beijing": "2026-10-28T15:55:00+08:00",
+        "epochMillis": 1793174100000
+      }
+    },
+    {
+      "title": "QA-R3-NEAR",
+      "deadline": {
+        "atUtc": "2026-10-28T07:59:00+00:00",
+        "beijing": "2026-10-28T15:59:00+08:00",
+        "epochMillis": 1793174340000
+      },
+      "sprintMinutes": null,
+      "deadlineReminderAt": {
+        "atUtc": "2026-10-28T07:57:00+00:00",
+        "beijing": "2026-10-28T15:57:00+08:00",
+        "epochMillis": 1793174220000
+      }
+    },
+    {
+      "title": "QA-R3-COMPLETE",
+      "deadline": {
+        "atUtc": "2026-10-28T07:58:00+00:00",
+        "beijing": "2026-10-28T15:58:00+08:00",
+        "epochMillis": 1793174280000
+      },
+      "sprintMinutes": null,
+      "deadlineReminderAt": {
+        "atUtc": "2026-10-28T07:56:00+00:00",
+        "beijing": "2026-10-28T15:56:00+08:00",
+        "epochMillis": 1793174160000
+      }
+    },
+    {
+      "title": "QA-R3-DELETE",
+      "deadline": {
+        "atUtc": "2026-10-28T07:58:00+00:00",
+        "beijing": "2026-10-28T15:58:00+08:00",
+        "epochMillis": 1793174280000
+      },
+      "sprintMinutes": null,
+      "deadlineReminderAt": {
+        "atUtc": "2026-10-28T07:56:00+00:00",
+        "beijing": "2026-10-28T15:56:00+08:00",
+        "epochMillis": 1793174160000
+      }
+    },
+    {
+      "title": "QA-R3-EDIT",
+      "deadline": {
+        "atUtc": "2026-10-28T07:58:00+00:00",
+        "beijing": "2026-10-28T15:58:00+08:00",
+        "epochMillis": 1793174280000
+      },
+      "sprintMinutes": null,
+      "deadlineReminderAt": {
+        "atUtc": "2026-10-28T07:56:00+00:00",
+        "beijing": "2026-10-28T15:56:00+08:00",
+        "epochMillis": 1793174160000
+      }
+    }
+  ],
+  "editDeadlineTo": {
+    "atUtc": "2026-10-28T08:01:00+00:00",
+    "beijing": "2026-10-28T16:01:00+08:00",
+    "epochMillis": 1793174460000
+  },
+  "lastExpectedTrigger": {
+    "atUtc": "2026-10-28T07:59:00+00:00",
+    "beijing": "2026-10-28T15:59:00+08:00",
+    "epochMillis": 1793174340000
+  },
+  "operationsBeforeOldTrigger": [
+    "Complete only QA-R3-COMPLETE",
+    "Delete only QA-R3-DELETE",
+    "Move QA-R3-EDIT deadline to editDeadlineTo"
+  ],
+  "notes": [
+    "Origin includes a setup budget; regenerate before entering events if setup runs late.",
+    "Leave system clock, network, screen lock and global notification settings unchanged.",
+    "MERGE should submit one notification and two reason keys; NEAR has no sprint time.",
+    "Daily summary may include pre-existing user items. Export only generic counts and QA lines, never other titles.",
+    "Foreground/background delivery and deviations are observations; no delivery tolerance has been agreed."
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "run": "RUN-20261028-001",
+  "sourceCommit": "857ca5faf29af4c2b861bf4529634ec66e3e13bd",
+  "startedUtc": "2026-10-28T07:29:58+00:00",
+  "completedUtc": "2026-10-28T08:15:29.668190+00:00",
+  "device": {
+    "atUtc": "2026-10-28T07:33:13.028383+00:00",
+    "model": "ALI-AN00",
+    "android": "15",
+    "api": "35",
+    "build": "ALI-AN00 9.0.0.230(CNC00E206R8P4)",
+    "version": {
+      "versionCode": 2,
+      "versionName": "0.2.0"
+    },
+    "apk": {
+      "bytes": 11190058,
+      "sha256": "6B5167424691BD218E10314689990C37969FCD8018FBCAA282A2917B67B594A9"
+    },
+    "snapshotAtUtc": "2026-10-28T07:33:15.843605+00:00"
+  },
+  "installedAfterUpgrade": {
+    "atUtc": "2026-10-28T07:33:35.850288+00:00",
+    "version": {
+      "versionCode": 3,
+      "versionName": "0.3.0"
+    },
+    "apk": {
+      "bytes": 12590695,
+      "sha256": "12E9D11A03623630F99F4AF35449EB119B5226D866CC0E7E56A1A7A9339DBD05"
+    },
+    "oldQaSamplesUnchanged": true,
+    "anonymousOtherEventCountUnchanged": true,
+    "allRetainedEventAndRelatedRowsUnchanged": true
+  },
+  "notificationTiming": {
+    "run": "RUN-20261028-001",
+    "derivedAtUtc": "2026-10-28T08:19:11.417620+00:00",
+    "sourceCommit": "857ca5faf29af4c2b861bf4529634ec66e3e13bd",
+    "pollCount": 58,
+    "pollIntervalSeconds": 5,
+    "actualIntervalIncludesCommandRuntime": true,
+    "scope": "System creation metadata from package-filtered, normally redacted service records; not human-visible time or audio observation.",
+    "phoneAndHostClock": "See clock-comparison.json; host observations are separate from system creation timestamps.",
+    "uniqueObservedNotifications": 4,
+    "notifications": [
+      {
+        "tag": "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE",
+        "qaTitle": "QA-R3-MERGE",
+        "kind": "event",
+        "plannedTriggerEpochMillis": 1793174100000,
+        "systemCreationEpochMillis": 1793174100104,
+        "creationMinusPlannedMillis": 104,
+        "firstObservedHostUtc": "2026-10-28T07:55:04.869571+00:00",
+        "lastObservedHostUtc": "2026-10-28T07:56:57.055177+00:00",
+        "observationCount": 22,
+        "distinctSystemUpdateTimes": [
+          1793174100104
+        ],
+        "updateTimeUnchangedThroughoutObservedPresence": true
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "qaTitle": null,
+        "kind": "daily",
+        "plannedTriggerEpochMillis": 1793174160000,
+        "systemCreationEpochMillis": 1793174160115,
+        "creationMinusPlannedMillis": 115,
+        "firstObservedHostUtc": "2026-10-28T07:56:03.727452+00:00",
+        "lastObservedHostUtc": "2026-10-28T08:00:09.302153+00:00",
+        "observationCount": 47,
+        "distinctSystemUpdateTimes": [
+          1793174160115
+        ],
+        "updateTimeUnchangedThroughoutObservedPresence": true
+      },
+      {
+        "tag": "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+        "qaTitle": "QA-R3-NEAR",
+        "kind": "event",
+        "plannedTriggerEpochMillis": 1793174220000,
+        "systemCreationEpochMillis": 1793174220211,
+        "creationMinusPlannedMillis": 211,
+        "firstObservedHostUtc": "2026-10-28T07:57:02.358324+00:00",
+        "lastObservedHostUtc": "2026-10-28T07:58:59.881479+00:00",
+        "observationCount": 23,
+        "distinctSystemUpdateTimes": [
+          1793174220211
+        ],
+        "updateTimeUnchangedThroughoutObservedPresence": true
+      },
+      {
+        "tag": "event:091d7c2a-4a52-455d-8472-ddcfb42b4cfb:1793174460000:1793174340000:DEADLINE",
+        "qaTitle": "QA-R3-EDIT",
+        "kind": "event",
+        "plannedTriggerEpochMillis": 1793174340000,
+        "systemCreationEpochMillis": 1793174340139,
+        "creationMinusPlannedMillis": 139,
+        "firstObservedHostUtc": "2026-10-28T07:59:05.216239+00:00",
+        "lastObservedHostUtc": "2026-10-28T08:00:09.302153+00:00",
+        "observationCount": 13,
+        "distinctSystemUpdateTimes": [
+          1793174340139
+        ],
+        "updateTimeUnchangedThroughoutObservedPresence": true
+      }
+    ],
+    "negativeWindowObservations": {
+      "completeHadNoObservedTag": true,
+      "deleteHadNoObservedTag": true,
+      "editOldDeadlineHadNoObservedTag": true
+    },
+    "limits": [
+      "Polling is not a continuous notification trace.",
+      "Same tag replacement is assessed via unchanged update timestamps in sampled records.",
+      "No agreed timing tolerance; this run does not establish a general punctuality SLA."
+    ]
+  },
+  "actualClick": {
+    "qaTitle": "QA-R3-CLICK",
+    "verifiedAtUtc": "2026-10-28T08:09:15.720377+00:00",
+    "userPerformedClick": true,
+    "adbInputInjectedForClick": false,
+    "matchingDetailScreenshot": "07-real-notification-detail.png"
+  },
+  "dailyClick": "User reported entering app; landing list and filter reset not independently captured.",
+  "cleanup": {
+    "roundThreeQaEventsRemaining": 0,
+    "allRetainedEventAndRelatedRowsEqual": true,
+    "previousQaStatesAndFourAttachmentsEqual": true,
+    "anonymousOtherEventCount": 1,
+    "effectiveDefaultSettingsRestored": true,
+    "baselineSettingsRow": null,
+    "finalSettingsRow": {
+      "id": 1,
+      "urgentMinutes": 1440,
+      "expiredPolicy": "KEEP",
+      "dailySummaryEnabled": 1,
+      "dailySummaryMinuteOfDay": 480,
+      "dangerReminderEnabled": 1,
+      "deadlineReminderEnabled": 1,
+      "deadlineLeadMinutes": 60
+    },
+    "allRoundThreeEventPlansInactiveAndCancellationComplete": true,
+    "normalHomeRestored": true,
+    "temporaryUiAndPrivateDatabaseRemoved": true
+  },
+  "productCodeChanged": false,
+  "newConfirmedProductDefects": 0,
+  "fullBusinessCasesNewlyDeclaredPassed": 0,
+  "limits": [
+    "Original four artworks remain in installed v0.3.0; chibi Blue Fat Fish is a future reviewed change.",
+    "No screen-lock, reboot, Doze/battery-policy, complete permission-revocation matrix or network-off device test.",
+    "Timing is system creation metadata, not perceived display/audio. Polls are sampled, not a continuous trace.",
+    "Salt and original user database content are not exported; equal salted digests support same-run equality only."
+  ]
+}

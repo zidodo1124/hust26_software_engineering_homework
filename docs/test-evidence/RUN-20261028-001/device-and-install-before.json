@@ -1,0 +1,16 @@
+{
+  "atUtc": "2026-10-28T07:33:13.028383+00:00",
+  "model": "ALI-AN00",
+  "android": "15",
+  "api": "35",
+  "build": "ALI-AN00 9.0.0.230(CNC00E206R8P4)",
+  "version": {
+    "versionCode": 2,
+    "versionName": "0.2.0"
+  },
+  "apk": {
+    "bytes": 11190058,
+    "sha256": "6B5167424691BD218E10314689990C37969FCD8018FBCAA282A2917B67B594A9"
+  },
+  "snapshotAtUtc": "2026-10-28T07:33:15.843605+00:00"
+}

@@ -1,0 +1,1723 @@
+[
+  {
+    "checkedUtc": "2026-10-28T07:43:44.840627+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:43:44.840627+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:55:04.870582+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:55:04.868726+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:55:04.869571+00:00",
+        "qaTitle": "QA-R3-MERGE",
+        "mCreationTimeMs": 1793174100104,
+        "mUpdateTimeMs": 1793174100104,
+        "mRankingTimeMs": 1793174100102,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:55:10.228750+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:55:10.227622+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:55:10.228188+00:00",
+        "qaTitle": "QA-R3-MERGE",
+        "mCreationTimeMs": 1793174100104,
+        "mUpdateTimeMs": 1793174100104,
+        "mRankingTimeMs": 1793174100102,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:55:15.651868+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:55:15.650864+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:55:15.651868+00:00",
+        "qaTitle": "QA-R3-MERGE",
+        "mCreationTimeMs": 1793174100104,
+        "mUpdateTimeMs": 1793174100104,
+        "mRankingTimeMs": 1793174100102,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:55:21.067742+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:55:21.065720+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:55:21.066742+00:00",
+        "qaTitle": "QA-R3-MERGE",
+        "mCreationTimeMs": 1793174100104,
+        "mUpdateTimeMs": 1793174100104,
+        "mRankingTimeMs": 1793174100102,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:55:26.467199+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:55:26.466204+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:55:26.467199+00:00",
+        "qaTitle": "QA-R3-MERGE",
+        "mCreationTimeMs": 1793174100104,
+        "mUpdateTimeMs": 1793174100104,
+        "mRankingTimeMs": 1793174100102,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:55:31.780966+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:55:31.778958+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:55:31.779966+00:00",
+        "qaTitle": "QA-R3-MERGE",
+        "mCreationTimeMs": 1793174100104,
+        "mUpdateTimeMs": 1793174100104,
+        "mRankingTimeMs": 1793174100102,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:55:37.104120+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:55:37.103128+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:55:37.103128+00:00",
+        "qaTitle": "QA-R3-MERGE",
+        "mCreationTimeMs": 1793174100104,
+        "mUpdateTimeMs": 1793174100104,
+        "mRankingTimeMs": 1793174100102,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:55:42.437927+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:55:42.436811+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:55:42.437371+00:00",
+        "qaTitle": "QA-R3-MERGE",
+        "mCreationTimeMs": 1793174100104,
+        "mUpdateTimeMs": 1793174100104,
+        "mRankingTimeMs": 1793174100102,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:55:47.771343+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:55:47.769033+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:55:47.770077+00:00",
+        "qaTitle": "QA-R3-MERGE",
+        "mCreationTimeMs": 1793174100104,
+        "mUpdateTimeMs": 1793174100104,
+        "mRankingTimeMs": 1793174100102,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:55:53.093661+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:55:53.092208+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:55:53.092208+00:00",
+        "qaTitle": "QA-R3-MERGE",
+        "mCreationTimeMs": 1793174100104,
+        "mUpdateTimeMs": 1793174100104,
+        "mRankingTimeMs": 1793174100102,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:55:58.411712+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:55:58.410698+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:55:58.410698+00:00",
+        "qaTitle": "QA-R3-MERGE",
+        "mCreationTimeMs": 1793174100104,
+        "mUpdateTimeMs": 1793174100104,
+        "mRankingTimeMs": 1793174100102,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:56:03.728488+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:56:03.726386+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:56:03.727452+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:56:03.728488+00:00",
+        "qaTitle": "QA-R3-MERGE",
+        "mCreationTimeMs": 1793174100104,
+        "mUpdateTimeMs": 1793174100104,
+        "mRankingTimeMs": 1793174100102,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:56:09.076891+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:56:09.074878+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:56:09.075890+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:56:09.075890+00:00",
+        "qaTitle": "QA-R3-MERGE",
+        "mCreationTimeMs": 1793174100104,
+        "mUpdateTimeMs": 1793174100104,
+        "mRankingTimeMs": 1793174100102,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:56:14.366351+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:56:14.364366+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:56:14.365344+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:56:14.365344+00:00",
+        "qaTitle": "QA-R3-MERGE",
+        "mCreationTimeMs": 1793174100104,
+        "mUpdateTimeMs": 1793174100104,
+        "mRankingTimeMs": 1793174100102,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:56:19.670668+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:56:19.668659+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:56:19.669679+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:56:19.669679+00:00",
+        "qaTitle": "QA-R3-MERGE",
+        "mCreationTimeMs": 1793174100104,
+        "mUpdateTimeMs": 1793174100104,
+        "mRankingTimeMs": 1793174100102,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:56:25.006950+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:56:25.004936+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:56:25.005950+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:56:25.005950+00:00",
+        "qaTitle": "QA-R3-MERGE",
+        "mCreationTimeMs": 1793174100104,
+        "mUpdateTimeMs": 1793174100104,
+        "mRankingTimeMs": 1793174100102,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:56:30.350095+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:56:30.348086+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:56:30.349095+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:56:30.349095+00:00",
+        "qaTitle": "QA-R3-MERGE",
+        "mCreationTimeMs": 1793174100104,
+        "mUpdateTimeMs": 1793174100104,
+        "mRankingTimeMs": 1793174100102,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:56:35.670493+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:56:35.669355+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:56:35.670493+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:56:35.670493+00:00",
+        "qaTitle": "QA-R3-MERGE",
+        "mCreationTimeMs": 1793174100104,
+        "mUpdateTimeMs": 1793174100104,
+        "mRankingTimeMs": 1793174100102,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:56:41.016550+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:56:41.014546+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:56:41.015546+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:56:41.015546+00:00",
+        "qaTitle": "QA-R3-MERGE",
+        "mCreationTimeMs": 1793174100104,
+        "mUpdateTimeMs": 1793174100104,
+        "mRankingTimeMs": 1793174100102,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:56:46.361336+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:56:46.359160+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:56:46.360784+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:56:46.360784+00:00",
+        "qaTitle": "QA-R3-MERGE",
+        "mCreationTimeMs": 1793174100104,
+        "mUpdateTimeMs": 1793174100104,
+        "mRankingTimeMs": 1793174100102,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:56:51.712365+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:56:51.709885+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:56:51.712365+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:56:51.712365+00:00",
+        "qaTitle": "QA-R3-MERGE",
+        "mCreationTimeMs": 1793174100104,
+        "mUpdateTimeMs": 1793174100104,
+        "mRankingTimeMs": 1793174100102,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:56:57.055177+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:56:57.053180+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:56:57.054176+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:56:57.055177+00:00",
+        "qaTitle": "QA-R3-MERGE",
+        "mCreationTimeMs": 1793174100104,
+        "mUpdateTimeMs": 1793174100104,
+        "mRankingTimeMs": 1793174100102,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:57:02.359368+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:57:02.357279+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:57:02.358324+00:00",
+        "qaTitle": "QA-R3-NEAR",
+        "mCreationTimeMs": 1793174220211,
+        "mUpdateTimeMs": 1793174220211,
+        "mRankingTimeMs": 1793174220208,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:57:02.358835+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:57:07.679295+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:57:07.677297+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:57:07.679295+00:00",
+        "qaTitle": "QA-R3-NEAR",
+        "mCreationTimeMs": 1793174220211,
+        "mUpdateTimeMs": 1793174220211,
+        "mRankingTimeMs": 1793174220208,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:57:07.679295+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:57:13.004684+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:57:13.002672+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:57:13.004684+00:00",
+        "qaTitle": "QA-R3-NEAR",
+        "mCreationTimeMs": 1793174220211,
+        "mUpdateTimeMs": 1793174220211,
+        "mRankingTimeMs": 1793174220208,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:57:13.004684+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:57:18.343286+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:57:18.341266+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:57:18.342284+00:00",
+        "qaTitle": "QA-R3-NEAR",
+        "mCreationTimeMs": 1793174220211,
+        "mUpdateTimeMs": 1793174220211,
+        "mRankingTimeMs": 1793174220208,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:57:18.342284+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:57:23.695572+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:57:23.693579+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:57:23.694574+00:00",
+        "qaTitle": "QA-R3-NEAR",
+        "mCreationTimeMs": 1793174220211,
+        "mUpdateTimeMs": 1793174220211,
+        "mRankingTimeMs": 1793174220208,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:57:23.694574+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:57:29.040130+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:57:29.038123+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:57:29.039130+00:00",
+        "qaTitle": "QA-R3-NEAR",
+        "mCreationTimeMs": 1793174220211,
+        "mUpdateTimeMs": 1793174220211,
+        "mRankingTimeMs": 1793174220208,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:57:29.040130+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:57:34.386660+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:57:34.384640+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:57:34.385641+00:00",
+        "qaTitle": "QA-R3-NEAR",
+        "mCreationTimeMs": 1793174220211,
+        "mUpdateTimeMs": 1793174220211,
+        "mRankingTimeMs": 1793174220208,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:57:34.386660+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:57:39.721334+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:57:39.719334+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:57:39.720333+00:00",
+        "qaTitle": "QA-R3-NEAR",
+        "mCreationTimeMs": 1793174220211,
+        "mUpdateTimeMs": 1793174220211,
+        "mRankingTimeMs": 1793174220208,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:57:39.720333+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:57:45.065786+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:57:45.063778+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:57:45.064786+00:00",
+        "qaTitle": "QA-R3-NEAR",
+        "mCreationTimeMs": 1793174220211,
+        "mUpdateTimeMs": 1793174220211,
+        "mRankingTimeMs": 1793174220208,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:57:45.064786+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:57:50.416619+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:57:50.414378+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:57:50.416619+00:00",
+        "qaTitle": "QA-R3-NEAR",
+        "mCreationTimeMs": 1793174220211,
+        "mUpdateTimeMs": 1793174220211,
+        "mRankingTimeMs": 1793174220208,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:57:50.416619+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:57:55.753588+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:57:55.750984+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:57:55.753588+00:00",
+        "qaTitle": "QA-R3-NEAR",
+        "mCreationTimeMs": 1793174220211,
+        "mUpdateTimeMs": 1793174220211,
+        "mRankingTimeMs": 1793174220208,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:57:55.753588+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:58:01.106901+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:58:01.105248+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:58:01.106358+00:00",
+        "qaTitle": "QA-R3-NEAR",
+        "mCreationTimeMs": 1793174220211,
+        "mUpdateTimeMs": 1793174220211,
+        "mRankingTimeMs": 1793174220208,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:58:01.106358+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:58:06.432408+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:58:06.430220+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:58:06.431333+00:00",
+        "qaTitle": "QA-R3-NEAR",
+        "mCreationTimeMs": 1793174220211,
+        "mUpdateTimeMs": 1793174220211,
+        "mRankingTimeMs": 1793174220208,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:58:06.431333+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:58:11.784837+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:58:11.782833+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:58:11.784837+00:00",
+        "qaTitle": "QA-R3-NEAR",
+        "mCreationTimeMs": 1793174220211,
+        "mUpdateTimeMs": 1793174220211,
+        "mRankingTimeMs": 1793174220208,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:58:11.784837+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:58:17.132253+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:58:17.130248+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:58:17.131249+00:00",
+        "qaTitle": "QA-R3-NEAR",
+        "mCreationTimeMs": 1793174220211,
+        "mUpdateTimeMs": 1793174220211,
+        "mRankingTimeMs": 1793174220208,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:58:17.131249+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:58:22.474513+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:58:22.472994+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:58:22.473507+00:00",
+        "qaTitle": "QA-R3-NEAR",
+        "mCreationTimeMs": 1793174220211,
+        "mUpdateTimeMs": 1793174220211,
+        "mRankingTimeMs": 1793174220208,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:58:22.474513+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:58:27.820641+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:58:27.818144+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:58:27.819171+00:00",
+        "qaTitle": "QA-R3-NEAR",
+        "mCreationTimeMs": 1793174220211,
+        "mUpdateTimeMs": 1793174220211,
+        "mRankingTimeMs": 1793174220208,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:58:27.819171+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:58:33.162591+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:58:33.160587+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:58:33.161592+00:00",
+        "qaTitle": "QA-R3-NEAR",
+        "mCreationTimeMs": 1793174220211,
+        "mUpdateTimeMs": 1793174220211,
+        "mRankingTimeMs": 1793174220208,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:58:33.161592+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:58:38.489204+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:58:38.487164+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:58:38.489204+00:00",
+        "qaTitle": "QA-R3-NEAR",
+        "mCreationTimeMs": 1793174220211,
+        "mUpdateTimeMs": 1793174220211,
+        "mRankingTimeMs": 1793174220208,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:58:38.489204+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:58:43.835987+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:58:43.833635+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:58:43.834652+00:00",
+        "qaTitle": "QA-R3-NEAR",
+        "mCreationTimeMs": 1793174220211,
+        "mUpdateTimeMs": 1793174220211,
+        "mRankingTimeMs": 1793174220208,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:58:43.835987+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:58:49.193112+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:58:49.192112+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:58:49.193112+00:00",
+        "qaTitle": "QA-R3-NEAR",
+        "mCreationTimeMs": 1793174220211,
+        "mUpdateTimeMs": 1793174220211,
+        "mRankingTimeMs": 1793174220208,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:58:49.193112+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:58:54.547949+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:58:54.545955+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:58:54.546950+00:00",
+        "qaTitle": "QA-R3-NEAR",
+        "mCreationTimeMs": 1793174220211,
+        "mUpdateTimeMs": 1793174220211,
+        "mRankingTimeMs": 1793174220208,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:58:54.546950+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:58:59.882477+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:58:59.880479+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:58:59.881479+00:00",
+        "qaTitle": "QA-R3-NEAR",
+        "mCreationTimeMs": 1793174220211,
+        "mUpdateTimeMs": 1793174220211,
+        "mRankingTimeMs": 1793174220208,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:58:59.881479+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:59:05.217239+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:59:05.215240+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:091d7c2a-4a52-455d-8472-ddcfb42b4cfb:1793174460000:1793174340000:DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:59:05.216239+00:00",
+        "qaTitle": "QA-R3-EDIT",
+        "mCreationTimeMs": 1793174340139,
+        "mUpdateTimeMs": 1793174340139,
+        "mRankingTimeMs": 1793174340137,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:59:05.216239+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:59:10.573699+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:59:10.571628+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:091d7c2a-4a52-455d-8472-ddcfb42b4cfb:1793174460000:1793174340000:DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:59:10.573167+00:00",
+        "qaTitle": "QA-R3-EDIT",
+        "mCreationTimeMs": 1793174340139,
+        "mUpdateTimeMs": 1793174340139,
+        "mRankingTimeMs": 1793174340137,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:59:10.573699+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:59:15.923690+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:59:15.921678+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:091d7c2a-4a52-455d-8472-ddcfb42b4cfb:1793174460000:1793174340000:DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:59:15.922685+00:00",
+        "qaTitle": "QA-R3-EDIT",
+        "mCreationTimeMs": 1793174340139,
+        "mUpdateTimeMs": 1793174340139,
+        "mRankingTimeMs": 1793174340137,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:59:15.922685+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:59:21.267551+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:59:21.265949+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:091d7c2a-4a52-455d-8472-ddcfb42b4cfb:1793174460000:1793174340000:DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:59:21.267024+00:00",
+        "qaTitle": "QA-R3-EDIT",
+        "mCreationTimeMs": 1793174340139,
+        "mUpdateTimeMs": 1793174340139,
+        "mRankingTimeMs": 1793174340137,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:59:21.267551+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:59:26.599800+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:59:26.597766+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:091d7c2a-4a52-455d-8472-ddcfb42b4cfb:1793174460000:1793174340000:DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:59:26.598800+00:00",
+        "qaTitle": "QA-R3-EDIT",
+        "mCreationTimeMs": 1793174340139,
+        "mUpdateTimeMs": 1793174340139,
+        "mRankingTimeMs": 1793174340137,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:59:26.599800+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:59:31.951269+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:59:31.949229+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:091d7c2a-4a52-455d-8472-ddcfb42b4cfb:1793174460000:1793174340000:DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:59:31.950265+00:00",
+        "qaTitle": "QA-R3-EDIT",
+        "mCreationTimeMs": 1793174340139,
+        "mUpdateTimeMs": 1793174340139,
+        "mRankingTimeMs": 1793174340137,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:59:31.950265+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:59:37.287654+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:59:37.286633+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:091d7c2a-4a52-455d-8472-ddcfb42b4cfb:1793174460000:1793174340000:DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:59:37.287654+00:00",
+        "qaTitle": "QA-R3-EDIT",
+        "mCreationTimeMs": 1793174340139,
+        "mUpdateTimeMs": 1793174340139,
+        "mRankingTimeMs": 1793174340137,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:59:37.287654+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:59:42.636684+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:59:42.635674+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:091d7c2a-4a52-455d-8472-ddcfb42b4cfb:1793174460000:1793174340000:DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:59:42.636684+00:00",
+        "qaTitle": "QA-R3-EDIT",
+        "mCreationTimeMs": 1793174340139,
+        "mUpdateTimeMs": 1793174340139,
+        "mRankingTimeMs": 1793174340137,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:59:42.636684+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:59:47.973609+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:59:47.971605+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:091d7c2a-4a52-455d-8472-ddcfb42b4cfb:1793174460000:1793174340000:DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:59:47.972605+00:00",
+        "qaTitle": "QA-R3-EDIT",
+        "mCreationTimeMs": 1793174340139,
+        "mUpdateTimeMs": 1793174340139,
+        "mRankingTimeMs": 1793174340137,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:59:47.973609+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:59:53.308752+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:59:53.306748+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:091d7c2a-4a52-455d-8472-ddcfb42b4cfb:1793174460000:1793174340000:DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:59:53.307751+00:00",
+        "qaTitle": "QA-R3-EDIT",
+        "mCreationTimeMs": 1793174340139,
+        "mUpdateTimeMs": 1793174340139,
+        "mRankingTimeMs": 1793174340137,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:59:53.307751+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T07:59:58.647867+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T07:59:58.645877+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:091d7c2a-4a52-455d-8472-ddcfb42b4cfb:1793174460000:1793174340000:DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T07:59:58.646868+00:00",
+        "qaTitle": "QA-R3-EDIT",
+        "mCreationTimeMs": 1793174340139,
+        "mUpdateTimeMs": 1793174340139,
+        "mRankingTimeMs": 1793174340137,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T07:59:58.646868+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T08:00:03.980469+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T08:00:03.978221+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:091d7c2a-4a52-455d-8472-ddcfb42b4cfb:1793174460000:1793174340000:DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T08:00:03.979332+00:00",
+        "qaTitle": "QA-R3-EDIT",
+        "mCreationTimeMs": 1793174340139,
+        "mUpdateTimeMs": 1793174340139,
+        "mRankingTimeMs": 1793174340137,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T08:00:03.979922+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T08:00:09.303153+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T08:00:09.301172+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [
+      {
+        "tag": "event:091d7c2a-4a52-455d-8472-ddcfb42b4cfb:1793174460000:1793174340000:DEADLINE",
+        "kind": "event",
+        "observedUtc": "2026-10-28T08:00:09.302153+00:00",
+        "qaTitle": "QA-R3-EDIT",
+        "mCreationTimeMs": 1793174340139,
+        "mUpdateTimeMs": 1793174340139,
+        "mRankingTimeMs": 1793174340137,
+        "qaTitlesVisibleInRedactedOutput": []
+      },
+      {
+        "tag": "daily:2026-10-28",
+        "kind": "daily",
+        "observedUtc": "2026-10-28T08:00:09.302153+00:00",
+        "mCreationTimeMs": 1793174160115,
+        "mUpdateTimeMs": 1793174160115,
+        "mRankingTimeMs": 1793174160112,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ],
+    "rawOutputRetained": false
+  },
+  {
+    "checkedUtc": "2026-10-28T08:10:41.814469+00:00",
+    "scope": "Verified package filter; QA tags and optional expected daily tag only",
+    "filter": {
+      "checkedUtc": "2026-10-28T08:10:41.813436+00:00",
+      "packageFilterVerifiedInOutput": true,
+      "redactionDisabled": false
+    },
+    "notifications": [],
+    "rawOutputRetained": false
+  }
+]

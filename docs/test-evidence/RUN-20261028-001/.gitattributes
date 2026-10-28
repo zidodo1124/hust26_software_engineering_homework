@@ -1,0 +1,3 @@
+# Preserve the reviewed source bytes and accept original Windows CRLF endings.
+*.json -text whitespace=trailing-space,space-before-tab,cr-at-eol
+*.png -text

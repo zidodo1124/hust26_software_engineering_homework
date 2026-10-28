@@ -62,7 +62,7 @@ macOS／Linux 使用 `./gradlew` 并配置各自的 JDK 17 与 SDK 路径。开�
 
 第三轮源码 [857ca5f](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/857ca5faf29af4c2b861bf4529634ec66e3e13bd) 的 [CI 40530551146](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40530551146) 已核对成功：实际 132 次执行通过，CI Lint 0 错误／17 提示，比本机 16 多一条 OldTargetApi；详见 [CI 证据](test-evidence/RUN-20261027-005/ci-verification.json)。本机构建与 CI 分别打包，哈希和签名须各自核对，不能用一个包的标识代替另一个。线上 [Debug 产物](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40530551146/artifacts/12746207092)和[报告产物](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40530551146/artifacts/12745413579)可供有仓库权限者下载。
 
-当前已有 v0.2.0 的手机下次升级应使用本机已核验同签名包 `.local-tools/artifacts/ddl-saver-0.3.0-857ca5f-debug.apk`，不入 Git；其哈希、证书及版本在 [RUN-005](test-evidence/RUN-20261027-005/README.md) 登记。不要为安装不同签名的 CI 包卸载产品或清空用户数据。
+2026-10-28 荣耀 X50 已完成 v0.2.0→v0.3.0 同签名覆盖升级。该设备后续升级继续沿用已核验的本机签名环境，本次使用包为 `.local-tools/artifacts/ddl-saver-0.3.0-857ca5f-debug.apk`，不入 Git；其哈希、证书及版本在 [RUN-005](test-evidence/RUN-20261027-005/README.md) 登记。不要为安装不同签名的 CI 包卸载产品或清空用户数据。
 
 **第二轮历史产物：** [对应源码的 GitHub Actions](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40500794045)已通过，下载报告核对为 87 次执行全部通过。CI Lint 为 0 错误、12 条警告，比本机多一条 `OldTargetApi` 提示，分别保留两边实际结果。[第二轮 Debug APK](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40500794045/artifacts/12733885228)及[测试／Lint 报告](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/40500794045/artifacts/12733560898)可供有仓库访问权限的成员下载。
 
@@ -148,15 +148,17 @@ adb install -r app/build/outputs/apk/debug/app-debug.apk
 
 ### 第三轮提醒与角色使用步骤
 
-第三轮 v0.3.0／3、schema 3 已通过本机检查，安装新版本前以 [RUN-005](test-evidence/RUN-20261027-005/README.md) 的实际 APK 标识为准。用户选择本轮先交付、手机测试下次继续，本轮未安装新包。已有 v0.2.0 应保留数据并使用同签名覆盖安装，不卸载或清空产品来绕过迁移。
+第三轮 v0.3.0／3、schema 3 已通过本机检查，安装新版本前以 [RUN-005](test-evidence/RUN-20261027-005/README.md) 的实际 APK 标识为准。2026-10-27 按用户选择先交付，该批未安装新包；2026-10-28 已在 [RUN-20261028-001](test-evidence/RUN-20261028-001/README.md) 完成 v0.2.0 同签名覆盖安装并核对 schema 3 和原数据，未卸载或清空产品。
 
 1. 打开“设置”，分别检查每日汇总、危险期、临近截止三个开关；默认都开启，汇总按北京时间 08:00、临近提前 60 分钟，普通橙色阈值仍独立。汇总输入为 HH:mm，提前量须为正分钟数。
 2. 点击“设置系统通知权限”，按实际手机提示允许或进入系统设置；若权限请求不再弹框，可使用“打开系统通知设置”直接进入本包设置页。通知关闭和提醒通道关闭都会影响显示。应用不在启动时自动弹出所有授权。
 3. 查看“调度方式”。Android 12 及以上可通过“允许精确提醒”进入专门访问设置；未允许时显示“近似提醒，可能延迟”，该权限不能代替通知权限。
 4. 返回应用或点击“重新检查并安排提醒”，核对状态和待安排／重试数量。事项和设置保存成功但提醒失败时分别提示；不要反复新建同一事项来重试安排。
-5. 首页展示鲸鱼娘状态和本地台词；成功完成后短暂显示快乐反馈。点击“素材与署名”查看非官方关系、创作链、许可及来源。
+5. 当前 v0.3.0 首页展示原鲸鱼娘立绘与本地台词；成功完成后短暂显示快乐反馈。点击“素材与署名”查看非官方关系、创作链、许可及来源。用户后续要求更可爱的 Q 版并命名“蓝色大肥鱼”，[候选方案](character-q-candidates.md)尚未替换进当前包。
 
-下次实际连接荣耀 X50 时再建立设备批次（拟 RUN-006，当前未执行）；实际记录通知权限、精确／近似模式、后台和省电限制、计划时刻与显示时刻。Doze 有调度频率限制，精确访问不代表任何系统条件下都准点。强制停止期间不保证送达；重新主动打开后恢复校对。每个通知点击都重新查数据，失效目标回到列表并说明，不能进入其他事项。运行条件依据 [AlarmManager](https://developer.android.com/develop/background-work/services/alarms)、[通知权限](https://developer.android.com/develop/ui/compose/notifications/notification-permission)及 [Android 15 强停状态说明](https://developer.android.com/about/versions/15/behavior-changes-all#stopped-state)。
+2026-10-28 实际设备批次为 [RUN-20261028-001](test-evidence/RUN-20261028-001/README.md)，取代准备阶段未执行的 RUN-006 预留名称。已记录两类权限、精确模式、前后台四次通知的计划与系统创建时间，单项真实点击已进入对应详情；汇总具体落点、锁屏、省电及重启等仍待核对。Doze 有调度频率限制，精确访问不代表任何系统条件下都准点。强制停止期间不保证送达；重新主动打开后恢复校对。每个通知点击都重新查数据，失效目标回到列表并说明，不能进入其他事项。运行条件依据 [AlarmManager](https://developer.android.com/develop/background-work/services/alarms)、[通知权限](https://developer.android.com/develop/ui/compose/notifications/notification-permission)及 [Android 15 强停状态说明](https://developer.android.com/about/versions/15/behavior-changes-all#stopped-state)。
+
+本批于 2026-10-28 08:15:29 UTC 完成收尾：本轮 QA 事项已清零，原事项及四张旧测试附件核对保留，首页恢复正常，业务设置恢复有效默认值。初始 settings 无持久化行，收尾通过正常界面保存默认行，不是还原为空行。系统通知及精确提醒权限保持支盟渊已授权状态；未改设备时钟、网络或省电设置。完整设备条件和证据以本批记录为准。
 
 ## 4. 代码入口
 

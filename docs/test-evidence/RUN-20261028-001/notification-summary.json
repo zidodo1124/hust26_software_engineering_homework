@@ -1,0 +1,83 @@
+{
+  "run": "RUN-20261028-001",
+  "derivedAtUtc": "2026-10-28T08:19:11.417620+00:00",
+  "sourceCommit": "857ca5faf29af4c2b861bf4529634ec66e3e13bd",
+  "pollCount": 58,
+  "pollIntervalSeconds": 5,
+  "actualIntervalIncludesCommandRuntime": true,
+  "scope": "System creation metadata from package-filtered, normally redacted service records; not human-visible time or audio observation.",
+  "phoneAndHostClock": "See clock-comparison.json; host observations are separate from system creation timestamps.",
+  "uniqueObservedNotifications": 4,
+  "notifications": [
+    {
+      "tag": "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE",
+      "qaTitle": "QA-R3-MERGE",
+      "kind": "event",
+      "plannedTriggerEpochMillis": 1793174100000,
+      "systemCreationEpochMillis": 1793174100104,
+      "creationMinusPlannedMillis": 104,
+      "firstObservedHostUtc": "2026-10-28T07:55:04.869571+00:00",
+      "lastObservedHostUtc": "2026-10-28T07:56:57.055177+00:00",
+      "observationCount": 22,
+      "distinctSystemUpdateTimes": [
+        1793174100104
+      ],
+      "updateTimeUnchangedThroughoutObservedPresence": true
+    },
+    {
+      "tag": "daily:2026-10-28",
+      "qaTitle": null,
+      "kind": "daily",
+      "plannedTriggerEpochMillis": 1793174160000,
+      "systemCreationEpochMillis": 1793174160115,
+      "creationMinusPlannedMillis": 115,
+      "firstObservedHostUtc": "2026-10-28T07:56:03.727452+00:00",
+      "lastObservedHostUtc": "2026-10-28T08:00:09.302153+00:00",
+      "observationCount": 47,
+      "distinctSystemUpdateTimes": [
+        1793174160115
+      ],
+      "updateTimeUnchangedThroughoutObservedPresence": true
+    },
+    {
+      "tag": "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+      "qaTitle": "QA-R3-NEAR",
+      "kind": "event",
+      "plannedTriggerEpochMillis": 1793174220000,
+      "systemCreationEpochMillis": 1793174220211,
+      "creationMinusPlannedMillis": 211,
+      "firstObservedHostUtc": "2026-10-28T07:57:02.358324+00:00",
+      "lastObservedHostUtc": "2026-10-28T07:58:59.881479+00:00",
+      "observationCount": 23,
+      "distinctSystemUpdateTimes": [
+        1793174220211
+      ],
+      "updateTimeUnchangedThroughoutObservedPresence": true
+    },
+    {
+      "tag": "event:091d7c2a-4a52-455d-8472-ddcfb42b4cfb:1793174460000:1793174340000:DEADLINE",
+      "qaTitle": "QA-R3-EDIT",
+      "kind": "event",
+      "plannedTriggerEpochMillis": 1793174340000,
+      "systemCreationEpochMillis": 1793174340139,
+      "creationMinusPlannedMillis": 139,
+      "firstObservedHostUtc": "2026-10-28T07:59:05.216239+00:00",
+      "lastObservedHostUtc": "2026-10-28T08:00:09.302153+00:00",
+      "observationCount": 13,
+      "distinctSystemUpdateTimes": [
+        1793174340139
+      ],
+      "updateTimeUnchangedThroughoutObservedPresence": true
+    }
+  ],
+  "negativeWindowObservations": {
+    "completeHadNoObservedTag": true,
+    "deleteHadNoObservedTag": true,
+    "editOldDeadlineHadNoObservedTag": true
+  },
+  "limits": [
+    "Polling is not a continuous notification trace.",
+    "Same tag replacement is assessed via unchanged update timestamps in sampled records.",
+    "No agreed timing tolerance; this run does not establish a general punctuality SLA."
+  ]
+}

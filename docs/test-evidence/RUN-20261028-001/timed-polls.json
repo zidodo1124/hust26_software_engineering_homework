@@ -1,0 +1,455 @@
+[
+  {
+    "atUtc": "2026-10-28T07:55:04.870582+00:00",
+    "targetAppForeground": true,
+    "qaNotificationTags": [
+      "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:55:10.228750+00:00",
+    "targetAppForeground": true,
+    "qaNotificationTags": [
+      "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:55:15.651868+00:00",
+    "targetAppForeground": true,
+    "qaNotificationTags": [
+      "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:55:21.067742+00:00",
+    "targetAppForeground": true,
+    "qaNotificationTags": [
+      "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:55:26.467199+00:00",
+    "targetAppForeground": true,
+    "qaNotificationTags": [
+      "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:55:31.780966+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:55:37.104120+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:55:42.437927+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:55:47.771343+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:55:53.093661+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:55:58.411712+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:56:03.728488+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "daily:2026-10-28",
+      "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:56:09.076891+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "daily:2026-10-28",
+      "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:56:14.366351+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "daily:2026-10-28",
+      "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:56:19.670668+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "daily:2026-10-28",
+      "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:56:25.006950+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "daily:2026-10-28",
+      "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:56:30.350095+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "daily:2026-10-28",
+      "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:56:35.670493+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "daily:2026-10-28",
+      "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:56:41.016550+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "daily:2026-10-28",
+      "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:56:46.361336+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "daily:2026-10-28",
+      "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:56:51.712365+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "daily:2026-10-28",
+      "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:56:57.055177+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "daily:2026-10-28",
+      "event:4662133a-721b-49ab-9304-eaab5e76d99f:1793174220000:1793174100000:DANGER+DEADLINE"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:57:02.359368+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+      "daily:2026-10-28"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:57:07.679295+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+      "daily:2026-10-28"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:57:13.004684+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+      "daily:2026-10-28"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:57:18.343286+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+      "daily:2026-10-28"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:57:23.695572+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+      "daily:2026-10-28"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:57:29.040130+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+      "daily:2026-10-28"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:57:34.386660+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+      "daily:2026-10-28"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:57:39.721334+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+      "daily:2026-10-28"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:57:45.065786+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+      "daily:2026-10-28"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:57:50.416619+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+      "daily:2026-10-28"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:57:55.753588+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+      "daily:2026-10-28"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:58:01.106901+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+      "daily:2026-10-28"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:58:06.432408+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+      "daily:2026-10-28"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:58:11.784837+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+      "daily:2026-10-28"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:58:17.132253+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+      "daily:2026-10-28"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:58:22.474513+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+      "daily:2026-10-28"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:58:27.820641+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+      "daily:2026-10-28"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:58:33.162591+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+      "daily:2026-10-28"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:58:38.489204+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+      "daily:2026-10-28"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:58:43.835987+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+      "daily:2026-10-28"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:58:49.193112+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+      "daily:2026-10-28"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:58:54.547949+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+      "daily:2026-10-28"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:58:59.882477+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:e13bb471-421a-4b13-beaf-0bfef560d7a6:1793174340000:1793174220000:DEADLINE",
+      "daily:2026-10-28"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:59:05.217239+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:091d7c2a-4a52-455d-8472-ddcfb42b4cfb:1793174460000:1793174340000:DEADLINE",
+      "daily:2026-10-28"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:59:10.573699+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:091d7c2a-4a52-455d-8472-ddcfb42b4cfb:1793174460000:1793174340000:DEADLINE",
+      "daily:2026-10-28"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:59:15.923690+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:091d7c2a-4a52-455d-8472-ddcfb42b4cfb:1793174460000:1793174340000:DEADLINE",
+      "daily:2026-10-28"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:59:21.267551+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:091d7c2a-4a52-455d-8472-ddcfb42b4cfb:1793174460000:1793174340000:DEADLINE",
+      "daily:2026-10-28"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:59:26.599800+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:091d7c2a-4a52-455d-8472-ddcfb42b4cfb:1793174460000:1793174340000:DEADLINE",
+      "daily:2026-10-28"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:59:31.951269+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:091d7c2a-4a52-455d-8472-ddcfb42b4cfb:1793174460000:1793174340000:DEADLINE",
+      "daily:2026-10-28"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:59:37.287654+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:091d7c2a-4a52-455d-8472-ddcfb42b4cfb:1793174460000:1793174340000:DEADLINE",
+      "daily:2026-10-28"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:59:42.636684+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:091d7c2a-4a52-455d-8472-ddcfb42b4cfb:1793174460000:1793174340000:DEADLINE",
+      "daily:2026-10-28"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:59:47.973609+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:091d7c2a-4a52-455d-8472-ddcfb42b4cfb:1793174460000:1793174340000:DEADLINE",
+      "daily:2026-10-28"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:59:53.308752+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:091d7c2a-4a52-455d-8472-ddcfb42b4cfb:1793174460000:1793174340000:DEADLINE",
+      "daily:2026-10-28"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T07:59:58.647867+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:091d7c2a-4a52-455d-8472-ddcfb42b4cfb:1793174460000:1793174340000:DEADLINE",
+      "daily:2026-10-28"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T08:00:03.980469+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:091d7c2a-4a52-455d-8472-ddcfb42b4cfb:1793174460000:1793174340000:DEADLINE",
+      "daily:2026-10-28"
+    ]
+  },
+  {
+    "atUtc": "2026-10-28T08:00:09.303153+00:00",
+    "targetAppForeground": false,
+    "qaNotificationTags": [
+      "event:091d7c2a-4a52-455d-8472-ddcfb42b4cfb:1793174460000:1793174340000:DEADLINE",
+      "daily:2026-10-28"
+    ]
+  }
+]

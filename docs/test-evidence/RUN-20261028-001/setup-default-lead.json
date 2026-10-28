@@ -1,0 +1,125 @@
+{
+  "checkedUtc": "2026-10-28T07:43:44.622776+00:00",
+  "schemaVersion": 3,
+  "scope": "QA-R3 content, known previous QA sample status, settings and anonymous remaining-event count only",
+  "settings": null,
+  "events": [
+    {
+      "id": "64ff8bc7-58e8-46f1-81cf-ea022c0af649",
+      "title": "QA-R3-MERGE",
+      "deadlineAt": 1793174040000,
+      "sprintMinutes": 2,
+      "completedAt": null,
+      "archivedAt": null,
+      "revision": 1,
+      "attachmentCount": 0
+    }
+  ],
+  "previousQaSamples": [
+    {
+      "title": "QA1027-1249-A",
+      "completedAt": null,
+      "archivedAt": 1793108357852,
+      "revision": 8,
+      "attachmentCount": 2,
+      "attachmentFiles": [
+        {
+          "bytes": 5407,
+          "declaredBytes": 5407,
+          "sha256": "471670516B4E0E9D2F7F92A7BC1B70C836A2C49222AC56F3B82ACB2941FC475F"
+        },
+        {
+          "bytes": 5351,
+          "declaredBytes": 5351,
+          "sha256": "99ADFB3E876EFEAA0CD61A039893ECE9AA918A8D3BD3ACF25DC407279548DEA2"
+        }
+      ]
+    },
+    {
+      "title": "QA1027-1249-C",
+      "completedAt": null,
+      "archivedAt": 1793108334366,
+      "revision": 4,
+      "attachmentCount": 2,
+      "attachmentFiles": [
+        {
+          "bytes": 5351,
+          "declaredBytes": 5351,
+          "sha256": "99ADFB3E876EFEAA0CD61A039893ECE9AA918A8D3BD3ACF25DC407279548DEA2"
+        },
+        {
+          "bytes": 5407,
+          "declaredBytes": 5407,
+          "sha256": "471670516B4E0E9D2F7F92A7BC1B70C836A2C49222AC56F3B82ACB2941FC475F"
+        }
+      ]
+    }
+  ],
+  "anonymousOtherEventCount": 1,
+  "temporaryPrivateDatabaseRemoved": true,
+  "retainedDataComparison": {
+    "scope": "All non-round-three events and attachment/tag/custom-field rows; salted comparison only",
+    "eventCount": 3,
+    "saltedDigestSha256": "9590A298C64159437F73C790917F9678E9439D93B4A332429827DFBCACCC4F71"
+  },
+  "reminderPlans": [
+    {
+      "key": "DAILY:2026-10-29",
+      "kind": "DAILY",
+      "eventId": null,
+      "deadlineAt": null,
+      "eventRevision": null,
+      "triggerAt": 1793232000000,
+      "day": "2026-10-29",
+      "notificationTag": "daily:2026-10-29",
+      "active": 1,
+      "state": "PENDING",
+      "lastAttemptAt": null,
+      "lastError": null,
+      "cancelPending": 0
+    },
+    {
+      "key": "DANGER:64ff8bc7-58e8-46f1-81cf-ea022c0af649:1793174040000",
+      "kind": "DANGER",
+      "eventId": "64ff8bc7-58e8-46f1-81cf-ea022c0af649",
+      "deadlineAt": 1793174040000,
+      "eventRevision": 1,
+      "triggerAt": 1793173920000,
+      "day": null,
+      "notificationTag": "event:64ff8bc7-58e8-46f1-81cf-ea022c0af649:1793174040000:1793173920000:DANGER",
+      "active": 1,
+      "state": "PENDING",
+      "lastAttemptAt": null,
+      "lastError": null,
+      "cancelPending": 0
+    },
+    {
+      "key": "DEADLINE:64ff8bc7-58e8-46f1-81cf-ea022c0af649:1793174040000",
+      "kind": "DEADLINE",
+      "eventId": "64ff8bc7-58e8-46f1-81cf-ea022c0af649",
+      "deadlineAt": 1793174040000,
+      "eventRevision": 1,
+      "triggerAt": 1793170440000,
+      "day": null,
+      "notificationTag": "event:64ff8bc7-58e8-46f1-81cf-ea022c0af649:1793174040000:1793170440000:DEADLINE",
+      "active": 1,
+      "state": "SENT",
+      "lastAttemptAt": 1793173380798,
+      "lastError": null,
+      "cancelPending": 0
+    }
+  ],
+  "reminderControl": [
+    {
+      "id": 1,
+      "alarmIdentity": "ddl-saver://reminders/wake",
+      "dailyDate": "2026-10-29",
+      "dailyMinuteOfDay": 480,
+      "scheduledTriggerAt": 1793173920000,
+      "desiredTriggerAt": 1793173920000,
+      "scheduleMode": "exact",
+      "alarmDirty": 0,
+      "lastError": null
+    }
+  ]
+}
