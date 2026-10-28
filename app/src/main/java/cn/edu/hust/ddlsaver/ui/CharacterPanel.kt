@@ -32,7 +32,15 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.IOException
 
-internal data class CharacterArtworkSpec(val asset: String, val column: Int? = null, val row: Int? = null)
+/** Pixel bounds within one source frame; right and bottom are exclusive. */
+internal data class ArtworkExcludedRect(val left: Int, val top: Int, val right: Int, val bottom: Int)
+
+internal data class CharacterArtworkSpec(
+    val asset: String,
+    val column: Int? = null,
+    val row: Int? = null,
+    val excludedRects: List<ArtworkExcludedRect> = emptyList(),
+)
 
 internal fun characterArtwork(style: CharacterStyle, state: CharacterState): CharacterArtworkSpec =
     if (style == CharacterStyle.CHIBI) {
@@ -42,7 +50,22 @@ internal fun characterArtwork(style: CharacterStyle, state: CharacterState): Cha
             CharacterState.DANGER -> 1 to 7
             CharacterState.SOON, CharacterState.OVERDUE -> 1 to 8
         }
-        CharacterArtworkSpec("character/chibi/spritesheet.webp", column, row)
+        // The published atlas contains remnants inside several cells. These reviewed regions
+        // remove only those remnants; the frame's size, position and other pixels stay intact.
+        val excludedRects = when (state) {
+            CharacterState.NORMAL -> emptyList()
+            CharacterState.COMPLETED -> listOf(ArtworkExcludedRect(0, 184, 10, 208))
+            CharacterState.DANGER -> listOf(
+                ArtworkExcludedRect(0, 124, 38, 128), ArtworkExcludedRect(0, 128, 41, 140),
+                ArtworkExcludedRect(0, 140, 43, 144), ArtworkExcludedRect(0, 144, 40, 148),
+                ArtworkExcludedRect(0, 148, 39, 156), ArtworkExcludedRect(0, 156, 37, 164),
+                ArtworkExcludedRect(0, 164, 35, 208),
+            )
+            CharacterState.SOON, CharacterState.OVERDUE -> listOf(
+                ArtworkExcludedRect(0, 0, 30, 144), ArtworkExcludedRect(0, 144, 45, 208),
+            )
+        }
+        CharacterArtworkSpec("character/chibi/spritesheet.webp", column, row, excludedRects)
     } else CharacterArtworkSpec("character/" + when (state) {
         CharacterState.NORMAL -> "maid-left.webp"
         CharacterState.COMPLETED -> "whale-cheerful.webp"
@@ -57,6 +80,8 @@ internal fun decodeCharacterArtwork(assets: AssetManager, spec: CharacterArtwork
     if (spec.column != null && spec.row != null) {
         synchronized(ChibiDecodeLock) {
             require(spec.column in 0 until 8 && spec.row in 0 until 11)
+            require(spec.excludedRects.all { it.left >= 0 && it.top >= 0 &&
+                it.right <= 192 && it.bottom <= 208 && it.left < it.right && it.top < it.bottom })
             val bounds = BitmapFactory.Options().apply { inJustDecodeBounds = true }
             assets.open(spec.asset).use { BitmapFactory.decodeStream(it, null, bounds) }
             require(bounds.outWidth == 1536 && bounds.outHeight == 2288)
@@ -65,10 +90,22 @@ internal fun decodeCharacterArtwork(assets: AssetManager, spec: CharacterArtwork
                 BitmapFactory.decodeStream(it, null, BitmapFactory.Options().apply { inPreferredConfig = Bitmap.Config.ARGB_8888 })
             } ?: return@synchronized null
             try {
-                Bitmap.createBitmap(sheet, spec.column * 192, spec.row * 208, 192, 208)
+                val frame = Bitmap.createBitmap(sheet, spec.column * 192, spec.row * 208, 192, 208)
+                if (spec.excludedRects.isEmpty()) frame else try {
+                    // Copy native pixels before writing: the cropped source may be immutable.
+                    frame.copy(Bitmap.Config.ARGB_8888, true)?.apply {
+                        val transparentRow = IntArray(192)
+                        spec.excludedRects.forEach { rect ->
+                            for (y in rect.top until rect.bottom) {
+                                setPixels(transparentRow, 0, 192, rect.left, y, rect.right - rect.left, 1)
+                            }
+                        }
+                    }
+                } finally { frame.recycle() }
             } finally { sheet.recycle() }
         }
     } else {
+        require(spec.column == null && spec.row == null && spec.excludedRects.isEmpty())
         val bounds = BitmapFactory.Options().apply { inJustDecodeBounds = true }
         assets.open(spec.asset).use { BitmapFactory.decodeStream(it, null, bounds) }
         var sample = 1
@@ -232,7 +269,7 @@ fun CharacterCreditsDialog(style: CharacterStyle = CharacterStyle.CLASSIC, onDis
                 } else {
                     Text("Q 版图集：f0909172434 / dsh-deepseek-girl-pet。依据发布者声明，图集贡献按 MIT 许可发布；完整许可与版权声明已随应用保留。")
                     Text("原角色署名链：上善（原角色） → ZipZipPipe（女仆二次设计）。原角色内容依据上游 CC BY-NC-SA 4.0 声明保留署名及非商业条件，不能将底层角色权利统称为 MIT。")
-                    Text("图集来源：https://github.com/f0909172434/dsh-deepseek-girl-pet\n素材版本：3e7df1d76014e4f43ba9ed3c9de53c2a62ba0d14\n本项目原字节保存图集，运行时仅显示所选表情格，不修改源文件。")
+                    Text("图集来源：https://github.com/f0909172434/dsh-deepseek-girl-pet\n素材版本：3e7df1d76014e4f43ba9ed3c9de53c2a62ba0d14\n本项目原字节保存图集；显示所选表情时，将已确认的相邻残片设为透明，不修改源文件。")
                 }
                 Text("预设台词为本项目编写。两种形象均仅用于本应用的非商业课程展示与事项反馈。")
                 Text("完整素材来源与许可已随应用保留，也可在项目仓库的角色素材说明中查看。")

@@ -5,7 +5,7 @@
   "originRepository": "https://github.com/f0909172434/deepseek-girl-codex-pet",
   "originCommit": "2572709632b0e81401b9e92994f2c3786c186397",
   "license": "MIT (publisher contributions); underlying character conditions remain separate",
-  "modifications": "Byte-identical original files; four static source regions selected only at runtime. No image edits or recompression.",
+  "modifications": "Upstream original files remain byte-identical. Runtime rendering selects four 192 x 208 frames and makes the reviewed exclusion rectangles transparent; all other frame pixels and their positions are preserved. No edited or recompressed source image is distributed.",
   "files": [
     {
       "file": "spritesheet.webp",
@@ -50,7 +50,8 @@
       "left": 1152,
       "top": 0,
       "width": 192,
-      "height": 208
+      "height": 208,
+      "runtimeExcludedRects": []
     },
     "happy": {
       "row": 4,
@@ -58,7 +59,15 @@
       "left": 192,
       "top": 832,
       "width": 192,
-      "height": 208
+      "height": 208,
+      "runtimeExcludedRects": [
+        [
+          0,
+          184,
+          10,
+          208
+        ]
+      ]
     },
     "serious": {
       "row": 8,
@@ -66,7 +75,21 @@
       "left": 192,
       "top": 1664,
       "width": 192,
-      "height": 208
+      "height": 208,
+      "runtimeExcludedRects": [
+        [
+          0,
+          0,
+          30,
+          144
+        ],
+        [
+          0,
+          144,
+          45,
+          208
+        ]
+      ]
     },
     "danger": {
       "row": 7,
@@ -74,7 +97,52 @@
       "left": 192,
       "top": 1456,
       "width": 192,
-      "height": 208
+      "height": 208,
+      "runtimeExcludedRects": [
+        [
+          0,
+          124,
+          38,
+          128
+        ],
+        [
+          0,
+          128,
+          41,
+          140
+        ],
+        [
+          0,
+          140,
+          43,
+          144
+        ],
+        [
+          0,
+          144,
+          40,
+          148
+        ],
+        [
+          0,
+          148,
+          39,
+          156
+        ],
+        [
+          0,
+          156,
+          37,
+          164
+        ],
+        [
+          0,
+          164,
+          35,
+          208
+        ]
+      ]
     }
-  }
+  },
+  "runtimeExclusionCoordinateConvention": "[left, top, right-exclusive, bottom-exclusive], relative to the selected 192 x 208 source frame"
 }

@@ -93,7 +93,11 @@ CC 法律文本第二条明确不授予商标权，也不代表作者或品牌�
 
 ## 8. 可选 Q 版资源（2026-10-28）
 
-新增 `character/chibi/spritesheet.webp`，来源为 [f0909172434/dsh-deepseek-girl-pet 固定提交](https://github.com/f0909172434/dsh-deepseek-girl-pet/tree/3e7df1d76014e4f43ba9ed3c9de53c2a62ba0d14)。图集为 8 × 11 格、1536 × 2288 像素、透明背景的 Q 版蓝发鲸尾女仆。实际查看后选用四个无牌子／无气泡文字的静态区域：普通正面、快乐、皱眉托腮、皱眉站立。每个区域为 192 × 208 像素，完整坐标见[资源清单](../app/src/main/assets/character/chibi/sources.json)。图片原字节保留；显示某一区域是运行时行为，没有生成裁剪版资源。
+新增 `character/chibi/spritesheet.webp`，来源为 [f0909172434/dsh-deepseek-girl-pet 固定提交](https://github.com/f0909172434/dsh-deepseek-girl-pet/tree/3e7df1d76014e4f43ba9ed3c9de53c2a62ba0d14)。图集为 8 × 11 格、1536 × 2288 像素、透明背景的 Q 版蓝发鲸尾女仆。实际查看后选用四个无牌子／无气泡文字的静态区域：普通正面、快乐、皱眉托腮、皱眉站立。每个区域为 192 × 208 像素，完整坐标见[资源清单](../app/src/main/assets/character/chibi/sources.json)。上游图片原字节保留；应用在运行时选择区域并执行下述透明排除，没有生成或分发修改后的图片资源。
+
+2026-10-28 的 0.3.2 真机检查发现，认真表情格内部包含左侧残片；进一步逐帧检查确认，危险表情和快乐表情也分别含左侧尾部残片、左下细点。0.3.3 为这三个区域增加经逐图审阅的固定透明排除范围，普通表情不处理。排除位置以格内像素坐标登记在资源清单的 `runtimeExcludedRects`，右边界和下边界均不包含；危险表情采用分段窄区域，避免整条左裁伤及相邻头发。输出仍为 192 × 208，人物位置、缩放及所有排除区之外的原像素保持不变。此处理不补画原图内容，也不使用自动连通域删除。
+
+对应检查逐像素比较保留区与原图，确认排除区透明，并使用原图中实际非透明残片及相邻头发作为回归点；API 28／35、构建与后续真机复验结果以[测试记录](test-records.md)为准。原图及上游许可的字节数、SHA-256 和创作链不变。
 
 该仓库的逐图 [atlas-source.json](https://github.com/f0909172434/dsh-deepseek-girl-pet/blob/3e7df1d76014e4f43ba9ed3c9de53c2a62ba0d14/atlas-source.json)指定图集为 MIT，并追溯到同作者的原始仓库 `deepseek-girl-codex-pet`、提交 `2572709632b0e81401b9e92994f2c3786c186397`。所用图集哈希与记录一致，也与现有 JAdpp 逐文件 NOTICE 的对应项一致。完整许可、上游逐图记录及本项目[署名与边界](../app/src/main/assets/character/chibi/NOTICE.md)均随应用保存。
 
