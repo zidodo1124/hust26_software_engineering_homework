@@ -68,7 +68,7 @@ fun AttachmentEditor(
     }
     Column(Modifier.fillMaxWidth().testTag("attachment-editor"), verticalArrangement = Arrangement.spacedBy(10.dp)) {
         Text("图片附件 · ${attachments.size} 张", fontWeight = FontWeight.SemiBold)
-        Text("支持相册多选或粘贴图片。单张不超过 20 MiB、1 亿像素。", color = Muted, style = MaterialTheme.typography.bodySmall)
+        Text("可一次选择多张图片，也可粘贴已复制的图片。单张不超过 20 MiB、1 亿像素。", color = Muted, style = MaterialTheme.typography.bodySmall)
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
             OutlinedButton(
                 modifier = Modifier.weight(1f).testTag("attachment-pick"),
@@ -77,7 +77,7 @@ fun AttachmentEditor(
                     try {
                         picker.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
                     } catch (_: Exception) {
-                        onError("当前设备无法打开图片选择器，请检查系统相册或文件应用。")
+                        onError("暂时无法打开相册。请检查手机的相册或文件应用后重试。")
                     }
                 },
             ) { Text("从相册选择") }
@@ -92,10 +92,10 @@ fun AttachmentEditor(
                             clip.getItemAt(index).uri?.takeIf { it.scheme == "content" || it.scheme == "file" }
                         }
                         if (uris.isEmpty()) {
-                            onError("剪贴板中没有可读取的图片。请先在支持复制图片的应用中复制；图片网址不能直接导入。")
+                            onError("剪贴板中没有可用图片。请先复制图片本身，或使用“从相册选择”；图片网址不能直接导入。")
                         } else onImportUris(uris)
                     } catch (_: Exception) {
-                        onError("无法读取剪贴板图片，请重新复制或从相册选择。")
+                        onError("暂时无法粘贴这张图片。请重新复制，或使用“从相册选择”。")
                     }
                 },
             ) { Text("粘贴图片") }
@@ -109,7 +109,7 @@ fun AttachmentGallery(attachments: List<AttachmentRef>) {
     Column(Modifier.fillMaxWidth().testTag("attachment-gallery"), verticalArrangement = Arrangement.spacedBy(10.dp)) {
         Text("图片附件 · ${attachments.size} 张", fontWeight = FontWeight.SemiBold)
         if (attachments.isEmpty()) {
-            Text("暂未添加图片。", color = Muted, style = MaterialTheme.typography.bodySmall)
+            Text("暂无图片，可在“编辑事项”中添加。", color = Muted, style = MaterialTheme.typography.bodySmall)
         } else AttachmentStrip(attachments)
     }
 }

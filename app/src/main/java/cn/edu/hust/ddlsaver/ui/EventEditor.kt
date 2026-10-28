@@ -129,7 +129,7 @@ internal fun EventEditor(
             Modifier.weight(1f).verticalScroll(rememberScrollState()).padding(horizontal = 20.dp).padding(bottom = 24.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
-            Text("先记下截止时间，再从容安排。", color = Muted, style = MaterialTheme.typography.bodyMedium)
+            Text("填写标题和截止时间即可保存，其余信息按需补充。", color = Muted, style = MaterialTheme.typography.bodyMedium)
             OutlinedTextField(
                 value = title, onValueChange = { title = it }, enabled = !busy,
                 label = { Text("事项标题 *") }, placeholder = { Text("例如：提交软件工程实验报告") },
@@ -140,7 +140,7 @@ internal fun EventEditor(
             Surface(color = Color.White, shape = RoundedCornerShape(18.dp)) {
                 Column(Modifier.fillMaxWidth().padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
                     Text("截止时间 *", fontWeight = FontWeight.SemiBold)
-                    Text("以下日期和时间均为北京时间。", color = Muted, style = MaterialTheme.typography.bodySmall)
+                    Text("按北京时间填写，精确到分钟。", color = Muted, style = MaterialTheme.typography.bodySmall)
                     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                         OutlinedButton(
                             onClick = {
@@ -173,7 +173,7 @@ internal fun EventEditor(
             OutlinedTextField(
                 value = sprint, onValueChange = { sprint = it }, enabled = !busy,
                 label = { Text("速通时间（分钟，选填）") },
-                supportingText = { Text(if (submitted && invalidSprint) "请输入有效的正整数分钟数。" else "估计完成这件事最少需要多久。留空则不计算危险期。") },
+                supportingText = { Text(if (submitted && invalidSprint) "请输入有效的正整数分钟数。" else "填写完成事项至少需要的分钟数；留空则不启用速通危险期。") },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number), singleLine = true,
                 isError = submitted && invalidSprint, modifier = Modifier.fillMaxWidth(), shape = RoundedCornerShape(16.dp),
             )
@@ -188,7 +188,7 @@ internal fun EventEditor(
                         )
                     }
                 }
-                Text("重要程度不改变按时间计算的紧急状态。", color = Muted, style = MaterialTheme.typography.bodySmall)
+                Text("用于标记事项的重要性，不影响按时间计算的紧急状态。", color = Muted, style = MaterialTheme.typography.bodySmall)
             }
             OutlinedTextField(
                 value = description, onValueChange = { description = it }, enabled = !busy,
@@ -236,7 +236,7 @@ internal fun DiscardDialog(onKeepEditing: () -> Unit, onDiscard: () -> Unit) {
     AlertDialog(
         onDismissRequest = onKeepEditing,
         title = { Text("放弃尚未保存的修改？") },
-        text = { Text("返回后，本次填写或修改的内容不会保存。") },
+        text = { Text("本次填写或修改的内容将不会保存。已保存的事项不受影响。") },
         confirmButton = { TextButton(onClick = onDiscard) { Text("放弃修改") } },
         dismissButton = { TextButton(onClick = onKeepEditing) { Text("继续编辑") } },
     )

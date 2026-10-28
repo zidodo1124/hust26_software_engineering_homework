@@ -15,6 +15,8 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawWithCache
+import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -22,6 +24,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.LayoutDirection
 import cn.edu.hust.ddlsaver.domain.CharacterFeedback
 import cn.edu.hust.ddlsaver.domain.CharacterState
 import cn.edu.hust.ddlsaver.domain.CharacterStyle
@@ -102,11 +105,28 @@ internal fun CharacterArtwork(style: CharacterStyle, state: CharacterState, modi
 @Composable
 fun CharacterPanel(feedback: CharacterFeedback, modifier: Modifier = Modifier, style: CharacterStyle = CharacterStyle.CLASSIC) {
     var creditsOpen by rememberSaveable { mutableStateOf(false) }
+    CharacterPanelLayout(feedback, modifier, style, onCredits = { creditsOpen = true }) { imageModifier ->
+        CharacterArtwork(style, feedback.state, imageModifier)
+    }
+    if (creditsOpen) CharacterCreditsDialog(style = style) { creditsOpen = false }
+}
+
+/** The artwork slot may be empty while loading or after a decode failure; text stays available. */
+@Composable
+internal fun CharacterPanelLayout(
+    feedback: CharacterFeedback,
+    modifier: Modifier = Modifier,
+    style: CharacterStyle = CharacterStyle.CLASSIC,
+    onCredits: () -> Unit,
+    artwork: @Composable (Modifier) -> Unit,
+) {
     Surface(modifier.testTag("character-panel"), shape = RoundedCornerShape(22.dp),
         color = MaterialTheme.colorScheme.surface, border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant)) {
         Column(Modifier.fillMaxWidth().padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
             Text("蓝色大肥鱼", color = MaterialTheme.colorScheme.primary,
                 style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.SemiBold)
+            Text(feedback.title, color = Ink, style = MaterialTheme.typography.titleSmall,
+                fontWeight = FontWeight.SemiBold, modifier = Modifier.testTag("character-status"))
             BoxWithConstraints(Modifier.fillMaxWidth()) {
                 val stacked = maxWidth < 270.dp || LocalDensity.current.fontScale > 1.3f
                 val imageModifier = Modifier.width(if (style == CharacterStyle.CHIBI) 108.dp else 88.dp)
@@ -114,31 +134,63 @@ fun CharacterPanel(feedback: CharacterFeedback, modifier: Modifier = Modifier, s
                 if (stacked) {
                     Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                        CharacterArtwork(style, feedback.state, imageModifier)
-                        CharacterMessage(feedback, Modifier.fillMaxWidth())
+                        artwork(imageModifier)
+                        CharacterMessage(feedback.line, Modifier.fillMaxWidth(), tailOnTop = true)
                     }
                 } else {
                     Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.spacedBy(14.dp)) {
-                        CharacterArtwork(style, feedback.state, imageModifier)
-                        CharacterMessage(feedback, Modifier.weight(1f))
+                        artwork(imageModifier)
+                        CharacterMessage(feedback.line, Modifier.weight(1f), tailOnTop = false)
                     }
                 }
             }
-            TextButton({ creditsOpen = true }, modifier = Modifier.align(Alignment.End).testTag("character-credits")) {
+            TextButton(onCredits, modifier = Modifier.align(Alignment.End).testTag("character-credits")) {
                 Text("素材与署名")
             }
         }
     }
-    if (creditsOpen) CharacterCreditsDialog(style = style) { creditsOpen = false }
 }
 
 @Composable
-private fun CharacterMessage(feedback: CharacterFeedback, modifier: Modifier) {
-    Column(modifier, verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        Text(feedback.title, color = Ink, fontWeight = FontWeight.SemiBold,
-            modifier = Modifier.testTag("character-status"))
-        Text(feedback.line, color = Muted, modifier = Modifier.testTag("character-line"))
+private fun CharacterMessage(line: String, modifier: Modifier, tailOnTop: Boolean) {
+    val bubbleColor = MaterialTheme.colorScheme.primaryContainer
+    Box(modifier.testTag("character-bubble")) {
+        // Reserve the tail inside the bubble's measured bounds so it cannot overlap its neighbour.
+        val tailModifier = if (tailOnTop) {
+            Modifier.align(Alignment.TopCenter).size(width = 18.dp, height = 9.dp)
+        } else {
+            Modifier.align(Alignment.CenterStart).size(width = 9.dp, height = 18.dp)
+        }
+        Spacer(tailModifier.testTag(if (tailOnTop) "character-bubble-tail-top" else "character-bubble-tail-start")
+            .drawWithCache {
+                val path = Path().apply {
+                    if (tailOnTop) {
+                        moveTo(size.width / 2f, 0f)
+                        lineTo(size.width, size.height)
+                        lineTo(0f, size.height)
+                    } else if (layoutDirection == LayoutDirection.Ltr) {
+                        moveTo(0f, size.height / 2f)
+                        lineTo(size.width, 0f)
+                        lineTo(size.width, size.height)
+                    } else {
+                        moveTo(size.width, size.height / 2f)
+                        lineTo(0f, size.height)
+                        lineTo(0f, 0f)
+                    }
+                    close()
+                }
+                onDrawBehind { drawPath(path, bubbleColor) }
+            })
+        Surface(
+            modifier = Modifier.padding(start = if (tailOnTop) 0.dp else 8.dp, top = if (tailOnTop) 8.dp else 0.dp),
+            color = bubbleColor,
+            shape = RoundedCornerShape(18.dp),
+        ) {
+            Text(line, color = MaterialTheme.colorScheme.onPrimaryContainer,
+                style = MaterialTheme.typography.bodyLarge,
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 14.dp).testTag("character-line"))
+        }
     }
 }
 
@@ -157,9 +209,9 @@ internal fun CharacterAppearancePicker(style: CharacterStyle, enabled: Boolean, 
             }
             CharacterArtwork(style, CharacterState.NORMAL,
                 Modifier.height(150.dp).fillMaxWidth(), tag = "character-preview")
-            Text(if (style == CharacterStyle.CLASSIC) "完整立绘与细腻表情，保留熟悉的陪伴。" else "圆润的 Q 版形象，用不同表情陪你推进事项。",
+            Text(if (style == CharacterStyle.CLASSIC) "经典完整立绘，保留原有表情。" else "小巧圆润的 Q 版，表情随事项状态变化。",
                 color = Muted, style = MaterialTheme.typography.bodyMedium)
-            Text("保存设置后生效；两种形象使用相同的状态提醒和台词。", color = Muted,
+            Text("点击“保存设置”后生效。切换形象不会改变事项或通知设置。", color = Muted,
                 style = MaterialTheme.typography.bodySmall)
         }
     }

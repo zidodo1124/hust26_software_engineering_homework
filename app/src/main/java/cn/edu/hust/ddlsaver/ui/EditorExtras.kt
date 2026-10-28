@@ -70,7 +70,7 @@ internal fun EventCategories(
                     label = { Text(item.name + if (item.isActive) "" else "（已停用）") })
             }
         }
-        Text("来源与标签可在设置中的“分类管理”维护。停用后仍保留已有事项的关联。", color = Muted,
+        Text("在“设置 → 分类管理”中新增或调整。停用分类后，已有事项中的分类信息仍会保留。", color = Muted,
             style = MaterialTheme.typography.bodySmall)
     }
 }
@@ -80,7 +80,7 @@ internal fun CustomFieldEditor(fields: List<CustomField>, busy: Boolean, onChang
     val clipboard = LocalClipboardManager.current
     Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
         Text("自定义字段", fontWeight = FontWeight.SemiBold)
-        Text("为当前事项补充地点、联系人或网址等文本信息。", color = Muted, style = MaterialTheme.typography.bodySmall)
+        Text("可添加地点、联系人、网址等信息，仅用于当前事项。", color = Muted, style = MaterialTheme.typography.bodySmall)
         fields.forEachIndexed { index, field -> key(field.id) {
             OutlinedTextField(field.label, { value -> onChange(fields.map { if (it.id == field.id) it.copy(label = value) else it }) },
                 enabled = !busy, label = { Text("字段名称 ${index + 1}") }, singleLine = true,

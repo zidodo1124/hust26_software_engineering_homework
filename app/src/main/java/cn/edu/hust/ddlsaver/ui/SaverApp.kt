@@ -164,7 +164,7 @@ fun SaverApp(model: SaverViewModel) {
             snackbar.showSnackbar(
                 message = when (result.kind) {
                     "save" -> "事项已保存"
-                    "delete" -> "事项已删除"
+                    "delete" -> "事项已永久删除"
                     "settings" -> "设置已保存"
                     "batch" -> "批量操作已完成"
                     "category" -> "分类已更新"
@@ -214,9 +214,9 @@ fun SaverApp(model: SaverViewModel) {
                         batchToken = batchToken,
                         initiallyToday = todayOnHome,
                         reminderWarning = if (!(state.settings.dailySummaryEnabled || state.settings.dangerReminderEnabled || state.settings.deadlineReminderEnabled)) null
-                            else reminderHealth.lastError?.let { "数据已保存，提醒安排尚未完成：$it" }
-                                ?: if (!reminderHealth.canPost) "系统通知尚未开启，提醒不会显示。可在设置中开启。"
-                                else if (!reminderHealth.canScheduleExact) "当前使用近似提醒，省电限制可能导致延迟。可在设置中允许精确提醒。" else null,
+                            else reminderHealth.lastError?.let { "提醒暂未安排完成，请前往设置重新检查：$it" }
+                                ?: if (!reminderHealth.canPost) "系统通知尚未开启。如需接收提醒，请前往“设置”开启系统通知权限。"
+                                else if (!reminderHealth.canScheduleExact) "当前使用近似提醒，通知可能延迟。可前往“设置”允许精确提醒。" else null,
                         onSettings = { model.clearOperationError(); screen = "settings" },
                         onOpen = { selectedId = it; model.clearOperationError(); screen = "detail" },
                         onBatch = model::applyBatch,
@@ -249,7 +249,7 @@ fun SaverApp(model: SaverViewModel) {
                 else -> {
                     val selected = state.events.firstOrNull { it.id == selectedId }
                     if (selectedId != null && selected == null) {
-                        StatusContent("事项已不存在", "它可能已经被删除。", "返回列表") {
+                        StatusContent("事项已不存在", "这件事项可能已被删除，请返回列表查看其他事项。", "返回列表") {
                             selectedId = null; screen = "home"
                         }
                     } else if (screen == "editor") {
@@ -308,7 +308,7 @@ fun SaverApp(model: SaverViewModel) {
             AlertDialog(
                 onDismissRequest = { model.deferReminderNavigation(request.token) },
                 title = { Text("查看通知中的事项？") },
-                text = { Text("当前页面可能有尚未保存的内容。可以完成当前编辑后再查看通知，或明确放弃当前修改后打开。") },
+                text = { Text("当前页面可能有未保存的修改。选择“稍后查看”可继续编辑；选择“放弃修改并打开”将直接查看通知中的事项。") },
                 dismissButton = { TextButton({ model.deferReminderNavigation(request.token) }, modifier = Modifier.testTag("reminder-defer")) { Text("稍后查看") } },
                 confirmButton = { TextButton({
                     if (screen == "editor") {
@@ -409,7 +409,7 @@ private fun DetailScreen(
                         }) { Text(if (copied) "已复制" else "复制全文") }
                     }
                     SelectionContainer {
-                        Text(event.description.ifEmpty { "暂未填写描述。" }, color = if (event.description.isEmpty()) Muted else Ink)
+                        Text(event.description.ifEmpty { "暂无描述，可在“编辑事项”中补充。" }, color = if (event.description.isEmpty()) Muted else Ink)
                     }
                 }
             }
@@ -453,7 +453,7 @@ private fun DetailScreen(
             text = {
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     Text(event.title, maxLines = 4, overflow = TextOverflow.Ellipsis, fontWeight = FontWeight.SemiBold)
-                    Text("这件事项及其信息将从本机删除，此操作无法恢复。")
+                    Text("将永久删除这件事项及其附件副本，无法恢复。相册原图不受影响。")
                 }
             },
             confirmButton = {

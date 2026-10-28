@@ -91,7 +91,7 @@ internal fun SettingsScreen(
             Surface(color = MaterialTheme.colorScheme.surface, shape = androidx.compose.foundation.shape.RoundedCornerShape(20.dp)) {
                 Column(Modifier.fillMaxWidth().padding(20.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
                     Text("普通紧急程度", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold)
-                    Text("距离截止时间进入这个范围时，事项显示为橙色。速通危险期仍使用每件事项自己的速通时间。", color = Muted)
+                    Text("设置事项在截止前多久显示为橙色。进入速通危险期后，优先显示为红色。", color = Muted)
                     OutlinedTextField(minutes, { minutes = it }, enabled = !busy,
                         label = { Text("提前多少分钟") }, modifier = Modifier.fillMaxWidth().testTag("settings-urgent-minutes"),
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number), singleLine = true,
@@ -105,7 +105,7 @@ internal fun SettingsScreen(
                 label = { Text("每日汇总时间（北京时间，HH:mm）") }, singleLine = true,
                 modifier = Modifier.fillMaxWidth().testTag("settings-summary-time"),
                 isError = submitted && parsedTime == null,
-                supportingText = { Text(if (submitted && parsedTime == null) "请输入 00:00 至 23:59 的时间。" else "默认 08:00；当天没有待办时不发送空汇总。") })
+                supportingText = { Text(if (submitted && parsedTime == null) "请输入 00:00 至 23:59 的时间。" else "默认 08:00，汇总今天截止的未完成、未归档事项；没有待办时不发送。") })
             ReminderSwitch("进入速通危险期时提醒", danger, busy, "settings-danger-enabled") { danger = it }
             ReminderSwitch("临近截止时提醒", deadline, busy, "settings-deadline-enabled") { deadline = it }
             OutlinedTextField(lead, { lead = it }, enabled = !busy,
@@ -113,7 +113,7 @@ internal fun SettingsScreen(
                 modifier = Modifier.fillMaxWidth().testTag("settings-deadline-lead"),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                 isError = submitted && invalidLead,
-                supportingText = { Text(if (submitted && invalidLead) "请输入有效的正整数分钟数。" else "默认提前 60 分钟；与橙色紧急阈值分别设置。") })
+                supportingText = { Text(if (submitted && invalidLead) "请输入有效的正整数分钟数。" else "默认提前 60 分钟通知，与事项变为橙色的时间分别设置。") })
             ReminderPermissionPanel(health, busy, onRefreshReminders)
             operationError?.let { ErrorNotice(it) }
             Text("过期事项处理", fontWeight = FontWeight.SemiBold)
@@ -122,7 +122,7 @@ internal fun SettingsScreen(
                     enabled = !busy, label = { Text("灰显保留") }, modifier = Modifier.testTag("policy-keep"))
                 FilterChip(policy == ExpiredPolicy.AUTO_ARCHIVE.name, { policy = ExpiredPolicy.AUTO_ARCHIVE.name },
                     enabled = !busy, label = { Text("自动归档过期未完成事项") }, modifier = Modifier.testTag("policy-auto"))
-                Text("保存设置后立即生效，并在进入应用及分钟刷新时检查。归档可恢复。", color = Muted,
+                Text("保存后生效。开启自动归档时，应用会在打开或使用期间整理过期未完成事项；归档后仍可恢复。", color = Muted,
                     style = MaterialTheme.typography.bodySmall)
             }
             Button(onClick = {
@@ -142,14 +142,14 @@ internal fun SettingsScreen(
             OutlinedButton({ confirmArchive = true }, enabled = !busy, modifier = Modifier.fillMaxWidth().testTag("archive-expired")) { Text("一键归档过期事项") }
             Spacer(Modifier.height(8.dp))
             Text("时间与数据", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.SemiBold)
-            Text("所有事项按北京时间展示。事项和设置保存在本机，无需注册即可使用。", color = Muted)
+            Text("所有时间均按北京时间显示。事项、图片和设置保存在本机，日常使用无需注册或联网。", color = Muted)
             Text("HUSTer's DDL Saver · 花园鳗", color = Muted, style = MaterialTheme.typography.labelMedium)
         }
     }
     if (discardDialog) DiscardDialog({ discardDialog = false }, { discardDialog = false; onBack() })
     if (confirmArchive) AlertDialog(onDismissRequest = { confirmArchive = false },
         title = { Text("归档全部过期事项？") },
-        text = { Text("所有已过截止时间且未归档的事项将移入归档列表，包括已完成事项。完成标记保留，之后可以恢复归档。") },
+        text = { Text("将归档所有已过截止时间且尚未归档的事项，包括已完成事项。完成状态保留，之后可在“归档”中恢复。") },
         confirmButton = { TextButton({ confirmArchive = false; onArchiveExpired() }, enabled = !busy) { Text("确认归档") } },
         dismissButton = { TextButton({ confirmArchive = false }) { Text("取消") } })
 }
@@ -174,12 +174,12 @@ private fun ReminderPermissionPanel(health: ReminderHealth, busy: Boolean, onRef
     }
     Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
         Text(if (health.canPost) "系统通知：已允许" else "系统通知：未允许或提醒通道已关闭", modifier = Modifier.testTag("notification-permission-status"))
-        Text(if (health.canScheduleExact) "调度能力：可使用精确提醒" else "调度能力：近似提醒，可能延迟",
+        Text(if (health.canScheduleExact) "提醒方式：可使用精确提醒" else "提醒方式：近似提醒，可能延迟",
             modifier = Modifier.testTag("exact-alarm-status"))
         Text("省电和后台限制仍可能推迟提醒。强制停止应用后需要重新打开，才能恢复提醒安排。", color = Muted,
             style = MaterialTheme.typography.bodySmall)
-        Text("尚未发送的有效提醒：${health.pendingCount}", color = Muted, modifier = Modifier.testTag("reminder-pending-count"))
-        health.lastError?.let { ErrorNotice("事项和设置已保存在本机，提醒安排尚未完成：$it") }
+        Text("待发送提醒：${health.pendingCount}", color = Muted, modifier = Modifier.testTag("reminder-pending-count"))
+        health.lastError?.let { ErrorNotice("提醒暂未安排完成，可重新检查并安排。详情：$it") }
         actionError?.let { ErrorNotice(it) }
         OutlinedButton({
             if (Build.VERSION.SDK_INT >= 33 && context.checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {

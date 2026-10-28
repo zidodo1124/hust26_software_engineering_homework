@@ -143,7 +143,7 @@ class ReminderEngine(
             val today = ReminderRules.todayEvents(events, now)
             if (today.isEmpty()) return null
             return ReminderNotification(first.notificationTag, "今日 DDL · ${today.size} 项",
-                "查看今天未完成的事项，按截止时间安排进度。", today = true,
+                "查看今天截止且未完成的事项，按截止时间安排进度。", today = true,
                 lines = today.take(7).map { (if (it.deadlineAt <= now) "[已逾期] " else "") + it.title })
         }
         val event = events.firstOrNull { it.id == first.eventId && it.deadlineAt == first.deadlineAt &&

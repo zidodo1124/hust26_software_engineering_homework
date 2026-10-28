@@ -96,4 +96,24 @@ class CharacterFeedbackTest {
         }
         assertEquals("character/whale-cheerful.webp", selectCharacterFeedback(emptyList(), now, settings, true).imageAsset)
     }
+
+    @Test fun allSixDialogueContextsRetainSixDistinctLinesAndStableStatus() {
+        val contexts = listOf(
+            Triple(emptyList(), false, CharacterState.NORMAL),
+            Triple(listOf(event(secondsLeft = 10 * 86400)), false, CharacterState.NORMAL),
+            Triple(listOf(event(secondsLeft = 10 * 3600)), false, CharacterState.SOON),
+            Triple(listOf(event(secondsLeft = 10 * 3600, sprint = 1000)), false, CharacterState.DANGER),
+            Triple(listOf(event(secondsLeft = -1)), false, CharacterState.OVERDUE),
+            Triple(emptyList(), true, CharacterState.COMPLETED),
+        )
+        val allLines = mutableSetOf<String>()
+        contexts.forEach { (events, completed, expectedState) ->
+            val feedback = (0..5).map { selectCharacterFeedback(events, now.plusSeconds(it * 600L), settings, completed) }
+            assertTrue(feedback.all { it.state == expectedState && it.line.isNotBlank() })
+            val lines = feedback.map { it.line }.toSet()
+            assertEquals(6, lines.size)
+            allLines += lines
+        }
+        assertEquals(36, allLines.size)
+    }
 }

@@ -35,7 +35,7 @@ internal fun CategoryManager(
         ScreenHeader("分类管理", back, enabled = !busy)
         Column(Modifier.weight(1f).verticalScroll(rememberScrollState()).padding(20.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)) {
-            Text("来源用于区分事项出处；标签用于补充多个分类。停用不会移除已有事项的关联。", color = Muted)
+            Text("来源记录事项出处，例如课程或社团；标签用于补充分类。停用分类后，已有事项中的信息仍会保留。", color = Muted)
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 FilterChip(isSource, { isSource = true }, enabled = !busy && !editing, label = { Text("来源管理") }, modifier = Modifier.testTag("catalog-sources"))
                 FilterChip(!isSource, { isSource = false }, enabled = !busy && !editing, label = { Text("标签管理") }, modifier = Modifier.testTag("catalog-tags"))
@@ -58,7 +58,7 @@ internal fun CategoryManager(
                 }
             }
             val entries = if (isSource) sources else tags
-            if (entries.isEmpty()) Text("暂无分类，可从上方新增。", color = Muted)
+            if (entries.isEmpty()) Text(if (isSource) "还没有来源。点击“新增来源”即可添加。" else "还没有标签。点击“新增标签”即可添加。", color = Muted)
             entries.forEach { category ->
                 Surface(shape = MaterialTheme.shapes.medium, color = MaterialTheme.colorScheme.surface) {
                     Column(Modifier.fillMaxWidth().padding(14.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {

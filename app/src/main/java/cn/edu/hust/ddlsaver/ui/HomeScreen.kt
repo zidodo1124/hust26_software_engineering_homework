@@ -78,7 +78,7 @@ internal fun HomeScreen(
         item {
             Surface(color = OceanMist, shape = RoundedCornerShape(24.dp), border = BorderStroke(1.dp, OceanBorder)) {
                 Column(Modifier.fillMaxWidth().padding(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                    Text("把重要的事，安排妥当。", color = Ink, fontSize = 20.sp, fontWeight = FontWeight.SemiBold)
+                    Text("重要的事，提前安排。", color = Ink, fontSize = 20.sp, fontWeight = FontWeight.SemiBold)
                     Text(DateTimeFormatter.ofPattern("M月d日 EEEE  HH:mm", Locale.CHINA).withZone(BeijingZone).format(state.now) + " · 北京时间",
                         color = Muted, style = MaterialTheme.typography.bodySmall)
                     val fontScale = LocalDensity.current.fontScale
@@ -133,7 +133,7 @@ internal fun HomeScreen(
                     state.sources.forEach { item -> FilterChip(sourceId == item.id, { sourceId = item.id },
                         label = { Text(item.name + if (item.isActive) "" else "（已停用）") }, modifier = Modifier.testTag("filter-source-${item.id}")) }
                 }
-                Text("标签（同时包含选中的标签）", fontWeight = FontWeight.SemiBold)
+                Text("标签（需同时包含所选标签）", fontWeight = FontWeight.SemiBold)
                 Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     state.tags.forEach { item -> FilterChip(item.id in tagIds,
                         { tagsJson = DraftJson.ids(if (item.id in tagIds) tagIds - item.id else tagIds + item.id) },
@@ -158,7 +158,7 @@ internal fun HomeScreen(
                 TextButton({ clearFilters() }, modifier = Modifier.testTag("clear-filters")) { Text("清除筛选") }
             }
             if (selecting) {
-                Text("已选 ${selected.size} 件；切换筛选后仍保留选择。", color = Muted)
+                Text("已选 ${selected.size} 件。切换筛选不会清空已选事项。", color = Muted)
                 Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState())) {
                     TextButton({ selectionJson = DraftJson.ids(selected + filtered.map { it.id }) }, enabled = !busy) { Text("全选当前结果") }
                     TextButton({ selectionJson = "[]" }, enabled = !busy) { Text("清空选择") }
@@ -172,7 +172,15 @@ internal fun HomeScreen(
             state.operationError?.let { ErrorNotice(it) }
         }
         if (filtered.isEmpty()) item {
-            Text("没有符合当前条件的事项。可以清除筛选，或新建事项。", color = Muted, modifier = Modifier.padding(vertical = 20.dp))
+            Text(when {
+                query.isNotBlank() || sourceId != null || tagIds.isNotEmpty() || selectedDate != null ->
+                    "没有找到符合条件的事项。可以调整条件，或点击“清除筛选”。"
+                quickFilter == "today" -> "今天暂无待办。点击“清除筛选”可查看其他日期的事项。"
+                quickFilter == "danger" -> "目前没有处于速通危险期的事项。点击“清除筛选”可查看全部待办。"
+                mode == EventListMode.COMPLETED -> "暂无已完成事项。完成事项后，可在这里查看记录。"
+                mode == EventListMode.ARCHIVED -> "暂无归档事项。归档可保留记录，并停止相关提醒。"
+                else -> "暂无待办。点击“新建事项”，记下下一件需要完成的事。"
+            }, color = Muted, modifier = Modifier.padding(vertical = 20.dp))
         }
         items(current, key = { it.id }) { event ->
             EventRow(event, state, selecting, event.id in selected, busy, { toggleSelection(event.id) }, onOpen)
@@ -187,7 +195,7 @@ internal fun HomeScreen(
     deleteJson?.let { frozenJson ->
         val frozen = DraftJson.ids(frozenJson)
         AlertDialog(onDismissRequest = { if (!busy) deleteJson = null }, title = { Text("永久删除选中的 ${frozen.size} 件事项？") },
-            text = { Text("仅删除本次确认的事项及其附件，此操作无法恢复。未选中的事项不受影响。") },
+            text = { Text("所选事项及其附件副本将永久删除，无法恢复。相册原图不受影响。") },
             confirmButton = { TextButton({ deleteJson = null; onBatch(frozen, BatchOperation.DELETE) }, enabled = !busy,
                 modifier = Modifier.testTag("batch-confirm-delete")) { Text("确认删除") } },
             dismissButton = { TextButton({ deleteJson = null }, enabled = !busy) { Text("取消") } })
@@ -231,7 +239,7 @@ internal fun MonthCalendar(month: YearMonth, selected: LocalDate?, today: LocalD
                     }
                 }
             } }
-            Text("按所选日期查看截止事项；首页“今日 DDL”始终按北京时间当天统计。", color = Muted, style = MaterialTheme.typography.bodySmall)
+            Text("选择日期查看当天截止的事项。“今日 DDL”始终统计北京时间的今天。", color = Muted, style = MaterialTheme.typography.bodySmall)
         }
     }
 }
