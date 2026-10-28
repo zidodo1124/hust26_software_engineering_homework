@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" tests="15" skipped="0" failures="0" errors="0" timestamp="2026-10-28T10:16:09" hostname="LAPTOP-7OF0K1SP" time="19.201">
+  <properties/>
+  <testcase name="reminderTapResetsHomeFiltersAndRoutesToLatestDetailOnce" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="1.076"/>
+  <testcase name="missingReminderTargetReturnsHomeWithExplanation" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="0.422"/>
+  <testcase name="requiredInputIsRejectedThenNewEventCanBeSavedAndEdited" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="4.091"/>
+  <testcase name="activityRecreationKeepsUnsavedDraftAndDiscardRequiresConfirmation" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="1.192"/>
+  <testcase name="categoryManagementAndCustomFieldsPersistThenFilterTogether" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="2.318"/>
+  <testcase name="reminderSettingsValidateAndPreserveIndependentOptions" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="0.951"/>
+  <testcase name="completedItemCanBeRecoveredFromHistoryAndDeleteCancellationPreservesIt" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="1.187"/>
+  <testcase name="reminderTapDuringDraftCanBeDeferredAcrossRotationWithoutLosingInput" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="0.555"/>
+  <testcase name="imageDraftSurvivesRotationAndCancel" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="1.547"/>
+  <testcase name="characterStylePreviewRequiresSaveAndCanBeSwitchedBackAfterRecreation" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="0.938"/>
+  <testcase name="calendarCrossesMonthAndTodayShortcutClearsDateFilter" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="0.448"/>
+  <testcase name="batchDeleteCancellationPreservesAllAndConfirmationOnlyDeletesSelected" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="0.578"/>
+  <testcase name="imageRemovalCommitsOnlyAfterSave" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="3.049"/>
+  <testcase name="deniedNotificationPermissionAlwaysHasDirectSystemSettingsRecovery" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="0.252"/>
+  <testcase name="automaticAndManualExpiredArchiveKeepCompletionFlags" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="0.596"/>
+  <system-out><![CDATA[UI-RECREATE-BEGIN
+UI-RECREATE-END
+UI-RECREATE-BEGIN
+UI-RECREATE-END
+UI-RECREATE-BEGIN
+UI-RECREATE-END
+UI-RECREATE-BEGIN
+UI-RECREATE-END
+UI-RECREATE-BEGIN
+UI-RECREATE-END
+UI-RECREATE-BEGIN
+UI-RECREATE-END
+]]></system-out>
+  <system-err><![CDATA[Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+]]></system-err>
+</testsuite>

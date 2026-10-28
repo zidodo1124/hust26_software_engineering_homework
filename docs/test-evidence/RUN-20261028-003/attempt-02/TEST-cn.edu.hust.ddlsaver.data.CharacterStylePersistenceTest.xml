@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-10-28T10:15:16" hostname="LAPTOP-7OF0K1SP" time="7.234">
+  <properties/>
+  <testcase name="bothStylesPersistAcrossDatabaseReopenAndUnknownValueFallsBack" classname="cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest" time="6.512"/>
+  <testcase name="emptyV3SettingsRemainAbsentAndUseClassicDefaults" classname="cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest" time="0.344"/>
+  <testcase name="upgradeFromV3PreservesSettingsEventAndDeliveryLedgerWithClassicDefault" classname="cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest" time="0.378"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,6 +1,8 @@
 # 开发、构建与安装升级
 
-本文当前对应 `0.3.1`、`versionCode = 4`、schema v4，包名 `cn.edu.hust.ddlsaver`；源码 [1a44059](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/1a44059abc8bef12e8fdb648ad9c4353eba375d3)。127 个不同测试方法／145 次执行全部通过，失败、错误、跳过均为 0；Debug APK 构建成功，Lint 0 错误／16 条维护警告，详见 [RUN-20261028-002](test-evidence/RUN-20261028-002/README.md)。第三轮 v0.3.0 的设备结果保留为独立历史批次。功能及未完成项见[实现计划](implementation-plan.md)和[项目状态](../STATUS.md)；分工见[小组任务板](../team/README.md)。
+本文当前对应 `0.3.2`、`versionCode = 5`、Room schema v4，包名 `cn.edu.hust.ddlsaver`。最终完整检查中，131 个不同测试方法／149 次执行全部通过，失败、错误、跳过均为 0；Debug APK 构建成功，Lint 0 错误／16 条原有维护警告，见 [RUN-20261028-003](test-evidence/RUN-20261028-003/README.md)和[测试报告](test-report.md)。本版尚无真机复验结论。v0.3.0 设备结果及 [v0.3.1 本机检查](test-evidence/RUN-20261028-002/README.md)保留为独立历史批次。
+
+安装与使用步骤见[用户使用手册](user-guide.md)。功能及未完成项见[实现计划](implementation-plan.md)和[项目状态](../STATUS.md)；分工见[小组任务板](../team/README.md)。
 
 ## 1. 准备环境
 
@@ -170,7 +172,7 @@ adb install -r app/build/outputs/apk/debug/app-debug.apk
 | `data/` | Room 实体、DAO、显式迁移、事务与仓库实现 |
 | `platform/AttachmentStore.kt` | 图片副本导入、校验、采样预览及受管文件清理 |
 | `reminders/` | 业务计划兼发送账本、统一最早 Alarm、平台通知、Receiver 与应用级恢复 |
-| `ui/ReminderSettingsPanel.kt`、`CharacterPanel.kt` | 三类开关与权限入口、四表情和署名 |
+| `ui/ReminderSettingsPanel.kt`、`CharacterPanel.kt` | 三类开关与权限入口、经典／Q 版选择、四表情、预设台词气泡和署名 |
 | `app/src/test/` | 规则、迁移、存储、图片及本地界面测试；不能替代荣耀 X50 验证 |
 
 完整包路径为 `app/src/main/java/cn/edu/hust/ddlsaver/`。图片与第三轮通知平台能力已按设计分开封装，不把 Android 系统调用放入纯时间规则中。图片采样采用平台解码选项，依据见 [Android 大图加载说明](https://developer.android.com/topic/performance/graphics/load-bitmap)。
@@ -179,3 +181,9 @@ adb install -r app/build/outputs/apk/debug/app-debug.apk
 ### 从 0.3.0 升级到 0.3.1
 
 使用同签名 Debug APK 执行覆盖安装，Room 自动运行 `MIGRATION_3_4`，新增形象默认经典立绘，旧数据及提醒账本保留。升级后进入设置，选择“Q 版形象”并保存；再次进入可切回经典立绘。两套素材均随包离线提供，无需额外下载。开发机已验证旧库迁移及设置保持，本批尚未执行荣耀 X50 升级。
+
+### 从 0.3.1 升级到 0.3.2
+
+使用与原安装包同签名的 APK 覆盖安装，版本号增至 0.3.2／5；数据库仍为 schema 4，不新增迁移、权限或依赖。保留事项、附件、提醒设置及已选角色形象。本次更新调整界面提示和 36 条预设台词，并将台词改为聊天气泡；窄屏或大字号时采用纵向排版。遇到签名不一致时，应向原安装包提供者获取同签名新版，不通过卸载解决，以免丢失本机数据。
+
+本版的本机验证增加气泡长文本、两种形象及窄屏／大字号布局检查。荣耀 X50 的覆盖升级、系统字号与实际触控表现尚未复验，操作步骤和演示检查项见[用户使用手册](user-guide.md)。

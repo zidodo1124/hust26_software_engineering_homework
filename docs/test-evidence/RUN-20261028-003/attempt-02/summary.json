@@ -1,0 +1,282 @@
+{
+  "run": "RUN-20261028-003",
+  "attempt": "attempt-02",
+  "version": "0.3.2",
+  "versionCode": 5,
+  "schema": 4,
+  "baseCommit": "e7d224f8366ddaae0afba0093816cc1f46d11f54",
+  "testExecutions": {
+    "tests": 149,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "uniqueMethods": 131,
+  "suites": [
+    {
+      "name": "cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "7.234"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest",
+      "tests": "10",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "2.141"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest",
+      "tests": "13",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "2.653"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.data.SaverDatabaseMigrationTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.417"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.domain.CharacterFeedbackTest",
+      "tests": "10",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.017"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.domain.EventQueryTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.007"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.domain.EventValidationTest",
+      "tests": "7",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.009"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.domain.ExtendedEventValidationTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.001"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.domain.UrgencyRulesTest",
+      "tests": "10",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.002"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.platform.AttachmentStoreTest",
+      "tests": "26",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "18.287"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.reminders.AndroidReminderPlatformTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "2.086"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.reminders.ReminderEngineTest",
+      "tests": "16",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "4.685"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.reminders.ReminderRulesTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.009"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.CalendarGridTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.005"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.CharacterArtworkTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "1.191"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.CharacterAssetsTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.252"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.CharacterBubbleLayoutTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "4.755"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.OceanThemeContrastTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.031"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.OceanUiRenderTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "1.653"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.ReminderColdLaunchTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "7.131"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.SaverAppFlowTest",
+      "tests": "15",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "19.201"
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.SaverViewModelFeedbackTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.545"
+    }
+  ],
+  "lint": {
+    "errors": 0,
+    "warnings": 16,
+    "issues": [
+      {
+        "id": "ExifInterface",
+        "severity": "Warning"
+      },
+      {
+        "id": "InlinedApi",
+        "severity": "Warning"
+      },
+      {
+        "id": "GradleDependency",
+        "severity": "Warning"
+      },
+      {
+        "id": "GradleDependency",
+        "severity": "Warning"
+      },
+      {
+        "id": "GradleDependency",
+        "severity": "Warning"
+      },
+      {
+        "id": "GradleDependency",
+        "severity": "Warning"
+      },
+      {
+        "id": "GradleDependency",
+        "severity": "Warning"
+      },
+      {
+        "id": "GradleDependency",
+        "severity": "Warning"
+      },
+      {
+        "id": "GradleDependency",
+        "severity": "Warning"
+      },
+      {
+        "id": "GradleDependency",
+        "severity": "Warning"
+      },
+      {
+        "id": "GradleDependency",
+        "severity": "Warning"
+      },
+      {
+        "id": "GradleDependency",
+        "severity": "Warning"
+      },
+      {
+        "id": "ObsoleteSdkInt",
+        "severity": "Warning"
+      },
+      {
+        "id": "StaticFieldLeak",
+        "severity": "Warning"
+      },
+      {
+        "id": "UseKtx",
+        "severity": "Warning"
+      },
+      {
+        "id": "UseKtx",
+        "severity": "Warning"
+      }
+    ]
+  },
+  "apk": {
+    "bytes": 15102307,
+    "sha256": "ADE517B79B21C83EE98524288F8151CBA536ECFC22624F5C449DA066C45069D3"
+  },
+  "verifiedOriginalAssetFiles": [
+    "character/maid-left.webp",
+    "character/whale-cheerful.webp",
+    "character/whale-serious.webp",
+    "character/whale-angry.webp",
+    "character/upstream-NOTICE.md",
+    "character/dsh-deep-whale-LICENSE.txt",
+    "character/dsh-deep-whale-NOTICE.txt",
+    "character/chibi/spritesheet.webp",
+    "character/chibi/upstream-atlas-source.json",
+    "character/chibi/upstream-LICENSE.txt",
+    "character/chibi/origin-LICENSE.txt"
+  ],
+  "deviceTest": false,
+  "screenshots": "Production HomeScreen with synthetic events and CharacterPanel long-text layouts in Robolectric; no phone or Scaffold/FAB capture"
+}

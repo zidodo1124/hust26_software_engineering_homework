@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.domain.ExtendedEventValidationTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-10-28T09:58:23" hostname="LAPTOP-7OF0K1SP" time="0.003">
+  <properties/>
+  <testcase name="emptyFieldNamesAndDuplicateFieldIdsAreRejected" classname="cn.edu.hust.ddlsaver.domain.ExtendedEventValidationTest" time="0.001"/>
+  <testcase name="customFieldsPreserveValueAndOrderAndNormalizeNames" classname="cn.edu.hust.ddlsaver.domain.ExtendedEventValidationTest" time="0.0"/>
+  <testcase name="attachmentMustUseSafeGeneratedFilenameAndValidImageMetadata" classname="cn.edu.hust.ddlsaver.domain.ExtendedEventValidationTest" time="0.001"/>
+  <testcase name="duplicateAttachmentIdsAndPathsAreRejectedBeforeSaving" classname="cn.edu.hust.ddlsaver.domain.ExtendedEventValidationTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-10-28T09:58:14" hostname="LAPTOP-7OF0K1SP" time="2.847">
+  <properties/>
+  <testcase name="repeatedStateRequestIsIdempotent" classname="cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest" time="0.403"/>
+  <testcase name="invalidSaveAndSettingLeaveExistingDataUntouched" classname="cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest" time="0.251"/>
+  <testcase name="deletedEventCannotBeResurrectedByStaleSaveOrStateChange" classname="cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest" time="0.224"/>
+  <testcase name="editingPreservesIdentityCreationTimeAndIndependentStateFlags" classname="cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest" time="0.303"/>
+  <testcase name="staleEditIsRejectedWithoutOverwritingNewerState" classname="cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest" time="0.255"/>
+  <testcase name="concurrentEditsFromSameRevisionCannotBothSucceed" classname="cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest" time="0.242"/>
+  <testcase name="newDatabaseUsesDefaultUrgentThreshold" classname="cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest" time="0.143"/>
+  <testcase name="restoringArchiveDoesNotMarkCompletedEventAsUnfinished" classname="cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest" time="0.412"/>
+  <testcase name="eventAndSettingsSurviveClosingAndReopeningFileDatabase" classname="cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest" time="0.25"/>
+  <testcase name="flowEmitsSavedAndUpdatedRowsInDeadlineOrder" classname="cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest" time="0.362"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
