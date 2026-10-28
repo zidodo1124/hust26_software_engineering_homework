@@ -62,6 +62,7 @@ data class AppSettings(
     val dangerReminderEnabled: Boolean = true,
     val deadlineReminderEnabled: Boolean = true,
     val deadlineLeadMinutes: Long = 60,
+    val characterStyle: CharacterStyle = CharacterStyle.CLASSIC,
 )
 
 class EventValidationException(message: String) : IllegalArgumentException(message)

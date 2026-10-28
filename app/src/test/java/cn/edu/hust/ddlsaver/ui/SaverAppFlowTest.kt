@@ -34,6 +34,7 @@ import cn.edu.hust.ddlsaver.data.RoomEventRepository
 import cn.edu.hust.ddlsaver.data.SaverDatabase
 import cn.edu.hust.ddlsaver.domain.DdlEvent
 import cn.edu.hust.ddlsaver.domain.AppSettings
+import cn.edu.hust.ddlsaver.domain.CharacterStyle
 import cn.edu.hust.ddlsaver.reminders.ReminderRuntime
 import cn.edu.hust.ddlsaver.domain.EventDraft
 import cn.edu.hust.ddlsaver.domain.CustomField
@@ -419,6 +420,41 @@ class SaverAppFlowTest {
         awaitText("DDL Saver")
         assertEquals(original.copy(urgentMinutes = 480, dailySummaryEnabled = true,
             dailySummaryMinuteOfDay = 435, deadlineLeadMinutes = 30), withRepository { settings.first() })
+    }
+
+    @Test
+    fun characterStylePreviewRequiresSaveAndCanBeSwitchedBackAfterRecreation() {
+        val original = AppSettings(urgentMinutes = 120, dailySummaryEnabled = false,
+            dailySummaryMinuteOfDay = 547, dangerReminderEnabled = false, deadlineLeadMinutes = 45)
+        withRepository { saveSettings(original) }
+        reloadModel()
+        compose.onNodeWithText("设置").performClick()
+        compose.onNodeWithTag("character-style-CLASSIC").assertIsSelected()
+        compose.onNodeWithTag("character-style-CHIBI").performScrollTo().performClick()
+        compose.onNodeWithTag("character-style-CHIBI").assertIsSelected()
+        assertEquals(original, withRepository { settings.first() })
+        compose.onNodeWithText("‹ 返回").performClick()
+        compose.onNodeWithText("放弃修改").performClick()
+        awaitText("DDL Saver")
+        assertEquals(original, withRepository { settings.first() })
+
+        compose.onNodeWithText("设置").performClick()
+        compose.onNodeWithTag("character-style-CLASSIC").assertIsSelected()
+        compose.onNodeWithTag("character-style-CHIBI").performClick()
+        recreateAndVerifyLaunchIdentity(compose.activityRule.scenario)
+        compose.onNodeWithTag("character-style-CHIBI").assertIsSelected()
+        assertEquals(original, withRepository { settings.first() })
+        compose.onNodeWithTag("settings-save").performScrollTo().performClick()
+        awaitText("DDL Saver")
+        assertEquals(original.copy(characterStyle = CharacterStyle.CHIBI), withRepository { settings.first() })
+        recreateAndVerifyLaunchIdentity(compose.activityRule.scenario)
+        awaitText("DDL Saver")
+        compose.onNodeWithText("设置").performClick()
+        compose.onNodeWithTag("character-style-CHIBI").assertIsSelected()
+        compose.onNodeWithTag("character-style-CLASSIC").performClick()
+        compose.onNodeWithTag("settings-save").performScrollTo().performClick()
+        awaitText("DDL Saver")
+        assertEquals(original, withRepository { settings.first() })
     }
 
     @Test

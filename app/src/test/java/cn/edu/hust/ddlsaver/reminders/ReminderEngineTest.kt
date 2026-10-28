@@ -7,6 +7,7 @@ import androidx.test.core.app.ApplicationProvider
 import cn.edu.hust.ddlsaver.data.RoomEventRepository
 import cn.edu.hust.ddlsaver.data.SaverDatabase
 import cn.edu.hust.ddlsaver.domain.AppSettings
+import cn.edu.hust.ddlsaver.domain.CharacterStyle
 import cn.edu.hust.ddlsaver.domain.DdlEvent
 import cn.edu.hust.ddlsaver.domain.EventDraft
 import kotlinx.coroutines.runBlocking
@@ -290,6 +291,25 @@ class ReminderEngineTest {
         assertEquals(1, platform.visible.size)
         assertEquals(1, platform.posts.map { it.tag }.distinct().size)
         assertEquals("SENT", db.dao().readReminderPlans().single().state)
+    }
+
+    @Test fun characterStyleChangePreservesSentLedgerAndDoesNotPostAgain() = runBlocking {
+        create("已提醒", minutes = 60, sprint = 60)
+        create("稍后提醒", minutes = 180, sprint = 30)
+        engine.reconcile()
+        assertEquals(1, platform.posts.size)
+        val plans = db.dao().readReminderPlans()
+        val wake = platform.scheduled
+        val eventRows = db.dao().readAllEventEntities()
+        for (style in listOf(CharacterStyle.CHIBI, CharacterStyle.CLASSIC)) {
+            repository.saveSettings(AppSettings(dailySummaryEnabled = false, characterStyle = style))
+            engine.reconcile()
+            assertEquals(plans, db.dao().readReminderPlans())
+            assertEquals(wake, platform.scheduled)
+            assertEquals(eventRows, db.dao().readAllEventEntities())
+            assertEquals(1, platform.posts.size)
+            assertEquals(1, platform.postAttempts)
+        }
     }
 
     private class SimulatedCrash : Error()

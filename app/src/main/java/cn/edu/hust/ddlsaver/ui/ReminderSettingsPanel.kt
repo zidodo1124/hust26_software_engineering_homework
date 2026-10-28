@@ -25,6 +25,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import cn.edu.hust.ddlsaver.domain.AppSettings
+import cn.edu.hust.ddlsaver.domain.CharacterStyle
 import cn.edu.hust.ddlsaver.domain.ExpiredPolicy
 import cn.edu.hust.ddlsaver.reminders.ReminderHealth
 
@@ -57,6 +58,7 @@ internal fun SettingsScreen(
     val originalDanger = rememberSaveable { current.dangerReminderEnabled }
     val originalDeadline = rememberSaveable { current.deadlineReminderEnabled }
     val originalLead = rememberSaveable { current.deadlineLeadMinutes.toString() }
+    val originalStyle = rememberSaveable { current.characterStyle.name }
     var minutes by rememberSaveable { mutableStateOf(original) }
     var policy by rememberSaveable { mutableStateOf(originalPolicy) }
     var daily by rememberSaveable { mutableStateOf(originalDaily) }
@@ -64,6 +66,7 @@ internal fun SettingsScreen(
     var danger by rememberSaveable { mutableStateOf(originalDanger) }
     var deadline by rememberSaveable { mutableStateOf(originalDeadline) }
     var lead by rememberSaveable { mutableStateOf(originalLead) }
+    var characterStyle by rememberSaveable { mutableStateOf(originalStyle) }
     var confirmArchive by rememberSaveable { mutableStateOf(false) }
     var submitted by rememberSaveable { mutableStateOf(false) }
     var discardDialog by rememberSaveable { mutableStateOf(false) }
@@ -73,7 +76,7 @@ internal fun SettingsScreen(
     val invalid = parsed == null || parsed <= 0 || parsed > SettingsMaxDurationMinutes
     val invalidLead = parsedLead == null || parsedLead <= 0 || parsedLead > SettingsMaxDurationMinutes
     val dirty = minutes != original || policy != originalPolicy || daily != originalDaily || summaryTime != originalTime ||
-        danger != originalDanger || deadline != originalDeadline || lead != originalLead
+        danger != originalDanger || deadline != originalDeadline || lead != originalLead || characterStyle != originalStyle
     val back: () -> Unit = { if (!busy) { if (dirty) discardDialog = true else onBack() } }
     BackHandler(onBack = back)
     Column(Modifier.fillMaxSize()) {
@@ -82,7 +85,10 @@ internal fun SettingsScreen(
             Modifier.weight(1f).verticalScroll(rememberScrollState()).padding(horizontal = 20.dp).padding(bottom = 24.dp),
             verticalArrangement = Arrangement.spacedBy(18.dp),
         ) {
-            Surface(color = Color.White, shape = androidx.compose.foundation.shape.RoundedCornerShape(20.dp)) {
+            CharacterAppearancePicker(CharacterStyle.fromStored(characterStyle), enabled = !busy) {
+                characterStyle = it.name
+            }
+            Surface(color = MaterialTheme.colorScheme.surface, shape = androidx.compose.foundation.shape.RoundedCornerShape(20.dp)) {
                 Column(Modifier.fillMaxWidth().padding(20.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
                     Text("普通紧急程度", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold)
                     Text("距离截止时间进入这个范围时，事项显示为橙色。速通危险期仍使用每件事项自己的速通时间。", color = Muted)
@@ -126,6 +132,7 @@ internal fun SettingsScreen(
                     dailySummaryEnabled = daily, dailySummaryMinuteOfDay = parsedTime,
                     dangerReminderEnabled = danger, deadlineReminderEnabled = deadline,
                     deadlineLeadMinutes = checkNotNull(parsedLead),
+                    characterStyle = CharacterStyle.fromStored(characterStyle),
                 ))
             }, enabled = !busy, modifier = Modifier.fillMaxWidth().testTag("settings-save")) {
                 if (busy) CircularProgressIndicator(Modifier.size(18.dp), color = MaterialTheme.colorScheme.onPrimary, strokeWidth = 2.dp)

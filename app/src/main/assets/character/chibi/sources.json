@@ -1,0 +1,80 @@
+{
+  "checkedDate": "2026-10-28",
+  "repository": "https://github.com/f0909172434/dsh-deepseek-girl-pet",
+  "commit": "3e7df1d76014e4f43ba9ed3c9de53c2a62ba0d14",
+  "originRepository": "https://github.com/f0909172434/deepseek-girl-codex-pet",
+  "originCommit": "2572709632b0e81401b9e92994f2c3786c186397",
+  "license": "MIT (publisher contributions); underlying character conditions remain separate",
+  "modifications": "Byte-identical original files; four static source regions selected only at runtime. No image edits or recompression.",
+  "files": [
+    {
+      "file": "spritesheet.webp",
+      "upstreamPath": "assets/spritesheet.webp",
+      "sourceUrl": "https://raw.githubusercontent.com/f0909172434/dsh-deepseek-girl-pet/3e7df1d76014e4f43ba9ed3c9de53c2a62ba0d14/assets/spritesheet.webp",
+      "bytes": 2836976,
+      "sha256": "234F24A97C18195A00C6093DA0090773E675993C169E92E7E13A24C37B323FA2",
+      "width": 1536,
+      "height": 2288,
+      "hasAlpha": true
+    },
+    {
+      "file": "upstream-atlas-source.json",
+      "upstreamPath": "atlas-source.json",
+      "sourceUrl": "https://raw.githubusercontent.com/f0909172434/dsh-deepseek-girl-pet/3e7df1d76014e4f43ba9ed3c9de53c2a62ba0d14/atlas-source.json",
+      "bytes": 382,
+      "sha256": "332BC90765C18139992911563ACD93C1E2EC871F67573AF73769ADFFFE93FF06"
+    },
+    {
+      "file": "upstream-LICENSE.txt",
+      "upstreamPath": "LICENSE",
+      "sourceUrl": "https://raw.githubusercontent.com/f0909172434/dsh-deepseek-girl-pet/3e7df1d76014e4f43ba9ed3c9de53c2a62ba0d14/LICENSE",
+      "bytes": 1068,
+      "sha256": "85465F5B70D7843382115858F4F191349BDFD5E8C6478ABB6967869124CA33AD"
+    },
+    {
+      "file": "origin-LICENSE.txt",
+      "upstreamPath": "LICENSE",
+      "sourceUrl": "https://raw.githubusercontent.com/f0909172434/deepseek-girl-codex-pet/2572709632b0e81401b9e92994f2c3786c186397/LICENSE",
+      "bytes": 1069,
+      "sha256": "E9C7575C5CCF1BE7D9D94509D3C268436624EB35344F5F96C33F92BC44C51C23"
+    }
+  ],
+  "frameWidth": 192,
+  "frameHeight": 208,
+  "columns": 8,
+  "rows": 11,
+  "frames": {
+    "normal": {
+      "row": 0,
+      "column": 6,
+      "left": 1152,
+      "top": 0,
+      "width": 192,
+      "height": 208
+    },
+    "happy": {
+      "row": 4,
+      "column": 1,
+      "left": 192,
+      "top": 832,
+      "width": 192,
+      "height": 208
+    },
+    "serious": {
+      "row": 8,
+      "column": 1,
+      "left": 192,
+      "top": 1664,
+      "width": 192,
+      "height": 208
+    },
+    "danger": {
+      "row": 7,
+      "column": 1,
+      "left": 192,
+      "top": 1456,
+      "width": 192,
+      "height": 208
+    }
+  }
+}

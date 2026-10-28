@@ -1,0 +1,4 @@
+*.webp -text
+upstream-LICENSE.txt -text
+origin-LICENSE.txt -text whitespace=-blank-at-eof
+upstream-atlas-source.json -text

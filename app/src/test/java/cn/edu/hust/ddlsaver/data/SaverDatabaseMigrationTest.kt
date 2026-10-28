@@ -67,7 +67,7 @@ class SaverDatabaseMigrationTest {
                 legacy.version = 2
             }
             fun open() = Room.databaseBuilder(context, SaverDatabase::class.java, name)
-                .addMigrations(SaverDatabase.MIGRATION_1_2, SaverDatabase.MIGRATION_2_3).build()
+                .addMigrations(SaverDatabase.MIGRATION_1_2, SaverDatabase.MIGRATION_2_3, SaverDatabase.MIGRATION_3_4).build()
             db = open()
             var repository = RoomEventRepository(db)
             val restored = repository.events.first().single()
@@ -124,7 +124,7 @@ class SaverDatabaseMigrationTest {
                 legacy.version = 1
             }
             fun open() = Room.databaseBuilder(context, SaverDatabase::class.java, databaseName)
-                .addMigrations(SaverDatabase.MIGRATION_1_2, SaverDatabase.MIGRATION_2_3).build()
+                .addMigrations(SaverDatabase.MIGRATION_1_2, SaverDatabase.MIGRATION_2_3, SaverDatabase.MIGRATION_3_4).build()
             database = open()
             var repository = RoomEventRepository(database, clock)
             // Opening through Room executes the migration and validates every current table and index.

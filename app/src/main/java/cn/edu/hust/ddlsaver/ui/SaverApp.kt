@@ -325,10 +325,10 @@ fun SaverApp(model: SaverViewModel) {
 
 @Composable
 internal fun CountTile(label: String, count: Int, modifier: Modifier, tint: Color, onClick: () -> Unit) {
-    Surface(modifier = modifier, onClick = onClick, color = Color(0xFF29415C), shape = RoundedCornerShape(16.dp)) {
+    Surface(modifier = modifier, onClick = onClick, color = MaterialTheme.colorScheme.surface, shape = RoundedCornerShape(18.dp)) {
         Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
             Text(count.toString(), color = tint, fontSize = 30.sp, fontWeight = FontWeight.Bold)
-            Text(label, color = Color.White, style = MaterialTheme.typography.labelMedium)
+            Text(label, color = MaterialTheme.colorScheme.onSurface, style = MaterialTheme.typography.labelMedium)
         }
     }
 }
@@ -341,8 +341,8 @@ internal fun EventCard(event: DdlEvent, state: SaverUiState, onOpen: (String) ->
         modifier = Modifier.testTag("event-card-${event.id}"),
         onClick = { onOpen(event.id) },
         shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = if (urgency == Urgency.OVERDUE) Color(0xFFEBEFF4) else Color.White),
-        border = BorderStroke(1.dp, if (urgency == Urgency.DANGER) Color(0xFFECC0C1) else Color(0xFFDCE4ED)),
+        colors = CardDefaults.cardColors(containerColor = if (urgency == Urgency.OVERDUE) MaterialTheme.colorScheme.surfaceVariant else MaterialTheme.colorScheme.surface),
+        border = BorderStroke(1.dp, if (urgency == Urgency.DANGER) Color(0xFFECC0C1) else MaterialTheme.colorScheme.outlineVariant),
     ) {
         Column(Modifier.padding(18.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
@@ -429,7 +429,8 @@ private fun DetailScreen(
             }
             if (event.attachments.isNotEmpty()) AttachmentGallery(event.attachments)
             state.operationError?.let { ErrorNotice(it) }
-            if (state.justCompleted) CharacterPanel(selectCharacterFeedback(state.events, state.now, state.settings, justCompleted = true))
+            if (state.justCompleted) CharacterPanel(selectCharacterFeedback(state.events, state.now, state.settings, justCompleted = true),
+                style = state.settings.characterStyle)
             Button(onClick = onComplete, enabled = !busy, modifier = Modifier.fillMaxWidth()) {
                 Text(if (event.completedAt == null) "标记完成" else "恢复为未完成")
             }
@@ -526,7 +527,7 @@ private fun StatusBadge(urgency: Urgency) {
     }
 }
 
-private fun urgencyColors(urgency: Urgency): Pair<Color, Color> = when (urgency) {
+internal fun urgencyColors(urgency: Urgency): Pair<Color, Color> = when (urgency) {
     Urgency.DANGER -> Color(0xFFA12435) to Color(0xFFFFE6E9)
     Urgency.SOON -> Color(0xFF8C4A0B) to Color(0xFFFFEAD2)
     Urgency.COMPLETED -> Color(0xFF216549) to Color(0xFFDFF1E7)

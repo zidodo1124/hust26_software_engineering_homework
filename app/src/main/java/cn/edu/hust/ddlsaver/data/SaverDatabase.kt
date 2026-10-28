@@ -13,7 +13,7 @@ import cn.edu.hust.ddlsaver.reminders.ReminderControlEntity
 @Database(
     entities = [EventEntity::class, SettingsEntity::class, SourceEntity::class, TagEntity::class,
         EventTagEntity::class, CustomFieldEntity::class, AttachmentEntity::class, ReminderPlanEntity::class, ReminderControlEntity::class],
-    version = 3,
+    version = 4,
     exportSchema = true,
 )
 @TypeConverters(SaverConverters::class)
@@ -48,10 +48,16 @@ abstract class SaverDatabase : RoomDatabase() {
             }
         }
 
+        val MIGRATION_3_4 = object : Migration(3, 4) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE settings ADD COLUMN characterStyle TEXT NOT NULL DEFAULT 'CLASSIC'")
+            }
+        }
+
         fun create(context: Context): SaverDatabase = Room.databaseBuilder(
             context.applicationContext,
             SaverDatabase::class.java,
             "ddl-saver.db",
-        ).addMigrations(MIGRATION_1_2, MIGRATION_2_3).build()
+        ).addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4).build()
     }
 }

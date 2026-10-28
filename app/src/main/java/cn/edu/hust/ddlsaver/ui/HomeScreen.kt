@@ -1,5 +1,6 @@
 package cn.edu.hust.ddlsaver.ui
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -12,8 +13,10 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cn.edu.hust.ddlsaver.domain.*
@@ -73,17 +76,26 @@ internal fun HomeScreen(
             }
         }
         item {
-            Surface(color = Ink, shape = RoundedCornerShape(24.dp)) {
-                Column(Modifier.fillMaxWidth().padding(22.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                    Text("把重要的事，安排妥当。", color = Color.White, fontSize = 20.sp, fontWeight = FontWeight.SemiBold)
+            Surface(color = OceanMist, shape = RoundedCornerShape(24.dp), border = BorderStroke(1.dp, OceanBorder)) {
+                Column(Modifier.fillMaxWidth().padding(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                    Text("把重要的事，安排妥当。", color = Ink, fontSize = 20.sp, fontWeight = FontWeight.SemiBold)
                     Text(DateTimeFormatter.ofPattern("M月d日 EEEE  HH:mm", Locale.CHINA).withZone(BeijingZone).format(state.now) + " · 北京时间",
-                        color = Color(0xFFCBDCEB), style = MaterialTheme.typography.bodySmall)
-                    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                        CountTile("今日 DDL", todayCount, Modifier.weight(1f).testTag("today-count"), Color(0xFFD6EEF6)) {
-                            clearFilters(); modeName = EventListMode.TODO.name; quickFilter = "today"
-                        }
-                        CountTile("速通危险期", dangerCount, Modifier.weight(1f).testTag("danger-count"), Color(0xFFFFD7CE)) {
-                            clearFilters(); modeName = EventListMode.TODO.name; quickFilter = "danger"
+                        color = Muted, style = MaterialTheme.typography.bodySmall)
+                    val fontScale = LocalDensity.current.fontScale
+                    BoxWithConstraints(Modifier.fillMaxWidth()) {
+                        val todayClick = { clearFilters(); modeName = EventListMode.TODO.name; quickFilter = "today" }
+                        val dangerClick = { clearFilters(); modeName = EventListMode.TODO.name; quickFilter = "danger" }
+                        // Let labels and counts grow vertically on narrow screens or with larger text.
+                        if (maxWidth < 280.dp || fontScale > 1.3f) {
+                            Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                                CountTile("今日 DDL", todayCount, Modifier.fillMaxWidth().testTag("today-count"), Ocean, todayClick)
+                                CountTile("速通危险期", dangerCount, Modifier.fillMaxWidth().testTag("danger-count"), MaterialTheme.colorScheme.error, dangerClick)
+                            }
+                        } else {
+                            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                                CountTile("今日 DDL", todayCount, Modifier.weight(1f).testTag("today-count"), Ocean, todayClick)
+                                CountTile("速通危险期", dangerCount, Modifier.weight(1f).testTag("danger-count"), MaterialTheme.colorScheme.error, dangerClick)
+                            }
                         }
                     }
                 }
@@ -96,14 +108,17 @@ internal fun HomeScreen(
                 }
             }
             OutlinedTextField(query, { query = it }, singleLine = true, label = { Text("搜索标题、描述或自定义字段") },
-                modifier = Modifier.fillMaxWidth().testTag("event-search"), shape = RoundedCornerShape(16.dp))
+                modifier = Modifier.fillMaxWidth().testTag("event-search"), shape = RoundedCornerShape(16.dp),
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedContainerColor = MaterialTheme.colorScheme.surface,
+                    unfocusedContainerColor = MaterialTheme.colorScheme.surface))
             Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                 TextButton({ filtersOpen = !filtersOpen }, modifier = Modifier.testTag("toggle-filters")) { Text("来源 / 标签") }
                 TextButton({ calendarOpen = !calendarOpen }, modifier = Modifier.testTag("toggle-calendar")) { Text("日历") }
                 TextButton({ selecting = !selecting; selectionJson = "[]" }, enabled = !busy, modifier = Modifier.testTag("toggle-batch")) { Text(if (selecting) "退出批量" else "批量管理") }
             }
         }
-        item { CharacterPanel(selectCharacterFeedback(state.events, state.now, state.settings, state.justCompleted)) }
+        item { CharacterPanel(selectCharacterFeedback(state.events, state.now, state.settings, state.justCompleted), style = state.settings.characterStyle) }
         reminderWarning?.let { warning -> item {
             Surface(color = Color(0xFFFFF2D9), shape = RoundedCornerShape(14.dp)) {
                 Text(warning, Modifier.fillMaxWidth().padding(14.dp).testTag("home-reminder-warning"), color = Ink,
@@ -193,19 +208,22 @@ private fun EventRow(event: DdlEvent, state: SaverUiState, selecting: Boolean, s
 
 @Composable
 internal fun MonthCalendar(month: YearMonth, selected: LocalDate?, today: LocalDate, onMonth: (YearMonth) -> Unit, onDate: (LocalDate) -> Unit) {
-    Surface(color = Color.White, shape = RoundedCornerShape(18.dp)) {
+    Surface(color = MaterialTheme.colorScheme.surface, shape = RoundedCornerShape(20.dp),
+        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant)) {
         Column(Modifier.fillMaxWidth().padding(10.dp)) {
             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
                 TextButton({ onMonth(month.minusMonths(1)) }, modifier = Modifier.testTag("calendar-previous")) { Text("‹") }
                 Text("${month.year}年${month.monthValue}月", modifier = Modifier.weight(1f).testTag("calendar-month"), fontWeight = FontWeight.SemiBold)
-                TextButton({ onMonth(YearMonth.from(today)); onDate(today) }) { Text("今天") }
                 TextButton({ onMonth(month.plusMonths(1)) }, modifier = Modifier.testTag("calendar-next")) { Text("›") }
             }
-            Row { listOf("一", "二", "三", "四", "五", "六", "日").forEach { Text(it, modifier = Modifier.weight(1f).padding(start = 12.dp), color = Muted) } }
+            TextButton({ onMonth(YearMonth.from(today)); onDate(today) }, modifier = Modifier.align(Alignment.End)) { Text("今天") }
+            Row { listOf("一", "二", "三", "四", "五", "六", "日").forEach {
+                Text(it, modifier = Modifier.weight(1f), textAlign = TextAlign.Center, color = Muted)
+            } }
             calendarWeeks(month).forEach { week -> Row(Modifier.fillMaxWidth()) {
                 week.forEach { date ->
-                    if (date == null) Spacer(Modifier.weight(1f).height(44.dp))
-                    else TextButton({ onDate(date) }, modifier = Modifier.weight(1f).height(44.dp).testTag("calendar-day-$date"),
+                    if (date == null) Spacer(Modifier.weight(1f).heightIn(min = 48.dp))
+                    else TextButton({ onDate(date) }, modifier = Modifier.weight(1f).heightIn(min = 48.dp).testTag("calendar-day-$date"),
                         contentPadding = PaddingValues(0.dp),
                         colors = ButtonDefaults.textButtonColors(containerColor = if (date == selected) Ocean else Color.Transparent,
                             contentColor = if (date == selected) Color.White else if (date == today) Ocean else Ink)) {

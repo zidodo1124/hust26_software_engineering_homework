@@ -12,6 +12,7 @@ import androidx.room.TypeConverter
 import cn.edu.hust.ddlsaver.domain.AppSettings
 import cn.edu.hust.ddlsaver.domain.AttachmentRef
 import cn.edu.hust.ddlsaver.domain.Category
+import cn.edu.hust.ddlsaver.domain.CharacterStyle
 import cn.edu.hust.ddlsaver.domain.CustomField
 import cn.edu.hust.ddlsaver.domain.DdlEvent
 import cn.edu.hust.ddlsaver.domain.ExpiredPolicy
@@ -48,15 +49,17 @@ data class SettingsEntity(
     @ColumnInfo(defaultValue = "1") val dangerReminderEnabled: Boolean = true,
     @ColumnInfo(defaultValue = "1") val deadlineReminderEnabled: Boolean = true,
     @ColumnInfo(defaultValue = "60") val deadlineLeadMinutes: Long = 60,
+    @ColumnInfo(defaultValue = "'CLASSIC'") val characterStyle: CharacterStyle = CharacterStyle.CLASSIC,
 ) {
     fun toDomain() = AppSettings(urgentMinutes, expiredPolicy, dailySummaryEnabled,
-        dailySummaryMinuteOfDay, dangerReminderEnabled, deadlineReminderEnabled, deadlineLeadMinutes)
+        dailySummaryMinuteOfDay, dangerReminderEnabled, deadlineReminderEnabled, deadlineLeadMinutes, characterStyle)
 }
 
 internal fun AppSettings.toEntity() = SettingsEntity(urgentMinutes = urgentMinutes,
     expiredPolicy = expiredPolicy, dailySummaryEnabled = dailySummaryEnabled,
     dailySummaryMinuteOfDay = dailySummaryMinuteOfDay, dangerReminderEnabled = dangerReminderEnabled,
-    deadlineReminderEnabled = deadlineReminderEnabled, deadlineLeadMinutes = deadlineLeadMinutes)
+    deadlineReminderEnabled = deadlineReminderEnabled, deadlineLeadMinutes = deadlineLeadMinutes,
+    characterStyle = characterStyle)
 
 @Entity(tableName = "sources")
 data class SourceEntity(@PrimaryKey val id: String, val name: String, val isActive: Boolean = true) {
@@ -135,4 +138,10 @@ class SaverConverters {
 
     @TypeConverter
     fun stringToExpiredPolicy(value: String): ExpiredPolicy = ExpiredPolicy.valueOf(value)
+
+    @TypeConverter
+    fun characterStyleToString(value: CharacterStyle): String = value.name
+
+    @TypeConverter
+    fun stringToCharacterStyle(value: String): CharacterStyle = CharacterStyle.fromStored(value)
 }
