@@ -112,6 +112,35 @@ class RoundTwoRepositoryTest {
     }
 
     @Test
+    fun sameNamedFieldsAndEmptyContentRemainIndependentAcrossEditsAndReopen() = runBlocking {
+        val fields = listOf(
+            CustomField("first", "联系人", "甲"),
+            CustomField("second", "联系人", ""),
+            CustomField("note", "备注", "保留内容"),
+        )
+        val first = repository.save(draft("甲事项").copy(customFields = fields))
+        val second = repository.save(draft("乙事项").copy(
+            customFields = listOf(CustomField("second", "联系人", "乙")),
+        ))
+        database.close()
+        reopenDatabase()
+        val reopened = repository.events.first().associateBy { it.id }
+        assertEquals(fields, reopened.getValue(first.id).customFields)
+        assertEquals(second, reopened.getValue(second.id))
+
+        val editedFields = listOf(fields[0], fields[1].copy(value = "丙"), fields[2])
+        val edited = repository.save(reopened.getValue(first.id).edit().copy(customFields = editedFields))
+        assertEquals(editedFields, edited.customFields)
+        val remaining = listOf(editedFields[1], editedFields[2])
+        repository.save(edited.edit().copy(customFields = remaining))
+        database.close()
+        reopenDatabase()
+        val finalRows = repository.events.first().associateBy { it.id }
+        assertEquals(remaining, finalRows.getValue(first.id).customFields)
+        assertEquals(second, finalRows.getValue(second.id))
+    }
+
+    @Test
     fun renamedAndDisabledCategoriesRemainLinkedButCannotBeNewlyAssigned() = runBlocking {
         val source = repository.saveSource(null, "课程群")
         val tag = repository.saveTag(null, "作业")

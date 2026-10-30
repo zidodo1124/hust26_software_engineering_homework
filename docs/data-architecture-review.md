@@ -37,3 +37,11 @@ flowchart LR
 5. **既有证据限制**：先前保存的本机报告不等于本轮运行结果。仓库原开发环境中的 `.local-tools` 不随克隆提供，后续执行前应配置本机 JDK 17 和 Android SDK，详见[开发说明](development.md)。
 
 本轮只核查设计与代码映射，未修改产品代码、自动测试或数据库 schema。后续先处理已明确的测试缺口和实际缺陷；测试不通过时保留失败记录，修复后复测。
+
+## 后续测试覆盖核对（2026-10-30）
+
+- `RoundTwoRepositoryTest` 原有跨事项同 ID 字段隔离测试、分类停用／恢复测试、事务回滚和旧编辑冲突测试；`EventQueryTest` 原有关键词、组合筛选和稳定排序测试。
+- `SaverDatabaseMigrationTest` 使用真实 v1／v2 schema 创建旧库，v2 样本涵盖来源、标签、字段、附件元数据及设置；`CharacterStylePersistenceTest` 使用真实 v3 schema，原样本涵盖事项、设置及提醒账本，但未断言分类、字段和附件关联。
+- 新增 `sameNamedFieldsAndEmptyContentRemainIndependentAcrossEditsAndReopen`，检查同一事项两条同名字段及空内容在重开、编辑和移除后的独立性，并检查另一事项不变；扩展 v3→v4 迁移样本，检查来源、标签、字段和附件元数据并重开。
+- 当前电脑 `JAVA_HOME` 指向 JDK 8，未发现已配置的 Android SDK 或本工程的本地 SDK；尚未在本机执行新增测试。迁移测试检查数据库中的附件元数据，不等于验证真实图片文件在设备覆盖安装后完整保留。
+- 新增测试的 CI／本机执行结果以对应提交的实际运行记录为准，不将代码已加入等同测试通过；需求 DA-01—DA-13 的完整验收状态保持不变。
