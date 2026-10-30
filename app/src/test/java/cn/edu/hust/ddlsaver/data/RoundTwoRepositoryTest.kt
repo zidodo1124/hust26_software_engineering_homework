@@ -10,7 +10,9 @@ import cn.edu.hust.ddlsaver.domain.CustomField
 import cn.edu.hust.ddlsaver.domain.DdlEvent
 import cn.edu.hust.ddlsaver.domain.EventConflictException
 import cn.edu.hust.ddlsaver.domain.EventDraft
+import cn.edu.hust.ddlsaver.domain.EventFilter
 import cn.edu.hust.ddlsaver.domain.EventNotFoundException
+import cn.edu.hust.ddlsaver.domain.EventQuery
 import cn.edu.hust.ddlsaver.domain.EventValidationException
 import cn.edu.hust.ddlsaver.domain.ExpiredPolicy
 import kotlinx.coroutines.CompletableDeferred
@@ -181,6 +183,73 @@ class RoundTwoRepositoryTest {
         assertTrue(runCatching { repository.saveTag(null, " ") }.exceptionOrNull() is EventValidationException)
         assertEquals("Email", repository.sources.first().single().name)
         assertEquals("Project", repository.tags.first().single().name)
+    }
+
+    @Test
+    fun disabledSameNamedCategoriesKeepOldRelationsAcrossReopenAndCanBeRestored() = runBlocking {
+        val source = repository.saveSource(null, " Study ")
+        val tag = repository.saveTag(null, "study")
+        val otherTag = repository.saveTag(null, "课程")
+        val matching = repository.save(draft("匹配项").copy(
+            sourceId = source.id, tagIds = setOf(tag.id, otherTag.id),
+        ))
+        val partial = repository.save(draft("只含一个标签").copy(
+            sourceId = source.id, tagIds = setOf(otherTag.id),
+        ))
+        repository.setSourceActive(source.id, false)
+        repository.setTagActive(tag.id, false)
+        database.close()
+        reopenDatabase()
+
+        val rows = repository.events.first().associateBy { it.id }
+        val linked = rows.getValue(matching.id)
+        assertFalse(linked.source!!.isActive)
+        assertFalse(linked.tags.first { it.id == tag.id }.isActive)
+        assertEquals(partial.copy(source = partial.source!!.copy(isActive = false)), rows.getValue(partial.id))
+        val filter = EventFilter(sourceId = source.id, tagIds = setOf(tag.id, otherTag.id))
+        assertEquals(listOf(matching.id), EventQuery.select(rows.values.toList(), filter, clock.instant()).map { it.id })
+
+        val removed = repository.save(linked.edit().copy(sourceId = null, tagIds = setOf(otherTag.id)))
+        assertTrue(runCatching {
+            repository.save(removed.edit().copy(sourceId = source.id, tagIds = setOf(tag.id, otherTag.id)))
+        }.exceptionOrNull() is EventValidationException)
+        assertEquals(removed, repository.events.first().first { it.id == matching.id })
+        repository.setSourceActive(source.id, true)
+        repository.setTagActive(tag.id, true)
+        val restored = repository.save(removed.edit().copy(sourceId = source.id, tagIds = setOf(tag.id, otherTag.id)))
+        assertTrue(restored.source!!.isActive)
+        assertTrue(restored.tags.first { it.id == tag.id }.isActive)
+        database.close()
+        reopenDatabase()
+        assertEquals(restored, repository.events.first().first { it.id == matching.id })
+        assertEquals(partial, repository.events.first().first { it.id == partial.id })
+    }
+
+    @Test
+    fun failureDuringFieldInsertRollsBackEventRelationsAndReminderPlans() = runBlocking {
+        val tag = repository.saveTag(null, "课程")
+        val original = repository.save(draft("原事项").copy(
+            tagIds = setOf(tag.id), customFields = listOf(CustomField("old", "地点", "东九")),
+        ))
+        val plansBefore = database.dao().readReminderPlans()
+        database.openHelper.writableDatabase.execSQL(
+            """CREATE TRIGGER reject_test_field BEFORE INSERT ON custom_fields
+               WHEN NEW.label = '触发失败'
+               BEGIN SELECT RAISE(ABORT, 'simulated insert failure'); END""".trimIndent()
+        )
+        val failure = runCatching {
+            repository.save(original.edit().copy(
+                title = "不应保存", tagIds = emptySet(),
+                customFields = listOf(CustomField("new", "触发失败", "内容")),
+            ))
+        }
+        assertTrue(failure.isFailure)
+        assertEquals(original, repository.events.first().single())
+        assertEquals(plansBefore, database.dao().readReminderPlans())
+        database.close()
+        reopenDatabase()
+        assertEquals(original, repository.events.first().single())
+        assertEquals(plansBefore, database.dao().readReminderPlans())
     }
 
     @Test
