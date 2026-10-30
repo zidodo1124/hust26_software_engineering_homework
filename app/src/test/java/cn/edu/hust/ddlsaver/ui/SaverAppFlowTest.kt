@@ -160,6 +160,43 @@ class SaverAppFlowTest {
     }
 
     @Test
+    fun failedFieldWriteKeepsDraftAndOriginalDataUntilRetrySucceeds() {
+        createEvent("保存前的事项")
+        val original = storedEvents().single()
+        compose.onNodeWithText("编辑事项").performScrollTo().performClick()
+        compose.onNodeWithTag("event-title").performScrollTo().performTextReplacement("重试后的标题")
+        compose.onNodeWithTag("event-description").performScrollTo().performTextInput("需要保留的描述")
+        compose.onNodeWithTag("field-add").performScrollTo().performClick()
+        compose.onNodeWithTag("field-label-0").performScrollTo().performTextInput("触发测试")
+        compose.onNodeWithTag("field-value-0").performScrollTo().performTextInput("需要保留的字段")
+
+        executeTestDatabaseSql(
+            """CREATE TRIGGER fail_ui_field BEFORE INSERT ON custom_fields
+               WHEN NEW.label = '触发测试'
+               BEGIN SELECT RAISE(ABORT, 'simulated write failure'); END""".trimIndent()
+        )
+        compose.onNodeWithTag("event-save").performScrollTo().performClick()
+        awaitText("操作未完成，请重试。当前填写的内容已保留。")
+        compose.onNodeWithTag("event-title").performScrollTo().assertTextContains("重试后的标题")
+        compose.onNodeWithTag("event-description").performScrollTo().assertTextContains("需要保留的描述")
+        compose.onNodeWithTag("field-label-0").performScrollTo().assertTextContains("触发测试")
+        compose.onNodeWithTag("field-value-0").performScrollTo().assertTextContains("需要保留的字段")
+        assertEquals(original, storedEvents().single())
+        compose.onNodeWithText("事项详情").assertDoesNotExist()
+
+        executeTestDatabaseSql("DROP TRIGGER fail_ui_field")
+        compose.onNodeWithTag("event-save").performScrollTo().performClick()
+        awaitText("事项详情")
+        awaitText("重试后的标题")
+        val saved = storedEvents().single()
+        assertEquals(original.id, saved.id)
+        assertEquals(original.revision + 1, saved.revision)
+        assertEquals("需要保留的描述", saved.description)
+        assertEquals("触发测试", saved.customFields.single().label)
+        assertEquals("需要保留的字段", saved.customFields.single().value)
+    }
+
+    @Test
     fun completedItemCanBeRecoveredFromHistoryAndDeleteCancellationPreservesIt() {
         createEvent("完成恢复与删除取消")
         val createdId = storedEvents().single().id
@@ -626,6 +663,11 @@ class SaverAppFlowTest {
         compose.runOnIdle { ViewModelProvider(compose.activity)[SaverViewModel::class.java].reload() }
         compose.waitUntil(20_000) { !ViewModelProvider(compose.activity)[SaverViewModel::class.java].state.value.loading }
         compose.waitForIdle()
+    }
+
+    private fun executeTestDatabaseSql(sql: String) {
+        val database = SaverDatabase.create(ApplicationProvider.getApplicationContext())
+        try { database.openHelper.writableDatabase.execSQL(sql) } finally { database.close() }
     }
 
     private fun <T> withRepository(action: suspend RoomEventRepository.() -> T): T = runBlocking {
