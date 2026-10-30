@@ -29,6 +29,12 @@ class CharacterStylePersistenceTest {
         createV3(name) { legacy ->
             legacy.execSQL("INSERT INTO settings VALUES (1, 321, 'AUTO_ARCHIVE', 0, 547, 1, 0, 45)")
             legacy.execSQL("INSERT INTO events VALUES ('kept', '原事项', 1893567600000, 30, '说明', 'HIGH', NULL, NULL, 10, 20, 7, NULL)")
+            legacy.execSQL("INSERT INTO sources VALUES ('source-v3', '课程', 1)")
+            legacy.execSQL("INSERT INTO tags VALUES ('tag-v3', '待提交', 1)")
+            legacy.execSQL("UPDATE events SET sourceId = 'source-v3' WHERE id = 'kept'")
+            legacy.execSQL("INSERT INTO event_tags VALUES ('kept', 'tag-v3')")
+            legacy.execSQL("INSERT INTO custom_fields VALUES ('kept', 'field-v3', '地点', '东九', 0)")
+            legacy.execSQL("INSERT INTO attachments VALUES ('0a2c885a-b301-4cd6-bef7-ea776140f167', 'kept', '0a2c885a-b301-4cd6-bef7-ea776140f167.img', 'image/png', '截图.png', 100, 20, 30, 0)")
             legacy.execSQL("INSERT INTO reminder_plans VALUES ('saved-key', 'DANGER', 'kept', 1893567600000, 7, 1893565800000, NULL, 'saved-tag', 1, 'SENT', 1893565800100, NULL, 0)")
             legacy.execSQL("INSERT INTO reminder_control VALUES (1, 'ddl-saver://reminders/wake', NULL, NULL, 1893566000000, 1893566000000, 'exact', 0, NULL)")
         }
@@ -41,12 +47,19 @@ class CharacterStylePersistenceTest {
             assertEquals("原事项", event.title)
             assertEquals(7L, event.revision)
             assertEquals("说明", event.description)
+            assertEquals("课程", event.source?.name)
+            assertEquals("待提交", event.tags.single().name)
+            assertEquals("东九", event.customFields.single().value)
+            assertEquals("0a2c885a-b301-4cd6-bef7-ea776140f167.img", event.attachments.single().relativePath)
             assertEquals(listOf(ReminderPlanEntity("saved-key", "DANGER", "kept", 1893567600000,
                 7, 1893565800000, null, "saved-tag", state = "SENT", lastAttemptAt = 1893565800100)),
                 database.dao().readReminderPlans())
             assertEquals(ReminderControlEntity(scheduledTriggerAt = 1893566000000, desiredTriggerAt = 1893566000000,
                 scheduleMode = "exact", alarmDirty = false), database.dao().readReminderControl())
             assertEquals(4, database.openHelper.readableDatabase.version)
+            database.close()
+            database = open(name)
+            assertEquals(event, RoomEventRepository(database).events.first().single())
         } finally { database?.close(); context.deleteDatabase(name) }
     }
 
