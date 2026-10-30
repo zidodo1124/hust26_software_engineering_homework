@@ -70,6 +70,7 @@ HUSTer's DDL Saver 是一款面向大学生的 Android 截止日期（DDL）管�
 | [开发、构建与安装](docs/development.md) | 工具准备、构建命令、检查报告位置与安装方法 |
 | [版本与验证进展](STATUS.md) | 当前已实现功能、验证结果与后续范围 |
 | [需求分析文档](docs/requirements.md) | 完整功能需求、业务规则和验收场景 |
+| [数据需求与测试追踪](docs/data-test-traceability.md) | 付泽文负责的数据组织需求、代码、自动测试证据及未覆盖场景 |
 | [设计文档](docs/design.md) | 总体设计、实际代码映射、数据结构、接口及关键流程 |
 | [技术栈说明](docs/technology-stack.md) | 已集成和计划使用的技术、用途、实际版本及验证状态 |
 | [测试计划与用例](docs/test-plan.md) | 测试范围、方法、执行条件及需求追踪用例 |

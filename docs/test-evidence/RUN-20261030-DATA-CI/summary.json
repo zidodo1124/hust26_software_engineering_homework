@@ -1,0 +1,28 @@
+{
+  "reviewedDate": "2026-10-30",
+  "workflowRunId": 41066985947,
+  "workflowUrl": "https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41066985947",
+  "event": "pull_request",
+  "pullRequest": 6,
+  "headSha": "5ee1128d1a1f77c1d6dedb39590fe12b4b606214",
+  "checkedMergeSha": "73245d6d9e5889004544e5787298a06894fa1834",
+  "checkedMergeParents": ["453cee3a17c97a0033ddcedfab9dd21504057583", "5ee1128d1a1f77c1d6dedb39590fe12b4b606214"],
+  "laterMainMergeSha": "9d3e3c69d0d7f910cbd3d630f60303ca429a6adb",
+  "conclusion": "success",
+  "reportArtifactId": 12984425651,
+  "reportArtifactName": "android-check-reports-73245d6d9e5889004544e5787298a06894fa1834",
+  "reportArtifactUrl": "https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41066985947/artifacts/12984425651",
+  "reportZipBytes": 91189,
+  "reportZipSha256": "858fd10f4d4d342a4f2715b4c562fec28d756394c57a54e1ded4d6b2c0f4dc2a",
+  "junit": {"suites": 22, "declaredExecutions": 156, "actualTestcaseNodes": 156, "uniqueMethods": 137, "failures": 0, "errors": 0, "skipped": 0},
+  "lint": {"errors": 0, "warnings": 17},
+  "relatedPassingMethods": [
+    "cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest.sameNamedFieldsAndEmptyContentRemainIndependentAcrossEditsAndReopen",
+    "cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest.upgradeFromV3PreservesSettingsEventAndDeliveryLedgerWithClassicDefault",
+    "cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest.disabledSameNamedCategoriesKeepOldRelationsAcrossReopenAndCanBeRestored",
+    "cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest.failureDuringFieldInsertRollsBackEventRelationsAndReminderPlans",
+    "cn.edu.hust.ddlsaver.ui.SaverAppFlowTest.staleEditShowsConflictAndKeepsDraftWithoutOverwritingNewerData",
+    "cn.edu.hust.ddlsaver.ui.SaverAppFlowTest.failedFieldWriteKeepsDraftAndOriginalDataUntilRetrySucceeds"
+  ],
+  "limits": "CI JUnit/Lint evidence only; does not represent device acceptance or complete DA/TC scenarios."
+}
