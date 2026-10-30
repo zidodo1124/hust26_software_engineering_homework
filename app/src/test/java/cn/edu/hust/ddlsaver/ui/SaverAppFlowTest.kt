@@ -135,6 +135,31 @@ class SaverAppFlowTest {
     }
 
     @Test
+    fun staleEditShowsConflictAndKeepsDraftWithoutOverwritingNewerData() {
+        createEvent("冲突前的事项")
+        val original = storedEvents().single()
+        compose.onNodeWithText("编辑事项").performScrollTo().performClick()
+        compose.onNodeWithTag("event-title").performScrollTo().performTextReplacement("尚未保存的标题")
+        compose.onNodeWithTag("event-description").performScrollTo().performTextInput("尚未保存的描述")
+        compose.onNodeWithTag("field-add").performScrollTo().performClick()
+        compose.onNodeWithTag("field-label-0").performScrollTo().performTextInput("联系人")
+        compose.onNodeWithTag("field-value-0").performScrollTo().performTextInput("草稿联系人")
+
+        val newer = withRepository {
+            save(EventDraft(id = original.id, title = "其他位置的新标题", deadlineAt = original.deadlineAt,
+                description = "其他位置的新描述", expectedRevision = original.revision))
+        }
+        compose.onNodeWithTag("event-save").performScrollTo().performClick()
+        awaitText("这条事项已被修改，请重新打开后再编辑。")
+        compose.onNodeWithTag("event-title").performScrollTo().assertTextContains("尚未保存的标题")
+        compose.onNodeWithTag("event-description").performScrollTo().assertTextContains("尚未保存的描述")
+        compose.onNodeWithTag("field-label-0").performScrollTo().assertTextContains("联系人")
+        compose.onNodeWithTag("field-value-0").performScrollTo().assertTextContains("草稿联系人")
+        assertEquals(newer, storedEvents().single())
+        compose.onNodeWithText("事项详情").assertDoesNotExist()
+    }
+
+    @Test
     fun completedItemCanBeRecoveredFromHistoryAndDeleteCancellationPreservesIt() {
         createEvent("完成恢复与删除取消")
         val createdId = storedEvents().single().id
