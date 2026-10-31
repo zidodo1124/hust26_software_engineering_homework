@@ -45,6 +45,8 @@ JUnit XML 中六个本轮新增或扩展测试方法均显示通过：同事项�
 | DA-12 / FR-15 | DB；MT 的 `migratesV1FileAndKeepsData`、`migratesV2AndKeepsRelations`、`upgradeFromV3PreservesSettingsEventAndDeliveryLedgerWithClassicDefault` 构造 v1／v2／v3 旧库并验证各自可表示的部分数据及迁移 | 逐版本核对更多字段和异常，最终设备覆盖安装验证真实附件文件；v1 中不存在后续版本才增加的表，不应伪造 v1 数据 | 部分自动覆盖；TC-01 整例未通过 |
 | DA-13 / FR-10、15、18 | Repo、Query；RT 的 `batchUsesOnlySelectedIdsPreservesIndependentFlagsAndDeletesTheirRelations`，QT 的 `filteringReturnsStableDeadlineThenIdOrderWithoutChangingInput` | DA-13 的全部其他事项、共享分类及重开快照；筛选／删除的真实页面操作 | 部分自动覆盖 |
 
+后续新增 `SaverAppFlowTest.combinedSourceTagsKeywordAndDateFilterTheVisibleListWithoutChangingTodayCount`，使用独立样本检查来源、两个标签、关键词和跨月日期组合、已完成／归档排除、清除筛选及首页今日计数的本地界面流程；其实际 CI 结果以对应提交的运行记录为准，不替代 DA-07／10 的全部预设步骤或实机验收。
+
 以上均不宣称所有组合已经执行。2026-10-31 本人确认关键词完整连续匹配、多词不拆分和英文大小写不敏感，以及同截止时间稳定排序、停用分类筛选历史事项；其他未涉及的边界仍待审核。后续依优先级选择真实缺口，不为增加数量而重复实现已有测试。
 
 ## 追踪结论和后续安排

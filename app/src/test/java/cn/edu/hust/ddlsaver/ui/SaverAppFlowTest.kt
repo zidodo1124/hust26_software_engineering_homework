@@ -325,6 +325,70 @@ class SaverAppFlowTest {
     }
 
     @Test
+    fun combinedSourceTagsKeywordAndDateFilterTheVisibleListWithoutChangingTodayCount() {
+        awaitText("DDL Saver")
+        val today = Instant.now().atZone(BeijingZone).toLocalDate()
+        val nextMonth = YearMonth.from(today).plusMonths(1)
+        val day15 = nextMonth.atDay(15)
+        val day16 = nextMonth.atDay(16)
+        fun deadline(date: java.time.LocalDate) = date.atTime(18, 0).atZone(BeijingZone).toInstant().toEpochMilli()
+        val categories = withRepository {
+            val source = saveSource(null, "学习")
+            val otherSource = saveSource(null, "生活")
+            val course = saveTag(null, "课程")
+            val submit = saveTag(null, "需提交")
+            save(EventDraft(title = "软件项目甲", deadlineAt = deadline(day15), sourceId = source.id,
+                tagIds = setOf(course.id, submit.id)))
+            save(EventDraft(title = "软件项目乙", deadlineAt = deadline(day15), sourceId = source.id,
+                tagIds = setOf(course.id)))
+            save(EventDraft(title = "软件项目丙", deadlineAt = deadline(day16), sourceId = source.id,
+                tagIds = setOf(course.id, submit.id)))
+            save(EventDraft(title = "软件项目丁", deadlineAt = deadline(day15), sourceId = otherSource.id,
+                tagIds = setOf(course.id, submit.id)))
+            val completed = save(EventDraft(title = "软件项目已完成", deadlineAt = deadline(day15), sourceId = source.id,
+                tagIds = setOf(course.id, submit.id)))
+            setCompleted(completed.id, true)
+            val archived = save(EventDraft(title = "软件项目已归档", deadlineAt = deadline(day15), sourceId = source.id,
+                tagIds = setOf(course.id, submit.id)))
+            setArchived(archived.id, true)
+            save(EventDraft(title = "今日独立事项", deadlineAt = today.atStartOfDay(BeijingZone).toInstant().toEpochMilli()))
+            Triple(source, course, submit)
+        }
+        reloadModel()
+        compose.onNodeWithTag("today-count").assertTextContains("1")
+        scrollHomeTag("toggle-filters")
+        compose.onNodeWithTag("toggle-filters").performClick()
+        scrollHomeTag("filter-source-${categories.first.id}")
+        compose.onNodeWithTag("filter-source-${categories.first.id}").performScrollTo().performClick().assertIsSelected()
+        scrollHomeTag("filter-tag-${categories.second.id}")
+        compose.onNodeWithTag("filter-tag-${categories.second.id}").performScrollTo().performClick().assertIsSelected()
+        scrollHomeTag("filter-tag-${categories.third.id}")
+        compose.onNodeWithTag("filter-tag-${categories.third.id}").performScrollTo().performClick().assertIsSelected()
+        scrollHomeTag("event-search")
+        compose.onNodeWithTag("event-search").performTextInput("软件项目")
+        scrollHomeTag("list-summary")
+        compose.onNodeWithTag("list-summary").assertTextEquals("全部待办 · 2")
+
+        scrollHomeTag("toggle-calendar")
+        compose.onNodeWithTag("toggle-calendar").performClick()
+        scrollHomeTag("calendar-next")
+        compose.onNodeWithTag("calendar-next").performClick()
+        scrollHomeTag("calendar-day-$day15")
+        compose.onNodeWithTag("calendar-day-$day15").performClick()
+        scrollHomeTag("list-summary")
+        compose.onNodeWithTag("list-summary").assertTextEquals("$day15 的事项 · 1")
+        compose.onNodeWithTag("event-list").performScrollToNode(hasText("软件项目甲"))
+        compose.onNodeWithText("软件项目甲").assertExists()
+        scrollHomeTag("today-count")
+        compose.onNodeWithTag("today-count").assertTextContains("1")
+        scrollHomeTag("clear-filters")
+        compose.onNodeWithTag("clear-filters").performClick()
+        scrollHomeTag("list-summary")
+        compose.onNodeWithTag("list-summary").assertTextEquals("全部待办 · 5")
+        assertEquals(7, storedEvents().size)
+    }
+
+    @Test
     fun calendarCrossesMonthAndTodayShortcutClearsDateFilter() {
         awaitText("DDL Saver")
         val today = Instant.now().atZone(BeijingZone).toLocalDate()
