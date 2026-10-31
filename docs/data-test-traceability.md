@@ -1,6 +1,6 @@
 # 数据与信息组织需求—代码—测试追踪
 
-核对日期：2026-10-30，负责人方向：付泽文的数据与信息组织。以 `main` 合入 PR #6 后的产品源码与[专项需求 v0.2](data-requirements.md)为依据；本文件为 AI 辅助整理，待成员复核。历史实机结论、需求确认和本机自动测试分别以原记录为准。
+初次核对日期：2026-10-30；2026-10-31 同步局部需求确认。负责人方向：付泽文的数据与信息组织。既有 CI 追踪以 `main` 合入 PR #6 后的产品源码为依据；[专项需求](data-requirements.md)更新至 v0.3。本文件为 AI 辅助整理，待成员复核。历史实机结论、需求确认和本机自动测试分别以原记录为准。
 
 ## 本次核对的自动化证据
 
@@ -38,14 +38,14 @@ JUnit XML 中六个本轮新增或扩展测试方法均显示通过：同事项�
 | DA-05 / FR-19 | Validation 的 `emptyFieldNamesAndDuplicateFieldIdsAreRejected`；RT 同名字段测试覆盖移除一条；UT 的 `activityRecreationKeepsUnsavedDraftAndDiscardRequiresConfirmation` 覆盖草稿保留及放弃 | 以同名字段为样本完成 DA-05 的空字段名、取消、移除及顺序完整页面流程 | 部分自动覆盖 |
 | DA-06 / FR-18 | Query；QT 的 `keywordMatchesTitleDescriptionAndCustomFieldLabelsOrValuesIgnoringCase` 和 UT 的 `categoryManagementAndCustomFieldsPersistThenFilterTogether` | A—E 原样本的空关键词、无结果、清除及完成／归档排除一整组页面结果 | 部分自动覆盖；TC-14 整例未通过 |
 | DA-07 / FR-18 | Query；QT 的 `combinedFiltersRequireEveryConditionAndEverySelectedTag`；RT 分类恢复测试覆盖来源与两个标签交集 | A—E 全部单标签／双标签／日期组合和清空筛选的页面路径 | 部分自动覆盖 |
-| DA-08 / FR-18 | Query；QT 的 `keywordMatchesTitleDescriptionAndCustomFieldLabelsOrValuesIgnoringCase` 有英文大小写例子 | 含空格连续匹配、仅分类名不触发关键词的完整用例；相关匹配细节仍待审核 | 部分自动覆盖，部分预期待审核 |
+| DA-08 / FR-18 | Query；QT 的 `keywordMatchesTitleDescriptionAndCustomFieldLabelsOrValuesIgnoringCase` 有英文大小写例子；新增 `multiWordKeywordMatchesContinuouslyAndCategoriesUseTheirOwnFilters` 检查连续多词与分类筛选，已在[本次 CI](test-evidence/RUN-20261031-SEARCH-CI/summary.json)中取得独立通过节点 | 本人已确认英文大小写、完整连续文字与多词不拆分；空关键词等未涉及细节待审核，DA-08 页面整例仍需验证 | 两项相关自动用例通过；整例仍未完成 |
 | DA-09 / FR-16、17、18 | Query；QT 的 `expiredItemsRemainTodoWhileArchiveTakesPrecedenceOverCompletion`；UT 的 `completedItemCanBeRecoveredFromHistoryAndDeleteCancellationPreservesIt` 和 RT 的归档标记测试 | 使用 DA-09 全样本核对归档前后两个列表，及最终设备操作 | 部分自动覆盖 |
 | DA-10 / FR-03、07、08、18 | Query、`HomeScreen`、Repo；UT 的 `categoryManagementAndCustomFieldsPersistThenFilterTogether` 和 `calendarCrossesMonthAndTodayShortcutClearsDateFilter` | 按 DA-10 把编辑／取消、日期、筛选结果数与首页统计串成完整样本 | 部分自动覆盖 |
 | DA-11 / FR-03、15 | Repo；RT 的 `failureDuringFieldInsertRollsBackEventRelationsAndReminderPlans`；UT 的 `staleEditShowsConflictAndKeepsDraftWithoutOverwritingNewerData` 和 `failedFieldWriteKeepsDraftAndOriginalDataUntilRetrySucceeds` | 其他失败原因及设备条件；故障注入仅代表测试中指定的字段插入错误 | 部分自动覆盖；TC-30 整例未通过 |
 | DA-12 / FR-15 | DB；MT 的 `migratesV1FileAndKeepsData`、`migratesV2AndKeepsRelations`、`upgradeFromV3PreservesSettingsEventAndDeliveryLedgerWithClassicDefault` 构造 v1／v2／v3 旧库并验证各自可表示的部分数据及迁移 | 逐版本核对更多字段和异常，最终设备覆盖安装验证真实附件文件；v1 中不存在后续版本才增加的表，不应伪造 v1 数据 | 部分自动覆盖；TC-01 整例未通过 |
 | DA-13 / FR-10、15、18 | Repo、Query；RT 的 `batchUsesOnlySelectedIdsPreservesIndependentFlagsAndDeletesTheirRelations`，QT 的 `filteringReturnsStableDeadlineThenIdOrderWithoutChangingInput` | DA-13 的全部其他事项、共享分类及重开快照；筛选／删除的真实页面操作 | 部分自动覆盖 |
 
-以上均不宣称所有组合已经执行。关键词多词、连续子串等未在本人确认摘要中的边界继续保留待审核。后续依优先级选择真实缺口，优先补能发现故障的验证，不为增加数量而重复实现已有测试。
+以上均不宣称所有组合已经执行。2026-10-31 本人确认关键词完整连续匹配、多词不拆分和英文大小写不敏感，以及同截止时间稳定排序、停用分类筛选历史事项；其他未涉及的边界仍待审核。后续依优先级选择真实缺口，不为增加数量而重复实现已有测试。
 
 ## 追踪结论和后续安排
 

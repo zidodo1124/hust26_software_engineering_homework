@@ -1,0 +1,20 @@
+{
+  "reviewedDate": "2026-10-31",
+  "workflowRunId": 41212064529,
+  "workflowUrl": "https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41212064529",
+  "event": "pull_request",
+  "pullRequest": 8,
+  "headSha": "b1b5e9e0d3ecfdcc0b6a31098fd7003af4f508f7",
+  "checkedMergeSha": "72711a4ca7339afbe024a037d9ddc0824b5e2bfd",
+  "checkedMergeParents": ["420d8af8447e39919dc13b21f193caca9bc96d96", "b1b5e9e0d3ecfdcc0b6a31098fd7003af4f508f7"],
+  "conclusion": "success",
+  "reportArtifactId": 13046831460,
+  "reportArtifactName": "android-check-reports-72711a4ca7339afbe024a037d9ddc0824b5e2bfd",
+  "reportArtifactUrl": "https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41212064529/artifacts/13046831460",
+  "reportZipBytes": 89151,
+  "reportZipSha256": "8df4adf8fc73fad72bfe48eef13071294711b3d1db12555749a2e58083ca59b4",
+  "junit": {"suites": 22, "actualTestcaseNodes": 157, "uniqueMethods": 138, "failures": 0, "errors": 0, "skipped": 0},
+  "lint": {"errors": 0, "warnings": 17},
+  "verifiedPassingMethod": "cn.edu.hust.ddlsaver.domain.EventQueryTest.multiWordKeywordMatchesContinuouslyAndCategoriesUseTheirOwnFilters",
+  "limits": "CI JUnit/Lint evidence only; does not represent device acceptance or complete DA-08/TC-14."
+}

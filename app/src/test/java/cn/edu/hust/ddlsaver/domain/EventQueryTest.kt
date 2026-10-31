@@ -48,6 +48,19 @@ class EventQueryTest {
     }
 
     @Test
+    fun multiWordKeywordMatchesContinuouslyAndCategoriesUseTheirOwnFilters() {
+        val source = Category("course-source", "UniqueSourceName")
+        val exact = event("exact").copy(title = "Alpha Beta", description = "", source = source)
+        val separated = event("separated").copy(title = "Alpha x Beta", description = "", source = source)
+        val rows = listOf(exact, separated)
+
+        assertEquals(listOf(exact), EventQuery.select(rows, EventFilter(keyword = "alpha beta"), now))
+        assertTrue(EventQuery.select(rows, EventFilter(keyword = "UniqueSourceName"), now).isEmpty())
+        assertEquals(setOf(exact.id, separated.id),
+            EventQuery.select(rows, EventFilter(sourceId = source.id), now).map { it.id }.toSet())
+    }
+
+    @Test
     fun dateUsesBeijingMidnightAndWorksWithCompletedOrArchivedModes() {
         val before = event("before", "2030-01-02T15:59:00Z").copy(completedAt = 1)
         val after = event("after", "2030-01-02T16:00:00Z").copy(completedAt = 1, archivedAt = 2)
