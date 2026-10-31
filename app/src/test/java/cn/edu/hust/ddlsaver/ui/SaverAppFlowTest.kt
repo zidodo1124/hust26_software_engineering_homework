@@ -351,10 +351,11 @@ class SaverAppFlowTest {
             val archived = save(EventDraft(title = "软件项目已归档", deadlineAt = deadline(day15), sourceId = source.id,
                 tagIds = setOf(course.id, submit.id)))
             setArchived(archived.id, true)
+            save(EventDraft(title = "今日独立事项", deadlineAt = today.atStartOfDay(BeijingZone).toInstant().toEpochMilli()))
             Triple(source, course, submit)
         }
         reloadModel()
-        compose.onNodeWithTag("today-count").assertTextContains("0")
+        compose.onNodeWithTag("today-count").assertTextContains("1")
         scrollHomeTag("toggle-filters")
         compose.onNodeWithTag("toggle-filters").performClick()
         scrollHomeTag("filter-source-${categories.first.id}")
@@ -379,12 +380,12 @@ class SaverAppFlowTest {
         compose.onNodeWithTag("event-list").performScrollToNode(hasText("软件项目甲"))
         compose.onNodeWithText("软件项目甲").assertExists()
         scrollHomeTag("today-count")
-        compose.onNodeWithTag("today-count").assertTextContains("0")
+        compose.onNodeWithTag("today-count").assertTextContains("1")
         scrollHomeTag("clear-filters")
         compose.onNodeWithTag("clear-filters").performClick()
         scrollHomeTag("list-summary")
-        compose.onNodeWithTag("list-summary").assertTextEquals("全部待办 · 4")
-        assertEquals(6, storedEvents().size)
+        compose.onNodeWithTag("list-summary").assertTextEquals("全部待办 · 5")
+        assertEquals(7, storedEvents().size)
     }
 
     @Test
