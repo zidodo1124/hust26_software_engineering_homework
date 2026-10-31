@@ -53,7 +53,9 @@ flowchart LR
 
 [PR #6 的 CI 报告复核](test-evidence/RUN-20261030-DATA-CI/summary.json)中，22 组 JUnit XML 有 137 个不同方法、156 次执行，失败／错误／跳过均为 0；Lint 0 Error、17 Warning。该报告对应 PR 测试用临时合并提交 `73245d6d9e5889004544e5787298a06894fa1834`，分支头为 `5ee1128d1a1f77c1d6dedb39590fe12b4b606214`，两个标识不可混同。CI 成功是该次自动检查证据，不代表所有功能、所有手机或 DA／TC 整例全部通过。
 
-真实 v1／v2／v3 schema 迁移测试各有代表数据；附件迁移自动测试核验的是数据库元数据。真实附件文件的覆盖升级、完整页面组合及实机验收按照本人要求留到最后。2026-10-31 新增的连续多词搜索测试应以该次提交实际 CI 为准，不沿用上面的历史测试结论。
+真实 v1／v2／v3 schema 迁移测试各有代表数据；附件迁移自动测试核验的是数据库元数据。真实附件文件的覆盖升级、完整页面组合及实机验收按照本人要求留到最后。
+
+2026-10-31，[PR #8 的 CI 41212064529](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41212064529) 对分支头 `b1b5e9e0d3ecfdcc0b6a31098fd7003af4f508f7` 对应的临时合并版本执行检查；报告 XML 中新增连续多词搜索测试为通过，全部 138 个方法／157 次执行无失败、错误或跳过，Lint 0 Error／17 Warning。报告产物、临时合并 SHA 与范围见[搜索 CI 摘要](test-evidence/RUN-20261031-SEARCH-CI/summary.json)。两个批次不能累计为新增测试方法数或实机次数。
 
 ## 5. 个人参与与提交记录
 

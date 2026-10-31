@@ -178,3 +178,9 @@ CI Lint 为 **0 错误、12 条警告**，包括本机已有的依赖／ExifInte
 直接下载报告 ZIP 并解析，22 组 JUnit XML 的 156 个 testcase 全部通过，失败、错误、跳过均 0；按测试类和去除 API 配置后缀的方法名去重为 137 个方法；Lint XML 为 0 Error／17 Warning。报告声明次数与实际节点数一致。六项相关新增／扩展方法均有独立通过节点，摘要及报告哈希见[CI 证据](test-evidence/RUN-20261030-DATA-CI/summary.json)。
 
 CI 自动测试覆盖字段独立、分类维护与组合筛选、真实 v1／v2／v3 文件迁移和保存冲突／插入失败的部分路径；[场景追踪](data-test-traceability.md)逐项列出仍缺步骤。JUnit 成功不等于 DA-01—DA-13 或 TC-04／07／14 整例通过。此次没有运行本机测试或手机测试；真实图片文件覆盖升级、完整页面组合与最终设备验收留在后续阶段。
+
+### 14.1 2026-10-31 连续多词搜索 CI
+
+付泽文确认搜索按完整连续文字匹配、多词不拆分且不区分英文大小写后，新增查询规则测试。[PR #8 工作流 41212064529](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41212064529) 的分支头 `b1b5e9e0d3ecfdcc0b6a31098fd7003af4f508f7`，报告产物对应临时合并提交 `72711a4ca7339afbe024a037d9ddc0824b5e2bfd`。下载并解析报告：22 组 XML，138 个不同方法／157 次执行，失败、错误、跳过均 0；新增测试节点通过，Lint 0 Error／17 Warning。哈希、产物和父提交见[搜索 CI 摘要](test-evidence/RUN-20261031-SEARCH-CI/summary.json)。
+
+本次测试是搜索规则在 CI 中的局部验证，不代表 DA-08 整例或实机通过；其他未讨论的需求边界仍待审核。本机未重新执行应用测试。
