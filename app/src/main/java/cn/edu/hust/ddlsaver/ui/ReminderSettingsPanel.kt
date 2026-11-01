@@ -28,6 +28,7 @@ import cn.edu.hust.ddlsaver.domain.AppSettings
 import cn.edu.hust.ddlsaver.domain.CharacterStyle
 import cn.edu.hust.ddlsaver.domain.ExpiredPolicy
 import cn.edu.hust.ddlsaver.reminders.ReminderHealth
+import cn.edu.hust.ddlsaver.reminders.ReminderStatusCopy
 
 private const val SettingsMaxDurationMinutes = Long.MAX_VALUE / 60_000L
 
@@ -176,6 +177,10 @@ private fun ReminderPermissionPanel(health: ReminderHealth, busy: Boolean, onRef
         Text(if (health.canPost) "系统通知：已允许" else "系统通知：未允许或提醒通道已关闭", modifier = Modifier.testTag("notification-permission-status"))
         Text(if (health.canScheduleExact) "提醒方式：可使用精确提醒" else "提醒方式：近似提醒，可能延迟",
             modifier = Modifier.testTag("exact-alarm-status"))
+        ReminderStatusCopy.settingsPlansRetainedHint(health)?.let {
+            Text(it, color = Muted, style = MaterialTheme.typography.bodySmall,
+                modifier = Modifier.testTag("notification-plans-retained-hint"))
+        }
         Text("省电和后台限制仍可能推迟提醒。强制停止应用后需要重新打开，才能恢复提醒安排。", color = Muted,
             style = MaterialTheme.typography.bodySmall)
         Text("待发送提醒：${health.pendingCount}", color = Muted, modifier = Modifier.testTag("reminder-pending-count"))

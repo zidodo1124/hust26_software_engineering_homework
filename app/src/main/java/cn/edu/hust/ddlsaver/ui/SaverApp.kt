@@ -67,6 +67,7 @@ import cn.edu.hust.ddlsaver.domain.Importance
 import cn.edu.hust.ddlsaver.domain.Urgency
 import cn.edu.hust.ddlsaver.domain.UrgencyRules
 import cn.edu.hust.ddlsaver.domain.selectCharacterFeedback
+import cn.edu.hust.ddlsaver.reminders.ReminderStatusCopy
 import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
@@ -213,10 +214,7 @@ fun SaverApp(model: SaverViewModel) {
                         state,
                         batchToken = batchToken,
                         initiallyToday = todayOnHome,
-                        reminderWarning = if (!(state.settings.dailySummaryEnabled || state.settings.dangerReminderEnabled || state.settings.deadlineReminderEnabled)) null
-                            else reminderHealth.lastError?.let { "提醒暂未安排完成，请前往设置重新检查：$it" }
-                                ?: if (!reminderHealth.canPost) "系统通知尚未开启。如需接收提醒，请前往“设置”开启系统通知权限。"
-                                else if (!reminderHealth.canScheduleExact) "当前使用近似提醒，通知可能延迟。可前往“设置”允许精确提醒。" else null,
+                        reminderWarning = ReminderStatusCopy.homeWarning(state.settings, reminderHealth),
                         onSettings = { model.clearOperationError(); screen = "settings" },
                         onOpen = { selectedId = it; model.clearOperationError(); screen = "detail" },
                         onBatch = model::applyBatch,
