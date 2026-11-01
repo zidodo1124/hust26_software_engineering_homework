@@ -135,7 +135,35 @@ def main() -> None:
     assert next_wake([{"triggerAt": now - 1, "state": "SENT", "active": True}], now) is None
     print("PASS nextWakeSkipsSentUsesEarliestPendingAndBackoffForClaimed")
 
-    print("ALL_CHECKS_PASSED count=8 (ReminderRules dedupe/merge subset)")
+    # --- invalidation: complete / archive / reschedule (ReminderPlanStore.rebuild intent) ---
+    def simulate_rebuild(existing: list[dict], desired_keys: set[str]) -> list[dict]:
+        """Mark plans missing from desired as inactive + cancelPending (store rebuild)."""
+        out = []
+        for row in existing:
+            if row["active"] and row["key"] not in desired_keys:
+                out.append({**row, "active": False, "cancelPending": True})
+            else:
+                out.append(dict(row))
+        return out
+
+    active_plans = [
+        {"key": f"DEADLINE:a:{DEADLINE}", "active": True, "deadlineAt": DEADLINE, "state": "SENT"},
+        {"key": f"DANGER:a:{DEADLINE}", "active": True, "deadlineAt": DEADLINE, "state": "SENT"},
+    ]
+    # completed / archived / deleted => no desired event plans
+    after_done = simulate_rebuild(active_plans, desired_keys=set())
+    assert all(not p["active"] and p["cancelPending"] for p in after_done)
+    print("PASS completeArchiveDeleteDeactivatesOldPlans")
+
+    new_deadline = DEADLINE + 300 * 60_000
+    desired_after_reschedule = {f"DEADLINE:a:{new_deadline}"}  # sprint off for simplicity
+    after_move = simulate_rebuild(active_plans, desired_after_reschedule)
+    assert all(not p["active"] and p["cancelPending"] for p in after_move if p["deadlineAt"] == DEADLINE)
+    assert event_plans(deadline=new_deadline, sprint=None, lead=60)[0][2] == f"DEADLINE:a:{new_deadline}"
+    assert f"DEADLINE:a:{DEADLINE}" not in {k for _, _, k, _ in event_plans(deadline=new_deadline, sprint=None)}
+    print("PASS rescheduleDeactivatesOldDeadlineKeys")
+
+    print("ALL_CHECKS_PASSED count=10 (ReminderRules + invalidation subset)")
 
 
 if __name__ == "__main__":

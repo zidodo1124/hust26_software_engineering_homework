@@ -126,6 +126,65 @@ class ReminderEngineTest {
         assertEquals(1, platform.posts.size)
     }
 
+    /** 岳羽泉：已送达后标记完成，应取消仍显示的通知并停用旧计划。 */
+    @Test fun completingAfterDeliveryCancelsVisibleNotificationAndDeactivatesPlans() = runBlocking {
+        val event = create("完成后失效", minutes = 60)
+        engine.reconcile()
+        assertEquals(1, platform.visible.size)
+        val oldKeys = db.dao().readReminderPlans().filter { it.eventId == event.id }.map { it.key }.toSet()
+        repository.setCompleted(event.id, true)
+        engine.reconcile()
+        assertTrue(platform.visible.isEmpty())
+        assertTrue(db.dao().readReminderPlans().filter { it.key in oldKeys }.none { it.active })
+        assertEquals(1, platform.posts.size)
+    }
+
+    /** 岳羽泉：已送达后归档，应取消仍显示的通知并停用旧计划。 */
+    @Test fun archivingAfterDeliveryCancelsVisibleNotificationAndDeactivatesPlans() = runBlocking {
+        val event = create("归档后失效", minutes = 60)
+        engine.reconcile()
+        assertEquals(1, platform.visible.size)
+        val oldKeys = db.dao().readReminderPlans().filter { it.eventId == event.id }.map { it.key }.toSet()
+        repository.setArchived(event.id, true)
+        engine.reconcile()
+        assertTrue(platform.visible.isEmpty())
+        assertTrue(db.dao().readReminderPlans().filter { it.key in oldKeys }.none { it.active })
+    }
+
+    /** 岳羽泉：已送达后删除，应取消仍显示的通知；计划保留账本但不再 active。 */
+    @Test fun deletingAfterDeliveryCancelsVisibleNotificationAndDeactivatesPlans() = runBlocking {
+        val event = create("删除后失效", minutes = 60)
+        engine.reconcile()
+        assertEquals(1, platform.visible.size)
+        repository.delete(event.id)
+        engine.reconcile()
+        assertTrue(platform.visible.isEmpty())
+        assertTrue(db.dao().readReminderPlans().filter { it.eventId == event.id }.none { it.active })
+        assertNull(platform.scheduled)
+    }
+
+    /** 岳羽泉：改期后旧截止的计划停用，旧唤醒时刻不得再投递；新唤醒按新截止重排。 */
+    @Test fun rescheduleAfterDeliveryCancelsOldAlertAndIgnoresOldDeadlineWake() = runBlocking {
+        val start = clock.millis()
+        val event = create("改期事项", minutes = 60)
+        engine.reconcile()
+        assertEquals(1, platform.visible.size)
+        val oldDeadline = event.deadlineAt
+        repository.save(EventDraft(id = event.id, title = "改期后", deadlineAt = start + 300 * 60_000,
+            expectedRevision = event.revision))
+        engine.reconcile()
+        assertTrue(platform.visible.isEmpty())
+        assertTrue(db.dao().readReminderPlans().filter { it.deadlineAt == oldDeadline }.none { it.active })
+        clock.current = Instant.ofEpochMilli(start + 60 * 60_000)
+        engine.reconcile()
+        assertEquals(1, platform.posts.size)
+        assertEquals(start + 240 * 60_000, platform.scheduled)
+        clock.current = Instant.ofEpochMilli(start + 240 * 60_000)
+        engine.reconcile()
+        assertEquals("改期后", platform.posts.last().title)
+        assertEquals(2, platform.posts.size)
+    }
+
     @Test fun dailySummaryUsesCurrentRowsMarksOverdueAndSkipsEmptyDay() = runBlocking {
         clock.current = Instant.parse("2030-01-01T23:59:00Z") // Beijing Jan 2 07:59
         repository.saveSettings(AppSettings(dangerReminderEnabled = false, deadlineReminderEnabled = false))
