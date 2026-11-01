@@ -62,4 +62,49 @@ class ReminderRulesTest {
         }
         EventValidation.validateSettings(AppSettings(dailySummaryMinuteOfDay = 1439, deadlineLeadMinutes = 1))
     }
+
+    /** 岳羽泉：发送键按 (kind, eventId, deadline) 稳定唯一，重复计算不得增生键。 */
+    @Test fun planKeysAreStableUniquePerReasonAndDeadline() {
+        val settings = AppSettings(deadlineLeadMinutes = 60)
+        val first = ReminderRules.eventPlans(event(30), settings)
+        val second = ReminderRules.eventPlans(event(30), settings)
+        assertEquals(setOf("DANGER:a:$deadline", "DEADLINE:a:$deadline"), first.map { it.key }.toSet())
+        assertEquals(first, second)
+        assertEquals(first.size, first.map { it.key }.distinct().size)
+    }
+
+    /** 岳羽泉：改截止时间必须换新发送键，避免与旧账本碰撞后误去重。 */
+    @Test fun deadlineChangeProducesNewKeysSoOldLedgerCannotCollide() {
+        val original = ReminderRules.eventPlans(event(60), AppSettings()).map { it.key }.toSet()
+        val shifted = ReminderRules.eventPlans(
+            event(60).copy(deadlineAt = deadline + 60_000L), AppSettings()).map { it.key }.toSet()
+        assertTrue(original.isNotEmpty())
+        assertTrue(original.intersect(shifted).isEmpty())
+    }
+
+    /** 岳羽泉：不同事项即使同刻触发也不得共用 notificationTag。 */
+    @Test fun differentEventsAtSameInstantKeepDistinctNotificationTags() {
+        val tagsA = ReminderRules.eventPlans(event(60).copy(id = "a"), AppSettings()).map { it.notificationTag }
+        val tagsB = ReminderRules.eventPlans(event(60).copy(id = "b"), AppSettings()).map { it.notificationTag }
+        assertEquals(1, tagsA.distinct().size)
+        assertEquals(1, tagsB.distinct().size)
+        assertTrue(tagsA.intersect(tagsB.toSet()).isEmpty())
+    }
+
+    /** 岳羽泉：nextWake 跳过 SENT，取最早未发送；CLAIMED／FAILED 受重试间隔约束。 */
+    @Test fun nextWakeSkipsSentUsesEarliestPendingAndBackoffForClaimed() {
+        val now = 1_000_000L
+        fun plan(key: String, trigger: Long, state: String, attempt: Long? = null) =
+            ReminderPlanEntity(key, "DEADLINE", "a", deadline, 1, trigger, null, "tag-$key",
+                active = true, state = state, lastAttemptAt = attempt)
+        assertEquals(now + 50, ReminderRules.nextWake(listOf(
+            plan("sent", now - 10, "SENT"),
+            plan("soon", now + 50, "PENDING"),
+            plan("later", now + 100, "PENDING"),
+        ), now))
+        assertEquals(now + RETRY_MILLIS, ReminderRules.nextWake(listOf(
+            plan("claimed", now - 5, "CLAIMED", now),
+        ), now))
+        assertNull(ReminderRules.nextWake(listOf(plan("only-sent", now - 1, "SENT")), now))
+    }
 }
