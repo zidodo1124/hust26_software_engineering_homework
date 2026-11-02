@@ -86,7 +86,7 @@ class RoomEventRepository(
 
     override suspend fun save(draft: EventDraft): DdlEvent {
         val normalized = EventValidation.normalize(draft)
-        normalized.recurrence?.let { spec ->
+        normalized.recurrence?.takeUnless { normalized.applyToFuture }?.let { spec ->
             val first = Instant.ofEpochMilli(normalized.deadlineAt)
             val rule = try { RecurrenceRule(first, spec.frequency, spec.untilDate, spec.count) }
                 catch (_: IllegalArgumentException) { throw EventValidationException("重复结束条件无效，请检查日期或次数。") }
@@ -161,13 +161,16 @@ class RoomEventRepository(
         if (draft.attachments.isNotEmpty()) throw EventValidationException("重复事项不支持图片附件。")
         validateRelations(current.id, draft, current)
         val series = dao.findRecurrenceSeries(occurrence.seriesId) ?: throw EventValidationException("重复系列已不存在。")
-        val frequency = RecurrenceFrequency.valueOf(series.frequency)
+        val oldFrequency = RecurrenceFrequency.valueOf(series.frequency)
+        val frequency = draft.recurrence?.frequency ?: oldFrequency
+        val untilDate = if (draft.recurrence != null) draft.recurrence.untilDate else series.untilEpochDay?.let(LocalDate::ofEpochDay)
+        val count = if (draft.recurrence != null) draft.recurrence.count else series.occurrenceCount
         val selected = Instant.ofEpochMilli(draft.deadlineAt).atZone(UrgencyRules.BEIJING_ZONE)
         val original = Instant.ofEpochMilli(occurrence.scheduledDeadline).atZone(UrgencyRules.BEIJING_ZONE)
-        val anchorDay = if (frequency != RecurrenceFrequency.MONTHLY) null else if (selected.toLocalDate() == original.toLocalDate()) {
+        val anchorDay = if (frequency != RecurrenceFrequency.MONTHLY) null else if (frequency == oldFrequency && selected.toLocalDate() == original.toLocalDate()) {
             series.monthlyAnchorDay ?: Instant.ofEpochMilli(series.firstDeadline).atZone(UrgencyRules.BEIJING_ZONE).dayOfMonth
         } else selected.dayOfMonth
-        val firstDeadline = if (draft.deadlineAt == occurrence.scheduledDeadline) series.firstDeadline else {
+        val firstDeadline = if (frequency == oldFrequency && draft.deadlineAt == occurrence.scheduledDeadline) series.firstDeadline else {
             val first = when (frequency) {
                 RecurrenceFrequency.DAILY -> selected.minusDays(occurrence.occurrenceIndex)
                 RecurrenceFrequency.WEEKLY -> selected.minusWeeks(occurrence.occurrenceIndex)
@@ -179,14 +182,14 @@ class RoomEventRepository(
             }
             first.toInstant().toEpochMilli()
         }
-        val updatedRule = try { RecurrenceRule(Instant.ofEpochMilli(firstDeadline), frequency,
-            series.untilEpochDay?.let(LocalDate::ofEpochDay), series.occurrenceCount, anchorDay) }
+        val updatedRule = try { RecurrenceRule(Instant.ofEpochMilli(firstDeadline), frequency, untilDate, count, anchorDay) }
             catch (_: IllegalArgumentException) { throw EventValidationException("新截止日期超出了重复结束日期。") }
         if (RecurrenceRules.occurrenceAt(updatedRule, occurrence.occurrenceIndex)?.deadline?.toEpochMilli() != draft.deadlineAt) {
             throw EventValidationException("新截止日期超出结束范围，或无法按当前月重复规则表示；可选择仅修改本次。")
         }
-        val template = RecurrenceTemplate.encode(draft.copy(id = null, expectedRevision = null, applyToFuture = false))
-        if (dao.updateRecurrenceSeries(series.copy(firstDeadline = firstDeadline, templateJson = template,
+        val template = RecurrenceTemplate.encode(draft.copy(id = null, expectedRevision = null, recurrence = null, applyToFuture = false))
+        if (dao.updateRecurrenceSeries(series.copy(firstDeadline = firstDeadline, frequency = frequency.name,
+                untilEpochDay = untilDate?.toEpochDay(), occurrenceCount = count, templateJson = template,
                 monthlyAnchorDay = anchorDay, revision = Math.addExact(series.revision, 1L))) != 1) {
             throw EventValidationException("重复系列已不存在。")
         }
@@ -197,7 +200,7 @@ class RoomEventRepository(
             val nextDeadline = RecurrenceRules.occurrenceAt(updatedRule, item.occurrenceIndex)?.deadline?.toEpochMilli()
             if (nextDeadline == null) {
                 if (dao.deleteEvent(row.id) != 1) throw EventNotFoundException()
-                dao.skipOccurrenceForDeletedEvent(row.id)
+                check(dao.deleteRecurrenceOccurrence(series.id, item.occurrenceIndex) == 1)
                 return@forEach
             }
             updateExisting(row.copy(title = draft.title, deadlineAt = nextDeadline, sprintMinutes = draft.sprintMinutes, description = draft.description,

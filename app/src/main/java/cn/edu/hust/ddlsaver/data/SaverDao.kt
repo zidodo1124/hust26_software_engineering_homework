@@ -33,6 +33,9 @@ interface SaverDao {
     @Update
     suspend fun updateRecurrenceOccurrence(occurrence: RecurrenceOccurrenceEntity): Int
 
+    @Query("DELETE FROM recurrence_occurrences WHERE seriesId = :seriesId AND occurrenceIndex = :index")
+    suspend fun deleteRecurrenceOccurrence(seriesId: String, index: Long): Int
+
     @Query("SELECT * FROM recurrence_occurrences WHERE seriesId = :seriesId ORDER BY occurrenceIndex")
     suspend fun recurrenceOccurrences(seriesId: String): List<RecurrenceOccurrenceEntity>
 

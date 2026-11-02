@@ -207,6 +207,28 @@ class RoundTwoRepositoryTest {
     }
 
     @Test
+    fun editingRepeatFrequencyAndEndRecomputesFutureWithoutTouchingHistory() = runBlocking {
+        repository.save(draft("周期规则").copy(recurrence = RecurrenceSpec(RecurrenceFrequency.WEEKLY, count = 5)))
+        val before = repository.events.first().sortedBy { it.deadlineAt }
+        repository.setCompleted(before.first().id, true)
+        val target = repository.events.first().first { it.id == before[1].id }
+        val result = repository.save(target.edit().copy(applyToFuture = true,
+            recurrence = RecurrenceSpec(RecurrenceFrequency.DAILY, count = 3)))
+        val after = repository.events.first().sortedBy { it.deadlineAt }
+        assertEquals(3, after.size)
+        assertEquals(before.first().deadlineAt, after.first().deadlineAt)
+        assertNotNull(after.first().completedAt)
+        assertEquals(target.deadlineAt, result.deadlineAt)
+        assertEquals(target.deadlineAt + 86_400_000L, after.last().deadlineAt)
+        assertEquals(RecurrenceFrequency.DAILY, result.recurrence?.frequency)
+        assertEquals(3, result.recurrence?.count)
+        repository.save(result.edit().copy(applyToFuture = true,
+            recurrence = RecurrenceSpec(RecurrenceFrequency.DAILY, count = 5)))
+        repository.extendRecurrencesThrough(clock.instant().plusSeconds(100L * 86_400L))
+        assertEquals(5, repository.events.first().size)
+    }
+
+    @Test
     fun deletingOneOccurrencePreservesOtherPeriodsAndInvalidatesItsReminder() = runBlocking {
         val first = repository.save(draft("第一个周期"))
         val second = repository.save(draft("第二个周期").copy(deadlineAt = clock.millis() + 86_400_000))

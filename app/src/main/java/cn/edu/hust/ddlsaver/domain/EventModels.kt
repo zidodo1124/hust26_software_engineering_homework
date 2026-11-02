@@ -9,7 +9,8 @@ enum class ExpiredPolicy { KEEP, AUTO_ARCHIVE }
 enum class BatchOperation { COMPLETE, ARCHIVE, DELETE }
 
 data class RecurrenceSpec(val frequency: RecurrenceFrequency, val untilDate: java.time.LocalDate? = null, val count: Int? = null)
-data class RecurrenceRef(val seriesId: String, val index: Long)
+data class RecurrenceRef(val seriesId: String, val index: Long, val frequency: RecurrenceFrequency,
+                         val untilDate: java.time.LocalDate?, val count: Int?)
 
 data class Category(val id: String, val name: String, val isActive: Boolean = true)
 
