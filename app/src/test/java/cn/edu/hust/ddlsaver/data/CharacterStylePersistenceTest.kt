@@ -96,7 +96,7 @@ class CharacterStylePersistenceTest {
     }
 
     private fun open(name: String) = Room.databaseBuilder(context, SaverDatabase::class.java, name)
-        .addMigrations(SaverDatabase.MIGRATION_3_4).build()
+        .addMigrations(SaverDatabase.MIGRATION_3_4, SaverDatabase.MIGRATION_4_5).build()
 
     private fun createV3(name: String, populate: (SQLiteDatabase) -> Unit) {
         context.deleteDatabase(name)

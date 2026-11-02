@@ -12,6 +12,21 @@ import cn.edu.hust.ddlsaver.reminders.ReminderControlEntity
 
 @Dao
 interface SaverDao {
+    @Insert(onConflict = OnConflictStrategy.ABORT)
+    suspend fun insertRecurrenceSeries(series: RecurrenceSeriesEntity)
+
+    @Query("SELECT * FROM recurrence_series WHERE id = :id")
+    suspend fun findRecurrenceSeries(id: String): RecurrenceSeriesEntity?
+
+    @Query("DELETE FROM recurrence_series WHERE id = :id")
+    suspend fun deleteRecurrenceSeries(id: String): Int
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertRecurrenceOccurrence(occurrence: RecurrenceOccurrenceEntity): Long
+
+    @Query("SELECT * FROM recurrence_occurrences WHERE seriesId = :seriesId ORDER BY occurrenceIndex")
+    suspend fun recurrenceOccurrences(seriesId: String): List<RecurrenceOccurrenceEntity>
+
     @Transaction
     @Query("SELECT * FROM events ORDER BY deadlineAt ASC, createdAt ASC, id ASC")
     fun observeEvents(): Flow<List<EventWithRelations>>

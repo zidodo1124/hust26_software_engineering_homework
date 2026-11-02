@@ -30,6 +30,59 @@ import java.util.UUID
 @Config(sdk = [28])
 class SaverDatabaseMigrationTest {
     @Test
+    fun migratesV4AndPersistsIndependentRecurrenceOccurrences() = runBlocking {
+        val context = ApplicationProvider.getApplicationContext<Context>()
+        val name = "migration-v4-recurrence.db"
+        val path = context.getDatabasePath(name)
+        val parent = checkNotNull(path.parentFile)
+        check(parent.isDirectory || parent.mkdirs())
+        var db: SaverDatabase? = null
+        try {
+            val schemaPath = "schemas/cn.edu.hust.ddlsaver.data.SaverDatabase/4.json"
+            val schema = JSONObject(sequenceOf(File(schemaPath), File("app", schemaPath)).first { it.isFile }.readText())
+                .getJSONObject("database")
+            SQLiteDatabase.openOrCreateDatabase(path, null).use { legacy ->
+                val entities = schema.getJSONArray("entities")
+                for (index in 0 until entities.length()) {
+                    val entity = entities.getJSONObject(index)
+                    val table = entity.getString("tableName")
+                    legacy.execSQL(entity.getString("createSql").replace("\${TABLE_NAME}", table))
+                    val indices = entity.optJSONArray("indices")
+                    if (indices != null) for (i in 0 until indices.length()) {
+                        legacy.execSQL(indices.getJSONObject(i).getString("createSql").replace("\${TABLE_NAME}", table))
+                    }
+                }
+                val setup = schema.getJSONArray("setupQueries")
+                for (index in 0 until setup.length()) legacy.execSQL(setup.getString(index))
+                legacy.execSQL("INSERT INTO events VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                    arrayOf<Any?>("legacy", "旧事项", 1893567600000L, null, "原描述", "HIGH", null, null, 10L, 20L, 3L, null))
+                legacy.version = 4
+            }
+            fun open() = Room.databaseBuilder(context, SaverDatabase::class.java, name)
+                .addMigrations(SaverDatabase.MIGRATION_4_5).build()
+            db = open()
+            assertEquals("旧事项", RoomEventRepository(db).events.first().single().title)
+            val series = RecurrenceSeriesEntity("series", 1893567600000L, "WEEKLY", null, 3, 1)
+            val first = RecurrenceOccurrenceEntity("series", 0, 1893567600000L, "event-1", false)
+            val skipped = RecurrenceOccurrenceEntity("series", 1, 1894172400000L, null, true)
+            db.dao().insertRecurrenceSeries(series)
+            assertTrue(db.dao().insertRecurrenceOccurrence(first) != -1L)
+            assertEquals(-1L, db.dao().insertRecurrenceOccurrence(first.copy(eventId = "other")))
+            assertTrue(db.dao().insertRecurrenceOccurrence(skipped) != -1L)
+            db.close()
+            db = open()
+            assertEquals(series, db.dao().findRecurrenceSeries("series"))
+            assertEquals(listOf(first, skipped), db.dao().recurrenceOccurrences("series"))
+            assertEquals("原描述", RoomEventRepository(db).events.first().single().description)
+            db.dao().deleteRecurrenceSeries("series")
+            assertTrue(db.dao().recurrenceOccurrences("series").isEmpty())
+        } finally {
+            db?.close()
+            context.deleteDatabase(name)
+        }
+    }
+
+    @Test
     fun migratesV2AndKeepsRelations() = runBlocking {
         val context = ApplicationProvider.getApplicationContext<Context>()
         val name = "migration-v2.db"
@@ -67,7 +120,7 @@ class SaverDatabaseMigrationTest {
                 legacy.version = 2
             }
             fun open() = Room.databaseBuilder(context, SaverDatabase::class.java, name)
-                .addMigrations(SaverDatabase.MIGRATION_1_2, SaverDatabase.MIGRATION_2_3, SaverDatabase.MIGRATION_3_4).build()
+                .addMigrations(SaverDatabase.MIGRATION_1_2, SaverDatabase.MIGRATION_2_3, SaverDatabase.MIGRATION_3_4, SaverDatabase.MIGRATION_4_5).build()
             db = open()
             var repository = RoomEventRepository(db)
             val restored = repository.events.first().single()
@@ -124,7 +177,7 @@ class SaverDatabaseMigrationTest {
                 legacy.version = 1
             }
             fun open() = Room.databaseBuilder(context, SaverDatabase::class.java, databaseName)
-                .addMigrations(SaverDatabase.MIGRATION_1_2, SaverDatabase.MIGRATION_2_3, SaverDatabase.MIGRATION_3_4).build()
+                .addMigrations(SaverDatabase.MIGRATION_1_2, SaverDatabase.MIGRATION_2_3, SaverDatabase.MIGRATION_3_4, SaverDatabase.MIGRATION_4_5).build()
             database = open()
             var repository = RoomEventRepository(database, clock)
             // Opening through Room executes the migration and validates every current table and index.
