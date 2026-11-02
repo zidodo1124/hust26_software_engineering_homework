@@ -10,7 +10,7 @@
 
 大学生的作业、报告、活动报名等截止信息常分散在不同通知中，事项说明、图片材料和处理状态也不易集中查看。HUSTer's DDL Saver 将截止事项、分类、自定义文本和图片放在同一条记录中，提供时间紧迫度、完成／归档管理和三类系统提醒。
 
-目标用户是使用 Android 手机、需要管理多类期限的大学生。应用采用离线单机方式，无账号注册、服务器和云同步；当前不提供 OCR、联网 AI 对话或应用内备份恢复。选题来源见[原始想法](../idea.md)，课程交付依据见[课程要求记录](../task_finish_tips.md)。
+目标用户是使用 Android 手机、需要管理多类期限的大学生。应用采用离线单机方式，无账号注册、服务器和云同步；当前不提供 OCR、联网 AI 对话或应用内备份恢复。选题来源见[原始想法](project/idea.md)，课程交付依据见[课程要求记录](project/task_finish_tips.md)。
 
 ## 2. 需求与范围
 
@@ -100,7 +100,7 @@ flowchart LR
 | 交付项 | 现有材料 | 提交前仍需完成 |
 | --- | --- | --- |
 | 可运行软件与源码 | 本机构建的 Debug APK；GitHub 仓库；[构建说明](development.md) | 选定最终源码状态、重新核对 APK 哈希／签名与目标机安装，不混用不同签名包 |
-| 选题及项目汇编 | 本文件、[项目介绍](../README.md) | 小组审核与老师模板适配 |
+| 选题及项目汇编 | 本文件、[项目介绍](project/README.md) | 小组审核与老师模板适配 |
 | 独立需求分析 | [requirements.md](requirements.md) | 整体需求审核及剩余边界确认 |
 | 独立设计材料 | [design.md](design.md)、[技术清单](technology-stack.md) | 与最终源码及本轮诊断增量对应 |
 | 独立测试材料 | [test-report.md](test-report.md)、[test-records.md](test-records.md)、[测试追踪](data-test-traceability.md) | 完成必要设备补测，保留未解决问题与原始失败记录 |

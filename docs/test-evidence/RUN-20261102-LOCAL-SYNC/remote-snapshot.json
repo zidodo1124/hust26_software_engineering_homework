@@ -1,0 +1,49 @@
+{
+  "checkedAtUtc": "2026-11-02T09:51:34.226014+00:00",
+  "scope": "Sanitized public state: current main, PR 14, CI 67 and 68; no credentials, request headers, or local user data.",
+  "main": {
+    "sha": "eaa9a590a6baae46f9808eff911463d947c43434",
+    "url": "https://github.com/zidodo1124/hust26_software_engineering_homework/commit/eaa9a590a6baae46f9808eff911463d947c43434",
+    "subject": "Merge pull request #14 from zidodo1124/feature/fuze-recurrence-storage"
+  },
+  "openPulls": [],
+  "pull14": {
+    "number": 14,
+    "title": "feat(付泽文): 添加重复任务数据表与迁移",
+    "html_url": "https://github.com/zidodo1124/hust26_software_engineering_homework/pull/14",
+    "state": "closed",
+    "created_at": "2026-11-02T07:15:12Z",
+    "updated_at": "2026-11-02T09:12:22Z",
+    "closed_at": "2026-11-02T09:12:22Z",
+    "merged_at": "2026-11-02T09:12:22Z",
+    "merge_commit_sha": "eaa9a590a6baae46f9808eff911463d947c43434",
+    "headSha": "8760bca29cc1e1f60448c08a21684140553d2e4b",
+    "headBranch": "feature/fuze-recurrence-storage",
+    "baseBranch": "main",
+    "draft": false
+  },
+  "runs": [
+    {
+      "id": 41418746542,
+      "run_number": 68,
+      "head_sha": "eaa9a590a6baae46f9808eff911463d947c43434",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41418746542",
+      "created_at": "2026-11-02T09:12:24Z",
+      "updated_at": "2026-11-02T09:18:02Z"
+    },
+    {
+      "id": 41416993975,
+      "run_number": 67,
+      "head_sha": "8760bca29cc1e1f60448c08a21684140553d2e4b",
+      "head_branch": "feature/fuze-recurrence-storage",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41416993975",
+      "created_at": "2026-11-02T08:58:50Z",
+      "updated_at": "2026-11-02T09:05:05Z"
+    }
+  ]
+}

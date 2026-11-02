@@ -1,5 +1,7 @@
 # 演示后教师提问速查入口
 
+> **版本提示：** 本套仍解释手机的 `demo-v0.3.5`，旧行号应配合固定标签链接阅读。本地已同步较新代码；当前功能与代码地址请查[本地源码导航](../source-navigation.md)，同步状态见[项目状态](../project/STATUS.md)。
+
 **前 5 分钟只展示软件功能，不打开源码、不讲架构。** 按[功能演示脚本](../acceptance-demo/02-demo-script.md)完成 D01—D06 后结束展示；老师提问时，再从下表找到对应的一句话回答。只有老师继续追问实现或要求看代码，才打开详细问答和源码段，不默认接着主动进行代码讲解。
 
 适用手机包 **0.3.5／versionCode 8、Room schema 4**，固定标签 `demo-v0.3.5`；产品源码 `f024ecea4b287c7a8768c2dc62af9be9228c9ae6`，交付提交 `e542b910c748410176e86c8c43bab4c5e23a795e`。更新：2026-11-02（America/Los_Angeles）。远程与安装包的区别见[已核对的版本快照](../acceptance-demo/00-version-and-repository-status.md)，本手册不继续追踪远程变动。
