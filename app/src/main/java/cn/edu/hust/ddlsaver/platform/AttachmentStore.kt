@@ -54,7 +54,14 @@ class AttachmentStore(context: Context) {
             rollback(created, failure)
             diagnostics.reportFailure(failure, failure.suppressed.size - suppressedBeforeRollback)
             throw if (failure is AttachmentException) failure
-            else AttachmentException("图片导入失败，请确认图片可读取且本机存储空间充足。", failure)
+            else {
+                // A denied private-file operation must not be presented as a source URI permission issue.
+                val sourceAccessDenied = failure is SecurityException && diagnostics.stage in sourceAccessStages
+                val message = if (sourceAccessDenied) {
+                    "图片导入失败：来源访问权限不可用。请重新复制图片，或使用“从相册选择”重新添加。"
+                } else "图片导入失败，请确认图片可读取且本机存储空间充足。"
+                AttachmentException(message, failure)
+            }
         }
     }
 
@@ -304,5 +311,11 @@ class AttachmentStore(context: Context) {
         private val imageName = Regex("$UUID_PATTERN\\.img")
         private val ownedName = Regex("$UUID_PATTERN\\.(img|part)")
         private val fileOperations = Mutex()
+        private val sourceAccessStages = setOf(
+            AttachmentImportDiagnostics.Stage.METADATA,
+            AttachmentImportDiagnostics.Stage.OPEN_SOURCE,
+            AttachmentImportDiagnostics.Stage.READ_SOURCE,
+            AttachmentImportDiagnostics.Stage.CLOSE_SOURCE,
+        )
     }
 }

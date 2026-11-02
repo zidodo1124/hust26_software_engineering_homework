@@ -3,13 +3,13 @@ package cn.edu.hust.ddlsaver.reminders
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.app.AlarmManager
 import android.util.Log
 import cn.edu.hust.ddlsaver.data.SaverDatabase
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -39,16 +39,18 @@ class ReminderRuntime private constructor(private val app: Context) {
         requests.trySend(Unit)
     }
 
-    suspend fun reconcileNow() {
-        try { mutableHealth.value = engine.reconcile(forceReschedule = true) }
+    suspend fun reconcileNow(): ReminderHealth {
+        return try { engine.reconcile(forceReschedule = true).also { mutableHealth.value = it } }
         catch (cancelled: CancellationException) { throw cancelled }
         catch (error: Exception) { failure(error) }
     }
 
-    private fun failure(error: Exception) {
-        mutableHealth.value = mutableHealth.value.copy(
+    private fun failure(error: Exception): ReminderHealth {
+        val failed = mutableHealth.value.copy(
             lastError = "提醒恢复暂未完成（${error.javaClass.simpleName}），下次打开时将重试。")
+        mutableHealth.value = failed
         Log.e("DDLReminder", "Reminder reconciliation failed: ${error.javaClass.simpleName}")
+        return failed
     }
 
     private fun close() { scope.cancel(); requests.close(); database.close() }
@@ -68,30 +70,57 @@ class ReminderRuntime private constructor(private val app: Context) {
 class ReminderAlarmReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent?) {
         if (intent?.action != AndroidReminderPlatform.ACTION_WAKE) return
-        reconcileBounded(context)
+        reconcileBounded(context, RecoveryTrigger.ALARM)
     }
 }
 
 class ReminderRestoreReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent?) {
-        if (intent?.action !in actions) return
-        reconcileBounded(context)
-    }
-    companion object {
-        private val actions = setOf(Intent.ACTION_BOOT_COMPLETED, Intent.ACTION_TIME_CHANGED,
-            Intent.ACTION_TIMEZONE_CHANGED, Intent.ACTION_MY_PACKAGE_REPLACED,
-            AlarmManager.ACTION_SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED)
+        val trigger = RecoveryTrigger.fromAction(intent?.action) ?: return
+        if (trigger == RecoveryTrigger.ALARM) return
+        reconcileBounded(context, trigger)
     }
 }
 
-private fun BroadcastReceiver.reconcileBounded(context: Context) {
+private fun BroadcastReceiver.reconcileBounded(context: Context, trigger: RecoveryTrigger) {
     val pending = goAsync()
     val app = context.applicationContext
+    val diagnostics = ReminderRecoveryDiagnostics.create(app, trigger)
     CoroutineScope(SupervisorJob() + Dispatchers.IO).launch {
-        try { withTimeout(8_000L) { ReminderRuntime.get(app).reconcileNow() } }
-        catch (error: Exception) {
-            // Durable plans/control remain pending. Do not crash the process or log user event contents.
-            Log.e("DDLReminder", "Receiver reconciliation deferred: ${error.javaClass.simpleName}")
-        } finally { pending.finish() }
+        runReceiverReconciliation(diagnostics, { ReminderRuntime.get(app).reconcileNow() }, { pending.finish() })
+    }
+}
+
+/** IO-worker body shared by manifest receivers. Completion is guaranteed even if diagnostics fail. */
+internal suspend fun runReceiverReconciliation(
+    diagnostics: ReminderRecoveryDiagnostics?,
+    reconcile: suspend () -> ReminderHealth,
+    finish: () -> Unit,
+    timeoutMillis: Long = 8_000L,
+) {
+    try {
+        withTimeout(timeoutMillis) {
+            diagnostics?.received()
+            diagnostics?.started()
+            val health = reconcile()
+            val outcome = when {
+                health.lastError != null -> RecoveryOutcome.HEALTH_ERROR
+                !health.canPost -> RecoveryOutcome.NOTIFICATION_BLOCKED
+                else -> RecoveryOutcome.COMPLETED
+            }
+            diagnostics?.finished(outcome, health)
+        }
+    } catch (_: TimeoutCancellationException) {
+        diagnostics?.finished(RecoveryOutcome.TIMED_OUT)
+        Log.e("DDLReminder", "Receiver reconciliation timed out")
+    } catch (cancelled: CancellationException) {
+        diagnostics?.finished(RecoveryOutcome.CANCELLED)
+        throw cancelled
+    } catch (_: Exception) {
+        // Durable plans/control remain pending. Never retain exception messages or user contents.
+        diagnostics?.finished(RecoveryOutcome.FAILED)
+        Log.e("DDLReminder", "Receiver reconciliation deferred")
+    } finally {
+        finish()
     }
 }

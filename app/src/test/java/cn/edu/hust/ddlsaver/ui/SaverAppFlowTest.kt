@@ -14,6 +14,8 @@ import android.net.Uri
 import androidx.compose.ui.test.assertTextContains
 import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.assertIsSelected
+import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.assertIsEnabled
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
@@ -48,6 +50,7 @@ import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.ExternalResource
@@ -74,6 +77,7 @@ import java.io.File
 @SQLiteMode(SQLiteMode.Mode.NATIVE)
 class SaverAppFlowTest {
     private val compose = createAndroidComposeRule<MainActivity>()
+    @Volatile private var diagnosticModel: SaverViewModel? = null
     private val databaseIsolation = object : ExternalResource() {
         override fun before() = removeTestDatabase()
         override fun after() = removeTestDatabase()
@@ -90,14 +94,29 @@ class SaverAppFlowTest {
     private val failureDiagnostics = object : TestWatcher() {
         override fun failed(error: Throwable, description: Description) {
             // Never ask Espresso/Compose to become idle again while reporting an idle failure.
-            println("UI-DIAGNOSTIC FAILED ${description.methodName}")
-            println(error.stackTraceToString())
+            println("UI-DIAGNOSTIC FAILED ${description.methodName} error_type=${error.javaClass.simpleName}")
+            val snapshot = diagnosticModel?.state?.value
+            if (snapshot == null) {
+                println("UI-DIAGNOSTIC vm_cached=false")
+            } else {
+                // Only cached StateFlow data; no Activity, semantics or database access on failure.
+                println("UI-DIAGNOSTIC vm_cached=true loading=${snapshot.loading} busy=${snapshot.busy} " +
+                    "action_kind=${snapshot.actionResult?.kind} action_token=${snapshot.actionResult?.token} " +
+                    "image_import_result_present=${snapshot.imageImportResult != null} " +
+                    "character_style=${snapshot.settings.characterStyle} load_error_present=${snapshot.loadError != null} " +
+                    "operation_error_present=${snapshot.operationError != null} cleanup_warning_present=${snapshot.cleanupWarning != null}")
+            }
         }
     }
 
     // Reset only this test runtime's database and attachment fixtures, outside Activity lifetime.
     @get:Rule
     val rules: TestRule = RuleChain.outerRule(databaseIsolation).around(compose).around(failureDiagnostics)
+
+    @Before
+    fun cacheModelForFailureDiagnostics() {
+        diagnosticModel = ViewModelProvider(compose.activity)[SaverViewModel::class.java]
+    }
 
     @Test
     fun requiredInputIsRejectedThenNewEventCanBeSavedAndEdited() {
@@ -577,8 +596,8 @@ class SaverAppFlowTest {
         awaitText("DDL Saver")
         compose.onNodeWithText("设置").performClick()
         compose.onNodeWithTag("character-style-CHIBI").assertIsSelected()
-        compose.onNodeWithTag("character-style-CLASSIC").performClick()
-        compose.onNodeWithTag("settings-save").performScrollTo().performClick()
+        compose.onNodeWithTag("character-style-CLASSIC").performClick().assertIsSelected()
+        compose.onNodeWithTag("settings-save").performScrollTo().assertIsDisplayed().assertIsEnabled().performClick()
         awaitText("DDL Saver")
         assertEquals(original, withRepository { settings.first() })
     }
@@ -678,6 +697,7 @@ class SaverAppFlowTest {
         println("UI-RECREATE-BEGIN")
         scenario.recreate()
         scenario.onActivity { activity ->
+            diagnosticModel = ViewModelProvider(activity)[SaverViewModel::class.java]
             assertTrue("recreate() must construct a different Activity instance",
                 previousIdentity != System.identityHashCode(activity))
             assertTrue("Recreation must retain the original launch identity",

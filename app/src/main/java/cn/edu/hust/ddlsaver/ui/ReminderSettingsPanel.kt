@@ -181,7 +181,7 @@ private fun ReminderPermissionPanel(health: ReminderHealth, busy: Boolean, onRef
             Text(it, color = Muted, style = MaterialTheme.typography.bodySmall,
                 modifier = Modifier.testTag("notification-plans-retained-hint"))
         }
-        Text("省电和后台限制仍可能推迟提醒。强制停止应用后需要重新打开，才能恢复提醒安排。", color = Muted,
+        Text("省电和后台限制仍可能推迟提醒。手机重启或强制停止应用后，请先打开本应用检查提醒安排。", color = Muted,
             style = MaterialTheme.typography.bodySmall)
         Text("待发送提醒：${health.pendingCount}", color = Muted, modifier = Modifier.testTag("reminder-pending-count"))
         health.lastError?.let { ErrorNotice("提醒暂未安排完成，可重新检查并安排。详情：$it") }

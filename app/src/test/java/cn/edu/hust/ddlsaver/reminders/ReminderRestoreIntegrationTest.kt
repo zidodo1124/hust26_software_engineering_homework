@@ -5,6 +5,8 @@ import android.app.AlarmManager
 import android.app.Application
 import android.app.NotificationManager
 import android.content.Intent
+import android.content.Context
+import android.content.pm.ApplicationInfo
 import android.os.Looper
 import androidx.test.core.app.ApplicationProvider
 import cn.edu.hust.ddlsaver.data.RoomEventRepository
@@ -12,6 +14,8 @@ import cn.edu.hust.ddlsaver.data.SaverDatabase
 import cn.edu.hust.ddlsaver.domain.AppSettings
 import cn.edu.hust.ddlsaver.domain.EventDraft
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.withTimeout
 import org.junit.After
 import org.junit.Assert.*
 import org.junit.Before
@@ -23,6 +27,7 @@ import org.robolectric.annotation.Config
 import org.robolectric.annotation.LooperMode
 import org.robolectric.annotation.SQLiteMode
 import org.robolectric.shadows.ShadowAlarmManager
+import org.json.JSONObject
 import java.time.Instant
 import java.util.concurrent.TimeUnit
 
@@ -36,10 +41,14 @@ class ReminderRestoreIntegrationTest {
     private lateinit var database: SaverDatabase
     private lateinit var alarms: AlarmManager
     private lateinit var notifications: NotificationManager
+    private var originalFlags = 0
 
     @Before
     fun prepare() {
         app = ApplicationProvider.getApplicationContext()
+        originalFlags = app.applicationInfo.flags
+        app.applicationInfo.flags = originalFlags or ApplicationInfo.FLAG_DEBUGGABLE
+        app.deleteSharedPreferences(ReminderRecoveryDiagnostics.FILE_NAME)
         ReminderRuntime.resetForTests()
         app.deleteDatabase("ddl-saver.db")
         shadowOf(app).grantPermissions(Manifest.permission.POST_NOTIFICATIONS)
@@ -54,7 +63,8 @@ class ReminderRestoreIntegrationTest {
             repository.saveSettings(AppSettings(dailySummaryEnabled = false, dangerReminderEnabled = false))
             repository.save(EventDraft(title = "广播恢复未来事项",
                 deadlineAt = Instant.now().plusSeconds(7 * 86_400L).toEpochMilli()))
-            ReminderRuntime.get(app).reconcileNow()
+            val result = ReminderRuntime.get(app).reconcileNow()
+            assertEquals(result, ReminderRuntime.get(app).health.value)
         }
         assertEquals(1, shadowOf(alarms).getScheduledAlarms().size)
         assertNull(ReminderRuntime.get(app).health.value.lastError)
@@ -67,6 +77,8 @@ class ReminderRestoreIntegrationTest {
         alarms.cancelAll()
         notifications.cancelAll()
         app.deleteDatabase("ddl-saver.db")
+        app.deleteSharedPreferences(ReminderRecoveryDiagnostics.FILE_NAME)
+        app.applicationInfo.flags = originalFlags
     }
 
     @Test
@@ -97,7 +109,13 @@ class ReminderRestoreIntegrationTest {
             assertEquals(originalControl, database.dao().readReminderControl())
             assertEquals(0, shadowOf(notifications).size())
             assertNull(ReminderRuntime.get(app).health.value.lastError)
+            val diagnostic = diagnostic(checkNotNull(RecoveryTrigger.fromAction(action)))
+            assertEquals("finished", diagnostic.getString("phase"))
+            assertEquals("completed", diagnostic.getString("outcome"))
+            assertFalse(diagnostic.getBoolean("has_error"))
+            assertEquals(originalPlans.size, diagnostic.getInt("pending_count"))
         }
+        assertEquals("completed", diagnostic(RecoveryTrigger.BOOT).getString("outcome"))
     }
 
     @Test
@@ -114,6 +132,8 @@ class ReminderRestoreIntegrationTest {
         assertNull(blocked.scheduledTriggerAt)
         assertFalse(blocked.alarmDirty)
         assertEquals(0, shadowOf(notifications).size())
+        assertEquals("notification_blocked", diagnostic(RecoveryTrigger.BOOT).getString("outcome"))
+        assertFalse(diagnostic(RecoveryTrigger.BOOT).getBoolean("can_post"))
 
         shadowOf(app).grantPermissions(Manifest.permission.POST_NOTIFICATIONS)
         // A supported restore event after permission returns; there is no invented POST_NOTIFICATIONS broadcast.
@@ -123,6 +143,7 @@ class ReminderRestoreIntegrationTest {
         assertEquals(originalPlans, database.dao().readReminderPlans())
         assertFalse(checkNotNull(database.dao().readReminderControl()).alarmDirty)
         assertEquals(0, shadowOf(notifications).size())
+        assertEquals("completed", diagnostic(RecoveryTrigger.BOOT).getString("outcome"))
     }
 
     @Test
@@ -143,9 +164,13 @@ class ReminderRestoreIntegrationTest {
         assertEquals(originalPlans, database.dao().readReminderPlans())
         assertEquals(originalControl, database.dao().readReminderControl())
         assertEquals(0, shadowOf(notifications).size())
+        assertTrue(app.getSharedPreferences(ReminderRecoveryDiagnostics.FILE_NAME, Context.MODE_PRIVATE).all.isEmpty())
     }
 
-    private fun sendRestoreBroadcastAndAwaitFinish(action: String) {
+    private fun diagnostic(trigger: RecoveryTrigger): JSONObject = JSONObject(checkNotNull(
+        app.getSharedPreferences(ReminderRecoveryDiagnostics.FILE_NAME, Context.MODE_PRIVATE).getString(trigger.key, null)))
+
+    private suspend fun sendRestoreBroadcastAndAwaitFinish(action: String) {
         // Resolve the receiver registered from the production manifest, then let the framework dispatch it.
         val intent = Intent(action).setPackage(app.packageName)
         val receiver = shadowOf(app).getReceiversForIntent(intent).filterIsInstance<ReminderRestoreReceiver>().single()
@@ -155,5 +180,9 @@ class ReminderRestoreIntegrationTest {
         assertTrue("Expected goAsync for $action", receiverShadow.wentAsync())
         val pending = checkNotNull(receiverShadow.originalPendingResult)
         shadowOf(pending).future.get(10, TimeUnit.SECONDS)
+        // Receiver finish intentionally does not wait for best-effort diagnostic disk writes.
+        withTimeout(5_000) {
+            while (!ReminderRecoveryDiagnostics.sharedWriter.isIdle) delay(1)
+        }
     }
 }

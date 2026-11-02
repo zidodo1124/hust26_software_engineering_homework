@@ -1,6 +1,7 @@
 package cn.edu.hust.ddlsaver.platform
 
 import android.content.Context
+import android.content.ContextWrapper
 import android.content.pm.ApplicationInfo
 import android.graphics.Bitmap
 import android.net.Uri
@@ -78,7 +79,7 @@ class AttachmentImportDiagnosticsTest {
         val failure = expectFailure { store.importImages(listOf(Uri.fromFile(freshSource), denied)) }
 
         assertOriginalCause(original, failure)
-        assertEquals("图片导入失败，请确认图片可读取且本机存储空间充足。", failure.message)
+        assertEquals("图片导入失败：来源访问权限不可用。请重新复制图片，或使用“从相册选择”重新添加。", failure.message)
         assertEquals(setOf(existing.relativePath), privateNames())
         assertArrayEquals(existingBytes, File(copies, existing.relativePath).readBytes())
         assertTrue(freshSource.isFile)
@@ -116,6 +117,50 @@ class AttachmentImportDiagnosticsTest {
         assertEquals("not a directory", copies.readText())
         assertTrue(source.isFile)
         assertLog("ensure_directory", "none", 0, 1, "validation")
+    }
+
+    @Test
+    fun deniedPrivateStorageAccessDoesNotRecommendRecopyingTheSource() = runBlocking {
+        val source = png("readable-source.png")
+        val sourceBytes = source.readBytes()
+        val original = SecurityException("private storage access denied")
+        var denyPrivateStorage = false
+        val restrictedContext = object : ContextWrapper(context) {
+            override fun getApplicationContext(): Context = this
+            override fun getFilesDir(): File {
+                if (denyPrivateStorage) throw original
+                return super.getFilesDir()
+            }
+        }
+        val restrictedStore = AttachmentStore(restrictedContext)
+        denyPrivateStorage = true
+
+        val failure = expectFailure { restrictedStore.importImages(listOf(Uri.fromFile(source))) }
+
+        assertOriginalCause(original, failure)
+        assertEquals("图片导入失败，请确认图片可读取且本机存储空间充足。", failure.message)
+        assertTrue(privateNames().isEmpty())
+        assertArrayEquals(sourceBytes, source.readBytes())
+        assertLog("ensure_directory", "none", 0, 1, "security_denied")
+    }
+
+    @Test
+    fun deniedSourceCloseStillRollsBackAndOffersReselection() = runBlocking {
+        val source = png("source-close.png")
+        val sourceBytes = source.readBytes()
+        val uri = Uri.parse("content://private-authority/close-denied")
+        val original = SecurityException("private source close failure")
+        shadowOf(context.contentResolver).registerInputStream(uri, object : ByteArrayInputStream(sourceBytes) {
+            override fun close() = throw original
+        })
+
+        val failure = expectFailure { store.importImages(listOf(uri)) }
+
+        assertOriginalCause(original, failure)
+        assertEquals("图片导入失败：来源访问权限不可用。请重新复制图片，或使用“从相册选择”重新添加。", failure.message)
+        assertTrue(privateNames().isEmpty())
+        assertArrayEquals(sourceBytes, source.readBytes())
+        assertLog("close_source", "content", 1, 1, "security_denied")
     }
 
     @Test

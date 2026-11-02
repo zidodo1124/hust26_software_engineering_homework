@@ -164,6 +164,9 @@ class AttachmentClipboardFlowTest {
         compose.waitUntil(20_000) { !model.state.value.busy && model.state.value.operationError != null }
         val error = checkNotNull(model.state.value.operationError)
         assertTrue(error.contains("图片导入失败"))
+        assertTrue(error.contains("来源访问权限不可用"))
+        assertTrue(error.contains("重新复制图片"))
+        assertTrue(error.contains("从相册选择"))
         compose.onNodeWithText(error).assertExists()
         assertTrue("The controlled URI must actually be read", deniedReads.get() > 0)
         assertEquals("The first image must have been imported before the second failed", 2, completedCopiesAtFailure.get())
