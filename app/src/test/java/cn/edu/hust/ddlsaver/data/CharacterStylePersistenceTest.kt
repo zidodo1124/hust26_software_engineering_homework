@@ -56,7 +56,7 @@ class CharacterStylePersistenceTest {
                 database.dao().readReminderPlans())
             assertEquals(ReminderControlEntity(scheduledTriggerAt = 1893566000000, desiredTriggerAt = 1893566000000,
                 scheduleMode = "exact", alarmDirty = false), database.dao().readReminderControl())
-            assertEquals(4, database.openHelper.readableDatabase.version)
+            assertEquals(5, database.openHelper.readableDatabase.version)
             database.close()
             database = open(name)
             assertEquals(event, RoomEventRepository(database).events.first().single())
