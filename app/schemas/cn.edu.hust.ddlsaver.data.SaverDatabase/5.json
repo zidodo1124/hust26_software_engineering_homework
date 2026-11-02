@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 5,
-    "identityHash": "c1c2e874440a56a501b975a659b8cb00",
+    "identityHash": "d8104fb04ac4b43a85b782258c9181f0",
     "entities": [
       {
         "tableName": "events",
@@ -578,7 +578,7 @@
       },
       {
         "tableName": "recurrence_series",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `firstDeadline` INTEGER NOT NULL, `frequency` TEXT NOT NULL, `untilEpochDay` INTEGER, `occurrenceCount` INTEGER, `revision` INTEGER NOT NULL, `templateJson` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `firstDeadline` INTEGER NOT NULL, `frequency` TEXT NOT NULL, `untilEpochDay` INTEGER, `occurrenceCount` INTEGER, `revision` INTEGER NOT NULL, `templateJson` TEXT NOT NULL, `monthlyAnchorDay` INTEGER, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -619,6 +619,11 @@
             "columnName": "templateJson",
             "affinity": "TEXT",
             "notNull": true
+          },
+          {
+            "fieldPath": "monthlyAnchorDay",
+            "columnName": "monthlyAnchorDay",
+            "affinity": "INTEGER"
           }
         ],
         "primaryKey": {
@@ -697,7 +702,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c1c2e874440a56a501b975a659b8cb00')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'd8104fb04ac4b43a85b782258c9181f0')"
     ]
   }
 }

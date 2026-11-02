@@ -226,8 +226,14 @@ class RoomEventRepository(
     suspend fun extendRecurrencesThrough(through: Instant) {
         reminderTransaction {
             dao.readRecurrenceSeries().forEach { series ->
-                val first = Instant.ofEpochMilli(series.firstDeadline)
-                if (first <= through) materializeRecurrence(series.id, first, through)
+                if (series.occurrenceCount == 0) return@forEach
+                val rule = RecurrenceRule(Instant.ofEpochMilli(series.firstDeadline), RecurrenceFrequency.valueOf(series.frequency),
+                    series.untilEpochDay?.let(LocalDate::ofEpochDay), series.occurrenceCount, series.monthlyAnchorDay)
+                val known = dao.recurrenceOccurrences(series.id).map { it.occurrenceIndex }.toHashSet()
+                var firstMissing = 0L
+                while (firstMissing in known) firstMissing++
+                val from = RecurrenceRules.occurrenceAt(rule, firstMissing)?.deadline ?: return@forEach
+                if (from <= through) materializeRecurrence(series.id, from, through)
             }
         }
     }
