@@ -24,6 +24,13 @@ data class RecurrenceRule(
 data class RecurrenceOccurrence(val index: Long, val deadline: Instant)
 
 object RecurrenceRules {
+    /** Existing indexes include skipped occurrences; never recreate those when extending a window. */
+    fun missingBetween(rule: RecurrenceRule, from: Instant, through: Instant, knownIndexes: Set<Long>,
+                       maxResults: Int = 10_000): List<RecurrenceOccurrence> {
+        require(knownIndexes.all { it >= 0 })
+        return between(rule, from, through, maxResults).filterNot { it.index in knownIndexes }
+    }
+
     /** Compute from the original date each time, so a short month never shifts later months. */
     fun occurrenceAt(rule: RecurrenceRule, index: Long): RecurrenceOccurrence? {
         require(index >= 0)

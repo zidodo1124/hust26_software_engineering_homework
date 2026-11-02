@@ -96,6 +96,14 @@ class RoundTwoRepositoryTest {
         assertEquals(first.id, dao.recurrenceOccurrences("series").first().eventId)
         assertEquals(2, repository.events.first().size)
 
+        database.openHelper.writableDatabase.execSQL(
+            "CREATE TRIGGER fail_occurrence_skip BEFORE UPDATE ON recurrence_occurrences BEGIN SELECT RAISE(ABORT, 'skip failed'); END")
+        assertTrue(runCatching { repository.delete(first.id) }.isFailure)
+        assertEquals(first.id, dao.recurrenceOccurrences("series").first().eventId)
+        assertNotNull(dao.findEvent(first.id))
+        assertTrue(dao.readReminderPlans().any { it.eventId == first.id && it.active })
+        database.openHelper.writableDatabase.execSQL("DROP TRIGGER fail_occurrence_skip")
+
         repository.delete(first.id)
         val occurrences = dao.recurrenceOccurrences("series")
         assertTrue(occurrences[0].skipped)
