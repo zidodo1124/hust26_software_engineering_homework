@@ -420,6 +420,54 @@ class SaverAppFlowTest {
     }
 
     @Test
+    fun collapsingWeekCalendarPreservesWholeWeekUntilADayIsSelected() {
+        awaitText("DDL Saver")
+        val today = Instant.now().atZone(BeijingZone).toLocalDate()
+        val monday = today.minusDays((today.dayOfWeek.value - 1).toLong()).plusWeeks(1)
+        val tuesday = monday.plusDays(1)
+        fun deadline(date: java.time.LocalDate) = date.atTime(18, 0).atZone(BeijingZone).toInstant().toEpochMilli()
+        val seeded = withRepository {
+            listOf(
+                save(EventDraft(title = "下周一事项", deadlineAt = deadline(monday))),
+                save(EventDraft(title = "下周二事项", deadlineAt = deadline(tuesday))),
+                save(EventDraft(title = "周范围以外事项", deadlineAt = deadline(monday.plusWeeks(1))))
+            )
+        }
+        reloadModel()
+        scrollHomeTag("toggle-calendar")
+        compose.onNodeWithTag("toggle-calendar").performClick()
+        scrollHomeTag("calendar-view-week")
+        compose.onNodeWithTag("calendar-view-week").performClick()
+        scrollHomeTag("period-next")
+        compose.onNodeWithTag("period-next").performClick()
+
+        fun assertWholeWeekIsVisible() {
+            scrollHomeTag("list-summary")
+            compose.onNodeWithTag("list-summary").assertTextEquals("$monday 至 ${monday.plusDays(6)} 的事项 · 2")
+            seeded.take(2).forEach { event ->
+                compose.onNodeWithTag("event-list").performScrollToNode(hasText(event.title))
+                compose.onNodeWithText(event.title).assertIsDisplayed()
+            }
+            assertEquals(seeded.toSet(), storedEvents().toSet())
+        }
+
+        assertWholeWeekIsVisible()
+        scrollHomeTag("toggle-calendar")
+        compose.onNodeWithTag("toggle-calendar").performClick()
+        assertWholeWeekIsVisible()
+        scrollHomeTag("toggle-calendar")
+        compose.onNodeWithTag("toggle-calendar").performClick()
+        assertWholeWeekIsVisible()
+        scrollHomeTag("week-day-$tuesday")
+        compose.onNodeWithTag("week-day-$tuesday").performClick()
+        scrollHomeTag("list-summary")
+        compose.onNodeWithTag("list-summary").assertTextEquals("$tuesday 的事项 · 1")
+        compose.onNodeWithTag("event-list").performScrollToNode(hasText(seeded[1].title))
+        compose.onNodeWithText(seeded[1].title).assertIsDisplayed()
+        assertEquals(seeded.toSet(), storedEvents().toSet())
+    }
+
+    @Test
     fun calendarCrossesMonthAndTodayShortcutClearsDateFilter() {
         awaitText("DDL Saver")
         val today = Instant.now().atZone(BeijingZone).toLocalDate()

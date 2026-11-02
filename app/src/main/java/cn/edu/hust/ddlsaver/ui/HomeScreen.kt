@@ -58,7 +58,7 @@ internal fun HomeScreen(
     val mode = EventListMode.valueOf(modeName)
     val anchorDate = LocalDate.parse(calendarAnchor)
     val weekStart = anchorDate.minusDays((anchorDate.dayOfWeek.value - 1).toLong())
-    val inWeekView = calendarOpen && calendarView == "week" && quickFilter == "all"
+    val inWeekView = calendarView == "week" && quickFilter == "all"
     val dateFilter = if (quickFilter == "today") today else if (inWeekView) null else selectedDate?.let(LocalDate::parse)
     val filtered = EventQuery.select(state.events, EventFilter(mode = mode, keyword = query, sourceId = sourceId,
         tagIds = tagIds, date = dateFilter, dangerOnly = quickFilter == "danger"), state.now, state.settings)
