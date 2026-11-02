@@ -8,7 +8,9 @@
 
 **操作与演示入口：** [用户使用手册](../docs/user-guide.md)集中说明安装、通知权限、事项与附件管理、批量操作、角色切换及演示前检查。成员可先按手册熟悉应用，再结合下方分工进行代码与测试复核。
 
-**交付准备：** 优先按[0.3.5 演示与代码阅读](../docs/demo-final-0.3.5.md)准备 5—8 分钟讲解；[本轮证据](../docs/test-evidence/RUN-20261101-CALENDAR-FINAL/README.md)同步安装及日历结果。[项目报告汇编](../docs/final-report.md)和[完整验收安排](../docs/demo-and-acceptance.md)保留课程完整范围。OBS-01／OBS-02 继续开放，日历分项不替代完整验收或正式演练。
+**本次验收准备：** [演示说明书](../docs/acceptance-demo/README.md)按 5 分钟安排功能操作与预期效果，样本提前准备；上台用[5 分钟速查卡](../docs/acceptance-demo/03-five-minute-cue-card.md)。[教学与答辩入口](../docs/acceptance-code-guide/README.md)供演示后老师提问时按 D01—D09 查找源码与回答依据。两套材料统一使用 `demo-v0.3.5`；[远程核对快照](../docs/acceptance-demo/00-version-and-repository-status.md)保留为版本记录。
+
+**交付记录：** [0.3.5 定版交付页](../docs/demo-final-0.3.5.md)保留原交付记录；本次展示时长以上方 5 分钟说明书为准。[本轮证据](../docs/test-evidence/RUN-20261101-CALENDAR-FINAL/README.md)同步安装及日历结果。[项目报告汇编](../docs/final-report.md)和[完整验收安排](../docs/demo-and-acceptance.md)保留课程完整范围。OBS-01／OBS-02 继续开放，日历分项不替代完整验收或正式演练。
 
 既有第三轮由 AI 辅助实现提醒与角色，当时安排成员在各自分支复核：支盟渊审核行为并协调实机测试；付泽文复核 schema 2→3 与通知台账事务；岳羽泉复核三类提醒、权限与恢复；原拟由石倚铭复核角色素材、状态台词及页面适配，这一历史安排现已停止适用。该轮安排见[实现计划第 7 节](../docs/implementation-plan.md#7-第三轮执行安排)。当前 schema 已为 4，后续个人工作按最新代码和实际领取状态更新。
 

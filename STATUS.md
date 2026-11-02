@@ -6,6 +6,8 @@
 
 ## 当前阶段
 
+**验收资料入口：** [演示流程指导](docs/acceptance-demo/README.md)按 5 分钟安排功能操作、预期效果与缓冲时间；[5 分钟速查卡](docs/acceptance-demo/03-five-minute-cue-card.md)供现场使用。[教学／源码／答辩入口](docs/acceptance-code-guide/README.md)在演示后按老师的问题查阅，两套材料用 D01—D09 对照。已有[仓库核对快照](docs/acceptance-demo/00-version-and-repository-status.md)保留为版本记录；本次仅整理本机材料，不改变已安装的 0.3.5 产品代码。
+
 项目已完成**0.3.5 演示版冻结与本轮日历实机验收**。冻结演示分支 `codex/demo-final-20261101`，产品源码 `f024ecea4b287c7a8768c2dc62af9be9228c9ae6`，版本 **0.3.5／versionCode 8、Room schema 4**。本机完整构建成功，29 份 XML／185 个不同方法／224 次执行全部通过，失败／错误／跳过各 0，Lint 0 错误／16 警告；荣耀 X50 已完成同签名覆盖和正常首启；实际包版本、APK 哈希与证书匹配，原六表、4 附件、设置、33 条提醒及原 14 条 SENT 保持。月格、周／日、折叠重开、空周期、跨年及关键词分项已通过；完成状态、详情返回和来源空交集也已通过；07:59:33 UTC 最终 18 项审计全部通过，5 条 QA 已清理，原数据／附件／设置及全部原 33 条提醒保持；新分支远程 CI 尚无结果。本轮入口见[交付与代码阅读](docs/demo-final-0.3.5.md)和[日历验收证据](docs/test-evidence/RUN-20261101-CALENDAR-FINAL/README.md)。
 
 [前一批 0.3.4 设备分项及收尾](docs/test-evidence/RUN-20261101-DEVICE-034/README.md)已完成：同签名升级、图片提示／重试／回滚、来源卸载后普通重开、角色双向保存、普通后台通知与完成撤销通过。真实重启自动窗口仍无 Alarm／通知，普通打开后补发与重排成功；**OBS-02 自动恢复子项仍未通过**，OBS-01 机制与旧 CI #45 根因也未关闭。
@@ -147,7 +149,8 @@
 | [用户使用手册](docs/user-guide.md) | 面向组员与使用者说明安装升级、首次权限、事项与附件管理、提醒、角色选择及演示检查 |
 | [需求分析文档](docs/requirements.md) | 已整理功能、业务规则、初步技术职责与验收场景，待整体审核 |
 | [项目报告汇编](docs/final-report.md) | 汇总选题、需求、设计、测试、真实参与及交付材料，待小组最终审核 |
-| [演示与验收安排](docs/demo-and-acceptance.md) | 约 8 分钟演示步骤、合成样本、设备补测矩阵与收尾要求；演示尚未实际演练，设备分项已见本轮证据 |
+| [本次 5 分钟功能演示](docs/acceptance-demo/README.md)与[提问后源码备查](docs/acceptance-code-guide/README.md) | 当前使用的准备材料：提前建样本、按时间展示功能、预留缓冲；老师提问后按功能查源码。时长为计划，仍需演示者计时排练 |
+| [课程完整演示与验收安排](docs/demo-and-acceptance.md) | 保留原完整方案、合成样本、设备补测矩阵与收尾要求；本次展示采用上方 5 分钟路线，设备分项已见本轮证据 |
 | [实现计划](docs/implementation-plan.md)与[小组任务板](team/README.md) | 列明四轮目标、成员实际交付与剩余任务；付泽文、岳羽泉已领取并推进，其他成员按已有记录登记 |
 | [数据模块说明](docs/data-module-report.md)与[需求—测试追踪](docs/data-test-traceability.md) | 汇总数据组织需求、设计、测试与答辩材料，区分自动覆盖和完整场景／实机缺口 |
 | [提醒复核笔记](team/岳羽泉-复核笔记-reminders-2026-11-01.md)及后续专项记录 | 记录去重、旧提醒失效与权限文案工作；新测试已纳入上述主线 CI，设备边界仍待验证 |

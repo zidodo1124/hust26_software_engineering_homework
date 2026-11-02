@@ -6,6 +6,8 @@ HUSTer's DDL Saver 是一款面向大学生的 Android 截止日期（DDL）管�
 
 **开始使用：** [用户使用手册](docs/user-guide.md)提供安装、通知设置、新建事项、分类与附件、批量管理及角色切换的操作说明；开发和验收进展见[项目状态](STATUS.md)。
 
+**本次验收按 5 分钟展示功能：** 先按[演示流程指导](docs/acceptance-demo/README.md)准备样本，上台用[5 分钟速查卡](docs/acceptance-demo/03-five-minute-cue-card.md)查看操作与时间；演示结束后老师提问，再查[源码与答辩入口](docs/acceptance-code-guide/README.md)。两套材料统一对应 `demo-v0.3.5`，[远程／本地版本快照](docs/acceptance-demo/00-version-and-repository-status.md)留作版本备查。
+
 **当前演示版：** 0.3.5／8，冻结分支 `codex/demo-final-20261101`、产品源码 `f024ece`。本机 224 次执行通过，荣耀 X50 覆盖升级与首启数据保持；月格、周／日与跨年等分项通过，完成状态、详情返回与来源空交集通过，07:59:33 UTC 最终 18 项审计全部通过，5 条 QA 已清理，原数据／附件／设置及全部原 33 条提醒保持。演示顺序、已知限制及源码阅读路径见[0.3.5 交付页](docs/demo-final-0.3.5.md)。
 
 ## 目标用户与使用场景
