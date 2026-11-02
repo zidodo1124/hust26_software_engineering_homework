@@ -1,0 +1,21 @@
+{
+  "atUtc": "2026-11-02T05:13:39.006554+00:00",
+  "originalStyle": "CLASSIC",
+  "alternateStyle": "CHIBI",
+  "previewDidNotPersistBeforeSave": true,
+  "alternateSaveReturnedHome": {
+    "homeObserved": true,
+    "observerElapsedSeconds": 3.422
+  },
+  "alternatePersistedAndReopened": true,
+  "originalSaveReturnedHome": {
+    "homeObserved": true,
+    "observerElapsedSeconds": 2.922
+  },
+  "originalStyleRestoredAndVerifiedAfterNormalReopen": true,
+  "allOtherSettingsFieldsUnchanged": true,
+  "allBusinessRowsAndAttachmentBytesUnchangedDuringRoundTrip": true,
+  "fontOrRotationChanged": false,
+  "knownCi45TimeoutReproduced": false,
+  "scope": "One actual device round-trip; does not establish the historical CI timeout root cause"
+}

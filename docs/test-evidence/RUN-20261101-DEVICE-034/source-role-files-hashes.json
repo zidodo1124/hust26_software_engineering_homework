@@ -1,0 +1,138 @@
+[
+  {
+    "file": "clipboard-fixture-removal.json",
+    "source": ".local-tools/device-034-20261101/clipboard-fixture-removal.json",
+    "sourceSha256AtArchive": "53d6af7e560b4423f04082bd7bcb7b04fd4266ba1a6b2eaef0253be714659569",
+    "archivedSha256": "53d6af7e560b4423f04082bd7bcb7b04fd4266ba1a6b2eaef0253be714659569",
+    "bytes": 318,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "image-cold-start-attempt.json",
+    "source": ".local-tools/device-034-20261101/image-cold-start-attempt.json",
+    "sourceSha256AtArchive": "cacd888fcd182c7f54a2f7ea3d2869b649a494d377f38908a0ba748c816a5124",
+    "archivedSha256": "cacd888fcd182c7f54a2f7ea3d2869b649a494d377f38908a0ba748c816a5124",
+    "bytes": 1110,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "image-source-resume-before-open.json",
+    "source": ".local-tools/device-034-20261101/image-source-resume-before-open.json",
+    "sourceSha256AtArchive": "6bedf675a26f50f308ae2bdd082f5074b6df37cf4a35e16c8031ae3b29eddfb9",
+    "archivedSha256": "6bedf675a26f50f308ae2bdd082f5074b6df37cf4a35e16c8031ae3b29eddfb9",
+    "bytes": 509,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "image-before-fixture-removal.json",
+    "source": ".local-tools/device-034-20261101/image-before-fixture-removal.json",
+    "sourceSha256AtArchive": "86b193138113965a2edfeb8c07ec13699f75ff6d1d191ce1cbc0c4e5bde698d4",
+    "archivedSha256": "86b193138113965a2edfeb8c07ec13699f75ff6d1d191ce1cbc0c4e5bde698d4",
+    "bytes": 3574,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "image-after-fixture-removal.json",
+    "source": ".local-tools/device-034-20261101/image-after-fixture-removal.json",
+    "sourceSha256AtArchive": "1a32b65dcd7bd650b2d00a7fc6bf93e7be679d026683a0a3c60cec606084829d",
+    "archivedSha256": "1a32b65dcd7bd650b2d00a7fc6bf93e7be679d026683a0a3c60cec606084829d",
+    "bytes": 3574,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "image-final-result.json",
+    "source": ".local-tools/device-034-20261101/image-final-result.json",
+    "sourceSha256AtArchive": "559840b8fab67658f9225648f6d08846d61d8a61d161d921039e1803c0da52d5",
+    "archivedSha256": "559840b8fab67658f9225648f6d08846d61d8a61d161d921039e1803c0da52d5",
+    "bytes": 724,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "character-before.json",
+    "source": ".local-tools/device-034-20261101/character-before.json",
+    "sourceSha256AtArchive": "447e82a7133dfac66c8ad683bf135588dede0880e23b78b81ac3be15e288d03c",
+    "archivedSha256": "447e82a7133dfac66c8ad683bf135588dede0880e23b78b81ac3be15e288d03c",
+    "bytes": 3780,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "character-preview-before-save.json",
+    "source": ".local-tools/device-034-20261101/character-preview-before-save.json",
+    "sourceSha256AtArchive": "d783363863b39db0a5681c67acad6f6501ace84abec9b01ccf4b28f6f2801996",
+    "archivedSha256": "d783363863b39db0a5681c67acad6f6501ace84abec9b01ccf4b28f6f2801996",
+    "bytes": 3780,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "character-alternate-saved.json",
+    "source": ".local-tools/device-034-20261101/character-alternate-saved.json",
+    "sourceSha256AtArchive": "df60eb1148fbc39505711de76bbea157949ecce3d4f2ff4aa47c995521653004",
+    "archivedSha256": "df60eb1148fbc39505711de76bbea157949ecce3d4f2ff4aa47c995521653004",
+    "bytes": 3778,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "character-original-restored.json",
+    "source": ".local-tools/device-034-20261101/character-original-restored.json",
+    "sourceSha256AtArchive": "7fbed10d1046417167af1f983388119c1944fedb26956b5d26214d2c52c83ba4",
+    "archivedSha256": "7fbed10d1046417167af1f983388119c1944fedb26956b5d26214d2c52c83ba4",
+    "bytes": 3780,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "character-final-settings.json",
+    "source": ".local-tools/device-034-20261101/character-final-settings.json",
+    "sourceSha256AtArchive": "9603d9243705579232ac0e8079e776f2b3b71bdc0d949e4afa7194740201d684",
+    "archivedSha256": "9603d9243705579232ac0e8079e776f2b3b71bdc0d949e4afa7194740201d684",
+    "bytes": 3780,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "character-roundtrip-result.json",
+    "source": ".local-tools/device-034-20261101/character-roundtrip-result.json",
+    "sourceSha256AtArchive": "06f9d439ea0f3302ef3b4c0d7d94faf6885e1ff8dbefb5697c9979cea0a2c33f",
+    "archivedSha256": "06f9d439ea0f3302ef3b4c0d7d94faf6885e1ff8dbefb5697c9979cea0a2c33f",
+    "bytes": 758,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "17-private-orange-after-fixture-removal.png",
+    "source": ".local-tools/device-034-20261101/17-private-orange-after-fixture-removal.png",
+    "sourceSha256AtArchive": "c75704baeffe51ace524ec5ba2968a20410f8a06e03aa9528546be066ee7b3e1",
+    "archivedSha256": "c75704baeffe51ace524ec5ba2968a20410f8a06e03aa9528546be066ee7b3e1",
+    "bytes": 114383,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "17b-private-third-after-fixture-removal.png",
+    "source": ".local-tools/device-034-20261101/17b-private-third-after-fixture-removal.png",
+    "sourceSha256AtArchive": "c54c77a5f50a91e0927b50b1b988645dd564e4d7250f4d5798db46061b3e9ed0",
+    "archivedSha256": "c54c77a5f50a91e0927b50b1b988645dd564e4d7250f4d5798db46061b3e9ed0",
+    "bytes": 118404,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "18-character-alternate-preview.png",
+    "source": ".local-tools/device-034-20261101/18-character-alternate-preview.png",
+    "sourceSha256AtArchive": "b62560898ecaea88203278644a718bb50b1c8a1d1c2ac8f0d928324c8e51d0a4",
+    "archivedSha256": "b62560898ecaea88203278644a718bb50b1c8a1d1c2ac8f0d928324c8e51d0a4",
+    "bytes": 487390,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "19-character-alternate-reopened.png",
+    "source": ".local-tools/device-034-20261101/19-character-alternate-reopened.png",
+    "sourceSha256AtArchive": "1bf1fa879aa2d680a0666b861464681644a68bd125116ae41dcf40c69868acdd",
+    "archivedSha256": "1bf1fa879aa2d680a0666b861464681644a68bd125116ae41dcf40c69868acdd",
+    "bytes": 486906,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "20-character-original-reopened.png",
+    "source": ".local-tools/device-034-20261101/20-character-original-reopened.png",
+    "sourceSha256AtArchive": "ea66054cc580ded9f6760f097f90539f2704043f230d44741b71a34ad0df3965",
+    "archivedSha256": "ea66054cc580ded9f6760f097f90539f2704043f230d44741b71a34ad0df3965",
+    "bytes": 431183,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  }
+]

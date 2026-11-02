@@ -1,0 +1,22 @@
+{
+  "atUtc": "2026-11-02T04:59:23.164259+00:00",
+  "filePresent": false,
+  "records": {},
+  "bootIdSha256": "ce5a19e1a42e9e12f8fc172ffcd0e956792a6318912ce7f877742223ccf331c5",
+  "uptimeSeconds": 4979.62,
+  "package": {
+    "flags": {
+      "installed": "true",
+      "hidden": "false",
+      "suspended": "false",
+      "stopped": "true"
+    },
+    "processPresent": false
+  },
+  "alarm": {
+    "atUtc": "2026-11-02T04:59:23.710276+00:00",
+    "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+    "alarms": []
+  },
+  "explicitAppLaunchAtThisStage": false
+}

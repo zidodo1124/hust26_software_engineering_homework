@@ -1,0 +1,71 @@
+{
+  "samples": [
+    {
+      "atUtc": "2026-11-02T06:46:43.837891+00:00",
+      "adbDevice": false
+    },
+    {
+      "atUtc": "2026-11-02T06:46:48.887316+00:00",
+      "adbDevice": false
+    },
+    {
+      "atUtc": "2026-11-02T06:46:53.937525+00:00",
+      "adbDevice": false
+    },
+    {
+      "atUtc": "2026-11-02T06:46:58.988767+00:00",
+      "adbDevice": false
+    },
+    {
+      "atUtc": "2026-11-02T06:47:04.035176+00:00",
+      "adbDevice": false
+    },
+    {
+      "atUtc": "2026-11-02T06:47:09.076136+00:00",
+      "adbDevice": false
+    },
+    {
+      "atUtc": "2026-11-02T06:47:14.127744+00:00",
+      "adbDevice": false
+    },
+    {
+      "atUtc": "2026-11-02T06:47:19.177745+00:00",
+      "adbDevice": false
+    },
+    {
+      "atUtc": "2026-11-02T06:47:24.228072+00:00",
+      "adbDevice": false
+    },
+    {
+      "atUtc": "2026-11-02T06:47:29.278100+00:00",
+      "adbDevice": false
+    },
+    {
+      "atUtc": "2026-11-02T06:47:34.328333+00:00",
+      "adbDevice": false
+    },
+    {
+      "atUtc": "2026-11-02T06:47:39.364347+00:00",
+      "adbDevice": false
+    },
+    {
+      "atUtc": "2026-11-02T06:47:44.423314+00:00",
+      "adbDevice": false
+    },
+    {
+      "atUtc": "2026-11-02T06:47:49.469228+00:00",
+      "adbDevice": false
+    },
+    {
+      "atUtc": "2026-11-02T06:47:54.516783+00:00",
+      "adbDevice": true,
+      "bootCompleted": true,
+      "identity": {
+        "atUtc": "2026-11-02T06:47:55.148278+00:00",
+        "bootIdSha256": "4e71c106caab2ec759dc2addec10134cb949a3c48641c94538d23fcb8126f682",
+        "uptimeSeconds": 57.03
+      },
+      "newBootId": true
+    }
+  ]
+}

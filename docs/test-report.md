@@ -243,14 +243,30 @@ CI 自动测试覆盖字段独立、分类维护与组合筛选、真实 v1／v2
 | PR 合并后基线 | 完整构建成功，27 XML／167 方法／194 执行、失败／错误／跳过各 0，Lint 0／16 | 0.3.3 APK 与前批哈希一致，本次基线没有安装设备 |
 | 历史 CI #45 | 169 执行／1 失败／0 错误／0 跳过，Lint 0／17 | 最后切回经典并保存后等待首页文字超时，原始 XML 缺少失败瞬间 ViewModel 状态，原因未定 |
 | 0.3.4 首轮定向 | 8 XML／77 方法／108 执行、2 失败／0 错误／0 跳过；SaverAppFlow 的 18 次执行通过 | 新增取消测试跨 API 使用 assertSame 的身份前提过严，已改查取消传播／分类／finish 一次；不改变生产取消语义 |
-| 0.3.4 最终完整检查 | **28 份 JUnit XML、179 个不同方法／218 次执行，失败／错误／跳过各 0，Lint 0 错误／16 警告**；Debug 构建成功，源码前后哈希一致 | 与定向／历史批次分开统计；新包未安装或实机验收 |
+| 0.3.4 最终完整检查 | **28 份 JUnit XML、179 个不同方法／218 次执行，失败／错误／跳过各 0，Lint 0 错误／16 警告**；Debug 构建成功，源码前后哈希一致 | 与定向／历史批次分开统计；该本机批次未安装，后续设备分项见第 19 节 |
 
 警告总数仍为 16：新增恢复诊断 SharedPreferences.edit 的 1 条 UseKtx，原 ReminderRuntime 的 1 条 InlinedApi 消失，不能称为全部既有警告。 实际命令含 cleanTestDebugUnitTest、assembleDebug、testDebugUnitTest、lintDebug；Gradle 报告 3 分 32 秒，进程测量 214.031 秒。APK 为 15,119,011 字节，SHA-256 `690626883dd90684128959a53737b54c326352e3decb0dd46a707ac3d962ab90`，版本 0.3.4／7、schema 4，签名与基线一致。
 
 已完成来源安全异常重复制／重选提示、调试恢复记录和重启／强停说明；同步写盘可能拖延 Receiver 的静态 P2 已整改并独立复审通过。独立单写入器最多保留 6 个待写来源槽和 1 个在途写入，业务恢复与 Receiver 收尾不等待磁盘；同来源中间阶段可合并，进程退出可能丢失未写记录，属于尽力留证，不承诺持久化必达。 角色形象测试增强保存前选中／按钮启用断言及失败诊断，未延长超时、删测试或为测试修改产品。完整本机通过不解释旧 CI #45 的根因，原失败继续保留。后续 [CI #46](test-evidence/RUN-20261101-DEMO-STABILITY/ci46/README.md) 对准确提交 `b95b6c6` 独立完成 28 XML／179 方法／218 次执行，失败／错误／跳过各 0，Lint 0／17；构建、测试、Lint 和产物上传成功。远程仅多 1 条 OldTargetApi，其余 16 条警告与本机一致。
 
-本批完整证据见 [RUN-20261101-DEMO-STABILITY](test-evidence/RUN-20261101-DEMO-STABILITY/README.md)。手机仍为 0.3.3／6，本轮 04:32 UTC ADB 无设备；OBS-01 授权失效机制、OBS-02 真实重启自动恢复原因、完整 DA／TC 及最终验收继续开放。
+本批完整证据见 [RUN-20261101-DEMO-STABILITY](test-evidence/RUN-20261101-DEMO-STABILITY/README.md)。该本机批次结束时手机为 0.3.3／6，04:32 UTC ADB 无设备；随后独立 0.3.4 设备结果见下节。OBS-01 授权失效机制、OBS-02 真实重启自动恢复原因、完整 DA／TC 及最终验收继续开放。
 
-## 19. 0.3.4 独立设备复验（准备中）
+## 19. 0.3.4 独立设备复验（分项及收尾完成）
 
-用户随后明确连接手机并要求进行测试，已检测到 1 台授权 ADB 设备；[RUN-20261101-DEVICE-034](test-evidence/RUN-20261101-DEVICE-034/README.md) 开始准备。新包覆盖、数据保持、图片提示、提醒恢复及收尾结果按实际执行追加，当前不预填通过。前序过程见[维护日志](maintenance-log.md)。
+用户随后连接并授权荣耀 ALI-AN00（Android 15／API 35），[RUN-20261101-DEVICE-034](test-evidence/RUN-20261101-DEVICE-034/README.md) 已取得独立新鲜基线。下表时间均为 2026-11-02 UTC，用户日期为 11 月 1 日。
+
+| 分项 | 已观察结果 | 边界与证据 |
+| --- | --- | --- |
+| 同签名覆盖 | 用户确认后 04:59:22 安装 Success；实际 0.3.4／7，APK 哈希与证书匹配 | [安装结果](test-evidence/RUN-20261101-DEVICE-034/install-result.json)；安装后未强停或主动打开时，原六表、4 附件、设置、全部提醒行、原 12 条 SENT 和控制记录均保持 |
+| 正常首启 | 05:00:12 上述数据仍保持；stopped／notLaunched 均 false，下一精确 Alarm 为北京时间 11 月 3 日 08:00 | [首启结果](test-evidence/RUN-20261101-DEVICE-034/first-normal-launch-result.json)；前台恢复不写 receiver 记录，安装后无记录也不能证明广播未交付 |
+| 图片失败与重试 | 旧 URI 失败完整显示重复制／重选提示，原 2 图与未保存描述保持；fresh copy 增至 3 图，坏图拒绝且无残留副本；最后保存 3 图和新描述，原 2 附件行及字节保持 | [结果](test-evidence/RUN-20261101-DEVICE-034/image-v034-result.json)、[截图](test-evidence/RUN-20261101-DEVICE-034/13-old-uri-paste-result.png)；只关闭本样本提示／重试／回滚子项，诊断日志为空、未改日志属性，OBS-01 机制仍开放 |
+
+合成来源已卸载且剪贴板清空；[普通重开结果](test-evidence/RUN-20261101-DEVICE-034/image-final-result.json)确认 3 私有副本行／字节与描述保持、三张预览可见。一次 am kill 后 6 次观察进程仍在，没有重试或强停替代，未建立冷启动／排除缓存条件。05:13:39 UTC 的[角色往返结果](test-evidence/RUN-20261101-DEVICE-034/character-roundtrip-result.json)确认经典→Q 版→经典分别保存回首页、重入确认，最终普通重开仍为经典；预览未提前落库，其余设置、六表、附件及提醒摘要保持。CI #45 超时本次未复现，原根因仍未解。
+
+普通后台 NORMAL 样本已通过：[计划与实际通知](test-evidence/RUN-20261101-DEVICE-034/normal-notification-result.json)相差 +191 ms；18 次样本为亮屏、USB 充电、后台、deviceidle ACTIVE。[本次 Alarm 诊断](test-evidence/RUN-20261101-DEVICE-034/normal-journal-positive-control.json)首次读到当前 boot 的 finished／completed、权限可用且无健康错误。普通入口进入后标记完成，同一通知由存在到消失，NORMAL 两条计划 inactive、cancelPending=0；见[完成结果](test-evidence/RUN-20261101-DEVICE-034/normal-completion-result.json)。没有点击通知，不覆盖持续锁屏或自然 Doze，也不以旧 BOOT 记录替代新重启。中间观察文件的标志差异及 NORMAL 计划字段范围见[批次说明](test-evidence/RUN-20261101-DEVICE-034/README.md#普通后台通知诊断与完成撤销)。
+
+0.3.4 真实重启后，未开 App 的窗口至计划 +90 秒以上仍无 Alarm／目标通知，BOOT 危险期 PENDING；旧诊断不属于新 boot，自动恢复本样本未通过。窗口结束后普通打开补发并恢复下一精确 Alarm，未由此关闭 OBS-02。详见[独立观察](test-evidence/RUN-20261101-DEVICE-034/README.md#真实重启自动窗口与普通打开对照)。06:58:57 UTC 的[最终审计](test-evidence/RUN-20261101-DEVICE-034/final-data-and-state-audit.json)17 项通过：本批三个 QA 已删除、五条计划停用且无待取消，账本历史保留；原六表／四附件实际字节／设置／原 12 条 SENT 不变，记录的系统状态恢复，普通主页及下一精确 Alarm 核对完成，可断开。未强停收尾或清账本。OBS-02 与完整 DA／TC、正式演练继续开放。完整逐步记录见[执行记录第 22 节](test-records.md#22-run-20261101-device-034034-手机复验)，前序修复见[维护日志](maintenance-log.md)。
+
+### 远程提交与本批结果的边界
+
+截至 2026-11-02 06:58:10 UTC，远程 main 为 [99490e6](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/99490e692b67f3d4f46548aa8e97a0a56d864221)。付泽文 [PR #11](https://github.com/zidodo1124/hust26_software_engineering_homework/pull/11) 的月历日期格数量增量已合入，沿用既有月历，数量遵循列表状态、关键词、来源、标签及危险期筛选，不随所选单日缩减；随后队友已合入 [PR #12](https://github.com/zidodo1124/hust26_software_engineering_homework/pull/12) 的周／日周期界面与筛选，开放 PR 为 0。本批未替队友执行此次审阅／合并。PX-01／PX-02 的完整验收仍待完成，PX-03—PX-07 未由这些增量实现。 本批手机已测试 `bdcd76f` 的 0.3.4／7，APK SHA-256 `690626883dd90684128959a53737b54c326352e3decb0dd46a707ac3d962ab90`；远程增量版本号也为 0.3.4／7，应以源码提交和 APK 哈希区分。本批本机与 CI #46 的 218 次执行，以及本批手机结果，均不覆盖上述远程新增代码。 CI #49 对 `646eaa3` 的运行及构建／上传步骤 API 已核对 success；原始报告获取遇网络连接超时，尚未解析执行次数或 Lint，不能用 CI #46 数量代填。

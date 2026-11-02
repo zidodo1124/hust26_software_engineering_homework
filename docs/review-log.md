@@ -2,7 +2,7 @@
 
 本文记录真实发生的需求沟通、用户审核及对应修改，不替代 Git 提交历史。用户确认若干需求选项，不代表已经认可整份需求文档或 README。
 
-当前状态：**PR #10 已审阅合并 `c1e94f3`，7 项规划提案尚未实现；此前增量提交 `778429e`，本轮源码 [bdcd76f](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/bdcd76f916aae546bd146ce1fb1a14859bcd5eb4) 为 0.3.4／7、schema 4。完整本机构建、179 方法／218 次执行通过、Lint 0／16；历史 CI #45 的 1／169 次失败根因未定，原证据保留，新源码远程状态见 [main 的 Android Actions](https://github.com/zidodo1124/hust26_software_engineering_homework/actions?query=branch%3Amain)。手机仍为 0.3.3／6，新包未实机验收；OBS-01／OBS-02、完整需求和最终验收继续待办。下列历史审核按发生时点保留。**
+当前状态：**PR #10 已审阅合并 `c1e94f3`，当时 7 项规划提案尚未实现；其后 PR #11 月历数量增量已合入远程 main `646eaa3`，PR #12 周／日界面随后也已由队友合入，06:58:10 UTC main 为 `99490e6`；此前增量提交 `778429e`，本轮手机已测源码 [bdcd76f](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/bdcd76f916aae546bd146ce1fb1a14859bcd5eb4) 为 0.3.4／7、schema 4。完整本机构建、179 方法／218 次执行通过、Lint 0／16；历史 CI #45 的 1／169 次失败根因未定，原证据保留，后续 [CI #46](test-evidence/RUN-20261101-DEMO-STABILITY/ci46/README.md) 独立 218 次执行通过、Lint 0／17。荣耀 X50 已同签名覆盖 0.3.4／7，原数据保持、本样本图片提示／重试／回滚、来源卸载后普通重开与角色保存分项通过；[设备批次](test-evidence/RUN-20261101-DEVICE-034/README.md)已取得普通后台通知与完成撤销分项，真实重启自动窗口未通过、普通打开恢复成功，最终17项收尾检查通过，原数据保持；新增远程代码未在本批手机验证。OBS-01／OBS-02、完整需求和最终验收继续待办。下列历史审核按发生时点保留。**
 
 ## 2026-11-01：支盟渊接手页面、图片与角色方向
 

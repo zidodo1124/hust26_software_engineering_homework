@@ -1,0 +1,17 @@
+{
+  "atUtc": "2026-11-02T05:19:18.096923+00:00",
+  "deviceEpochSeconds": 1793596756,
+  "wakefulness": [
+    "Awake"
+  ],
+  "keyguardShowing": false,
+  "keyguardSecure": true,
+  "keyguardInputRestricted": false,
+  "deviceIdle": {
+    "mForceIdle": "false",
+    "mScreenOn": "true",
+    "mCharging": "true",
+    "mState": "ACTIVE",
+    "mLightState": "ACTIVE"
+  }
+}

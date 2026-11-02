@@ -124,11 +124,15 @@
 
 ## 10. 2026-11-01 演示稳定性优先
 
-支盟渊已接手页面、图片和角色方向，并选择先处理已知问题。[PR #10](https://github.com/zidodo1124/hust26_software_engineering_homework/pull/10) 的 7 项规划建议已合入讨论稿，尚未实现，建议规则不因合并而全部确认。合并基线 `c1e94f3` 后，原 7 份源码／测试保存为 `778429e`，本轮稳定性源码为 [bdcd76f](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/bdcd76f916aae546bd146ce1fb1a14859bcd5eb4)。
+支盟渊已接手页面、图片和角色方向，并选择先处理已知问题。[PR #10](https://github.com/zidodo1124/hust26_software_engineering_homework/pull/10) 的 7 项规划建议当时已合入讨论稿、尚未实现，建议规则不因合并而全部确认。合并基线 `c1e94f3` 后，原 7 份源码／测试保存为 `778429e`，本轮稳定性源码为 [bdcd76f](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/bdcd76f916aae546bd146ce1fb1a14859bcd5eb4)。
 
-1. 已完成 0.3.4／7 的来源权限拒绝提示及草稿／副本回滚本机复测，OBS-01 最终授权失效机制仍开放。
+1. 已完成 0.3.4／7 的来源权限拒绝提示及草稿／副本回滚本机复测；荣耀 X50 本样本的新提示、fresh copy 重试、坏图拒绝和保存保持也已通过，OBS-01 最终授权失效机制仍开放。
 2. 已完成调试包有界恢复诊断与重启／强停使用说明；独立写入整改经复审通过，OBS-02 的设备自动恢复根因未关闭。
 3. 保留历史 CI #45 角色流程等待失败与未知根因；增强保存前断言及失败诊断，本机全量通过，新源码远程状态见 [main 的 Android Actions](https://github.com/zidodo1124/hust26_software_engineering_homework/actions?query=branch%3Amain)。
-4. 0.3.4 完整构建、179 方法／218 次执行和 Lint 0／16 已通过，APK 哈希及同签名已核对。手机仍为 0.3.3／6，下一步按授权进行同签名覆盖和独立设备复验。
+4. 0.3.4 完整构建、179 方法／218 次执行和 Lint 0／16 已通过，APK 哈希及同签名已核对。随后[独立设备复验](test-evidence/RUN-20261101-DEVICE-034/README.md)已覆盖 0.3.4／7，原数据保持与正常首启通过；来源卸载后普通重开副本保持及角色双向保存也已通过；普通后台通知与完成撤销也已通过；真实重启自动窗口未通过、普通打开恢复成功，最终17项收尾审计已完成。
 
 各阶段证据见 [RUN-20261101-DEMO-STABILITY](test-evidence/RUN-20261101-DEMO-STABILITY/README.md)；完整 DA／TC、实际演练和最终审核继续按原范围推进。
+
+### 后续远程日历增量与本批设备边界
+
+截至 2026-11-02 06:58:10 UTC，远程 main 为 [99490e6](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/99490e692b67f3d4f46548aa8e97a0a56d864221)。付泽文 [PR #11](https://github.com/zidodo1124/hust26_software_engineering_homework/pull/11) 的月历日期格数量增量已合入，沿用既有月历，数量遵循列表状态、关键词、来源、标签及危险期筛选，不随所选单日缩减；随后队友已合入 [PR #12](https://github.com/zidodo1124/hust26_software_engineering_homework/pull/12) 的周／日周期界面与筛选，开放 PR 为 0。本批未替队友执行此次审阅／合并。PX-01／PX-02 的完整验收仍待完成，PX-03—PX-07 未由这些增量实现。 本批手机已测试 `bdcd76f` 的 0.3.4／7，APK SHA-256 `690626883dd90684128959a53737b54c326352e3decb0dd46a707ac3d962ab90`；远程增量版本号也为 0.3.4／7，应以源码提交和 APK 哈希区分。本批本机与 CI #46 的 218 次执行，以及本批手机结果，均不覆盖上述远程新增代码。 本轮手机分项及收尾已完成，另行安排新增代码的合入复核、报告核对与设备覆盖；不把已测包的通过结论前移到远程新 main。

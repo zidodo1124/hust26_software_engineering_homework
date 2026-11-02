@@ -1,0 +1,55 @@
+{
+  "atUtc": "2026-11-02T06:48:25.276331+00:00",
+  "filePresent": true,
+  "records": {
+    "alarm": {
+      "version": 1,
+      "trigger": "alarm",
+      "phase": "finished",
+      "received_at": 1793596740078,
+      "received_elapsed_ms": 6158409,
+      "started_at": 1793596740081,
+      "finished_at": 1793596740395,
+      "elapsed_ms": 317,
+      "outcome": "completed",
+      "can_post": true,
+      "can_schedule_exact": true,
+      "pending_count": 3,
+      "has_error": false
+    },
+    "boot": {
+      "version": 1,
+      "trigger": "boot",
+      "phase": "finished",
+      "received_at": 1793595808731,
+      "received_elapsed_ms": 5227062,
+      "started_at": 1793595808740,
+      "finished_at": 1793595808850,
+      "elapsed_ms": 119,
+      "outcome": "completed",
+      "can_post": true,
+      "can_schedule_exact": true,
+      "pending_count": 2,
+      "has_error": false
+    }
+  },
+  "bootIdSha256": "4e71c106caab2ec759dc2addec10134cb949a3c48641c94538d23fcb8126f682",
+  "uptimeSeconds": 87.27,
+  "package": {
+    "flags": {
+      "installed": "true",
+      "hidden": "false",
+      "suspended": "false",
+      "stopped": "false",
+      "notLaunched": "false",
+      "enabled": "0"
+    },
+    "processPresent": false
+  },
+  "alarm": {
+    "atUtc": "2026-11-02T06:48:26.106156+00:00",
+    "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+    "alarms": []
+  },
+  "explicitAppLaunchAtThisStage": false
+}

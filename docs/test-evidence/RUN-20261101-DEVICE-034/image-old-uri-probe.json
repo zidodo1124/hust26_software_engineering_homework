@@ -1,0 +1,17 @@
+{
+  "atUtc": "2026-11-02T05:04:39.508544+00:00",
+  "source": "Existing orange ClipData from prior successful paste; not recopied after force-stop",
+  "forceStoppedThenNormalLauncherStart": true,
+  "draftAttachmentCount": 2,
+  "previousAttachmentCount": 2,
+  "pasteSucceeded": false,
+  "diagnostics": [],
+  "originalSavedAttachmentsAndDescriptionUnchanged": true,
+  "newPermissionHintVisible": true,
+  "observedUiError": "图片导入失败：来源访问权限不可用。请重新复制图片，或使用“从相册选择”重新添加。",
+  "syntheticDraftDescriptionRetained": true,
+  "privateFileCountBefore": 6,
+  "privateFileCountAfter": 6,
+  "newPrivateFiles": 0,
+  "removedPrivateFiles": 0
+}

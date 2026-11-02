@@ -1,0 +1,49 @@
+{
+  "atUtc": "2026-11-02T05:16:00.886803+00:00",
+  "filePresent": true,
+  "records": {
+    "boot": {
+      "version": 1,
+      "trigger": "boot",
+      "phase": "finished",
+      "received_at": 1793595808731,
+      "received_elapsed_ms": 5227062,
+      "started_at": 1793595808740,
+      "finished_at": 1793595808850,
+      "elapsed_ms": 119,
+      "outcome": "completed",
+      "can_post": true,
+      "can_schedule_exact": true,
+      "pending_count": 2,
+      "has_error": false
+    }
+  },
+  "bootIdSha256": "ce5a19e1a42e9e12f8fc172ffcd0e956792a6318912ce7f877742223ccf331c5",
+  "uptimeSeconds": 5977.34,
+  "package": {
+    "flags": {
+      "installed": "true",
+      "hidden": "false",
+      "suspended": "false",
+      "stopped": "false",
+      "notLaunched": "false",
+      "enabled": "0"
+    },
+    "processPresent": true
+  },
+  "alarm": {
+    "atUtc": "2026-11-02T05:16:01.464963+00:00",
+    "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+    "alarms": [
+      {
+        "type": "RTC_WAKEUP",
+        "triggerEpochMillis": 1793596740000,
+        "systemDisplayTrigger": "2026-11-02 13:19:00.000",
+        "window": "0",
+        "exactAllowReason": "permission",
+        "reminderWakeActionConfirmed": true
+      }
+    ]
+  },
+  "explicitAppLaunchAtThisStage": false
+}

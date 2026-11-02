@@ -1,0 +1,54 @@
+{
+  "atUtc": "2026-11-02T06:47:55.978075+00:00",
+  "ready": true,
+  "identity": {
+    "atUtc": "2026-11-02T06:47:55.148278+00:00",
+    "bootIdSha256": "4e71c106caab2ec759dc2addec10134cb949a3c48641c94538d23fcb8126f682",
+    "uptimeSeconds": 57.03
+  },
+  "condition": {
+    "atUtc": "2026-11-02T06:47:55.889424+00:00",
+    "deviceEpochSeconds": 1793602073,
+    "wakefulness": [
+      "Awake"
+    ],
+    "keyguardShowing": false,
+    "keyguardSecure": true,
+    "keyguardInputRestricted": false,
+    "deviceIdle": {
+      "mForceIdle": "false",
+      "mScreenOn": "true",
+      "mCharging": "true",
+      "mState": "ACTIVE",
+      "mLightState": "ACTIVE"
+    }
+  },
+  "package": {
+    "flags": {
+      "installed": "true",
+      "hidden": "false",
+      "suspended": "false",
+      "stopped": "false",
+      "notLaunched": "false",
+      "enabled": "0"
+    },
+    "processPresent": false
+  },
+  "alarm": {
+    "atUtc": "2026-11-02T06:47:57.155293+00:00",
+    "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+    "alarms": []
+  },
+  "productForeground": false,
+  "noProductLaunchSinceReboot": true,
+  "logProperties": {
+    "current": {
+      "log.tag": "",
+      "persist.log.tag": "M",
+      "log.tag.DDLSaver.Attachment": "",
+      "persist.log.tag.DDLSaver.Attachment": ""
+    },
+    "matchesOriginal": false,
+    "propertiesChangedByHarness": false
+  }
+}

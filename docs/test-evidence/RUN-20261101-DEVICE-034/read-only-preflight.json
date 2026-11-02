@@ -1,0 +1,86 @@
+{
+  "atUtc": "2026-11-02T04:56:41.007821+00:00",
+  "readOnly": true,
+  "appLaunched": false,
+  "appForceStopped": false,
+  "installed": {
+    "versionCode": 6,
+    "versionName": "0.3.3",
+    "bytes": 15490535,
+    "sha256": "6f30078bf0dfa95731afe9fae0c08f06dd19d048eb815fd2236022c90e19e65b",
+    "certificateSha256": "978833bcaf0fc001248f5d8501bfa1f9d1273922474ed601f2c60a4548a652b9"
+  },
+  "model": "ALI-AN00",
+  "api": "35",
+  "android": "15",
+  "condition": {
+    "atUtc": "2026-11-02T04:56:39.630510+00:00",
+    "deviceEpochSeconds": 1793595397,
+    "wakefulness": [
+      "Awake"
+    ],
+    "keyguardShowing": false,
+    "keyguardSecure": true,
+    "keyguardInputRestricted": false,
+    "deviceIdle": {
+      "mForceIdle": "false",
+      "mScreenOn": "true",
+      "mCharging": "true",
+      "mState": "ACTIVE",
+      "mLightState": "ACTIVE"
+    }
+  },
+  "postNotificationsGranted": true,
+  "exactAlarmAppOp": "allow",
+  "notificationPolicy": {
+    "packageFilterValidated": true,
+    "appImportance": "DEFAULT",
+    "reminderChannelPolicies": [
+      {
+        "importance": 3,
+        "deleted": false
+      }
+    ],
+    "activeTargetNotificationCount": 0
+  },
+  "activeOwnNotificationsBeforeAnyStop": [],
+  "alarm": {
+    "atUtc": "2026-11-02T04:56:41.122751+00:00",
+    "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+    "alarms": []
+  },
+  "productForeground": false,
+  "logProperties": {
+    "log.tag": "",
+    "persist.log.tag": "S",
+    "log.tag.DDLSaver.Attachment": "",
+    "persist.log.tag.DDLSaver.Attachment": ""
+  },
+  "inventorySummary": {
+    "schema": 4,
+    "newQaPrefixCount": 0,
+    "previousQaPrefixCount": 0,
+    "dailyToday": {
+      "beijingDate": "2026-11-02",
+      "rows": 1,
+      "states": [
+        "SENT"
+      ]
+    },
+    "reminders": {
+      "rows": 28,
+      "active": 2,
+      "sent": 12,
+      "cancelPending": 0
+    }
+  },
+  "businessCounts": {
+    "events": 3,
+    "sources": 1,
+    "tags": 1,
+    "event_tags": 1,
+    "custom_fields": 1,
+    "attachments": 4
+  },
+  "harnessPrefix": "QA-034-1101"
+}

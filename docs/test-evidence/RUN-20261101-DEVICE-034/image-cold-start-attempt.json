@@ -1,0 +1,42 @@
+{
+  "atUtc": "2026-11-02T05:11:31.528105+00:00",
+  "scope": "Test condition not achieved; no product defect conclusion",
+  "amKillRequests": 1,
+  "initialObservations": 6,
+  "nominalObservationIntervalSeconds": 0.5,
+  "allInitialObservationsProcessPresent": true,
+  "laterReadOnlyObservation": {
+    "atUtc": "2026-11-02T05:09:25.125860+00:00",
+    "package": {
+      "flags": {
+        "installed": "true",
+        "hidden": "false",
+        "suspended": "false",
+        "stopped": "false",
+        "notLaunched": "false",
+        "enabled": "0"
+      },
+      "processPresent": true
+    },
+    "productForeground": false,
+    "safeOwnProcessFields": [
+      {
+        "curProcState": "15",
+        "setProcState": "15",
+        "cached": "false",
+        "empty": "false"
+      },
+      {
+        "curProcState": "0"
+      },
+      {
+        "curProcState": "10"
+      }
+    ],
+    "backgroundAmKillDidNotExitWithinInitial3Seconds": true
+  },
+  "killRetried": false,
+  "forceStopFallbackUsed": false,
+  "coldStartEstablished": false,
+  "actualPidExported": false
+}

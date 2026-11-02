@@ -1,0 +1,33 @@
+{
+  "atUtc": "2026-11-02T05:00:11.767456+00:00",
+  "filePresent": false,
+  "records": {},
+  "bootIdSha256": "ce5a19e1a42e9e12f8fc172ffcd0e956792a6318912ce7f877742223ccf331c5",
+  "uptimeSeconds": 5028.24,
+  "package": {
+    "flags": {
+      "installed": "true",
+      "hidden": "false",
+      "suspended": "false",
+      "stopped": "false",
+      "notLaunched": "false",
+      "enabled": "0"
+    },
+    "processPresent": true
+  },
+  "alarm": {
+    "atUtc": "2026-11-02T05:00:12.286662+00:00",
+    "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+    "alarms": [
+      {
+        "type": "RTC_WAKEUP",
+        "triggerEpochMillis": 1793664000000,
+        "systemDisplayTrigger": "2026-11-03 08:00:00.000",
+        "window": "0",
+        "exactAllowReason": "permission",
+        "reminderWakeActionConfirmed": true
+      }
+    ]
+  },
+  "explicitAppLaunchAtThisStage": true
+}

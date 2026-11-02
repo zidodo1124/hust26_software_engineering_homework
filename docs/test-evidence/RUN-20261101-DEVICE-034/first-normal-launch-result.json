@@ -1,0 +1,41 @@
+{
+  "atUtc": "2026-11-02T05:00:12.290088+00:00",
+  "newReminderGuidanceVisible": true,
+  "screenshot": "01-v034-reminder-settings.png",
+  "comparison": {
+    "schema4": true,
+    "allBusinessRowsUnchanged": true,
+    "allAttachmentBytesUnchanged": true,
+    "allSettingsUnchanged": true,
+    "allReminderRowsUnchanged": true,
+    "sentReminderRowsUnchanged": true,
+    "reminderControlUnchanged": true
+  },
+  "journalTriggers": [],
+  "alarm": {
+    "atUtc": "2026-11-02T05:00:12.286662+00:00",
+    "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+    "alarms": [
+      {
+        "type": "RTC_WAKEUP",
+        "triggerEpochMillis": 1793664000000,
+        "systemDisplayTrigger": "2026-11-03 08:00:00.000",
+        "window": "0",
+        "exactAllowReason": "permission",
+        "reminderWakeActionConfirmed": true
+      }
+    ]
+  },
+  "package": {
+    "flags": {
+      "installed": "true",
+      "hidden": "false",
+      "suspended": "false",
+      "stopped": "false",
+      "notLaunched": "false",
+      "enabled": "0"
+    },
+    "processPresent": true
+  },
+  "noForceStopDuringUpgradeOrLaunch": true
+}

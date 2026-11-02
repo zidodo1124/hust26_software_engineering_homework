@@ -1,0 +1,18 @@
+{
+  "atUtc": "2026-11-02T05:15:14.891783+00:00",
+  "excluded": [
+    {
+      "filename": "16-private-blue-after-fixture-removal.png",
+      "reason": "Non-test notification overlay visible during root review; ignored-local only, not for archival; contents not transcribed"
+    },
+    {
+      "filename": "16b-private-blue-clean.png",
+      "reason": "Non-test notification overlay visible during root review; ignored-local only, not for archival; contents not transcribed"
+    }
+  ],
+  "replacementPending": false,
+  "repeatBlueScreenshotPlanned": false,
+  "foreignNotificationsChanged": false,
+  "systemSettingsChangedForScreenshots": false,
+  "originalImageEdited": false
+}

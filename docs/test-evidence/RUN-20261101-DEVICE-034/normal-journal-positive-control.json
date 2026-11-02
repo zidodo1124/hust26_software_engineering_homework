@@ -1,0 +1,16 @@
+{
+  "atUtc": "2026-11-02T05:19:13.747047+00:00",
+  "journalReadAttempts": 1,
+  "alarmRecordPresent": true,
+  "sameBootBeforeAndAfter": true,
+  "receivedWallTimeWithinNotificationWindow": true,
+  "receivedElapsedInCurrentBoot": true,
+  "finished": true,
+  "outcome": "completed",
+  "canPost": true,
+  "canScheduleExact": true,
+  "hasError": false,
+  "bootIdSha256": "ce5a19e1a42e9e12f8fc172ffcd0e956792a6318912ce7f877742223ccf331c5",
+  "uptimeSeconds": 6169.72,
+  "notEvidenceOfBootReceiver": true
+}

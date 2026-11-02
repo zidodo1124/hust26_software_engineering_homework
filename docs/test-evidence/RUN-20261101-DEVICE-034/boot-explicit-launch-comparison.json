@@ -1,0 +1,107 @@
+{
+  "atUtc": "2026-11-02T06:55:56.378567+00:00",
+  "ordinaryLauncherAfterFullAutomaticWindow": true,
+  "automaticNotificationObserved": false,
+  "beforeLaunchQaNotifications": [],
+  "afterLaunchQaNotifications": [
+    {
+      "tag": "event:0bacfceb-a348-4c01-9877-986eeaf8e318:1793609640000:1793602440000:DANGER",
+      "kind": "event",
+      "observedUtc": "2026-11-02T06:55:56.365969+00:00",
+      "qaTitle": "QA-034-1101-BOOT",
+      "mCreationTimeMs": 1793602550060,
+      "mUpdateTimeMs": 1793602550060,
+      "mRankingTimeMs": 1793602550057,
+      "qaTitlesVisibleInRedactedOutput": []
+    }
+  ],
+  "qaPlansAfterLaunch": [
+    {
+      "key": "DANGER:0bacfceb-a348-4c01-9877-986eeaf8e318:1793609640000",
+      "kind": "DANGER",
+      "eventId": "0bacfceb-a348-4c01-9877-986eeaf8e318",
+      "deadlineAt": 1793609640000,
+      "eventRevision": 1,
+      "triggerAt": 1793602440000,
+      "day": null,
+      "notificationTag": "event:0bacfceb-a348-4c01-9877-986eeaf8e318:1793609640000:1793602440000:DANGER",
+      "active": 1,
+      "state": "SENT",
+      "lastAttemptAt": 1793602549885,
+      "lastError": null,
+      "cancelPending": 0
+    },
+    {
+      "key": "DEADLINE:0bacfceb-a348-4c01-9877-986eeaf8e318:1793609640000",
+      "kind": "DEADLINE",
+      "eventId": "0bacfceb-a348-4c01-9877-986eeaf8e318",
+      "deadlineAt": 1793609640000,
+      "eventRevision": 1,
+      "triggerAt": 1793606040000,
+      "day": null,
+      "notificationTag": "event:0bacfceb-a348-4c01-9877-986eeaf8e318:1793609640000:1793606040000:DEADLINE",
+      "active": 1,
+      "state": "PENDING",
+      "lastAttemptAt": null,
+      "lastError": null,
+      "cancelPending": 0
+    }
+  ],
+  "alarmAfterLaunch": {
+    "atUtc": "2026-11-02T06:55:56.203199+00:00",
+    "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+    "alarms": [
+      {
+        "type": "RTC_WAKEUP",
+        "triggerEpochMillis": 1793602860000,
+        "systemDisplayTrigger": "2026-11-02 15:01:00.000",
+        "window": "0",
+        "exactAllowReason": "permission",
+        "reminderWakeActionConfirmed": true
+      }
+    ]
+  },
+  "journalAfterLaunch": {
+    "alarm": {
+      "version": 1,
+      "trigger": "alarm",
+      "phase": "finished",
+      "received_at": 1793596740078,
+      "received_elapsed_ms": 6158409,
+      "started_at": 1793596740081,
+      "finished_at": 1793596740395,
+      "elapsed_ms": 317,
+      "outcome": "completed",
+      "can_post": true,
+      "can_schedule_exact": true,
+      "pending_count": 3,
+      "has_error": false
+    },
+    "boot": {
+      "version": 1,
+      "trigger": "boot",
+      "phase": "finished",
+      "received_at": 1793595808731,
+      "received_elapsed_ms": 5227062,
+      "started_at": 1793595808740,
+      "finished_at": 1793595808850,
+      "elapsed_ms": 119,
+      "outcome": "completed",
+      "can_post": true,
+      "can_schedule_exact": true,
+      "pending_count": 2,
+      "has_error": false
+    }
+  },
+  "logProperties": {
+    "current": {
+      "log.tag": "",
+      "persist.log.tag": "M",
+      "log.tag.DDLSaver.Attachment": "",
+      "persist.log.tag.DDLSaver.Attachment": ""
+    },
+    "matchesOriginal": false,
+    "propertiesChangedByHarness": false
+  },
+  "scope": "Normal launch recovery is separate from automatic reboot recovery; no synthetic broadcast, force-stop, clock, or global log changes"
+}

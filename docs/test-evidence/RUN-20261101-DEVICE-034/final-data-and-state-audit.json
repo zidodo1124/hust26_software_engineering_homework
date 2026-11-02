@@ -1,0 +1,127 @@
+{
+  "atUtc": "2026-11-02T06:58:46.457396+00:00",
+  "scope": "Stable live original-data audit; no force-stop; only exact current QA notification tags",
+  "checks": {
+    "allSixBusinessTablesExactlyUnchanged": true,
+    "originalAttachmentRowsAndBytesExactlyUnchanged": true,
+    "onlyOriginalAttachmentFilesRemain": true,
+    "allBusinessSettingsExactlyUnchanged": true,
+    "schemaStill4": true,
+    "allRecordedSystemSettingsMatchBaseline": true,
+    "notificationPolicyMatchesBaseline": true,
+    "noCurrentQaNotifications": true,
+    "physicalUsbPowerAndUpdatesMatch": true,
+    "noForcedIdle": true,
+    "diagnosticPropertiesMatchBaseline": true,
+    "fixtureAbsent": true,
+    "testedProductVersionHashSignatureInstalled": true,
+    "allCurrentQaHistoryInactiveWithoutPendingCancellation": true,
+    "qaReminderAndSentHistoryKeysRetained": true,
+    "originalSentHistoryExactlyUnchanged": true,
+    "reminderHasNoErrors": true
+  },
+  "businessTableCounts": {
+    "events": 3,
+    "sources": 1,
+    "tags": 1,
+    "event_tags": 1,
+    "custom_fields": 1,
+    "attachments": 4
+  },
+  "attachmentFileCount": 4,
+  "recordedSystemSettingComparisons": {
+    "fontScale": true,
+    "displaySize": true,
+    "displayDensity": true,
+    "postNotificationsGranted": true,
+    "exactAlarmAppOp": true,
+    "wifiOn": true,
+    "mobileData": true,
+    "airplaneMode": true,
+    "stayOnWhilePluggedIn": true,
+    "screenOffTimeout": true,
+    "lowPower": true
+  },
+  "reminderHistory": {
+    "atUtc": "2026-11-02T06:58:41.768448+00:00",
+    "scope": "Stable live snapshot; exact private original SENT key set; recorded QA IDs only",
+    "dbWalRepeatedBytesMatch": true,
+    "readAttempts": 1,
+    "integrityCheck": "ok",
+    "originalSentRowCount": 12,
+    "originalSentRowCountMatchesBaseline": true,
+    "originalSentRowsSaltedDigest": "0d4582445eb97250b2b49b4a89a6ddfabe5a1d83b2bc6fb5ea981d204e3485c2",
+    "originalSentRowsExactlyMatchBaseline": true,
+    "allQaPlanCount": 5,
+    "allQaPlanInactive": true,
+    "qaPendingCancellationCount": 0,
+    "qaPlanKeysSaltedDigest": "262cf02f0a500d8c3502703f8527d3e0a3f3d2a2a56ef0cee926b2c3b76c0cac",
+    "qaSentKeysSaltedDigest": "d58ee591ab826bb839236167bdbaf493e18bfc54b90c470c4a2d7687577e6e04",
+    "qaSentHistoryRetainedCount": 2,
+    "qaPlanCountsByTitle": {
+      "QA-034-1101-BOOT": 2,
+      "QA-034-1101-IMAGE": 1,
+      "QA-034-1101-NORMAL": 2
+    },
+    "legitimateNewDailySentCount": 0,
+    "allReminderErrorCount": 0,
+    "control": {
+      "alarmDirty": 0,
+      "desiredTriggerAt": 1793664000000,
+      "hasError": false
+    },
+    "temporaryPrivateDatabaseRemoved": true
+  },
+  "logProperties": {
+    "log.tag": "",
+    "persist.log.tag": "S",
+    "log.tag.DDLSaver.Attachment": "",
+    "persist.log.tag.DDLSaver.Attachment": ""
+  },
+  "originalLogProperties": {
+    "log.tag": "",
+    "persist.log.tag": "S",
+    "log.tag.DDLSaver.Attachment": "",
+    "persist.log.tag.DDLSaver.Attachment": ""
+  },
+  "logPropertiesChangedByAudit": false,
+  "testFixtureAbsent": true,
+  "forceStopUsed": false,
+  "runtimeIntent": "Leave normally launched and usable; do not restore pre-test stopped=true",
+  "dataAndEnvironmentChecksPassed": true,
+  "finalHomeVerificationPending": false,
+  "allRequiredChecksPassed": true,
+  "needsDecision": false,
+  "readyToDisconnect": true,
+  "finalProductHomeVerified": true,
+  "qaSearchCleared": true,
+  "finalPackage": {
+    "flags": {
+      "installed": "true",
+      "hidden": "false",
+      "suspended": "false",
+      "stopped": "false",
+      "notLaunched": "false",
+      "enabled": "0"
+    },
+    "processPresent": true
+  },
+  "finalNormalLaunchAlarmPolicy": {
+    "atUtc": "2026-11-02T06:58:57.281157+00:00",
+    "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+    "alarms": [
+      {
+        "type": "RTC_WAKEUP",
+        "triggerEpochMillis": 1793664000000,
+        "systemDisplayTrigger": "2026-11-03 08:00:00.000",
+        "window": "0",
+        "exactAllowReason": "permission",
+        "reminderWakeActionConfirmed": true
+      }
+    ]
+  },
+  "desiredRemainingOriginalTriggerAt": 1793664000000,
+  "temporaryUiXmlRemoved": true,
+  "noTemporaryPrivateDatabaseDirectories": true,
+  "finishedAtUtc": "2026-11-02T06:58:57.861995+00:00"
+}

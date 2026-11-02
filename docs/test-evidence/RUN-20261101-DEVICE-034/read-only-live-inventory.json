@@ -1,0 +1,49 @@
+{
+  "atUtc": "2026-11-02T04:56:41.001613+00:00",
+  "scope": "Read-only repeated stable live DB/WAL inventory; not stopped-boundary preservation proof",
+  "schema": 4,
+  "readAttempts": 1,
+  "integrity": "ok",
+  "tables": {
+    "events": {
+      "count": 3,
+      "saltedDigest": "180a3ec2f33bd33c9bfa34ea6b759a80ec4de668558f033f18dabc43ed4e0adc"
+    },
+    "sources": {
+      "count": 1,
+      "saltedDigest": "8126032a8845c0e7720b2e89a993ca569289a49489db474849b3e0e877fe88d8"
+    },
+    "tags": {
+      "count": 1,
+      "saltedDigest": "dff2e0690fdb39edb2b5c935d6bd62bdbb6942ed2ccc3492c27dab43a5ea8b98"
+    },
+    "event_tags": {
+      "count": 1,
+      "saltedDigest": "b0a7ea368d17a449f6b0f882367582517e3fb1417ada07f495e151386a26a422"
+    },
+    "custom_fields": {
+      "count": 1,
+      "saltedDigest": "a6821c95bfc69bd8c774eebac519bb81d57de20e0cc52a11e2b17c88cb17b9e1"
+    },
+    "attachments": {
+      "count": 4,
+      "saltedDigest": "f120258f7e786257b47ceb5175e46566c9cd03e7c68b3b2050e56666b8ec2734"
+    }
+  },
+  "newQaPrefixCount": 0,
+  "previousQaPrefixCount": 0,
+  "dailyToday": {
+    "beijingDate": "2026-11-02",
+    "rows": 1,
+    "states": [
+      "SENT"
+    ]
+  },
+  "reminders": {
+    "rows": 28,
+    "active": 2,
+    "sent": 12,
+    "cancelPending": 0
+  },
+  "temporaryPrivateDatabaseRemoved": true
+}

@@ -1,0 +1,65 @@
+{
+  "atUtc": "2026-11-02T06:45:34.265722+00:00",
+  "battery": {
+    "AC powered": "false",
+    "USB powered": "true",
+    "Wireless powered": "false",
+    "status": "2",
+    "level": "87",
+    "scale": "100",
+    "temperature": "290",
+    "updatesStopped": false
+  },
+  "condition": {
+    "atUtc": "2026-11-02T06:45:32.338081+00:00",
+    "deviceEpochSeconds": 1793601930,
+    "wakefulness": [
+      "Awake"
+    ],
+    "keyguardShowing": false,
+    "keyguardSecure": true,
+    "keyguardInputRestricted": false,
+    "deviceIdle": {
+      "mForceIdle": "false",
+      "mScreenOn": "true",
+      "mCharging": "true",
+      "mState": "ACTIVE",
+      "mLightState": "ACTIVE"
+    }
+  },
+  "policy": {
+    "packageFilterValidated": true,
+    "appImportance": "DEFAULT",
+    "reminderChannelPolicies": [
+      {
+        "importance": 3,
+        "deleted": false
+      }
+    ],
+    "activeTargetNotificationCount": 0
+  },
+  "package": {
+    "flags": {
+      "installed": "true",
+      "hidden": "false",
+      "suspended": "false",
+      "stopped": "false",
+      "notLaunched": "false",
+      "enabled": "0"
+    },
+    "processPresent": true
+  },
+  "postNotificationsGranted": true,
+  "exactAlarmAllowed": true,
+  "currentQaNotificationCount": 0,
+  "logProperties": {
+    "current": {
+      "log.tag": "",
+      "persist.log.tag": "S",
+      "log.tag.DDLSaver.Attachment": "",
+      "persist.log.tag.DDLSaver.Attachment": ""
+    },
+    "matchesOriginal": true,
+    "propertiesChangedByHarness": false
+  }
+}

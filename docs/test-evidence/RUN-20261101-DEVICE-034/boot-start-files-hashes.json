@@ -1,0 +1,138 @@
+[
+  {
+    "file": "boot-before-create-qa.json",
+    "source": ".local-tools/device-034-20261101/boot-before-create-qa.json",
+    "sourceSha256AtArchive": "3e4c975a2259f6ac57574f9a48245cc4dbcf2cf9c021c3c021b886d17f930c86",
+    "archivedSha256": "3e4c975a2259f6ac57574f9a48245cc4dbcf2cf9c021c3c021b886d17f930c86",
+    "bytes": 3223,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "boot-before-create.json",
+    "source": ".local-tools/device-034-20261101/boot-before-create.json",
+    "sourceSha256AtArchive": "cb69caaac567de1097a7446c42dd9864ffc50e3d5e2f01934140379a9df03511",
+    "archivedSha256": "cb69caaac567de1097a7446c42dd9864ffc50e3d5e2f01934140379a9df03511",
+    "bytes": 1563,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "boot-settings-before-create.json",
+    "source": ".local-tools/device-034-20261101/boot-settings-before-create.json",
+    "sourceSha256AtArchive": "d74c00ba3087296cf631b7d2df52339fcba27e0fe22a8bac6be0b1d3fcb1e8cc",
+    "archivedSha256": "d74c00ba3087296cf631b7d2df52339fcba27e0fe22a8bac6be0b1d3fcb1e8cc",
+    "bytes": 3780,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "qa-boot-plan.json",
+    "source": ".local-tools/device-034-20261101/qa-boot-plan.json",
+    "sourceSha256AtArchive": "1ca0a3a394e1d16f2813ec7af4a5715371eaf5afa6841b7c2765b08ad0a259f3",
+    "archivedSha256": "1ca0a3a394e1d16f2813ec7af4a5715371eaf5afa6841b7c2765b08ad0a259f3",
+    "bytes": 701,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "boot-created-qa.json",
+    "source": ".local-tools/device-034-20261101/boot-created-qa.json",
+    "sourceSha256AtArchive": "4ba7fa2fe869de31cd1beb2553cf0e37de76b92ace34e87941596bf553291b58",
+    "archivedSha256": "4ba7fa2fe869de31cd1beb2553cf0e37de76b92ace34e87941596bf553291b58",
+    "bytes": 4680,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "boot-created-verification.json",
+    "source": ".local-tools/device-034-20261101/boot-created-verification.json",
+    "sourceSha256AtArchive": "6b136c27dbea4f54288f9fe8f662d0690d025059f7b030324d3b6de4875cccb6",
+    "archivedSha256": "6b136c27dbea4f54288f9fe8f662d0690d025059f7b030324d3b6de4875cccb6",
+    "bytes": 573,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "boot-reboot-guards.json",
+    "source": ".local-tools/device-034-20261101/boot-reboot-guards.json",
+    "sourceSha256AtArchive": "a7a665dd575c2ff5dfbf202384812d75eedcb5499a65c1557086a4188661eb1d",
+    "archivedSha256": "a7a665dd575c2ff5dfbf202384812d75eedcb5499a65c1557086a4188661eb1d",
+    "bytes": 1563,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "boot-reboot-guards-qa.json",
+    "source": ".local-tools/device-034-20261101/boot-reboot-guards-qa.json",
+    "sourceSha256AtArchive": "af02c539bf0a348b59412955ba8dc4f687eb9b679b2c1ccdb4cffd32e4212796",
+    "archivedSha256": "af02c539bf0a348b59412955ba8dc4f687eb9b679b2c1ccdb4cffd32e4212796",
+    "bytes": 4680,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "boot-before-reboot-journal.json",
+    "source": ".local-tools/device-034-20261101/boot-before-reboot-journal.json",
+    "sourceSha256AtArchive": "38e3faba41671874130d33335dd953ed1cf8771c5c13a46fe4c2f6f77b8f8c01",
+    "archivedSha256": "38e3faba41671874130d33335dd953ed1cf8771c5c13a46fe4c2f6f77b8f8c01",
+    "bytes": 1785,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "boot-before-reboot.json",
+    "source": ".local-tools/device-034-20261101/boot-before-reboot.json",
+    "sourceSha256AtArchive": "1c67ce1b312fa578f84b234aa2107943e57d48e85fdd784e02dcb064491270fa",
+    "archivedSha256": "1c67ce1b312fa578f84b234aa2107943e57d48e85fdd784e02dcb064491270fa",
+    "bytes": 2264,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "boot-reboot-request.json",
+    "source": ".local-tools/device-034-20261101/boot-reboot-request.json",
+    "sourceSha256AtArchive": "e6d29c39b901750483dd5756878832a23bb489324df14356a45cf5d18bc5c624",
+    "archivedSha256": "e6d29c39b901750483dd5756878832a23bb489324df14356a45cf5d18bc5c624",
+    "bytes": 288,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "boot-reconnect-observations.json",
+    "source": ".local-tools/device-034-20261101/boot-reconnect-observations.json",
+    "sourceSha256AtArchive": "c9ff007fa882adfdc3aae558b1d3a594ff79d2d962f5fbe38559a3636027aed3",
+    "archivedSha256": "c9ff007fa882adfdc3aae558b1d3a594ff79d2d962f5fbe38559a3636027aed3",
+    "bytes": 1686,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "boot-reconnect-result.json",
+    "source": ".local-tools/device-034-20261101/boot-reconnect-result.json",
+    "sourceSha256AtArchive": "506455d90250104373213bd901e7e1288c9f3db560f134a07240f7e93f96e23c",
+    "archivedSha256": "506455d90250104373213bd901e7e1288c9f3db560f134a07240f7e93f96e23c",
+    "bytes": 1451,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "boot-after-first-unlock-journal.json",
+    "source": ".local-tools/device-034-20261101/boot-after-first-unlock-journal.json",
+    "sourceSha256AtArchive": "0c79aea9f39091b2ff5b65d10f7bd7f0307e96de5939b5121d80704c0992c95b",
+    "archivedSha256": "0c79aea9f39091b2ff5b65d10f7bd7f0307e96de5939b5121d80704c0992c95b",
+    "bytes": 1511,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "boot-after-first-unlock-qa.json",
+    "source": ".local-tools/device-034-20261101/boot-after-first-unlock-qa.json",
+    "sourceSha256AtArchive": "9f0ec57c63904914288344072ddcf681a5e50ab55726d10e299993b8506d507e",
+    "archivedSha256": "9f0ec57c63904914288344072ddcf681a5e50ab55726d10e299993b8506d507e",
+    "bytes": 4680,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "boot-after-first-unlock.json",
+    "source": ".local-tools/device-034-20261101/boot-after-first-unlock.json",
+    "sourceSha256AtArchive": "960a274a3c8ea25810b4ec3c9e82a7089dd587cf261c6bafa17aa4f142dd3fee",
+    "archivedSha256": "960a274a3c8ea25810b4ec3c9e82a7089dd587cf261c6bafa17aa4f142dd3fee",
+    "bytes": 2863,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "boot-user-unlock-confirmation.json",
+    "source": ".local-tools/device-034-20261101/boot-user-unlock-confirmation.json",
+    "sourceSha256AtArchive": "98b8645a6166fe41292fedf384c6889591af976f02ab65db7c7cfd344af99ee4",
+    "archivedSha256": "98b8645a6166fe41292fedf384c6889591af976f02ab65db7c7cfd344af99ee4",
+    "bytes": 317,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  }
+]

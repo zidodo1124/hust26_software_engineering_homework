@@ -7,7 +7,7 @@
 | 处理 | 实际结果与证据 |
 | --- | --- |
 | 成员与责任 | 当前成员为支盟渊、付泽文、岳羽泉。支盟渊接手页面、图片、角色的后续实现、复核、兼容验证与演示；旧成员及历史成果按原来源保留。见[用户记录](../interaction-records/支盟渊/2026-11-01.md)和[任务板](../team/README.md)。 |
-| PR 审阅合并 | 付泽文 [PR #10](https://github.com/zidodo1124/hust26_software_engineering_homework/pull/10) 在 head `d4e09428b4deb87110067ff356c78a3cb98f4eac` 获 [APPROVE](https://github.com/zidodo1124/hust26_software_engineering_homework/pull/10#pullrequestreview-5732043244)，实际 merge `c1e94f3d80fcf4aa6d9983c4e3be5e7b4e0a1d48`。7 项规划扩展仍是提案；合并不代表功能已实现或规则已全部确认。 |
+| PR 审阅合并 | 付泽文 [PR #10](https://github.com/zidodo1124/hust26_software_engineering_homework/pull/10) 在 head `d4e09428b4deb87110067ff356c78a3cb98f4eac` 获 [APPROVE](https://github.com/zidodo1124/hust26_software_engineering_homework/pull/10#pullrequestreview-5732043244)，实际 merge `c1e94f3d80fcf4aa6d9983c4e3be5e7b4e0a1d48`。当时 7 项规划扩展仍是提案；合并不代表功能已实现或规则已全部确认。 |
 | 保存前轮增量 | `778429e0e0b8311c491a3167400e95f4b085f08c` 保存此前 7 份源码／测试，包括图片导入诊断、剪贴板流程和提醒恢复补测。合并后本机基线 167 方法／194 次执行全部通过。 |
 | 图片权限反馈 | [bdcd76f](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/bdcd76f916aae546bd146ce1fb1a14859bcd5eb4) 仅对来源阶段的 SecurityException 提示重新复制图片或从相册重选；内部存储错误保留原提示。草稿保护、批次回滚和原附件保持已有回归；OBS-01 授权失效机制未由此解决。 |
 | 提醒恢复诊断 | 同一提交加入仅调试包启用的私有恢复记录，区分健康错误、通知阻塞、超时、取消和异常，并保留 BOOT 独立记录。静态审阅发现同步写盘可能拖延 Receiver 的 P2，随后改成独立单写入器，最多 6 个待写槽加 1 个在途记录；复审通过。中间阶段可合并、进程退出可丢未写记录，恢复业务和广播收尾不等待磁盘。 |
@@ -21,11 +21,67 @@
 
 ## 2026-11-01：转入新版手机复验
 
-用户先选择“先交付本机验证版，手机稍后再测”，随后明确要求把上述工作整理为日志，并告知手机已连接、开始手机测试。新批次 [RUN-20261101-DEVICE-034](test-evidence/RUN-20261101-DEVICE-034/README.md) 已在 2026-11-02 04:56:41—04:58:33 UTC 完成只读核对和新鲜基线：1 台授权荣耀 ALI-AN00／Android 15／API 35，已解锁，原包 0.3.3／6、签名匹配，原业务 3 条事项／4 附件。通知允许、精确访问 allow、通道 3，活跃产品通知 0；28 条提醒中 12 条 SENT、2 条 active、0 条 cancelPending，本日 DAILY 已 SENT。检查前产品已 stopped／无进程／无 Alarm，原因未定，未归因本轮操作。安装、数据保持、图片提示、提醒恢复和收尾结果继续按实际追加，当前不登记升级成功。
+用户先选择“先交付本机验证版，手机稍后再测”，随后明确要求把上述工作整理为日志，并告知手机已连接、开始手机测试。新批次 [RUN-20261101-DEVICE-034](test-evidence/RUN-20261101-DEVICE-034/README.md) 已在 2026-11-02 04:56:41—04:58:33 UTC 完成只读核对和新鲜基线：1 台授权荣耀 ALI-AN00／Android 15／API 35，已解锁，原包 0.3.3／6、签名匹配，原业务 3 条事项／4 附件。通知允许、精确访问 allow、通道 3，活跃产品通知 0；28 条提醒中 12 条 SENT、2 条 active、0 条 cancelPending，本日 DAILY 已 SENT。检查前产品已 stopped／无进程／无 Alarm，原因未定，未归因本轮操作。安装、数据保持、图片提示、提醒恢复和收尾结果继续按实际追加，该准备阶段尚未登记升级成功。
 
 | 未解决项 | 当前状态与后续检查 |
 | --- | --- |
 | OBS-01 | 来源权限拒绝提示已改善；授权失效机制仍未知。复验失败提示、原草稿／附件保持和 fresh copy 恢复。 |
-| OBS-02 | 0.3.3 的真实重启自动恢复子项未通过；0.3.4 加入诊断后尚待独立手机观察。分别核对未主动打开窗口与主动打开后的结果，不把记录 completed 当作通知送达。 |
+| OBS-02 | 0.3.3 的真实重启自动恢复子项未通过；0.3.4 在该准备阶段尚待独立手机观察，后续结果见下文。分别核对未主动打开窗口与主动打开后的结果，不把记录 completed 当作通知送达。 |
 | CI #45 页面超时 | 随后本机及 CI #46 流程通过，原失败根因仍未确定；诊断保留供复现。 |
 | 完整验收 | 新版本设备覆盖、完整 DA／TC、持续锁屏／自然 Doze、真实每日汇总点击及正式演练按实际步骤推进。 |
+
+### 同签名升级与正常首启分项
+
+上述准备态已随 `f19e3fd` 提交并推送。用户确认系统安装后，2026-11-02 04:59:22.860660 UTC 的覆盖安装返回 Success，实际版本 0.3.4／7、APK 哈希和签名均匹配。安装后未强停或主动打开时，六张业务表、4 附件、设置、全部提醒行、原 12 条 SENT 和控制记录均保持；05:00:12.290088 UTC 正常启动后的独立比对仍全部保持。
+
+普通打开后 stopped／notLaunched 均 false，实际下一精确 Alarm 恢复为北京时间 11 月 3 日 08:00，设置页新增提醒说明完整可见。安装后和前台恢复后均无 receiver 诊断文件；普通前台恢复本来不写此记录，不能借缺失记录判断 PACKAGE_REPLACED 是否交付。[新批次记录](test-evidence/RUN-20261101-DEVICE-034/README.md)已追加本分项，当时图片测试正在进行，重启自动恢复及整批收尾尚未判定。
+
+### 图片新提示重试与回滚实测
+
+`QA-034-1101-IMAGE` 两次独立粘贴并保存 2 张图片后，复用强停前旧 orange URI 的实际粘贴失败，完整来源权限提示可见；原 2 张附件、已存描述、未保存的新描述和草稿保持，私有文件 6→6。此轮未修改日志属性，诊断日志为空，仍保留实际界面失败证据。
+
+fresh copy 恢复到 3 张；坏图被独立拒绝，草稿／描述保持且无残留副本，保存前数据库仍为原 2 张。05:06:41.856606 UTC 的[最终结果](test-evidence/RUN-20261101-DEVICE-034/image-v034-result.json)确认保存后及重进编辑均为 3 张及新描述，原 2 张附件行和字节保持。仅将 **0.3.4 本样本提示、重试与回滚子项**记为通过；OBS-01 授权失效机制未关闭。10 份安全 JSON 和 4 张已审阅截图已按[哈希清单](test-evidence/RUN-20261101-DEVICE-034/images-files-hashes.json)原样归档；本轮空诊断日志与旧批次日志分开。当时继续进行夹具卸载后的独立副本及后续角色／提醒步骤。
+
+### 远程文档提交核对
+
+2026-11-02 05:11:49 UTC 只读核对：远程 main 仍为准备状态文档提交 `f19e3fd`，开放 PR 为 0；该提交的 [CI #47／41391476843](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41391476843) API 状态为 success。此处只核对运行状态，未下载或解析报告，不新增测试次数统计；源码完整远程测试与 Lint 证据仍引用 [CI #46](test-evidence/RUN-20261101-DEMO-STABILITY/ci46/README.md)。
+
+### 来源卸载与角色保存分项
+
+2026-11-02 05:08:11 UTC 本轮新增合成夹具卸载成功并确认不存在，合成剪贴板清空；05:11:45 UTC 的[普通重开结果](test-evidence/RUN-20261101-DEVICE-034/image-final-result.json)确认 3 私有副本行／字节／描述保持、三预览可见。一次 am kill 后 6 次观察仍有进程，未重试或强停替代，冷启动与排除缓存条件未建立；不登记为产品缺陷。
+
+05:13:39 UTC 的[角色往返](test-evidence/RUN-20261101-DEVICE-034/character-roundtrip-result.json)完成经典→Q 版保存回首页并重入、再回经典保存回首页并普通重开保持；预览未提前落库，其余设置、六表、附件与提醒摘要不变。CI #45 超时本次未复现，原根因仍未知。17 份安全文件已按[清单](test-evidence/RUN-20261101-DEVICE-034/source-role-files-hashes.json)原样归档；蓝图两次截图因含非测试内容均排除，不再补拍，三预览实际观察和私有字节比对保留。该阶段后的正常通知、真实重启与收尾结果按后续时序追加。
+
+### 普通后台提醒与完成后撤销
+
+2026-11-02 05:19:00 UTC（手机北京时间 13:19:00）的 NORMAL 危险期计划与真实精确 Alarm 匹配，系统通知创建相对计划 +191 ms，13:19:12 首次轮询观察到。18 个样本均为亮屏、USB 充电、App 后台及 deviceidle ACTIVE，不覆盖锁屏或自然 Doze。[Alarm journal](test-evidence/RUN-20261101-DEVICE-034/normal-after-notification-journal-1.json)首次读取即 finished／completed、通知与精确权限可用、无健康错误，时间和当前 boot 的校验通过；05:03:28.731 UTC 的旧 BOOT 项另行保留，不当作新重启结论。
+
+普通入口打开后，标记完成前同一通知仍在；05:19:45.903714 UTC 的[结果](test-evidence/RUN-20261101-DEVICE-034/normal-completion-result.json)确认标记完成后同一通知撤销，NORMAL 的两条计划 inactive、cancelPending=0，未点击通知。IMAGE 的未来计划当时仍 active，不把结果字段 allQaPlansInactive 扩大为全批 QA 均停用。16 JSON 与 2 张主线程已审阅截图按[清单](test-evidence/RUN-20261101-DEVICE-034/normal-files-hashes.json)归档；循环中间快照的 observed=false 与最终 observed=true 的差异及相同 samples 已在[批次说明](test-evidence/RUN-20261101-DEVICE-034/README.md#普通后台通知诊断与完成撤销)解释，原字节保留。该 NORMAL 阶段结束时，真实重启与本批收尾尚待实际结果。
+
+主线程原样保留[截图排除记录](test-evidence/RUN-20261101-DEVICE-034/screenshot-review-exclusions.json)及[哈希清单](test-evidence/RUN-20261101-DEVICE-034/review-files-hashes.json)，两张含非测试通知的蓝图截图未归档，未转录通知内容。
+
+### 恢复执行时的远程新增核对
+
+2026-11-02 06:50:50 UTC 只读核对发现远程 main 已推进至 [646eaa3](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/646eaa3)：付泽文 [PR #11](https://github.com/zidodo1124/hust26_software_engineering_homework/pull/11) 的 head 为 `fe058da`，已合入既有月历的每日事项数量显示，并在既有 SaverAppFlowTest 增加 3 条断言。数量按列表、关键词、来源／标签、危险期筛选计算，不按选中单日缩减；这不是重新实现整个月历，也不是 PX-01／PA-01 整体验收。[PR #12](https://github.com/zidodo1124/hust26_software_engineering_homework/pull/12)（head `10913c6`）的周／日周期界面及筛选仍开放、未合入，PX-03—PX-07 没有因此实现。贡献归于原 PR 作者，不计为本批 AI 新开发。
+
+本批手机仍测试 `bdcd76f` 的 0.3.4／7，APK SHA-256 `690626883dd90684128959a53737b54c326352e3decb0dd46a707ac3d962ab90`；远程增量版本号也为 0.3.4／7，应以源码提交和 APK 哈希区分。本批本机与 CI #46 的 218 次执行，以及本批手机结果，均不覆盖上述远程新增代码。 本轮先保留手机实际被测产物，工作区只取得远程引用，没有为这次远程核对安装新包；后续文档同步合并须保留 PR #11 的使用手册增量。
+
+[CI #49／41400509769](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41400509769) 对 `646eaa3` 的运行、Build and check、APK 与报告上传步骤已由 API 核对 success（job `125131111697`）。随后读取 artifacts 列表发生 WinError 10060 连接超时，尚未取得或解析该轮原始报告，故不登记新测试次数或 Lint 数；网络取证超时不是远程测试失败，也未为此重跑测试。PR #12 的 CI #50 最新状态另待核对。
+
+### 继续执行、真实重启与前台恢复对照
+
+执行子代理因额度限制中断后，用户要求继续未完成任务。主线程只读确认现场后接管手机操作；未补造中断期间步骤或用户消息时分。06:46:43 UTC 实际 reboot，boot ID 变化且 uptime 从 11418.7 降至 57.03 秒；用户确认仅解锁，未开 App 或点通知。06:48 时段首解锁观察无产品进程／Alarm，stopped=false、notLaunched=false，见[开始阶段清单](test-evidence/RUN-20261101-DEVICE-034/boot-start-files-hashes.json)。
+
+自动窗口至 06:55:43 UTC，41 样本全部非前台、解锁亮屏、USB 充电、ACTIVE，最后设备时间为北京时间 14:54 计划 +99 秒，均无 Alarm／BOOT QA 通知，BOOT 危险期仍 PENDING。诊断保留旧 BOOT 05:03:28.731 与旧 Alarm 05:19，elapsed 不属于新 boot；没有新记录不能独立证明广播未交付。**本样本自动恢复仍未通过，OBS-02 根因开放。**
+
+窗口结束后才普通打开，06:55:56 UTC 对照确认补发：系统创建 `1793602550060`，计划 `1793602440000`，晚 110.060 秒；BOOT danger SENT，下一实际精确 Alarm 为北京时间 15:01 的 IMAGE。诊断仍旧；普通打开恢复成功不关闭自动恢复失败。重启后 `persist.log.tag` 由 S 变 M，测试脚本未设置该变化；完整观察后 06:56:05 UTC 仅恢复原 S，其余日志属性空值保持，不归因于 App。结束阶段 11 份安全 JSON 已按[清单](test-evidence/RUN-20261101-DEVICE-034/boot-end-files-hashes.json)归档；原 QA 事项行保持，旧 BOOT／Alarm 全阶段相同。最终清理和原数据复核随后另记。
+
+### 本批清理与最终数据审计
+
+06:58:11 UTC 通过真实 UI 删除本批 BOOT／IMAGE／NORMAL 三个已记录 QA，剩余 QA 0、相关通知撤销；五条 QA 计划 inactive、cancelPending=0，账本及两条 QA SENT 保留；总账本33行／14 SENT分别为原28+QA5、原12+QA2，不写成全账本不增。原 12 条 SENT 按基线精确 key 集核对完整行未变。
+
+06:58:57.861995 UTC 的[最终审计](test-evidence/RUN-20261101-DEVICE-034/final-data-and-state-audit.json)17 项全部通过：原六表（3 事项／4 附件等）、四份附件实际字节、设置和原 SENT 保持；11 项记录的系统设置、权限／通道、精确访问、字体显示、网络、电源／idle 与日志属性一致，夹具已移除，临时 UI XML 与私有数据库目录清理完成。未 force-stop 收尾、未改钟或删账本；手机以空查询正常主页停留，stopped=false／notLaunched=false、进程存在，下一实际精确 Alarm 为北京时间 11 月 3 日 08:00，readyToDisconnect=true。初始 stopped=true 有意不恢复为强停。收尾23份安全JSON按[清单](test-evidence/RUN-20261101-DEVICE-034/cleanup-files-hashes.json)原样归档。**本批设备分项及收尾完成，自动重启恢复失败仍保留，整体验收未完成。**
+
+### 远程随后合入周／日界面
+
+06:58:10 UTC 的新快照确认队友已合入 [PR #12](https://github.com/zidodo1124/hust26_software_engineering_homework/pull/12)，远程 main 为 `99490e692b67f3d4f46548aa8e97a0a56d864221`，开放 PR 为 0。该 PR 原 head `10913c6` 的 [CI #50／41402242211](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41402242211) 为 success；merge 后 [CI #51／41403137121](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41403137121) 当时运行中。前文 06:50 的 PR #12 待审是历史快照，不再表示当前状态；此次由队友合入，不记为本线程执行审阅或 merge。本批手机仍为 `bdcd76f`／APK `690626883dd90684128959a53737b54c326352e3decb0dd46a707ac3d962ab90`，新月历／周日代码未安装，本批本机与手机结论不覆盖它。

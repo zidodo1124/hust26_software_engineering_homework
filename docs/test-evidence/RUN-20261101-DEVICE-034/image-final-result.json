@@ -1,0 +1,17 @@
+{
+  "atUtc": "2026-11-02T05:11:45.917471+00:00",
+  "fixtureRemovedAndPmAbsenceRechecked": true,
+  "syntheticClipboardCleared": true,
+  "ordinaryLauncherReopenVerified": true,
+  "savedImages": 3,
+  "allThreePrivateFilesExactlyUnchanged": true,
+  "allThreePreviewsObserved": true,
+  "syntheticDescriptionUnchanged": true,
+  "qaCompletedThroughUi": false,
+  "backgroundKillExitedWithinInitialWindow": false,
+  "killRetried": false,
+  "forceStopFallbackUsed": false,
+  "coldStartClaimed": false,
+  "cacheExcludedForPreviewClaim": false,
+  "scope": "Ordinary reopen after synthetic source removal; existing product copies remain readable and previews visible; process exit and cache exclusion not established"
+}

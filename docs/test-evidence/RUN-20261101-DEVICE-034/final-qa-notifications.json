@@ -1,0 +1,11 @@
+{
+  "checkedUtc": "2026-11-02T06:58:42.022302+00:00",
+  "scope": "Verified package filter; QA tags and optional expected daily tag only",
+  "filter": {
+    "checkedUtc": "2026-11-02T06:58:42.022302+00:00",
+    "packageFilterVerifiedInOutput": true,
+    "redactionDisabled": false
+  },
+  "notifications": [],
+  "rawOutputRetained": false
+}

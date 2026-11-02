@@ -1,0 +1,21 @@
+{
+  "atUtc": "2026-11-02T06:56:10.339601+00:00",
+  "approvedRecordedCount": 3,
+  "approved": [
+    {
+      "id": "0bacfceb-a348-4c01-9877-986eeaf8e318",
+      "title": "QA-034-1101-BOOT"
+    },
+    {
+      "id": "edf70703-35a3-4707-ae17-bb808e9a952a",
+      "title": "QA-034-1101-IMAGE"
+    },
+    {
+      "id": "68f4da6f-5673-4937-9ce5-3049ad743d62",
+      "title": "QA-034-1101-NORMAL"
+    }
+  ],
+  "uiOnly": true,
+  "automaticDeleteRetry": false,
+  "forceStopUsed": false
+}

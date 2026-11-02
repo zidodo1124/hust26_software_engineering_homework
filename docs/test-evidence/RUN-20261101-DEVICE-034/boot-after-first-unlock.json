@@ -1,0 +1,99 @@
+{
+  "atUtc": "2026-11-02T06:48:27.843880+00:00",
+  "condition": {
+    "atUtc": "2026-11-02T06:48:24.375455+00:00",
+    "deviceEpochSeconds": 1793602101,
+    "wakefulness": [
+      "Awake"
+    ],
+    "keyguardShowing": false,
+    "keyguardSecure": true,
+    "keyguardInputRestricted": false,
+    "deviceIdle": {
+      "mForceIdle": "false",
+      "mScreenOn": "true",
+      "mCharging": "true",
+      "mState": "ACTIVE",
+      "mLightState": "ACTIVE"
+    }
+  },
+  "journalContext": {
+    "newBootId": true,
+    "recordContexts": {
+      "alarm": {
+        "sameAsPreRebootRecord": true,
+        "receivedAfterRebootRequest": false,
+        "receivedElapsedFitsCurrentUptime": false,
+        "phase": "finished",
+        "outcome": "completed"
+      },
+      "boot": {
+        "sameAsPreRebootRecord": true,
+        "receivedAfterRebootRequest": false,
+        "receivedElapsedFitsCurrentUptime": false,
+        "phase": "finished",
+        "outcome": "completed"
+      }
+    }
+  },
+  "package": {
+    "flags": {
+      "installed": "true",
+      "hidden": "false",
+      "suspended": "false",
+      "stopped": "false",
+      "notLaunched": "false",
+      "enabled": "0"
+    },
+    "processPresent": false
+  },
+  "alarm": {
+    "atUtc": "2026-11-02T06:48:26.106156+00:00",
+    "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+    "alarms": []
+  },
+  "productForeground": false,
+  "noProductLaunchSinceReboot": true,
+  "qaPlans": [
+    {
+      "key": "DANGER:0bacfceb-a348-4c01-9877-986eeaf8e318:1793609640000",
+      "kind": "DANGER",
+      "eventId": "0bacfceb-a348-4c01-9877-986eeaf8e318",
+      "deadlineAt": 1793609640000,
+      "eventRevision": 1,
+      "triggerAt": 1793602440000,
+      "day": null,
+      "notificationTag": "event:0bacfceb-a348-4c01-9877-986eeaf8e318:1793609640000:1793602440000:DANGER",
+      "active": 1,
+      "state": "PENDING",
+      "lastAttemptAt": null,
+      "lastError": null,
+      "cancelPending": 0
+    },
+    {
+      "key": "DEADLINE:0bacfceb-a348-4c01-9877-986eeaf8e318:1793609640000",
+      "kind": "DEADLINE",
+      "eventId": "0bacfceb-a348-4c01-9877-986eeaf8e318",
+      "deadlineAt": 1793609640000,
+      "eventRevision": 1,
+      "triggerAt": 1793606040000,
+      "day": null,
+      "notificationTag": "event:0bacfceb-a348-4c01-9877-986eeaf8e318:1793609640000:1793606040000:DEADLINE",
+      "active": 1,
+      "state": "PENDING",
+      "lastAttemptAt": null,
+      "lastError": null,
+      "cancelPending": 0
+    }
+  ],
+  "logProperties": {
+    "current": {
+      "log.tag": "",
+      "persist.log.tag": "M",
+      "log.tag.DDLSaver.Attachment": "",
+      "persist.log.tag.DDLSaver.Attachment": ""
+    },
+    "matchesOriginal": false,
+    "propertiesChangedByHarness": false
+  }
+}

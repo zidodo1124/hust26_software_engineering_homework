@@ -1,0 +1,21 @@
+{
+  "atUtc": "2026-11-02T06:56:05.308962+00:00",
+  "reason": "Real reboot changed persist.log.tag from fresh baseline S to M; root restores baseline only after the full observation and normal-launch comparison",
+  "before": {
+    "log.tag": "",
+    "persist.log.tag": "M",
+    "log.tag.DDLSaver.Attachment": "",
+    "persist.log.tag.DDLSaver.Attachment": ""
+  },
+  "baseline": {
+    "log.tag": "",
+    "persist.log.tag": "S",
+    "log.tag.DDLSaver.Attachment": "",
+    "persist.log.tag.DDLSaver.Attachment": ""
+  },
+  "changedKeys": [
+    "persist.log.tag"
+  ],
+  "productDefectAttributed": false,
+  "recordedBeforeWrite": true
+}

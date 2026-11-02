@@ -1,0 +1,16 @@
+{
+  "createdPlanAtUtc": "2026-11-02T06:45:37.502478+00:00",
+  "title": "QA-034-1101-BOOT",
+  "deadlineBeijing": "2026-11-02T16:54:00+08:00",
+  "deadlineEpochMillis": 1793609640000,
+  "sprintMinutes": 120,
+  "expectedDangerTriggerEpochMillis": 1793602440000,
+  "deviceEpochSecondsAtPlanning": 1793601935,
+  "savedThroughUi": true,
+  "savedAtUtc": "2026-11-02T06:46:29.675899+00:00",
+  "remainingSecondsToDangerAtUiCheck": 453.0,
+  "eventId": "0bacfceb-a348-4c01-9877-986eeaf8e318",
+  "verifiedTriggerAt": 1793602440000,
+  "verifiedNotificationTag": "event:0bacfceb-a348-4c01-9877-986eeaf8e318:1793609640000:1793602440000:DANGER",
+  "verifiedAtUtc": "2026-11-02T06:46:31.109964+00:00"
+}

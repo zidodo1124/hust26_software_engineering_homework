@@ -1,0 +1,146 @@
+[
+  {
+    "file": "qa-normal-plan.json",
+    "source": ".local-tools/device-034-20261101/qa-normal-plan.json",
+    "sourceSha256AtArchive": "52b3c59ceea9c4fbe0ef94e588a78f85cd645b84cbe1b32eef53d5bd412233b5",
+    "archivedSha256": "52b3c59ceea9c4fbe0ef94e588a78f85cd645b84cbe1b32eef53d5bd412233b5",
+    "bytes": 703,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "normal-created-qa.json",
+    "source": ".local-tools/device-034-20261101/normal-created-qa.json",
+    "sourceSha256AtArchive": "206e1b86c42e87187f2e074a4ce87c60230a9daba177f5e81c8b6e3e650c79d0",
+    "archivedSha256": "206e1b86c42e87187f2e074a4ce87c60230a9daba177f5e81c8b6e3e650c79d0",
+    "bytes": 3208,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "normal-before-background.json",
+    "source": ".local-tools/device-034-20261101/normal-before-background.json",
+    "sourceSha256AtArchive": "f16dd322f0975aec1fb111af9b69446ad9d82294f0ae89b136e4ced3844a8a33",
+    "archivedSha256": "f16dd322f0975aec1fb111af9b69446ad9d82294f0ae89b136e4ced3844a8a33",
+    "bytes": 1686,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "normal-before-alarm-journal.json",
+    "source": ".local-tools/device-034-20261101/normal-before-alarm-journal.json",
+    "sourceSha256AtArchive": "14ebd50bb304ce4e6a668d4f329c4135042a69d3daa81761fd99c9d6be31c8cb",
+    "archivedSha256": "14ebd50bb304ce4e6a668d4f329c4135042a69d3daa81761fd99c9d6be31c8cb",
+    "bytes": 1366,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "normal-background-start.json",
+    "source": ".local-tools/device-034-20261101/normal-background-start.json",
+    "sourceSha256AtArchive": "a50cc23b470859c1bdefbe6fcd5d32479dada7daee25cf50e74bd1d88da4b4e0",
+    "archivedSha256": "a50cc23b470859c1bdefbe6fcd5d32479dada7daee25cf50e74bd1d88da4b4e0",
+    "bytes": 561,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "normal-timed-observations.json",
+    "source": ".local-tools/device-034-20261101/normal-timed-observations.json",
+    "sourceSha256AtArchive": "cc94a7760f588f1a76044dc2ef787be41c358bc2fc480080d2f72c72ddf41238",
+    "archivedSha256": "cc94a7760f588f1a76044dc2ef787be41c358bc2fc480080d2f72c72ddf41238",
+    "bytes": 10945,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "normal-notification-result.json",
+    "source": ".local-tools/device-034-20261101/normal-notification-result.json",
+    "sourceSha256AtArchive": "54427d8dab813a7b0915c12e97e1840ff8352ff5d0d89f7fe8e57807dd7a95a5",
+    "archivedSha256": "54427d8dab813a7b0915c12e97e1840ff8352ff5d0d89f7fe8e57807dd7a95a5",
+    "bytes": 15927,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "normal-after-notification-journal-1.json",
+    "source": ".local-tools/device-034-20261101/normal-after-notification-journal-1.json",
+    "sourceSha256AtArchive": "e97ab82d4415fe303f58b7f1e185a251ab966abd49afaf5c4595b1c120c7f522",
+    "archivedSha256": "e97ab82d4415fe303f58b7f1e185a251ab966abd49afaf5c4595b1c120c7f522",
+    "bytes": 1785,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "normal-journal-positive-control.json",
+    "source": ".local-tools/device-034-20261101/normal-journal-positive-control.json",
+    "sourceSha256AtArchive": "1c4e34c043b5a7ecf66f45b1f02362b35f1ab4a32f88bd0a0983a678cd378b4b",
+    "archivedSha256": "1c4e34c043b5a7ecf66f45b1f02362b35f1ab4a32f88bd0a0983a678cd378b4b",
+    "bytes": 515,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "normal-after-notification-qa.json",
+    "source": ".local-tools/device-034-20261101/normal-after-notification-qa.json",
+    "sourceSha256AtArchive": "b72d425d265ba54f3ba72456c1f1b56fa3cc5db0d7718e12d0814b9a762c2883",
+    "archivedSha256": "b72d425d265ba54f3ba72456c1f1b56fa3cc5db0d7718e12d0814b9a762c2883",
+    "bytes": 3214,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "normal-before-complete-condition.json",
+    "source": ".local-tools/device-034-20261101/normal-before-complete-condition.json",
+    "sourceSha256AtArchive": "d9c967587c7de9df81ecc60ad861320e3456421f46d1036ca818b60701d06015",
+    "archivedSha256": "d9c967587c7de9df81ecc60ad861320e3456421f46d1036ca818b60701d06015",
+    "bytes": 381,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "normal-notification-before-normal-launch.json",
+    "source": ".local-tools/device-034-20261101/normal-notification-before-normal-launch.json",
+    "sourceSha256AtArchive": "750948f6f215309efb8c454fe78c12fb04008efc9467106960bc7f11cac50027",
+    "archivedSha256": "750948f6f215309efb8c454fe78c12fb04008efc9467106960bc7f11cac50027",
+    "bytes": 750,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "normal-notification-before-complete.json",
+    "source": ".local-tools/device-034-20261101/normal-notification-before-complete.json",
+    "sourceSha256AtArchive": "1b5281b50dc583738e16fb85e0297e328c03e12a363f3ec418dcc7afee1770a6",
+    "archivedSha256": "1b5281b50dc583738e16fb85e0297e328c03e12a363f3ec418dcc7afee1770a6",
+    "bytes": 750,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "normal-completed-qa.json",
+    "source": ".local-tools/device-034-20261101/normal-completed-qa.json",
+    "sourceSha256AtArchive": "04b54dbc4675b480e4bfc06e31148de1ede85d25255a0efd97ebcd3f345d6c75",
+    "archivedSha256": "04b54dbc4675b480e4bfc06e31148de1ede85d25255a0efd97ebcd3f345d6c75",
+    "bytes": 3223,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "normal-notification-after-complete.json",
+    "source": ".local-tools/device-034-20261101/normal-notification-after-complete.json",
+    "sourceSha256AtArchive": "05b8e19d57ed8497afe6369e96fba5ad3278eb0fdcfbf056a1bae52506e9b3db",
+    "archivedSha256": "05b8e19d57ed8497afe6369e96fba5ad3278eb0fdcfbf056a1bae52506e9b3db",
+    "bytes": 350,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "normal-completion-result.json",
+    "source": ".local-tools/device-034-20261101/normal-completion-result.json",
+    "sourceSha256AtArchive": "c8aaa5d837894a9d6e1d30fd22387a58202ea1f788851647db43c62212b29a73",
+    "archivedSha256": "c8aaa5d837894a9d6e1d30fd22387a58202ea1f788851647db43c62212b29a73",
+    "bytes": 352,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "02-normal-detail.png",
+    "source": ".local-tools/device-034-20261101/02-normal-detail.png",
+    "sourceSha256AtArchive": "7cc593ed7a55c4d94a4a9629bc34c48231be734156af97b9cecc8c1c152c183d",
+    "archivedSha256": "7cc593ed7a55c4d94a4a9629bc34c48231be734156af97b9cecc8c1c152c183d",
+    "bytes": 257986,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "21-normal-completed-detail.png",
+    "source": ".local-tools/device-034-20261101/21-normal-completed-detail.png",
+    "sourceSha256AtArchive": "f28c67aaf64eb3d9db422f2e2e024776496b6f2160f7ada7772a5a340e069616",
+    "archivedSha256": "f28c67aaf64eb3d9db422f2e2e024776496b6f2160f7ada7772a5a340e069616",
+    "bytes": 263078,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  }
+]

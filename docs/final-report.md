@@ -2,7 +2,9 @@
 
 更新日期：2026-11-01。小组：花园鳗。**状态：待小组最终审核及课程验收。** 本稿汇集已有选题、需求、设计、实现和测试材料，不代替老师指定模板，也不将尚未进行的手机验证或成员审核写为完成。
 
-当前软件源码为 [bdcd76f](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/bdcd76f916aae546bd146ce1fb1a14859bcd5eb4)，版本 0.3.4／versionCode 7、Room schema 4，完整本机构建、179 方法／218 次执行通过，Lint 0／16。此前 7 份源码／测试保存在 `778429e`，PR #10 合并基线为 `c1e94f3`。荣耀 X50 仍为已有分项证据的 0.3.3／6，新包未实机验收。各批次以源码／APK 哈希识别，远程检查见 [main 的 Android Actions](https://github.com/zidodo1124/hust26_software_engineering_homework/actions?query=branch%3Amain)，不以历史 CI 代替新源码结果。
+本批手机与本机验证源码为 [bdcd76f](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/bdcd76f916aae546bd146ce1fb1a14859bcd5eb4)，版本 0.3.4／versionCode 7、Room schema 4，完整本机构建、179 方法／218 次执行通过，Lint 0／16。此前 7 份源码／测试保存在 `778429e`，PR #10 合并基线为 `c1e94f3`。荣耀 X50 已同签名覆盖为 0.3.4／7，原数据保持与本样本图片提示／重试／回滚分项通过，本批设备分项及17项收尾审计已完成，重启自动恢复仍未通过。各批次以源码／APK 哈希识别，远程检查见 [main 的 Android Actions](https://github.com/zidodo1124/hust26_software_engineering_homework/actions?query=branch%3Amain)，不以历史 CI 代替新源码结果。
+
+本批手机已测试 `bdcd76f` 的 0.3.4／7，APK SHA-256 `690626883dd90684128959a53737b54c326352e3decb0dd46a707ac3d962ab90`；远程增量版本号也为 0.3.4／7，应以源码提交和 APK 哈希区分。本批本机与 CI #46 的 218 次执行，以及本批手机结果，均不覆盖上述远程新增代码。 远程最新 main 为 [99490e6](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/99490e692b67f3d4f46548aa8e97a0a56d864221)，本批尚未在手机验证其月历数量及周／日界面增量；CI #49 已核对运行与构建／上传步骤成功，原始报告仍待取得，不沿用旧批次数量。
 
 ## 1. 选题与目标
 
@@ -12,7 +14,7 @@
 
 ## 2. 需求与范围
 
-独立交付的[需求分析](requirements.md)保留需求编号、来源及确认状态；[数据组织专项需求](data-requirements.md)补充具体规则和 DA 场景。已实现不等于需求文档已获整体批准。PR #10 合入的[规划扩展讨论稿](planning-extension-requirements.md)含 7 项提案，尚未实现；合并文档不等于建议细则已全部确认。
+独立交付的[需求分析](requirements.md)保留需求编号、来源及确认状态；[数据组织专项需求](data-requirements.md)补充具体规则和 DA 场景。已实现不等于需求文档已获整体批准。PR #10 合入的[规划扩展讨论稿](planning-extension-requirements.md)当时包含 7 项尚未实现的提案；后续截至 2026-11-02 06:58:10 UTC，远程 main 为 [99490e6](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/99490e692b67f3d4f46548aa8e97a0a56d864221)。付泽文 [PR #11](https://github.com/zidodo1124/hust26_software_engineering_homework/pull/11) 的月历日期格数量增量已合入，沿用既有月历，数量遵循列表状态、关键词、来源、标签及危险期筛选，不随所选单日缩减；随后队友已合入 [PR #12](https://github.com/zidodo1124/hust26_software_engineering_homework/pull/12) 的周／日周期界面与筛选，开放 PR 为 0。本批未替队友执行此次审阅／合并。PX-01／PX-02 的完整验收仍待完成，PX-03—PX-07 未由这些增量实现。 合并文档或局部代码不等于建议细则已全部确认。
 
 | 范围 | 当前实现 | 确认与验收边界 |
 | --- | --- | --- |
@@ -68,15 +70,16 @@ flowchart LR
 | 历史远程 `ac1d978`，[CI #42](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41288003667) | APK、169 次执行与 Lint 通过；失败／错误／跳过各 0；Lint 0／17 | 不包含其后新增的本机测试 |
 | [2026-11-01 独立界面补测](test-evidence/RUN-20261101-INDEPENDENT-UI/README.md) | 构建成功，155 个方法／174 次执行通过，Lint 0／16；新增 5 项页面流程 | 本机 Robolectric，重开指返回列表再进详情；不代表设备验收 |
 | [2026-11-01 恢复与诊断](test-evidence/RUN-20261101-RECOVERY-DIAGNOSTICS/README.md) | 最终构建成功，167 个方法／194 次执行通过，Lint 0／16；新增 12 方法／20 执行 | 保留首轮定向 8 次失败与测试修正；执行时未提交，相关源码现存本地 `778429e`；该本机批次未安装设备 |
-| [2026-11-01 实机分项（已收尾）](test-evidence/RUN-20261101-DEVICE-ACCEPTANCE/README.md) | 同签名覆盖的数据／附件保持；单项通知冷启动、权限与强停恢复、受控 idle 实际送达及图片失败／恢复、来源卸载后副本保持已有证据 | 普通样本 USB 充电、deviceidle ACTIVE；强制 idle 另记且中间亮屏，不等于自然 Doze；每日汇总及其余场景仍保留边界，真实重启自动恢复子项未通过（OBS-02），主动打开恢复；16 项收尾检查通过、原数据保持，未完成整体验收 |
-| [0.3.4 最终本机检查](test-evidence/RUN-20261101-DEMO-STABILITY/README.md) | 28 XML／179 方法／218 执行全部通过，Lint 0／16，APK／签名及源码前后哈希一致 | 保留首轮 2 失败；新包未安装，历史 CI #45 原因未定，远程新检查另看 Actions |
+| [2026-11-01 0.3.3 实机分项（已收尾）](test-evidence/RUN-20261101-DEVICE-ACCEPTANCE/README.md) | 同签名覆盖的数据／附件保持；单项通知冷启动、权限与强停恢复、受控 idle 实际送达及图片失败／恢复、来源卸载后副本保持已有证据 | 普通样本 USB 充电、deviceidle ACTIVE；强制 idle 另记且中间亮屏，不等于自然 Doze；每日汇总及其余场景仍保留边界，真实重启自动恢复子项未通过（OBS-02），主动打开恢复；16 项收尾检查通过、原数据保持，未完成整体验收 |
+| [0.3.4 最终本机检查](test-evidence/RUN-20261101-DEMO-STABILITY/README.md) | 28 XML／179 方法／218 执行全部通过，Lint 0／16，APK／签名及源码前后哈希一致 | 保留首轮 2 失败；该本机批次未安装，历史 CI #45 原因未定；随后 CI #46 的 218 次执行通过，Lint 0／17 |
+| [0.3.4 独立设备复验](test-evidence/RUN-20261101-DEVICE-034/README.md) | 同签名覆盖、正常首启、原六表／4 附件／设置／提醒行保持；本样本图片提示／重试／回滚通过 | 来源卸载后普通重开 3 副本保持、角色双向保存也已通过；普通后台通知与完成撤销分项通过；亮屏 USB 条件不覆盖锁屏／Doze，真实重启自动窗口未通过，普通打开恢复成功；17项收尾通过、三个QA清理且原数据保持，OBS-01／OBS-02 开放 |
 | [荣耀 X50 0.3.3 复验](test-evidence/RUN-20261028-004/README.md) | 同签名覆盖、原数据与附件保留、角色修复和部分字号检查有证据 | 结论限该设备及实际操作，不覆盖所有环境 |
 
 此前 0.3.3 本机批次覆盖支持广播的真实恢复链路、每日汇总 PendingIntent 冷启动及图片导入诊断，所有批次分别统计。该批 APK SHA-256 为 `6f30078bf0dfa95731afe9fae0c08f06dd19d048eb815fd2236022c90e19e65b`，与此前设备包同签名，已在随后独立实机批次同签名覆盖安装；7 份变动源码哈希与产物详情见本机批次证据，实际设备结果另行记录。
 
-本次 PR 合并基线通过 194 次执行，随后[0.3.4 稳定性批次](test-evidence/RUN-20261101-DEMO-STABILITY/README.md)最终完整构建成功，**28 份 JUnit XML、179 个不同方法／218 次执行，失败／错误／跳过各 0，Lint 0 错误／16 警告**。警告总数仍为 16：新增恢复诊断 SharedPreferences.edit 的 1 条 UseKtx，原 ReminderRuntime 的 1 条 InlinedApi 消失，不能称为全部既有警告。 本轮已改善图片来源权限失败提示、加入恢复诊断及重启／强停说明，并完成静态 P2 整改复审。首轮定向 2／108 失败及历史 [CI #45](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41387758880) 的 1／169 次失败原始证据保留；旧 CI 等待超时根因未定，不由本机通过抵销。新包没有手机安装或设备验收。
+本次 PR 合并基线通过 194 次执行，随后[0.3.4 稳定性批次](test-evidence/RUN-20261101-DEMO-STABILITY/README.md)最终完整构建成功，**28 份 JUnit XML、179 个不同方法／218 次执行，失败／错误／跳过各 0，Lint 0 错误／16 警告**。警告总数仍为 16：新增恢复诊断 SharedPreferences.edit 的 1 条 UseKtx，原 ReminderRuntime 的 1 条 InlinedApi 消失，不能称为全部既有警告。 本轮已改善图片来源权限失败提示、加入恢复诊断及重启／强停说明，并完成静态 P2 整改复审。首轮定向 2／108 失败及历史 [CI #45](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41387758880) 的 1／169 次失败原始证据保留；旧 CI 等待超时根因未定，不由本机通过抵销。该本机批次未安装设备；随后[独立 0.3.4 设备复验](test-evidence/RUN-20261101-DEVICE-034/README.md)已完成升级、原数据保持及本样本图片分项，本批分项及17项收尾审计已完成，未通过及未测范围保留。
 
-**未关闭事项：** OBS-01 本轮已复现来源打开时权限拒绝并验证重新复制恢复，实际 App 诊断需本设备单 tag W 条件，最终授权失效机制仍未确定；新增 OBS-02：本设备真实重启后首解锁、未主动打开窗口未自动恢复 Alarm／提醒，普通打开后补发及调度恢复，原因尚未隔离，优先调查。持续锁屏、自然 Doze／省电、完整权限拒绝路径、近似送达延迟及真实每日汇总点击仍待补测；已完成的权限／通道／精确访问与强停恢复、受控 idle 子项见本轮证据。模拟异常仅能证明受控失败恢复，不能推断真实设备根因。完整 DA／TC 步骤、更多输入／图片来源／字号和最终视觉审核也尚未完成。
+**未关闭事项：** OBS-01 在 0.3.3 历史设备批次已复现来源打开时权限拒绝并验证重新复制恢复，实际 App 诊断是在本设备单 tag W 条件取得；0.3.4 本样本完整提示与重试通过，但图片诊断日志为空、未改日志属性，最终授权失效机制仍未确定。OBS-02 来自 0.3.3 真实重启后首解锁、未主动打开窗口未自动恢复 Alarm／提醒，普通打开后补发及调度恢复；原因尚未隔离，0.3.4 本样本再次观察到未开 App 的窗口跨过计划 +90 秒仍无 Alarm／通知，普通打开后补发与重排；旧诊断不能作为新 boot 证据，未出现新记录也不能独立判定广播未交付。持续锁屏、自然 Doze／省电、完整权限拒绝路径、近似送达延迟及真实每日汇总点击仍待补测；已完成的权限／通道／精确访问与强停恢复、受控 idle 子项见 0.3.3 历史证据。模拟异常仅能证明受控失败恢复，不能推断真实设备根因。完整 DA／TC 步骤、更多输入／图片来源／字号和最终视觉审核也尚未完成。
 
 ## 5. 团队参与与版本记录
 

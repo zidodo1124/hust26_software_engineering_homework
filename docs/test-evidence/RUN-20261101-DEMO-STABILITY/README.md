@@ -1,6 +1,6 @@
 # RUN-20261101-DEMO-STABILITY：PR 合并基线与演示稳定性
 
-更新日期：2026-11-01（America/Los_Angeles），机器时间保留 UTC。**0.3.4 最终本机检查完成：28 份 JUnit XML、179 个不同方法／218 次执行，失败／错误／跳过各 0，Lint 0 错误／16 警告，Debug 构建成功。** 当前源码 [bdcd76f](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/bdcd76f916aae546bd146ce1fb1a14859bcd5eb4)，完整 SHA 为 `bdcd76f916aae546bd146ce1fb1a14859bcd5eb4`。手机仍为已有分项证据的 0.3.3／6，新包没有安装或实机验收。
+更新日期：2026-11-01（America/Los_Angeles），机器时间保留 UTC。**0.3.4 最终本机检查完成：28 份 JUnit XML、179 个不同方法／218 次执行，失败／错误／跳过各 0，Lint 0 错误／16 警告，Debug 构建成功。** 本批源码 [bdcd76f](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/bdcd76f916aae546bd146ce1fb1a14859bcd5eb4)，完整 SHA 为 `bdcd76f916aae546bd146ce1fb1a14859bcd5eb4`。该本机批次结束时手机为 0.3.3／6，未安装新包；随后独立[0.3.4 设备批次](../RUN-20261101-DEVICE-034/README.md)已同签名覆盖、确认原数据保持及本样本图片提示／重试／回滚通过，本批设备分项及收尾已完成，自动重启恢复子项未通过，完整验收边界保留。
 
 [交付摘要](delivery.json)绑定源码提交、最终 218 次结果、APK 信息及设备未操作边界。
 
@@ -8,7 +8,7 @@
 
 | 阶段 | 证据 | 实际结果 |
 | --- | --- | --- |
-| PR #10 审阅合并 | [API 返回](pr10-review-merge.json)、[APPROVE 审阅](https://github.com/zidodo1124/hust26_software_engineering_homework/pull/10#pullrequestreview-5732043244) | head `d4e09428b4deb87110067ff356c78a3cb98f4eac`，merge `c1e94f3d80fcf4aa6d9983c4e3be5e7b4e0a1d48`；7 项规划提案及记录，尚未实现 |
+| PR #10 审阅合并 | [API 返回](pr10-review-merge.json)、[APPROVE 审阅](https://github.com/zidodo1124/hust26_software_engineering_homework/pull/10#pullrequestreview-5732043244) | head `d4e09428b4deb87110067ff356c78a3cb98f4eac`，merge `c1e94f3d80fcf4aa6d9983c4e3be5e7b4e0a1d48`；当时为 7 项尚未实现的规划提案及记录 |
 | 合并后本机基线 | [摘要](baseline-summary.json)、[完整基线目录](baseline/)、[执行日志](baseline/gradle.log) | 27 XML／167 方法／194 执行，失败／错误／跳过各 0，Lint 0／16；7 份先前源码与旧 APK 哈希一致 |
 | 历史 CI #44 | [CI #44](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41387261004) | `a670` 前缀，completed／success；不覆盖其后失败 |
 | 历史 CI #45 | [CI #45](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41387758880)、[解析摘要](ci45-summary.json)、[失败原始 XML](ci45-failed-ui.xml)、[步骤状态](ci45-jobs.json) | `c1e94f3`，169 执行／1 失败／0 错误／0 跳过，Lint 0／17；根因未定 |

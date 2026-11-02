@@ -1,0 +1,28 @@
+{
+  "atUtc": "2026-11-02T04:58:33.348714+00:00",
+  "baselineWithoutForceStop": true,
+  "package": {
+    "flags": {
+      "installed": "true",
+      "hidden": "false",
+      "suspended": "false",
+      "stopped": "true"
+    },
+    "processPresent": false
+  },
+  "activeOwnNotifications": 0,
+  "businessCounts": {
+    "events": 3,
+    "sources": 1,
+    "tags": 1,
+    "event_tags": 1,
+    "custom_fields": 1,
+    "attachments": 4
+  },
+  "originalSentCount": 12,
+  "dailyToday": {
+    "beijingDate": "2026-11-02",
+    "rowCount": 1,
+    "sentCount": 1
+  }
+}

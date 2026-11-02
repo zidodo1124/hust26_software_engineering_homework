@@ -1,0 +1,19 @@
+{
+  "atUtc": "2026-11-02T06:46:31.374388+00:00",
+  "remainingSeconds": 451.0,
+  "alarm": {
+    "atUtc": "2026-11-02T06:46:31.374388+00:00",
+    "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+    "alarms": [
+      {
+        "type": "RTC_WAKEUP",
+        "triggerEpochMillis": 1793602440000,
+        "systemDisplayTrigger": "2026-11-02 14:54:00.000",
+        "window": "0",
+        "exactAllowReason": "permission",
+        "reminderWakeActionConfirmed": true
+      }
+    ]
+  },
+  "qaPendingPlanVerified": true
+}

@@ -1,0 +1,16 @@
+{
+  "createdPlanAtUtc": "2026-11-02T05:15:01.891012+00:00",
+  "title": "QA-034-1101-NORMAL",
+  "deadlineBeijing": "2026-11-02T15:19:00+08:00",
+  "deadlineEpochMillis": 1793603940000,
+  "sprintMinutes": 120,
+  "expectedDangerTriggerEpochMillis": 1793596740000,
+  "deviceEpochSecondsAtPlanning": 1793596499,
+  "savedThroughUi": true,
+  "savedAtUtc": "2026-11-02T05:15:54.437942+00:00",
+  "remainingSecondsToDangerAtUiCheck": 188.0,
+  "eventId": "68f4da6f-5673-4937-9ce5-3049ad743d62",
+  "verifiedTriggerAt": 1793596740000,
+  "verifiedNotificationTag": "event:68f4da6f-5673-4937-9ce5-3049ad743d62:1793603940000:1793596740000:DANGER",
+  "verifiedAtUtc": "2026-11-02T05:15:59.111988+00:00"
+}

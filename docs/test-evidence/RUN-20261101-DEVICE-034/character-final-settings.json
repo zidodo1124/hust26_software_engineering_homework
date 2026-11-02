@@ -1,0 +1,108 @@
+{
+  "atUtc": "2026-11-02T05:13:32.690747+00:00",
+  "schemaVersion": 4,
+  "scope": "Repeated stable live DB/WAL copy after upgrade; no force-stop",
+  "settings": {
+    "id": 1,
+    "urgentMinutes": 1440,
+    "expiredPolicy": "KEEP",
+    "dailySummaryEnabled": 1,
+    "dailySummaryMinuteOfDay": 480,
+    "dangerReminderEnabled": 1,
+    "deadlineReminderEnabled": 1,
+    "deadlineLeadMinutes": 60,
+    "characterStyle": "CLASSIC"
+  },
+  "tableComparisons": {
+    "events": {
+      "count": 4,
+      "saltedDigest": "66446b07cdc087de8d3d6f02b010ec7d22c449832ab5126a43c16ba5ca171b82"
+    },
+    "sources": {
+      "count": 1,
+      "saltedDigest": "8126032a8845c0e7720b2e89a993ca569289a49489db474849b3e0e877fe88d8"
+    },
+    "tags": {
+      "count": 1,
+      "saltedDigest": "dff2e0690fdb39edb2b5c935d6bd62bdbb6942ed2ccc3492c27dab43a5ea8b98"
+    },
+    "event_tags": {
+      "count": 1,
+      "saltedDigest": "b0a7ea368d17a449f6b0f882367582517e3fb1417ada07f495e151386a26a422"
+    },
+    "custom_fields": {
+      "count": 1,
+      "saltedDigest": "a6821c95bfc69bd8c774eebac519bb81d57de20e0cc52a11e2b17c88cb17b9e1"
+    },
+    "attachments": {
+      "count": 7,
+      "saltedDigest": "e6fb710b6676ac59ad5381f68c88e640c122fda4240c7a48cc7f725e578dfba7"
+    }
+  },
+  "attachmentComparisons": [
+    {
+      "identityDigest": "b2ac4923c965126cf7d74343f6ed929f005d4d4cb17ce8fafa768261918f2c47",
+      "bytes": 5407,
+      "declaredBytes": 5407,
+      "contentDigest": "78e06a269de7419acf822773fa831a551e736fd7963a86031ec47934de0773e1"
+    },
+    {
+      "identityDigest": "6e4738d33bf8eb66dbe088888d9fe2337af211f4bcdeabf0b692db4e5255cea5",
+      "bytes": 5407,
+      "declaredBytes": 5407,
+      "contentDigest": "78e06a269de7419acf822773fa831a551e736fd7963a86031ec47934de0773e1"
+    },
+    {
+      "identityDigest": "2f27418769512eb1cdf7e2de3b1c45c2ca8ddd2e5372ef2adc8239b8da5c7a19",
+      "bytes": 5351,
+      "declaredBytes": 5351,
+      "contentDigest": "cc93e7d1491b2b52676db6bdb88919be73577e07fa7b03501b8d4706a2eec4be"
+    },
+    {
+      "identityDigest": "f21ff26c33380996a7eba4dd19e7b6dc53929aa93e2cb75434755d0b72f33628",
+      "bytes": 5351,
+      "declaredBytes": 5351,
+      "contentDigest": "cc93e7d1491b2b52676db6bdb88919be73577e07fa7b03501b8d4706a2eec4be"
+    },
+    {
+      "identityDigest": "74cdc9e964dc837220ddf27ae08654b4ff86780349d31831f847a402b0152b1c",
+      "bytes": 5351,
+      "declaredBytes": 5351,
+      "contentDigest": "cc93e7d1491b2b52676db6bdb88919be73577e07fa7b03501b8d4706a2eec4be"
+    },
+    {
+      "identityDigest": "44357b12b6e72c33ace43483c9c53314487f65f8145ba992334ca5ac369a51ac",
+      "bytes": 5407,
+      "declaredBytes": 5407,
+      "contentDigest": "78e06a269de7419acf822773fa831a551e736fd7963a86031ec47934de0773e1"
+    },
+    {
+      "identityDigest": "c0d931b0bc37d8649733e0418f7aff1958f8771170672a4b699dfded6304132f",
+      "bytes": 5351,
+      "declaredBytes": 5351,
+      "contentDigest": "cc93e7d1491b2b52676db6bdb88919be73577e07fa7b03501b8d4706a2eec4be"
+    }
+  ],
+  "reminders": {
+    "count": 29,
+    "stateCounts": {
+      "PENDING": 17,
+      "SENT": 12
+    },
+    "activeCount": 3,
+    "cancelPendingCount": 0,
+    "allRowsDigest": "f162d760f4ab9bb6d8a3c074a6f773c6eb5d6dd2bd0b9cb4ef624ead8738b528",
+    "sentRowsDigest": "0d4582445eb97250b2b49b4a89a6ddfabe5a1d83b2bc6fb5ea981d204e3485c2",
+    "controlDigest": "d6621dadbd4e722511c583706b95b5f222ce8d8e06ee283f91e012e677e2bf6e",
+    "errorCount": 0,
+    "controlHasError": false,
+    "dailyToday": {
+      "beijingDate": "2026-11-02",
+      "rowCount": 1,
+      "sentCount": 1
+    }
+  },
+  "readAttempts": 1,
+  "integrityCheck": "ok",
+  "temporaryPrivateDatabaseRemoved": true
+}

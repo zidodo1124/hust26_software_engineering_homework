@@ -690,10 +690,64 @@ BOOT 样本原危险计划为北京时间 11:44，重启前通知／精确访问
 
 ## 22. RUN-20261101-DEVICE-034：0.3.4 手机复验
 
-用户先选择“先交付本机验证版，手机稍后再测”，此后要求把修复过程记录为日志，并确认已连接手机、开展测试。已检测到 1 台授权 ADB 设备；[新批次](test-evidence/RUN-20261101-DEVICE-034/README.md) 处于准备阶段，安装、数据保持、图片提示与提醒恢复结论待实际操作后追加。前序工作已汇总至[维护日志](maintenance-log.md)，不把本机或 CI 结果改记为手机通过。
+用户先选择“先交付本机验证版，手机稍后再测”，此后要求把修复过程记录为日志，并确认已连接手机、开展测试。已检测到 1 台授权 ADB 设备；[新批次](test-evidence/RUN-20261101-DEVICE-034/README.md) 初始准备状态与后续安装、图片、来源移除及角色分项按下列时序分别记录，普通后台通知及完成撤销已有分项结果，真实重启自动窗口未通过、普通打开恢复成功，最终收尾已完成，自动恢复失败仍保留。前序工作已汇总至[维护日志](maintenance-log.md)，不把本机或 CI 结果改记为手机通过。
 
 ### 22.1 升级前基线
 
 2026-11-02 04:56:41—04:58:33 UTC 只读核对荣耀 ALI-AN00／Android 15／API 35，已解锁；原包 0.3.3／6，SHA-256 `6f30078bf0dfa95731afe9fae0c08f06dd19d048eb815fd2236022c90e19e65b`、证书与新包匹配。原业务为 3 事项／4 附件，提醒 28 行／12 SENT／2 active／0 cancelPending；通知允许、精确访问 allow、通道 3，活跃产品通知 0。
 
-本批未启动或强停产品前，已观测 `stopped=true`、无产品进程、无系统提醒 Alarm；保留该初始差异，不推测产生原因，也不归因本轮操作。北京时间 11 月 2 日 DAILY 已 SENT，不改变时钟或发送账本。新鲜基线已取得，同签名升级结果尚待确认。
+本批未启动或强停产品前，已观测 `stopped=true`、无产品进程、无系统提醒 Alarm；保留该初始差异，不推测产生原因，也不归因本轮操作。北京时间 11 月 2 日 DAILY 已 SENT，不改变时钟或发送账本。该准备阶段已取得新鲜基线，同签名升级结果当时尚待确认。
+
+### 22.2 覆盖升级与正常首启
+
+用户确认系统安装提示后，2026-11-02 04:59:22.860660 UTC 的 `adb install -r` 返回 Success。实际包为 0.3.4／7，SHA-256 `690626883dd90684128959a53737b54c326352e3decb0dd46a707ac3d962ab90`、签名与目标包一致；没有卸载产品或清库。
+
+安装后未强停／未主动打开的比对中，schema 4、六张业务表全行、4 附件实际字节、设置、全部提醒行、原 12 条 SENT 及控制记录均保持。05:00:12.290088 UTC 的首次正常启动核对，上述检查同样全部为真，stopped=false／notLaunched=false；实际下一条 RTC_WAKEUP 为北京时间 11 月 3 日 08:00、精确 window 0。该安装与正常首启分项通过，不推广为自动重启恢复。
+
+设置页的重启／强停后主动打开说明完整可见，截图 `01-v034-reminder-settings.png` 已由主线程审阅；该阶段原始安全 JSON／截图随后已归档，入口见下段。安装后及普通前台恢复后均未见诊断文件。普通前台恢复不写 receiver journal，不能把无记录当作此次恢复失败；安装后没有记录也不能证明 PACKAGE_REPLACED 未交付。该阶段后转入图片复验，结果见 22.3；真实重启或最终收尾不由首启结果代替。
+
+升级阶段 18 份安全证据现已归档，[原始／归档哈希](test-evidence/RUN-20261101-DEVICE-034/upgrade-files-hashes.json)逐项一致。可直接核对[安装结果](test-evidence/RUN-20261101-DEVICE-034/install-result.json)、[安装前后比对](test-evidence/RUN-20261101-DEVICE-034/install-comparison.json)、[首启结果](test-evidence/RUN-20261101-DEVICE-034/first-normal-launch-result.json)、[首启数据比对](test-evidence/RUN-20261101-DEVICE-034/launch-comparison.json)和[设置截图](test-evidence/RUN-20261101-DEVICE-034/01-v034-reminder-settings.png)。
+
+### 22.3 两次增量粘贴旧 URI 提示与失败恢复
+
+本轮合成夹具在安装前不存在，实际由本轮安装；`QA-034-1101-IMAGE` 先分别两次复制／粘贴并保存 2 张合成图片。强停后从普通入口重开、复用旧 orange ClipData（没有重新复制），05:04:39.508544 UTC 的实际粘贴失败，完整新权限提示可见。已保存的 2 张附件与描述、未保存的新描述、2 张草稿图片都保持，私有文件 6→6，无新增或删除。此时诊断日志为空且日志属性未改，本结论依据实际页面与数据对照，不伪造诊断类别。
+
+重新复制同一 orange 后，草稿 2→3，恰好新增 1 张；坏图另外产生“文件不是可解码的图片，或图片已经损坏”的错误，草稿 3 张与新描述保持，没有残留新增副本。正式保存前数据库仍为原 2 张附件和旧描述。最终在重试后一次保存，05:06:41.856606 UTC 核对为 3 张及新描述，重新进入编辑页确认一致，原 2 张附件行／字节未变。
+
+本段 10 份安全 JSON 和主线程已审阅的 4 张截图已独立复核并归档，[哈希清单](test-evidence/RUN-20261101-DEVICE-034/images-files-hashes.json)核对原字节一致。可直接核对[旧 URI 与新提示](test-evidence/RUN-20261101-DEVICE-034/image-old-uri-probe.json)、[最终保存结果](test-evidence/RUN-20261101-DEVICE-034/image-v034-result.json)及[图片阶段索引](test-evidence/RUN-20261101-DEVICE-034/README.md#连续图片旧-uri-提示与失败恢复)。旧 URI、fresh copy 和坏图后的数据库 QA 整行仍为原 2 图；最终保存才新增第三副本并更新描述／revision。**0.3.4 本样本提示／重试／回滚实机子项通过**，OBS-01 授权失效机制仍开放，不推广为所有相册／剪贴板来源兼容。本轮 `diagnostics=[]`，不借用旧批次的 open_source 日志。该阶段结束时夹具仍在；卸载后副本重开、角色切换、真实提醒／重启和最终收尾另按后续实际结果记录。
+
+### 22.4 来源移除后的普通重开与角色保存
+
+05:08:11.957278 UTC [卸载夹具](test-evidence/RUN-20261101-DEVICE-034/clipboard-fixture-removal.json) Success，复查不存在，合成剪贴板清空，产品包未动。随后普通入口重开，05:11:45 UTC 的[结果](test-evidence/RUN-20261101-DEVICE-034/image-final-result.json)确认三份私有副本的行／字节、描述不变，三张预览可见。一次 am kill 后初始 6 次观察仍有进程，没有重试或强停替代；[冷启动条件未建立](test-evidence/RUN-20261101-DEVICE-034/image-cold-start-attempt.json)，不宣称已排除缓存或因此判定产品缺陷。
+
+05:13:39 UTC 的[角色结果](test-evidence/RUN-20261101-DEVICE-034/character-roundtrip-result.json)确认经典→Q 版预览未提前保存，保存后回首页并重入确认；切回经典保存回首页、普通重开仍经典。其他设置字段、六表、附件字节与提醒摘要保持，未改字体或旋转。历史 CI #45 等待失败本次未复现，根因继续开放。
+
+本段 12 JSON／5 截图已审阅并按[哈希清单](test-evidence/RUN-20261101-DEVICE-034/source-role-files-hashes.json)归档。蓝图两次截图因含非测试内容均未归档，不再补拍；归档预览截图仅第 2／3 张，三张预览保留实际观察结论与副本字节比对。该阶段后的正常通知、真实重启恢复与最终收尾分别按后续结果记录。
+
+### 22.5 普通后台通知诊断与完成撤销
+
+NORMAL 样本的危险期触发设为北京时间 2026 年 11 月 2 日 13:19:00，UI 创建后核对数据库 PENDING、实际 RTC_WAKEUP／window 0 和仍余 183 秒，再回到桌面。18 个观察样本均为 App 后台、亮屏、USB 充电、deviceidle ACTIVE；未改时钟、未强制 idle、未点击通知。这一条件不等于持续锁屏或自然 Doze。
+
+[最终通知记录](test-evidence/RUN-20261101-DEVICE-034/normal-notification-result.json)确认同一 QA tag 的系统创建时间为计划 +191 ms，首次轮询于手机时间 13:19:12 看到。[诊断正向对照](test-evidence/RUN-20261101-DEVICE-034/normal-journal-positive-control.json)首次读到当前 boot 的新 Alarm finished／completed，can_post、can_schedule_exact 均 true，has_error=false；received_at 与 elapsed 校验通过。已有 BOOT 项仍为 05:03:28.731 UTC，不能充当随后真实重启结果。
+
+普通 launcher 进入事项后、标记完成之前，同一通知仍在；05:19:45.903714 UTC 的[结果](test-evidence/RUN-20261101-DEVICE-034/normal-completion-result.json)确认 UI 完成后同 tag 消失，NORMAL 的 DANGER／DEADLINE 两条计划 inactive、cancelPending=0。该结果的 allQaPlansInactive 只指 NORMAL；[快照](test-evidence/RUN-20261101-DEVICE-034/normal-completed-qa.json)中 IMAGE 的未来计划仍 active。
+
+[中间观察文件](test-evidence/RUN-20261101-DEVICE-034/normal-timed-observations.json)在循环先保存、后更新 observed，故顶层仍 false，但最后 sample 已含通知；它与最终 observed=true 的结果含相同 18 个 samples。以最终结果及实际 sample 判读，原文件不改写，不将记录器标志差异认定为产品失败。16 JSON／2 张纯 QA 截图已按[哈希清单](test-evidence/RUN-20261101-DEVICE-034/normal-files-hashes.json)归档，NORMAL 本样本通过；该阶段结束时 BOOT 与最终清理尚未完成。
+
+### 22.6 真实重启自动恢复与普通打开对照
+
+用户要求继续未完成任务后，主线程在只读确认现场后接管此前中断的设备操作。06:46:43 UTC 真正请求重启，[重连](test-evidence/RUN-20261101-DEVICE-034/boot-reconnect-result.json)确认新 boot ID、uptime 11418.7→57.03 秒。重启前已有北京时间 14:54:00 的实际精确 Alarm；用户确认仅解锁未开 App／点通知，首解锁观察无产品进程／Alarm，stopped=false、notLaunched=false。
+
+[未主动打开的窗口](test-evidence/RUN-20261101-DEVICE-034/boot-result.json)持续至 06:55:43 UTC，41 个样本均为非前台、解锁亮屏、USB 充电、ACTIVE，且无 Alarm／BOOT 目标通知；最后设备时间为计划 +99 秒，BOOT 危险期 PENDING。旧 BOOT 05:03:28.731 UTC、旧 Alarm 05:19 的记录保留，时间和 elapsed 均不能用于新 boot。没有新记录不独立证明广播未交付；本样本自动恢复未通过，OBS-02 开放。
+
+窗口结束后正常 launcher 打开，06:55:56 UTC [对照](test-evidence/RUN-20261101-DEVICE-034/boot-explicit-launch-comparison.json)确认通知补发，系统创建时间 `1793602550060`，比计划晚 110.060 秒；危险期 SENT，下一实际精确 Alarm 为北京时间 15:01 的 IMAGE，诊断仍旧。普通打开恢复成功与自动窗口失败分开记录。
+
+重启后仅观察到 `persist.log.tag` 原 S→M，脚本未设置此变化。完整观察／打开对照后 06:56:05 UTC 主线程恢复基线 S，其余日志属性空值不变，不归因 App。开始阶段 17 JSON 见[归档清单](test-evidence/RUN-20261101-DEVICE-034/boot-start-files-hashes.json)，结束阶段 11 JSON 已按[清单](test-evidence/RUN-20261101-DEVICE-034/boot-end-files-hashes.json)原样归档；旧 BOOT／Alarm 全阶段相同、原 QA 事项行保持，该阶段后的最终清理和全量原数据复核见 22.7。
+
+### 22.7 精确 QA 清理与最终审计
+
+06:58:11 UTC [清理](test-evidence/RUN-20261101-DEVICE-034/final-cleanup-result.json)完成：通过真实 UI 只删除本轮已记录的 BOOT／IMAGE／NORMAL，QA 0、对应通知撤销。五条 QA 计划 inactive、cancelPending=0，账本保留两条 QA SENT；总账本33行／14 SENT，分别为原28+QA5、原12+QA2，不要求全账本物理不增。QA空plans只反映现存事项过滤，保留结论来自[历史审计](test-evidence/RUN-20261101-DEVICE-034/final-reminder-history-audit.json)；原 12 条 SENT 按基线私有精确 key 集核对完整行一致，未删除或排除本日原 SENT。
+
+06:58:57.861995 UTC [最终审计](test-evidence/RUN-20261101-DEVICE-034/final-data-and-state-audit.json)的 17 项全部通过：原六表全行（3 事项／4 附件等）、四附件字节、业务设置、原 SENT 保持；记录的 11 项系统设置及通知／通道、精确访问、字体显示、网络、电源、idle、日志属性一致。夹具已移除，临时 UI XML／私有数据库目录无残留，实际安装仍为本批哈希及签名的 0.3.4／7。
+
+未强停收尾；正常首页已清除 QA 搜索，stopped=false／notLaunched=false、进程存在，下一实际精确 Alarm 为北京时间 11 月 3 日 08:00、window 0，符合控制记录。初始 stopped=true 有意不还原为强停，readyToDisconnect=true。本段23份安全JSON已按[清单](test-evidence/RUN-20261101-DEVICE-034/cleanup-files-hashes.json)原样归档。本批设备分项与收尾完成，不提升完整 TC／DA 计数，OBS-01／OBS-02 和完整验收边界保留。

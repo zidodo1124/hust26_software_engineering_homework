@@ -1,0 +1,100 @@
+{
+  "sampleStartUtc": "2026-11-02T05:08:01.017704+00:00",
+  "sampleEndUtc": "2026-11-02T05:08:04.164634+00:00",
+  "deviceEpochSeconds": 1793596082,
+  "scope": "Live repeated stable DB/WAL copy, QA-only local observation, not original-data preservation proof",
+  "attempts": 2,
+  "dbWalRepeatedBytesMatch": true,
+  "integrityCheck": "ok",
+  "events": [
+    {
+      "id": "edf70703-35a3-4707-ae17-bb808e9a952a",
+      "title": "QA-034-1101-IMAGE",
+      "deadlineAt": 1793606460000,
+      "sprintMinutes": null,
+      "description": "QA image draft after force stop",
+      "importance": "NORMAL",
+      "completedAt": null,
+      "archivedAt": null,
+      "createdAt": 1793595785745,
+      "updatedAt": 1793595963884,
+      "revision": 2,
+      "sourceId": null,
+      "attachments": [
+        {
+          "id": "d95e280f-a1cb-49da-b095-934432868df9",
+          "eventId": "edf70703-35a3-4707-ae17-bb808e9a952a",
+          "relativePath": "d95e280f-a1cb-49da-b095-934432868df9.img",
+          "mimeType": "image/png",
+          "displayName": "QA1027-blue-landscape.png",
+          "byteSize": 5407,
+          "width": 640,
+          "height": 360,
+          "position": 0,
+          "actualSha256": "471670516b4e0e9d2f7f92a7bc1b70c836a2c49222ac56f3b82acb2941fc475f",
+          "actualBytes": 5407,
+          "syntheticFixture": "QA1027-blue-landscape.png"
+        },
+        {
+          "id": "f117184f-8789-4326-9d49-ca143a0ce99b",
+          "eventId": "edf70703-35a3-4707-ae17-bb808e9a952a",
+          "relativePath": "f117184f-8789-4326-9d49-ca143a0ce99b.img",
+          "mimeType": "image/png",
+          "displayName": "QA1027-orange-portrait.png",
+          "byteSize": 5351,
+          "width": 320,
+          "height": 640,
+          "position": 1,
+          "actualSha256": "99adfb3e876efeaa0cd61a039893ece9aa918a8d3bd3acf25dc407279548dea2",
+          "actualBytes": 5351,
+          "syntheticFixture": "QA1027-orange-portrait.png"
+        },
+        {
+          "id": "6297e3d8-cd32-41be-ba42-d521b1151f8e",
+          "eventId": "edf70703-35a3-4707-ae17-bb808e9a952a",
+          "relativePath": "6297e3d8-cd32-41be-ba42-d521b1151f8e.img",
+          "mimeType": "image/png",
+          "displayName": "QA1027-orange-portrait.png",
+          "byteSize": 5351,
+          "width": 320,
+          "height": 640,
+          "position": 2,
+          "actualSha256": "99adfb3e876efeaa0cd61a039893ece9aa918a8d3bd3acf25dc407279548dea2",
+          "actualBytes": 5351,
+          "syntheticFixture": "QA1027-orange-portrait.png"
+        }
+      ]
+    }
+  ],
+  "reminderPlans": [
+    {
+      "key": "DEADLINE:edf70703-35a3-4707-ae17-bb808e9a952a:1793606460000",
+      "kind": "DEADLINE",
+      "eventId": "edf70703-35a3-4707-ae17-bb808e9a952a",
+      "deadlineAt": 1793606460000,
+      "eventRevision": 2,
+      "triggerAt": 1793602860000,
+      "day": null,
+      "notificationTag": "event:edf70703-35a3-4707-ae17-bb808e9a952a:1793606460000:1793602860000:DEADLINE",
+      "active": 1,
+      "state": "PENDING",
+      "lastAttemptAt": null,
+      "lastError": null,
+      "cancelPending": 0
+    }
+  ],
+  "reminderControl": [
+    {
+      "id": 1,
+      "alarmIdentity": "ddl-saver://reminders/wake",
+      "dailyDate": "2026-11-03",
+      "dailyMinuteOfDay": 480,
+      "scheduledTriggerAt": 1793602860000,
+      "desiredTriggerAt": 1793602860000,
+      "scheduleMode": "exact",
+      "alarmDirty": 0,
+      "lastError": null
+    }
+  ],
+  "temporaryPrivateDatabaseRemoved": true
+}

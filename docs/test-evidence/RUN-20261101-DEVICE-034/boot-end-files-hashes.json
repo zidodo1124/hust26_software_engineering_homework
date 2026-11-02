@@ -1,0 +1,90 @@
+[
+  {
+    "file": "boot-timed-observations.json",
+    "source": ".local-tools/device-034-20261101/boot-timed-observations.json",
+    "sourceSha256AtArchive": "07713c12755140167a94d7de0293886a3919b1a668c86fc96b37e53449d1fa24",
+    "archivedSha256": "07713c12755140167a94d7de0293886a3919b1a668c86fc96b37e53449d1fa24",
+    "bytes": 32078,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "boot-result.json",
+    "source": ".local-tools/device-034-20261101/boot-result.json",
+    "sourceSha256AtArchive": "c82e0a0648e7f1c93d22e4b86afc227c852d1bab6ac0950398e8535e51fced37",
+    "archivedSha256": "c82e0a0648e7f1c93d22e4b86afc227c852d1bab6ac0950398e8535e51fced37",
+    "bytes": 34190,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "boot-window-end-journal.json",
+    "source": ".local-tools/device-034-20261101/boot-window-end-journal.json",
+    "sourceSha256AtArchive": "1d9376d019272a845a440dd3b35d78ca12542e3d0b8b8614f92fdbb72438153b",
+    "archivedSha256": "1d9376d019272a845a440dd3b35d78ca12542e3d0b8b8614f92fdbb72438153b",
+    "bytes": 1512,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "boot-window-end-qa.json",
+    "source": ".local-tools/device-034-20261101/boot-window-end-qa.json",
+    "sourceSha256AtArchive": "b2fb4f24a29464c583f393dcd416b8fd65d93121aac7be041fbdd3b5a110591b",
+    "archivedSha256": "b2fb4f24a29464c583f393dcd416b8fd65d93121aac7be041fbdd3b5a110591b",
+    "bytes": 4680,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "boot-before-first-explicit-launch-journal.json",
+    "source": ".local-tools/device-034-20261101/boot-before-first-explicit-launch-journal.json",
+    "sourceSha256AtArchive": "53cb7f29fbe321108890713ebb02c7d30b5687863084df51ead742bb39768bfa",
+    "archivedSha256": "53cb7f29fbe321108890713ebb02c7d30b5687863084df51ead742bb39768bfa",
+    "bytes": 1512,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "boot-before-first-explicit-launch-qa.json",
+    "source": ".local-tools/device-034-20261101/boot-before-first-explicit-launch-qa.json",
+    "sourceSha256AtArchive": "0181f22d1225f672ee681a2ad8d5cc1fba9b9f75a097fc6b3e10a1c447e15c29",
+    "archivedSha256": "0181f22d1225f672ee681a2ad8d5cc1fba9b9f75a097fc6b3e10a1c447e15c29",
+    "bytes": 4680,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "boot-after-first-explicit-launch-qa.json",
+    "source": ".local-tools/device-034-20261101/boot-after-first-explicit-launch-qa.json",
+    "sourceSha256AtArchive": "3b96aa59df8b6fd3b5143b1d29ba5359e16d535cc6f9d33ad2b411c7f89a80d5",
+    "archivedSha256": "3b96aa59df8b6fd3b5143b1d29ba5359e16d535cc6f9d33ad2b411c7f89a80d5",
+    "bytes": 4686,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "boot-after-explicit-launch-journal.json",
+    "source": ".local-tools/device-034-20261101/boot-after-explicit-launch-journal.json",
+    "sourceSha256AtArchive": "30fc6e30a39b361927851f7bd44c68ed0166938b0f439645180340f427264585",
+    "archivedSha256": "30fc6e30a39b361927851f7bd44c68ed0166938b0f439645180340f427264585",
+    "bytes": 1783,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "boot-explicit-launch-comparison.json",
+    "source": ".local-tools/device-034-20261101/boot-explicit-launch-comparison.json",
+    "sourceSha256AtArchive": "4e764ee9813153edbcc90b8050a5abed4d94e29441508d56a167d45fdaa6f334",
+    "archivedSha256": "4e764ee9813153edbcc90b8050a5abed4d94e29441508d56a167d45fdaa6f334",
+    "bytes": 3472,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "post-boot-log-restoration-before.json",
+    "source": ".local-tools/device-034-20261101/post-boot-log-restoration-before.json",
+    "sourceSha256AtArchive": "5ab440378dfcf19cc82c21683d816728855885ecc84ee0a193a2f874e422a9c2",
+    "archivedSha256": "5ab440378dfcf19cc82c21683d816728855885ecc84ee0a193a2f874e422a9c2",
+    "bytes": 651,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "post-boot-log-restoration.json",
+    "source": ".local-tools/device-034-20261101/post-boot-log-restoration.json",
+    "sourceSha256AtArchive": "3aa6c1e7daead80e65112700e7ca7f55f5e556b605f4c6e66887f2b995d3b0fc",
+    "archivedSha256": "3aa6c1e7daead80e65112700e7ca7f55f5e556b605f4c6e66887f2b995d3b0fc",
+    "bytes": 907,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "atUtc": "2026-11-02T06:46:43.484138+00:00",
+  "deviceEpochBeforeReboot": 1793602001,
+  "actualAdbRebootAboutToBeRequested": true,
+  "expectedTriggerEpochMillis": 1793602440000,
+  "noRepeatReboot": true,
+  "noSyntheticBootBroadcast": true,
+  "commandReturnedSuccess": true
+}

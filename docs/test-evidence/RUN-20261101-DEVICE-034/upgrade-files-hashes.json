@@ -1,0 +1,146 @@
+[
+  {
+    "file": "read-only-preflight.json",
+    "source": ".local-tools/device-034-20261101/read-only-preflight.json",
+    "sourceSha256AtArchive": "98648ec8ea1ee148154d2db54fa478dc91ff663d90c66baf16cb613353dc9d19",
+    "archivedSha256": "98648ec8ea1ee148154d2db54fa478dc91ff663d90c66baf16cb613353dc9d19",
+    "bytes": 2174,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "read-only-live-inventory.json",
+    "source": ".local-tools/device-034-20261101/read-only-live-inventory.json",
+    "sourceSha256AtArchive": "3f2a30b0bae66d0b668e33e5eae150f680b9e71e799c9ae8a26a26aaba0c770e",
+    "archivedSha256": "3f2a30b0bae66d0b668e33e5eae150f680b9e71e799c9ae8a26a26aaba0c770e",
+    "bytes": 1370,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "read-only-package-state.json",
+    "source": ".local-tools/device-034-20261101/read-only-package-state.json",
+    "sourceSha256AtArchive": "5d6f840afb8c08d4ef019e3872b13245085484be0bb2de6787ee630d3bc3c8b1",
+    "archivedSha256": "5d6f840afb8c08d4ef019e3872b13245085484be0bb2de6787ee630d3bc3c8b1",
+    "bytes": 257,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "baseline-result.json",
+    "source": ".local-tools/device-034-20261101/baseline-result.json",
+    "sourceSha256AtArchive": "0e3853e3a7b2bd3498a9f3a4cbc72b5be4142687f1f84afc9970b062ac3e2e97",
+    "archivedSha256": "0e3853e3a7b2bd3498a9f3a4cbc72b5be4142687f1f84afc9970b062ac3e2e97",
+    "bytes": 583,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "before-upgrade.json",
+    "source": ".local-tools/device-034-20261101/before-upgrade.json",
+    "sourceSha256AtArchive": "e4e4e3ddd1e803ada62135f2086f698f0c5addeabfc886190476c1a81263af1f",
+    "archivedSha256": "e4e4e3ddd1e803ada62135f2086f698f0c5addeabfc886190476c1a81263af1f",
+    "bytes": 3011,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "device-before.json",
+    "source": ".local-tools/device-034-20261101/device-before.json",
+    "sourceSha256AtArchive": "eb7e9a8cfffbd56dd66ff96c8a22ee7e420a14ac629dd382ab9a2d35db4ba8a3",
+    "archivedSha256": "eb7e9a8cfffbd56dd66ff96c8a22ee7e420a14ac629dd382ab9a2d35db4ba8a3",
+    "bytes": 1452,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "device-after-install.json",
+    "source": ".local-tools/device-034-20261101/device-after-install.json",
+    "sourceSha256AtArchive": "98df0c59165995c7d485e1620a2708016bbe5237a9ee57210700bff94a8781a4",
+    "archivedSha256": "98df0c59165995c7d485e1620a2708016bbe5237a9ee57210700bff94a8781a4",
+    "bytes": 1452,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "after-install-before-launch.json",
+    "source": ".local-tools/device-034-20261101/after-install-before-launch.json",
+    "sourceSha256AtArchive": "72ed131af94a38217fd8941d4e2524706703d3fd422b1f1426790462e56e6e2c",
+    "archivedSha256": "72ed131af94a38217fd8941d4e2524706703d3fd422b1f1426790462e56e6e2c",
+    "bytes": 3027,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "after-first-normal-launch.json",
+    "source": ".local-tools/device-034-20261101/after-first-normal-launch.json",
+    "sourceSha256AtArchive": "3bc07f2af392ebcce0685a2592d8f5a4287a8a1d83138916380f67fae00eeb91",
+    "archivedSha256": "3bc07f2af392ebcce0685a2592d8f5a4287a8a1d83138916380f67fae00eeb91",
+    "bytes": 3027,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "install-result.json",
+    "source": ".local-tools/device-034-20261101/install-result.json",
+    "sourceSha256AtArchive": "0dfd2a1ba19fd7dde28577f0375485514c9fa965dcf60325c8ed932c2c6356e0",
+    "archivedSha256": "0dfd2a1ba19fd7dde28577f0375485514c9fa965dcf60325c8ed932c2c6356e0",
+    "bytes": 259,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "install-comparison.json",
+    "source": ".local-tools/device-034-20261101/install-comparison.json",
+    "sourceSha256AtArchive": "7380170eb778f079f6dd41fc2cc00e36f4d010ed3a0a62c6f2302e9727dbfc34",
+    "archivedSha256": "7380170eb778f079f6dd41fc2cc00e36f4d010ed3a0a62c6f2302e9727dbfc34",
+    "bytes": 247,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "launch-comparison.json",
+    "source": ".local-tools/device-034-20261101/launch-comparison.json",
+    "sourceSha256AtArchive": "7380170eb778f079f6dd41fc2cc00e36f4d010ed3a0a62c6f2302e9727dbfc34",
+    "archivedSha256": "7380170eb778f079f6dd41fc2cc00e36f4d010ed3a0a62c6f2302e9727dbfc34",
+    "bytes": 247,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "first-normal-launch-result.json",
+    "source": ".local-tools/device-034-20261101/first-normal-launch-result.json",
+    "sourceSha256AtArchive": "d3e08b5ebc1e76aa09c49c20a9ae742a988cc388f47f2b93e6f901ffebd83fdd",
+    "archivedSha256": "d3e08b5ebc1e76aa09c49c20a9ae742a988cc388f47f2b93e6f901ffebd83fdd",
+    "bytes": 1186,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "baseline-before-upgrade-journal.json",
+    "source": ".local-tools/device-034-20261101/baseline-before-upgrade-journal.json",
+    "sourceSha256AtArchive": "176e2037d94b5def0ef8f3bc36c7c74b688756ff97fabbc01d4367f945307844",
+    "archivedSha256": "176e2037d94b5def0ef8f3bc36c7c74b688756ff97fabbc01d4367f945307844",
+    "bytes": 620,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "upgrade-before-explicit-launch-journal.json",
+    "source": ".local-tools/device-034-20261101/upgrade-before-explicit-launch-journal.json",
+    "sourceSha256AtArchive": "15a9408d0b1229507fa94aac72afdbef216d01aed72d4b46c32a8ccac8157af8",
+    "archivedSha256": "15a9408d0b1229507fa94aac72afdbef216d01aed72d4b46c32a8ccac8157af8",
+    "bytes": 620,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "after-first-normal-launch-journal.json",
+    "source": ".local-tools/device-034-20261101/after-first-normal-launch-journal.json",
+    "sourceSha256AtArchive": "d70eb39e3a779637d4cb226999e5b227000a1f7bfec7a2ca163cc8dc6feba107",
+    "archivedSha256": "d70eb39e3a779637d4cb226999e5b227000a1f7bfec7a2ca163cc8dc6feba107",
+    "bytes": 946,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "clipboard-fixture-install.json",
+    "source": ".local-tools/device-034-20261101/clipboard-fixture-install.json",
+    "sourceSha256AtArchive": "53c0a7018646d10ad9e5aa5a33f0ff4f70bb2f46cfefc912552fa933aac1b185",
+    "archivedSha256": "53c0a7018646d10ad9e5aa5a33f0ff4f70bb2f46cfefc912552fa933aac1b185",
+    "bytes": 562,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  },
+  {
+    "file": "01-v034-reminder-settings.png",
+    "source": ".local-tools/device-034-20261101/01-v034-reminder-settings.png",
+    "sourceSha256AtArchive": "3982e211b8fdd2bf04eaf76636a003bca2d8b69d177dc56f4b8df73d365a2d0b",
+    "archivedSha256": "3982e211b8fdd2bf04eaf76636a003bca2d8b69d177dc56f4b8df73d365a2d0b",
+    "bytes": 368894,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  }
+]

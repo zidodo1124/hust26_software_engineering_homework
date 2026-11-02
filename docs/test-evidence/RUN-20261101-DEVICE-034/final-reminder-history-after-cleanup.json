@@ -1,0 +1,30 @@
+{
+  "atUtc": "2026-11-02T06:58:11.753578+00:00",
+  "scope": "Stable live snapshot; exact private original SENT key set; recorded QA IDs only",
+  "dbWalRepeatedBytesMatch": true,
+  "readAttempts": 1,
+  "integrityCheck": "ok",
+  "originalSentRowCount": 12,
+  "originalSentRowCountMatchesBaseline": true,
+  "originalSentRowsSaltedDigest": "0d4582445eb97250b2b49b4a89a6ddfabe5a1d83b2bc6fb5ea981d204e3485c2",
+  "originalSentRowsExactlyMatchBaseline": true,
+  "allQaPlanCount": 5,
+  "allQaPlanInactive": true,
+  "qaPendingCancellationCount": 0,
+  "qaPlanKeysSaltedDigest": "262cf02f0a500d8c3502703f8527d3e0a3f3d2a2a56ef0cee926b2c3b76c0cac",
+  "qaSentKeysSaltedDigest": "d58ee591ab826bb839236167bdbaf493e18bfc54b90c470c4a2d7687577e6e04",
+  "qaSentHistoryRetainedCount": 2,
+  "qaPlanCountsByTitle": {
+    "QA-034-1101-BOOT": 2,
+    "QA-034-1101-IMAGE": 1,
+    "QA-034-1101-NORMAL": 2
+  },
+  "legitimateNewDailySentCount": 0,
+  "allReminderErrorCount": 0,
+  "control": {
+    "alarmDirty": 0,
+    "desiredTriggerAt": 1793664000000,
+    "hasError": false
+  },
+  "temporaryPrivateDatabaseRemoved": true
+}

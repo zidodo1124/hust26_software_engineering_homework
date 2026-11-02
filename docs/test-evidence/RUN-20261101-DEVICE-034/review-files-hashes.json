@@ -1,0 +1,10 @@
+[
+  {
+    "file": "screenshot-review-exclusions.json",
+    "source": ".local-tools/device-034-20261101/screenshot-review-exclusions.json",
+    "sourceSha256AtArchive": "f11eaecf0fc0194b80c31c8c0253be88f8600cc2f6ff2ec01371fd919e8a1054",
+    "archivedSha256": "f11eaecf0fc0194b80c31c8c0253be88f8600cc2f6ff2ec01371fd919e8a1054",
+    "bytes": 694,
+    "transformation": "Exact reviewed safe metadata or reviewed QA/settings screenshot; private data and raw databases excluded."
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "atUtc": "2026-11-02T04:59:22.860660+00:00",
+  "method": "adb install -r",
+  "result": "Performing Streamed Install\r\nSuccess",
+  "newSha256": "690626883dd90684128959a53737b54c326352e3decb0dd46a707ac3d962ab90",
+  "noForceStopAfterInstall": true
+}

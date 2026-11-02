@@ -1,0 +1,20 @@
+{
+  "atUtc": "2026-11-02T05:06:41.856606+00:00",
+  "qaTitle": "QA-034-1101-IMAGE",
+  "oldUriPermissionHintObserved": true,
+  "oldUriSucceeded": false,
+  "freshCopyDraftCountBefore": 2,
+  "freshCopyDraftCountAfter": 3,
+  "freshCopyAddedExactlyOneImage": true,
+  "brokenImageRejectedWithDistinctValidationError": [
+    "文件不是可解码的图片，或图片已经损坏。"
+  ],
+  "brokenImagePreservedExistingDraftImagesAndDescription": true,
+  "brokenImportCreatedNoNewPrivateCopy": true,
+  "originalTwoSavedAttachmentRowsAndBytesUnchanged": true,
+  "savedOnlyAfterFailureAndRetry": true,
+  "finalSavedAttachmentCount": 3,
+  "descriptionAndImagesVerifiedByReopeningEditor": true,
+  "logPropertiesChanged": false,
+  "fixtureStillInstalled": true
+}

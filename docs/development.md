@@ -1,6 +1,6 @@
 # 开发、构建与安装升级
 
-本文当前对应 `0.3.4`、`versionCode = 7`、Room schema v4；完整本机检查已通过 179 方法／218 次执行、Lint 0／16；手机仍为已验过分项的 `0.3.3`／6。包名 `cn.edu.hust.ddlsaver`。2026-10-28 修复 Q 版表情边缘残片后的历史检查为 132 个不同测试方法／151 次执行全部通过，失败、错误、跳过均为 0，Lint 0 错误／16 条警告，见 [RUN-20261028-004](test-evidence/RUN-20261028-004/README.md)。0.3.2 已完成设备升级和界面分项，0.3.3 也曾完成同签名覆盖、表情与字号分项复验及恢复收尾；这些设备记录不覆盖后续本地修改。最新本机结果与被测源码标识见[测试报告](test-report.md)，各轮证据独立保存。
+本文的本批构建与设备记录对应 `bdcd76f` 的 `0.3.4`、`versionCode = 7`、Room schema v4；完整本机检查已通过 179 方法／218 次执行、Lint 0／16；荣耀 X50 已同签名覆盖为 `0.3.4`／7，原数据保持及本样本图片提示／重试／回滚分项通过，本批分项及收尾已完成，OBS-02 自动恢复仍未通过。包名 `cn.edu.hust.ddlsaver`。2026-10-28 修复 Q 版表情边缘残片后的历史检查为 132 个不同测试方法／151 次执行全部通过，失败、错误、跳过均为 0，Lint 0 错误／16 条警告，见 [RUN-20261028-004](test-evidence/RUN-20261028-004/README.md)。0.3.2 已完成设备升级和界面分项，0.3.3 也曾完成同签名覆盖、表情与字号分项复验及恢复收尾；这些设备记录不覆盖后续本地修改。最新本机结果与被测源码标识见[测试报告](test-report.md)，各轮证据独立保存。
 
 2026-11-01 本地补充图片导入失败诊断和提醒恢复／冷启动测试，最终本机构建、167 个方法／194 次执行通过，Lint 0／16，见 [RUN-20261101-RECOVERY-DIAGNOSTICS](test-evidence/RUN-20261101-RECOVERY-DIAGNOSTICS/README.md)。应用版本与 schema 保持不变，复现时须同时核对基线提交、7 份变动源码哈希及 APK 哈希。图片诊断只在调试包输出固定分类字段，下一次 OBS-01 的日志采集与同签名安装要求见[演示与验收准备](demo-and-acceptance.md#obs-01-的下次诊断采集)；该本机批次按用户选择没有连接手机，不能把本机检查当作设备验收。其后用户已连接荣耀 X50 并授权[独立实机验收](test-evidence/RUN-20261101-DEVICE-ACCEPTANCE/README.md)，同一构建已同签名覆盖，分项与收尾已完成，OBS-01／OBS-02 及未测范围保留；实际设备结果和历史本机结果分开记录。
 
@@ -200,10 +200,14 @@ adb install -r app/build/outputs/apk/debug/app-debug.apk
 
 0.3.3／6 修复 Q 版部分表情的图集边缘残片，在运行时对已审阅的固定区域置透明；源图片与许可文件保持原字节。数据库仍为 schema 4，不新增迁移、权限或依赖。继续使用同签名包覆盖安装，保留事项和设置。2026-10-28 11:55:38 UTC 已核对实际 0.3.3／6 包及当前数据、附件、设置、提醒保持；修复表情和 150% 字号卡片已在手机复验。12:03:23 UTC 完成 QA 清理、原数据复核，恢复经典形象与原字体缩放 1.0，结果见 RUN-20261028-004。
 
-### 从 0.3.3 升级到 0.3.4（本机检查通过，设备待验）
+### 从 0.3.3 升级到 0.3.4（升级与设备分项、收尾已记录，OBS-02 仍开放）
 
-当前源码 [bdcd76f](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/bdcd76f916aae546bd146ce1fb1a14859bcd5eb4)，此前增量提交 `778429e`，PR #10 合并基线 `c1e94f3`。0.3.4／7、schema 4 完整构建成功，28 份 JUnit XML、179 个不同方法／218 次执行，失败／错误／跳过各 0，Lint 0 错误／16 警告，源码前后哈希一致。警告总数仍为 16：新增恢复诊断 SharedPreferences.edit 的 1 条 UseKtx，原 ReminderRuntime 的 1 条 InlinedApi 消失，不能称为全部既有警告。 历史 CI #45 的等待失败仍保留未知根因，新源码检查见 [main 的 Android Actions](https://github.com/zidodo1124/hust26_software_engineering_homework/actions?query=branch%3Amain)。
+本批已测源码 [bdcd76f](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/bdcd76f916aae546bd146ce1fb1a14859bcd5eb4)，此前增量提交 `778429e`，PR #10 合并基线 `c1e94f3`。0.3.4／7、schema 4 完整构建成功，28 份 JUnit XML、179 个不同方法／218 次执行，失败／错误／跳过各 0，Lint 0 错误／16 警告，源码前后哈希一致。警告总数仍为 16：新增恢复诊断 SharedPreferences.edit 的 1 条 UseKtx，原 ReminderRuntime 的 1 条 InlinedApi 消失，不能称为全部既有警告。 历史 CI #45 的等待失败仍保留未知根因，新源码检查见 [main 的 Android Actions](https://github.com/zidodo1124/hust26_software_engineering_homework/actions?query=branch%3Amain)。
 
-APK 为 15,119,011 字节，SHA-256 `690626883dd90684128959a53737b54c326352e3decb0dd46a707ac3d962ab90`；签名证书 SHA-256 为 `978833bcaf0fc001248f5d8501bfa1f9d1273922474ed601f2c60a4548a652b9`，与基线一致。当前包未安装设备；手机仍为 0.3.3／6。后续同签名覆盖并分别核对事项、附件字节、设置和提醒，不将旧设备证据当作新版验收。
+APK 为 15,119,011 字节，SHA-256 `690626883dd90684128959a53737b54c326352e3decb0dd46a707ac3d962ab90`；签名证书 SHA-256 为 `978833bcaf0fc001248f5d8501bfa1f9d1273922474ed601f2c60a4548a652b9`，与基线一致。该本机批次未安装设备；随后[独立 0.3.4 设备批次](test-evidence/RUN-20261101-DEVICE-034/README.md)已覆盖安装，安装后及正常首启均核对原六表、4 附件字节、设置、全部提醒行及原 12 条 SENT 保持。本样本图片提示／重试／回滚通过，来源卸载后普通重开的 3 私有副本保持、角色双向保存与重开也已通过；未建立来源移除后的冷启动／缓存排除条件。普通后台通知与完成撤销已通过；真实重启自动窗口未恢复 Alarm／通知，普通打开补发与重排成功，OBS-02 保持开放，最终17项审计通过，原六表／四附件／设置／原12条SENT保持。
 
 恢复诊断只在 debuggable 包写入应用私有 `reminder-recovery-debug` 偏好文件，记录固定来源的阶段、时刻、结果与能力／计数，不写业务内容或异常文本。独立单写入器最多保留 6 个待写来源槽和 1 个在途写入，业务恢复与 Receiver 收尾不等待磁盘；同来源中间阶段可合并，进程退出可能丢失未写记录，属于尽力留证，不承诺持久化必达。 BOOT 与后续 Alarm 独立保存；记录完成不保证系统 Alarm 保持或通知送达，无记录也不能单独证明广播未交付。静态 P2 已整改并独立复审通过，全部阶段证据见[本批目录](test-evidence/RUN-20261101-DEMO-STABILITY/README.md)。
+
+### 同版本号远程增量的识别
+
+远程 main [99490e6](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/99490e692b67f3d4f46548aa8e97a0a56d864221) 已先后合入 [PR #11](https://github.com/zidodo1124/hust26_software_engineering_homework/pull/11) 月历日期格数量和队友合入的 [PR #12](https://github.com/zidodo1124/hust26_software_engineering_homework/pull/12) 周／日界面，版本号仍为 0.3.4／7。本批手机仍测试 `bdcd76f` 的 0.3.4／7，APK SHA-256 `690626883dd90684128959a53737b54c326352e3decb0dd46a707ac3d962ab90`；远程增量版本号也为 0.3.4／7，应以源码提交和 APK 哈希区分。本批本机与 CI #46 的 218 次执行，以及本批手机结果，均不覆盖上述远程新增代码。 从最新 main 构建时须单独记录提交、APK 哈希与检查结果；不要仅凭版本号沿用本节设备结论。
