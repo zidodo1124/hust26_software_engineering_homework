@@ -237,9 +237,11 @@ internal fun EventEditor(
             EventCategories(sources, tags, sourceId, tagIds, initialSource, DraftJson.ids(initialTags), busy,
                 onSource = { sourceId = it }, onTags = { tagsJson = DraftJson.ids(it) })
             CustomFieldEditor(fields, busy) { fieldsJson = DraftJson.fields(it) }
-            AttachmentEditor(images, busy, onImportImages,
-                onRemove = { id -> imagesJson = DraftJson.attachments(images.filterNot { it.id == id }) },
-                onError = onImageError)
+            if (initial?.recurrence == null) {
+                AttachmentEditor(images, busy, onImportImages,
+                    onRemove = { id -> imagesJson = DraftJson.attachments(images.filterNot { it.id == id }) },
+                    onError = onImageError)
+            } else Text("重复事项不支持图片附件。", color = Muted, style = MaterialTheme.typography.bodySmall)
             operationError?.let { ErrorNotice(it) }
             Button(
                 onClick = {

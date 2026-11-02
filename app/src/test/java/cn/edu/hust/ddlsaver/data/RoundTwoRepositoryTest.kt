@@ -117,6 +117,9 @@ class RoundTwoRepositoryTest {
         assertNotNull(first.recurrence)
         val initially = repository.events.first()
         assertTrue(initially.size in 12..14)
+        assertTrue(runCatching { repository.save(first.edit().copy(attachments = listOf(attachment()))) }
+            .exceptionOrNull() is EventValidationException)
+        assertTrue(repository.events.first().first { it.id == first.id }.attachments.isEmpty())
         repository.setCompleted(first.id, true)
         repository.extendRecurrencesThrough(clock.instant().plusSeconds(150L * 86_400L))
         val extended = repository.events.first()

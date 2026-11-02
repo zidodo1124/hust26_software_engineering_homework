@@ -99,6 +99,9 @@ class RoomEventRepository(
             val id = normalized.id ?: UUID.randomUUID().toString()
             val previous = normalized.id?.let { dao.findEvent(it) ?: throw EventNotFoundException() }
             if (previous != null && normalized.expectedRevision != previous.revision) throw EventConflictException()
+            if (previous != null && normalized.attachments.isNotEmpty() && dao.recurrenceForEvent(previous.id) != null) {
+                throw EventValidationException("重复事项不支持图片附件。")
+            }
             validateRelations(id, normalized, previous)
             val row = if (previous == null) {
                 EventEntity(
