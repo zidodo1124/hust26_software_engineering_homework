@@ -1,0 +1,81 @@
+{
+  "atUtc": "2026-11-02T11:07:44.677708+00:00",
+  "schema": 5,
+  "integrity": "ok",
+  "tables": {
+    "events": {
+      "count": 7,
+      "digest": "6f4a854c362a0457b70dcf996d02fccb3442fbdaf8d06b74214c599960e41538"
+    },
+    "sources": {
+      "count": 1,
+      "digest": "05001ec245fb010d3cb95c4662124eb1e7cea32da9714fe28290541dacdaf431"
+    },
+    "tags": {
+      "count": 1,
+      "digest": "899eb8e4b8c1d65685a765c6fcbd487fc98e4dc1c9203675dcf0b60f28e1af6f"
+    },
+    "event_tags": {
+      "count": 1,
+      "digest": "36dba9812d98ef5c776eb85d96a5640e8ae4d496db5feabeee4ba3c0e890c115"
+    },
+    "custom_fields": {
+      "count": 2,
+      "digest": "a2f5ab27ee30ebb3ea89d9bc1a4d818ff1917b37099fb20e39d41b4203457de6"
+    },
+    "attachments": {
+      "count": 5,
+      "digest": "8898bf97b5b0f758d1e8bcad4087c7c3f836cb8b5216c7f0d02b15e7e4fdf52b"
+    }
+  },
+  "settings": [
+    {
+      "id": 1,
+      "urgentMinutes": 1440,
+      "expiredPolicy": "KEEP",
+      "dailySummaryEnabled": 1,
+      "dailySummaryMinuteOfDay": 480,
+      "dangerReminderEnabled": 1,
+      "deadlineReminderEnabled": 1,
+      "deadlineLeadMinutes": 60,
+      "characterStyle": "CHIBI"
+    }
+  ],
+  "images": [
+    {
+      "identity": "4f7e5ddb26fb2091331b49b13a992ead44967de92ee3b9962d885c0b5cf0fc77",
+      "bytes": 5351,
+      "content": "9f60f5bd7665a225e8a7e4e28debc7b1fe6940739b9a09bb22fe5177767d1a0c"
+    },
+    {
+      "identity": "6bedc3a8e79cac14a29e2eb795251b45ad8a389380d7580f1f5ef9fe0dff7da0",
+      "bytes": 5407,
+      "content": "148110384ab2b8716d90823d736ad8ef379e620b7b1ba99904bfe8d4ee744494"
+    },
+    {
+      "identity": "c8e539717f58f0cfa9a409da3416348f131cd99417e918969196f1721d789fc2",
+      "bytes": 1681061,
+      "content": "416d82838a02b121a476ed998825611c641cf21e4056f8c3f07427a10856f6f2"
+    },
+    {
+      "identity": "edd18b35a954c0ff7a03ddf31a48920185bfd15a1961de3a50f4c3f061209558",
+      "bytes": 5407,
+      "content": "148110384ab2b8716d90823d736ad8ef379e620b7b1ba99904bfe8d4ee744494"
+    },
+    {
+      "identity": "f12a5677a99aa316d2b75d12db70244a67e05c3a0613cfca4c516fda2c315a08",
+      "bytes": 5351,
+      "content": "9f60f5bd7665a225e8a7e4e28debc7b1fe6940739b9a09bb22fe5177767d1a0c"
+    }
+  ],
+  "reminders": {
+    "count": 46,
+    "sentCount": 17,
+    "allDigest": "fcad98124240858a785ba0e1fe6b001de2693936690bfcdb69f2740e94c52f9f",
+    "sentDigest": "8a99ed4c8d2f37654abc85aad54dfe8c034b88babd98a5b5226efdff3f208fb1",
+    "originalSentRowsUnchanged": true,
+    "originalSentCount": 17,
+    "newSentCount": 0
+  },
+  "recurrenceSeriesCount": 0
+}

@@ -1,0 +1,8 @@
+{
+  "schema4to5": true,
+  "businessPreserved": true,
+  "imagesPreserved": true,
+  "settingsPreserved": true,
+  "originalSentPreserved": true,
+  "noSpuriousRecurrence": true
+}

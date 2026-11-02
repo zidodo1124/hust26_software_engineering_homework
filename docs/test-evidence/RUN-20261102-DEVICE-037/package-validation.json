@@ -1,0 +1,44 @@
+{
+  "checkedAtUtc": "2026-11-02T11:23:52.625778+00:00",
+  "sourceCommit": "295fb579035a2efecbf914f64e0c0bb2caf263b6",
+  "sourceApk": "app/build/outputs/apk/debug/ddl-saver-0.3.7-debug.apk",
+  "archive": "releases/android/DDL-Saver-0.3.7-android.zip",
+  "archiveBytes": 14728839,
+  "archiveSha256": "d2d4089c875208b42e682a431862ea3054c467daf1ba39c5fed49128d6dd636c",
+  "apkBytes": 15184547,
+  "apkSha256": "f3b263c210c20742dbb192cb847c1893b0ea9b4ff2b68a94d1c4da318ba088d9",
+  "certificateSha256": "978833bcaf0fc001248f5d8501bfa1f9d1273922474ed601f2c60a4548a652b9",
+  "packageName": "cn.edu.hust.ddlsaver",
+  "versionName": "0.3.7",
+  "versionCode": 10,
+  "minSdk": 26,
+  "files": [
+    {
+      "name": "DDL-Saver-0.3.7/DDL-Saver-0.3.7.apk",
+      "bytes": 15184547,
+      "sha256": "f3b263c210c20742dbb192cb847c1893b0ea9b4ff2b68a94d1c4da318ba088d9"
+    },
+    {
+      "name": "DDL-Saver-0.3.7/安装说明.txt",
+      "bytes": 1795,
+      "sha256": "3df07490e855499afebfe7aedb72aef4fa2e7590b74e81d21f0c38c8384542c6"
+    },
+    {
+      "name": "DDL-Saver-0.3.7/SHA256SUMS.txt",
+      "bytes": 86,
+      "sha256": "97b775a9d17421be628aee3ee3de5a46781381fc452ad8ecdd9a68dbc430caaf"
+    }
+  ],
+  "checks": {
+    "sourceApkMatchesTestedHash": true,
+    "sourceApkMatchesTestedSize": true,
+    "aaptIdentityAndMinSdkVerified": true,
+    "apksignerVerificationPassed": true,
+    "certificateMatchesInstalledVersion": true,
+    "zipCrcPassed": true,
+    "zipContainsExactlyThreeExpectedFiles": true,
+    "extractedApkBytesIdentical": true,
+    "instructionsUtf8Bom": true,
+    "noPrivateDataOrDevelopmentToolsPackaged": true
+  }
+}

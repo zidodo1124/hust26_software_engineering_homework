@@ -11,6 +11,7 @@ docs/test-evidence/RUN-20261101-DEVICE-034/** -text whitespace=cr-at-eol
 docs/test-evidence/RUN-20261101-CALENDAR-FINAL/** -text whitespace=cr-at-eol
 docs/test-evidence/RUN-20261102-LOCAL-SYNC/** -text whitespace=cr-at-eol
 docs/test-evidence/RUN-20261102-COPY-REFRESH/** -text whitespace=cr-at-eol
+docs/test-evidence/RUN-20261102-DEVICE-037/** -text whitespace=cr-at-eol
 # Verbatim build output and patch context retain their original trailing spaces.
 docs/test-evidence/RUN-20261101-RECOVERY-DIAGNOSTICS/**/*.log -whitespace
 docs/test-evidence/RUN-20261101-DEMO-STABILITY/**/*.log -whitespace

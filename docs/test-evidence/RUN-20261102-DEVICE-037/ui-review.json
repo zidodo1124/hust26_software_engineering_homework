@@ -1,0 +1,184 @@
+{
+  "atUtc": "2026-11-02T11:21:34.456744+00:00",
+  "versionName": "0.3.7",
+  "versionCode": 10,
+  "screenCount": 23,
+  "result": "代表性页面的新文案未发现截断或需要立即改包的明确不自然表达。",
+  "samples": [
+    {
+      "screenshot": "01-home037.png",
+      "page": "首页、Q版气泡",
+      "fontScale": 1.0,
+      "observation": "主标题和危险期台词完整；气泡末行较短属正常换行。",
+      "operation": "只读"
+    },
+    {
+      "screenshot": "02-editor-top.png",
+      "page": "新建编辑首屏",
+      "fontScale": 1.0,
+      "observation": "填写说明、标题和日期提示正常。",
+      "operation": "未保存草稿"
+    },
+    {
+      "screenshot": "03-editor-required.png",
+      "page": "必填校验",
+      "fontScale": 1.0,
+      "observation": "标题与日期错误提示可见。",
+      "operation": "未保存草稿"
+    },
+    {
+      "screenshot": "04-editor-sprint.png",
+      "page": "速通说明",
+      "fontScale": 1.0,
+      "observation": "<=边界说明完整，正常换行。",
+      "operation": "未保存草稿"
+    },
+    {
+      "screenshot": "05-editor-repeat.png",
+      "page": "每天重复说明",
+      "fontScale": 1.0,
+      "observation": "图片限制与本次/后续说明完整。",
+      "operation": "临时选择后还原，未保存"
+    },
+    {
+      "screenshot": "06-editor-images.png",
+      "page": "图片说明",
+      "fontScale": 1.0,
+      "observation": "20 MiB、1亿像素说明及入口可见。",
+      "operation": "未保存草稿"
+    },
+    {
+      "screenshot": "07-editor-fields.png",
+      "page": "自定义字段",
+      "fontScale": 1.0,
+      "observation": "字段说明与空字段控件可见。",
+      "operation": "空字段随草稿丢弃"
+    },
+    {
+      "screenshot": "08-discard-dialog.png",
+      "page": "放弃修改确认",
+      "fontScale": 1.0,
+      "observation": "确认含义与按钮可见。",
+      "operation": "仅丢弃本轮未保存空草稿"
+    },
+    {
+      "screenshot": "09-settings-q.png",
+      "page": "Q版设置预览",
+      "fontScale": 1.0,
+      "observation": "形象说明可见。",
+      "operation": "进入设置"
+    },
+    {
+      "screenshot": "10-settings-classic.png",
+      "page": "经典设置预览",
+      "fontScale": 1.0,
+      "observation": "经典说明与保存提示可见。",
+      "operation": "临时切换经典并保存，最后恢复Q版"
+    },
+    {
+      "screenshot": "11-settings-permissions.png",
+      "page": "提醒权限与后台提示",
+      "fontScale": 1.0,
+      "observation": "长提示完整换行。",
+      "operation": "不修改权限和提醒开关"
+    },
+    {
+      "screenshot": "12-archive-confirm.png",
+      "page": "归档确认",
+      "fontScale": 1.0,
+      "observation": "范围和恢复说明可见。",
+      "operation": "取消，未归档"
+    },
+    {
+      "screenshot": "13-home-classic.png",
+      "page": "经典首页气泡",
+      "fontScale": 1.0,
+      "observation": "危险期台词可见。",
+      "operation": "只读，稍后恢复Q版"
+    },
+    {
+      "screenshot": "13b-detail.png",
+      "page": "普通事项详情",
+      "fontScale": 1.0,
+      "observation": "查看已有事项详情，无修改。",
+      "operation": "只读"
+    },
+    {
+      "screenshot": "13c-delete-confirm.png",
+      "page": "普通删除确认",
+      "fontScale": 1.0,
+      "observation": "不可恢复、App内副本及相册原图说明完整。",
+      "operation": "取消，未删除"
+    },
+    {
+      "screenshot": "14-large-home-top.png",
+      "page": "150%首页主标题",
+      "fontScale": 1.5,
+      "observation": "主标题和统计可读；页面可滚动。",
+      "operation": "临时字号，最终恢复1.0"
+    },
+    {
+      "screenshot": "15-large-classic-bubble.png",
+      "page": "150%经典气泡",
+      "fontScale": 1.5,
+      "observation": "上下布局，台词完整，无气泡截断。",
+      "operation": "临时字号/形象"
+    },
+    {
+      "screenshot": "16-large-sprint.png",
+      "page": "150%速通说明",
+      "fontScale": 1.5,
+      "observation": "说明完整换行；右侧部分重复/重要程度选项出视口。",
+      "operation": "未保存草稿；横向选项未逐项滑验"
+    },
+    {
+      "screenshot": "17-large-repeat.png",
+      "page": "150%重复说明",
+      "fontScale": 1.5,
+      "observation": "图片限制及作用范围完整换行。",
+      "operation": "未保存草稿"
+    },
+    {
+      "screenshot": "18-large-images.png",
+      "page": "150%图片与字段说明",
+      "fontScale": 1.5,
+      "observation": "长说明完整；“从相册选择”按钮换成两行，文字完整。",
+      "operation": "未保存草稿"
+    },
+    {
+      "screenshot": "19-large-permissions.png",
+      "page": "150%权限与后台说明",
+      "fontScale": 1.5,
+      "observation": "后台限制、精确提醒状态、自动归档说明完整。",
+      "operation": "不改通知开关/权限；Q版随后保存恢复"
+    },
+    {
+      "screenshot": "20-large-q-bubble.png",
+      "page": "150%Q版气泡",
+      "fontScale": 1.5,
+      "observation": "台词完整，保留上下布局。",
+      "operation": "已恢复Q版，字号随后恢复"
+    },
+    {
+      "screenshot": "21-final-home.png",
+      "page": "最终正常首页",
+      "fontScale": 1.0,
+      "observation": "Q版、正常字号、原字形保留，主标题与台词可读。",
+      "operation": "检查结束交回用户"
+    }
+  ],
+  "sampledCharacterState": "DANGER（该冲刺了），随真实时间轮换抽样；未改钟或人为改原事项来轮播所有状态。",
+  "notTested": [
+    "36句逐条设备轮播",
+    "空闲/临近/逾期/完成各角色状态完整设备覆盖",
+    "重复事项创建、后续修改/删除等完整实机流程",
+    "大字号横向选项逐项滑验",
+    "长后台/重启/通知送达专项"
+  ],
+  "layoutNotes": [
+    "大字号横向选项行部分内容在视口外；代码采用横向滚动，本轮未逐项横滑实测，不声称全部选项同屏。",
+    "页面顶部/底部因滚动视口部分露出的其他控件不计为文字自身截断。",
+    "截图有用户数据，只保留本地ignored目录；正式文档只归档摘要。"
+  ],
+  "finalPreference": "用户确认正常字号1.0合适，保留原系统手写字形与Q版；未执行任何更换字体/主题的新阶段。"
+}

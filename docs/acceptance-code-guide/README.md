@@ -1,10 +1,10 @@
 # 演示后教师提问速查入口
 
-> **版本提示：** 本套仍解释手机的 `demo-v0.3.5`，旧行号应配合固定标签链接阅读。本地已同步较新代码；当前功能与代码地址请查[本地源码导航](../source-navigation.md)，同步状态见[项目状态](../project/STATUS.md)。
+> **版本提示：** 荣耀 X50 已升级到 **0.3.7／10、schema 5**，同签名覆盖、正常首启和迁移已核对。本套问答、代码节选与行号仍固定于历史 `demo-v0.3.5`，配合原标签链接阅读；解释当前手机版请用[源码导航](../source-navigation.md)。新版按钮“移出归档”“检查并安排提醒”“临近截止”分别对应旧“恢复归档”“重新检查并安排提醒”“普通紧急程度”。本轮手机检查范围见[项目状态](../project/STATUS.md)。
 
 **前 5 分钟只展示软件功能，不打开源码、不讲架构。** 按[功能演示脚本](../acceptance-demo/02-demo-script.md)完成 D01—D06 后结束展示；老师提问时，再从下表找到对应的一句话回答。只有老师继续追问实现或要求看代码，才打开详细问答和源码段，不默认接着主动进行代码讲解。
 
-适用手机包 **0.3.5／versionCode 8、Room schema 4**，固定标签 `demo-v0.3.5`；产品源码 `f024ecea4b287c7a8768c2dc62af9be9228c9ae6`，交付提交 `e542b910c748410176e86c8c43bab4c5e23a795e`。更新：2026-11-02（America/Los_Angeles）。远程与安装包的区别见[已核对的版本快照](../acceptance-demo/00-version-and-repository-status.md)，本手册不继续追踪远程变动。
+本套固定基线 **0.3.5／versionCode 8、Room schema 4**，固定标签 `demo-v0.3.5`；产品源码 `f024ecea4b287c7a8768c2dc62af9be9228c9ae6`，交付提交 `e542b910c748410176e86c8c43bab4c5e23a795e`。更新：2026-11-02（America/Los_Angeles）。远程与安装包的区别见[已核对的版本快照](../acceptance-demo/00-version-and-repository-status.md)，本手册不继续追踪远程变动。
 
 ## 听到问题后，从这里查
 
@@ -34,6 +34,8 @@
 操作准备以[样本清单](../acceptance-demo/01-preparation.md)和[5 分钟脚本](../acceptance-demo/02-demo-script.md)为准：现场编辑预建 A、打开已有图片、按完整标题搜索、展示日历、完成 B，不现场新建全套事项或重选图片。
 
 ## 回答时保留的事实边界
+
+以下是 0.3.5 的历史基线；当前 0.3.7 已包含重复事项和 schema 5，最新设备范围以[项目状态](../project/STATUS.md)为准。
 
 - 本机 29 份 JUnit XML、185 个不同方法、224 次实际执行全部通过；Lint 0 错误／16 警告。本轮没有新的远程 CI 通过结论。
 - 荣耀 X50 本轮验证日历矩阵和 18 项收尾审计；5 条 QA 已清理，原 3 条事项、4 份附件、原 33 条提醒行（14 SENT）保持。具体范围见[实机证据](../test-evidence/RUN-20261101-CALENDAR-FINAL/README.md)，不扩大成所有功能都在本轮重新实测。

@@ -6,12 +6,13 @@
 
 | 对象 | 对应内容 | 使用哪份材料 |
 | --- | --- | --- |
-| 当前本地工作区 | `codex/local-sync-20261102` 已合入远程 `main` 的 PR #14（`eaa9a59`），保留周历折叠修复；本地产品代码为 `295fb57`，版号 **0.3.7／10、Room schema 5**，本轮更新用户文案 | 本页：包括重复事项的新功能与当前文件行号；该本地提交尚未推送远程 |
-| 手机原演示包 | `demo-v0.3.5`／8、Room schema 4；没有重复事项创建与管理界面 | [五分钟演示](acceptance-demo/README.md)与[0.3.5 答辩材料](acceptance-code-guide/README.md) |
+| 当前本地工作区 | `codex/local-sync-20261102` 已合入远程 `main` 的 PR #14（`eaa9a59`），保留周历折叠修复；本地产品代码为 `295fb57`，版号 **0.3.7／10、Room schema 5**，本轮更新用户文案 | 本页：包括重复事项的新功能与当前文件行号；远程发布记录见[项目状态](project/STATUS.md) |
+| 当前手机包 | 荣耀 X50 已同签名覆盖 **0.3.7／10、schema 5**，产品与本地 `295fb57` 一致；正常首启及 4→5 迁移通过，原数据保持 | 当前代码用本页，设备抽查进展见[项目状态](project/STATUS.md) |
+| 历史演示包 | `demo-v0.3.5`／8、Room schema 4；没有重复事项创建与管理界面 | [五分钟演示](acceptance-demo/README.md)与[0.3.5 答辩材料](acceptance-code-guide/README.md) |
 
-本页行号按当前工作区实读核对，产品文件位置以项目根目录 `C:\Users\lx\Desktop\sw_teamwork` 为起点。点击文件链接后，在 IDE 用 **Ctrl+G** 输入所列行号；页面中的 `#L` 也便于支持行锚点的代码查看器定位。后续改代码可能使行号变化，**同一格的函数名是第二个定位依据**。本页链接打开当前文件；旧教学材料的固定标签链接才对应手机的旧实现。
+本页行号按当前工作区实读核对，产品文件位置以项目根目录 `C:\Users\lx\Desktop\sw_teamwork` 为起点。点击文件链接后，在 IDE 用 **Ctrl+G** 输入所列行号；页面中的 `#L` 也便于支持行锚点的代码查看器定位。后续改代码可能使行号变化，**同一格的函数名是第二个定位依据**。本页链接打开当前文件；旧教学材料的固定标签链接对应历史 0.3.5 实现，当前手机版应按本页定位。
 
-本轮文案更新的本机构建、测试与 Lint 已通过，执行数与证据见第 6 节及[项目状态](project/STATUS.md)。**本轮没有将 0.3.7 安装到手机**；手机演示与当前源码的版本差异仍需保留。全部新台词和主要提示见[文案清单](ui-copy-guide.md)。
+本轮文案更新的本机构建、测试与 Lint 已通过，执行数与证据见第 6 节及[项目状态](project/STATUS.md)。**0.3.7 已安装到荣耀 X50**；本机测试与手机安装、迁移、文案抽查分别记录。全部新台词和主要提示见[文案清单](ui-copy-guide.md)。
 
 ## 2. 主要功能从哪段代码开始看
 
@@ -31,7 +32,7 @@
 | **F10 三类提醒、权限、通知点击** | [app/src/main/java/cn/edu/hust/ddlsaver/reminders/ReminderModels.kt](../app/src/main/java/cn/edu/hust/ddlsaver/reminders/ReminderModels.kt#L67) L67 `ReminderRules.eventPlans`；[app/src/main/java/cn/edu/hust/ddlsaver/reminders/ReminderPlanStore.kt](../app/src/main/java/cn/edu/hust/ddlsaver/reminders/ReminderPlanStore.kt#L11) L11 `rebuild`；[app/src/main/java/cn/edu/hust/ddlsaver/reminders/ReminderEngine.kt](../app/src/main/java/cn/edu/hust/ddlsaver/reminders/ReminderEngine.kt#L34) L34 `reconcile` | DAILY／DANGER／DEADLINE 的持久计划 → [app/src/main/java/cn/edu/hust/ddlsaver/reminders/AndroidReminderPlatform.kt](../app/src/main/java/cn/edu/hust/ddlsaver/reminders/AndroidReminderPlatform.kt#L46) L46 `scheduleAlarm` 与 L61 `post` → 系统通知。点击进入 [app/src/main/java/cn/edu/hust/ddlsaver/MainActivity.kt](../app/src/main/java/cn/edu/hust/ddlsaver/MainActivity.kt#L58) L58 `handleReminderIntent` → `SaverApp.openReminder`（L102），编辑页等会先保护草稿。 |
 | **F11 重复事项及后续周期管理** | [app/src/main/java/cn/edu/hust/ddlsaver/ui/EventEditor.kt](../app/src/main/java/cn/edu/hust/ddlsaver/ui/EventEditor.kt#L200) L200 重复设置区；[app/src/main/java/cn/edu/hust/ddlsaver/domain/RecurrenceRules.kt](../app/src/main/java/cn/edu/hust/ddlsaver/domain/RecurrenceRules.kt#L37) L37 `occurrenceAt`；[app/src/main/java/cn/edu/hust/ddlsaver/data/RoomEventRepository.kt](../app/src/main/java/cn/edu/hust/ddlsaver/data/RoomEventRepository.kt#L42) L42 `createRecurrence` | 每天／每周／每月，可按次数或结束日期停止；生成的是独立事项并保留系列关联。新增、普通事项转系列、单次／后续修改、删除和停止的分支见下一节。 |
 
-**五分钟演示后如何对应：** D01→F01／F08，D02→F02／F03，D03→F04，D04→F05，D05→F06，D06→F07。若老师要看手机演示包那一版的准确代码，回到 [0.3.5 固定源码对照](acceptance-code-guide/02-feature-source-map.md)打开标签链接；本表解释的是已同步的新本地代码。
+**五分钟演示后如何对应：** D01→F01／F08，D02→F02／F03，D03→F04，D04→F05，D05→F06，D06→F07。当前手机 0.3.7 的代码按本表阅读；若老师追问原 0.3.5 演示包，再回到 [0.3.5 固定源码对照](acceptance-code-guide/02-feature-source-map.md)打开标签链接。
 
 ## 3. PR #14 新增的重复事项：逐条定位
 
@@ -106,7 +107,7 @@ flowchart LR
 
 ## 6. 源码旁边可以找哪些验证
 
-本轮 **0.3.7 本机完整构建、单元测试和 Lint 已通过**：29 份 XML／197 个不同方法／236 次执行全通过，失败／错误／跳过均 0；Lint 0 错误／16 警告，原周历折叠回归仍通过。验证期间 95 个产品输入文件的前后哈希一致，13 项核验均通过。准确范围及报告见[文案更新本机验证](test-evidence/RUN-20261102-COPY-REFRESH/README.md)；此前 [0.3.6 同步验证](test-evidence/RUN-20261102-LOCAL-SYNC/README.md)保留历史结果。这不是 236 个独立方法，也不是 0.3.7 手机验收。
+本轮 **0.3.7 本机完整构建、单元测试和 Lint 已通过**：29 份 XML／197 个不同方法／236 次执行全通过，失败／错误／跳过均 0；Lint 0 错误／16 警告，原周历折叠回归仍通过。验证期间 95 个产品输入文件的前后哈希一致，13 项核验均通过。准确范围及报告见[文案更新本机验证](test-evidence/RUN-20261102-COPY-REFRESH/README.md)；此前 [0.3.6 同步验证](test-evidence/RUN-20261102-LOCAL-SYNC/README.md)保留历史结果。236 是本机执行次数；手机安装和本轮抽查另见[项目状态](project/STATUS.md)。
 
 | 范围 | 测试文件与定位 |
 | --- | --- |
@@ -114,13 +115,13 @@ flowchart LR
 | 系列持久化、转换、改后续、停止、删除和事务 | [app/src/test/java/cn/edu/hust/ddlsaver/data/RoundTwoRepositoryTest.kt](../app/src/test/java/cn/edu/hust/ddlsaver/data/RoundTwoRepositoryTest.kt#L192) L192；同文件 L210 修改频率／结束条件、L232 保留本次停止后续、L249 单次删除及计划失效。 |
 | 旧库迁移 | [app/src/test/java/cn/edu/hust/ddlsaver/data/SaverDatabaseMigrationTest.kt](../app/src/test/java/cn/edu/hust/ddlsaver/data/SaverDatabaseMigrationTest.kt#L33) L33，另有 V1／V2 升级保留检查；[导出的 schema 5](../app/schemas/cn.edu.hust.ddlsaver.data.SaverDatabase/5.json)。 |
 | 界面输入与真实页面状态 | [app/src/test/java/cn/edu/hust/ddlsaver/ui/SaverAppFlowTest.kt](../app/src/test/java/cn/edu/hust/ddlsaver/ui/SaverAppFlowTest.kt#L122) L122 每周系列创建；同文件保留保存冲突、筛选、日历折叠及批量等页面测试。 |
-| 当前同步结果与手机历史证据 | [项目状态](project/STATUS.md)区分本轮本机验证、远程 CI 与 0.3.5 手机批次；[日历实机证据](test-evidence/RUN-20261101-CALENDAR-FINAL/README.md)仍只证明其标注的旧包分项。 |
+| 当前同步结果与手机证据 | [项目状态](project/STATUS.md)区分 0.3.7 本机验证、手机安装／迁移／抽查与 0.3.5 历史批次；[日历实机证据](test-evidence/RUN-20261101-CALENDAR-FINAL/README.md)仍只证明其标注的旧包分项。 |
 
-本页将测试入口与本轮实际运行结果分别列出；没有被测试覆盖的条件不能因构建成功就记为通过。新增重复功能仍需设备验证，手机的旧版证据保持原有范围。
+本页将测试入口与本轮实际运行结果分别列出；没有被测试覆盖的条件不能因构建成功就记为通过。完整重复业务仍需单独做设备验收，手机的旧版证据保持原有范围。
 
 ## 7. 回答时保留的边界
 
-- 当前本地增加了重复任务；手机旧 0.3.5 没有该界面。不能拿本地新源码倒推旧手机已经支持。
+- 当前源码和手机均为 0.3.7，已包含重复事项入口；本轮安装和迁移通过，不代替完整重复业务的设备验收。原 0.3.5 固定材料仍描述无重复界面的旧包。
 - 重复系列不带图片，普通事项的图片功能仍保留；次数含首次，结束日按北京时间且包含当天。
 - 时间以 `Asia/Shanghai` 解释；普通临近颜色、速通危险时间、通知提前量是不同参数。每月重复按规则锚定日计算，短月裁到月末。
 - 来源／标签筛选和日期格不是全局统计；来源存在性由 Repository 校验，`events.sourceId` 没有在该实体上声明 Room 外键。

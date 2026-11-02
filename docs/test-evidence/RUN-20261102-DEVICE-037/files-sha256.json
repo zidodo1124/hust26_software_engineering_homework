@@ -1,0 +1,82 @@
+{
+  "baseline.json": {
+    "bytes": 1045,
+    "sha256": "28f367b1e0d3a9ecb486c91c3fef6188e6db5d8d69577bcb7957182a55224275"
+  },
+  "before-data.json": {
+    "bytes": 2558,
+    "sha256": "6e3b5e531853824b88ad3a6c596bf7bc1d2fae3e905f8148ac4338d02b866128"
+  },
+  "detail-result.json": {
+    "bytes": 83,
+    "sha256": "8d5b503b92b8a0287109923a873da2630a1109277c5f68b311eb068cb1791820"
+  },
+  "editor-result.json": {
+    "bytes": 54,
+    "sha256": "061d12e5e170508cf4d0cafac3132daae4e9c553f4ccc3d33a5a3adc5e433c9c"
+  },
+  "final-audit.json": {
+    "bytes": 2514,
+    "sha256": "91fb2dc7a740155def3cb47fcb7c71d21d990a3d5129c219000ad012d3924e34"
+  },
+  "final-checks.json": {
+    "bytes": 446,
+    "sha256": "ffac6bd0b74c644ed24b51c948f6e910a3614e0765ca63029a0264be6e5cf2d8"
+  },
+  "final-data.json": {
+    "bytes": 2650,
+    "sha256": "4251e15acc7404a349032980ea8f83aafd1749f914014d6315e1f05c9db52590"
+  },
+  "final-identity.json": {
+    "bytes": 227,
+    "sha256": "c6fc4e5d7682b7badecde9680378971d0ae6b8c73f68fc39e863c2994191e872"
+  },
+  "first-launch-data.json": {
+    "bytes": 2649,
+    "sha256": "564d97ac28e1b688e75fc9ed9a105ebfa16ee3dab8af7420aab614f9ced9ceed"
+  },
+  "install-result.json": {
+    "bytes": 108,
+    "sha256": "dc040db8a317e41f454e4599bba406147658ffbb1b957684fd1f42ca6244a86c"
+  },
+  "install-start.json": {
+    "bytes": 84,
+    "sha256": "deb7adda9e709bcdd3810f0868c510e398c0ae15a0bdfea267275bba47017064"
+  },
+  "installed-identity.json": {
+    "bytes": 227,
+    "sha256": "c6fc4e5d7682b7badecde9680378971d0ae6b8c73f68fc39e863c2994191e872"
+  },
+  "large-result.json": {
+    "bytes": 57,
+    "sha256": "b64474af9ca778a78219a24d33ccb803e864d431fad37eb1ab5e6f7ff2abe737"
+  },
+  "launch-checks.json": {
+    "bytes": 183,
+    "sha256": "87f47c90e8a8052e3fbeeec243b92a8261de5a8d398ecc66e285bfc5df135952"
+  },
+  "package-validation.json": {
+    "bytes": 1666,
+    "sha256": "513366c1744d16a65227a6a28f58c2a521a7b94a92172a5f010701c013925f7e"
+  },
+  "preflight-identity.json": {
+    "bytes": 420,
+    "sha256": "3231aa3d2d3865ff74e049d1963042341117863610e0cb29df4cc0b4fa674a24"
+  },
+  "README.md": {
+    "bytes": 7470,
+    "sha256": "7dd979c34090a4d5512ce15b87b75e766093d63632bcea42272baabed9a48abc"
+  },
+  "reminder-delta.json": {
+    "bytes": 1655,
+    "sha256": "7bda8e39a1b9aec4d4ed1dc3c4e71734d7de8bc8154955c9f926fb741773bdc2"
+  },
+  "settings-result.json": {
+    "bytes": 70,
+    "sha256": "efd8c9b1c1bcc6a5fffe216c0d990e516ac7cd0787f8d265702aeb8167180a5e"
+  },
+  "ui-review.json": {
+    "bytes": 6679,
+    "sha256": "9d98b36a6a9b7debd3eff6f6bbc53ad66216c085188c00d0b36f8cfb0cf96099"
+  }
+}
