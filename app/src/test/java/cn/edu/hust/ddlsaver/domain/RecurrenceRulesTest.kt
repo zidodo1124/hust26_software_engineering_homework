@@ -9,6 +9,17 @@ class RecurrenceRulesTest {
     private fun deadline(year: Int, month: Int, day: Int, hour: Int = 18) =
         ZonedDateTime.of(year, month, day, hour, 0, 0, 0, UrgencyRules.BEIJING_ZONE).toInstant()
 
+    @Test fun missingPeriodsNeverRecreateKnownOrSkippedIndexes() {
+        val rule = RecurrenceRule(deadline(2026, 11, 2), RecurrenceFrequency.DAILY, occurrenceCount = 4)
+        val firstPass = RecurrenceRules.missingBetween(rule, deadline(2026, 11, 2), deadline(2026, 11, 5), setOf(0L, 2L))
+        assertEquals(listOf(1L, 3L), firstPass.map { it.index })
+        assertTrue(RecurrenceRules.missingBetween(rule, deadline(2026, 11, 2), deadline(2026, 11, 5),
+            setOf(0L, 2L) + firstPass.map { it.index }).isEmpty())
+        assertThrows(IllegalArgumentException::class.java) {
+            RecurrenceRules.missingBetween(rule, deadline(2026, 11, 2), deadline(2026, 11, 5), setOf(-1L))
+        }
+    }
+
     @Test fun monthlyUsesOriginalDayAcrossShortAndLeapMonths() {
         val rule = RecurrenceRule(deadline(2028, 1, 31), RecurrenceFrequency.MONTHLY)
         assertEquals(deadline(2028, 2, 29), RecurrenceRules.occurrenceAt(rule, 1)?.deadline)

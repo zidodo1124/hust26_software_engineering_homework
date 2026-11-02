@@ -13,17 +13,26 @@ data class RecurrenceRule(
     val frequency: RecurrenceFrequency,
     val untilDate: LocalDate? = null,
     val occurrenceCount: Int? = null,
+    val monthlyAnchorDay: Int? = null,
 ) {
     init {
         require(occurrenceCount == null || occurrenceCount > 0)
         require(untilDate == null || untilDate >= firstDeadline.atZone(UrgencyRules.BEIJING_ZONE).toLocalDate())
         require(untilDate == null || occurrenceCount == null)
+        require(monthlyAnchorDay == null || (frequency == RecurrenceFrequency.MONTHLY && monthlyAnchorDay in 1..31))
     }
 }
 
 data class RecurrenceOccurrence(val index: Long, val deadline: Instant)
 
 object RecurrenceRules {
+    /** Existing indexes include skipped occurrences; never recreate those when extending a window. */
+    fun missingBetween(rule: RecurrenceRule, from: Instant, through: Instant, knownIndexes: Set<Long>,
+                       maxResults: Int = 10_000): List<RecurrenceOccurrence> {
+        require(knownIndexes.all { it >= 0 })
+        return between(rule, from, through, maxResults).filterNot { it.index in knownIndexes }
+    }
+
     /** Compute from the original date each time, so a short month never shifts later months. */
     fun occurrenceAt(rule: RecurrenceRule, index: Long): RecurrenceOccurrence? {
         require(index >= 0)
@@ -34,7 +43,7 @@ object RecurrenceRules {
             RecurrenceFrequency.WEEKLY -> first.toLocalDate().plusWeeks(index)
             RecurrenceFrequency.MONTHLY -> {
                 val month = YearMonth.from(first).plusMonths(index)
-                month.atDay(minOf(first.dayOfMonth, month.lengthOfMonth()))
+                month.atDay(minOf(rule.monthlyAnchorDay ?: first.dayOfMonth, month.lengthOfMonth()))
             }
         }
         if (rule.untilDate != null && date > rule.untilDate) return null

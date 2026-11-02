@@ -17,6 +17,9 @@ import cn.edu.hust.ddlsaver.domain.CustomField
 import cn.edu.hust.ddlsaver.domain.DdlEvent
 import cn.edu.hust.ddlsaver.domain.ExpiredPolicy
 import cn.edu.hust.ddlsaver.domain.Importance
+import cn.edu.hust.ddlsaver.domain.RecurrenceRef
+import cn.edu.hust.ddlsaver.domain.RecurrenceFrequency
+import java.time.LocalDate
 
 @Entity(tableName = "events")
 data class EventEntity(
@@ -110,6 +113,11 @@ data class AttachmentEntity(
     fun toDomain() = AttachmentRef(id, relativePath, mimeType, displayName, byteSize, width, height)
 }
 
+data class RecurrenceWithSeries(
+    @Embedded val occurrence: RecurrenceOccurrenceEntity,
+    @Relation(parentColumn = "seriesId", entityColumn = "id") val series: RecurrenceSeriesEntity,
+)
+
 data class EventWithRelations(
     @Embedded val event: EventEntity,
     @Relation(parentColumn = "sourceId", entityColumn = "id") val source: SourceEntity?,
@@ -117,12 +125,16 @@ data class EventWithRelations(
     val tags: List<TagEntity>,
     @Relation(parentColumn = "id", entityColumn = "eventId") val fields: List<CustomFieldEntity>,
     @Relation(parentColumn = "id", entityColumn = "eventId") val attachments: List<AttachmentEntity>,
+    @Relation(parentColumn = "id", entityColumn = "eventId", entity = RecurrenceOccurrenceEntity::class)
+    val recurrence: RecurrenceWithSeries?,
 ) {
     fun toDomain() = event.toDomain().copy(
         source = source?.toDomain(),
         tags = tags.sortedWith(compareBy<TagEntity> { it.name }.thenBy { it.id }).map { it.toDomain() },
         customFields = fields.sortedBy { it.position }.map { it.toDomain() },
         attachments = attachments.sortedBy { it.position }.map { it.toDomain() },
+        recurrence = recurrence?.let { RecurrenceRef(it.occurrence.seriesId, it.occurrence.occurrenceIndex,
+            RecurrenceFrequency.valueOf(it.series.frequency), it.series.untilEpochDay?.let(LocalDate::ofEpochDay), it.series.occurrenceCount) },
     )
 }
 

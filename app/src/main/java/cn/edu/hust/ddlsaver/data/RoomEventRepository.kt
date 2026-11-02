@@ -13,9 +13,16 @@ import cn.edu.hust.ddlsaver.domain.EventRepository
 import cn.edu.hust.ddlsaver.domain.EventValidation
 import cn.edu.hust.ddlsaver.domain.EventValidationException
 import cn.edu.hust.ddlsaver.domain.ExpiredPolicy
+import cn.edu.hust.ddlsaver.domain.RecurrenceRule
+import cn.edu.hust.ddlsaver.domain.RecurrenceRules
+import cn.edu.hust.ddlsaver.domain.RecurrenceFrequency
+import cn.edu.hust.ddlsaver.domain.UrgencyRules
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import java.time.Clock
+import java.time.Instant
+import java.time.LocalDate
+import java.time.YearMonth
 import java.util.UUID
 
 class RoomEventRepository(
@@ -31,13 +38,75 @@ class RoomEventRepository(
     override val sources: Flow<List<Category>> = dao.observeSources().map { rows -> rows.map { it.toDomain() } }
     override val tags: Flow<List<Category>> = dao.observeTags().map { rows -> rows.map { it.toDomain() } }
 
+    /** Creates a durable series and materializes a caller-specified finite window atomically. */
+    suspend fun createRecurrence(draft: EventDraft, rule: RecurrenceRule, through: Instant): String {
+        val normalized = EventValidation.normalize(draft)
+        val template = RecurrenceTemplate.encode(normalized)
+        if (rule.firstDeadline.toEpochMilli() != normalized.deadlineAt || through < rule.firstDeadline) {
+            throw EventValidationException("重复规则的首次截止时间或生成范围无效。")
+        }
+        return reminderTransaction {
+            validateRelations("", normalized, null)
+            val id = UUID.randomUUID().toString()
+            dao.insertRecurrenceSeries(RecurrenceSeriesEntity(id, normalized.deadlineAt, rule.frequency.name,
+                rule.untilDate?.toEpochDay(), rule.occurrenceCount, 1, template))
+            materializeRecurrence(id, rule.firstDeadline, through)
+            id
+        }
+    }
+
+    /** Transaction and the unique (series, index) key make retries idempotent. */
+    suspend fun extendRecurrence(id: String, from: Instant, through: Instant): Int = reminderTransaction {
+        materializeRecurrence(id, from, through)
+    }
+
+    private suspend fun materializeRecurrence(id: String, from: Instant, through: Instant): Int {
+        val series = dao.findRecurrenceSeries(id) ?: throw EventValidationException("重复系列已不存在。")
+        if (series.occurrenceCount == 0) return 0
+        val rule = RecurrenceRule(Instant.ofEpochMilli(series.firstDeadline), RecurrenceFrequency.valueOf(series.frequency),
+            series.untilEpochDay?.let(LocalDate::ofEpochDay), series.occurrenceCount, series.monthlyAnchorDay)
+        val known = dao.recurrenceOccurrences(id).map { it.occurrenceIndex }.toSet()
+        val missing = RecurrenceRules.missingBetween(rule, from, through, known)
+        val now = clock.millis()
+        missing.forEach { occurrence ->
+            val draft = RecurrenceTemplate.decode(series.templateJson, occurrence.deadline.toEpochMilli())
+            val eventId = UUID.randomUUID().toString()
+            dao.insertEvent(EventEntity(id = eventId, title = draft.title, deadlineAt = draft.deadlineAt,
+                sprintMinutes = draft.sprintMinutes, description = draft.description, importance = draft.importance,
+                completedAt = null, archivedAt = null, createdAt = now, updatedAt = now, revision = 1, sourceId = draft.sourceId))
+            dao.insertEventTags(draft.tagIds.map { EventTagEntity(eventId, it) })
+            dao.insertCustomFields(draft.customFields.mapIndexed { position, field ->
+                CustomFieldEntity(eventId, field.id, field.label, field.value, position)
+            })
+            check(dao.insertRecurrenceOccurrence(RecurrenceOccurrenceEntity(id, occurrence.index,
+                occurrence.deadline.toEpochMilli(), eventId, false)) != -1L)
+        }
+        return missing.size
+    }
+
     override suspend fun save(draft: EventDraft): DdlEvent {
         val normalized = EventValidation.normalize(draft)
+        normalized.recurrence?.takeUnless { normalized.applyToFuture }?.let { spec ->
+            val first = Instant.ofEpochMilli(normalized.deadlineAt)
+            val rule = try { RecurrenceRule(first, spec.frequency, spec.untilDate, spec.count) }
+                catch (_: IllegalArgumentException) { throw EventValidationException("重复结束条件无效，请检查日期或次数。") }
+            val horizon = maxOf(first, clock.instant()).plusSeconds(90L * 86_400L)
+            if (normalized.id != null) return convertToRecurrence(normalized, rule, horizon)
+            val seriesId = createRecurrence(normalized.copy(recurrence = null), rule, horizon)
+            val firstId = dao.recurrenceOccurrences(seriesId).firstOrNull()?.eventId
+                ?: throw IllegalStateException("Missing first occurrence")
+            return checkNotNull(dao.findEventWithRelations(firstId)).toDomain()
+        }
         return reminderTransaction {
             val now = clock.millis()
             val id = normalized.id ?: UUID.randomUUID().toString()
             val previous = normalized.id?.let { dao.findEvent(it) ?: throw EventNotFoundException() }
             if (previous != null && normalized.expectedRevision != previous.revision) throw EventConflictException()
+            if (normalized.stopAfterThis) return@reminderTransaction stopSeriesAfterOccurrence(normalized, previous)
+            if (normalized.applyToFuture) return@reminderTransaction updateSeriesFromOccurrence(normalized, previous)
+            if (previous != null && normalized.attachments.isNotEmpty() && dao.recurrenceForEvent(previous.id) != null) {
+                throw EventValidationException("重复事项不支持图片附件。")
+            }
             validateRelations(id, normalized, previous)
             val row = if (previous == null) {
                 EventEntity(
@@ -68,6 +137,148 @@ class RoomEventRepository(
                 )
             })
             checkNotNull(dao.findEventWithRelations(row.id)).toDomain()
+        }
+    }
+
+    private suspend fun stopSeriesAfterOccurrence(draft: EventDraft, previous: EventEntity?): DdlEvent {
+        val current = previous ?: throw EventValidationException("请选择重复事项。")
+        val occurrence = dao.recurrenceForEvent(current.id) ?: throw EventValidationException("这不是重复事项。")
+        if (!draft.applyToFuture || current.completedAt != null || current.archivedAt != null) {
+            throw EventValidationException("请选择未完成的重复事项并应用于后续。")
+        }
+        val series = dao.findRecurrenceSeries(occurrence.seriesId) ?: throw EventValidationException("重复系列已不存在。")
+        val limit = try { Math.toIntExact(Math.addExact(occurrence.occurrenceIndex, 1L)) } catch (_: ArithmeticException) {
+            throw EventValidationException("周期序号超出支持范围。")
+        }
+        val saved = save(draft.copy(recurrence = null, applyToFuture = false, stopAfterThis = false))
+        if (dao.updateRecurrenceSeries(series.copy(occurrenceCount = minOf(series.occurrenceCount ?: limit, limit),
+                untilEpochDay = null, revision = Math.addExact(series.revision, 1L))) != 1) {
+            throw EventValidationException("重复系列已不存在。")
+        }
+        dao.recurrenceOccurrences(series.id).filter { it.occurrenceIndex > occurrence.occurrenceIndex }.forEach { item ->
+            val row = item.eventId?.let { dao.findEvent(it) } ?: return@forEach
+            if (row.completedAt == null && row.archivedAt == null) {
+                if (dao.deleteEvent(row.id) != 1) throw EventNotFoundException()
+                dao.skipOccurrenceForDeletedEvent(row.id)
+            }
+        }
+        return checkNotNull(dao.findEventWithRelations(saved.id)).toDomain()
+    }
+
+    private suspend fun convertToRecurrence(draft: EventDraft, rule: RecurrenceRule, through: Instant): DdlEvent {
+        val template = RecurrenceTemplate.encode(draft.copy(id = null, expectedRevision = null, recurrence = null))
+        return reminderTransaction {
+            val id = checkNotNull(draft.id)
+            if (dao.recurrenceForEvent(id) != null) throw EventValidationException("此事项已属于重复系列。")
+            val existing = save(draft.copy(recurrence = null))
+            val seriesId = UUID.randomUUID().toString()
+            dao.insertRecurrenceSeries(RecurrenceSeriesEntity(seriesId, existing.deadlineAt, rule.frequency.name,
+                rule.untilDate?.toEpochDay(), rule.occurrenceCount, 1, template))
+            check(dao.insertRecurrenceOccurrence(RecurrenceOccurrenceEntity(seriesId, 0, existing.deadlineAt, existing.id, false)) != -1L)
+            materializeRecurrence(seriesId, rule.firstDeadline, through)
+            checkNotNull(dao.findEventWithRelations(id)).toDomain()
+        }
+    }
+
+    private suspend fun updateSeriesFromOccurrence(draft: EventDraft, previous: EventEntity?): DdlEvent {
+        val current = previous ?: throw EventValidationException("请选择重复事项。")
+        val occurrence = dao.recurrenceForEvent(current.id) ?: throw EventValidationException("这不是重复事项。")
+        if (current.completedAt != null || current.archivedAt != null) throw EventValidationException("已完成或归档事项不能修改本次及后续。")
+        if (draft.attachments.isNotEmpty()) throw EventValidationException("重复事项不支持图片附件。")
+        validateRelations(current.id, draft, current)
+        val series = dao.findRecurrenceSeries(occurrence.seriesId) ?: throw EventValidationException("重复系列已不存在。")
+        val oldFrequency = RecurrenceFrequency.valueOf(series.frequency)
+        val frequency = draft.recurrence?.frequency ?: oldFrequency
+        val untilDate = if (draft.recurrence != null) draft.recurrence.untilDate else series.untilEpochDay?.let(LocalDate::ofEpochDay)
+        val count = if (draft.recurrence != null) draft.recurrence.count else series.occurrenceCount
+        val selected = Instant.ofEpochMilli(draft.deadlineAt).atZone(UrgencyRules.BEIJING_ZONE)
+        val original = Instant.ofEpochMilli(occurrence.scheduledDeadline).atZone(UrgencyRules.BEIJING_ZONE)
+        val anchorDay = if (frequency != RecurrenceFrequency.MONTHLY) null else if (frequency == oldFrequency && selected.toLocalDate() == original.toLocalDate()) {
+            series.monthlyAnchorDay ?: Instant.ofEpochMilli(series.firstDeadline).atZone(UrgencyRules.BEIJING_ZONE).dayOfMonth
+        } else selected.dayOfMonth
+        val firstDeadline = if (frequency == oldFrequency && draft.deadlineAt == occurrence.scheduledDeadline) series.firstDeadline else {
+            val first = when (frequency) {
+                RecurrenceFrequency.DAILY -> selected.minusDays(occurrence.occurrenceIndex)
+                RecurrenceFrequency.WEEKLY -> selected.minusWeeks(occurrence.occurrenceIndex)
+                RecurrenceFrequency.MONTHLY -> {
+                    val month = YearMonth.from(selected).minusMonths(occurrence.occurrenceIndex)
+                    month.atDay(minOf(checkNotNull(anchorDay), month.lengthOfMonth())).atTime(selected.toLocalTime())
+                        .atZone(UrgencyRules.BEIJING_ZONE)
+                }
+            }
+            first.toInstant().toEpochMilli()
+        }
+        val updatedRule = try { RecurrenceRule(Instant.ofEpochMilli(firstDeadline), frequency, untilDate, count, anchorDay) }
+            catch (_: IllegalArgumentException) { throw EventValidationException("新截止日期超出了重复结束日期。") }
+        if (RecurrenceRules.occurrenceAt(updatedRule, occurrence.occurrenceIndex)?.deadline?.toEpochMilli() != draft.deadlineAt) {
+            throw EventValidationException("新截止日期超出结束范围，或无法按当前月重复规则表示；可选择仅修改本次。")
+        }
+        val template = RecurrenceTemplate.encode(draft.copy(id = null, expectedRevision = null, recurrence = null, applyToFuture = false))
+        if (dao.updateRecurrenceSeries(series.copy(firstDeadline = firstDeadline, frequency = frequency.name,
+                untilEpochDay = untilDate?.toEpochDay(), occurrenceCount = count, templateJson = template,
+                monthlyAnchorDay = anchorDay, revision = Math.addExact(series.revision, 1L))) != 1) {
+            throw EventValidationException("重复系列已不存在。")
+        }
+        val now = clock.millis()
+        dao.recurrenceOccurrences(series.id).filter { it.occurrenceIndex >= occurrence.occurrenceIndex }.forEach { item ->
+            val row = item.eventId?.let { dao.findEvent(it) } ?: return@forEach
+            if (row.completedAt != null || row.archivedAt != null) return@forEach
+            val nextDeadline = RecurrenceRules.occurrenceAt(updatedRule, item.occurrenceIndex)?.deadline?.toEpochMilli()
+            if (nextDeadline == null) {
+                if (dao.deleteEvent(row.id) != 1) throw EventNotFoundException()
+                check(dao.deleteRecurrenceOccurrence(series.id, item.occurrenceIndex) == 1)
+                return@forEach
+            }
+            updateExisting(row.copy(title = draft.title, deadlineAt = nextDeadline, sprintMinutes = draft.sprintMinutes, description = draft.description,
+                importance = draft.importance, sourceId = draft.sourceId, updatedAt = now, revision = Math.addExact(row.revision, 1L)))
+            check(dao.updateRecurrenceOccurrence(item.copy(scheduledDeadline = nextDeadline)) == 1)
+            dao.clearEventTags(row.id)
+            dao.insertEventTags(draft.tagIds.map { EventTagEntity(row.id, it) })
+            dao.clearCustomFields(row.id)
+            dao.insertCustomFields(draft.customFields.mapIndexed { index, field ->
+                CustomFieldEntity(row.id, field.id, field.label, field.value, index)
+            })
+        }
+        return checkNotNull(dao.findEventWithRelations(current.id)).toDomain()
+    }
+
+    /** Stops this and future periods, preserving completed or archived history. */
+    suspend fun deleteRecurrenceFollowing(eventId: String) {
+        reminderTransaction {
+            val event = dao.findEvent(eventId) ?: throw EventNotFoundException()
+            val occurrence = dao.recurrenceForEvent(eventId) ?: throw EventValidationException("这不是重复事项。")
+            if (event.completedAt != null || event.archivedAt != null) throw EventValidationException("已完成或归档事项不能删除本次及后续。")
+            val series = dao.findRecurrenceSeries(occurrence.seriesId) ?: throw EventValidationException("重复系列已不存在。")
+            val limit = try { Math.toIntExact(occurrence.occurrenceIndex) } catch (_: ArithmeticException) {
+                throw EventValidationException("周期序号超出支持范围。")
+            }
+            if (dao.updateRecurrenceSeries(series.copy(occurrenceCount = minOf(series.occurrenceCount ?: limit, limit),
+                    untilEpochDay = null, revision = Math.addExact(series.revision, 1L))) != 1) {
+                throw EventValidationException("重复系列已不存在。")
+            }
+            dao.recurrenceOccurrences(series.id).filter { it.occurrenceIndex >= occurrence.occurrenceIndex }.forEach { item ->
+                val row = item.eventId?.let { dao.findEvent(it) } ?: return@forEach
+                if (row.completedAt == null && row.archivedAt == null) {
+                    if (dao.deleteEvent(row.id) != 1) throw EventNotFoundException()
+                    dao.skipOccurrenceForDeletedEvent(row.id)
+                }
+            }
+        }
+    }
+
+    /** Called on app/notification reconciliation; generated records remain finite and idempotent. */
+    suspend fun extendRecurrencesThrough(through: Instant) {
+        reminderTransaction {
+            dao.readRecurrenceSeries().forEach { series ->
+                if (series.occurrenceCount == 0) return@forEach
+                val rule = RecurrenceRule(Instant.ofEpochMilli(series.firstDeadline), RecurrenceFrequency.valueOf(series.frequency),
+                    series.untilEpochDay?.let(LocalDate::ofEpochDay), series.occurrenceCount, series.monthlyAnchorDay)
+                val known = dao.recurrenceOccurrences(series.id).map { it.occurrenceIndex }.toHashSet()
+                var firstMissing = 0L
+                while (firstMissing in known) firstMissing++
+                val from = RecurrenceRules.occurrenceAt(rule, firstMissing)?.deadline ?: return@forEach
+                if (from <= through) materializeRecurrence(series.id, from, through)
+            }
         }
     }
 
@@ -122,6 +333,7 @@ class RoomEventRepository(
     override suspend fun delete(id: String) {
         reminderTransaction {
             if (dao.deleteEvent(id) != 1) throw EventNotFoundException()
+            dao.skipOccurrenceForDeletedEvent(id)
         }
     }
 
@@ -141,7 +353,10 @@ class RoomEventRepository(
                     BatchOperation.ARCHIVE -> if (row.archivedAt == null) updateExisting(row.copy(
                         archivedAt = now, updatedAt = now, revision = Math.addExact(row.revision, 1L),
                     ))
-                    BatchOperation.DELETE -> if (dao.deleteEvent(row.id) != 1) throw EventNotFoundException()
+                    BatchOperation.DELETE -> {
+                        if (dao.deleteEvent(row.id) != 1) throw EventNotFoundException()
+                        dao.skipOccurrenceForDeletedEvent(row.id)
+                    }
                 }
             }
         }

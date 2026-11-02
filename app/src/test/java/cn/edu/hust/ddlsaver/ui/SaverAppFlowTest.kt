@@ -119,6 +119,39 @@ class SaverAppFlowTest {
     }
 
     @Test
+    fun createWeeklySeriesWithIndependentOccurrences() {
+        openNewEvent()
+        compose.onNodeWithTag("event-title").performScrollTo().performTextInput("每周实验")
+        selectDeadline()
+        compose.onNodeWithTag("repeat-WEEKLY").performScrollTo().performClick()
+        compose.onNodeWithTag("repeat-end-COUNT").performScrollTo().performClick()
+        compose.onNodeWithTag("repeat-count").performScrollTo().performTextInput("3")
+        compose.onNodeWithTag("event-save").performScrollTo().performClick()
+        awaitText("事项详情")
+        val events = storedEvents().sortedBy { it.deadlineAt }
+        assertEquals(3, events.size)
+        assertTrue(events.all { it.title == "每周实验" })
+        assertEquals(7L * 86_400_000, events[1].deadlineAt - events[0].deadlineAt)
+        compose.onNodeWithText("编辑事项").performScrollTo().performClick()
+        compose.onNodeWithTag("event-title").performScrollTo().performTextReplacement("调整后的每周实验")
+        compose.onNodeWithTag("edit-this-and-future").performScrollTo().performClick()
+        compose.onNodeWithTag("event-save").performScrollTo().performClick()
+        awaitText("事项详情")
+        assertTrue(storedEvents().all { it.title == "调整后的每周实验" })
+        compose.onNodeWithText("标记完成").performScrollTo().performClick()
+        compose.waitUntil(10_000) { storedEvents().count { it.completedAt != null } == 1 }
+        compose.onNodeWithText("‹ 返回").performClick()
+        val secondId = events[1].id
+        compose.onNodeWithTag("event-list").performScrollToNode(hasTestTag("event-card-$secondId"))
+        compose.onNodeWithTag("event-card-$secondId").performClick()
+        compose.onNodeWithText("永久删除").performScrollTo().performClick()
+        compose.onNodeWithTag("delete-this-and-future").performClick()
+        compose.waitUntil(20_000) { compose.onAllNodesWithTag("event-list").fetchSemanticsNodes().isNotEmpty() }
+        assertEquals(1, storedEvents().size)
+        assertNotNull(storedEvents().single().completedAt)
+    }
+
+    @Test
     fun requiredInputIsRejectedThenNewEventCanBeSavedAndEdited() {
         openNewEvent()
         compose.onNodeWithTag("event-save").performScrollTo().performClick()

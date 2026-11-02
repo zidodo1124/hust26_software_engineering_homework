@@ -2,6 +2,7 @@ package cn.edu.hust.ddlsaver.reminders
 
 import androidx.room.withTransaction
 import cn.edu.hust.ddlsaver.data.SaverDatabase
+import cn.edu.hust.ddlsaver.data.RoomEventRepository
 import cn.edu.hust.ddlsaver.domain.DdlEvent
 import cn.edu.hust.ddlsaver.domain.UrgencyRules
 import kotlinx.coroutines.CancellationException
@@ -33,6 +34,7 @@ class ReminderEngine(
     suspend fun reconcile(forceReschedule: Boolean = false): ReminderHealth = serial.withLock {
         val now = clock.millis()
         val capability = platform.capabilities()
+        RoomEventRepository(database, clock).extendRecurrencesThrough(Instant.ofEpochMilli(now).plusSeconds(90L * 86_400L))
         database.withTransaction { ReminderPlanStore.rebuild(dao, now) }
         cancelInvalidNotifications()
         if (capability.canPost) {

@@ -45,6 +45,8 @@ import androidx.compose.ui.unit.dp
 import cn.edu.hust.ddlsaver.domain.DdlEvent
 import cn.edu.hust.ddlsaver.domain.EventDraft
 import cn.edu.hust.ddlsaver.domain.Importance
+import cn.edu.hust.ddlsaver.domain.RecurrenceFrequency
+import cn.edu.hust.ddlsaver.domain.RecurrenceSpec
 import cn.edu.hust.ddlsaver.domain.Category
 import cn.edu.hust.ddlsaver.domain.AttachmentRef
 import android.net.Uri
@@ -109,13 +111,30 @@ internal fun EventEditor(
     var importanceName by rememberSaveable(session) { mutableStateOf(initialImportance) }
     var date by rememberSaveable(session) { mutableStateOf(initialDate) }
     var time by rememberSaveable(session) { mutableStateOf(initialTime) }
+    val originalRepeat = remember(session) { initial?.recurrence }
+    val originalRepeatName = originalRepeat?.frequency?.name ?: "NONE"
+    val originalRepeatEnd = if (originalRepeat?.count != null) "COUNT" else if (originalRepeat?.untilDate != null) "DATE" else "NONE"
+    val originalRepeatCount = originalRepeat?.count?.toString().orEmpty()
+    val originalRepeatUntil = originalRepeat?.untilDate?.toString()
+    var repeatName by rememberSaveable(session) { mutableStateOf(originalRepeatName) }
+    var repeatEnd by rememberSaveable(session) { mutableStateOf(originalRepeatEnd) }
+    var repeatCount by rememberSaveable(session) { mutableStateOf(originalRepeatCount) }
+    var repeatUntil by rememberSaveable(session) { mutableStateOf(originalRepeatUntil) }
+    var applyToFuture by rememberSaveable(session) { mutableStateOf(false) }
     var submitted by rememberSaveable(session) { mutableStateOf(false) }
     var discardDialog by rememberSaveable(session) { mutableStateOf(false) }
     val dirty = title != initialTitle || description != initialDescription || sprint != initialSprint ||
         importanceName != initialImportance || date != initialDate || time != initialTime ||
-        sourceId != initialSource || tagsJson != initialTags || fieldsJson != initialFields || imagesJson != initialImages
+        sourceId != initialSource || tagsJson != initialTags || fieldsJson != initialFields || imagesJson != initialImages ||
+        repeatName != originalRepeatName || repeatEnd != originalRepeatEnd || repeatCount != originalRepeatCount ||
+        repeatUntil != originalRepeatUntil || applyToFuture
     val sprintValue = sprint.trim().toLongOrNull()
     val invalidSprint = sprint.isNotBlank() && (sprintValue == null || sprintValue <= 0L || sprintValue > MaxDurationMinutes)
+    val invalidRepeat = (initial?.recurrence == null || applyToFuture) && repeatName != "NONE" && (images.isNotEmpty() ||
+        (repeatEnd == "COUNT" && (repeatCount.toIntOrNull() == null || (repeatCount.toIntOrNull() ?: 0) <= 0)) ||
+        (repeatEnd == "DATE" && (repeatUntil?.let(LocalDate::parse)?.let { end ->
+            date?.let(LocalDate::parse)?.let { start -> end.isBefore(start) } ?: true
+        } ?: true)))
     val back: () -> Unit = {
         if (!busy) {
             if (dirty) discardDialog = true else onCancel()
@@ -177,6 +196,45 @@ internal fun EventEditor(
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number), singleLine = true,
                 isError = submitted && invalidSprint, modifier = Modifier.fillMaxWidth(), shape = RoundedCornerShape(16.dp),
             )
+            if (initial?.recurrence == null || applyToFuture) Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                Text("重复", fontWeight = FontWeight.SemiBold)
+                Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    (if (initial?.recurrence == null) listOf("NONE" to "不重复") else listOf("NONE" to "停止后续重复"))
+                        .plus(listOf("DAILY" to "每天", "WEEKLY" to "每周", "MONTHLY" to "每月")).forEach { (value, label) ->
+                        FilterChip(repeatName == value, { repeatName = value }, enabled = !busy,
+                            label = { Text(label) }, modifier = Modifier.testTag("repeat-$value"))
+                    }
+                }
+                if (repeatName != "NONE") {
+                    Text("重复事项不支持图片；编辑或删除时可选择范围。", color = Muted, style = MaterialTheme.typography.bodySmall)
+                    Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        listOf("NONE" to "不结束", "COUNT" to "按次数", "DATE" to "按日期").forEach { (value, label) ->
+                            FilterChip(repeatEnd == value, { repeatEnd = value }, enabled = !busy,
+                                label = { Text(label) }, modifier = Modifier.testTag("repeat-end-$value"))
+                        }
+                    }
+                    if (repeatEnd == "COUNT") OutlinedTextField(repeatCount, { repeatCount = it }, enabled = !busy,
+                        label = { Text("重复次数（含首次）") }, singleLine = true,
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number), modifier = Modifier.testTag("repeat-count"))
+                    if (repeatEnd == "DATE") OutlinedButton(onClick = {
+                        val chosen = repeatUntil?.let(LocalDate::parse) ?: date?.let(LocalDate::parse) ?: now.atZone(BeijingZone).toLocalDate()
+                        DatePickerDialog(context, { _, year, month, day -> repeatUntil = LocalDate.of(year, month + 1, day).toString() },
+                            chosen.year, chosen.monthValue - 1, chosen.dayOfMonth).show()
+                    }, enabled = !busy, modifier = Modifier.testTag("repeat-until")) { Text(repeatUntil ?: "选择结束日期（含当天）") }
+                    if (submitted && invalidRepeat) Text("请检查结束日期、次数，且移除图片附件。", color = MaterialTheme.colorScheme.error)
+                }
+            }
+            if (initial?.recurrence != null && initial.completedAt == null && initial.archivedAt == null) Column {
+                Text("修改范围", fontWeight = FontWeight.SemiBold)
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    FilterChip(!applyToFuture, { applyToFuture = false }, enabled = !busy,
+                        label = { Text("仅本次") }, modifier = Modifier.testTag("edit-only-this"))
+                    FilterChip(applyToFuture, { applyToFuture = true }, enabled = !busy,
+                        label = { Text("本次及后续") }, modifier = Modifier.testTag("edit-this-and-future"))
+                }
+                if (applyToFuture) Text("后续已完成或归档事项保留；更改截止时间会重新计算后续周期。", color = Muted,
+                    style = MaterialTheme.typography.bodySmall)
+            }
             Column {
                 Text("重要程度", fontWeight = FontWeight.SemiBold)
                 Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -198,14 +256,16 @@ internal fun EventEditor(
             EventCategories(sources, tags, sourceId, tagIds, initialSource, DraftJson.ids(initialTags), busy,
                 onSource = { sourceId = it }, onTags = { tagsJson = DraftJson.ids(it) })
             CustomFieldEditor(fields, busy) { fieldsJson = DraftJson.fields(it) }
-            AttachmentEditor(images, busy, onImportImages,
-                onRemove = { id -> imagesJson = DraftJson.attachments(images.filterNot { it.id == id }) },
-                onError = onImageError)
+            if (initial?.recurrence == null) {
+                AttachmentEditor(images, busy, onImportImages,
+                    onRemove = { id -> imagesJson = DraftJson.attachments(images.filterNot { it.id == id }) },
+                    onError = onImageError)
+            } else Text("重复事项不支持图片附件。", color = Muted, style = MaterialTheme.typography.bodySmall)
             operationError?.let { ErrorNotice(it) }
             Button(
                 onClick = {
                     submitted = true
-                    if (title.isNotBlank() && date != null && time != null && !invalidSprint) {
+                    if (title.isNotBlank() && date != null && time != null && !invalidSprint && !invalidRepeat) {
                         val deadline = LocalDate.parse(date).atTime(LocalTime.parse(time)).atZone(BeijingZone).toInstant().toEpochMilli()
                         onSave(
                             EventDraft(
@@ -214,6 +274,12 @@ internal fun EventEditor(
                                 description = description, importance = Importance.valueOf(importanceName),
                                 expectedRevision = expectedRevision,
                                 sourceId = sourceId, tagIds = tagIds, customFields = fields, attachments = images,
+                                recurrence = if (repeatName == "NONE" || (initial?.recurrence != null && !applyToFuture)) null else RecurrenceSpec(
+                                    RecurrenceFrequency.valueOf(repeatName),
+                                    untilDate = if (repeatEnd == "DATE") repeatUntil?.let(LocalDate::parse) else null,
+                                    count = if (repeatEnd == "COUNT") repeatCount.toIntOrNull() else null),
+                                applyToFuture = applyToFuture,
+                                stopAfterThis = initial?.recurrence != null && applyToFuture && repeatName == "NONE",
                             ),
                         )
                     }

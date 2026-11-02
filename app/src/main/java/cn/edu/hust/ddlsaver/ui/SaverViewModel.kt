@@ -193,6 +193,10 @@ class SaverViewModel(application: Application) : AndroidViewModel(application) {
         cleanCandidates(event.attachments)
         event.id to null
     }
+    fun deleteFollowing(event: DdlEvent) = perform("delete") {
+        repository.deleteRecurrenceFollowing(event.id)
+        event.id to null
+    }
     fun applyBatch(ids: Set<String>, operation: BatchOperation) {
         val frozen = ids.toSet()
         val oldAttachments = mutableState.value.events.filter { it.id in frozen }.flatMap { it.attachments }
