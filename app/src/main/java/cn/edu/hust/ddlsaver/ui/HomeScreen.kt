@@ -57,6 +57,12 @@ internal fun HomeScreen(
     val dateFilter = if (quickFilter == "today") today else selectedDate?.let(LocalDate::parse)
     val filtered = EventQuery.select(state.events, EventFilter(mode = mode, keyword = query, sourceId = sourceId,
         tagIds = tagIds, date = dateFilter, dangerOnly = quickFilter == "danger"), state.now, state.settings)
+    // The calendar shows the whole month's distribution, not just the selected day.
+    val calendarEvents = EventQuery.select(state.events, EventFilter(mode = mode, keyword = query,
+        sourceId = sourceId, tagIds = tagIds, dangerOnly = quickFilter == "danger"), state.now, state.settings)
+    val calendarCounts = calendarEvents.groupingBy {
+        java.time.Instant.ofEpochMilli(it.deadlineAt).atZone(BeijingZone).toLocalDate()
+    }.eachCount()
     val overdue = if (mode == EventListMode.TODO) filtered.filter { it.deadlineAt <= state.now.toEpochMilli() } else emptyList()
     val current = if (mode == EventListMode.TODO) filtered.filter { it.deadlineAt > state.now.toEpochMilli() } else filtered
     val busy = state.busy || state.actionResult != null
@@ -142,7 +148,7 @@ internal fun HomeScreen(
             }
         }
         if (calendarOpen) item {
-            MonthCalendar(YearMonth.parse(monthText), selectedDate?.let(LocalDate::parse), today,
+            MonthCalendar(YearMonth.parse(monthText), selectedDate?.let(LocalDate::parse), today, calendarCounts,
                 onMonth = { monthText = it.toString() }, onDate = { selectedDate = it.toString(); quickFilter = "all" })
         }
         item {
@@ -215,7 +221,7 @@ private fun EventRow(event: DdlEvent, state: SaverUiState, selecting: Boolean, s
 }
 
 @Composable
-internal fun MonthCalendar(month: YearMonth, selected: LocalDate?, today: LocalDate, onMonth: (YearMonth) -> Unit, onDate: (LocalDate) -> Unit) {
+internal fun MonthCalendar(month: YearMonth, selected: LocalDate?, today: LocalDate, counts: Map<LocalDate, Int>, onMonth: (YearMonth) -> Unit, onDate: (LocalDate) -> Unit) {
     Surface(color = MaterialTheme.colorScheme.surface, shape = RoundedCornerShape(20.dp),
         border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant)) {
         Column(Modifier.fillMaxWidth().padding(10.dp)) {
@@ -235,11 +241,17 @@ internal fun MonthCalendar(month: YearMonth, selected: LocalDate?, today: LocalD
                         contentPadding = PaddingValues(0.dp),
                         colors = ButtonDefaults.textButtonColors(containerColor = if (date == selected) Ocean else Color.Transparent,
                             contentColor = if (date == selected) Color.White else if (date == today) Ocean else Ink)) {
-                        Text(date.dayOfMonth.toString())
+                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                            Text(date.dayOfMonth.toString())
+                            counts[date]?.let { count ->
+                                Text("${count}件", style = MaterialTheme.typography.labelSmall,
+                                    maxLines = 1, modifier = Modifier.testTag("calendar-count-$date"))
+                            }
+                        }
                     }
                 }
             } }
-            Text("选择日期查看当天截止的事项。“今日 DDL”始终统计北京时间的今天。", color = Muted, style = MaterialTheme.typography.bodySmall)
+            Text("日期下方显示符合当前列表和筛选条件的事项数；选择日期查看详情。“今日 DDL”始终统计北京时间的今天。", color = Muted, style = MaterialTheme.typography.bodySmall)
         }
     }
 }
