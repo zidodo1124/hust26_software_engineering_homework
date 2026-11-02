@@ -56,7 +56,7 @@ class CharacterStylePersistenceTest {
                 database.dao().readReminderPlans())
             assertEquals(ReminderControlEntity(scheduledTriggerAt = 1893566000000, desiredTriggerAt = 1893566000000,
                 scheduleMode = "exact", alarmDirty = false), database.dao().readReminderControl())
-            assertEquals(4, database.openHelper.readableDatabase.version)
+            assertEquals(5, database.openHelper.readableDatabase.version)
             database.close()
             database = open(name)
             assertEquals(event, RoomEventRepository(database).events.first().single())
@@ -96,7 +96,7 @@ class CharacterStylePersistenceTest {
     }
 
     private fun open(name: String) = Room.databaseBuilder(context, SaverDatabase::class.java, name)
-        .addMigrations(SaverDatabase.MIGRATION_3_4).build()
+        .addMigrations(SaverDatabase.MIGRATION_3_4, SaverDatabase.MIGRATION_4_5).build()
 
     private fun createV3(name: String, populate: (SQLiteDatabase) -> Unit) {
         context.deleteDatabase(name)

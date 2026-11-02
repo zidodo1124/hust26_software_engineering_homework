@@ -15,6 +15,10 @@ import cn.edu.hust.ddlsaver.domain.EventNotFoundException
 import cn.edu.hust.ddlsaver.domain.EventQuery
 import cn.edu.hust.ddlsaver.domain.EventValidationException
 import cn.edu.hust.ddlsaver.domain.ExpiredPolicy
+import cn.edu.hust.ddlsaver.domain.RecurrenceFrequency
+import cn.edu.hust.ddlsaver.domain.RecurrenceRule
+import cn.edu.hust.ddlsaver.domain.RecurrenceSpec
+import cn.edu.hust.ddlsaver.domain.UrgencyRules
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.first
@@ -78,6 +82,207 @@ class RoundTwoRepositoryTest {
     private fun attachment(name: String = "课程截图.png"): AttachmentRef {
         val id = UUID.randomUUID().toString()
         return AttachmentRef(id, "$id.img", "image/png", name, 2048, 120, 80)
+    }
+
+    @Test
+    fun recurrenceTemplateSurvivesReopenAndGenerationIsIdempotent() = runBlocking {
+        val start = clock.instant().plusSeconds(3600)
+        val source = repository.saveSource(null, "课程")
+        val tag = repository.saveTag(null, "作业")
+        val template = EventDraft(title = "周期作业", deadlineAt = start.toEpochMilli(), sourceId = source.id,
+            tagIds = setOf(tag.id), customFields = listOf(CustomField("place", "地点", "东九")))
+        val id = repository.createRecurrence(template, RecurrenceRule(start, RecurrenceFrequency.DAILY, occurrenceCount = 3),
+            start.plusSeconds(86_400))
+        val initial = repository.events.first()
+        assertEquals(2, initial.size)
+        assertTrue(initial.all { it.source?.id == source.id && it.tags.single().id == tag.id && it.customFields.single().value == "东九" })
+        repository.setCompleted(initial.first().id, true)
+        repository.delete(initial.last().id)
+        repository.setSourceActive(source.id, false)
+        repository.setTagActive(tag.id, false)
+        database.close()
+        reopenDatabase()
+        assertEquals(1, repository.extendRecurrence(id, start, start.plusSeconds(2 * 86_400)))
+        assertEquals(0, repository.extendRecurrence(id, start, start.plusSeconds(2 * 86_400)))
+        val rows = repository.events.first()
+        assertEquals(2, rows.size)
+        assertNotNull(rows.first { it.id == initial.first().id }.completedAt)
+        assertTrue(database.dao().recurrenceOccurrences(id)[1].skipped)
+        assertTrue(database.dao().readReminderPlans().any { it.eventId == rows.last().id && it.active })
+    }
+
+    @Test
+    fun savingRepeatDraftAndExtendingWindowPreservesIndependentStates() = runBlocking {
+        val first = repository.save(draft("每周作业").copy(
+            recurrence = RecurrenceSpec(RecurrenceFrequency.WEEKLY, count = 20)))
+        assertNotNull(first.recurrence)
+        val initially = repository.events.first()
+        assertTrue(initially.size in 12..14)
+        assertTrue(runCatching { repository.save(first.edit().copy(attachments = listOf(attachment()))) }
+            .exceptionOrNull() is EventValidationException)
+        assertTrue(repository.events.first().first { it.id == first.id }.attachments.isEmpty())
+        repository.setCompleted(first.id, true)
+        repository.extendRecurrencesThrough(clock.instant().plusSeconds(150L * 86_400L))
+        val extended = repository.events.first()
+        assertEquals(20, extended.size)
+        assertEquals(1, extended.count { it.completedAt != null })
+        repository.extendRecurrencesThrough(clock.instant().plusSeconds(150L * 86_400L))
+        assertEquals(20, repository.events.first().size)
+    }
+
+    @Test
+    fun editingThisAndFuturePreservesHistoryAndUpdatesLaterGeneratedEvents() = runBlocking {
+        val first = repository.save(draft("原系列").copy(recurrence = RecurrenceSpec(RecurrenceFrequency.WEEKLY, count = 20)))
+        val before = repository.events.first().sortedBy { it.deadlineAt }
+        repository.setCompleted(before[3].id, true)
+        val target = repository.events.first().first { it.id == before[1].id }
+        val edited = repository.save(target.edit().copy(title = "新系列", description = "新说明", applyToFuture = true))
+        assertEquals("新系列", edited.title)
+        val updated = repository.events.first().associateBy { it.id }
+        assertEquals("原系列", updated.getValue(first.id).title)
+        assertEquals("原系列", updated.getValue(before[3].id).title)
+        assertNotNull(updated.getValue(before[3].id).completedAt)
+        assertEquals("新系列", updated.getValue(before[2].id).title)
+        repository.save(edited.edit().copy(deadlineAt = edited.deadlineAt + 60_000, applyToFuture = true))
+        val shifted = repository.events.first().associateBy { it.id }
+        assertEquals(before[2].deadlineAt + 60_000, shifted.getValue(before[2].id).deadlineAt)
+        assertEquals(before[3].deadlineAt, shifted.getValue(before[3].id).deadlineAt)
+        repository.extendRecurrencesThrough(clock.instant().plusSeconds(150L * 86_400L))
+        assertEquals("新系列", repository.events.first().maxBy { it.deadlineAt }.title)
+    }
+
+    @Test
+    fun deletingThisAndFutureStopsGenerationButPreservesCompletedHistory() = runBlocking {
+        repository.save(draft("系列").copy(recurrence = RecurrenceSpec(RecurrenceFrequency.WEEKLY, count = 20)))
+        val before = repository.events.first().sortedBy { it.deadlineAt }
+        repository.setCompleted(before[3].id, true)
+        repository.deleteRecurrenceFollowing(before[1].id)
+        val remaining = repository.events.first()
+        assertEquals(setOf(before[0].id, before[3].id), remaining.map { it.id }.toSet())
+        assertNotNull(remaining.first { it.id == before[3].id }.completedAt)
+        assertFalse(database.dao().readReminderPlans().any { it.eventId == before[1].id && it.active })
+        repository.extendRecurrencesThrough(clock.instant().plusSeconds(150L * 86_400L))
+        assertEquals(remaining, repository.events.first())
+        repository.deleteRecurrenceFollowing(before[0].id)
+        repository.extendRecurrencesThrough(clock.instant().plusSeconds(200L * 86_400L))
+        assertEquals(listOf(before[3].id), repository.events.first().map { it.id })
+    }
+
+    @Test
+    fun editingMonthlyFollowingKeepsAnchorWhenFirstMonthIsShort() = runBlocking {
+        fun at(value: String) = java.time.LocalDateTime.parse(value).atZone(UrgencyRules.BEIJING_ZONE).toInstant().toEpochMilli()
+        repository.save(EventDraft(title = "月度", deadlineAt = at("2030-02-28T18:00"),
+            recurrence = RecurrenceSpec(RecurrenceFrequency.MONTHLY, count = 4)))
+        val periods = repository.events.first().sortedBy { it.deadlineAt }
+        val march = periods[1]
+        repository.save(march.edit().copy(deadlineAt = at("2030-03-31T18:00"), applyToFuture = true))
+        val changed = repository.events.first().associateBy { it.id }
+        assertEquals(at("2030-02-28T18:00"), changed.getValue(periods[0].id).deadlineAt)
+        assertEquals(at("2030-03-31T18:00"), changed.getValue(march.id).deadlineAt)
+        assertEquals(at("2030-04-30T18:00"), changed.getValue(periods[2].id).deadlineAt)
+        assertEquals(at("2030-05-31T18:00"), changed.getValue(periods[3].id).deadlineAt)
+        database.close()
+        reopenDatabase()
+        val april = repository.events.first().first { it.id == periods[2].id }
+        repository.save(april.edit().copy(deadlineAt = at("2030-04-30T19:00"), applyToFuture = true))
+        assertEquals(at("2030-05-31T19:00"), repository.events.first().first { it.id == periods[3].id }.deadlineAt)
+    }
+
+    @Test
+    fun convertingExistingEventToRepeatKeepsIdentityAndRollsBackOnFailure() = runBlocking {
+        val original = repository.save(draft("已存在"))
+        repository.setCompleted(original.id, true)
+        val completed = repository.events.first().single()
+        val converted = repository.save(completed.edit().copy(title = "重复作业",
+            recurrence = RecurrenceSpec(RecurrenceFrequency.WEEKLY, count = 3)))
+        assertEquals(original.id, converted.id)
+        assertEquals(completed.completedAt, converted.completedAt)
+        assertEquals(0L, converted.recurrence?.index)
+        assertEquals(3, repository.events.first().size)
+        assertEquals(1, repository.events.first().count { it.completedAt != null })
+        val withImage = repository.save(draft("有图片").copy(attachments = listOf(attachment())))
+        assertTrue(runCatching { repository.save(withImage.edit().copy(title = "不能保存",
+            recurrence = RecurrenceSpec(RecurrenceFrequency.DAILY, count = 2))) }.exceptionOrNull() is EventValidationException)
+        assertEquals(withImage, repository.events.first().first { it.id == withImage.id })
+    }
+
+    @Test
+    fun editingRepeatFrequencyAndEndRecomputesFutureWithoutTouchingHistory() = runBlocking {
+        repository.save(draft("周期规则").copy(recurrence = RecurrenceSpec(RecurrenceFrequency.WEEKLY, count = 5)))
+        val before = repository.events.first().sortedBy { it.deadlineAt }
+        repository.setCompleted(before.first().id, true)
+        val target = repository.events.first().first { it.id == before[1].id }
+        val result = repository.save(target.edit().copy(applyToFuture = true,
+            recurrence = RecurrenceSpec(RecurrenceFrequency.DAILY, count = 3)))
+        val after = repository.events.first().sortedBy { it.deadlineAt }
+        assertEquals(3, after.size)
+        assertEquals(before.first().deadlineAt, after.first().deadlineAt)
+        assertNotNull(after.first().completedAt)
+        assertEquals(target.deadlineAt, result.deadlineAt)
+        assertEquals(target.deadlineAt + 86_400_000L, after.last().deadlineAt)
+        assertEquals(RecurrenceFrequency.DAILY, result.recurrence?.frequency)
+        assertEquals(3, result.recurrence?.count)
+        repository.save(result.edit().copy(applyToFuture = true,
+            recurrence = RecurrenceSpec(RecurrenceFrequency.DAILY, count = 5)))
+        repository.extendRecurrencesThrough(clock.instant().plusSeconds(100L * 86_400L))
+        assertEquals(5, repository.events.first().size)
+    }
+
+    @Test
+    fun stoppingRepeatKeepsCurrentAndCompletedFutureButRemovesOtherFutureEvents() = runBlocking {
+        repository.save(draft("需停止").copy(recurrence = RecurrenceSpec(RecurrenceFrequency.WEEKLY, count = 5)))
+        val before = repository.events.first().sortedBy { it.deadlineAt }
+        repository.setCompleted(before[3].id, true)
+        val selected = repository.events.first().first { it.id == before[1].id }
+        val saved = repository.save(selected.edit().copy(title = "保留本次", applyToFuture = true, stopAfterThis = true))
+        assertEquals(selected.id, saved.id)
+        assertEquals("保留本次", saved.title)
+        val after = repository.events.first()
+        assertEquals(setOf(before[0].id, before[1].id, before[3].id), after.map { it.id }.toSet())
+        assertNotNull(after.first { it.id == before[3].id }.completedAt)
+        assertFalse(database.dao().readReminderPlans().any { it.eventId == before[2].id && it.active })
+        repository.extendRecurrencesThrough(clock.instant().plusSeconds(200L * 86_400L))
+        assertEquals(after, repository.events.first())
+    }
+
+    @Test
+    fun deletingOneOccurrencePreservesOtherPeriodsAndInvalidatesItsReminder() = runBlocking {
+        val first = repository.save(draft("第一个周期"))
+        val second = repository.save(draft("第二个周期").copy(deadlineAt = clock.millis() + 86_400_000))
+        val dao = database.dao()
+        dao.insertRecurrenceSeries(RecurrenceSeriesEntity("series", first.deadlineAt, "DAILY", null, 2, 1))
+        dao.insertRecurrenceOccurrence(RecurrenceOccurrenceEntity("series", 0, first.deadlineAt, first.id, false))
+        dao.insertRecurrenceOccurrence(RecurrenceOccurrenceEntity("series", 1, second.deadlineAt, second.id, false))
+        assertTrue(dao.readReminderPlans().any { it.eventId == first.id && it.active })
+
+        // A stale batch must leave both the event and its occurrence unchanged.
+        assertTrue(runCatching { repository.applyBatch(setOf(first.id, "missing"), BatchOperation.DELETE) }
+            .exceptionOrNull() is EventNotFoundException)
+        assertEquals(first.id, dao.recurrenceOccurrences("series").first().eventId)
+        assertEquals(2, repository.events.first().size)
+
+        database.openHelper.writableDatabase.execSQL(
+            "CREATE TRIGGER fail_occurrence_skip BEFORE UPDATE ON recurrence_occurrences BEGIN SELECT RAISE(ABORT, 'skip failed'); END")
+        assertTrue(runCatching { repository.delete(first.id) }.isFailure)
+        assertEquals(first.id, dao.recurrenceOccurrences("series").first().eventId)
+        assertNotNull(dao.findEvent(first.id))
+        assertTrue(dao.readReminderPlans().any { it.eventId == first.id && it.active })
+        database.openHelper.writableDatabase.execSQL("DROP TRIGGER fail_occurrence_skip")
+
+        repository.delete(first.id)
+        val occurrences = dao.recurrenceOccurrences("series")
+        assertTrue(occurrences[0].skipped)
+        assertNull(occurrences[0].eventId)
+        assertEquals(second.id, occurrences[1].eventId)
+        assertFalse(occurrences[1].skipped)
+        assertEquals(listOf(second.id), repository.events.first().map { it.id })
+        assertFalse(dao.readReminderPlans().any { it.eventId == first.id && it.active })
+        database.close()
+        reopenDatabase()
+        assertEquals(occurrences, database.dao().recurrenceOccurrences("series"))
+
+        repository.applyBatch(setOf(second.id), BatchOperation.DELETE)
+        assertTrue(database.dao().recurrenceOccurrences("series").all { it.skipped && it.eventId == null })
     }
 
     @Test
