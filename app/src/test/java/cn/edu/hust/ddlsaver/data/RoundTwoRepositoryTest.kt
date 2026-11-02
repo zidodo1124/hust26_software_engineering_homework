@@ -130,6 +130,64 @@ class RoundTwoRepositoryTest {
     }
 
     @Test
+    fun editingThisAndFuturePreservesHistoryAndUpdatesLaterGeneratedEvents() = runBlocking {
+        val first = repository.save(draft("原系列").copy(recurrence = RecurrenceSpec(RecurrenceFrequency.WEEKLY, count = 20)))
+        val before = repository.events.first().sortedBy { it.deadlineAt }
+        repository.setCompleted(before[3].id, true)
+        val target = repository.events.first().first { it.id == before[1].id }
+        val edited = repository.save(target.edit().copy(title = "新系列", description = "新说明", applyToFuture = true))
+        assertEquals("新系列", edited.title)
+        val updated = repository.events.first().associateBy { it.id }
+        assertEquals("原系列", updated.getValue(first.id).title)
+        assertEquals("原系列", updated.getValue(before[3].id).title)
+        assertNotNull(updated.getValue(before[3].id).completedAt)
+        assertEquals("新系列", updated.getValue(before[2].id).title)
+        repository.save(edited.edit().copy(deadlineAt = edited.deadlineAt + 60_000, applyToFuture = true))
+        val shifted = repository.events.first().associateBy { it.id }
+        assertEquals(before[2].deadlineAt + 60_000, shifted.getValue(before[2].id).deadlineAt)
+        assertEquals(before[3].deadlineAt, shifted.getValue(before[3].id).deadlineAt)
+        repository.extendRecurrencesThrough(clock.instant().plusSeconds(150L * 86_400L))
+        assertEquals("新系列", repository.events.first().maxBy { it.deadlineAt }.title)
+    }
+
+    @Test
+    fun deletingThisAndFutureStopsGenerationButPreservesCompletedHistory() = runBlocking {
+        repository.save(draft("系列").copy(recurrence = RecurrenceSpec(RecurrenceFrequency.WEEKLY, count = 20)))
+        val before = repository.events.first().sortedBy { it.deadlineAt }
+        repository.setCompleted(before[3].id, true)
+        repository.deleteRecurrenceFollowing(before[1].id)
+        val remaining = repository.events.first()
+        assertEquals(setOf(before[0].id, before[3].id), remaining.map { it.id }.toSet())
+        assertNotNull(remaining.first { it.id == before[3].id }.completedAt)
+        assertFalse(database.dao().readReminderPlans().any { it.eventId == before[1].id && it.active })
+        repository.extendRecurrencesThrough(clock.instant().plusSeconds(150L * 86_400L))
+        assertEquals(remaining, repository.events.first())
+        repository.deleteRecurrenceFollowing(before[0].id)
+        repository.extendRecurrencesThrough(clock.instant().plusSeconds(200L * 86_400L))
+        assertEquals(listOf(before[3].id), repository.events.first().map { it.id })
+    }
+
+    @Test
+    fun editingMonthlyFollowingKeepsAnchorWhenFirstMonthIsShort() = runBlocking {
+        fun at(value: String) = java.time.LocalDateTime.parse(value).atZone(UrgencyRules.BEIJING_ZONE).toInstant().toEpochMilli()
+        repository.save(EventDraft(title = "月度", deadlineAt = at("2030-02-28T18:00"),
+            recurrence = RecurrenceSpec(RecurrenceFrequency.MONTHLY, count = 4)))
+        val periods = repository.events.first().sortedBy { it.deadlineAt }
+        val march = periods[1]
+        repository.save(march.edit().copy(deadlineAt = at("2030-03-31T18:00"), applyToFuture = true))
+        val changed = repository.events.first().associateBy { it.id }
+        assertEquals(at("2030-02-28T18:00"), changed.getValue(periods[0].id).deadlineAt)
+        assertEquals(at("2030-03-31T18:00"), changed.getValue(march.id).deadlineAt)
+        assertEquals(at("2030-04-30T18:00"), changed.getValue(periods[2].id).deadlineAt)
+        assertEquals(at("2030-05-31T18:00"), changed.getValue(periods[3].id).deadlineAt)
+        database.close()
+        reopenDatabase()
+        val april = repository.events.first().first { it.id == periods[2].id }
+        repository.save(april.edit().copy(deadlineAt = at("2030-04-30T19:00"), applyToFuture = true))
+        assertEquals(at("2030-05-31T19:00"), repository.events.first().first { it.id == periods[3].id }.deadlineAt)
+    }
+
+    @Test
     fun deletingOneOccurrencePreservesOtherPeriodsAndInvalidatesItsReminder() = runBlocking {
         val first = repository.save(draft("第一个周期"))
         val second = repository.save(draft("第二个周期").copy(deadlineAt = clock.millis() + 86_400_000))

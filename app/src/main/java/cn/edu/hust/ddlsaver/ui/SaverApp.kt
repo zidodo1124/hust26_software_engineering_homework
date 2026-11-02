@@ -291,6 +291,7 @@ fun SaverApp(model: SaverViewModel) {
                             onComplete = { model.setCompleted(selected) },
                             onArchive = { model.setArchived(selected) },
                             onDelete = { model.delete(selected) },
+                            onDeleteFollowing = { model.deleteFollowing(selected) },
                         )
                     } else {
                         StatusContent("选择一件事项", "从首页查看或创建你的 DDL。", "返回首页") {
@@ -373,6 +374,7 @@ internal fun EventCard(event: DdlEvent, state: SaverUiState, onOpen: (String) ->
 private fun DetailScreen(
     event: DdlEvent, state: SaverUiState, busy: Boolean, onBack: () -> Unit,
     onEdit: () -> Unit, onComplete: () -> Unit, onArchive: () -> Unit, onDelete: () -> Unit,
+    onDeleteFollowing: () -> Unit,
 ) {
     var confirmDelete by rememberSaveable(event.id) { mutableStateOf(false) }
     val clipboard = LocalClipboardManager.current
@@ -393,7 +395,7 @@ private fun DetailScreen(
                     DetailLine("重要程度", importanceLabel(event.importance))
                     DetailLine("速通时间", event.sprintMinutes?.let(::formatDuration) ?: "未填写")
                     DetailLine("完成状态", if (event.completedAt == null) "未完成" else "已完成")
-                    if (event.recurrence != null) DetailLine("重复事项", "第 ${event.recurrence.index + 1} 次；编辑或删除只影响本次")
+                    if (event.recurrence != null) DetailLine("重复事项", "第 ${event.recurrence.index + 1} 次；编辑或删除时可选择范围")
                     DetailLine("归档状态", if (event.archivedAt == null) "未归档" else "已归档")
                     DetailLine("来源", event.source?.let { it.name + if (it.isActive) "" else "（已停用）" } ?: "未指定")
                     DetailLine("标签", event.tags.joinToString("、") { it.name + if (it.isActive) "" else "（已停用）" }.ifEmpty { "未指定" })
@@ -452,12 +454,19 @@ private fun DetailScreen(
             text = {
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     Text(event.title, maxLines = 4, overflow = TextOverflow.Ellipsis, fontWeight = FontWeight.SemiBold)
-                    Text("将永久删除这件事项及其附件副本，无法恢复。相册原图不受影响。")
+                    Text(if (event.recurrence == null) "将永久删除这件事项及其附件副本，无法恢复。相册原图不受影响。"
+                        else "可删除本次，或停止并删除本次及后续未完成事项；已完成或归档事项保留。删除无法恢复。")
                 }
             },
             confirmButton = {
-                TextButton(onClick = { confirmDelete = false; onDelete() }, enabled = !busy) {
-                    Text("确认删除", color = MaterialTheme.colorScheme.error)
+                Column {
+                    TextButton(onClick = { confirmDelete = false; onDelete() }, enabled = !busy) {
+                        Text(if (event.recurrence == null) "确认删除" else "仅删除本次", color = MaterialTheme.colorScheme.error)
+                    }
+                    if (event.recurrence != null && event.completedAt == null && event.archivedAt == null) {
+                        TextButton(onClick = { confirmDelete = false; onDeleteFollowing() }, enabled = !busy,
+                            modifier = Modifier.testTag("delete-this-and-future")) { Text("删除本次及后续", color = MaterialTheme.colorScheme.error) }
+                    }
                 }
             },
             dismissButton = { TextButton(onClick = { confirmDelete = false }, enabled = !busy) { Text("取消") } },

@@ -16,11 +16,13 @@ import cn.edu.hust.ddlsaver.domain.ExpiredPolicy
 import cn.edu.hust.ddlsaver.domain.RecurrenceRule
 import cn.edu.hust.ddlsaver.domain.RecurrenceRules
 import cn.edu.hust.ddlsaver.domain.RecurrenceFrequency
+import cn.edu.hust.ddlsaver.domain.UrgencyRules
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import java.time.Clock
 import java.time.Instant
 import java.time.LocalDate
+import java.time.YearMonth
 import java.util.UUID
 
 class RoomEventRepository(
@@ -60,8 +62,9 @@ class RoomEventRepository(
 
     private suspend fun materializeRecurrence(id: String, from: Instant, through: Instant): Int {
         val series = dao.findRecurrenceSeries(id) ?: throw EventValidationException("重复系列已不存在。")
+        if (series.occurrenceCount == 0) return 0
         val rule = RecurrenceRule(Instant.ofEpochMilli(series.firstDeadline), RecurrenceFrequency.valueOf(series.frequency),
-            series.untilEpochDay?.let(LocalDate::ofEpochDay), series.occurrenceCount)
+            series.untilEpochDay?.let(LocalDate::ofEpochDay), series.occurrenceCount, series.monthlyAnchorDay)
         val known = dao.recurrenceOccurrences(id).map { it.occurrenceIndex }.toSet()
         val missing = RecurrenceRules.missingBetween(rule, from, through, known)
         val now = clock.millis()
@@ -99,6 +102,7 @@ class RoomEventRepository(
             val id = normalized.id ?: UUID.randomUUID().toString()
             val previous = normalized.id?.let { dao.findEvent(it) ?: throw EventNotFoundException() }
             if (previous != null && normalized.expectedRevision != previous.revision) throw EventConflictException()
+            if (normalized.applyToFuture) return@reminderTransaction updateSeriesFromOccurrence(normalized, previous)
             if (previous != null && normalized.attachments.isNotEmpty() && dao.recurrenceForEvent(previous.id) != null) {
                 throw EventValidationException("重复事项不支持图片附件。")
             }
@@ -132,6 +136,89 @@ class RoomEventRepository(
                 )
             })
             checkNotNull(dao.findEventWithRelations(row.id)).toDomain()
+        }
+    }
+
+    private suspend fun updateSeriesFromOccurrence(draft: EventDraft, previous: EventEntity?): DdlEvent {
+        val current = previous ?: throw EventValidationException("请选择重复事项。")
+        val occurrence = dao.recurrenceForEvent(current.id) ?: throw EventValidationException("这不是重复事项。")
+        if (current.completedAt != null || current.archivedAt != null) throw EventValidationException("已完成或归档事项不能修改本次及后续。")
+        if (draft.attachments.isNotEmpty()) throw EventValidationException("重复事项不支持图片附件。")
+        validateRelations(current.id, draft, current)
+        val series = dao.findRecurrenceSeries(occurrence.seriesId) ?: throw EventValidationException("重复系列已不存在。")
+        val frequency = RecurrenceFrequency.valueOf(series.frequency)
+        val selected = Instant.ofEpochMilli(draft.deadlineAt).atZone(UrgencyRules.BEIJING_ZONE)
+        val original = Instant.ofEpochMilli(occurrence.scheduledDeadline).atZone(UrgencyRules.BEIJING_ZONE)
+        val anchorDay = if (frequency != RecurrenceFrequency.MONTHLY) null else if (selected.toLocalDate() == original.toLocalDate()) {
+            series.monthlyAnchorDay ?: Instant.ofEpochMilli(series.firstDeadline).atZone(UrgencyRules.BEIJING_ZONE).dayOfMonth
+        } else selected.dayOfMonth
+        val firstDeadline = if (draft.deadlineAt == occurrence.scheduledDeadline) series.firstDeadline else {
+            val first = when (frequency) {
+                RecurrenceFrequency.DAILY -> selected.minusDays(occurrence.occurrenceIndex)
+                RecurrenceFrequency.WEEKLY -> selected.minusWeeks(occurrence.occurrenceIndex)
+                RecurrenceFrequency.MONTHLY -> {
+                    val month = YearMonth.from(selected).minusMonths(occurrence.occurrenceIndex)
+                    month.atDay(minOf(checkNotNull(anchorDay), month.lengthOfMonth())).atTime(selected.toLocalTime())
+                        .atZone(UrgencyRules.BEIJING_ZONE)
+                }
+            }
+            first.toInstant().toEpochMilli()
+        }
+        val updatedRule = try { RecurrenceRule(Instant.ofEpochMilli(firstDeadline), frequency,
+            series.untilEpochDay?.let(LocalDate::ofEpochDay), series.occurrenceCount, anchorDay) }
+            catch (_: IllegalArgumentException) { throw EventValidationException("新截止日期超出了重复结束日期。") }
+        if (RecurrenceRules.occurrenceAt(updatedRule, occurrence.occurrenceIndex)?.deadline?.toEpochMilli() != draft.deadlineAt) {
+            throw EventValidationException("新截止日期超出结束范围，或无法按当前月重复规则表示；可选择仅修改本次。")
+        }
+        val template = RecurrenceTemplate.encode(draft.copy(id = null, expectedRevision = null, applyToFuture = false))
+        if (dao.updateRecurrenceSeries(series.copy(firstDeadline = firstDeadline, templateJson = template,
+                monthlyAnchorDay = anchorDay, revision = Math.addExact(series.revision, 1L))) != 1) {
+            throw EventValidationException("重复系列已不存在。")
+        }
+        val now = clock.millis()
+        dao.recurrenceOccurrences(series.id).filter { it.occurrenceIndex >= occurrence.occurrenceIndex }.forEach { item ->
+            val row = item.eventId?.let { dao.findEvent(it) } ?: return@forEach
+            if (row.completedAt != null || row.archivedAt != null) return@forEach
+            val nextDeadline = RecurrenceRules.occurrenceAt(updatedRule, item.occurrenceIndex)?.deadline?.toEpochMilli()
+            if (nextDeadline == null) {
+                if (dao.deleteEvent(row.id) != 1) throw EventNotFoundException()
+                dao.skipOccurrenceForDeletedEvent(row.id)
+                return@forEach
+            }
+            updateExisting(row.copy(title = draft.title, deadlineAt = nextDeadline, sprintMinutes = draft.sprintMinutes, description = draft.description,
+                importance = draft.importance, sourceId = draft.sourceId, updatedAt = now, revision = Math.addExact(row.revision, 1L)))
+            check(dao.updateRecurrenceOccurrence(item.copy(scheduledDeadline = nextDeadline)) == 1)
+            dao.clearEventTags(row.id)
+            dao.insertEventTags(draft.tagIds.map { EventTagEntity(row.id, it) })
+            dao.clearCustomFields(row.id)
+            dao.insertCustomFields(draft.customFields.mapIndexed { index, field ->
+                CustomFieldEntity(row.id, field.id, field.label, field.value, index)
+            })
+        }
+        return checkNotNull(dao.findEventWithRelations(current.id)).toDomain()
+    }
+
+    /** Stops this and future periods, preserving completed or archived history. */
+    suspend fun deleteRecurrenceFollowing(eventId: String) {
+        reminderTransaction {
+            val event = dao.findEvent(eventId) ?: throw EventNotFoundException()
+            val occurrence = dao.recurrenceForEvent(eventId) ?: throw EventValidationException("这不是重复事项。")
+            if (event.completedAt != null || event.archivedAt != null) throw EventValidationException("已完成或归档事项不能删除本次及后续。")
+            val series = dao.findRecurrenceSeries(occurrence.seriesId) ?: throw EventValidationException("重复系列已不存在。")
+            val limit = try { Math.toIntExact(occurrence.occurrenceIndex) } catch (_: ArithmeticException) {
+                throw EventValidationException("周期序号超出支持范围。")
+            }
+            if (dao.updateRecurrenceSeries(series.copy(occurrenceCount = minOf(series.occurrenceCount ?: limit, limit),
+                    untilEpochDay = null, revision = Math.addExact(series.revision, 1L))) != 1) {
+                throw EventValidationException("重复系列已不存在。")
+            }
+            dao.recurrenceOccurrences(series.id).filter { it.occurrenceIndex >= occurrence.occurrenceIndex }.forEach { item ->
+                val row = item.eventId?.let { dao.findEvent(it) } ?: return@forEach
+                if (row.completedAt == null && row.archivedAt == null) {
+                    if (dao.deleteEvent(row.id) != 1) throw EventNotFoundException()
+                    dao.skipOccurrenceForDeletedEvent(row.id)
+                }
+            }
         }
     }
 

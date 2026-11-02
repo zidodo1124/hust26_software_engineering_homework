@@ -57,6 +57,7 @@ data class EventDraft(
     val customFields: List<CustomField> = emptyList(),
     val attachments: List<AttachmentRef> = emptyList(),
     val recurrence: RecurrenceSpec? = null,
+    val applyToFuture: Boolean = false,
 )
 
 data class AppSettings(

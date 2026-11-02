@@ -13,11 +13,13 @@ data class RecurrenceRule(
     val frequency: RecurrenceFrequency,
     val untilDate: LocalDate? = null,
     val occurrenceCount: Int? = null,
+    val monthlyAnchorDay: Int? = null,
 ) {
     init {
         require(occurrenceCount == null || occurrenceCount > 0)
         require(untilDate == null || untilDate >= firstDeadline.atZone(UrgencyRules.BEIJING_ZONE).toLocalDate())
         require(untilDate == null || occurrenceCount == null)
+        require(monthlyAnchorDay == null || (frequency == RecurrenceFrequency.MONTHLY && monthlyAnchorDay in 1..31))
     }
 }
 
@@ -41,7 +43,7 @@ object RecurrenceRules {
             RecurrenceFrequency.WEEKLY -> first.toLocalDate().plusWeeks(index)
             RecurrenceFrequency.MONTHLY -> {
                 val month = YearMonth.from(first).plusMonths(index)
-                month.atDay(minOf(first.dayOfMonth, month.lengthOfMonth()))
+                month.atDay(minOf(rule.monthlyAnchorDay ?: first.dayOfMonth, month.lengthOfMonth()))
             }
         }
         if (rule.untilDate != null && date > rule.untilDate) return null

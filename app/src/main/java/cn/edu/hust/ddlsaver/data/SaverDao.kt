@@ -15,6 +15,9 @@ interface SaverDao {
     @Insert(onConflict = OnConflictStrategy.ABORT)
     suspend fun insertRecurrenceSeries(series: RecurrenceSeriesEntity)
 
+    @Update
+    suspend fun updateRecurrenceSeries(series: RecurrenceSeriesEntity): Int
+
     @Query("SELECT * FROM recurrence_series WHERE id = :id")
     suspend fun findRecurrenceSeries(id: String): RecurrenceSeriesEntity?
 
@@ -26,6 +29,9 @@ interface SaverDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertRecurrenceOccurrence(occurrence: RecurrenceOccurrenceEntity): Long
+
+    @Update
+    suspend fun updateRecurrenceOccurrence(occurrence: RecurrenceOccurrenceEntity): Int
 
     @Query("SELECT * FROM recurrence_occurrences WHERE seriesId = :seriesId ORDER BY occurrenceIndex")
     suspend fun recurrenceOccurrences(seriesId: String): List<RecurrenceOccurrenceEntity>

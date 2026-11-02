@@ -115,12 +115,13 @@ internal fun EventEditor(
     var repeatEnd by rememberSaveable(session) { mutableStateOf("NONE") }
     var repeatCount by rememberSaveable(session) { mutableStateOf("") }
     var repeatUntil by rememberSaveable(session) { mutableStateOf<String?>(null) }
+    var applyToFuture by rememberSaveable(session) { mutableStateOf(false) }
     var submitted by rememberSaveable(session) { mutableStateOf(false) }
     var discardDialog by rememberSaveable(session) { mutableStateOf(false) }
     val dirty = title != initialTitle || description != initialDescription || sprint != initialSprint ||
         importanceName != initialImportance || date != initialDate || time != initialTime ||
         sourceId != initialSource || tagsJson != initialTags || fieldsJson != initialFields || imagesJson != initialImages ||
-        repeatName != "NONE" || repeatEnd != "NONE" || repeatCount.isNotEmpty() || repeatUntil != null
+        repeatName != "NONE" || repeatEnd != "NONE" || repeatCount.isNotEmpty() || repeatUntil != null || applyToFuture
     val sprintValue = sprint.trim().toLongOrNull()
     val invalidSprint = sprint.isNotBlank() && (sprintValue == null || sprintValue <= 0L || sprintValue > MaxDurationMinutes)
     val invalidRepeat = repeatName != "NONE" && (images.isNotEmpty() ||
@@ -198,7 +199,7 @@ internal fun EventEditor(
                     }
                 }
                 if (repeatName != "NONE") {
-                    Text("重复事项不支持图片；编辑或删除某次事项只影响该次。", color = Muted, style = MaterialTheme.typography.bodySmall)
+                    Text("重复事项不支持图片；编辑或删除时可选择范围。", color = Muted, style = MaterialTheme.typography.bodySmall)
                     Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                         listOf("NONE" to "不结束", "COUNT" to "按次数", "DATE" to "按日期").forEach { (value, label) ->
                             FilterChip(repeatEnd == value, { repeatEnd = value }, enabled = !busy,
@@ -215,6 +216,17 @@ internal fun EventEditor(
                     }, enabled = !busy, modifier = Modifier.testTag("repeat-until")) { Text(repeatUntil ?: "选择结束日期（含当天）") }
                     if (submitted && invalidRepeat) Text("请检查结束日期、次数，且移除图片附件。", color = MaterialTheme.colorScheme.error)
                 }
+            }
+            if (initial?.recurrence != null && initial.completedAt == null && initial.archivedAt == null) Column {
+                Text("修改范围", fontWeight = FontWeight.SemiBold)
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    FilterChip(!applyToFuture, { applyToFuture = false }, enabled = !busy,
+                        label = { Text("仅本次") }, modifier = Modifier.testTag("edit-only-this"))
+                    FilterChip(applyToFuture, { applyToFuture = true }, enabled = !busy,
+                        label = { Text("本次及后续") }, modifier = Modifier.testTag("edit-this-and-future"))
+                }
+                if (applyToFuture) Text("后续已完成或归档事项保留；更改截止时间会重新计算后续周期。", color = Muted,
+                    style = MaterialTheme.typography.bodySmall)
             }
             Column {
                 Text("重要程度", fontWeight = FontWeight.SemiBold)
@@ -259,6 +271,7 @@ internal fun EventEditor(
                                     RecurrenceFrequency.valueOf(repeatName),
                                     untilDate = if (repeatEnd == "DATE") repeatUntil?.let(LocalDate::parse) else null,
                                     count = if (repeatEnd == "COUNT") repeatCount.toIntOrNull() else null),
+                                applyToFuture = applyToFuture,
                             ),
                         )
                     }
