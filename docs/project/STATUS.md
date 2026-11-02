@@ -6,7 +6,15 @@
 
 ## 当前阶段
 
-### 2026-11-02 本地同步与资料整理
+### 2026-11-02 文案更新：本地 0.3.7
+
+当前分支仍为 `codex/local-sync-20261102`，产品提交 `295fb57`，**0.3.7／versionCode 10、Room schema 5**。首页改为“今日事，今日毕”，重写鲸鱼娘六组共 36 条台词，并梳理编辑、图片、分类、日历、重复事项、通知权限和错误提示。日期、图片上限及删除范围继续写清楚；没有更改状态规则、业务操作、数据库或依赖。
+
+完整构建通过；29 份 XML／197 个不同方法／236 次执行全通过，失败／错误／跳过均 0；Lint 0 错误／16 警告。95 个产品输入构建前后保持，13 项核验通过；实际 Compose 首页和 320dp／150% 字体排版已查看。见[本轮证据](../test-evidence/RUN-20261102-COPY-REFRESH/README.md)和[完整文案](../ui-copy-guide.md)。源码导航 72 处定位仍与当前文件对应，根目录继续没有 Markdown。
+
+本轮仅交付本地包，未推送、未安装手机，也没有重新查询远程；下方远程时间戳仍只代表上一批核对。手机仍为 0.3.5，重复功能实机验证、长期后台及 OBS-01／OBS-02 保持待办。
+
+### 2026-11-02 本地同步与资料整理（上一批 0.3.6）
 
 核对时间：**2026-11-02 01:51:34（America/Los_Angeles，09:51:34 UTC）**。[PR #14](https://github.com/zidodo1124/hust26_software_engineering_homework/pull/14) 已于本地 01:12:22 合并，远程 `main` 为 `eaa9a590a6baae46f9808eff911463d947c43434`，当次查询无开放 PR；[PR 最后一次 CI #67](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41416993975) 与[合并后 CI #68](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41418746542) 均成功。此前草稿的编译失败属于历史，不能继续当作合并头结果。
 

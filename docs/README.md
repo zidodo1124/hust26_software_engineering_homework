@@ -7,6 +7,7 @@
 | 需要做什么 | 打开哪份文件 |
 | --- | --- |
 | 了解当前本地有哪些功能、由哪些代码实现 | [当前本地源码导航](source-navigation.md) |
+| 查看新版标题、操作提示和鲸鱼娘的 36 条台词 | [界面文案与台词](ui-copy-guide.md) |
 | 核对远程同步、当前本地分支及测试状态 | [项目状态](project/STATUS.md) |
 | 准备手机上已安装的 0.3.5 五分钟展示 | [现场速查卡](acceptance-demo/03-five-minute-cue-card.md) · [准备清单](acceptance-demo/01-preparation.md) · [完整脚本](acceptance-demo/02-demo-script.md) |
 | 老师问到手机演示版的实现 | [0.3.5 答辩速查入口](acceptance-code-guide/README.md) · [31 个详细问答](acceptance-code-guide/03-defense-questions.md) |

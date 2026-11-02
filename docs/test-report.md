@@ -292,3 +292,9 @@ CI 自动测试覆盖字段独立、分类维护与组合筛选、真实 v1／v2
 APK 经独立解析为 0.3.6／versionCode 9、minSdk 26／targetSdk 35，15,184,547 字节，SHA-256 为 `84cb2026fa087c4623f4fa948c2e1b2cd3006574e6aae424ff887e4eb791702c`。本轮未安装手机；schema 4→5 自动测试通过不代表手机升级或重复事项实机验收已经完成。
 
 [本轮证据](test-evidence/RUN-20261102-LOCAL-SYNC/README.md)归档构建输出、29 份原测试 XML、Lint、包信息、输入指纹和校验结果。远程 [CI #67](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41416993975) 与[主线 CI #68](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41418746542) 的成功状态已独立核对，但不套用本机 236 次统计。重复功能设备操作、极长历史、长期后台及 OBS-01／OBS-02 仍待后续验证。
+
+## 22. 0.3.7 文案更新（仅本机）
+
+产品提交 `295fb579035a2efecbf914f64e0c0bb2caf263b6`，0.3.7／10、schema 5；在 0.3.6 上更新用户文案及版本号，保留业务逻辑与依赖。执行窗口 `2026-11-02T10:49:43.778365+00:00` 至 `2026-11-02T10:54:46.600160+00:00`（UTC），完整构建退出码 0，29 份 XML／197 个不同方法／236 次执行全通过，失败／错误／跳过均 0；Lint 0 错误／16 警告。原周历折叠回归通过，角色状态、图片、提醒、重复事项等现有测试正常执行；95 个产品输入构建前后及归档时不变。
+
+实际 Compose 渲染的经典／Q 版首页、320dp／150% 字体首页及长文本气泡检查通过，本机画面已查看。APK SHA-256 为 `f3b263c210c20742dbb192cb847c1893b0ea9b4ff2b68a94d1c4da318ba088d9`，15,184,547 字节，aapt 确认 0.3.7／10。原始 XML、日志、Lint、包信息、截图及输入哈希见[本轮证据](test-evidence/RUN-20261102-COPY-REFRESH/README.md)。未进行本轮手机安装或远程 CI；旧版设备结果不扩展为新版验收。

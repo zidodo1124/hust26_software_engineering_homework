@@ -6,12 +6,12 @@
 
 | 对象 | 对应内容 | 使用哪份材料 |
 | --- | --- | --- |
-| 当前本地工作区 | `codex/local-sync-20261102` 已合入远程 `main` 的 PR #14（`eaa9a59`），保留周历折叠修复；本地产品代码为 `d602835`，版号 **0.3.6／9、Room schema 5** | 本页：包括重复事项的新功能与当前文件行号；该本地提交尚未推送远程 |
+| 当前本地工作区 | `codex/local-sync-20261102` 已合入远程 `main` 的 PR #14（`eaa9a59`），保留周历折叠修复；本地产品代码为 `295fb57`，版号 **0.3.7／10、Room schema 5**，本轮更新用户文案 | 本页：包括重复事项的新功能与当前文件行号；该本地提交尚未推送远程 |
 | 手机原演示包 | `demo-v0.3.5`／8、Room schema 4；没有重复事项创建与管理界面 | [五分钟演示](acceptance-demo/README.md)与[0.3.5 答辩材料](acceptance-code-guide/README.md) |
 
 本页行号按当前工作区实读核对，产品文件位置以项目根目录 `C:\Users\lx\Desktop\sw_teamwork` 为起点。点击文件链接后，在 IDE 用 **Ctrl+G** 输入所列行号；页面中的 `#L` 也便于支持行锚点的代码查看器定位。后续改代码可能使行号变化，**同一格的函数名是第二个定位依据**。本页链接打开当前文件；旧教学材料的固定标签链接才对应手机的旧实现。
 
-本轮本机合并验证已通过，执行数与证据见第 6 节及[项目状态](project/STATUS.md)。**本轮没有将 0.3.6 安装到手机**；手机演示与当前源码的版本差异仍需保留。
+本轮文案更新的本机构建、测试与 Lint 已通过，执行数与证据见第 6 节及[项目状态](project/STATUS.md)。**本轮没有将 0.3.7 安装到手机**；手机演示与当前源码的版本差异仍需保留。全部新台词和主要提示见[文案清单](ui-copy-guide.md)。
 
 ## 2. 主要功能从哪段代码开始看
 
@@ -39,7 +39,7 @@
 | --- | --- | --- |
 | 设置频率、次数、结束日和修改范围 | [app/src/main/java/cn/edu/hust/ddlsaver/ui/EventEditor.kt](../app/src/main/java/cn/edu/hust/ddlsaver/ui/EventEditor.kt#L200) L200 重复控件；[app/src/main/java/cn/edu/hust/ddlsaver/ui/EventEditor.kt](../app/src/main/java/cn/edu/hust/ddlsaver/ui/EventEditor.kt#L228) L228 范围控件；[app/src/main/java/cn/edu/hust/ddlsaver/domain/EventModels.kt](../app/src/main/java/cn/edu/hust/ddlsaver/domain/EventModels.kt#L11) L11 `RecurrenceSpec`、L12 `RecurrenceRef` | UI 提供每天／每周／每月，以及不结束／按次数／按日期；次数包含首次，结束日期包含当天。编辑已有系列时，只有当前事项未完成且未归档，才出现“仅本次／本次及后续”的范围选择。 |
 | 新建系列并生成实际事项 | [app/src/main/java/cn/edu/hust/ddlsaver/data/RoomEventRepository.kt](../app/src/main/java/cn/edu/hust/ddlsaver/data/RoomEventRepository.kt#L42) L42 `createRecurrence`；[app/src/main/java/cn/edu/hust/ddlsaver/data/RoomEventRepository.kt](../app/src/main/java/cn/edu/hust/ddlsaver/data/RoomEventRepository.kt#L63) L63 `materializeRecurrence`；[app/src/main/java/cn/edu/hust/ddlsaver/data/RecurrenceTemplate.kt](../app/src/main/java/cn/edu/hust/ddlsaver/data/RecurrenceTemplate.kt#L12) L12 `encode`／L24 `decode` | 将标题、描述、分类、字段等模板保存，按周期生成独立 `events` 行及关联记录。保存分支的首次生成终点为 **max(首次截止, 当前时间)＋90 天**；不是一次性创建无限条，也不保证所有情况下只跨 90 天。 |
-| 普通事项转为重复系列 | [app/src/main/java/cn/edu/hust/ddlsaver/data/RoomEventRepository.kt](../app/src/main/java/cn/edu/hust/ddlsaver/data/RoomEventRepository.kt#L168) L168 `convertToRecurrence` | 保留原事项 ID，把它作为第 0 次，新增系列并生成其余周期。该路径先复制成允许编码的模板，因此底层 `RecurrenceTemplate.encode` 里的旧异常文案不能用来断言“普通事项不能转重复”。提交转换草稿时必须无图片，可在同次编辑中移除附件后一次保存转换；普通事项已完成也可转换，不要与上行的系列修改范围条件混淆。 |
+| 普通事项转为重复系列 | [app/src/main/java/cn/edu/hust/ddlsaver/data/RoomEventRepository.kt](../app/src/main/java/cn/edu/hust/ddlsaver/data/RoomEventRepository.kt#L168) L168 `convertToRecurrence` | 保留原事项 ID，把它作为第 0 次，新增系列并生成其余周期。该路径先复制成允许编码的模板。`RecurrenceTemplate.encode` 拒绝残留事项 ID 或图片的模板输入；0.3.7 已把这两类错误分别说明，正常转换入口仍然可用。提交转换草稿时必须无图片，可在同次编辑中移除附件后一次保存转换；普通事项已完成也可转换，不要与上行的系列修改范围条件混淆。 |
 | 仅修改本次 | [app/src/main/java/cn/edu/hust/ddlsaver/ui/EventEditor.kt](../app/src/main/java/cn/edu/hust/ddlsaver/ui/EventEditor.kt#L277) L277 提交 `EventDraft`；[app/src/main/java/cn/edu/hust/ddlsaver/data/RoomEventRepository.kt](../app/src/main/java/cn/edu/hust/ddlsaver/data/RoomEventRepository.kt#L87) L87 `save` 的普通更新分支 | UI 不提交 `applyToFuture`，修改当前事项；系列的其他已生成项不随之逐个改写。旧编辑草稿仍使用事项 `revision` 做冲突检查。 |
 | 修改本次及后续 | [app/src/main/java/cn/edu/hust/ddlsaver/data/RoomEventRepository.kt](../app/src/main/java/cn/edu/hust/ddlsaver/data/RoomEventRepository.kt#L183) L183 `updateSeriesFromOccurrence` | 更新系列模板、频率／结束条件／时间，重算从当前序号开始的未完成且未归档事项；已完成或归档的历史保留。每月规则保留锚定日，短月份按当月天数裁剪。无法表达的日期或结束范围会拒绝保存。 |
 | 保留本次、停止后续重复 | [app/src/main/java/cn/edu/hust/ddlsaver/ui/EventEditor.kt](../app/src/main/java/cn/edu/hust/ddlsaver/ui/EventEditor.kt#L282) L282 `stopAfterThis`；[app/src/main/java/cn/edu/hust/ddlsaver/data/RoomEventRepository.kt](../app/src/main/java/cn/edu/hust/ddlsaver/data/RoomEventRepository.kt#L143) L143 `stopSeriesAfterOccurrence` | 在“本次及后续”范围选“停止后续重复”：保存本次，将系列结束次数截到本次之后，移除后续未完成未归档项；后续已完成或归档记录保留。 |
@@ -106,7 +106,7 @@ flowchart LR
 
 ## 6. 源码旁边可以找哪些验证
 
-本轮 **0.3.6 本机完整构建、单元测试和 Lint 已通过**：29 份 JUnit XML、197 个不同测试方法、236 次实际执行，失败／错误／跳过均为 0；Lint 0 错误／16 警告，原周历折叠回归仍通过。验证期间 95 个产品输入文件的前后哈希一致，13 项归档检查均通过。准确范围及原始报告入口见[本轮本地同步验证](test-evidence/RUN-20261102-LOCAL-SYNC/README.md)。这不是 236 个独立方法，也不是 0.3.6 手机验收。
+本轮 **0.3.7 本机完整构建、单元测试和 Lint 已通过**：29 份 XML／197 个不同方法／236 次执行全通过，失败／错误／跳过均 0；Lint 0 错误／16 警告，原周历折叠回归仍通过。验证期间 95 个产品输入文件的前后哈希一致，13 项核验均通过。准确范围及报告见[文案更新本机验证](test-evidence/RUN-20261102-COPY-REFRESH/README.md)；此前 [0.3.6 同步验证](test-evidence/RUN-20261102-LOCAL-SYNC/README.md)保留历史结果。这不是 236 个独立方法，也不是 0.3.7 手机验收。
 
 | 范围 | 测试文件与定位 |
 | --- | --- |

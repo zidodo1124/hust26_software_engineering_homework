@@ -1,0 +1,166 @@
+{
+  "apk-badging.txt": {
+    "bytes": 5710,
+    "sha256": "d65ca608ddb0bb758e3e85a6b6c6bdc13001bfd6905db26bd652e1c734bd4cf9"
+  },
+  "gradle.log": {
+    "bytes": 3882,
+    "sha256": "22f5d725d51743f4ab20523ea30c75a8b7d582eeb920687eb4ac4e7932f4cfe0"
+  },
+  "lint-results-debug.xml": {
+    "bytes": 15332,
+    "sha256": "901fdb55660d11f6b26737088e8bfcb1e797c2864e7b76e8153c3b686f0bbfb2"
+  },
+  "README.md": {
+    "bytes": 2832,
+    "sha256": "786a1beb6dcbf21824172ac7a759de5ac453a30172b3b5f3510133f0617d9728"
+  },
+  "source-inputs.json": {
+    "bytes": 13390,
+    "sha256": "ad214f38e364f2de2c6a332f672af44c41a67377d7a96d38a400c28d11dc7993"
+  },
+  "summary.json": {
+    "bytes": 5213,
+    "sha256": "d3d74384917f84b187cbf6f8dfac582275678e7bec2c618b9d4fd1310e303b66"
+  },
+  "test-results/TEST-cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest.xml": {
+    "bytes": 840,
+    "sha256": "c94914c93bc3b5b4d5d5b8ab9b290293374c449544256c7de75d9275ab48ed74"
+  },
+  "test-results/TEST-cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest.xml": {
+    "bytes": 1795,
+    "sha256": "4176e7b4103e4a97de0340e5995ad6052a371d095fd77323e61cfef49ba0846a"
+  },
+  "test-results/TEST-cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest.xml": {
+    "bytes": 4298,
+    "sha256": "215b5e4b460e97c7a48b97a38c25e2bb03b66580d5470affadf430fa81815e17"
+  },
+  "test-results/TEST-cn.edu.hust.ddlsaver.data.SaverDatabaseMigrationTest.xml": {
+    "bytes": 753,
+    "sha256": "8652bba0e6e46a0728058d4c35661014617dd6eeb34dc3c9119873f75ecace78"
+  },
+  "test-results/TEST-cn.edu.hust.ddlsaver.domain.CharacterFeedbackTest.xml": {
+    "bytes": 1843,
+    "sha256": "a5c73dd85f9c6432df57895fafb49650bc68613efbcb69e24461d4f6c301d50b"
+  },
+  "test-results/TEST-cn.edu.hust.ddlsaver.domain.EventQueryTest.xml": {
+    "bytes": 1252,
+    "sha256": "cb1dd84d975fc5775f6ac5b6878559aa0001c4c56b29985dc6176065b663443b"
+  },
+  "test-results/TEST-cn.edu.hust.ddlsaver.domain.EventValidationTest.xml": {
+    "bytes": 1365,
+    "sha256": "c68b41665fcbbeb7017f492cdcb00bbc106104603f060d0c1d1b4a99c6f13fdc"
+  },
+  "test-results/TEST-cn.edu.hust.ddlsaver.domain.ExtendedEventValidationTest.xml": {
+    "bytes": 965,
+    "sha256": "598bf4babd82e59429b61e9ab01b62bd10d420ea7ea4a194d367cf90480fb05d"
+  },
+  "test-results/TEST-cn.edu.hust.ddlsaver.domain.RecurrenceRulesTest.xml": {
+    "bytes": 1176,
+    "sha256": "db6641608bd8804dfba5031ab7c88b8cd9f72e26d151c1f0aaf61989ab24b1c1"
+  },
+  "test-results/TEST-cn.edu.hust.ddlsaver.domain.UrgencyRulesTest.xml": {
+    "bytes": 1716,
+    "sha256": "52fec637f85c7600d7ab637f2f94a20cacf2d15397f4d0a0dd517dfa91cd2624"
+  },
+  "test-results/TEST-cn.edu.hust.ddlsaver.platform.AttachmentImportDiagnosticsTest.xml": {
+    "bytes": 3725,
+    "sha256": "6b729a0e3728c9dc2556834ceec2fe0e96a5bcffc6a26da2cee8b05dcae77e47"
+  },
+  "test-results/TEST-cn.edu.hust.ddlsaver.platform.AttachmentStoreTest.xml": {
+    "bytes": 4302,
+    "sha256": "769c6c0c584ef5ecc0abce94c417d09e08c0c131ef99ef46c03bf8ab0997db98"
+  },
+  "test-results/TEST-cn.edu.hust.ddlsaver.reminders.AndroidReminderPlatformTest.xml": {
+    "bytes": 1408,
+    "sha256": "33fa726d7ebe650f0838e2e31e0e54ad8a1d3d2fb50577c0c2443b37dae22cf4"
+  },
+  "test-results/TEST-cn.edu.hust.ddlsaver.reminders.ReminderEngineTest.xml": {
+    "bytes": 3559,
+    "sha256": "73eea36145ff7820c93bf4b991c45a0c590db3d519e552a21a02080c949985f6"
+  },
+  "test-results/TEST-cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest.xml": {
+    "bytes": 3832,
+    "sha256": "9c13af14b071b45e3d9f4452c2ff6c06f6b4935d99402f8cc372573c126eb2ed"
+  },
+  "test-results/TEST-cn.edu.hust.ddlsaver.reminders.ReminderRestoreIntegrationTest.xml": {
+    "bytes": 2970,
+    "sha256": "6746f878aad3d66f5bdf063680bae47809f9583a3492dd15125da8ab7b0968bc"
+  },
+  "test-results/TEST-cn.edu.hust.ddlsaver.reminders.ReminderRulesTest.xml": {
+    "bytes": 1819,
+    "sha256": "b0755d2757f517320b03519f8c9c9b20f2552d47f342d79b76ec5b687ade2d10"
+  },
+  "test-results/TEST-cn.edu.hust.ddlsaver.reminders.ReminderStatusCopyTest.xml": {
+    "bytes": 764,
+    "sha256": "6fb668f784a869b48fc279aeaa9106c06a56ecd12114c49a0f1121e6a6c93e09"
+  },
+  "test-results/TEST-cn.edu.hust.ddlsaver.ui.AttachmentClipboardFlowTest.xml": {
+    "bytes": 890,
+    "sha256": "596d8348115bc7322ae9bc1d1cb1d8de8e36afe66eb7fdea8801a7e67d4c9b20"
+  },
+  "test-results/TEST-cn.edu.hust.ddlsaver.ui.CalendarGridTest.xml": {
+    "bytes": 608,
+    "sha256": "d3a7d3e9c96e95ebda7e42540f2577f699c26317d64bb045ed9b1fee2a6a8425"
+  },
+  "test-results/TEST-cn.edu.hust.ddlsaver.ui.CharacterArtworkTest.xml": {
+    "bytes": 1283,
+    "sha256": "a42f98bc163012389296cb0da251ced4fc779e19322f55e8d674636a89541271"
+  },
+  "test-results/TEST-cn.edu.hust.ddlsaver.ui.CharacterAssetsTest.xml": {
+    "bytes": 633,
+    "sha256": "2d9b4080ec1d2fcb69893619a70484bf2db0a6996c4de34a3172a0331932f793"
+  },
+  "test-results/TEST-cn.edu.hust.ddlsaver.ui.CharacterBubbleLayoutTest.xml": {
+    "bytes": 810,
+    "sha256": "74647b890cb5d17b55f2e779f61d49c27d9c804d4ff8e7c1b3e3c12425c130db"
+  },
+  "test-results/TEST-cn.edu.hust.ddlsaver.ui.ContentClipboardFlowTest.xml": {
+    "bytes": 1130,
+    "sha256": "38df40ff587324b73511f992a7c2e712501346906ca7a64db86130b86de01019"
+  },
+  "test-results/TEST-cn.edu.hust.ddlsaver.ui.OceanThemeContrastTest.xml": {
+    "bytes": 485,
+    "sha256": "a3742e8b86423a6ad196dcf5d18f960631c7982ff1d5c952f237b4fe3ffdc614"
+  },
+  "test-results/TEST-cn.edu.hust.ddlsaver.ui.OceanUiRenderTest.xml": {
+    "bytes": 1162,
+    "sha256": "f8bb140b7f8054915fed18f165663dfc0f5e095922f85c87094927e0fdc87b35"
+  },
+  "test-results/TEST-cn.edu.hust.ddlsaver.ui.ReminderColdLaunchTest.xml": {
+    "bytes": 796,
+    "sha256": "0a32d310c6643e4163d3649d2a9c7369031de2a24e281e9c1265d263accabea5"
+  },
+  "test-results/TEST-cn.edu.hust.ddlsaver.ui.SaverAppFlowTest.xml": {
+    "bytes": 4597,
+    "sha256": "ccf690984a1870899ea6ab974d9ed10836439f02ee0f3c6c020164afa6acb9aa"
+  },
+  "test-results/TEST-cn.edu.hust.ddlsaver.ui.SaverViewModelFeedbackTest.xml": {
+    "bytes": 867,
+    "sha256": "1d5a5f47f49c9240ff287541297aac430ef2dc9fc86de9d8c344050db7d45055"
+  },
+  "ui-review/bubble-long-text-chibi.png": {
+    "bytes": 72484,
+    "sha256": "42511529011cd9bae9128e48669055eeb3edc7f7a5a912b33f02330bdfdfc8f0"
+  },
+  "ui-review/bubble-long-text-classic.png": {
+    "bytes": 80024,
+    "sha256": "50a9bcf01440865b9e18b19a97b2b110059647150f7265f572a69ed40c2728bb"
+  },
+  "ui-review/home-320dp-font150.png": {
+    "bytes": 75501,
+    "sha256": "d4025285c6b231f5f0203df7f8fa64bf22088cb333d39344996ee9d509cd8d84"
+  },
+  "ui-review/home-chibi.png": {
+    "bytes": 84897,
+    "sha256": "e4e9934d305d607a1c9bcbbdf58d2d1b05da5eba9f6c90df8b7ac736313e4434"
+  },
+  "ui-review/home-classic.png": {
+    "bytes": 87851,
+    "sha256": "3a50f5deef53e9d736d696f63f04f4a9f9bc9ea2d19f4b0673b939af30439e8c"
+  },
+  "verification.json": {
+    "bytes": 963,
+    "sha256": "4962b80547e4ac6454f3f5c6ed70347539445492b383c86e1f55e29ed5167d1d"
+  }
+}
