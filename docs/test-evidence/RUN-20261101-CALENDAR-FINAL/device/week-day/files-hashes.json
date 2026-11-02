@@ -1,0 +1,93 @@
+[
+  {
+    "file": "week-current-three.json",
+    "source": ".local-tools/calendar-device-20261101/week-current-three.json",
+    "sha256": "531a21f85e0906e51641aec31a11ae5d8a72475f83b21faea2598ee319929905",
+    "bytes": 485,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "direct-day-chip-two.json",
+    "source": ".local-tools/calendar-device-20261101/direct-day-chip-two.json",
+    "sha256": "abeb89fd44736f2cb8a443ec2491b52952233c3cd1f6169e763e5252109bcb52",
+    "bytes": 322,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "direct-week-chip-three.json",
+    "source": ".local-tools/calendar-device-20261101/direct-week-chip-three.json",
+    "sha256": "95816d566e12c59640afd5331e353d9845db403145deade7acde2bec51136a60",
+    "bytes": 463,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "week-collapsed-still-three.json",
+    "source": ".local-tools/calendar-device-20261101/week-collapsed-still-three.json",
+    "sha256": "e06d264f5b5ed997ef148e72ce178c29ee0a3e272d50cc06c1eb43d4b09950d4",
+    "bytes": 352,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "week-next-empty.json",
+    "source": ".local-tools/calendar-device-20261101/week-next-empty.json",
+    "sha256": "e76d1d22f72be24dd48dc1c6f671c2888aef775c5c0e765ce4e6c7ffd1d46f8a",
+    "bytes": 396,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "week-today-three.json",
+    "source": ".local-tools/calendar-device-20261101/week-today-three.json",
+    "sha256": "e80cfbadebb8fd9713b698b5f037c3458bd7a47e45abe007302ba0dfd8e2e02c",
+    "bytes": 441,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "week-day-tomorrow.json",
+    "source": ".local-tools/calendar-device-20261101/week-day-tomorrow.json",
+    "sha256": "4ea9b28fd75242f2b9f14f97ec0415b619a871781b0fad5edf53c724e0e97c0f",
+    "bytes": 300,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "day-today-two.json",
+    "source": ".local-tools/calendar-device-20261101/day-today-two.json",
+    "sha256": "cba9588f856ff3b26d61ebb938ced1280a5440c666da0ad683b5f46b98b156f1",
+    "bytes": 322,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "day-query-a-one.json",
+    "source": ".local-tools/calendar-device-20261101/day-query-a-one.json",
+    "sha256": "56bf825dd70da793da865c260b006e5362055a1e0e18a57cd433a2ca5d9ff99b",
+    "bytes": 300,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "day-query-prefix-two.json",
+    "source": ".local-tools/calendar-device-20261101/day-query-prefix-two.json",
+    "sha256": "8e27f020fa590db4778b0161fddac7b07157e8ccfec418f38a06507485697534",
+    "bytes": 322,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "calendar-month-week-result.json",
+    "source": ".local-tools/calendar-device-20261101/calendar-month-week-result.json",
+    "sha256": "ec725d4efdb8874c63bf0d6f2d56894d5c88ffc5906347e215a01e71ba0a79d1",
+    "bytes": 468,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "02-week-collapsed-range.png",
+    "source": ".local-tools/calendar-device-20261101/02-week-collapsed-range.png",
+    "sha256": "28afca51cfa9da41c5a70c860df12f897accb148576e093ec4d348232500ee0f",
+    "bytes": 381524,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "02-week-collapsed-range-scope.json",
+    "source": ".local-tools/calendar-device-20261101/02-week-collapsed-range-scope.json",
+    "sha256": "298e4011c33fd09572e81c8d2bc03012891212ef1e4627e91963138217f49194",
+    "bytes": 191,
+    "transformation": "None; reviewed safe source bytes"
+  }
+]

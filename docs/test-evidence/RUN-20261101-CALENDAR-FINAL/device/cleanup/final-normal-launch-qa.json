@@ -1,0 +1,25 @@
+{
+  "sampleStartUtc": "2026-11-02T07:59:31.883932+00:00",
+  "sampleEndUtc": "2026-11-02T07:59:32.837085+00:00",
+  "deviceEpochSeconds": 1793606369,
+  "scope": "Live repeated stable DB/WAL copy, QA-only local observation, not original-data preservation proof",
+  "attempts": 1,
+  "dbWalRepeatedBytesMatch": true,
+  "integrityCheck": "ok",
+  "events": [],
+  "reminderPlans": [],
+  "reminderControl": [
+    {
+      "id": 1,
+      "alarmIdentity": "ddl-saver://reminders/wake",
+      "dailyDate": "2026-11-03",
+      "dailyMinuteOfDay": 480,
+      "scheduledTriggerAt": 1793664000000,
+      "desiredTriggerAt": 1793664000000,
+      "scheduleMode": "exact",
+      "alarmDirty": 0,
+      "lastError": null
+    }
+  ],
+  "temporaryPrivateDatabaseRemoved": true
+}

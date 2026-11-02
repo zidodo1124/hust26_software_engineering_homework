@@ -1,0 +1,37 @@
+[
+  {
+    "file": "month-initial-counts.json",
+    "source": ".local-tools/calendar-device-20261101/month-initial-counts.json",
+    "sha256": "a3cfd865baddd68259d1f87bb58286bc92a40672891b6f40f3b7dce100020412",
+    "bytes": 172,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "month-selected-today-summary.json",
+    "source": ".local-tools/calendar-device-20261101/month-selected-today-summary.json",
+    "sha256": "cd478612c69b289068e92aabb2bd376b7fdf80030a521e8cd58ad59351a3ae00",
+    "bytes": 649,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "month-counts-after-single-day-selection.json",
+    "source": ".local-tools/calendar-device-20261101/month-counts-after-single-day-selection.json",
+    "sha256": "2d71bc2ba5d8615e067fb57140b5624cd18589e551505e82c8c28b3078f3641a",
+    "bytes": 172,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "01-month-counts-scope.json",
+    "source": ".local-tools/calendar-device-20261101/01-month-counts-scope.json",
+    "sha256": "2ae7299731e96d8642eade50d5cf3dcca99bbddb32bec36311a8cbc5ec068d06",
+    "bytes": 191,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "01-month-counts.png",
+    "source": ".local-tools/calendar-device-20261101/01-month-counts.png",
+    "sha256": "23c23344dcd08ee645826f8bb687a74bd9b5343dfdae3a4dae904001b51899e8",
+    "bytes": 240393,
+    "transformation": "None; reviewed safe source bytes"
+  }
+]

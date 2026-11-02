@@ -1,0 +1,30 @@
+[
+  {
+    "file": "before-source-intersection-four.json",
+    "source": ".local-tools/calendar-device-20261101/before-source-intersection-four.json",
+    "sha256": "80b73a9aca66ab322def6fce3439c118c8cd0d863d1252257743e0288253658d",
+    "bytes": 633,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "source-empty-intersection-zero.json",
+    "source": ".local-tools/calendar-device-20261101/source-empty-intersection-zero.json",
+    "sha256": "1b87982421dfa46797154c44f3dc40684d928c147181de4ed28ed5b27bbdb93f",
+    "bytes": 582,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "source-restored-four.json",
+    "source": ".local-tools/calendar-device-20261101/source-restored-four.json",
+    "sha256": "ba6de18443c92c1d9096ed3fa6fa30ee82e86abd01a2b3c6d8a697fbee7ff784",
+    "bytes": 633,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "calendar-source-empty-intersection-result.json",
+    "source": ".local-tools/calendar-device-20261101/calendar-source-empty-intersection-result.json",
+    "sha256": "a7b0f4958407f8b93a2897828875f69d5032dadd7fcb9721d0bce1fd705b13da",
+    "bytes": 367,
+    "transformation": "None; reviewed safe source bytes"
+  }
+]

@@ -1,0 +1,86 @@
+[
+  {
+    "file": "before-completion-day-two.json",
+    "source": ".local-tools/calendar-device-20261101/before-completion-day-two.json",
+    "sha256": "bfc6aba8d0f7c8b329da053d2bd94a41debeb4a97037d2d1765f95b79cd3fd3a",
+    "bytes": 322,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "calendar-b-completed-qa.json",
+    "source": ".local-tools/calendar-device-20261101/calendar-b-completed-qa.json",
+    "sha256": "04d68b445478cb78f35566a5017a32f96d6ee7ddbf44f0a145e73e475b573dc9",
+    "bytes": 5435,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "detail-return-preserves-day-and-query.json",
+    "source": ".local-tools/calendar-device-20261101/detail-return-preserves-day-and-query.json",
+    "sha256": "1a3f68cbaa0c3af08167a865f9a7b680f91fbc82adca7265f7679493888851d2",
+    "bytes": 300,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "todo-month-counts-after-b-complete.json",
+    "source": ".local-tools/calendar-device-20261101/todo-month-counts-after-b-complete.json",
+    "sha256": "d3cbcdc34510357b61d49163f29c1486c96d88163b60252c4effe74b101aa806",
+    "bytes": 172,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "05-todo-counts-after-completion-scope.json",
+    "source": ".local-tools/calendar-device-20261101/05-todo-counts-after-completion-scope.json",
+    "sha256": "dde4d7a3e1f01203dedf3e92f0136dc00b79bbb3b1a3f3c092d7f47ffa3c2c4f",
+    "bytes": 191,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "05-todo-counts-after-completion.png",
+    "source": ".local-tools/calendar-device-20261101/05-todo-counts-after-completion.png",
+    "sha256": "01e7cbfec9d2dd9aecd3bd962f12ad138b5bd18ba7fb04d6335da6a7bfaecca0",
+    "bytes": 236505,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "completed-month-today-one.json",
+    "source": ".local-tools/calendar-device-20261101/completed-month-today-one.json",
+    "sha256": "1c8a1cae1f1885c6085da713b6dddca8c8e0b62965b874bad234d882248988cc",
+    "bytes": 159,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "completed-selected-day-one.json",
+    "source": ".local-tools/calendar-device-20261101/completed-selected-day-one.json",
+    "sha256": "b9bb67a868f37e2d0725febce52c31d0f194199770c20ab41b536bee0866fb4c",
+    "bytes": 636,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "06-completed-day-one-scope.json",
+    "source": ".local-tools/calendar-device-20261101/06-completed-day-one-scope.json",
+    "sha256": "b20e3467fe910fc78bc09a9f29f370285dceaf5801cc748012f45594752bc4bd",
+    "bytes": 191,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "06-completed-day-one.png",
+    "source": ".local-tools/calendar-device-20261101/06-completed-day-one.png",
+    "sha256": "24ea44b40e4f0496ad7d6813cf964ba2757ab31895c67a6df345d9cba256eaa6",
+    "bytes": 232106,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "all-remaining-qa-four.json",
+    "source": ".local-tools/calendar-device-20261101/all-remaining-qa-four.json",
+    "sha256": "9161631e5926807be0549d1a93e0f1f610f292749b8178adebfff97c56bbe8da",
+    "bytes": 633,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "calendar-completion-filter-result.json",
+    "source": ".local-tools/calendar-device-20261101/calendar-completion-filter-result.json",
+    "sha256": "f5089da62d5f2530fd52f95c7022b38d83512ebe861eb09fc6411400343df9ee",
+    "bytes": 360,
+    "transformation": "None; reviewed safe source bytes"
+  }
+]

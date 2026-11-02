@@ -1,0 +1,142 @@
+C:\Users\lx\Desktop\sw_teamwork\app\src\main\java\cn\edu\hust\ddlsaver\platform\AttachmentStore.kt:7: Warning: Avoid using android.media.ExifInterface; use androidx.exifinterface.media.ExifInterface instead [ExifInterface]
+import android.media.ExifInterface
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "ExifInterface":
+   The android.media.ExifInterface implementation has some known security bugs
+   in older versions of Android. There is a new implementation available of
+   this library in the support library, which is preferable.
+
+C:\Users\lx\Desktop\sw_teamwork\app\build.gradle.kts:55: Warning: A newer version of androidx.compose:compose-bom than 2025.04.01 is available: 2026.09.00 [GradleDependency]
+    implementation(platform("androidx.compose:compose-bom:2025.04.01"))
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\lx\Desktop\sw_teamwork\app\build.gradle.kts:56: Warning: A newer version of androidx.activity:activity-compose than 1.10.1 is available: 1.13.0 [GradleDependency]
+    implementation("androidx.activity:activity-compose:1.10.1")
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\lx\Desktop\sw_teamwork\app\build.gradle.kts:61: Warning: A newer version of androidx.lifecycle:lifecycle-runtime-compose than 2.9.0 is available: 2.11.0 [GradleDependency]
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.9.0")
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\lx\Desktop\sw_teamwork\app\build.gradle.kts:62: Warning: A newer version of androidx.lifecycle:lifecycle-viewmodel-compose than 2.9.0 is available: 2.11.0 [GradleDependency]
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.9.0")
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\lx\Desktop\sw_teamwork\app\build.gradle.kts:63: Warning: A newer version of androidx.room:room-runtime than 2.7.1 is available: 2.8.5 [GradleDependency]
+    implementation("androidx.room:room-runtime:2.7.1")
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\lx\Desktop\sw_teamwork\app\build.gradle.kts:64: Warning: A newer version of androidx.room:room-ktx than 2.7.1 is available: 2.8.5 [GradleDependency]
+    implementation("androidx.room:room-ktx:2.7.1")
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\lx\Desktop\sw_teamwork\app\build.gradle.kts:65: Warning: A newer version of androidx.room:room-compiler than 2.7.1 is available: 2.8.5 [GradleDependency]
+    ksp("androidx.room:room-compiler:2.7.1")
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\lx\Desktop\sw_teamwork\app\build.gradle.kts:71: Warning: A newer version of androidx.test:core than 1.6.1 is available: 1.7.0 [GradleDependency]
+    testImplementation("androidx.test:core:1.6.1")
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\lx\Desktop\sw_teamwork\app\build.gradle.kts:72: Warning: A newer version of androidx.room:room-testing than 2.7.1 is available: 2.8.5 [GradleDependency]
+    testImplementation("androidx.room:room-testing:2.7.1")
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\lx\Desktop\sw_teamwork\app\build.gradle.kts:73: Warning: A newer version of androidx.compose:compose-bom than 2025.04.01 is available: 2026.09.00 [GradleDependency]
+    testImplementation(platform("androidx.compose:compose-bom:2025.04.01"))
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "GradleDependency":
+   This detector looks for usages of libraries where the version you are using
+   is not the current stable release. Using older versions is fine, and there
+   are cases where you deliberately want to stick with an older version.
+   However, you may simply not be aware that a more recent version is
+   available, and that is what this lint check helps find.
+
+C:\Users\lx\Desktop\sw_teamwork\app\src\main\java\cn\edu\hust\ddlsaver\reminders\AndroidReminderPlatform.kt:54: Warning: Unnecessary; Build.VERSION.SDK_INT < 31 is never true here (SDK_INT ≥ 26 and < 31) [ObsoleteSdkInt]
+                if (Build.VERSION.SDK_INT < 31 || alarms.canScheduleExactAlarms()) throw error
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "ObsoleteSdkInt":
+   This check flags version checks that are not necessary, because the
+   minSdkVersion (or surrounding known API level) is already at least as high
+   as the version checked for.
+
+   Similarly, it also looks for resources in -vNN folders, such as values-v14
+   where the version qualifier is less than or equal to the minSdkVersion,
+   where the contents should be merged into the best folder.
+
+C:\Users\lx\Desktop\sw_teamwork\app\src\main\java\cn\edu\hust\ddlsaver\reminders\ReminderRuntime.kt:59: Warning: Do not place Android context classes in static fields (static reference to ReminderRuntime which has field app pointing to Context); this is a memory leak [StaticFieldLeak]
+        @Volatile private var instance: ReminderRuntime? = null
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "StaticFieldLeak":
+   A static field will leak contexts.
+
+   Non-static inner classes have an implicit reference to their outer class.
+   If that outer class is for example a Fragment or Activity, then this
+   reference means that the long-running handler/loader/task will hold a
+   reference to the activity which prevents it from getting garbage
+   collected.
+
+   Similarly, direct field references to activities and fragments from these
+   longer running instances can cause leaks.
+
+   ViewModel classes should never point to Views or non-application Contexts.
+
+C:\Users\lx\Desktop\sw_teamwork\app\src\main\java\cn\edu\hust\ddlsaver\reminders\AndroidReminderPlatform.kt:37: Warning: Use the KTX extension function String.toUri instead? [UseKtx]
+        .setAction(ACTION_WAKE).setData(Uri.parse(ALARM_IDENTITY))
+                                        ~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\lx\Desktop\sw_teamwork\app\src\main\java\cn\edu\hust\ddlsaver\reminders\ReminderRecoveryDiagnostics.kt:167: Warning: Use the KTX extension function SharedPreferences.edit instead? [UseKtx]
+                context.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE).edit().putString(key, value).commit()
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\lx\Desktop\sw_teamwork\app\src\main\java\cn\edu\hust\ddlsaver\ui\ReminderSettingsPanel.kt:202: Warning: Use the KTX extension function String.toUri instead? [UseKtx]
+            OutlinedButton({ openSettings(Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM, Uri.parse("package:${context.packageName}"))) },
+                                                                                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "UseKtx":
+   The Android KTX libraries decorates the Android platform SDK as well as
+   various libraries with more convenient extension functions available from
+   Kotlin, allowing you to use default parameters, named parameters, and
+   more.
+
+   Available options:
+
+   **remove-defaults** (default is true):
+   Whether to skip arguments that match the defaults provided by the extension.
+
+   Extensions often provide default values for some of the parameters. For example:
+   ```kotlin
+   fun Path.readLines(charset: Charset = Charsets.UTF_8): List<String> { return Files.readAllLines(this, charset) }
+   ```
+   This lint check will by default automatically omit parameters that match the default, so if your code was calling ```kotlin
+   Files.readAllLines(file, Charset.UTF_8)
+   ```
+   lint would replace this with
+   ```kotlin
+   file.readLines()
+   ```
+   rather than
+   ```kotlin
+   file.readLines(Charset.UTF_8
+   ```
+   You can turn this behavior off using this option.
+
+   To configure this option, use a `lint.xml` file with an <option> like this:
+
+   ```xml
+   <lint>
+       <issue id="UseKtx">
+           <option name="remove-defaults" value="true" />
+       </issue>
+   </lint>
+   ```
+
+   **require-present** (default is true):
+   Whether to only offer extensions already available.
+
+   This option lets you only have lint suggest extension replacements if those extensions are already available on the class path (in other words, you're already depending on the library containing the extension method.)
+
+   To configure this option, use a `lint.xml` file with an <option> like this:
+
+   ```xml
+   <lint>
+       <issue id="UseKtx">
+           <option name="require-present" value="true" />
+       </issue>
+   </lint>
+   ```
+
+0 errors, 16 warnings

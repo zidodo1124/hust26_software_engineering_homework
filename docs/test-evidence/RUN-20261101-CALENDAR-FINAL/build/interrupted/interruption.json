@@ -1,0 +1,8 @@
+{
+  "recordedAtUtc": "2026-11-02T07:23:10.981394+00:00",
+  "result": "INTERRUPTED_BY_ROOT_FOR_CONFIRMED_CALENDAR_FIX",
+  "noPassClaim": true,
+  "sourceBytesUnchangedBeforeInterruption": true,
+  "oldRunnerSessionExitCode": 1,
+  "exactProcessTreeExitVerified": true
+}

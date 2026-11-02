@@ -1,0 +1,44 @@
+[
+  {
+    "file": "reexpanded-week-tool-observation.json",
+    "source": ".local-tools/calendar-device-20261101/reexpanded-week-tool-observation.json",
+    "sha256": "3c6e295e3555dd982585c2271058d8dc12077ec8db8fa1e8ec6bfe0d98e28545",
+    "bytes": 610,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "reexpand-before-collapse-three.json",
+    "source": ".local-tools/calendar-device-20261101/reexpand-before-collapse-three.json",
+    "sha256": "7a3fd56198e37516bdd05917431846feff7663b8af32bdd36d46f1311b25d546",
+    "bytes": 463,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "reexpand-collapsed-three.json",
+    "source": ".local-tools/calendar-device-20261101/reexpand-collapsed-three.json",
+    "sha256": "0988839d1b1353e1405e1158a9d5fd482f534356f73bf45c5844f5d35c7d7d86",
+    "bytes": 352,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "reexpanded-week-still-three.json",
+    "source": ".local-tools/calendar-device-20261101/reexpanded-week-still-three.json",
+    "sha256": "40a3a277134e875fa88f8d3e17d31e02f43d0d4ff692f56c9bb1571fbc92aec1",
+    "bytes": 485,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "reexpand-restore-day-two.json",
+    "source": ".local-tools/calendar-device-20261101/reexpand-restore-day-two.json",
+    "sha256": "98dbb64b019c6a56b5cfaf529461f3f984e441bf04d7bc287a26cf09213b1b87",
+    "bytes": 322,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "calendar-reexpanded-week-result.json",
+    "source": ".local-tools/calendar-device-20261101/calendar-reexpanded-week-result.json",
+    "sha256": "6fcc07dd30d4cb5dcc619abb73b8bfc22951d6fd373758dec811c6f5f8567560",
+    "bytes": 261,
+    "transformation": "None; reviewed safe source bytes"
+  }
+]

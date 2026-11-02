@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.reminders.ReminderRulesTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-11-02T07:28:25" hostname="LAPTOP-7OF0K1SP" time="0.009">
+  <properties/>
+  <testcase name="settingsValidateBeforeAnyStorageMutation" classname="cn.edu.hust.ddlsaver.reminders.ReminderRulesTest" time="0.001"/>
+  <testcase name="planKeysAreStableUniquePerReasonAndDeadline" classname="cn.edu.hust.ddlsaver.reminders.ReminderRulesTest" time="0.004"/>
+  <testcase name="noSprintAndDisabledReasonsDoNotCreateDangerPlans" classname="cn.edu.hust.ddlsaver.reminders.ReminderRulesTest" time="0.0"/>
+  <testcase name="nextWakeSkipsSentUsesEarliestPendingAndBackoffForClaimed" classname="cn.edu.hust.ddlsaver.reminders.ReminderRulesTest" time="0.001"/>
+  <testcase name="separateReasonTimesHaveSeparateAlertIdentities" classname="cn.edu.hust.ddlsaver.reminders.ReminderRulesTest" time="0.0"/>
+  <testcase name="exactBoundaryAndMergedIdentityAreDerivedFromMinutes" classname="cn.edu.hust.ddlsaver.reminders.ReminderRulesTest" time="0.0"/>
+  <testcase name="summaryIncludesTodayOverdueButExcludesCompletedArchivedAndOtherDays" classname="cn.edu.hust.ddlsaver.reminders.ReminderRulesTest" time="0.002"/>
+  <testcase name="deadlineChangeProducesNewKeysSoOldLedgerCannotCollide" classname="cn.edu.hust.ddlsaver.reminders.ReminderRulesTest" time="0.0"/>
+  <testcase name="differentEventsAtSameInstantKeepDistinctNotificationTags" classname="cn.edu.hust.ddlsaver.reminders.ReminderRulesTest" time="0.0"/>
+  <testcase name="dailyNextOccurrenceUsesBeijingAndDoesNotCatchUpNewInstall" classname="cn.edu.hust.ddlsaver.reminders.ReminderRulesTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

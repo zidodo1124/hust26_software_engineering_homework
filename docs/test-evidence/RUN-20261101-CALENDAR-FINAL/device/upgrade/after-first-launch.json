@@ -1,0 +1,91 @@
+{
+  "atUtc": "2026-11-02T07:32:32.535727+00:00",
+  "schemaVersion": 4,
+  "currentBatchPrefixEventCount": 0,
+  "scope": "Repeated stable live DB/WAL copy; no force-stop",
+  "settings": {
+    "id": 1,
+    "urgentMinutes": 1440,
+    "expiredPolicy": "KEEP",
+    "dailySummaryEnabled": 1,
+    "dailySummaryMinuteOfDay": 480,
+    "dangerReminderEnabled": 1,
+    "deadlineReminderEnabled": 1,
+    "deadlineLeadMinutes": 60,
+    "characterStyle": "CLASSIC"
+  },
+  "tableComparisons": {
+    "events": {
+      "count": 3,
+      "saltedDigest": "43aafa43b3f4585e1b6b3aeaf1d886b4fb6134f83f5633d38c75066875a54569"
+    },
+    "sources": {
+      "count": 1,
+      "saltedDigest": "22bfd016bb68232da153885658b36c03c2a11bd01e6dcbcb33400a6e606736d0"
+    },
+    "tags": {
+      "count": 1,
+      "saltedDigest": "fd730613d64dcbf34d6914e05986772be635b38b30a431088cde207c27ba6b8a"
+    },
+    "event_tags": {
+      "count": 1,
+      "saltedDigest": "f7d0940640ae306cf24bb7b1aa6d9ab184379bf4d7bab576fe5062ca0de50ad5"
+    },
+    "custom_fields": {
+      "count": 1,
+      "saltedDigest": "1f4dcce7237dfbb5605ecf3730932bbf7b526476114dee550d0cdf4d6afe4f41"
+    },
+    "attachments": {
+      "count": 4,
+      "saltedDigest": "daa6c78acfe77d74e6a2e4d49bc73b9605a0d9220d3bf7eb4d323c0b6f34e155"
+    }
+  },
+  "attachmentComparisons": [
+    {
+      "identityDigest": "ff096143f3b6debe62456091b2977e7c9bd09d961f26b21415311c7e491bd42e",
+      "bytes": 5407,
+      "declaredBytes": 5407,
+      "contentDigest": "b66ed3361efcb2ab573248c652bad000bc5336d84a0bc3652bed7c66f744f9ad"
+    },
+    {
+      "identityDigest": "108ba31663d0d046f0008ba34da8b6d7c5cbce253a956abc952b073ef765a3fc",
+      "bytes": 5407,
+      "declaredBytes": 5407,
+      "contentDigest": "b66ed3361efcb2ab573248c652bad000bc5336d84a0bc3652bed7c66f744f9ad"
+    },
+    {
+      "identityDigest": "eb9d0ead1afc76a4ca4b9ea4641b313b2bc15047c0ef11d8e30dbcb8777d9ab6",
+      "bytes": 5351,
+      "declaredBytes": 5351,
+      "contentDigest": "5b8ae20c3437c31ebda37b16664b75995fead87187e27dc012f7b125396ac4f0"
+    },
+    {
+      "identityDigest": "30a366c901b509e645cb42db1d021ca5e9f429055b0e8d229dc8a1414e613498",
+      "bytes": 5351,
+      "declaredBytes": 5351,
+      "contentDigest": "5b8ae20c3437c31ebda37b16664b75995fead87187e27dc012f7b125396ac4f0"
+    }
+  ],
+  "reminders": {
+    "count": 33,
+    "stateCounts": {
+      "PENDING": 19,
+      "SENT": 14
+    },
+    "activeCount": 2,
+    "cancelPendingCount": 0,
+    "allRowsDigest": "a8cbceff9a1fdad0a116e81c5ca91e3aa2c03eeeea5818e683138098d271b51a",
+    "sentRowsDigest": "ae1e6fb1d37b0d15df2d2c71effac95975e3a731121094793982a4bbe7e91146",
+    "controlDigest": "f65ca8a68c968b7901036d3c2cfcad69039f36bb00056f4251cbe5b4974c5c88",
+    "errorCount": 0,
+    "controlHasError": false,
+    "dailyToday": {
+      "beijingDate": "2026-11-02",
+      "rowCount": 1,
+      "sentCount": 1
+    }
+  },
+  "readAttempts": 1,
+  "integrityCheck": "ok",
+  "temporaryPrivateDatabaseRemoved": true
+}

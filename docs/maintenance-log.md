@@ -1,6 +1,6 @@
 # 维护与修复日志
 
-更新日期：2026-11-01（America/Los_Angeles）。本页按实际处理顺序记录，机器执行保留 UTC；未记录的用户消息时分不补造。当前产品为 **0.3.4／versionCode 7、Room schema 4**。
+更新日期：2026-11-02（America/Los_Angeles）。本页按实际处理顺序记录，机器执行保留 UTC；未记录的用户消息时分不补造。当前演示产品冻结为 **0.3.5／versionCode 8、Room schema 4**（`codex/demo-final-20261101`／`f024ece`）；日历导航等分项通过，完成状态、详情返回与来源空交集通过，07:59:33 UTC 最终 18 项审计全部通过，5 条 QA 已清理，原数据／附件／设置及全部原 33 条提醒保持，旧批次按原版本保留。
 
 ## 2026-11-01：分工、PR 与演示稳定性
 
@@ -85,3 +85,15 @@ fresh copy 恢复到 3 张；坏图被独立拒绝，草稿／描述保持且无
 ### 远程随后合入周／日界面
 
 06:58:10 UTC 的新快照确认队友已合入 [PR #12](https://github.com/zidodo1124/hust26_software_engineering_homework/pull/12)，远程 main 为 `99490e692b67f3d4f46548aa8e97a0a56d864221`，开放 PR 为 0。该 PR 原 head `10913c6` 的 [CI #50／41402242211](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41402242211) 为 success；merge 后 [CI #51／41403137121](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41403137121) 当时运行中。前文 06:50 的 PR #12 待审是历史快照，不再表示当前状态；此次由队友合入，不记为本线程执行审阅或 merge。本批手机仍为 `bdcd76f`／APK `690626883dd90684128959a53737b54c326352e3decb0dd46a707ac3d962ab90`，新月历／周日代码未安装，本批本机与手机结论不覆盖它。
+
+## 2026-11-01：冻结 0.3.5 与日历实机验证
+
+用户要求在 1 小时内交付最终演示版并开始准备讲解。本轮 2026-11-02 07:18:31 UTC 开始，截止 08:18:31 UTC；冻结 `codex/demo-final-20261101` 的产品源码 `f024ece`，版本 0.3.5／8、schema 4。纳入月格数量、月／周／日增量；重复周期计算基础保留，但没有可用的重复任务界面，后续 PR #14 迁移不纳入。
+
+发现周视图折叠会把整周结果缩为单日，移除周期判断对面板展开状态的依赖，并增加页面回归；旧行定向 1／1 失败、修复后 1／0 通过。修复前中断的全量记录保留；随后完整构建 29 XML／185 方法／224 次执行通过，Lint 0／16，源码字节前后一致。目标 APK 已同签名覆盖手机，07:32:17 的安装身份核对和 07:32:32 的正常首启数据比对通过，原 33 条提醒及 14 条 SENT 保持；辅助程序的 stdout 严格断言异常与基线 scope 模板误标均保留，不猜测缺失原输出或重写原文件。
+
+五样本的月格、周／日、折叠重开、空周期、跨年和关键词分项已通过，完成状态、详情返回和来源空交集也已通过；07:59:33 UTC 最终 18 项审计全部通过，5 条 QA 已清理，原数据／附件／设置及全部原 33 条提醒保持，远程冻结分支已推送但尚无新 CI 结果。准确 SHA、时间、后续实测及安全归档入口见[本轮记录](test-evidence/RUN-20261101-CALENDAR-FINAL/README.md)。准备演示及代码阅读见[交付页](demo-final-0.3.5.md)，OBS-01／OBS-02 未因此关闭。
+
+07:59:09 UTC 已通过真实界面删除本轮 5 条 QA，07:59:33.565965 最终 18 项审计通过：原六表、4 附件字节、设置、原 33 条提醒逐行摘要与原 14 条 SENT 精确集合保持；新增 5 条计划停用且无待取消、QA SENT 为 0，提醒历史保留。11 项系统设置、通知策略与日志属性保持；手机返回正常空查询首页，实际包身份及下一北京时间 11 月 3 日 08:00 精确 Alarm 核对完成，可断开。未强停或删账本收尾，临时 UI／数据库文件已清理。任务开始至手机审计完成约 41 分钟；本轮完成不关闭 OBS-01／OBS-02，也不代替完整课程验收和正式演练。
+
+本轮原始[最终审计](test-evidence/RUN-20261101-CALENDAR-FINAL/device/cleanup/final-data-and-state-audit.json)中的 runtimeIntent 沿用旧模板“pre-test stopped=true”；[独立注释](test-evidence/RUN-20261101-CALENDAR-FINAL/device/cleanup/final-audit-template-annotation.json)说明本批实际基线和最终均 stopped=false／notLaunched=false，原文件未改。最终提醒账本 38 行＝原 33＋新增 5，原控制摘要一致。本批安全证据 165 份、哈希清单 16 份均已归档核对，远程 CI 结果仍独立登记。

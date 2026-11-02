@@ -1,0 +1,37 @@
+{
+  "atUtc": "2026-11-02T07:32:32.543720+00:00",
+  "comparison": {
+    "schema4": true,
+    "allBusinessRowsUnchanged": true,
+    "allAttachmentBytesUnchanged": true,
+    "allSettingsUnchanged": true,
+    "allReminderRowsUnchanged": true,
+    "sentReminderRowsUnchanged": true,
+    "reminderControlUnchanged": true
+  },
+  "package": {
+    "flags": {
+      "installed": "true",
+      "hidden": "false",
+      "suspended": "false",
+      "stopped": "false",
+      "notLaunched": "false",
+      "enabled": "0"
+    },
+    "processPresent": true
+  },
+  "alarm": {
+    "atUtc": "2026-11-02T07:32:32.848954+00:00",
+    "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+    "alarms": [
+      {
+        "type": "RTC_WAKEUP",
+        "triggerEpochMillis": 1793664000000,
+        "systemDisplayTrigger": "2026-11-03 08:00:00.000",
+        "window": "0",
+        "exactAllowReason": "permission",
+        "reminderWakeActionConfirmed": true
+      }
+    ]
+  }
+}

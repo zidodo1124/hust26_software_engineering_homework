@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.ui.CharacterArtworkTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-11-02T07:28:35" hostname="LAPTOP-7OF0K1SP" time="1.545">
+  <properties/>
+  <testcase name="knownNeighborFragmentsDisappearWithoutRemovingAdjacentHair[28]" classname="cn.edu.hust.ddlsaver.ui.CharacterArtworkTest" time="0.272"/>
+  <testcase name="knownNeighborFragmentsDisappearWithoutRemovingAdjacentHair" classname="cn.edu.hust.ddlsaver.ui.CharacterArtworkTest" time="0.247"/>
+  <testcase name="unreadableArtworkReturnsNullSoTextualStatusCanRemainAvailable[28]" classname="cn.edu.hust.ddlsaver.ui.CharacterArtworkTest" time="0.037"/>
+  <testcase name="unreadableArtworkReturnsNullSoTextualStatusCanRemainAvailable" classname="cn.edu.hust.ddlsaver.ui.CharacterArtworkTest" time="0.028"/>
+  <testcase name="everyStateAndStyleDecodesAndRetainsEveryPixelOutsideReviewedExclusions[28]" classname="cn.edu.hust.ddlsaver.ui.CharacterArtworkTest" time="0.476"/>
+  <testcase name="everyStateAndStyleDecodesAndRetainsEveryPixelOutsideReviewedExclusions" classname="cn.edu.hust.ddlsaver.ui.CharacterArtworkTest" time="0.485"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

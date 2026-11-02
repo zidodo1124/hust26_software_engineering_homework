@@ -1,0 +1,15 @@
+diff --git a/app/build.gradle.kts b/app/build.gradle.kts
+index 4ba5515..d3238d8 100644
+--- a/app/build.gradle.kts
++++ b/app/build.gradle.kts
+@@ -13,8 +13,8 @@ android {
+         applicationId = "cn.edu.hust.ddlsaver"
+         minSdk = 26
+         targetSdk = 35
+-        versionCode = 7
+-        versionName = "0.3.4"
++        versionCode = 8
++        versionName = "0.3.5"
+         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+     }
+ 

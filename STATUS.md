@@ -1,28 +1,28 @@
 # HUSTer's DDL Saver 项目状态
 
-更新日期：2026-11-01。
+更新日期：2026-11-02。
 
 **当前成员：** 花园鳗小组现为支盟渊、付泽文、岳羽泉，共 3 人（2026-11-01 按用户确认更新）。页面、图片与角色的后续实现、复核、兼容验证与演示已由支盟渊领取，状态为进行中；旧成员登记仅保留为历史记录。依据见[成员与分工确认](interaction-records/支盟渊/2026-11-01.md)，当前分工见[任务板](team/README.md)。
 
 ## 当前阶段
 
-项目处于**第四轮联调、补测与课程验收准备**。本批已测源码为 [bdcd76f](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/bdcd76f916aae546bd146ce1fb1a14859bcd5eb4)，手机实际包为 **0.3.4／versionCode 7、Room schema 4**。本机完整构建 **179 方法／218 次执行通过、Lint 0／16**；[CI #46](docs/test-evidence/RUN-20261101-DEMO-STABILITY/ci46/README.md) 独立 218 次通过、Lint 0／17，均不覆盖下方远程新提交。
+项目已完成**0.3.5 演示版冻结与本轮日历实机验收**。冻结演示分支 `codex/demo-final-20261101`，产品源码 `f024ecea4b287c7a8768c2dc62af9be9228c9ae6`，版本 **0.3.5／versionCode 8、Room schema 4**。本机完整构建成功，29 份 XML／185 个不同方法／224 次执行全部通过，失败／错误／跳过各 0，Lint 0 错误／16 警告；荣耀 X50 已完成同签名覆盖和正常首启；实际包版本、APK 哈希与证书匹配，原六表、4 附件、设置、33 条提醒及原 14 条 SENT 保持。月格、周／日、折叠重开、空周期、跨年及关键词分项已通过；完成状态、详情返回和来源空交集也已通过；07:59:33 UTC 最终 18 项审计全部通过，5 条 QA 已清理，原数据／附件／设置及全部原 33 条提醒保持；新分支远程 CI 尚无结果。本轮入口见[交付与代码阅读](docs/demo-final-0.3.5.md)和[日历验收证据](docs/test-evidence/RUN-20261101-CALENDAR-FINAL/README.md)。
 
-[本批设备分项及收尾](docs/test-evidence/RUN-20261101-DEVICE-034/README.md)已完成：同签名升级、图片提示／重试／回滚、来源卸载后普通重开、角色双向保存、普通后台通知与完成撤销通过。真实重启自动窗口仍无 Alarm／通知，普通打开后补发与重排成功；**OBS-02 自动恢复子项仍未通过**，OBS-01 机制与旧 CI #45 根因也未关闭。
+[前一批 0.3.4 设备分项及收尾](docs/test-evidence/RUN-20261101-DEVICE-034/README.md)已完成：同签名升级、图片提示／重试／回滚、来源卸载后普通重开、角色双向保存、普通后台通知与完成撤销通过。真实重启自动窗口仍无 Alarm／通知，普通打开后补发与重排成功；**OBS-02 自动恢复子项仍未通过**，OBS-01 机制与旧 CI #45 根因也未关闭。
 
-06:58:57 UTC 的[最终审计](docs/test-evidence/RUN-20261101-DEVICE-034/final-data-and-state-audit.json)17 项通过：仅清理本批 3 个 QA，原六表、4 份附件字节、设置及原 12 条 SENT 保持；手机处于正常空查询首页，下一实际精确 Alarm 为北京时间 11 月 3 日 08:00，可断开连接。完整 DA／TC、持续锁屏／自然 Doze、真实每日汇总点击、最终视觉审核及正式演练仍待完成。过程见[维护日志](docs/maintenance-log.md)，分工见[任务板](team/README.md)，操作见[使用手册](docs/user-guide.md)。
+前一批 0.3.4 在 06:58:57 UTC 的[最终审计](docs/test-evidence/RUN-20261101-DEVICE-034/final-data-and-state-audit.json)17 项通过：仅清理本批 3 个 QA，原六表、4 份附件字节、设置及原 12 条 SENT 保持；手机处于正常空查询首页，下一实际精确 Alarm 为北京时间 11 月 3 日 08:00，可断开连接。完整 DA／TC、持续锁屏／自然 Doze、真实每日汇总点击、最终视觉审核及正式演练仍待完成。过程见[维护日志](docs/maintenance-log.md)，分工见[任务板](team/README.md)，操作见[使用手册](docs/user-guide.md)。
 
-**远程与被测包边界（2026-11-02 06:58:10 UTC 快照）：** 截至 2026-11-02 06:58:10 UTC，远程 main 为 [99490e6](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/99490e692b67f3d4f46548aa8e97a0a56d864221)。付泽文 [PR #11](https://github.com/zidodo1124/hust26_software_engineering_homework/pull/11) 的月历日期格数量增量已合入，沿用既有月历，数量遵循列表状态、关键词、来源、标签及危险期筛选，不随所选单日缩减；随后队友已合入 [PR #12](https://github.com/zidodo1124/hust26_software_engineering_homework/pull/12) 的周／日周期界面与筛选，开放 PR 为 0。本批未替队友执行此次审阅／合并。PX-01／PX-02 的完整验收仍待完成，PX-03—PX-07 未由这些增量实现。 本批手机已测试 `bdcd76f` 的 0.3.4／7，APK SHA-256 `690626883dd90684128959a53737b54c326352e3decb0dd46a707ac3d962ab90`；远程增量版本号也为 0.3.4／7，应以源码提交和 APK 哈希区分。本批本机与 CI #46 的 218 次执行，以及本批手机结果，均不覆盖上述远程新增代码。
+**冻结分支与主线边界：** 本次演示分支以 `5df4320` 为基础，纳入 PR #11 月格数量、PR #12 月／周／日界面与 PR #13 重复周期计算基础，并修复周视图折叠后误缩成单日的问题。已推送同名远程分支；持续变化的 `main` 与 PR #14 数据迁移不进入本包。重复任务尚无用户创建／管理入口，不能作为可用功能演示。旧 0.3.4／CI #46 的 218 次执行保留历史结论，不替代本次 224 次本机结果或新分支 CI。
 
-**付泽文：** PR #1—#9 已合入数据与信息组织的阶段成果；PR #10 的 7 项[规划扩展提案](docs/planning-extension-requirements.md)已审阅合入；其后 PR #11 的月历数量增量已合入，PR #12 周／日视图也已由队友合入；这两项远程增量尚未纳入本批手机验证。提案及局部实现不等于全部规则确认或完整验收。已有成果包括[专项需求](docs/data-requirements.md)、[架构核查](docs/data-architecture-review.md)、同名字段与旧库迁移、分类恢复与事务回滚、保存冲突与失败重试、连续多词搜索及组合筛选／日期交互测试，并形成[模块说明与答辩材料](docs/data-module-report.md)。已确认的规则和实际参与见[个人记录](team/付泽文.md)；未讨论的业务边界与项目整体需求继续待审核，完整场景缺口见[需求—代码—测试追踪](docs/data-test-traceability.md)。此前按本人要求将实机业务、同签名升级与真实附件检查安排到最后阶段；0.3.3 历史设备批次的中央升级及收尾分项已完成；0.3.4 本次升级与收尾已核对原数据保持，完整业务流程及远程新日历增量仍待独立验证。
+**付泽文：** PR #1—#9 已合入数据与信息组织的阶段成果；PR #10 的 7 项[规划扩展提案](docs/planning-extension-requirements.md)已审阅合入；其后 PR #11 的月历数量增量已合入，PR #12 周／日视图也已由队友合入；这两项日历增量已纳入 0.3.5 冻结包，月格、周／日和跨年等手机分项通过，完成状态、详情返回与来源空交集也已通过，本轮最终 18 项清理审计通过，原数据保持；PR #13 仅有重复周期计算基础。提案及局部实现不等于全部规则确认或完整验收。已有成果包括[专项需求](docs/data-requirements.md)、[架构核查](docs/data-architecture-review.md)、同名字段与旧库迁移、分类恢复与事务回滚、保存冲突与失败重试、连续多词搜索及组合筛选／日期交互测试，并形成[模块说明与答辩材料](docs/data-module-report.md)。已确认的规则和实际参与见[个人记录](team/付泽文.md)；未讨论的业务边界与项目整体需求继续待审核，完整场景缺口见[需求—代码—测试追踪](docs/data-test-traceability.md)。此前按本人要求将实机业务、同签名升级与真实附件检查安排到最后阶段；0.3.3 历史设备批次的中央升级及收尾分项已完成；0.3.4 本次升级与收尾已核对原数据保持，完整业务流程仍待补齐；0.3.5 日历导航等分项通过，完成状态、详情返回与来源空交集也已通过，本轮最终 18 项清理审计通过，原数据保持。
 
 **岳羽泉：** 2026-11-01 已[领取提醒与恢复任务](team/岳羽泉-领取与计划-2026-11-01.md)，完成[设计与代码复核](team/岳羽泉-复核笔记-reminders-2026-11-01.md)，新增 4 项[计划键／去重／同刻合并边界测试](team/岳羽泉-去重同刻合并复核-2026-11-01.md)和 4 项[已送达后完成／归档／删除／改期失效测试](team/岳羽泉-旧提醒失效复核-2026-11-01.md)，并加入[权限文案修正及对应测试](team/岳羽泉-权限文案复核-2026-11-01.md)。这些工作已合入 `main`。产品改动对齐 `canPost` 的通知权限／通道条件，并说明不可通知时保留业务计划、暂停系统唤醒；提醒引擎规则和权限按钮逻辑未变。个人环境缺 SDK 时未完成的 Gradle 复跑与最新 CI 分开记录；中央设备分项及 OBS-02 见下方，剩余条件与个人模块讲解仍待完成。
 
 五项岳羽泉内容提交经直接 merge 合入，未发对应 PR；本次核查未发现丢失队友修改或需要重写历史的问题，详见[审核记录 R-014](docs/review-log.md#r-014岳羽泉直接合并核查与本机后续授权)。2026-11-01 用户先选择完成本机工作，随后连接手机并授权独立实机验收；0.3.3 历史批次分项与收尾已完成，OBS-01／OBS-02 保持开放；后续 0.3.4 批次分项及收尾也已完成，自动恢复失败仍保留，两批范围与剩余边界见下方。[项目报告汇编](docs/final-report.md)及[演示与验收安排](docs/demo-and-acceptance.md)已建立，供小组最终审核和实际执行。
 
-### 最新本机结果与远程记录（2026-11-01）
+### 0.3.4 历史本机结果与远程记录（2026-11-01）
 
-[PR #10](https://github.com/zidodo1124/hust26_software_engineering_homework/pull/10) 已对准确分支头 `d4e09428b4deb87110067ff356c78a3cb98f4eac` 完成 [APPROVE 审阅](https://github.com/zidodo1124/hust26_software_engineering_homework/pull/10#pullrequestreview-5732043244)，实际合并 `c1e94f3d80fcf4aa6d9983c4e3be5e7b4e0a1d48`。2026-11-02 04:25:58 UTC 的快照无开放 PR（用户时区为 11 月 1 日），该快照不代表后续实时状态。当时 7 项规划提案尚未实现，也未因合并而全部确认；后续月历增量见本页“远程与被测包边界”。
+[PR #10](https://github.com/zidodo1124/hust26_software_engineering_homework/pull/10) 已对准确分支头 `d4e09428b4deb87110067ff356c78a3cb98f4eac` 完成 [APPROVE 审阅](https://github.com/zidodo1124/hust26_software_engineering_homework/pull/10#pullrequestreview-5732043244)，实际合并 `c1e94f3d80fcf4aa6d9983c4e3be5e7b4e0a1d48`。2026-11-02 04:25:58 UTC 的快照无开放 PR（用户时区为 11 月 1 日），该快照不代表后续实时状态。当时 7 项规划提案尚未实现，也未因合并而全部确认；后续月历增量见本页“冻结分支与主线边界”。
 
 [RUN-20261101-DEMO-STABILITY](docs/test-evidence/RUN-20261101-DEMO-STABILITY/README.md) 的最终源码 [bdcd76f](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/bdcd76f916aae546bd146ce1fb1a14859bcd5eb4) 已完整构建成功：**28 份 JUnit XML、179 个不同方法／218 次执行，失败／错误／跳过各 0，Lint 0 错误／16 警告**。警告总数仍为 16：新增恢复诊断 SharedPreferences.edit 的 1 条 UseKtx，原 ReminderRuntime 的 1 条 InlinedApi 消失，不能称为全部既有警告。 图片来源权限拒绝现提供重复制／重选提示；调试包恢复记录与重启／强停说明已加入。首轮定向 108 次执行中的 2 次取消测试前提失败，以及诊断写盘的静态 P2 整改与复审均保留；最终全量通过不抹去先前失败。
 

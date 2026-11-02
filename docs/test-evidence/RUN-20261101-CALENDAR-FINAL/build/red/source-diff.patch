@@ -1,0 +1,74 @@
+diff --git a/app/build.gradle.kts b/app/build.gradle.kts
+index 4ba5515..d3238d8 100644
+--- a/app/build.gradle.kts
++++ b/app/build.gradle.kts
+@@ -13,8 +13,8 @@ android {
+         applicationId = "cn.edu.hust.ddlsaver"
+         minSdk = 26
+         targetSdk = 35
+-        versionCode = 7
+-        versionName = "0.3.4"
++        versionCode = 8
++        versionName = "0.3.5"
+         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+     }
+ 
+diff --git a/app/src/test/java/cn/edu/hust/ddlsaver/ui/SaverAppFlowTest.kt b/app/src/test/java/cn/edu/hust/ddlsaver/ui/SaverAppFlowTest.kt
+index c85b135..660b33e 100644
+--- a/app/src/test/java/cn/edu/hust/ddlsaver/ui/SaverAppFlowTest.kt
++++ b/app/src/test/java/cn/edu/hust/ddlsaver/ui/SaverAppFlowTest.kt
+@@ -419,6 +419,54 @@ class SaverAppFlowTest {
+         assertEquals(7, storedEvents().size)
+     }
+ 
++    @Test
++    fun collapsingWeekCalendarPreservesWholeWeekUntilADayIsSelected() {
++        awaitText("DDL Saver")
++        val today = Instant.now().atZone(BeijingZone).toLocalDate()
++        val monday = today.minusDays((today.dayOfWeek.value - 1).toLong()).plusWeeks(1)
++        val tuesday = monday.plusDays(1)
++        fun deadline(date: java.time.LocalDate) = date.atTime(18, 0).atZone(BeijingZone).toInstant().toEpochMilli()
++        val seeded = withRepository {
++            listOf(
++                save(EventDraft(title = "下周一事项", deadlineAt = deadline(monday))),
++                save(EventDraft(title = "下周二事项", deadlineAt = deadline(tuesday))),
++                save(EventDraft(title = "周范围以外事项", deadlineAt = deadline(monday.plusWeeks(1))))
++            )
++        }
++        reloadModel()
++        scrollHomeTag("toggle-calendar")
++        compose.onNodeWithTag("toggle-calendar").performClick()
++        scrollHomeTag("calendar-view-week")
++        compose.onNodeWithTag("calendar-view-week").performClick()
++        scrollHomeTag("period-next")
++        compose.onNodeWithTag("period-next").performClick()
++
++        fun assertWholeWeekIsVisible() {
++            scrollHomeTag("list-summary")
++            compose.onNodeWithTag("list-summary").assertTextEquals("$monday 至 ${monday.plusDays(6)} 的事项 · 2")
++            seeded.take(2).forEach { event ->
++                compose.onNodeWithTag("event-list").performScrollToNode(hasText(event.title))
++                compose.onNodeWithText(event.title).assertIsDisplayed()
++            }
++            assertEquals(seeded.toSet(), storedEvents().toSet())
++        }
++
++        assertWholeWeekIsVisible()
++        scrollHomeTag("toggle-calendar")
++        compose.onNodeWithTag("toggle-calendar").performClick()
++        assertWholeWeekIsVisible()
++        scrollHomeTag("toggle-calendar")
++        compose.onNodeWithTag("toggle-calendar").performClick()
++        assertWholeWeekIsVisible()
++        scrollHomeTag("week-day-$tuesday")
++        compose.onNodeWithTag("week-day-$tuesday").performClick()
++        scrollHomeTag("list-summary")
++        compose.onNodeWithTag("list-summary").assertTextEquals("$tuesday 的事项 · 1")
++        compose.onNodeWithTag("event-list").performScrollToNode(hasText(seeded[1].title))
++        compose.onNodeWithText(seeded[1].title).assertIsDisplayed()
++        assertEquals(seeded.toSet(), storedEvents().toSet())
++    }
++
+     @Test
+     fun calendarCrossesMonthAndTodayShortcutClearsDateFilter() {
+         awaitText("DDL Saver")

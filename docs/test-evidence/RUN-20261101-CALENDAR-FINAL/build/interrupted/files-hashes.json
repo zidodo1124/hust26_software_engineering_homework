@@ -1,0 +1,44 @@
+[
+  {
+    "file": "run.json",
+    "source": ".local-tools/calendar-final-20261101/pre-fix-interrupted/run.json",
+    "sha256": "f03bcb16588402b6b260141fab5cad509e2e0bccd5845f9672e961d0d2554bfe",
+    "bytes": 16638,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "interruption.json",
+    "source": ".local-tools/calendar-final-20261101/pre-fix-interrupted/interruption.json",
+    "sha256": "95d60e7af0fd7cf3052e06781ef3729fb7cc18953f0f5a38838bb16d268627b8",
+    "bytes": 272,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "source-before.json",
+    "source": ".local-tools/calendar-final-20261101/pre-fix-interrupted/source-before.json",
+    "sha256": "cc7f9602c9bfb0d6f48f98f4a10d5e45b4471d24740b3bce74faec2028350310",
+    "bytes": 11921,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "source-after-interruption.json",
+    "source": ".local-tools/calendar-final-20261101/pre-fix-interrupted/source-after-interruption.json",
+    "sha256": "cc7f9602c9bfb0d6f48f98f4a10d5e45b4471d24740b3bce74faec2028350310",
+    "bytes": 11921,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "source-diff.patch",
+    "source": ".local-tools/calendar-final-20261101/pre-fix-interrupted/source-diff.patch",
+    "sha256": "d76e8bb1a7b35923dbde38d3e18f8ea2b2b5154ffc4aab5d55d4c7367d537f7a",
+    "bytes": 462,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "gradle.log",
+    "source": ".local-tools/calendar-final-20261101/pre-fix-interrupted/gradle.log",
+    "sha256": "10fb647cce9aa94c66af6e364407ba36b45a253ecccaced0ff3c7f455fc72c7a",
+    "bytes": 10382,
+    "transformation": "None; reviewed safe source bytes"
+  }
+]

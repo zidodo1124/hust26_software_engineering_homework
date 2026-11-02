@@ -1,0 +1,29 @@
+{
+  "scope": "Clarification of a static runtimeIntent template in final-data-and-state-audit.json; no change to collected evidence",
+  "annotatedFile": "final-data-and-state-audit.json",
+  "annotatedField": "runtimeIntent",
+  "originalText": "Leave normally launched and usable; do not restore pre-test stopped=true",
+  "explanation": "The phrase pre-test stopped=true was inherited from a previous batch's static template. It does not describe this batch's measured preflight state.",
+  "actualPreflightEvidenceFile": "read-only-preflight.json",
+  "actualPreflightPackageFlags": {
+    "stopped": "false",
+    "notLaunched": "false"
+  },
+  "actualFinalEvidenceFile": "final-data-and-state-audit.json",
+  "actualFinalPackageFlags": {
+    "stopped": "false",
+    "notLaunched": "false"
+  },
+  "correctInterpretation": "The application was already normally launched before this batch and was left normally launched and usable after testing. Both measured states have stopped=false and notLaunched=false.",
+  "all18AuditChecksPassed": true,
+  "auditChecksAffectedByTemplateText": false,
+  "alarmEvidenceAffectedByTemplateText": false,
+  "verifiedRemainingOriginalAlarm": {
+    "triggerEpochMillis": 1793664000000,
+    "systemDisplayTrigger": "2026-11-03 08:00:00.000",
+    "window": "0"
+  },
+  "originalAuditBytesModified": false,
+  "otherOriginalEvidenceOrCodeModified": false,
+  "deviceOperationsPerformedForThisAnnotation": false
+}
