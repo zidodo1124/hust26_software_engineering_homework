@@ -83,6 +83,17 @@ class RoomEventRepository(
 
     override suspend fun save(draft: EventDraft): DdlEvent {
         val normalized = EventValidation.normalize(draft)
+        normalized.recurrence?.let { spec ->
+            if (normalized.id != null) throw EventValidationException("不能从已有事项创建重复系列。")
+            val first = Instant.ofEpochMilli(normalized.deadlineAt)
+            val rule = try { RecurrenceRule(first, spec.frequency, spec.untilDate, spec.count) }
+                catch (_: IllegalArgumentException) { throw EventValidationException("重复结束条件无效，请检查日期或次数。") }
+            val horizon = maxOf(first, clock.instant()).plusSeconds(90L * 86_400L)
+            val seriesId = createRecurrence(normalized.copy(recurrence = null), rule, horizon)
+            val firstId = dao.recurrenceOccurrences(seriesId).firstOrNull()?.eventId
+                ?: throw IllegalStateException("Missing first occurrence")
+            return checkNotNull(dao.findEventWithRelations(firstId)).toDomain()
+        }
         return reminderTransaction {
             val now = clock.millis()
             val id = normalized.id ?: UUID.randomUUID().toString()
@@ -118,6 +129,16 @@ class RoomEventRepository(
                 )
             })
             checkNotNull(dao.findEventWithRelations(row.id)).toDomain()
+        }
+    }
+
+    /** Called on app/notification reconciliation; generated records remain finite and idempotent. */
+    suspend fun extendRecurrencesThrough(through: Instant) {
+        reminderTransaction {
+            dao.readRecurrenceSeries().forEach { series ->
+                val first = Instant.ofEpochMilli(series.firstDeadline)
+                if (first <= through) materializeRecurrence(series.id, first, through)
+            }
         }
     }
 

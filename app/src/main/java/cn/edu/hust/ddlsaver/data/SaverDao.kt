@@ -18,6 +18,9 @@ interface SaverDao {
     @Query("SELECT * FROM recurrence_series WHERE id = :id")
     suspend fun findRecurrenceSeries(id: String): RecurrenceSeriesEntity?
 
+    @Query("SELECT * FROM recurrence_series ORDER BY id")
+    suspend fun readRecurrenceSeries(): List<RecurrenceSeriesEntity>
+
     @Query("DELETE FROM recurrence_series WHERE id = :id")
     suspend fun deleteRecurrenceSeries(id: String): Int
 

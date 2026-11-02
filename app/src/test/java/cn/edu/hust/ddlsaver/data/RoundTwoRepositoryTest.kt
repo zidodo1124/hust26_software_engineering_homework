@@ -17,6 +17,7 @@ import cn.edu.hust.ddlsaver.domain.EventValidationException
 import cn.edu.hust.ddlsaver.domain.ExpiredPolicy
 import cn.edu.hust.ddlsaver.domain.RecurrenceFrequency
 import cn.edu.hust.ddlsaver.domain.RecurrenceRule
+import cn.edu.hust.ddlsaver.domain.RecurrenceSpec
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.first
@@ -107,6 +108,22 @@ class RoundTwoRepositoryTest {
         assertNotNull(rows.first { it.id == initial.first().id }.completedAt)
         assertTrue(database.dao().recurrenceOccurrences(id)[1].skipped)
         assertTrue(database.dao().readReminderPlans().any { it.eventId == rows.last().id && it.active })
+    }
+
+    @Test
+    fun savingRepeatDraftAndExtendingWindowPreservesIndependentStates() = runBlocking {
+        val first = repository.save(draft("每周作业").copy(
+            recurrence = RecurrenceSpec(RecurrenceFrequency.WEEKLY, count = 20)))
+        assertNotNull(first.recurrence)
+        val initially = repository.events.first()
+        assertTrue(initially.size in 12..14)
+        repository.setCompleted(first.id, true)
+        repository.extendRecurrencesThrough(clock.instant().plusSeconds(150L * 86_400L))
+        val extended = repository.events.first()
+        assertEquals(20, extended.size)
+        assertEquals(1, extended.count { it.completedAt != null })
+        repository.extendRecurrencesThrough(clock.instant().plusSeconds(150L * 86_400L))
+        assertEquals(20, repository.events.first().size)
     }
 
     @Test

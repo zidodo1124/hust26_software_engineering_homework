@@ -119,6 +119,24 @@ class SaverAppFlowTest {
     }
 
     @Test
+    fun createWeeklySeriesWithIndependentOccurrences() {
+        openNewEvent()
+        compose.onNodeWithTag("event-title").performScrollTo().performTextInput("每周实验")
+        selectDeadline()
+        compose.onNodeWithTag("repeat-WEEKLY").performScrollTo().performClick()
+        compose.onNodeWithTag("repeat-end-COUNT").performScrollTo().performClick()
+        compose.onNodeWithTag("repeat-count").performScrollTo().performTextInput("3")
+        compose.onNodeWithTag("event-save").performScrollTo().performClick()
+        awaitText("事项详情")
+        val events = storedEvents().sortedBy { it.deadlineAt }
+        assertEquals(3, events.size)
+        assertTrue(events.all { it.title == "每周实验" })
+        assertEquals(7L * 86_400_000, events[1].deadlineAt - events[0].deadlineAt)
+        compose.onNodeWithText("标记完成").performScrollTo().performClick()
+        compose.waitUntil(10_000) { storedEvents().count { it.completedAt != null } == 1 }
+    }
+
+    @Test
     fun requiredInputIsRejectedThenNewEventCanBeSavedAndEdited() {
         openNewEvent()
         compose.onNodeWithTag("event-save").performScrollTo().performClick()

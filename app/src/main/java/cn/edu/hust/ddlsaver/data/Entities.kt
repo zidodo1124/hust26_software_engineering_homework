@@ -17,6 +17,7 @@ import cn.edu.hust.ddlsaver.domain.CustomField
 import cn.edu.hust.ddlsaver.domain.DdlEvent
 import cn.edu.hust.ddlsaver.domain.ExpiredPolicy
 import cn.edu.hust.ddlsaver.domain.Importance
+import cn.edu.hust.ddlsaver.domain.RecurrenceRef
 
 @Entity(tableName = "events")
 data class EventEntity(
@@ -117,12 +118,14 @@ data class EventWithRelations(
     val tags: List<TagEntity>,
     @Relation(parentColumn = "id", entityColumn = "eventId") val fields: List<CustomFieldEntity>,
     @Relation(parentColumn = "id", entityColumn = "eventId") val attachments: List<AttachmentEntity>,
+    @Relation(parentColumn = "id", entityColumn = "eventId") val recurrence: RecurrenceOccurrenceEntity?,
 ) {
     fun toDomain() = event.toDomain().copy(
         source = source?.toDomain(),
         tags = tags.sortedWith(compareBy<TagEntity> { it.name }.thenBy { it.id }).map { it.toDomain() },
         customFields = fields.sortedBy { it.position }.map { it.toDomain() },
         attachments = attachments.sortedBy { it.position }.map { it.toDomain() },
+        recurrence = recurrence?.let { RecurrenceRef(it.seriesId, it.occurrenceIndex) },
     )
 }
 

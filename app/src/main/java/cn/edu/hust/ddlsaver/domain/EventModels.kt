@@ -8,6 +8,9 @@ enum class ExpiredPolicy { KEEP, AUTO_ARCHIVE }
 
 enum class BatchOperation { COMPLETE, ARCHIVE, DELETE }
 
+data class RecurrenceSpec(val frequency: RecurrenceFrequency, val untilDate: java.time.LocalDate? = null, val count: Int? = null)
+data class RecurrenceRef(val seriesId: String, val index: Long)
+
 data class Category(val id: String, val name: String, val isActive: Boolean = true)
 
 data class CustomField(val id: String, val label: String, val value: String)
@@ -38,6 +41,7 @@ data class DdlEvent(
     val tags: List<Category> = emptyList(),
     val customFields: List<CustomField> = emptyList(),
     val attachments: List<AttachmentRef> = emptyList(),
+    val recurrence: RecurrenceRef? = null,
 )
 
 data class EventDraft(
@@ -52,6 +56,7 @@ data class EventDraft(
     val tagIds: Set<String> = emptySet(),
     val customFields: List<CustomField> = emptyList(),
     val attachments: List<AttachmentRef> = emptyList(),
+    val recurrence: RecurrenceSpec? = null,
 )
 
 data class AppSettings(

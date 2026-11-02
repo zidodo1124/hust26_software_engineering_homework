@@ -393,6 +393,7 @@ private fun DetailScreen(
                     DetailLine("重要程度", importanceLabel(event.importance))
                     DetailLine("速通时间", event.sprintMinutes?.let(::formatDuration) ?: "未填写")
                     DetailLine("完成状态", if (event.completedAt == null) "未完成" else "已完成")
+                    if (event.recurrence != null) DetailLine("重复事项", "第 ${event.recurrence.index + 1} 次；编辑或删除只影响本次")
                     DetailLine("归档状态", if (event.archivedAt == null) "未归档" else "已归档")
                     DetailLine("来源", event.source?.let { it.name + if (it.isActive) "" else "（已停用）" } ?: "未指定")
                     DetailLine("标签", event.tags.joinToString("、") { it.name + if (it.isActive) "" else "（已停用）" }.ifEmpty { "未指定" })
