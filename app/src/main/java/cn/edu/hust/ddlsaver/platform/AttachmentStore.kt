@@ -34,13 +34,15 @@ class AttachmentStore(context: Context) {
         if (uris.isEmpty()) return emptyList()
         // Keep ownership outside withContext: cancellation while returning from IO must also roll back.
         val created = mutableListOf<File>()
+        val diagnostics = AttachmentImportDiagnostics(appContext, uris.size)
         try {
             return withContext(Dispatchers.IO) {
                 fileOperations.withLock {
                     ensureDirectory()
-                    uris.map { uri ->
+                    uris.mapIndexed { index, uri ->
                         currentCoroutineContext().ensureActive()
-                        importOne(uri, created)
+                        diagnostics.startItem(index, uri.scheme)
+                        importOne(uri, created, diagnostics)
                     }
                 }
             }
@@ -48,7 +50,9 @@ class AttachmentStore(context: Context) {
             rollback(created, cancelled)
             throw cancelled
         } catch (failure: Exception) {
+            val suppressedBeforeRollback = failure.suppressed.size
             rollback(created, failure)
+            diagnostics.reportFailure(failure, failure.suppressed.size - suppressedBeforeRollback)
             throw if (failure is AttachmentException) failure
             else AttachmentException("图片导入失败，请确认图片可读取且本机存储空间充足。", failure)
         }
@@ -121,7 +125,11 @@ class AttachmentStore(context: Context) {
             }
         }
 
-    private suspend fun importOne(uri: Uri, created: MutableList<File>): AttachmentRef {
+    private suspend fun importOne(
+        uri: Uri,
+        created: MutableList<File>,
+        diagnostics: AttachmentImportDiagnostics,
+    ): AttachmentRef {
         if (uri.scheme != "content" && uri.scheme != "file") {
             throw AttachmentException("请选择或粘贴可读取的图片，图片网址不能直接作为附件。")
         }
@@ -131,30 +139,40 @@ class AttachmentStore(context: Context) {
             !declaredType.startsWith("image/", ignoreCase = true)
         ) throw AttachmentException("所选内容不是图片，请重新选择。")
 
+        diagnostics.stage = AttachmentImportDiagnostics.Stage.CREATE_COPY
         val id = UUID.randomUUID().toString()
         val temporary = checkedFile("$id.part", allowTemporary = true)
         val destination = checkedFile("$id.img")
         if (!temporary.createNewFile()) throw AttachmentException("暂时无法创建图片副本，请重试。")
         created += temporary
         var byteCount = 0L
+        diagnostics.stage = AttachmentImportDiagnostics.Stage.OPEN_SOURCE
         val source = resolver.openInputStream(uri)
             ?: throw AttachmentException("无法读取所选图片，请重新选择并允许访问。")
         source.use { input ->
+            diagnostics.stage = AttachmentImportDiagnostics.Stage.WRITE_COPY
             temporary.outputStream().buffered().use { output ->
                 val buffer = ByteArray(32 * 1024)
                 while (true) {
                     currentCoroutineContext().ensureActive()
+                    diagnostics.stage = AttachmentImportDiagnostics.Stage.READ_SOURCE
                     val count = input.read(buffer)
-                    if (count < 0) break
+                    if (count < 0) {
+                        diagnostics.stage = AttachmentImportDiagnostics.Stage.WRITE_COPY
+                        break
+                    }
                     if (count == 0) continue
                     byteCount += count
                     if (byteCount > MAX_IMAGE_BYTES) {
                         throw AttachmentException("单张图片不能超过 20 MiB，请压缩后重新添加。")
                     }
+                    diagnostics.stage = AttachmentImportDiagnostics.Stage.WRITE_COPY
                     output.write(buffer, 0, count)
                 }
             }
+            diagnostics.stage = AttachmentImportDiagnostics.Stage.CLOSE_SOURCE
         }
+        diagnostics.stage = AttachmentImportDiagnostics.Stage.DECODE_IMAGE
         val bounds = readBounds(temporary)
         // A plausible header is insufficient: decode a bounded thumbnail before accepting the file.
         var validationSample = 1
@@ -167,6 +185,7 @@ class AttachmentStore(context: Context) {
         ) ?: throw AttachmentException("图片内容已经损坏，无法读取，请重新选择。")
         validationBitmap.recycle()
         currentCoroutineContext().ensureActive()
+        diagnostics.stage = AttachmentImportDiagnostics.Stage.COMMIT_COPY
         if (destination.exists()) throw AttachmentException("图片副本标识冲突，请重试。")
         created += destination
         if (!temporary.renameTo(destination)) throw AttachmentException("图片副本保存失败，请检查可用存储。")
