@@ -247,6 +247,10 @@ CI 自动测试覆盖字段独立、分类维护与组合筛选、真实 v1／v2
 
 警告总数仍为 16：新增恢复诊断 SharedPreferences.edit 的 1 条 UseKtx，原 ReminderRuntime 的 1 条 InlinedApi 消失，不能称为全部既有警告。 实际命令含 cleanTestDebugUnitTest、assembleDebug、testDebugUnitTest、lintDebug；Gradle 报告 3 分 32 秒，进程测量 214.031 秒。APK 为 15,119,011 字节，SHA-256 `690626883dd90684128959a53737b54c326352e3decb0dd46a707ac3d962ab90`，版本 0.3.4／7、schema 4，签名与基线一致。
 
-已完成来源安全异常重复制／重选提示、调试恢复记录和重启／强停说明；同步写盘可能拖延 Receiver 的静态 P2 已整改并独立复审通过。独立单写入器最多保留 6 个待写来源槽和 1 个在途写入，业务恢复与 Receiver 收尾不等待磁盘；同来源中间阶段可合并，进程退出可能丢失未写记录，属于尽力留证，不承诺持久化必达。 角色形象测试增强保存前选中／按钮启用断言及失败诊断，未延长超时、删测试或为测试修改产品。完整本机通过不解释旧 CI #45 的根因，原失败继续保留；本轮远程检查见 [main 的 Android Actions](https://github.com/zidodo1124/hust26_software_engineering_homework/actions?query=branch%3Amain)，不预填新运行结论。
+已完成来源安全异常重复制／重选提示、调试恢复记录和重启／强停说明；同步写盘可能拖延 Receiver 的静态 P2 已整改并独立复审通过。独立单写入器最多保留 6 个待写来源槽和 1 个在途写入，业务恢复与 Receiver 收尾不等待磁盘；同来源中间阶段可合并，进程退出可能丢失未写记录，属于尽力留证，不承诺持久化必达。 角色形象测试增强保存前选中／按钮启用断言及失败诊断，未延长超时、删测试或为测试修改产品。完整本机通过不解释旧 CI #45 的根因，原失败继续保留。后续 [CI #46](test-evidence/RUN-20261101-DEMO-STABILITY/ci46/README.md) 对准确提交 `b95b6c6` 独立完成 28 XML／179 方法／218 次执行，失败／错误／跳过各 0，Lint 0／17；构建、测试、Lint 和产物上传成功。远程仅多 1 条 OldTargetApi，其余 16 条警告与本机一致。
 
 本批完整证据见 [RUN-20261101-DEMO-STABILITY](test-evidence/RUN-20261101-DEMO-STABILITY/README.md)。手机仍为 0.3.3／6，本轮 04:32 UTC ADB 无设备；OBS-01 授权失效机制、OBS-02 真实重启自动恢复原因、完整 DA／TC 及最终验收继续开放。
+
+## 19. 0.3.4 独立设备复验（准备中）
+
+用户随后明确连接手机并要求进行测试，已检测到 1 台授权 ADB 设备；[RUN-20261101-DEVICE-034](test-evidence/RUN-20261101-DEVICE-034/README.md) 开始准备。新包覆盖、数据保持、图片提示、提醒恢复及收尾结果按实际执行追加，当前不预填通过。前序过程见[维护日志](maintenance-log.md)。

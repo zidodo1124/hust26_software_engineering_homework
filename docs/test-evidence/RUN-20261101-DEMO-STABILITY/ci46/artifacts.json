@@ -1,0 +1,42 @@
+[
+  {
+    "id": 13117366270,
+    "node_id": "MDg6QXJ0aWZhY3QxMzExNzM2NjI3MA==",
+    "name": "android-check-reports-b95b6c6e699d0c0537ff15bc4ec00c50507ad13d",
+    "size_in_bytes": 101639,
+    "url": "https://api.github.com/repos/zidodo1124/hust26_software_engineering_homework/actions/artifacts/13117366270",
+    "archive_download_url": "https://api.github.com/repos/zidodo1124/hust26_software_engineering_homework/actions/artifacts/13117366270/zip",
+    "expired": false,
+    "digest": "sha256:92d80ffbed6cd632b200072fa3debeed0bb9e4963dcea2ef07c44c7e3b6b5fc6",
+    "created_at": "2026-11-02T04:48:38Z",
+    "updated_at": "2026-11-02T04:48:38Z",
+    "expires_at": "2026-11-16T04:48:37Z",
+    "workflow_run": {
+      "id": 41390048583,
+      "repository_id": 1369953742,
+      "head_repository_id": 1369953742,
+      "head_branch": "main",
+      "head_sha": "b95b6c6e699d0c0537ff15bc4ec00c50507ad13d"
+    }
+  },
+  {
+    "id": 13117241649,
+    "node_id": "MDg6QXJ0aWZhY3QxMzExNzI0MTY0OQ==",
+    "name": "ddl-saver-debug-b95b6c6e699d0c0537ff15bc4ec00c50507ad13d",
+    "size_in_bytes": 14670938,
+    "url": "https://api.github.com/repos/zidodo1124/hust26_software_engineering_homework/actions/artifacts/13117241649",
+    "archive_download_url": "https://api.github.com/repos/zidodo1124/hust26_software_engineering_homework/actions/artifacts/13117241649/zip",
+    "expired": false,
+    "digest": "sha256:73cfd4dd6a6a6469a899018465814f31b00182941ab9963a1da37df0f7267302",
+    "created_at": "2026-11-02T04:48:37Z",
+    "updated_at": "2026-11-02T04:48:37Z",
+    "expires_at": "2026-11-16T04:48:35Z",
+    "workflow_run": {
+      "id": 41390048583,
+      "repository_id": 1369953742,
+      "head_repository_id": 1369953742,
+      "head_branch": "main",
+      "head_sha": "b95b6c6e699d0c0537ff15bc4ec00c50507ad13d"
+    }
+  }
+]

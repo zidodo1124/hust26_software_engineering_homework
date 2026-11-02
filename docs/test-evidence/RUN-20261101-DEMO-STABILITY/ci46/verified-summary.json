@@ -1,0 +1,335 @@
+{
+  "checkedAtUtc": "2026-11-02T04:49:42.676023+00:00",
+  "runId": 41390048583,
+  "runNumber": 46,
+  "headSha": "b95b6c6e699d0c0537ff15bc4ec00c50507ad13d",
+  "status": "completed",
+  "conclusion": "success",
+  "url": "https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41390048583",
+  "startedAtUtc": "2026-11-02T04:43:35Z",
+  "updatedAtUtc": "2026-11-02T04:48:42Z",
+  "tests": {
+    "suites": 28,
+    "actualExecutions": 218,
+    "uniqueMethods": 179,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "suiteResults": [
+    {
+      "name": "cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest",
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest",
+      "tests": 16,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.data.SaverDatabaseMigrationTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.domain.CharacterFeedbackTest",
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.domain.EventValidationTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.domain.EventQueryTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.domain.ExtendedEventValidationTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.domain.UrgencyRulesTest",
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.platform.AttachmentImportDiagnosticsTest",
+      "tests": 20,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.platform.AttachmentStoreTest",
+      "tests": 26,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.reminders.AndroidReminderPlatformTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.reminders.ReminderEngineTest",
+      "tests": 20,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest",
+      "tests": 20,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.reminders.ReminderRestoreIntegrationTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.reminders.ReminderRulesTest",
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.reminders.ReminderStatusCopyTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.CalendarGridTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.AttachmentClipboardFlowTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.CharacterArtworkTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.CharacterAssetsTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.CharacterBubbleLayoutTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.ContentClipboardFlowTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.OceanThemeContrastTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.OceanUiRenderTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.ReminderColdLaunchTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.SaverAppFlowTest",
+      "tests": 18,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.SaverViewModelFeedbackTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "lint": {
+    "errors": 0,
+    "warnings": 17,
+    "ciOnlyIssuesComparedWithLocalFinal": [
+      {
+        "id": "OldTargetApi",
+        "severity": "Warning",
+        "message": "Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the `android.os.Build.VERSION_CODES` javadoc for details.",
+        "locations": [
+          {
+            "file": "app/build.gradle.kts",
+            "line": "15"
+          }
+        ]
+      }
+    ],
+    "localOnlyIssuesComparedWithCi": []
+  },
+  "buildLogLines": [
+    "2026-11-02T04:46:52.1503988Z > Task :app:assembleDebug",
+    "2026-11-02T04:47:38.8455915Z > Task :app:testDebugUnitTest",
+    "2026-11-02T04:48:34.6416437Z > Task :app:lintDebug",
+    "2026-11-02T04:48:34.7255058Z BUILD SUCCESSFUL in 4m 36s",
+    "2026-11-02T04:48:34.7255672Z 55 actionable tasks: 55 executed"
+  ],
+  "artifacts": [
+    {
+      "id": 13117366270,
+      "name": "android-check-reports-b95b6c6e699d0c0537ff15bc4ec00c50507ad13d",
+      "size_in_bytes": 101639,
+      "expired": false,
+      "digest": "sha256:92d80ffbed6cd632b200072fa3debeed0bb9e4963dcea2ef07c44c7e3b6b5fc6",
+      "workflow_run": {
+        "id": 41390048583,
+        "repository_id": 1369953742,
+        "head_repository_id": 1369953742,
+        "head_branch": "main",
+        "head_sha": "b95b6c6e699d0c0537ff15bc4ec00c50507ad13d"
+      }
+    },
+    {
+      "id": 13117241649,
+      "name": "ddl-saver-debug-b95b6c6e699d0c0537ff15bc4ec00c50507ad13d",
+      "size_in_bytes": 14670938,
+      "expired": false,
+      "digest": "sha256:73cfd4dd6a6a6469a899018465814f31b00182941ab9963a1da37df0f7267302",
+      "workflow_run": {
+        "id": 41390048583,
+        "repository_id": 1369953742,
+        "head_repository_id": 1369953742,
+        "head_branch": "main",
+        "head_sha": "b95b6c6e699d0c0537ff15bc4ec00c50507ad13d"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "number": 1,
+      "name": "Set up job",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "number": 2,
+      "name": "Check out source",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "number": 3,
+      "name": "Set up JDK 17",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "number": 4,
+      "name": "Set up Android SDK",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "number": 5,
+      "name": "Build and check",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "number": 6,
+      "name": "Upload checked debug APK",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "number": 7,
+      "name": "Upload test and lint reports",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "number": 13,
+      "name": "Post Set up JDK 17",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "number": 14,
+      "name": "Post Check out source",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "number": 15,
+      "name": "Complete job",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "localFilesChanged": "Only ignored .local-tools evidence and helper script; no source/docs/Gradle/device operations"
+}

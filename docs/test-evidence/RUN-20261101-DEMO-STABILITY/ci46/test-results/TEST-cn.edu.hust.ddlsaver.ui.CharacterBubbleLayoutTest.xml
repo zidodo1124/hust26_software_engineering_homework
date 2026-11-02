@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.ui.CharacterBubbleLayoutTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-11-02T04:47:58" hostname="runnervm48cm3" time="0.433">
+  <properties/>
+  <testcase name="bothStylesKeepTheBubbleBesideTheArtworkAndItsTextInside" classname="cn.edu.hust.ddlsaver.ui.CharacterBubbleLayoutTest" time="0.155"/>
+  <testcase name="textAndCreditsRemainUsableWhenTheArtworkSlotIsEmpty" classname="cn.edu.hust.ddlsaver.ui.CharacterBubbleLayoutTest" time="0.065"/>
+  <testcase name="largeTextStacksTheBubbleUnderEitherArtworkWithoutClippingLongDialogue" classname="cn.edu.hust.ddlsaver.ui.CharacterBubbleLayoutTest" time="0.213"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

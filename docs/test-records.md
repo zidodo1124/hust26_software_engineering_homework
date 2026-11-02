@@ -680,4 +680,20 @@ BOOT 样本原危险计划为北京时间 11:44，重启前通知／精确访问
 
 命令包含 cleanTestDebugUnitTest、assembleDebug、testDebugUnitTest、lintDebug。警告总数仍为 16：新增恢复诊断 SharedPreferences.edit 的 1 条 UseKtx，原 ReminderRuntime 的 1 条 InlinedApi 消失，不能称为全部既有警告。 版本 0.3.4／7、schema 4，APK 15,119,011 字节、SHA-256 `690626883dd90684128959a53737b54c326352e3decb0dd46a707ac3d962ab90`；签名证书 SHA-256 `978833bcaf0fc001248f5d8501bfa1f9d1273922474ed601f2c60a4548a652b9` 与基线一致。
 
-角色测试已增强保存前选中／按钮启用断言和失败诊断，未延长超时、删测试或迎合测试修改产品；原 CI #45 失败不归因产品竞态、网络或偶发，之后通过也不覆盖原证据。基线、首轮失败、最终 XML／日志及哈希见[本批目录](test-evidence/RUN-20261101-DEMO-STABILITY/README.md)，新源码远程状态见 [main 的 Android Actions](https://github.com/zidodo1124/hust26_software_engineering_homework/actions?query=branch%3Amain)。手机仍为 0.3.3／6，04:32 UTC ADB 未检测到设备，新包未实机验收，OBS-01／OBS-02 保持开放。
+角色测试已增强保存前选中／按钮启用断言和失败诊断，未延长超时、删测试或迎合测试修改产品；原 CI #45 失败不归因产品竞态、网络或偶发，之后通过也不覆盖原证据。基线、首轮失败、最终 XML／日志及哈希见[本批目录](test-evidence/RUN-20261101-DEMO-STABILITY/README.md)，后续远程执行见下节。该本机批次结束时手机仍为 0.3.3／6，04:32 UTC ADB 未检测到设备；当时没有新包实机操作，OBS-01／OBS-02 保持开放。
+
+### 21.1 同源码 CI #46 复核
+
+[CI #46](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41390048583) 对 `b95b6c6e699d0c0537ff15bc4ec00c50507ad13d` 于 2026-11-02 04:43:35—04:48:42 UTC 完成并成功；产品源码与 `bdcd76f` 对齐。Gradle 4 分 36 秒，55 项任务实际执行，构建、单元测试、Lint、APK 上传和报告上传全部成功。
+
+原始报告产物 13117366270 解析为 28 份 XML／179 个方法／218 次执行，失败、错误、跳过均 0；Lint 0 错误／17 警告，较本机仅增加 app/build.gradle.kts 的 OldTargetApi 提示。安全元数据、原始 XML、Lint 和哈希见[CI 归档](test-evidence/RUN-20261101-DEMO-STABILITY/ci46/README.md)。本机与 CI 分开统计；成功不追溯解释或删除 CI #45 的失败。
+
+## 22. RUN-20261101-DEVICE-034：0.3.4 手机复验
+
+用户先选择“先交付本机验证版，手机稍后再测”，此后要求把修复过程记录为日志，并确认已连接手机、开展测试。已检测到 1 台授权 ADB 设备；[新批次](test-evidence/RUN-20261101-DEVICE-034/README.md) 处于准备阶段，安装、数据保持、图片提示与提醒恢复结论待实际操作后追加。前序工作已汇总至[维护日志](maintenance-log.md)，不把本机或 CI 结果改记为手机通过。
+
+### 22.1 升级前基线
+
+2026-11-02 04:56:41—04:58:33 UTC 只读核对荣耀 ALI-AN00／Android 15／API 35，已解锁；原包 0.3.3／6，SHA-256 `6f30078bf0dfa95731afe9fae0c08f06dd19d048eb815fd2236022c90e19e65b`、证书与新包匹配。原业务为 3 事项／4 附件，提醒 28 行／12 SENT／2 active／0 cancelPending；通知允许、精确访问 allow、通道 3，活跃产品通知 0。
+
+本批未启动或强停产品前，已观测 `stopped=true`、无产品进程、无系统提醒 Alarm；保留该初始差异，不推测产生原因，也不归因本轮操作。北京时间 11 月 2 日 DAILY 已 SENT，不改变时钟或发送账本。新鲜基线已取得，同签名升级结果尚待确认。

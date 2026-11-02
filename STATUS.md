@@ -6,7 +6,7 @@
 
 ## 当前阶段
 
-项目处于**第四轮联调、补测与课程验收准备**。当前源码为 [bdcd76f](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/bdcd76f916aae546bd146ce1fb1a14859bcd5eb4)，版本 **0.3.4／versionCode 7、Room schema 4**；完整本机构建和 **179 个方法／218 次执行全部通过，Lint 0 错误／16 警告**。此前 7 份源码／测试增量保存在 `778429e`，PR #10 的合并基线为 `c1e94f3`。荣耀 X50 仍为已有分项证据的 **0.3.3／6**，0.3.4 未安装或实机验收。远程检查按提交在 [main 的 Android Actions](https://github.com/zidodo1124/hust26_software_engineering_homework/actions?query=branch%3Amain) 查看，不能把历史 CI #45 的失败或本机通过当作本轮远程结论。完整需求、完整业务场景与最终验收仍待完成。分轮历史见[实现计划](docs/implementation-plan.md)，分工见[任务板](team/README.md)，操作见[使用手册](docs/user-guide.md)。
+项目处于**第四轮联调、补测与课程验收准备**。当前源码为 [bdcd76f](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/bdcd76f916aae546bd146ce1fb1a14859bcd5eb4)，版本 **0.3.4／versionCode 7、Room schema 4**；完整本机构建和 **179 个方法／218 次执行全部通过，Lint 0 错误／16 警告**。此前 7 份源码／测试增量保存在 `778429e`，PR #10 的合并基线为 `c1e94f3`。荣耀 X50 仍为已有分项证据的 **0.3.3／6**，0.3.4 未安装或实机验收。[CI #46](docs/test-evidence/RUN-20261101-DEMO-STABILITY/ci46/README.md) 已在 `b95b6c6` 上独立执行 218 次全部通过，Lint 0／17。用户随后连接手机，当前转入独立[0.3.4 设备复验](docs/test-evidence/RUN-20261101-DEVICE-034/README.md)；结果逐项追加。修复过程见[维护日志](docs/maintenance-log.md)。完整需求、完整业务场景与最终验收仍待完成。分轮历史见[实现计划](docs/implementation-plan.md)，分工见[任务板](team/README.md)，操作见[使用手册](docs/user-guide.md)。
 
 **付泽文：** PR #1—#9 已合入数据与信息组织的阶段成果；PR #10 的 7 项[规划扩展提案](docs/planning-extension-requirements.md)也已审阅合入，但不代表功能已实现或所有建议规则已获确认。已有成果包括[专项需求](docs/data-requirements.md)、[架构核查](docs/data-architecture-review.md)、同名字段与旧库迁移、分类恢复与事务回滚、保存冲突与失败重试、连续多词搜索及组合筛选／日期交互测试，并形成[模块说明与答辩材料](docs/data-module-report.md)。已确认的规则和实际参与见[个人记录](team/付泽文.md)；未讨论的业务边界与项目整体需求继续待审核，完整场景缺口见[需求—代码—测试追踪](docs/data-test-traceability.md)。此前按本人要求将实机业务、同签名升级与真实附件检查安排到最后阶段；本轮中央升级及收尾分项已完成，完整业务流程继续待验。
 
@@ -20,9 +20,9 @@
 
 [RUN-20261101-DEMO-STABILITY](docs/test-evidence/RUN-20261101-DEMO-STABILITY/README.md) 的最终源码 [bdcd76f](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/bdcd76f916aae546bd146ce1fb1a14859bcd5eb4) 已完整构建成功：**28 份 JUnit XML、179 个不同方法／218 次执行，失败／错误／跳过各 0，Lint 0 错误／16 警告**。警告总数仍为 16：新增恢复诊断 SharedPreferences.edit 的 1 条 UseKtx，原 ReminderRuntime 的 1 条 InlinedApi 消失，不能称为全部既有警告。 图片来源权限拒绝现提供重复制／重选提示；调试包恢复记录与重启／强停说明已加入。首轮定向 108 次执行中的 2 次取消测试前提失败，以及诊断写盘的静态 P2 整改与复审均保留；最终全量通过不抹去先前失败。
 
-历史 [CI #44](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41387261004) 成功；其后的 [CI #45](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41387758880) 在 `c1e94f3` 上 169 次执行有 1 次角色形象页面等待失败，错误／跳过各 0、Lint 0／17。原始失败缺少当时 ViewModel 状态，根因仍未确定；本轮已加强断言和失败诊断并通过本机复测，未延长超时或删测试。新源码的远程状态以 [main 的 Android Actions](https://github.com/zidodo1124/hust26_software_engineering_homework/actions?query=branch%3Amain) 对应提交为准，本页不预填新 CI 编号或通过结论。
+历史 [CI #44](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41387261004) 成功；其后的 [CI #45](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41387758880) 在 `c1e94f3` 上 169 次执行有 1 次角色形象页面等待失败，错误／跳过各 0、Lint 0／17。原始失败缺少当时 ViewModel 状态，根因仍未确定；本轮已加强断言和失败诊断并通过本机复测，未延长超时或删测试。后续 [CI #46](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41390048583) 对准确 head `b95b6c6` 成功，原始报告为 28 XML／179 方法／218 次执行，失败／错误／跳过各 0，Lint 0／17；比本机仅多 OldTargetApi 1 条。构建、测试、Lint、APK 和报告上传均成功，见[安全归档](docs/test-evidence/RUN-20261101-DEMO-STABILITY/ci46/README.md)。
 
-0.3.4 APK 已核对版本、哈希和同基线签名，但本轮没有设备安装；04:32 UTC ADB 未检测到设备。OBS-01 授权失效机制、OBS-02 真实重启自动恢复原因继续开放。
+0.3.4 APK 已核对版本、哈希和同基线签名。本机／CI 批次没有设备安装，04:32 UTC 的无设备观察保留；用户此后连接手机并授权新批次，已检测到 1 台授权设备，安装与实测结果尚待记录。OBS-01 授权失效机制、OBS-02 真实重启自动恢复原因继续开放。
 
 #### 历史 CI #42
 

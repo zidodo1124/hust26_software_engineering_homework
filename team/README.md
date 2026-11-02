@@ -20,11 +20,13 @@
 | [付泽文](付泽文.md) | 数据与信息组织 | 已确认局部需求、完成架构核查；同名字段、迁移、分类恢复、事务回滚、保存冲突／重试、搜索及组合筛选测试与模块报告已合入；PR #10 的 7 项规划建议已审阅合入，未作为已实现功能 | 确认剩余规则，补完整 DA／TC 步骤并汇编最终报告；最后实机业务与真实附件升级验收 | 进行中：自动测试与报告已合入，最终实机待验 |
 | [岳羽泉](岳羽泉.md) | Android 通知与恢复 | 已完成提醒设计复核，新增 4 项规则边界测试、4 项已送达后失效测试、3 项文案测试及文案修正；5 项内容提交已直接 merge 合入 | 结合中央验收整理答辩说明；优先调查 OBS-02 重启自动恢复；继续补持续锁屏、自然 Doze／省电、每日汇总点击与完整拒绝路径 | 进行中：个人复核已合入，中央设备分项已有证据，完整验收待做 |
 
+**维护与复验：** [维护日志](../docs/maintenance-log.md)汇总本轮修复、失败与复测。用户先选择本机版，随后连接手机并要求[0.3.4 实机复验](../docs/test-evidence/RUN-20261101-DEVICE-034/README.md)；新批次准备中，尚不登记设备通过。
+
 ## 最新自动检查与剩余待办
 
 [PR #10](https://github.com/zidodo1124/hust26_software_engineering_homework/pull/10) 已按准确 head `d4e0942` 审阅并合并为 `c1e94f3`，04:25:58 UTC 快照无开放 PR。合并后基线 194 次执行通过；当前 [bdcd76f](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/bdcd76f916aae546bd146ce1fb1a14859bcd5eb4) 的 0.3.4 完整检查为 **28 份 JUnit XML、179 个不同方法／218 次执行，失败／错误／跳过各 0，Lint 0 错误／16 警告**。[本批记录](../docs/test-evidence/RUN-20261101-DEMO-STABILITY/README.md)保留首轮 2／108 失败与最终复测、静态 P2 整改及 APK 标识。新包没有手机安装，OBS-01／OBS-02 继续开放。
 
-历史 [CI #45](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41387758880) 为 169 执行／1 失败、Lint 0／17，角色形象流程等待超时根因仍未确定；本轮已增强诊断与断言，本机复测通过，不改写原失败。新源码远程状态见 [main 的 Android Actions](https://github.com/zidodo1124/hust26_software_engineering_homework/actions?query=branch%3Amain)，不把本机 218 次结果写成 CI 已通过。
+历史 [CI #45](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41387758880) 为 169 执行／1 失败、Lint 0／17，角色形象流程等待超时根因仍未确定；本轮已增强诊断与断言，本机复测通过，不改写原失败。后续 [CI #46](../docs/test-evidence/RUN-20261101-DEMO-STABILITY/ci46/README.md) 已在准确 head `b95b6c6` 独立完成 28 XML／179 方法／218 次执行，全通过，Lint 0／17（比本机多 OldTargetApi 1 条）。构建、测试、Lint 与产物上传均成功。
 
 以下 CI #42 与两轮本机结果为此前历史快照：
 

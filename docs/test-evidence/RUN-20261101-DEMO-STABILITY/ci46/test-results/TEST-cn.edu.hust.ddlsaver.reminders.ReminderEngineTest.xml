@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.reminders.ReminderEngineTest" tests="20" skipped="0" failures="0" errors="0" timestamp="2026-11-02T04:47:47" hostname="runnervm48cm3" time="1.463">
+  <properties/>
+  <testcase name="completingAfterDeliveryCancelsVisibleNotificationAndDeactivatesPlans" classname="cn.edu.hust.ddlsaver.reminders.ReminderEngineTest" time="0.107"/>
+  <testcase name="rescheduleAfterDeliveryCancelsOldAlertAndIgnoresOldDeadlineWake" classname="cn.edu.hust.ddlsaver.reminders.ReminderEngineTest" time="0.093"/>
+  <testcase name="notifySuccessBeforeCommitLeavesClaimAndRetryReusesStableNotificationIdentity" classname="cn.edu.hust.ddlsaver.reminders.ReminderEngineTest" time="0.086"/>
+  <testcase name="deletingAfterDeliveryCancelsVisibleNotificationAndDeactivatesPlans" classname="cn.edu.hust.ddlsaver.reminders.ReminderEngineTest" time="0.087"/>
+  <testcase name="clockRollbackRecalculatesNearestUnsentBeijingSummary" classname="cn.edu.hust.ddlsaver.reminders.ReminderEngineTest" time="0.1"/>
+  <testcase name="oldCallbackAfterDeadlineAndLeadChangesCannotSendEarly" classname="cn.edu.hust.ddlsaver.reminders.ReminderEngineTest" time="0.062"/>
+  <testcase name="coincidentReasonsMergeButDifferentEventsRemainIndependent" classname="cn.edu.hust.ddlsaver.reminders.ReminderEngineTest" time="0.054"/>
+  <testcase name="reasonsAtDifferentTimesAlertSeparatelyAndReplaysDoNotRepeat" classname="cn.edu.hust.ddlsaver.reminders.ReminderEngineTest" time="0.049"/>
+  <testcase name="failedCancellationRetainsIdentityAndSnapshotAfterDeletionUntilRecovery" classname="cn.edu.hust.ddlsaver.reminders.ReminderEngineTest" time="0.089"/>
+  <testcase name="characterStyleChangePreservesSentLedgerAndDoesNotPostAgain" classname="cn.edu.hust.ddlsaver.reminders.ReminderEngineTest" time="0.096"/>
+  <testcase name="schedulingFailureKeepsDurableDesiredPlanAndRetryDoesNotDuplicateEvent" classname="cn.edu.hust.ddlsaver.reminders.ReminderEngineTest" time="0.057"/>
+  <testcase name="completedArchivedDeletedAndExpiredEventsCannotProduceStaleNotifications" classname="cn.edu.hust.ddlsaver.reminders.ReminderEngineTest" time="0.09"/>
+  <testcase name="failedPostBacksOffAndCanRecoverFromPersistedState" classname="cn.edu.hust.ddlsaver.reminders.ReminderEngineTest" time="0.085"/>
+  <testcase name="plansExistAtRepositoryCommitAndPlanningFailureRollsBackEvent" classname="cn.edu.hust.ddlsaver.reminders.ReminderEngineTest" time="0.07"/>
+  <testcase name="enablingDailyAfterItsTimeSchedulesTomorrowRatherThanHistoricalBurst" classname="cn.edu.hust.ddlsaver.reminders.ReminderEngineTest" time="0.035"/>
+  <testcase name="archivingAfterDeliveryCancelsVisibleNotificationAndDeactivatesPlans" classname="cn.edu.hust.ddlsaver.reminders.ReminderEngineTest" time="0.064"/>
+  <testcase name="sentLedgerKeepsAttemptTimestampAfterDescriptionEditWithoutResending" classname="cn.edu.hust.ddlsaver.reminders.ReminderEngineTest" time="0.037"/>
+  <testcase name="dailySummaryUsesCurrentRowsMarksOverdueAndSkipsEmptyDay" classname="cn.edu.hust.ddlsaver.reminders.ReminderEngineTest" time="0.057"/>
+  <testcase name="disabledNotificationCapabilityPausesAlarmAndGrantReconcilesDuePlans" classname="cn.edu.hust.ddlsaver.reminders.ReminderEngineTest" time="0.065"/>
+  <testcase name="deliveredTodaySummarySurvivesReconcileAndIsCancelledWhenDisabled" classname="cn.edu.hust.ddlsaver.reminders.ReminderEngineTest" time="0.075"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
