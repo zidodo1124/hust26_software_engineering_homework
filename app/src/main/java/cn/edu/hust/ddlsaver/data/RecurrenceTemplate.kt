@@ -11,7 +11,7 @@ import org.json.JSONObject
 internal object RecurrenceTemplate {
     fun encode(draft: EventDraft): String {
         if (draft.id != null || draft.attachments.isNotEmpty()) {
-            throw EventValidationException("重复事项暂不支持从已有事项创建或携带图片附件。")
+            throw EventValidationException(if (draft.attachments.isNotEmpty()) "重复事项还不能带图片，请先移除图片。" else "重复模板的信息有误，请重新设置重复规则。")
         }
         val fields = JSONArray()
         draft.customFields.forEach { fields.put(JSONObject().put("id", it.id).put("label", it.label).put("value", it.value)) }

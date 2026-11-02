@@ -71,7 +71,7 @@ class ReminderEngine(
                 } catch (error: Exception) {
                     if (error is CancellationException) throw error
                     control = control.copy(alarmDirty = true,
-                        lastError = "提醒安排暂未完成（${error.javaClass.simpleName}），打开应用后将重试。")
+                        lastError = "提醒没安排成功（${error.javaClass.simpleName}），打开应用后会重试。")
                     dao.putReminderControl(control)
                 }
             }
@@ -98,7 +98,7 @@ class ReminderEngine(
                     dao.putReminderPlan(current.copy(cancelPending = false, lastError = null))
                 } catch (error: Exception) {
                     if (error is CancellationException) throw error
-                    dao.putReminderPlan(current.copy(lastError = "旧提醒取消暂未完成（${error.javaClass.simpleName}），将重试。"))
+                    dao.putReminderPlan(current.copy(lastError = "旧提醒还没取消成功（${error.javaClass.simpleName}），将重试。"))
                 }
             }
         }
@@ -133,7 +133,7 @@ class ReminderEngine(
             } catch (error: Exception) {
                 if (error is CancellationException) throw error
                 current.forEach { dao.putReminderPlan(it.copy(state = "FAILED", lastAttemptAt = currentNow,
-                    lastError = "通知暂未提交（${error.javaClass.simpleName}），将重试。")) }
+                    lastError = "通知发送出了问题（${error.javaClass.simpleName}），将重试。")) }
             }
         }
     }
@@ -144,16 +144,16 @@ class ReminderEngine(
             if (first.day != Instant.ofEpochMilli(now).atZone(UrgencyRules.BEIJING_ZONE).toLocalDate().toString()) return null
             val today = ReminderRules.todayEvents(events, now)
             if (today.isEmpty()) return null
-            return ReminderNotification(first.notificationTag, "今日 DDL · ${today.size} 项",
-                "查看今天截止且未完成的事项，按截止时间安排进度。", today = true,
+            return ReminderNotification(first.notificationTag, "今日待办 · ${today.size} 项",
+                "今天截止的事项还没做完，点开看看吧。", today = true,
                 lines = today.take(7).map { (if (it.deadlineAt <= now) "[已逾期] " else "") + it.title })
         }
         val event = events.firstOrNull { it.id == first.eventId && it.deadlineAt == first.deadlineAt &&
             UrgencyRules.isActive(it) && it.deadlineAt > now } ?: return null
-        val reasons = plans.map { if (it.kind == ReminderKind.DANGER.name) "进入速通危险期" else "临近截止" }.distinct()
+        val reasons = plans.map { if (it.kind == ReminderKind.DANGER.name) "该冲刺了" else "快到截止时间了" }.distinct()
         val time = deadlineFormat.format(Instant.ofEpochMilli(event.deadlineAt))
         return ReminderNotification(first.notificationTag, event.title,
-            reasons.joinToString(" · ") + "，截止 $time（北京时间）。", eventId = event.id)
+            reasons.joinToString(" · ") + "。$time 截止（北京时间）。", eventId = event.id)
     }
 
     companion object {

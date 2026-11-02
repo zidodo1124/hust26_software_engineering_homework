@@ -70,13 +70,13 @@ class ReminderEngineTest {
         clock.current = Instant.ofEpochMilli(original + 60 * 60_000)
         engine.reconcile()
         assertEquals(1, platform.posts.size)
-        assertTrue(platform.posts.single().text.contains("临近截止"))
+        assertTrue(platform.posts.single().text.contains("快到截止时间了"))
         clock.current = Instant.ofEpochMilli(original + 90 * 60_000)
         engine.reconcile()
         engine.reconcile()
         assertEquals(2, platform.posts.size)
         assertEquals(2, platform.posts.map { it.tag }.distinct().size)
-        assertTrue(platform.posts.last().text.contains("速通危险期"))
+        assertTrue(platform.posts.last().text.contains("该冲刺了"))
     }
 
     @Test fun coincidentReasonsMergeButDifferentEventsRemainIndependent() = runBlocking {
@@ -87,7 +87,7 @@ class ReminderEngineTest {
         assertEquals(2, platform.posts.size)
         assertEquals(2, platform.posts.map { it.eventId }.distinct().size)
         val combined = platform.posts.first { it.title == "同刻双原因" }
-        assertTrue(combined.text.contains("速通危险期") && combined.text.contains("临近截止"))
+        assertTrue(combined.text.contains("该冲刺了") && combined.text.contains("快到截止时间了"))
         assertEquals(3, db.dao().readReminderPlans().count { it.active && it.state == "SENT" })
     }
 

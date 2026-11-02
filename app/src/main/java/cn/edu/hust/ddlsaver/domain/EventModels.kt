@@ -75,6 +75,6 @@ data class AppSettings(
 
 class EventValidationException(message: String) : IllegalArgumentException(message)
 
-class EventNotFoundException : IllegalStateException("这条事项已不存在，请返回列表刷新。")
+class EventNotFoundException : IllegalStateException("这条事项已经不在了，返回列表看看吧。")
 
-class EventConflictException : IllegalStateException("这条事项已被修改，请重新打开后再编辑。")
+class EventConflictException : IllegalStateException("这条事项刚被修改过，请重新打开再编辑。")

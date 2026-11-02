@@ -79,7 +79,7 @@ class AttachmentImportDiagnosticsTest {
         val failure = expectFailure { store.importImages(listOf(Uri.fromFile(freshSource), denied)) }
 
         assertOriginalCause(original, failure)
-        assertEquals("图片导入失败：来源访问权限不可用。请重新复制图片，或使用“从相册选择”重新添加。", failure.message)
+        assertEquals("图片没加上：没有读取这张图片的权限。请重新复制图片，或点“从相册选择”再添加。", failure.message)
         assertEquals(setOf(existing.relativePath), privateNames())
         assertArrayEquals(existingBytes, File(copies, existing.relativePath).readBytes())
         assertTrue(freshSource.isFile)
@@ -138,7 +138,7 @@ class AttachmentImportDiagnosticsTest {
         val failure = expectFailure { restrictedStore.importImages(listOf(Uri.fromFile(source))) }
 
         assertOriginalCause(original, failure)
-        assertEquals("图片导入失败，请确认图片可读取且本机存储空间充足。", failure.message)
+        assertEquals("图片没加上，请检查图片能否打开，以及手机存储空间是否够用。", failure.message)
         assertTrue(privateNames().isEmpty())
         assertArrayEquals(sourceBytes, source.readBytes())
         assertLog("ensure_directory", "none", 0, 1, "security_denied")
@@ -157,7 +157,7 @@ class AttachmentImportDiagnosticsTest {
         val failure = expectFailure { store.importImages(listOf(uri)) }
 
         assertOriginalCause(original, failure)
-        assertEquals("图片导入失败：来源访问权限不可用。请重新复制图片，或使用“从相册选择”重新添加。", failure.message)
+        assertEquals("图片没加上：没有读取这张图片的权限。请重新复制图片，或点“从相册选择”再添加。", failure.message)
         assertTrue(privateNames().isEmpty())
         assertArrayEquals(sourceBytes, source.readBytes())
         assertLog("close_source", "content", 1, 1, "security_denied")

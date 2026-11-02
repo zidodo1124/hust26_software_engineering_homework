@@ -246,9 +246,9 @@ internal fun CharacterAppearancePicker(style: CharacterStyle, enabled: Boolean, 
             }
             CharacterArtwork(style, CharacterState.NORMAL,
                 Modifier.height(150.dp).fillMaxWidth(), tag = "character-preview")
-            Text(if (style == CharacterStyle.CLASSIC) "经典完整立绘，保留原有表情。" else "小巧圆润的 Q 版，表情随事项状态变化。",
+            Text(if (style == CharacterStyle.CLASSIC) "经典立绘，熟悉的样子。" else "小小一只 Q 版，表情会跟着事项状态变。",
                 color = Muted, style = MaterialTheme.typography.bodyMedium)
-            Text("点击“保存设置”后生效。切换形象不会改变事项或通知设置。", color = Muted,
+            Text("选好后记得点“保存设置”。只换形象，事项和通知设置都不变。", color = Muted,
                 style = MaterialTheme.typography.bodySmall)
         }
     }

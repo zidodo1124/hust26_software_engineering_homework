@@ -15,7 +15,7 @@ class CharacterFeedbackTest {
     @Test fun emptyListHasNormalTextAndDefaultArtwork() {
         val feedback = selectCharacterFeedback(emptyList(), now, settings)
         assertEquals(CharacterState.NORMAL, feedback.state)
-        assertEquals("暂时没有待办", feedback.title)
+        assertEquals("暂时没待办", feedback.title)
         assertEquals("character/maid-left.webp", feedback.imageAsset)
         assertNull(feedback.focusEventId)
         assertTrue(feedback.line.isNotBlank())
@@ -25,7 +25,7 @@ class CharacterFeedbackTest {
         val danger = event(secondsLeft = 60, sprint = 2)
         assertEquals(CharacterState.COMPLETED, selectCharacterFeedback(listOf(danger), now, settings, true).state)
         val finished = danger.copy(completedAt = now.toEpochMilli())
-        assertEquals("暂时没有待办", selectCharacterFeedback(listOf(finished), now, settings).title)
+        assertEquals("暂时没待办", selectCharacterFeedback(listOf(finished), now, settings).title)
         assertEquals(CharacterState.NORMAL, selectCharacterFeedback(listOf(finished), now, settings).state)
     }
 
