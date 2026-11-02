@@ -146,7 +146,7 @@ class SaverAppFlowTest {
         compose.onNodeWithTag("event-card-$secondId").performClick()
         compose.onNodeWithText("永久删除").performScrollTo().performClick()
         compose.onNodeWithTag("delete-this-and-future").performClick()
-        awaitText("DDL Saver")
+        compose.waitUntil(20_000) { compose.onAllNodesWithTag("event-list").fetchSemanticsNodes().isNotEmpty() }
         assertEquals(1, storedEvents().size)
         assertNotNull(storedEvents().single().completedAt)
     }

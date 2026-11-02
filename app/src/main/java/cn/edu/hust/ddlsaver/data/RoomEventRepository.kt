@@ -87,11 +87,11 @@ class RoomEventRepository(
     override suspend fun save(draft: EventDraft): DdlEvent {
         val normalized = EventValidation.normalize(draft)
         normalized.recurrence?.let { spec ->
-            if (normalized.id != null) throw EventValidationException("不能从已有事项创建重复系列。")
             val first = Instant.ofEpochMilli(normalized.deadlineAt)
             val rule = try { RecurrenceRule(first, spec.frequency, spec.untilDate, spec.count) }
                 catch (_: IllegalArgumentException) { throw EventValidationException("重复结束条件无效，请检查日期或次数。") }
             val horizon = maxOf(first, clock.instant()).plusSeconds(90L * 86_400L)
+            if (normalized.id != null) return convertToRecurrence(normalized, rule, horizon)
             val seriesId = createRecurrence(normalized.copy(recurrence = null), rule, horizon)
             val firstId = dao.recurrenceOccurrences(seriesId).firstOrNull()?.eventId
                 ?: throw IllegalStateException("Missing first occurrence")
@@ -136,6 +136,21 @@ class RoomEventRepository(
                 )
             })
             checkNotNull(dao.findEventWithRelations(row.id)).toDomain()
+        }
+    }
+
+    private suspend fun convertToRecurrence(draft: EventDraft, rule: RecurrenceRule, through: Instant): DdlEvent {
+        val template = RecurrenceTemplate.encode(draft.copy(id = null, expectedRevision = null, recurrence = null))
+        return reminderTransaction {
+            val id = checkNotNull(draft.id)
+            if (dao.recurrenceForEvent(id) != null) throw EventValidationException("此事项已属于重复系列。")
+            val existing = save(draft.copy(recurrence = null))
+            val seriesId = UUID.randomUUID().toString()
+            dao.insertRecurrenceSeries(RecurrenceSeriesEntity(seriesId, existing.deadlineAt, rule.frequency.name,
+                rule.untilDate?.toEpochDay(), rule.occurrenceCount, 1, template))
+            check(dao.insertRecurrenceOccurrence(RecurrenceOccurrenceEntity(seriesId, 0, existing.deadlineAt, existing.id, false)) != -1L)
+            materializeRecurrence(seriesId, rule.firstDeadline, through)
+            checkNotNull(dao.findEventWithRelations(id)).toDomain()
         }
     }
 

@@ -190,7 +190,7 @@ internal fun EventEditor(
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number), singleLine = true,
                 isError = submitted && invalidSprint, modifier = Modifier.fillMaxWidth(), shape = RoundedCornerShape(16.dp),
             )
-            if (initial == null) Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+            if (initial?.recurrence == null) Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
                 Text("重复", fontWeight = FontWeight.SemiBold)
                 Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     listOf("NONE" to "不重复", "DAILY" to "每天", "WEEKLY" to "每周", "MONTHLY" to "每月").forEach { (value, label) ->

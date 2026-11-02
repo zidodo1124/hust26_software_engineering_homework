@@ -189,6 +189,24 @@ class RoundTwoRepositoryTest {
     }
 
     @Test
+    fun convertingExistingEventToRepeatKeepsIdentityAndRollsBackOnFailure() = runBlocking {
+        val original = repository.save(draft("已存在"))
+        repository.setCompleted(original.id, true)
+        val completed = repository.events.first().single()
+        val converted = repository.save(completed.edit().copy(title = "重复作业",
+            recurrence = RecurrenceSpec(RecurrenceFrequency.WEEKLY, count = 3)))
+        assertEquals(original.id, converted.id)
+        assertEquals(completed.completedAt, converted.completedAt)
+        assertEquals(0L, converted.recurrence?.index)
+        assertEquals(3, repository.events.first().size)
+        assertEquals(1, repository.events.first().count { it.completedAt != null })
+        val withImage = repository.save(draft("有图片").copy(attachments = listOf(attachment())))
+        assertTrue(runCatching { repository.save(withImage.edit().copy(title = "不能保存",
+            recurrence = RecurrenceSpec(RecurrenceFrequency.DAILY, count = 2))) }.exceptionOrNull() is EventValidationException)
+        assertEquals(withImage, repository.events.first().first { it.id == withImage.id })
+    }
+
+    @Test
     fun deletingOneOccurrencePreservesOtherPeriodsAndInvalidatesItsReminder() = runBlocking {
         val first = repository.save(draft("第一个周期"))
         val second = repository.save(draft("第二个周期").copy(deadlineAt = clock.millis() + 86_400_000))
