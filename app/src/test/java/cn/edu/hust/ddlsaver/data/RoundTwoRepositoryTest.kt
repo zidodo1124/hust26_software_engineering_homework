@@ -15,6 +15,8 @@ import cn.edu.hust.ddlsaver.domain.EventNotFoundException
 import cn.edu.hust.ddlsaver.domain.EventQuery
 import cn.edu.hust.ddlsaver.domain.EventValidationException
 import cn.edu.hust.ddlsaver.domain.ExpiredPolicy
+import cn.edu.hust.ddlsaver.domain.RecurrenceFrequency
+import cn.edu.hust.ddlsaver.domain.RecurrenceRule
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.first
@@ -78,6 +80,33 @@ class RoundTwoRepositoryTest {
     private fun attachment(name: String = "课程截图.png"): AttachmentRef {
         val id = UUID.randomUUID().toString()
         return AttachmentRef(id, "$id.img", "image/png", name, 2048, 120, 80)
+    }
+
+    @Test
+    fun recurrenceTemplateSurvivesReopenAndGenerationIsIdempotent() = runBlocking {
+        val start = clock.instant().plusSeconds(3600)
+        val source = repository.saveSource(null, "课程")
+        val tag = repository.saveTag(null, "作业")
+        val template = EventDraft(title = "周期作业", deadlineAt = start.toEpochMilli(), sourceId = source.id,
+            tagIds = setOf(tag.id), customFields = listOf(CustomField("place", "地点", "东九")))
+        val id = repository.createRecurrence(template, RecurrenceRule(start, RecurrenceFrequency.DAILY, occurrenceCount = 3),
+            start.plusSeconds(86_400))
+        val initial = repository.events.first()
+        assertEquals(2, initial.size)
+        assertTrue(initial.all { it.source?.id == source.id && it.tags.single().id == tag.id && it.customFields.single().value == "东九" })
+        repository.setCompleted(initial.first().id, true)
+        repository.delete(initial.last().id)
+        repository.setSourceActive(source.id, false)
+        repository.setTagActive(tag.id, false)
+        database.close()
+        reopenDatabase()
+        assertEquals(1, repository.extendRecurrence(id, start, start.plusSeconds(2 * 86_400)))
+        assertEquals(0, repository.extendRecurrence(id, start, start.plusSeconds(2 * 86_400)))
+        val rows = repository.events.first()
+        assertEquals(2, rows.size)
+        assertNotNull(rows.first { it.id == initial.first().id }.completedAt)
+        assertTrue(database.dao().recurrenceOccurrences(id)[1].skipped)
+        assertTrue(database.dao().readReminderPlans().any { it.eventId == rows.last().id && it.active })
     }
 
     @Test

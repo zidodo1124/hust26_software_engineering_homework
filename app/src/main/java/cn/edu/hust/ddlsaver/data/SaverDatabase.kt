@@ -57,7 +57,7 @@ abstract class SaverDatabase : RoomDatabase() {
 
         val MIGRATION_4_5 = object : Migration(4, 5) {
             override fun migrate(db: SupportSQLiteDatabase) {
-                db.execSQL("CREATE TABLE IF NOT EXISTS recurrence_series (id TEXT NOT NULL, firstDeadline INTEGER NOT NULL, frequency TEXT NOT NULL, untilEpochDay INTEGER, occurrenceCount INTEGER, revision INTEGER NOT NULL, PRIMARY KEY(id))")
+                db.execSQL("CREATE TABLE IF NOT EXISTS recurrence_series (id TEXT NOT NULL, firstDeadline INTEGER NOT NULL, frequency TEXT NOT NULL, untilEpochDay INTEGER, occurrenceCount INTEGER, revision INTEGER NOT NULL, templateJson TEXT NOT NULL, PRIMARY KEY(id))")
                 db.execSQL("CREATE TABLE IF NOT EXISTS recurrence_occurrences (seriesId TEXT NOT NULL, occurrenceIndex INTEGER NOT NULL, scheduledDeadline INTEGER NOT NULL, eventId TEXT, skipped INTEGER NOT NULL, PRIMARY KEY(seriesId, occurrenceIndex), FOREIGN KEY(seriesId) REFERENCES recurrence_series(id) ON UPDATE NO ACTION ON DELETE CASCADE)")
                 db.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS index_recurrence_occurrences_eventId ON recurrence_occurrences(eventId)")
             }

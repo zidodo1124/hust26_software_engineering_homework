@@ -14,6 +14,7 @@ data class RecurrenceSeriesEntity(
     val untilEpochDay: Long?,
     val occurrenceCount: Int?,
     val revision: Long,
+    val templateJson: String = "{}",
 )
 
 /** A unique series/index pair prevents a period being persisted twice. */

@@ -13,9 +13,14 @@ import cn.edu.hust.ddlsaver.domain.EventRepository
 import cn.edu.hust.ddlsaver.domain.EventValidation
 import cn.edu.hust.ddlsaver.domain.EventValidationException
 import cn.edu.hust.ddlsaver.domain.ExpiredPolicy
+import cn.edu.hust.ddlsaver.domain.RecurrenceRule
+import cn.edu.hust.ddlsaver.domain.RecurrenceRules
+import cn.edu.hust.ddlsaver.domain.RecurrenceFrequency
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import java.time.Clock
+import java.time.Instant
+import java.time.LocalDate
 import java.util.UUID
 
 class RoomEventRepository(
@@ -30,6 +35,51 @@ class RoomEventRepository(
     }
     override val sources: Flow<List<Category>> = dao.observeSources().map { rows -> rows.map { it.toDomain() } }
     override val tags: Flow<List<Category>> = dao.observeTags().map { rows -> rows.map { it.toDomain() } }
+
+    /** Creates a durable series and materializes a caller-specified finite window atomically. */
+    suspend fun createRecurrence(draft: EventDraft, rule: RecurrenceRule, through: Instant): String {
+        val normalized = EventValidation.normalize(draft)
+        val template = RecurrenceTemplate.encode(normalized)
+        if (rule.firstDeadline.toEpochMilli() != normalized.deadlineAt || through < rule.firstDeadline) {
+            throw EventValidationException("重复规则的首次截止时间或生成范围无效。")
+        }
+        return reminderTransaction {
+            validateRelations("", normalized, null)
+            val id = UUID.randomUUID().toString()
+            dao.insertRecurrenceSeries(RecurrenceSeriesEntity(id, normalized.deadlineAt, rule.frequency.name,
+                rule.untilDate?.toEpochDay(), rule.occurrenceCount, 1, template))
+            materializeRecurrence(id, rule.firstDeadline, through)
+            id
+        }
+    }
+
+    /** Transaction and the unique (series, index) key make retries idempotent. */
+    suspend fun extendRecurrence(id: String, from: Instant, through: Instant): Int = reminderTransaction {
+        materializeRecurrence(id, from, through)
+    }
+
+    private suspend fun materializeRecurrence(id: String, from: Instant, through: Instant): Int {
+        val series = dao.findRecurrenceSeries(id) ?: throw EventValidationException("重复系列已不存在。")
+        val rule = RecurrenceRule(Instant.ofEpochMilli(series.firstDeadline), RecurrenceFrequency.valueOf(series.frequency),
+            series.untilEpochDay?.let(LocalDate::ofEpochDay), series.occurrenceCount)
+        val known = dao.recurrenceOccurrences(id).map { it.occurrenceIndex }.toSet()
+        val missing = RecurrenceRules.missingBetween(rule, from, through, known)
+        val now = clock.millis()
+        missing.forEach { occurrence ->
+            val draft = RecurrenceTemplate.decode(series.templateJson, occurrence.deadline.toEpochMilli())
+            val eventId = UUID.randomUUID().toString()
+            dao.insertEvent(EventEntity(id = eventId, title = draft.title, deadlineAt = draft.deadlineAt,
+                sprintMinutes = draft.sprintMinutes, description = draft.description, importance = draft.importance,
+                completedAt = null, archivedAt = null, createdAt = now, updatedAt = now, revision = 1, sourceId = draft.sourceId))
+            dao.insertEventTags(draft.tagIds.map { EventTagEntity(eventId, it) })
+            dao.insertCustomFields(draft.customFields.mapIndexed { position, field ->
+                CustomFieldEntity(eventId, field.id, field.label, field.value, position)
+            })
+            check(dao.insertRecurrenceOccurrence(RecurrenceOccurrenceEntity(id, occurrence.index,
+                occurrence.deadline.toEpochMilli(), eventId, false)) != -1L)
+        }
+        return missing.size
+    }
 
     override suspend fun save(draft: EventDraft): DdlEvent {
         val normalized = EventValidation.normalize(draft)
