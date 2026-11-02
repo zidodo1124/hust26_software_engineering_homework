@@ -81,6 +81,38 @@ class RoundTwoRepositoryTest {
     }
 
     @Test
+    fun deletingOneOccurrencePreservesOtherPeriodsAndInvalidatesItsReminder() = runBlocking {
+        val first = repository.save(draft("第一个周期"))
+        val second = repository.save(draft("第二个周期").copy(deadlineAt = clock.millis() + 86_400_000))
+        val dao = database.dao()
+        dao.insertRecurrenceSeries(RecurrenceSeriesEntity("series", first.deadlineAt, "DAILY", null, 2, 1))
+        dao.insertRecurrenceOccurrence(RecurrenceOccurrenceEntity("series", 0, first.deadlineAt, first.id, false))
+        dao.insertRecurrenceOccurrence(RecurrenceOccurrenceEntity("series", 1, second.deadlineAt, second.id, false))
+        assertTrue(dao.readReminderPlans().any { it.eventId == first.id && it.active })
+
+        // A stale batch must leave both the event and its occurrence unchanged.
+        assertTrue(runCatching { repository.applyBatch(setOf(first.id, "missing"), BatchOperation.DELETE) }
+            .exceptionOrNull() is EventNotFoundException)
+        assertEquals(first.id, dao.recurrenceOccurrences("series").first().eventId)
+        assertEquals(2, repository.events.first().size)
+
+        repository.delete(first.id)
+        val occurrences = dao.recurrenceOccurrences("series")
+        assertTrue(occurrences[0].skipped)
+        assertNull(occurrences[0].eventId)
+        assertEquals(second.id, occurrences[1].eventId)
+        assertFalse(occurrences[1].skipped)
+        assertEquals(listOf(second.id), repository.events.first().map { it.id })
+        assertFalse(dao.readReminderPlans().any { it.eventId == first.id && it.active })
+        database.close()
+        reopenDatabase()
+        assertEquals(occurrences, database.dao().recurrenceOccurrences("series"))
+
+        repository.applyBatch(setOf(second.id), BatchOperation.DELETE)
+        assertTrue(database.dao().recurrenceOccurrences("series").all { it.skipped && it.eventId == null })
+    }
+
+    @Test
     fun completeV2EventCatalogsAndSettingsSurviveReopening() = runBlocking {
         val source = repository.saveSource(null, " 课程群 ")
         val tagA = repository.saveTag(null, "必修")

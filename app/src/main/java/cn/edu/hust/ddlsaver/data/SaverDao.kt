@@ -27,6 +27,9 @@ interface SaverDao {
     @Query("SELECT * FROM recurrence_occurrences WHERE seriesId = :seriesId ORDER BY occurrenceIndex")
     suspend fun recurrenceOccurrences(seriesId: String): List<RecurrenceOccurrenceEntity>
 
+    @Query("UPDATE recurrence_occurrences SET eventId = NULL, skipped = 1 WHERE eventId = :eventId")
+    suspend fun skipOccurrenceForDeletedEvent(eventId: String): Int
+
     @Transaction
     @Query("SELECT * FROM events ORDER BY deadlineAt ASC, createdAt ASC, id ASC")
     fun observeEvents(): Flow<List<EventWithRelations>>

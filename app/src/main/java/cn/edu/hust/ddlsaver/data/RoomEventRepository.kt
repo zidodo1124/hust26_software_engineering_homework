@@ -122,6 +122,7 @@ class RoomEventRepository(
     override suspend fun delete(id: String) {
         reminderTransaction {
             if (dao.deleteEvent(id) != 1) throw EventNotFoundException()
+            dao.skipOccurrenceForDeletedEvent(id)
         }
     }
 
@@ -141,7 +142,10 @@ class RoomEventRepository(
                     BatchOperation.ARCHIVE -> if (row.archivedAt == null) updateExisting(row.copy(
                         archivedAt = now, updatedAt = now, revision = Math.addExact(row.revision, 1L),
                     ))
-                    BatchOperation.DELETE -> if (dao.deleteEvent(row.id) != 1) throw EventNotFoundException()
+                    BatchOperation.DELETE -> {
+                        if (dao.deleteEvent(row.id) != 1) throw EventNotFoundException()
+                        dao.skipOccurrenceForDeletedEvent(row.id)
+                    }
                 }
             }
         }
