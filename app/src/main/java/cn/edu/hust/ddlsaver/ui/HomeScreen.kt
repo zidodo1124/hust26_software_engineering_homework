@@ -38,6 +38,8 @@ internal fun HomeScreen(
     var tagsJson by rememberSaveable { mutableStateOf("[]") }
     var filtersOpen by rememberSaveable { mutableStateOf(false) }
     var calendarOpen by rememberSaveable { mutableStateOf(false) }
+    var calendarView by rememberSaveable { mutableStateOf("month") }
+    var calendarAnchor by rememberSaveable { mutableStateOf(state.now.atZone(BeijingZone).toLocalDate().toString()) }
     var selectedDate by rememberSaveable { mutableStateOf<String?>(null) }
     var monthText by rememberSaveable { mutableStateOf(YearMonth.from(state.now.atZone(BeijingZone)).toString()) }
     var selecting by rememberSaveable { mutableStateOf(false) }
@@ -54,9 +56,16 @@ internal fun HomeScreen(
     val todayCount = active.count { UrgencyRules.isToday(it, state.now) }
     val dangerCount = active.count { UrgencyRules.classify(it, state.now, state.settings.urgentMinutes) == Urgency.DANGER }
     val mode = EventListMode.valueOf(modeName)
-    val dateFilter = if (quickFilter == "today") today else selectedDate?.let(LocalDate::parse)
+    val anchorDate = LocalDate.parse(calendarAnchor)
+    val weekStart = anchorDate.minusDays((anchorDate.dayOfWeek.value - 1).toLong())
+    val inWeekView = calendarOpen && calendarView == "week" && quickFilter == "all"
+    val dateFilter = if (quickFilter == "today") today else if (inWeekView) null else selectedDate?.let(LocalDate::parse)
     val filtered = EventQuery.select(state.events, EventFilter(mode = mode, keyword = query, sourceId = sourceId,
         tagIds = tagIds, date = dateFilter, dangerOnly = quickFilter == "danger"), state.now, state.settings)
+        .filter { event ->
+            val date = java.time.Instant.ofEpochMilli(event.deadlineAt).atZone(BeijingZone).toLocalDate()
+            !inWeekView || (date >= weekStart && date < weekStart.plusWeeks(1))
+        }
     // The calendar shows the whole month's distribution, not just the selected day.
     val calendarEvents = EventQuery.select(state.events, EventFilter(mode = mode, keyword = query,
         sourceId = sourceId, tagIds = tagIds, dangerOnly = quickFilter == "danger"), state.now, state.settings)
@@ -66,7 +75,7 @@ internal fun HomeScreen(
     val overdue = if (mode == EventListMode.TODO) filtered.filter { it.deadlineAt <= state.now.toEpochMilli() } else emptyList()
     val current = if (mode == EventListMode.TODO) filtered.filter { it.deadlineAt > state.now.toEpochMilli() } else filtered
     val busy = state.busy || state.actionResult != null
-    fun clearFilters() { sourceId = null; tagsJson = "[]"; query = ""; selectedDate = null; quickFilter = "all" }
+    fun clearFilters() { sourceId = null; tagsJson = "[]"; query = ""; selectedDate = null; quickFilter = "all"; calendarView = "month" }
     fun toggleSelection(id: String) { selectionJson = DraftJson.ids(if (id in selected) selected - id else selected + id) }
 
     LazyColumn(Modifier.fillMaxSize().testTag("event-list"),
@@ -148,14 +157,42 @@ internal fun HomeScreen(
             }
         }
         if (calendarOpen) item {
-            MonthCalendar(YearMonth.parse(monthText), selectedDate?.let(LocalDate::parse), today, calendarCounts,
-                onMonth = { monthText = it.toString() }, onDate = { selectedDate = it.toString(); quickFilter = "all" })
+            Column {
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    listOf("month" to "月", "week" to "周", "day" to "日").forEach { (view, label) ->
+                        FilterChip(calendarView == view, {
+                            calendarView = view
+                            if (view != "month") {
+                                val date = selectedDate?.let(LocalDate::parse) ?: anchorDate
+                                calendarAnchor = date.toString()
+                                selectedDate = date.toString()
+                                quickFilter = "all"
+                            }
+                        }, label = { Text(label) }, modifier = Modifier.testTag("calendar-view-$view"))
+                    }
+                }
+                if (calendarView == "month") {
+                    MonthCalendar(YearMonth.parse(monthText), selectedDate?.let(LocalDate::parse), today, calendarCounts,
+                        onMonth = { monthText = it.toString() }, onDate = {
+                            selectedDate = it.toString(); calendarAnchor = it.toString(); quickFilter = "all"
+                        })
+                } else {
+                    CalendarPeriod(calendarView, anchorDate, today, calendarCounts, onNavigate = { date ->
+                        calendarAnchor = date.toString(); selectedDate = date.toString()
+                        monthText = YearMonth.from(date).toString(); quickFilter = "all"
+                    }, onDay = { date ->
+                        calendarAnchor = date.toString(); selectedDate = date.toString()
+                        monthText = YearMonth.from(date).toString(); quickFilter = "all"; calendarView = "day"
+                    })
+                }
+            }
         }
         item {
             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
                 Text((when {
                     quickFilter == "today" -> "今日待办"
                     quickFilter == "danger" -> "危险期待办"
+                    inWeekView -> "$weekStart 至 ${weekStart.plusDays(6)} 的事项"
                     selectedDate != null -> "$selectedDate 的事项"
                     mode == EventListMode.COMPLETED -> "已完成事项"
                     mode == EventListMode.ARCHIVED -> "归档事项"
@@ -205,6 +242,40 @@ internal fun HomeScreen(
             confirmButton = { TextButton({ deleteJson = null; onBatch(frozen, BatchOperation.DELETE) }, enabled = !busy,
                 modifier = Modifier.testTag("batch-confirm-delete")) { Text("确认删除") } },
             dismissButton = { TextButton({ deleteJson = null }, enabled = !busy) { Text("取消") } })
+    }
+}
+
+@Composable
+private fun CalendarPeriod(view: String, anchor: LocalDate, today: LocalDate, counts: Map<LocalDate, Int>,
+                           onNavigate: (LocalDate) -> Unit, onDay: (LocalDate) -> Unit) {
+    val start = anchor.minusDays((anchor.dayOfWeek.value - 1).toLong())
+    val step = if (view == "week") 7L else 1L
+    Surface(color = MaterialTheme.colorScheme.surface, shape = RoundedCornerShape(20.dp),
+        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant)) {
+        Column(Modifier.fillMaxWidth().padding(10.dp)) {
+            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                TextButton({ onNavigate(anchor.minusDays(step)) }, modifier = Modifier.testTag("period-previous")) { Text("‹") }
+                Text(if (view == "week") "$start 至 ${start.plusDays(6)}" else anchor.toString(),
+                    modifier = Modifier.weight(1f).testTag("period-title"), textAlign = TextAlign.Center)
+                TextButton({ onNavigate(anchor.plusDays(step)) }, modifier = Modifier.testTag("period-next")) { Text("›") }
+            }
+            TextButton({ onNavigate(today) }, modifier = Modifier.align(Alignment.End).testTag("period-today")) { Text("今天") }
+            if (view == "week") Row(Modifier.fillMaxWidth()) {
+                (0L..6L).forEach { offset ->
+                    val date = start.plusDays(offset)
+                    TextButton({ onDay(date) }, modifier = Modifier.weight(1f).testTag("week-day-$date"),
+                        contentPadding = PaddingValues(0.dp)) {
+                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                            Text(listOf("一", "二", "三", "四", "五", "六", "日")[offset.toInt()])
+                            Text(date.dayOfMonth.toString())
+                            counts[date]?.let { Text("${it}件", style = MaterialTheme.typography.labelSmall) }
+                        }
+                    }
+                }
+            }
+            Text(if (view == "week") "查看本周事项；点击日期查看当天。逾期待办单独展示。" else "查看当天事项；逾期待办单独展示。",
+                color = Muted, style = MaterialTheme.typography.bodySmall)
+        }
     }
 }
 
