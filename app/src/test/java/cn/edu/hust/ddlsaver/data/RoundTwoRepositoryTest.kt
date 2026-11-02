@@ -229,6 +229,23 @@ class RoundTwoRepositoryTest {
     }
 
     @Test
+    fun stoppingRepeatKeepsCurrentAndCompletedFutureButRemovesOtherFutureEvents() = runBlocking {
+        repository.save(draft("需停止").copy(recurrence = RecurrenceSpec(RecurrenceFrequency.WEEKLY, count = 5)))
+        val before = repository.events.first().sortedBy { it.deadlineAt }
+        repository.setCompleted(before[3].id, true)
+        val selected = repository.events.first().first { it.id == before[1].id }
+        val saved = repository.save(selected.edit().copy(title = "保留本次", applyToFuture = true, stopAfterThis = true))
+        assertEquals(selected.id, saved.id)
+        assertEquals("保留本次", saved.title)
+        val after = repository.events.first()
+        assertEquals(setOf(before[0].id, before[1].id, before[3].id), after.map { it.id }.toSet())
+        assertNotNull(after.first { it.id == before[3].id }.completedAt)
+        assertFalse(database.dao().readReminderPlans().any { it.eventId == before[2].id && it.active })
+        repository.extendRecurrencesThrough(clock.instant().plusSeconds(200L * 86_400L))
+        assertEquals(after, repository.events.first())
+    }
+
+    @Test
     fun deletingOneOccurrencePreservesOtherPeriodsAndInvalidatesItsReminder() = runBlocking {
         val first = repository.save(draft("第一个周期"))
         val second = repository.save(draft("第二个周期").copy(deadlineAt = clock.millis() + 86_400_000))

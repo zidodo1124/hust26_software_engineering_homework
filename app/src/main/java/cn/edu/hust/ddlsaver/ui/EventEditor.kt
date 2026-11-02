@@ -199,7 +199,7 @@ internal fun EventEditor(
             if (initial?.recurrence == null || applyToFuture) Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
                 Text("重复", fontWeight = FontWeight.SemiBold)
                 Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    (if (initial?.recurrence == null) listOf("NONE" to "不重复") else emptyList())
+                    (if (initial?.recurrence == null) listOf("NONE" to "不重复") else listOf("NONE" to "停止后续重复"))
                         .plus(listOf("DAILY" to "每天", "WEEKLY" to "每周", "MONTHLY" to "每月")).forEach { (value, label) ->
                         FilterChip(repeatName == value, { repeatName = value }, enabled = !busy,
                             label = { Text(label) }, modifier = Modifier.testTag("repeat-$value"))
@@ -279,6 +279,7 @@ internal fun EventEditor(
                                     untilDate = if (repeatEnd == "DATE") repeatUntil?.let(LocalDate::parse) else null,
                                     count = if (repeatEnd == "COUNT") repeatCount.toIntOrNull() else null),
                                 applyToFuture = applyToFuture,
+                                stopAfterThis = initial?.recurrence != null && applyToFuture && repeatName == "NONE",
                             ),
                         )
                     }

@@ -102,6 +102,7 @@ class RoomEventRepository(
             val id = normalized.id ?: UUID.randomUUID().toString()
             val previous = normalized.id?.let { dao.findEvent(it) ?: throw EventNotFoundException() }
             if (previous != null && normalized.expectedRevision != previous.revision) throw EventConflictException()
+            if (normalized.stopAfterThis) return@reminderTransaction stopSeriesAfterOccurrence(normalized, previous)
             if (normalized.applyToFuture) return@reminderTransaction updateSeriesFromOccurrence(normalized, previous)
             if (previous != null && normalized.attachments.isNotEmpty() && dao.recurrenceForEvent(previous.id) != null) {
                 throw EventValidationException("重复事项不支持图片附件。")
@@ -137,6 +138,31 @@ class RoomEventRepository(
             })
             checkNotNull(dao.findEventWithRelations(row.id)).toDomain()
         }
+    }
+
+    private suspend fun stopSeriesAfterOccurrence(draft: EventDraft, previous: EventEntity?): DdlEvent {
+        val current = previous ?: throw EventValidationException("请选择重复事项。")
+        val occurrence = dao.recurrenceForEvent(current.id) ?: throw EventValidationException("这不是重复事项。")
+        if (!draft.applyToFuture || current.completedAt != null || current.archivedAt != null) {
+            throw EventValidationException("请选择未完成的重复事项并应用于后续。")
+        }
+        val series = dao.findRecurrenceSeries(occurrence.seriesId) ?: throw EventValidationException("重复系列已不存在。")
+        val limit = try { Math.toIntExact(Math.addExact(occurrence.occurrenceIndex, 1L)) } catch (_: ArithmeticException) {
+            throw EventValidationException("周期序号超出支持范围。")
+        }
+        val saved = save(draft.copy(recurrence = null, applyToFuture = false, stopAfterThis = false))
+        if (dao.updateRecurrenceSeries(series.copy(occurrenceCount = minOf(series.occurrenceCount ?: limit, limit),
+                untilEpochDay = null, revision = Math.addExact(series.revision, 1L))) != 1) {
+            throw EventValidationException("重复系列已不存在。")
+        }
+        dao.recurrenceOccurrences(series.id).filter { it.occurrenceIndex > occurrence.occurrenceIndex }.forEach { item ->
+            val row = item.eventId?.let { dao.findEvent(it) } ?: return@forEach
+            if (row.completedAt == null && row.archivedAt == null) {
+                if (dao.deleteEvent(row.id) != 1) throw EventNotFoundException()
+                dao.skipOccurrenceForDeletedEvent(row.id)
+            }
+        }
+        return checkNotNull(dao.findEventWithRelations(saved.id)).toDomain()
     }
 
     private suspend fun convertToRecurrence(draft: EventDraft, rule: RecurrenceRule, through: Instant): DdlEvent {

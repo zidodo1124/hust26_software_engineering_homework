@@ -59,6 +59,7 @@ data class EventDraft(
     val attachments: List<AttachmentRef> = emptyList(),
     val recurrence: RecurrenceSpec? = null,
     val applyToFuture: Boolean = false,
+    val stopAfterThis: Boolean = false,
 )
 
 data class AppSettings(
