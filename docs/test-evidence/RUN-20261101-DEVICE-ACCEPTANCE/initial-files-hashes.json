@@ -1,0 +1,65 @@
+[
+  {
+    "file": "device-before.json",
+    "source": ".local-tools/device-acceptance-20261101/device-before.json",
+    "sourceSha256AtArchive": "b481ca633df867420e886ff0f61e4471c00023b01d75cf741c420831260d0f98",
+    "archivedSha256": "b481ca633df867420e886ff0f61e4471c00023b01d75cf741c420831260d0f98",
+    "transformation": "Exact copy of reviewed safe metadata; no raw database, private text, salt or serial."
+  },
+  {
+    "file": "device-after-install.json",
+    "source": ".local-tools/device-acceptance-20261101/device-after-install.json",
+    "sourceSha256AtArchive": "afc36fd29e89174cae8e54856617504e870509ff14d50583e7daf1b9ab30eb80",
+    "archivedSha256": "afc36fd29e89174cae8e54856617504e870509ff14d50583e7daf1b9ab30eb80",
+    "transformation": "Exact copy of reviewed safe metadata; no raw database, private text, salt or serial."
+  },
+  {
+    "file": "before-upgrade.json",
+    "source": ".local-tools/device-acceptance-20261101/before-upgrade.json",
+    "sourceSha256AtArchive": "ebc0005967e95a5369a8aca2db9b676608561d528f907bd6cdbe7078a984d752",
+    "archivedSha256": "ebc0005967e95a5369a8aca2db9b676608561d528f907bd6cdbe7078a984d752",
+    "transformation": "Exact copy of reviewed safe metadata; no raw database, private text, salt or serial."
+  },
+  {
+    "file": "after-install-before-launch.json",
+    "source": ".local-tools/device-acceptance-20261101/after-install-before-launch.json",
+    "sourceSha256AtArchive": "d9d63511dbe18063494cdc18fddadc7fd6039e8f21785c71a672aebbd42b1dbc",
+    "archivedSha256": "d9d63511dbe18063494cdc18fddadc7fd6039e8f21785c71a672aebbd42b1dbc",
+    "transformation": "Exact copy of reviewed safe metadata; no raw database, private text, salt or serial."
+  },
+  {
+    "file": "install-comparison.json",
+    "source": ".local-tools/device-acceptance-20261101/install-comparison.json",
+    "sourceSha256AtArchive": "7380170eb778f079f6dd41fc2cc00e36f4d010ed3a0a62c6f2302e9727dbfc34",
+    "archivedSha256": "7380170eb778f079f6dd41fc2cc00e36f4d010ed3a0a62c6f2302e9727dbfc34",
+    "transformation": "Exact copy of reviewed safe metadata; no raw database, private text, salt or serial."
+  },
+  {
+    "file": "after-launch.json",
+    "source": ".local-tools/device-acceptance-20261101/after-launch.json",
+    "sourceSha256AtArchive": "0255739f53ef93694a8221db62f5f4629c92f5ee62cd1643b1523480f684b9a9",
+    "archivedSha256": "0255739f53ef93694a8221db62f5f4629c92f5ee62cd1643b1523480f684b9a9",
+    "transformation": "Exact copy of reviewed safe metadata; no raw database, private text, salt or serial."
+  },
+  {
+    "file": "launch-comparison.json",
+    "source": ".local-tools/device-acceptance-20261101/launch-comparison.json",
+    "sourceSha256AtArchive": "0c2ed03924110cdf5012fe9c55c721017e83cbcf57402c065810ebdc139fbe3c",
+    "archivedSha256": "0c2ed03924110cdf5012fe9c55c721017e83cbcf57402c065810ebdc139fbe3c",
+    "transformation": "Exact copy of reviewed safe metadata; no raw database, private text, salt or serial."
+  },
+  {
+    "file": "launch-result.json",
+    "source": ".local-tools/device-acceptance-20261101/launch-result.json",
+    "sourceSha256AtArchive": "50a8813f9a6c8852f05f71b5fa1e1211135b17031ca76150cfa77eac5a624046",
+    "archivedSha256": "50a8813f9a6c8852f05f71b5fa1e1211135b17031ca76150cfa77eac5a624046",
+    "transformation": "Exact copy of reviewed safe metadata; no raw database, private text, salt or serial."
+  },
+  {
+    "file": "01-upgraded-settings.png",
+    "source": ".local-tools/device-acceptance-20261101/01-upgraded-settings.png",
+    "sourceSha256AtArchive": "f8fc0499c5fe52553a368b59fbebd524cc35467d8668d75c0d4bb42a2bead934",
+    "archivedSha256": "f8fc0499c5fe52553a368b59fbebd524cc35467d8668d75c0d4bb42a2bead934",
+    "transformation": "Exact image copy, visually reviewed by primary agent: application settings/character/status bar only; no private event content. Not evidence of system permission-panel testing."
+  }
+]

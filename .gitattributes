@@ -1,3 +1,13 @@
 gradlew text eol=lf
 *.bat text eol=crlf
 *.ps1 text eol=crlf
+
+# Keep newly archived evidence byte-identical to its recorded SHA-256 hashes.
+docs/test-evidence/RUN-20261101-INDEPENDENT-UI/** -text whitespace=cr-at-eol
+docs/test-evidence/RUN-20261101-RECOVERY-DIAGNOSTICS/** -text whitespace=cr-at-eol
+docs/test-evidence/RUN-20261101-DEVICE-ACCEPTANCE/** -text whitespace=cr-at-eol
+docs/test-evidence/RUN-20261101-DEMO-STABILITY/** -text whitespace=cr-at-eol
+# Verbatim build output and patch context retain their original trailing spaces.
+docs/test-evidence/RUN-20261101-RECOVERY-DIAGNOSTICS/**/*.log -whitespace
+docs/test-evidence/RUN-20261101-DEMO-STABILITY/**/*.log -whitespace
+docs/test-evidence/RUN-20261101-DEMO-STABILITY/**/*.patch -whitespace

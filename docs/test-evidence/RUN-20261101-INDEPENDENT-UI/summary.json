@@ -1,0 +1,271 @@
+{
+  "run": "RUN-20261101-INDEPENDENT-UI",
+  "reviewedDate": "2026-11-01",
+  "runtime": "local Windows / JDK 17 / Robolectric",
+  "baseCommit": "ac1d9785ac9ab74dbd34fc00bc8459eb923002bc",
+  "testedState": "Base commit plus the two uncommitted test files identified below; product source, dependencies and schema unchanged.",
+  "testSourceFiles": [
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/ui/ContentClipboardFlowTest.kt",
+      "sha256": "64d75c5286857f317692225843906ea68212358c4874ea8a414a36cd04b4ad53"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/ui/AttachmentClipboardFlowTest.kt",
+      "sha256": "aef5ab82871f2c03535babc2a28b124af6f7420646fd646c999617ff1a8d48ec"
+    }
+  ],
+  "version": "0.3.3",
+  "versionCode": 6,
+  "schema": 4,
+  "targeted": {
+    "command": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/gradle.ps1 --no-daemon --console=plain :app:testDebugUnitTest --tests cn.edu.hust.ddlsaver.ui.ContentClipboardFlowTest --tests cn.edu.hust.ddlsaver.ui.AttachmentClipboardFlowTest",
+    "result": "BUILD SUCCESSFUL",
+    "duration": "3m",
+    "suites": 2,
+    "executions": 5,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "reports": "targeted-results/",
+    "sourceLogSha256": "8734c96720afc244945fb65f0965077ee4c72eee89c8921b858488c1c3d23dab"
+  },
+  "full": {
+    "command": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/gradle.ps1 --no-daemon --console=plain --stacktrace --continue --max-workers=2 :app:assembleDebug :app:testDebugUnitTest :app:lintDebug",
+    "result": "BUILD SUCCESSFUL",
+    "duration": "3m 32s",
+    "junit": {
+      "suites": 25,
+      "declaredTests": 174,
+      "actualTestcaseNodes": 174,
+      "uniqueMethods": 155,
+      "uniqueMethodRule": "Class name plus testcase name after removing a trailing numeric [SDK] suffix only.",
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suiteResults": [
+        {
+          "name": "cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest",
+          "tests": 10,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest",
+          "tests": 16,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.data.SaverDatabaseMigrationTest",
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.domain.CharacterFeedbackTest",
+          "tests": 10,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.domain.EventQueryTest",
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.domain.EventValidationTest",
+          "tests": 7,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.domain.ExtendedEventValidationTest",
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.domain.UrgencyRulesTest",
+          "tests": 10,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.platform.AttachmentStoreTest",
+          "tests": 26,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.reminders.AndroidReminderPlatformTest",
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.reminders.ReminderEngineTest",
+          "tests": 20,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.reminders.ReminderRulesTest",
+          "tests": 10,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.reminders.ReminderStatusCopyTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.ui.AttachmentClipboardFlowTest",
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.ui.CalendarGridTest",
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.ui.CharacterArtworkTest",
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.ui.CharacterAssetsTest",
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.ui.CharacterBubbleLayoutTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.ui.ContentClipboardFlowTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.ui.OceanThemeContrastTest",
+          "tests": 1,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.ui.OceanUiRenderTest",
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.ui.ReminderColdLaunchTest",
+          "tests": 1,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.ui.SaverAppFlowTest",
+          "tests": 18,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.ui.SaverViewModelFeedbackTest",
+          "tests": 1,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      ]
+    },
+    "lint": {
+      "errors": 0,
+      "warnings": 16,
+      "ids": [
+        {
+          "Name": "ExifInterface",
+          "Count": 1
+        },
+        {
+          "Name": "GradleDependency",
+          "Count": 10
+        },
+        {
+          "Name": "InlinedApi",
+          "Count": 1
+        },
+        {
+          "Name": "ObsoleteSdkInt",
+          "Count": 1
+        },
+        {
+          "Name": "StaticFieldLeak",
+          "Count": 1
+        },
+        {
+          "Name": "UseKtx",
+          "Count": 2
+        }
+      ]
+    },
+    "apk": {
+      "applicationId": "cn.edu.hust.ddlsaver",
+      "versionCode": 6,
+      "versionName": "0.3.3",
+      "bytes": 15490535,
+      "sha256": "90dcb9206924a76124f8f5c8688f054aea2056e3cc039056de68a64e8fdea746"
+    },
+    "sourceLogSha256": "ed5f13c6fa5c0e222fcce1bd0a0fb565cae7ef9242b1fc39dbea0f99f2fd3dd9"
+  },
+  "attempts": "One targeted run and one full run; both succeeded without failed retries. Targeted executions are included in the full result, not added to it.",
+  "limits": [
+    "No physical device tests or APK installation.",
+    "No new remote CI run or Git push; the previous remote 169 executions do not include these tests.",
+    "Reopening means returning to the list and reentering details, not process recreation.",
+    "Controlled unreadable URI tests failure recovery only; OBS-01 remains unresolved.",
+    "DA/TC complete acceptance, device permissions, keyboards, font sizes and remaining input boundaries are not all covered."
+  ],
+  "redaction": "Archived XML copies remove hostname attributes and replace absolute workspace paths with [workspace]. Diagnostic output and testcase results are retained. Original and archived SHA256 values are in the report-hashes files."
+}

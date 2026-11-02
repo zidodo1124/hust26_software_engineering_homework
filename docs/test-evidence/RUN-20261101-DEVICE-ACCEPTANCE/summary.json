@@ -1,0 +1,377 @@
+{
+  "run": "RUN-20261101-DEVICE-ACCEPTANCE",
+  "status": "completed_with_open_findings",
+  "userDate": "2026-11-01",
+  "userTimezone": "America/Los_Angeles",
+  "deviceBusinessDateAtStart": "2026-11-02",
+  "deviceBusinessTimezone": "Asia/Shanghai",
+  "timeConvention": "Raw observations retain UTC timestamps; run name follows user date. Application deadlines and DAILY keys use Beijing time.",
+  "baseCommit": "ac1d9785ac9ab74dbd34fc00bc8459eb923002bc",
+  "testedState": "Base commit plus all seven uncommitted source/test files listed here. Final hashes identify the successful second targeted and full check state; first-attempt failure reports are retained separately.",
+  "sourceFiles": [
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/platform/AttachmentStore.kt",
+      "sha256": "29fd16de6e003a4c39b367704adb6c022820435ea14150a806e3679b712e2ef5"
+    },
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/platform/AttachmentImportDiagnostics.kt",
+      "sha256": "21eb276bf02892ae61e04c93a563e77611f233743d9a789623999688d490dc54"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/platform/AttachmentImportDiagnosticsTest.kt",
+      "sha256": "5be64d722bfef8551a8b75aaf5c8ff340307431bc6c37a4bbd41777108854262"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/reminders/ReminderRestoreIntegrationTest.kt",
+      "sha256": "4e699a0337e527f81b9f15a503baf306587003da8c5e0bcc1e3dbf6a00aa4327"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/ui/ReminderColdLaunchTest.kt",
+      "sha256": "b73b89ea64d7830f6e3aeb48a1bf6e1a252233871054061e1eeafa8a9db13a04"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/ui/ContentClipboardFlowTest.kt",
+      "sha256": "64d75c5286857f317692225843906ea68212358c4874ea8a414a36cd04b4ad53"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/ui/AttachmentClipboardFlowTest.kt",
+      "sha256": "aef5ab82871f2c03535babc2a28b124af6f7420646fd646c999617ff1a8d48ec"
+    }
+  ],
+  "apk": {
+    "applicationId": "cn.edu.hust.ddlsaver",
+    "versionCode": 6,
+    "versionName": "0.3.3",
+    "bytes": 15490535,
+    "sha256": "6f30078bf0dfa95731afe9fae0c08f06dd19d048eb815fd2236022c90e19e65b",
+    "certificateSha256": "978833bcaf0fc001248f5d8501bfa1f9d1273922474ed601f2c60a4548a652b9",
+    "historicalDeviceApkCertificateSha256": "978833bcaf0fc001248f5d8501bfa1f9d1273922474ed601f2c60a4548a652b9",
+    "matchesHistoricalDeviceApkCertificate": true,
+    "installed": true
+  },
+  "device": {
+    "model": "HONOR ALI-AN00 (Honor X50)",
+    "android": "15",
+    "api": 35,
+    "build": "ALI-AN00 9.0.0.230(CNC00E206R8P4)"
+  },
+  "installation": {
+    "method": "adb install -r",
+    "successAtUtc": "2026-11-02T02:21:25.475332+00:00",
+    "comparisonFile": "install-comparison.json",
+    "businessCounts": {
+      "events": 3,
+      "sources": 1,
+      "tags": 1,
+      "event_tags": 1,
+      "custom_fields": 1,
+      "attachments": 4
+    },
+    "userConfirmedInstallation": true,
+    "userConfirmationSource": "Current conversation: 我已经确认了安装"
+  },
+  "firstLaunch": {
+    "comparisonFile": "launch-comparison.json",
+    "businessRowsAttachmentsAndSettingsUnchanged": true,
+    "reminderRowCountBefore": 18,
+    "reminderRowCountAfter": 19,
+    "dailySentCountBefore": 0,
+    "dailySentCountAfter": 1,
+    "limitation": "Launcher stage force-stopped the app to take a stable database snapshot. No notification observation before that stop is retained, so notification emission cannot be inferred from later absence. Daily ledger must not be removed or device date changed to manufacture another attempt.",
+    "originalTodayCountAfterLaunchBeforeQa": 0
+  },
+  "acceptance": {
+    "upgradeDataPreservation": "passed_for_observed_install_and_launch",
+    "dailyNotificationColdClick": "not_completed",
+    "lockScreenReminder": "notification_observed_with_keyguard_showing_at_final_sample_but_not_continuous_lock_or_doze_proof",
+    "notificationAndChannelRecovery": "passed_main_switch_and_channel_business_response_with_recorded_importance_restored",
+    "exactAlarmRecovery": "passed_permission_and_schedule_mode_transition_not_delivery_latency",
+    "forceStopReopen": "passed_future_plan_and_alarm_restore_after_user_style_reopen",
+    "rebootRecovery": "automatic_recovery_not_passed_in_observed_window_OBS02_open_normal_launch_recovered",
+    "controlledIdle": "passed_real_delivery_under_controlled_force_idle_not_natural_doze_or_continuous_screen_off",
+    "imageDiagnosticsOBS01": "reproduced_source_open_security_denied_with_tag_W_root_grant_mechanism_unresolved",
+    "cleanupAndRestore": "passed_16_final_audit_checks_and_normal_home_restored",
+    "singleNotificationColdClick": "passed_for_one_real_event_notification_after_background_process_kill",
+    "completedEventPlanInvalidation": "passed_for_LOCK_plan_rows_not_notification_cancellation",
+    "notificationMainSwitchRecovery": "passed_system_UI_toggle_then_return_to_app",
+    "incrementalClipboardImages": "passed_two_independent_clipboard_pastes_and_saved_private_copies",
+    "imageFreshRetryAndBrokenFailure": "passed_saved_copies_draft_retention_and_source_hashes",
+    "imageSourceRemoval": "passed_four_private_copies_preserved_and_blue_orange_preview_observed_after_source_uninstall",
+    "completedEventNotificationCancellation": "passed_for_IDLE_notification_present_before_normal_launcher_completion_and_absent_after"
+  },
+  "archivePolicy": "Only reviewed aggregate JSON, source/APK identifiers and approved QA-only images. No raw databases, salt, device serial, user event content or full notification dumps.",
+  "lockSample": {
+    "title": "QA-ACCEPT-1101-LOCK",
+    "savedThroughUi": true,
+    "plannedTriggerEpochMillis": 1793586660000,
+    "systemCreationTimeMillis": 1793586660267,
+    "systemCreationOffsetMillis": 267,
+    "firstRetainedNotificationObservationUtc": "2026-11-02T02:31:04.300249+00:00",
+    "metadataSource": "lock-timed-observations.json",
+    "screenConditions": "Final observation: power Dozing, keyguard showing, screen off, deviceidle ACTIVE, USB charging. Earlier observations include Awake intervals; not sustained-lockscreen or Doze acceptance.",
+    "coldClickPreparationSource": "lock-before-cold-click.json",
+    "coldClickPreparation": {
+      "method": "am kill background process, no force-stop",
+      "pidAfter": "absent",
+      "sameNotificationRetained": true
+    },
+    "userClickReport": "User reported clicking the real LOCK notification; production detail independently verified at 2026-11-02T02:33:00.067520+00:00.",
+    "coldClickResultSource": "lock-cold-click-result.json",
+    "completionResultSource": "lock-completion-result.json",
+    "completionBoundary": "Both LOCK plans inactive and cancelPending=0 after UI completion. Notification had already auto-cancelled on click; absence is not proof of completion-triggered notification cancellation."
+  },
+  "notificationMainSwitch": {
+    "sample": "QA-ACCEPT-1101-STATE",
+    "sources": [
+      "04-notification-baseline.json",
+      "05-notification-off.json",
+      "06-notification-restored.json"
+    ],
+    "offObservation": {
+      "postNotificationsGranted": false,
+      "appImportance": "NONE",
+      "channelImportance": 3,
+      "qaPlansRemainActivePending": true,
+      "systemReminderAlarms": 0,
+      "scheduledTriggerAt": null
+    },
+    "restoredObservation": {
+      "postNotificationsGranted": true,
+      "appImportance": "DEFAULT",
+      "channelImportance": 3,
+      "scheduledTriggerAt": 1793590380000,
+      "alarmWindow": "0"
+    },
+    "boundary": "Observed after returning to the app; does not establish every denial flow or background transition without reopening."
+  },
+  "channelRecovery": {
+    "status": "recorded_baseline_importance_restored_and_app_response_verified",
+    "offSource": "07-channel-off.json",
+    "initialReenableSource": "08-channel-restored.json",
+    "off": {
+      "permissionGranted": true,
+      "importance": 0,
+      "systemReminderAlarms": 0,
+      "qaPlansPreserved": true
+    },
+    "initialReenable": {
+      "importance": 2,
+      "expectedBaselineImportance": 3,
+      "appCanPost": true,
+      "systemReminderAlarmRebuilt": true,
+      "baselineRestorationAssertionPassed": false
+    },
+    "boundary": "The original re-enable observation and failed baseline-level assertion remain. OEM settings behavior is not labelled a product defect. Baseline did not preserve complete channel sound/vibration attributes.",
+    "finalSource": "08c-channel-baseline-restored.json",
+    "finalImportance": 3,
+    "causalBoundary": "Importance was already 3 when sampled immediately before the approved silent-mode sequence, after navigating into Honor own notification-category UI. The exact entry/loading action that restored 2 to 3 was not isolated; the subsequent false→true→false sequence left the whole channel line unchanged.",
+    "wholeChannelComparisonBoundary": "Full-line hashes compare only the 08b sequence, whose before importance was already 3. They do not establish equality to all original channel properties at the start of the run."
+  },
+  "exactAlarmRecovery": {
+    "offSource": "09-exact-access-off.json",
+    "restoredSource": "10-exact-access-restored.json",
+    "notificationPermissionRetained": true,
+    "qaPlansUnchanged": true,
+    "offMode": "approximate",
+    "observedApproximateWindow": "+31m29s945ms",
+    "restoredMode": "exact",
+    "restoredWindow": "0",
+    "boundary": "Window metadata is not a measured delivery delay; the approximate alarm was not awaited to delivery."
+  },
+  "forceStopReopen": {
+    "sources": [
+      "state-before-force-stop.json",
+      "state-force-stop-result.json",
+      "11-state-reopened.json"
+    ],
+    "qaPlansUnchanged": true,
+    "restoredAlarmTriggerEpochMillis": 1793590380000,
+    "restoredWindow": "0",
+    "boundary": "Future plans and scheduling restored after opening; no promise of delivery while force-stopped."
+  },
+  "imageFixture": {
+    "installationSource": "clipboard-fixture-install.json",
+    "packageName": "cn.edu.hust.ddlsaver.qa.clipboard",
+    "apkSha256": "fed09852fed3b1b114baffbeb0166aa122fe9849ada71c5c87daa11bdaa822c2",
+    "certificateSha256": "72ea6a16887627026c0789c1d3e703e46c6f0db698ee3383baa51e73a8314852",
+    "alreadyInstalledBeforeRun": false,
+    "installedByThisRun": true,
+    "cleanupStatus": "uninstalled_only_this_run_added_fixture",
+    "coverageBoundary": "Separate synthetic clipboard provider, not proof for every gallery or source application.",
+    "removalSource": "clipboard-fixture-removal.json"
+  },
+  "imageExecutorCorrection": {
+    "status": "navigation_corrected_before_import_results",
+    "description": "A bare am start from fixture created another MainActivity and showed a new home. Back returned to the original editor with QA title/description retained; no duplicate event was saved. copy helper now uses real Back to the original task.",
+    "qaDatabaseObservationSource": "image-draft-navigation-check.json",
+    "boundary": "Executor navigation problem before successful imports, not observed product draft loss."
+  },
+  "incrementalClipboardImages": {
+    "sample": "QA-ACCEPT-1101-IMAGE",
+    "source": "image-two-saved.json",
+    "screenshot": "12-image-two-incremental-draft.png",
+    "observedDraftCountSequence": [
+      0,
+      1,
+      2
+    ],
+    "savedCount": 2,
+    "descriptionPreserved": true,
+    "privateBytesAndSha256MatchSyntheticSources": true,
+    "boundary": "External synthetic clipboard provider; does not establish all gallery compatibility or old-URI diagnosis."
+  },
+  "oldUriProbe": {
+    "source": "image-old-uri-probe.json",
+    "forceStoppedThenNormalLauncherStart": true,
+    "pasteSucceeded": false,
+    "savedImageEventAndAttachmentBytesUnchanged": true,
+    "draftDescriptionRetained": true,
+    "privateFileCounts": [
+      6,
+      6
+    ],
+    "actualAppDebuggable": true,
+    "applicationDiagnosticLines": 0,
+    "rootCause": "unresolved",
+    "boundary": "No stage/category inferred from generic UI failure. Any shell logging probe is separate from application failure diagnostics."
+  },
+  "imageDiagnosticFollowup": {
+    "oldUriSource": "image-old-uri-diagnostic.json",
+    "retrySource": "image-diagnostic-retry-result.json",
+    "brokenSource": "image-broken-diagnostic.json",
+    "tagPropertySource": "image-tag-override.json",
+    "initialPipelineProbeSource": "attachment-log-pipeline-probe.json",
+    "originalGlobalPersistLogTag": "S",
+    "temporaryOnlyTagValue": "W",
+    "tagRestoredToOriginalEmpty": true,
+    "globalPersistValueUnchanged": true,
+    "applicationOldUriDiagnosis": {
+      "stage": "open_source",
+      "scheme": "content",
+      "item": 1,
+      "count": 1,
+      "category": "security_denied",
+      "rollbackFailures": 0
+    },
+    "privateFilesDuringFailure": [
+      7,
+      7
+    ],
+    "draftCountDuringFailure": [
+      3,
+      3
+    ],
+    "freshCopySavedCount": 4,
+    "originalThreeSavedAttachmentsUnchanged": true,
+    "allFourPrivateFileHashesMatchSyntheticSources": true,
+    "controlledBrokenDiagnosis": {
+      "stage": "decode_image",
+      "category": "validation",
+      "rollbackFailures": 0
+    },
+    "rootCauseBoundary": "The observed source open was permission-denied. Exact grant-loss mechanism and broader providers/platform behavior remain unproven; OBS-01 remains open."
+  },
+  "imageSourceRemoval": {
+    "source": "image-final-result.json",
+    "beforeSource": "image-before-fixture-removal.json",
+    "afterSource": "image-after-fixture-removal.json",
+    "allFourPrivateFilesUnchanged": true,
+    "savedDescriptionUnchanged": true,
+    "blueAndOrangePreviewsVisuallyReviewed": true,
+    "rawScreenshotsNotArchived": "Unrelated live activity content appeared in the system status area. Only QA metadata archived.",
+    "qaCompletedThroughUi": true
+  },
+  "controlledIdle": {
+    "source": "idle-result.json",
+    "restorationSettledSource": "idle-restoration-settled.json",
+    "sample": "QA-ACCEPT-1101-IDLE",
+    "expectedTriggerEpochMillis": 1793590320000,
+    "systemCreationTimeMillis": 1793590320171,
+    "systemCreationOffsetMillis": 171,
+    "firstRetainedNotificationObservationUtc": "2026-11-02T03:32:06.288298+00:00",
+    "observedSampleCount": 33,
+    "allTimedSamplesForceIdleAndStateIdle": true,
+    "wakefulnessObserved": [
+      "Awake",
+      "Dozing"
+    ],
+    "simulatedBatteryUnplugged": true,
+    "physicalUsbPowerAndBatteryUpdatesRestored": true,
+    "settledDeviceIdleState": "ACTIVE",
+    "boundary": "Controlled deviceidle force-idle with simulated unplug; physical USB remained connected. Awake samples prevent continuous-screen-off claim. Natural Doze, extreme power saving and delivery in other conditions remain untested.",
+    "completionResultSource": "idle-completion-result.json",
+    "completionRoute": "User unlocked without tapping notification or opening app; normal launcher then UI completion",
+    "notificationPresentBeforeCompletionAbsentAfter": true
+  },
+  "rebootRecovery": {
+    "observationId": "OBS-02",
+    "status": "open",
+    "resultSource": "boot-result.json",
+    "beforeLaunchSource": "boot-before-first-explicit-launch.json",
+    "afterLaunchSource": "boot-explicit-launch-comparison.json",
+    "sample": "QA-ACCEPT-1101-BOOT",
+    "realRebootConfirmedByChangedBootIdHashAndUptime": true,
+    "initialReconnectTimeoutSeconds": 240,
+    "firstReconnectUptimeSeconds": 262.12,
+    "expectedTriggerEpochMillis": 1793591040000,
+    "automaticObservationSampleCount": 27,
+    "automaticObservationStartUtc": "2026-11-02T03:40:55.678558+00:00",
+    "automaticObservationEndUtc": "2026-11-02T03:45:37.480496+00:00",
+    "alarmRebuiltBeforeExplicitLaunch": false,
+    "notificationObservedBeforeExplicitLaunch": false,
+    "postNotificationsGrantedBeforeLaunch": true,
+    "exactAccessAllowedBeforeLaunch": true,
+    "channelImportanceBeforeLaunch": 3,
+    "packageStoppedBeforeLaunch": false,
+    "packageNotLaunchedBeforeLaunch": false,
+    "pendingPlanPreservedBeforeLaunch": true,
+    "normalLauncherNotificationCreationMillis": 1793591172629,
+    "nextExactAlarmTriggerMillis": 1793594640000,
+    "boundary": "Automatic recovery did not pass for this device/configuration and bounded post-unlock window. Normal-launch recovery is separate. Reconnect gap is not product failure evidence; receiver delivery, execution, scheduling and OEM cause remain unisolated."
+  },
+  "finishedAtUtc": "2026-11-02T03:51:58.290032+00:00",
+  "readyToDisconnect": true,
+  "cleanup": {
+    "source": "final-data-and-state-audit.json",
+    "initialAuditSource": "final-data-and-state-audit-initial.json",
+    "finalCheckCount": 16,
+    "allFinalChecksPassed": true,
+    "deletedThisRunQaEvents": 5,
+    "remainingThisRunQaEvents": 0,
+    "originalBusinessTablesExactlyUnchanged": 6,
+    "originalAttachmentFilesExactlyUnchanged": 4,
+    "originalSentRowsExactlyUnchanged": 8,
+    "newDailySentRows": 1,
+    "retainedQaSentRows": 3,
+    "inactiveQaPlanRows": 9,
+    "pendingQaCancellations": 0,
+    "productNotificationsZeroBeforeFinalForceStop": true,
+    "businessAndRecordedSystemSettingsRestored": true,
+    "fixtureAbsent": true,
+    "finalHomeVerified": true,
+    "queryCleared": true,
+    "temporaryUiAndPrivateDbRemoved": true,
+    "nextExactAlarmBeijing": "2026-11-03 08:00:00",
+    "nextExactAlarmWindow": "0"
+  },
+  "globalLogCleanupRestoration": {
+    "source": "global-log-baseline-restoration.json",
+    "diagnosticPhaseGlobalStayedS": true,
+    "initialFinalAuditAfterRealRebootObserved": "M",
+    "priorChangeMechanism": "unresolved",
+    "authorizedSingleBaselineRestoration": "M to S",
+    "readbackConfirmed": true,
+    "boundary": "Separate final cleanup restoration, not enabling diagnostics; do not claim the global property was unchanged throughout the entire run."
+  },
+  "openFindings": [
+    "OBS-01: source open security denial reproduced; exact grant-loss mechanism unresolved",
+    "OBS-02: reboot automatic recovery did not pass in observed post-unlock window; normal-launch recovery succeeded, cause unresolved"
+  ],
+  "remainingScope": [
+    "Real daily-summary notification cold click",
+    "Continuous lock-screen / natural Doze / power-saving conditions",
+    "Complete notification denial paths and approximate delivery latency",
+    "Remaining complete DA/TC inputs, data flows, offline and broader image/visual conditions",
+    "Final course acceptance and actual presentation rehearsal"
+  ]
+}

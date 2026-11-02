@@ -1,0 +1,261 @@
+[
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest.xml",
+    "originalSha256": "08183b519a98546eddb6d54b13d6b1757e8da694e23c660db15ec6c5c6465c83",
+    "archivedSha256": "0424d7b17d788de3c9420d8e975085450c778a236a17364ae91c926fd558155b",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "workspacePathsReplaced": 0,
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest.xml",
+    "originalSha256": "8d11530bd1fb63608058bf2d1dd49e874ada5c96b305053eacc844f8a873dba1",
+    "archivedSha256": "ace65eb36d4f7b91e36b31009e00abdb96dc4a4ab4c61aec111c15657441091f",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "workspacePathsReplaced": 0,
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest.xml",
+    "originalSha256": "1f6a684c84015176b3a58322457f58f343dda019315d057efe13b0f3c59c0db7",
+    "archivedSha256": "aae4096a6d01f99e7ff717a2c03942ce2a5795b0e213bb99121ce96616628f75",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "workspacePathsReplaced": 0,
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.data.SaverDatabaseMigrationTest.xml",
+    "originalSha256": "fd4f9f6cba67169583648ad2bcb0149b98a60ce8d1d0ad9c9953c99af2447807",
+    "archivedSha256": "6209be4d2724d76199566c0112ae2c4580786fde15fac9b5dffe8692d56eb076",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "workspacePathsReplaced": 0,
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.domain.CharacterFeedbackTest.xml",
+    "originalSha256": "0b7ca3110ba98b6fcebcd3e0a74293de10707d0a649b2df0a554847279f727ec",
+    "archivedSha256": "fc4ac370c009a290f6157e422c04f575f4396bd9c7e7dc75d46f08ac0462cad7",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "workspacePathsReplaced": 0,
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.domain.EventQueryTest.xml",
+    "originalSha256": "12a66d450115ed2aec777373a4f0d1ed1ca0599fa829d64a84c7a8f8604eaf31",
+    "archivedSha256": "0049c3bd504e6ae735978c560155300704599bed0801b954305550213bb7526a",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "workspacePathsReplaced": 0,
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.domain.EventValidationTest.xml",
+    "originalSha256": "87079a00c56085e0332522756102a75f725a721b7f0005069924b04eb72eec32",
+    "archivedSha256": "c1040e3cdd130c0b68fbdf4a351340a8e3375626adaffbf4740141ef9a3118a1",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "workspacePathsReplaced": 0,
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.domain.ExtendedEventValidationTest.xml",
+    "originalSha256": "c40e74e32eabb9508752c85790c58a9d615e080718dcea72a835830242b6c38e",
+    "archivedSha256": "2189916f5d2da260cc3805f78afceabec271c9fa97b4c6dfd63d9742cde892e5",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "workspacePathsReplaced": 0,
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.domain.UrgencyRulesTest.xml",
+    "originalSha256": "6dbd64963578ff49eab46ba89abed88eeb948a2ee21eb289bea05bce7de418fd",
+    "archivedSha256": "b5bc115612cb9528d8537e41725ff4f3cee575dced3c456711d7c08e665d52d9",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "workspacePathsReplaced": 0,
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.platform.AttachmentStoreTest.xml",
+    "originalSha256": "a320650f7bf1b94a04e12dcfe6d421e60270d8ff25c33c481794b8e6d87e26fc",
+    "archivedSha256": "b36099b35c4519ab22946daef087e56c5180ae6a45f634f9afadf49f6186a367",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "workspacePathsReplaced": 0,
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.reminders.AndroidReminderPlatformTest.xml",
+    "originalSha256": "518cf9b84473f93be21493d97de9ff59e4296a316b62cf678580a554da7fba08",
+    "archivedSha256": "5ae12224f41f78dcc3a512f89ef29dcc432e0e4079e2e8cd7ccf0cfae28f2932",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "workspacePathsReplaced": 0,
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.reminders.ReminderEngineTest.xml",
+    "originalSha256": "eb021d17dfa415c2dc48d2355709d37e80e84f8fb13a8c7144eeac12cff38142",
+    "archivedSha256": "25c06a3f816b3c3132909344eacc4056fb360e28aa61d37392bdaa7f7a53ce58",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "workspacePathsReplaced": 0,
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.reminders.ReminderRulesTest.xml",
+    "originalSha256": "72964e4ac8bef50c959bc5df4652e358915559883ce4e88de09d328fd081d709",
+    "archivedSha256": "0dba96cdff8e1a7a6a4cdb0eb98da7db304fab9cdb840e0f3380a2fbad865fe1",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "workspacePathsReplaced": 0,
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.reminders.ReminderStatusCopyTest.xml",
+    "originalSha256": "2b574d6a091819d3e69a6ff3f0bee4d9652ca8c9e039c45b561273547b027085",
+    "archivedSha256": "f9ec173aa28a8371c15dee095a28b80eab14d28041f70242ebec335cfd7ed703",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "workspacePathsReplaced": 0,
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.ui.AttachmentClipboardFlowTest.xml",
+    "originalSha256": "0f358705012188c3e42cbecb4c32d27e384aa19aa486ee2f7f94b94197d7bd86",
+    "archivedSha256": "06d6f78b61efbdae68e2abe2ec9e0e048130f39f9fdd67d448146ac1f2aded90",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "workspacePathsReplaced": 0,
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.ui.CalendarGridTest.xml",
+    "originalSha256": "688a4054833bccf984d2cd7b81624c3674749be92c8db15c5e2f1fe95ed79bdb",
+    "archivedSha256": "dd77eeadf97d7addc88bfe56c8202d0e46e1501a2472acc8d29a4985705dbc09",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "workspacePathsReplaced": 0,
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.ui.CharacterArtworkTest.xml",
+    "originalSha256": "2879828471d81cdd4f1196a91a4c781bdcf78fc4a1e71fd758b3cceacea09386",
+    "archivedSha256": "ee3253efc97112e459e64e21a968538d69e4201d0bf8890838d88b7ae49da694",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "workspacePathsReplaced": 0,
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.ui.CharacterAssetsTest.xml",
+    "originalSha256": "a6baa1f97290096805194fbca3553a93703ec9b0a24e00b55bb9128a56e34d1f",
+    "archivedSha256": "26c274992ac6e7394601b8892b5f8a90cddc471f06ddc95a0a4568f4931dc68a",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "workspacePathsReplaced": 0,
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.ui.CharacterBubbleLayoutTest.xml",
+    "originalSha256": "6695eaa557169cddeb5e45e5c370335ba15e43255aecbaf49100e15a55027b02",
+    "archivedSha256": "ae4e9d8090ccb0aaf9b6706d4ea5a2491df433469df901723533a321b6d82d79",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "workspacePathsReplaced": 0,
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.ui.ContentClipboardFlowTest.xml",
+    "originalSha256": "1f250a451fee01d4213954448c311aef5e9e76b322b241112ef3ad192b424ab4",
+    "archivedSha256": "721bdb8796d4d8c50e25a9b373c959ef73dd28edcbfb7b83494a0935e052867c",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "workspacePathsReplaced": 0,
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.ui.OceanThemeContrastTest.xml",
+    "originalSha256": "479573ba4d70d27f691ab430d0d3e887177d49721e2181534f202c0467b5bc0c",
+    "archivedSha256": "49242bb5d364e3b9a5f69121c2167469df292255c97bfb8a28578205fdde3190",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "workspacePathsReplaced": 0,
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.ui.OceanUiRenderTest.xml",
+    "originalSha256": "5e7293ec2d9c634cbe5e112fcc773dcf4cf8cc2236b1d81f9cbe5f862424feaa",
+    "archivedSha256": "98a6a741b3e291b6098ec818f0e59e188e7ad2b3bf7f5466c2b87937dccf8287",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "workspacePathsReplaced": 0,
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.ui.ReminderColdLaunchTest.xml",
+    "originalSha256": "9765d88614435914f3c80ab459bbc5ecdfd2f0456e6aa33a855c39517b54d9e7",
+    "archivedSha256": "b68deb8f77363504a533ecd091ac0eacd2ff1c2ac3a6a1551c3057c61dd6eea4",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "workspacePathsReplaced": 0,
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.ui.SaverAppFlowTest.xml",
+    "originalSha256": "62f661886529497dd693d4785c561ae0c4734916657ed5184d7056f49b283613",
+    "archivedSha256": "4abf873b1f033d7becba3ea86ca4f6319fb8c03d8d8fba7b03eb1a24a5c654b6",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "workspacePathsReplaced": 0,
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.ui.SaverViewModelFeedbackTest.xml",
+    "originalSha256": "fbd7a88d9437e314db39552fab7b154471ca2bb51ff942ad6e21f7b925aad312",
+    "archivedSha256": "22d303597253c3eb1fb566018eb6ee699ceb2b44738a6a77de50e5b8c765076f",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "workspacePathsReplaced": 0,
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/lint-results-debug.xml",
+    "originalSha256": "ebd5ab78a36aabde1fbfc7aed6d1d1c3c7b4519fb0cb9847190f69d4ebaf303f",
+    "archivedSha256": "62fa4d61ef5020b003c8f0d2dec36c2f27c9ce5a44c667d507bd7e1ae1c348cb",
+    "redaction": {
+      "workspacePathsReplaced": 16,
+      "diagnosticOutputRemoved": false
+    }
+  }
+]

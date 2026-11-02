@@ -1,0 +1,22 @@
+{
+  "checkedUtc": "2026-11-02T03:33:44.689353+00:00",
+  "scope": "Verified package filter; QA tags and optional expected daily tag only",
+  "filter": {
+    "checkedUtc": "2026-11-02T03:33:44.687354+00:00",
+    "packageFilterVerifiedInOutput": true,
+    "redactionDisabled": false
+  },
+  "notifications": [
+    {
+      "tag": "event:0bab49bc-9ef0-457e-b258-b799fa650254:1793597520000:1793590320000:DANGER",
+      "kind": "event",
+      "observedUtc": "2026-11-02T03:33:44.688349+00:00",
+      "qaTitle": "QA-ACCEPT-1101-IDLE",
+      "mCreationTimeMs": 1793590320171,
+      "mUpdateTimeMs": 1793590320171,
+      "mRankingTimeMs": 1793590320166,
+      "qaTitlesVisibleInRedactedOutput": []
+    }
+  ],
+  "rawOutputRetained": false
+}

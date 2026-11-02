@@ -1,0 +1,10 @@
+{
+  "atUtc": "2026-11-02T02:57:19.702815+00:00",
+  "packageName": "cn.edu.hust.ddlsaver.qa.clipboard",
+  "alreadyInstalledBeforeRun": false,
+  "selectedApkSha256": "fed09852fed3b1b114baffbeb0166aa122fe9849ada71c5c87daa11bdaa822c2",
+  "selectedCertificateSha256": "72ea6a16887627026c0789c1d3e703e46c6f0db698ee3383baa51e73a8314852",
+  "installedByThisRun": true,
+  "installResult": "Performing Streamed Install\r\nSuccess",
+  "installedAtUtc": "2026-11-02T02:57:29.443635+00:00"
+}

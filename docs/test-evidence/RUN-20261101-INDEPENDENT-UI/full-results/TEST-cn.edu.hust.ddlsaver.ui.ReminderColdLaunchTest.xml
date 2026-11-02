@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.ui.ReminderColdLaunchTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-11-01T14:34:47" time="0.54">
+  <properties/>
+  <testcase name="coldReminderLaunchOpensDetailAndRotationDoesNotReplayIt" classname="cn.edu.hust.ddlsaver.ui.ReminderColdLaunchTest" time="0.54"/>
+  <system-out><![CDATA[UI-COLD-RECREATE-BEGIN
+UI-COLD-RECREATE-END
+]]></system-out>
+  <system-err><![CDATA[Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+]]></system-err>
+</testsuite>

@@ -2,7 +2,14 @@
 
 本文记录真实发生的需求沟通、用户审核及对应修改，不替代 Git 提交历史。用户确认若干需求选项，不代表已经认可整份需求文档或 README。
 
-当前状态：**既有实现已到 v0.3.3／schema 4，本机及荣耀 X50 历史设备分项结果见[测试报告](test-report.md)。2026-10-30 付泽文开始数据组织专项需求完善并确认三项规则；辅助整理稿、完整需求与当前使用流程仍待整体审核。本轮未新增代码或测试执行结论。**
+当前状态：**PR #10 已审阅合并 `c1e94f3`，7 项规划提案尚未实现；此前增量提交 `778429e`，本轮源码 [bdcd76f](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/bdcd76f916aae546bd146ce1fb1a14859bcd5eb4) 为 0.3.4／7、schema 4。完整本机构建、179 方法／218 次执行通过、Lint 0／16；历史 CI #45 的 1／169 次失败根因未定，原证据保留，新源码远程状态见 [main 的 Android Actions](https://github.com/zidodo1124/hust26_software_engineering_homework/actions?query=branch%3Amain)。手机仍为 0.3.3／6，新包未实机验收；OBS-01／OBS-02、完整需求和最终验收继续待办。下列历史审核按发生时点保留。**
+
+## 2026-11-01：支盟渊接手页面、图片与角色方向
+
+- 时间基准：America/Los_Angeles；具体消息时分未记录。依据为[本次分工确认](../interaction-records/支盟渊/2026-11-01.md#2-接手页面图片与角色方向)。
+- 支盟渊明确接手石倚铭原负责方向，负责页面、图片与角色的后续实现、复核、兼容验证及演示，状态为已领取／进行中；继续产品审核、集成和验收协调。
+- 同日较早一条成员更新中的“待重新分配”为当时的过渡状态，本次确认后不再适用于当前任务。现行说明已同步任务板、本人文件、协作对象、状态和报告；历史交互与测试归属保持。
+- 用户同时要求先审阅合并队友 PR 并测试，随后优先处理已知问题以保障今晚演示稳定；本条不预填合并、修复或测试结果。
 
 ## 2026-11-01：当前成员名单更新
 
@@ -168,6 +175,36 @@
 - 付泽文对三项问题的选择分别为“采用当前方案”“接受稳定顺序”“允许筛选历史事项”：确认关键词不区分英文大小写、按完整连续文字匹配且多词不拆分；相同截止时间按内部标识保持稳定顺序；停用来源／标签可筛选历史事项。
 - AI 助手同步[专项需求](data-requirements.md)、[主需求](requirements.md)和[测试追踪](data-test-traceability.md)，补充多词连续匹配测试，并整理[模块报告与答辩材料](data-module-report.md)。测试的实际 CI 结果以对应运行记录为准。
 - 本次为局部规则确认，不代表其他未讨论的边界或整份需求已批准；实机验证仍放在最后。依据为[当日记录](../interaction-records/付泽文/2026-10-31.md)。
+
+## R-014：岳羽泉直接合并核查与本机后续授权
+
+- 日期：2026-11-01，整理日期采用 America/Los_Angeles；原个人提交和领取记录保留各自原时区。用户说明岳羽泉没有发 PR，而是直接 merge，要求核查后继续推进；随后明确手机暂时不方便连接，先做本机工作。
+- 复核方式：AI 助手只读检查 `ed91ce5..ac1d978` 的父提交、tree、实际文件差异及 GitHub Actions。远程 `main` 仍为 `ac1d9785ac9ab74dbd34fc00bc8459eb923002bc`，核查时分支保护标记为 false。
+
+| 实际内容 | 内容提交 | 直接合并 | 对应主线 CI |
+| --- | --- | --- | --- |
+| 领取与计划 | `e568625` | `3d6b9a6` | [41281651849](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41281651849) |
+| 提醒设计复核与回退脚本 | `40c860c` | `ffc3c74` | [41282961659](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41282961659) |
+| 4 项去重／计划键等规则测试 | `14feb25` | `05246bc` | [41284504355](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41284504355) |
+| 4 项已送达后旧提醒失效测试 | `79b96c8` | `4582b9f` | [41286256132](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41286256132) |
+| 权限文案实现与 3 项测试 | `1c43a8e` | `ac1d978` | [41288003667](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41288003667) |
+
+五次合并均有两个父提交，合并 tree 与对应功能提交相同；功能提交直接基于合并第一父提交。`ed91ce5` 仍为祖先，付泽文的数据源码、相关测试及报告未被这批改动覆盖。五项内容提交均有真实改动，应记为 5 项内容提交和 5 次合并，不将其换算为 10 项独立成果。内容提交保留岳羽泉作者与 Cursor 协作署名；首个合并的显示名 `c____y` 与其邮箱对应，不说明内容提交归属丢失。
+
+五次主线 CI 均为 success，最新原始报告已核对 169 次执行，失败／错误／跳过各 0，Lint 0 错误／17 警告。代码审查确认权限／通道提示与 `canPost`、保留计划并暂停系统唤醒的行为一致；新增 Kotlin 测试调用实际规则、引擎及文案。Python 回退脚本独立复写部分逻辑，仍按个人笔记所述边界处理，不能替代 Kotlin／平台检查。
+
+结论：本批未发现需要回退、补造 PR 或改写 Git 历史的实质问题；仓库实施计划允许提交或发起 PR。需要修正的是任务与交互索引滞后及后续 CI 信息。本次核查未修改提交作者、创建合并或推送。后续继续补本机恢复链路、图片失败诊断及交付材料；真实锁屏、Doze、重启和完整验收继续待设备批次执行。
+
+## R-015：PR #10 审阅合并与演示稳定性优先
+
+- 日期：2026-11-01，America/Los_Angeles；具体用户消息时分未记录，依据为[用户接手与稳定性优先指示](../interaction-records/支盟渊/2026-11-01.md)。
+- 对 [PR #10](https://github.com/zidodo1124/hust26_software_engineering_homework/pull/10) 准确 head `d4e09428b4deb87110067ff356c78a3cb98f4eac` 提交 [APPROVE 审阅](https://github.com/zidodo1124/hust26_software_engineering_homework/pull/10#pullrequestreview-5732043244)，`APPROVED`、ID `5732043244`；merge `c1e94f3d80fcf4aa6d9983c4e3be5e7b4e0a1d48`。04:25:58 UTC 快照无开放 PR；7 项提案仅按讨论稿合入，不代表已实现或全部规则获批。
+- 原 7 份源码／测试保存于 `778429e`，最终源码 [bdcd76f](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/bdcd76f916aae546bd146ce1fb1a14859bcd5eb4)。合并基线 194 次执行通过；首轮定向 108 执行／2 失败为取消测试身份前提过严，改查实际取消契约；最终 **28 份 JUnit XML、179 个不同方法／218 次执行，失败／错误／跳过各 0，Lint 0 错误／16 警告**，完整构建成功。警告总数仍为 16：新增恢复诊断 SharedPreferences.edit 的 1 条 UseKtx，原 ReminderRuntime 的 1 条 InlinedApi 消失，不能称为全部既有警告。
+- 静态复核发现同步诊断写盘可能拖延 Receiver 的 P2，改为独立单写入器后复审通过，无新增阻塞。独立单写入器最多保留 6 个待写来源槽和 1 个在途写入，业务恢复与 Receiver 收尾不等待磁盘；同来源中间阶段可合并，进程退出可能丢失未写记录，属于尽力留证，不承诺持久化必达。 新增图片权限提示和使用说明不等于关闭 OBS-01／OBS-02，新包未安装设备。
+- 历史 [CI #45](https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41387758880) 为 1／169 次失败，最终切回经典保存后等待首页超时根因未定；本轮仅增强相关断言和失败诊断，保留原 XML，不延长超时、删测试或迎合测试修改产品。新源码检查见 [main 的 Android Actions](https://github.com/zidodo1124/hust26_software_engineering_homework/actions?query=branch%3Amain)，不预填远程通过。
+- Windows `core.autocrlf` 可能改变安全证据已记录的哈希字节，因此 `.gitattributes` 仅给本次四个新证据目录（INDEPENDENT-UI、RECOVERY-DIAGNOSTICS、DEVICE-ACCEPTANCE、DEMO-STABILITY）配置 `-text`。已核对 114 项设备安全归档哈希全部一致；旧原始文件没有被格式化或改写，提交时另核对索引字节。
+
+完整阶段、源码和产物证据见 [RUN-20261101-DEMO-STABILITY](test-evidence/RUN-20261101-DEMO-STABILITY/README.md)。
 
 ## 当前待确认事项
 

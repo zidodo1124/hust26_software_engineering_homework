@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.ui.ReminderColdLaunchTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-11-02T04:37:59" hostname="LAPTOP-7OF0K1SP" time="0.769">
+  <properties/>
+  <testcase name="coldReminderLaunchOpensDetailAndRotationDoesNotReplayIt" classname="cn.edu.hust.ddlsaver.ui.ReminderColdLaunchTest" time="0.401"/>
+  <testcase name="realDailyNotificationPendingIntentColdLaunchesOnlyTodaysUnfinishedItems" classname="cn.edu.hust.ddlsaver.ui.ReminderColdLaunchTest" time="0.368"/>
+  <system-out><![CDATA[UI-COLD-RECREATE-BEGIN
+UI-COLD-RECREATE-END
+]]></system-out>
+  <system-err><![CDATA[Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+]]></system-err>
+</testsuite>

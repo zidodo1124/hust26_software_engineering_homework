@@ -1,0 +1,22 @@
+{
+  "expectedTriggerEpochMillis": 1793590320000,
+  "conditionScope": "Controlled system test deep idle, not natural Doze or extreme power saving",
+  "observed": false,
+  "enteredAt": {
+    "atUtc": "2026-11-02T03:26:23.584448+00:00",
+    "deviceEpochSeconds": 1793589981,
+    "wakefulness": [
+      "Dozing"
+    ],
+    "keyguardShowing": false,
+    "keyguardSecure": true,
+    "keyguardInputRestricted": false,
+    "deviceIdle": {
+      "mForceIdle": "true",
+      "mScreenOn": "true",
+      "mCharging": "true",
+      "mState": "IDLE",
+      "mLightState": "OVERRIDE"
+    }
+  }
+}

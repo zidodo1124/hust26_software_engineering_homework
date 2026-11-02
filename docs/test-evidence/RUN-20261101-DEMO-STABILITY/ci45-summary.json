@@ -1,0 +1,17 @@
+{
+  "run": "41387758880",
+  "artifactId": 13116197608,
+  "testExecutions": 169,
+  "failures": 1,
+  "errors": 0,
+  "skipped": 0,
+  "lintErrors": 0,
+  "lintWarnings": 17,
+  "failedTests": [
+    {
+      "name": "characterStylePreviewRequiresSaveAndCanBeSwitchedBackAfterRecreation",
+      "classname": "cn.edu.hust.ddlsaver.ui.SaverAppFlowTest",
+      "time": "20.466"
+    }
+  ]
+}

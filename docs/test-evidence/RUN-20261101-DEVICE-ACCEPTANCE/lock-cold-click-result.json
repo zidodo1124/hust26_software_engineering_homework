@@ -1,0 +1,10 @@
+{
+  "checkedAtUtc": "2026-11-02T02:33:00.067520+00:00",
+  "qaTitle": "QA-ACCEPT-1101-LOCK",
+  "method": "User reported clicking the actual LOCK notification after unlocking; device detail independently checked",
+  "userMessage": "已点击通知并进入对应事项",
+  "coldPidAbsentBeforeUserAction": true,
+  "expectedDetailVisible": true,
+  "screenshot": "03-lock-cold-notification-detail.png",
+  "activityLaunchedBySyntheticIntent": false
+}

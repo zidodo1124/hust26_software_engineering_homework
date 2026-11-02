@@ -1,0 +1,44 @@
+{
+  "atUtc": "2026-11-02T03:35:02.102197+00:00",
+  "battery": {
+    "AC powered": "false",
+    "USB powered": "true",
+    "Wireless powered": "false",
+    "status": "2",
+    "level": "79",
+    "scale": "100",
+    "temperature": "340",
+    "updatesStopped": false
+  },
+  "condition": {
+    "atUtc": "2026-11-02T03:35:01.251238+00:00",
+    "deviceEpochSeconds": 1793590498,
+    "wakefulness": [
+      "Awake"
+    ],
+    "keyguardShowing": false,
+    "keyguardSecure": true,
+    "keyguardInputRestricted": false,
+    "deviceIdle": {
+      "mForceIdle": "false",
+      "mScreenOn": "true",
+      "mCharging": "true",
+      "mState": "ACTIVE",
+      "mLightState": "ACTIVE"
+    }
+  },
+  "policy": {
+    "packageFilterValidated": true,
+    "appImportance": "DEFAULT",
+    "reminderChannelPolicies": [
+      {
+        "importance": 3,
+        "deleted": false
+      }
+    ],
+    "activeTargetNotificationCount": 0
+  },
+  "postNotificationsGranted": true,
+  "exactAlarmAllowed": true,
+  "originalDiagnosticLogPropertiesRestored": true
+}

@@ -1,0 +1,461 @@
+diff --git a/app/build.gradle.kts b/app/build.gradle.kts
+index 0af9b79..4ba5515 100644
+--- a/app/build.gradle.kts
++++ b/app/build.gradle.kts
+@@ -13,8 +13,8 @@ android {
+         applicationId = "cn.edu.hust.ddlsaver"
+         minSdk = 26
+         targetSdk = 35
+-        versionCode = 6
+-        versionName = "0.3.3"
++        versionCode = 7
++        versionName = "0.3.4"
+         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+     }
+ 
+diff --git a/app/src/main/java/cn/edu/hust/ddlsaver/platform/AttachmentStore.kt b/app/src/main/java/cn/edu/hust/ddlsaver/platform/AttachmentStore.kt
+index 9e7d83c..56eafc2 100644
+--- a/app/src/main/java/cn/edu/hust/ddlsaver/platform/AttachmentStore.kt
++++ b/app/src/main/java/cn/edu/hust/ddlsaver/platform/AttachmentStore.kt
+@@ -54,7 +54,14 @@ class AttachmentStore(context: Context) {
+             rollback(created, failure)
+             diagnostics.reportFailure(failure, failure.suppressed.size - suppressedBeforeRollback)
+             throw if (failure is AttachmentException) failure
+-            else AttachmentException("图片导入失败，请确认图片可读取且本机存储空间充足。", failure)
++            else {
++                // A denied private-file operation must not be presented as a source URI permission issue.
++                val sourceAccessDenied = failure is SecurityException && diagnostics.stage in sourceAccessStages
++                val message = if (sourceAccessDenied) {
++                    "图片导入失败：来源访问权限不可用。请重新复制图片，或使用“从相册选择”重新添加。"
++                } else "图片导入失败，请确认图片可读取且本机存储空间充足。"
++                AttachmentException(message, failure)
++            }
+         }
+     }
+ 
+@@ -304,5 +311,11 @@ class AttachmentStore(context: Context) {
+         private val imageName = Regex("$UUID_PATTERN\\.img")
+         private val ownedName = Regex("$UUID_PATTERN\\.(img|part)")
+         private val fileOperations = Mutex()
++        private val sourceAccessStages = setOf(
++            AttachmentImportDiagnostics.Stage.METADATA,
++            AttachmentImportDiagnostics.Stage.OPEN_SOURCE,
++            AttachmentImportDiagnostics.Stage.READ_SOURCE,
++            AttachmentImportDiagnostics.Stage.CLOSE_SOURCE,
++        )
+     }
+ }
+diff --git a/app/src/main/java/cn/edu/hust/ddlsaver/reminders/ReminderRuntime.kt b/app/src/main/java/cn/edu/hust/ddlsaver/reminders/ReminderRuntime.kt
+index 57dbd94..71048a1 100644
+--- a/app/src/main/java/cn/edu/hust/ddlsaver/reminders/ReminderRuntime.kt
++++ b/app/src/main/java/cn/edu/hust/ddlsaver/reminders/ReminderRuntime.kt
+@@ -3,13 +3,13 @@ package cn.edu.hust.ddlsaver.reminders
+ import android.content.BroadcastReceiver
+ import android.content.Context
+ import android.content.Intent
+-import android.app.AlarmManager
+ import android.util.Log
+ import cn.edu.hust.ddlsaver.data.SaverDatabase
+ import kotlinx.coroutines.CancellationException
+ import kotlinx.coroutines.CoroutineScope
+ import kotlinx.coroutines.Dispatchers
+ import kotlinx.coroutines.SupervisorJob
++import kotlinx.coroutines.TimeoutCancellationException
+ import kotlinx.coroutines.cancel
+ import kotlinx.coroutines.channels.Channel
+ import kotlinx.coroutines.flow.MutableStateFlow
+@@ -39,16 +39,18 @@ class ReminderRuntime private constructor(private val app: Context) {
+         requests.trySend(Unit)
+     }
+ 
+-    suspend fun reconcileNow() {
+-        try { mutableHealth.value = engine.reconcile(forceReschedule = true) }
++    suspend fun reconcileNow(): ReminderHealth {
++        return try { engine.reconcile(forceReschedule = true).also { mutableHealth.value = it } }
+         catch (cancelled: CancellationException) { throw cancelled }
+         catch (error: Exception) { failure(error) }
+     }
+ 
+-    private fun failure(error: Exception) {
+-        mutableHealth.value = mutableHealth.value.copy(
++    private fun failure(error: Exception): ReminderHealth {
++        val failed = mutableHealth.value.copy(
+             lastError = "提醒恢复暂未完成（${error.javaClass.simpleName}），下次打开时将重试。")
++        mutableHealth.value = failed
+         Log.e("DDLReminder", "Reminder reconciliation failed: ${error.javaClass.simpleName}")
++        return failed
+     }
+ 
+     private fun close() { scope.cancel(); requests.close(); database.close() }
+@@ -68,30 +70,57 @@ class ReminderRuntime private constructor(private val app: Context) {
+ class ReminderAlarmReceiver : BroadcastReceiver() {
+     override fun onReceive(context: Context, intent: Intent?) {
+         if (intent?.action != AndroidReminderPlatform.ACTION_WAKE) return
+-        reconcileBounded(context)
++        reconcileBounded(context, RecoveryTrigger.ALARM)
+     }
+ }
+ 
+ class ReminderRestoreReceiver : BroadcastReceiver() {
+     override fun onReceive(context: Context, intent: Intent?) {
+-        if (intent?.action !in actions) return
+-        reconcileBounded(context)
+-    }
+-    companion object {
+-        private val actions = setOf(Intent.ACTION_BOOT_COMPLETED, Intent.ACTION_TIME_CHANGED,
+-            Intent.ACTION_TIMEZONE_CHANGED, Intent.ACTION_MY_PACKAGE_REPLACED,
+-            AlarmManager.ACTION_SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED)
++        val trigger = RecoveryTrigger.fromAction(intent?.action) ?: return
++        if (trigger == RecoveryTrigger.ALARM) return
++        reconcileBounded(context, trigger)
+     }
+ }
+ 
+-private fun BroadcastReceiver.reconcileBounded(context: Context) {
++private fun BroadcastReceiver.reconcileBounded(context: Context, trigger: RecoveryTrigger) {
+     val pending = goAsync()
+     val app = context.applicationContext
++    val diagnostics = ReminderRecoveryDiagnostics.create(app, trigger)
+     CoroutineScope(SupervisorJob() + Dispatchers.IO).launch {
+-        try { withTimeout(8_000L) { ReminderRuntime.get(app).reconcileNow() } }
+-        catch (error: Exception) {
+-            // Durable plans/control remain pending. Do not crash the process or log user event contents.
+-            Log.e("DDLReminder", "Receiver reconciliation deferred: ${error.javaClass.simpleName}")
+-        } finally { pending.finish() }
++        runReceiverReconciliation(diagnostics, { ReminderRuntime.get(app).reconcileNow() }, { pending.finish() })
++    }
++}
++
++/** IO-worker body shared by manifest receivers. Completion is guaranteed even if diagnostics fail. */
++internal suspend fun runReceiverReconciliation(
++    diagnostics: ReminderRecoveryDiagnostics?,
++    reconcile: suspend () -> ReminderHealth,
++    finish: () -> Unit,
++    timeoutMillis: Long = 8_000L,
++) {
++    try {
++        withTimeout(timeoutMillis) {
++            diagnostics?.received()
++            diagnostics?.started()
++            val health = reconcile()
++            val outcome = when {
++                health.lastError != null -> RecoveryOutcome.HEALTH_ERROR
++                !health.canPost -> RecoveryOutcome.NOTIFICATION_BLOCKED
++                else -> RecoveryOutcome.COMPLETED
++            }
++            diagnostics?.finished(outcome, health)
++        }
++    } catch (_: TimeoutCancellationException) {
++        diagnostics?.finished(RecoveryOutcome.TIMED_OUT)
++        Log.e("DDLReminder", "Receiver reconciliation timed out")
++    } catch (cancelled: CancellationException) {
++        diagnostics?.finished(RecoveryOutcome.CANCELLED)
++        throw cancelled
++    } catch (_: Exception) {
++        // Durable plans/control remain pending. Never retain exception messages or user contents.
++        diagnostics?.finished(RecoveryOutcome.FAILED)
++        Log.e("DDLReminder", "Receiver reconciliation deferred")
++    } finally {
++        finish()
+     }
+ }
+diff --git a/app/src/main/java/cn/edu/hust/ddlsaver/ui/ReminderSettingsPanel.kt b/app/src/main/java/cn/edu/hust/ddlsaver/ui/ReminderSettingsPanel.kt
+index 8a099cb..e9bbc21 100644
+--- a/app/src/main/java/cn/edu/hust/ddlsaver/ui/ReminderSettingsPanel.kt
++++ b/app/src/main/java/cn/edu/hust/ddlsaver/ui/ReminderSettingsPanel.kt
+@@ -181,7 +181,7 @@ private fun ReminderPermissionPanel(health: ReminderHealth, busy: Boolean, onRef
+             Text(it, color = Muted, style = MaterialTheme.typography.bodySmall,
+                 modifier = Modifier.testTag("notification-plans-retained-hint"))
+         }
+-        Text("省电和后台限制仍可能推迟提醒。强制停止应用后需要重新打开，才能恢复提醒安排。", color = Muted,
++        Text("省电和后台限制仍可能推迟提醒。手机重启或强制停止应用后，请先打开本应用检查提醒安排。", color = Muted,
+             style = MaterialTheme.typography.bodySmall)
+         Text("待发送提醒：${health.pendingCount}", color = Muted, modifier = Modifier.testTag("reminder-pending-count"))
+         health.lastError?.let { ErrorNotice("提醒暂未安排完成，可重新检查并安排。详情：$it") }
+diff --git a/app/src/test/java/cn/edu/hust/ddlsaver/platform/AttachmentImportDiagnosticsTest.kt b/app/src/test/java/cn/edu/hust/ddlsaver/platform/AttachmentImportDiagnosticsTest.kt
+index 2cb0df3..a110e43 100644
+--- a/app/src/test/java/cn/edu/hust/ddlsaver/platform/AttachmentImportDiagnosticsTest.kt
++++ b/app/src/test/java/cn/edu/hust/ddlsaver/platform/AttachmentImportDiagnosticsTest.kt
+@@ -1,6 +1,7 @@
+ package cn.edu.hust.ddlsaver.platform
+ 
+ import android.content.Context
++import android.content.ContextWrapper
+ import android.content.pm.ApplicationInfo
+ import android.graphics.Bitmap
+ import android.net.Uri
+@@ -78,7 +79,7 @@ class AttachmentImportDiagnosticsTest {
+         val failure = expectFailure { store.importImages(listOf(Uri.fromFile(freshSource), denied)) }
+ 
+         assertOriginalCause(original, failure)
+-        assertEquals("图片导入失败，请确认图片可读取且本机存储空间充足。", failure.message)
++        assertEquals("图片导入失败：来源访问权限不可用。请重新复制图片，或使用“从相册选择”重新添加。", failure.message)
+         assertEquals(setOf(existing.relativePath), privateNames())
+         assertArrayEquals(existingBytes, File(copies, existing.relativePath).readBytes())
+         assertTrue(freshSource.isFile)
+@@ -118,6 +119,50 @@ class AttachmentImportDiagnosticsTest {
+         assertLog("ensure_directory", "none", 0, 1, "validation")
+     }
+ 
++    @Test
++    fun deniedPrivateStorageAccessDoesNotRecommendRecopyingTheSource() = runBlocking {
++        val source = png("readable-source.png")
++        val sourceBytes = source.readBytes()
++        val original = SecurityException("private storage access denied")
++        var denyPrivateStorage = false
++        val restrictedContext = object : ContextWrapper(context) {
++            override fun getApplicationContext(): Context = this
++            override fun getFilesDir(): File {
++                if (denyPrivateStorage) throw original
++                return super.getFilesDir()
++            }
++        }
++        val restrictedStore = AttachmentStore(restrictedContext)
++        denyPrivateStorage = true
++
++        val failure = expectFailure { restrictedStore.importImages(listOf(Uri.fromFile(source))) }
++
++        assertOriginalCause(original, failure)
++        assertEquals("图片导入失败，请确认图片可读取且本机存储空间充足。", failure.message)
++        assertTrue(privateNames().isEmpty())
++        assertArrayEquals(sourceBytes, source.readBytes())
++        assertLog("ensure_directory", "none", 0, 1, "security_denied")
++    }
++
++    @Test
++    fun deniedSourceCloseStillRollsBackAndOffersReselection() = runBlocking {
++        val source = png("source-close.png")
++        val sourceBytes = source.readBytes()
++        val uri = Uri.parse("content://private-authority/close-denied")
++        val original = SecurityException("private source close failure")
++        shadowOf(context.contentResolver).registerInputStream(uri, object : ByteArrayInputStream(sourceBytes) {
++            override fun close() = throw original
++        })
++
++        val failure = expectFailure { store.importImages(listOf(uri)) }
++
++        assertOriginalCause(original, failure)
++        assertEquals("图片导入失败：来源访问权限不可用。请重新复制图片，或使用“从相册选择”重新添加。", failure.message)
++        assertTrue(privateNames().isEmpty())
++        assertArrayEquals(sourceBytes, source.readBytes())
++        assertLog("close_source", "content", 1, 1, "security_denied")
++    }
++
+     @Test
+     fun destinationCollisionReportsCommitAndPreservesThePreexistingFile() = runBlocking {
+         val source = png("source.png")
+diff --git a/app/src/test/java/cn/edu/hust/ddlsaver/reminders/ReminderRestoreIntegrationTest.kt b/app/src/test/java/cn/edu/hust/ddlsaver/reminders/ReminderRestoreIntegrationTest.kt
+index e5034fd..11cd55a 100644
+--- a/app/src/test/java/cn/edu/hust/ddlsaver/reminders/ReminderRestoreIntegrationTest.kt
++++ b/app/src/test/java/cn/edu/hust/ddlsaver/reminders/ReminderRestoreIntegrationTest.kt
+@@ -5,6 +5,8 @@ import android.app.AlarmManager
+ import android.app.Application
+ import android.app.NotificationManager
+ import android.content.Intent
++import android.content.Context
++import android.content.pm.ApplicationInfo
+ import android.os.Looper
+ import androidx.test.core.app.ApplicationProvider
+ import cn.edu.hust.ddlsaver.data.RoomEventRepository
+@@ -12,6 +14,8 @@ import cn.edu.hust.ddlsaver.data.SaverDatabase
+ import cn.edu.hust.ddlsaver.domain.AppSettings
+ import cn.edu.hust.ddlsaver.domain.EventDraft
+ import kotlinx.coroutines.runBlocking
++import kotlinx.coroutines.delay
++import kotlinx.coroutines.withTimeout
+ import org.junit.After
+ import org.junit.Assert.*
+ import org.junit.Before
+@@ -23,6 +27,7 @@ import org.robolectric.annotation.Config
+ import org.robolectric.annotation.LooperMode
+ import org.robolectric.annotation.SQLiteMode
+ import org.robolectric.shadows.ShadowAlarmManager
++import org.json.JSONObject
+ import java.time.Instant
+ import java.util.concurrent.TimeUnit
+ 
+@@ -36,10 +41,14 @@ class ReminderRestoreIntegrationTest {
+     private lateinit var database: SaverDatabase
+     private lateinit var alarms: AlarmManager
+     private lateinit var notifications: NotificationManager
++    private var originalFlags = 0
+ 
+     @Before
+     fun prepare() {
+         app = ApplicationProvider.getApplicationContext()
++        originalFlags = app.applicationInfo.flags
++        app.applicationInfo.flags = originalFlags or ApplicationInfo.FLAG_DEBUGGABLE
++        app.deleteSharedPreferences(ReminderRecoveryDiagnostics.FILE_NAME)
+         ReminderRuntime.resetForTests()
+         app.deleteDatabase("ddl-saver.db")
+         shadowOf(app).grantPermissions(Manifest.permission.POST_NOTIFICATIONS)
+@@ -54,7 +63,8 @@ class ReminderRestoreIntegrationTest {
+             repository.saveSettings(AppSettings(dailySummaryEnabled = false, dangerReminderEnabled = false))
+             repository.save(EventDraft(title = "广播恢复未来事项",
+                 deadlineAt = Instant.now().plusSeconds(7 * 86_400L).toEpochMilli()))
+-            ReminderRuntime.get(app).reconcileNow()
++            val result = ReminderRuntime.get(app).reconcileNow()
++            assertEquals(result, ReminderRuntime.get(app).health.value)
+         }
+         assertEquals(1, shadowOf(alarms).getScheduledAlarms().size)
+         assertNull(ReminderRuntime.get(app).health.value.lastError)
+@@ -67,6 +77,8 @@ class ReminderRestoreIntegrationTest {
+         alarms.cancelAll()
+         notifications.cancelAll()
+         app.deleteDatabase("ddl-saver.db")
++        app.deleteSharedPreferences(ReminderRecoveryDiagnostics.FILE_NAME)
++        app.applicationInfo.flags = originalFlags
+     }
+ 
+     @Test
+@@ -97,7 +109,13 @@ class ReminderRestoreIntegrationTest {
+             assertEquals(originalControl, database.dao().readReminderControl())
+             assertEquals(0, shadowOf(notifications).size())
+             assertNull(ReminderRuntime.get(app).health.value.lastError)
++            val diagnostic = diagnostic(checkNotNull(RecoveryTrigger.fromAction(action)))
++            assertEquals("finished", diagnostic.getString("phase"))
++            assertEquals("completed", diagnostic.getString("outcome"))
++            assertFalse(diagnostic.getBoolean("has_error"))
++            assertEquals(originalPlans.size, diagnostic.getInt("pending_count"))
+         }
++        assertEquals("completed", diagnostic(RecoveryTrigger.BOOT).getString("outcome"))
+     }
+ 
+     @Test
+@@ -114,6 +132,8 @@ class ReminderRestoreIntegrationTest {
+         assertNull(blocked.scheduledTriggerAt)
+         assertFalse(blocked.alarmDirty)
+         assertEquals(0, shadowOf(notifications).size())
++        assertEquals("notification_blocked", diagnostic(RecoveryTrigger.BOOT).getString("outcome"))
++        assertFalse(diagnostic(RecoveryTrigger.BOOT).getBoolean("can_post"))
+ 
+         shadowOf(app).grantPermissions(Manifest.permission.POST_NOTIFICATIONS)
+         // A supported restore event after permission returns; there is no invented POST_NOTIFICATIONS broadcast.
+@@ -123,6 +143,7 @@ class ReminderRestoreIntegrationTest {
+         assertEquals(originalPlans, database.dao().readReminderPlans())
+         assertFalse(checkNotNull(database.dao().readReminderControl()).alarmDirty)
+         assertEquals(0, shadowOf(notifications).size())
++        assertEquals("completed", diagnostic(RecoveryTrigger.BOOT).getString("outcome"))
+     }
+ 
+     @Test
+@@ -143,9 +164,13 @@ class ReminderRestoreIntegrationTest {
+         assertEquals(originalPlans, database.dao().readReminderPlans())
+         assertEquals(originalControl, database.dao().readReminderControl())
+         assertEquals(0, shadowOf(notifications).size())
++        assertTrue(app.getSharedPreferences(ReminderRecoveryDiagnostics.FILE_NAME, Context.MODE_PRIVATE).all.isEmpty())
+     }
+ 
+-    private fun sendRestoreBroadcastAndAwaitFinish(action: String) {
++    private fun diagnostic(trigger: RecoveryTrigger): JSONObject = JSONObject(checkNotNull(
++        app.getSharedPreferences(ReminderRecoveryDiagnostics.FILE_NAME, Context.MODE_PRIVATE).getString(trigger.key, null)))
++
++    private suspend fun sendRestoreBroadcastAndAwaitFinish(action: String) {
+         // Resolve the receiver registered from the production manifest, then let the framework dispatch it.
+         val intent = Intent(action).setPackage(app.packageName)
+         val receiver = shadowOf(app).getReceiversForIntent(intent).filterIsInstance<ReminderRestoreReceiver>().single()
+@@ -155,5 +180,9 @@ class ReminderRestoreIntegrationTest {
+         assertTrue("Expected goAsync for $action", receiverShadow.wentAsync())
+         val pending = checkNotNull(receiverShadow.originalPendingResult)
+         shadowOf(pending).future.get(10, TimeUnit.SECONDS)
++        // Receiver finish intentionally does not wait for best-effort diagnostic disk writes.
++        withTimeout(5_000) {
++            while (!ReminderRecoveryDiagnostics.sharedWriter.isIdle) delay(1)
++        }
+     }
+ }
+diff --git a/app/src/test/java/cn/edu/hust/ddlsaver/ui/AttachmentClipboardFlowTest.kt b/app/src/test/java/cn/edu/hust/ddlsaver/ui/AttachmentClipboardFlowTest.kt
+index 4940851..aea6288 100644
+--- a/app/src/test/java/cn/edu/hust/ddlsaver/ui/AttachmentClipboardFlowTest.kt
++++ b/app/src/test/java/cn/edu/hust/ddlsaver/ui/AttachmentClipboardFlowTest.kt
+@@ -164,6 +164,9 @@ class AttachmentClipboardFlowTest {
+         compose.waitUntil(20_000) { !model.state.value.busy && model.state.value.operationError != null }
+         val error = checkNotNull(model.state.value.operationError)
+         assertTrue(error.contains("图片导入失败"))
++        assertTrue(error.contains("来源访问权限不可用"))
++        assertTrue(error.contains("重新复制图片"))
++        assertTrue(error.contains("从相册选择"))
+         compose.onNodeWithText(error).assertExists()
+         assertTrue("The controlled URI must actually be read", deniedReads.get() > 0)
+         assertEquals("The first image must have been imported before the second failed", 2, completedCopiesAtFailure.get())
+diff --git a/app/src/test/java/cn/edu/hust/ddlsaver/ui/SaverAppFlowTest.kt b/app/src/test/java/cn/edu/hust/ddlsaver/ui/SaverAppFlowTest.kt
+index 8812341..6bf7300 100644
+--- a/app/src/test/java/cn/edu/hust/ddlsaver/ui/SaverAppFlowTest.kt
++++ b/app/src/test/java/cn/edu/hust/ddlsaver/ui/SaverAppFlowTest.kt
+@@ -14,6 +14,8 @@ import android.net.Uri
+ import androidx.compose.ui.test.assertTextContains
+ import androidx.compose.ui.test.assertTextEquals
+ import androidx.compose.ui.test.assertIsSelected
++import androidx.compose.ui.test.assertIsDisplayed
++import androidx.compose.ui.test.assertIsEnabled
+ import androidx.compose.ui.test.hasText
+ import androidx.compose.ui.test.hasTestTag
+ import androidx.compose.ui.test.junit4.createAndroidComposeRule
+@@ -48,6 +50,7 @@ import org.junit.Assert.assertFalse
+ import org.junit.Assert.assertNotNull
+ import org.junit.Assert.assertNull
+ import org.junit.Assert.assertTrue
++import org.junit.Before
+ import org.junit.Rule
+ import org.junit.Test
+ import org.junit.rules.ExternalResource
+@@ -74,6 +77,7 @@ import java.io.File
+ @SQLiteMode(SQLiteMode.Mode.NATIVE)
+ class SaverAppFlowTest {
+     private val compose = createAndroidComposeRule<MainActivity>()
++    @Volatile private var diagnosticModel: SaverViewModel? = null
+     private val databaseIsolation = object : ExternalResource() {
+         override fun before() = removeTestDatabase()
+         override fun after() = removeTestDatabase()
+@@ -90,8 +94,18 @@ class SaverAppFlowTest {
+     private val failureDiagnostics = object : TestWatcher() {
+         override fun failed(error: Throwable, description: Description) {
+             // Never ask Espresso/Compose to become idle again while reporting an idle failure.
+-            println("UI-DIAGNOSTIC FAILED ${description.methodName}")
+-            println(error.stackTraceToString())
++            println("UI-DIAGNOSTIC FAILED ${description.methodName} error_type=${error.javaClass.simpleName}")
++            val snapshot = diagnosticModel?.state?.value
++            if (snapshot == null) {
++                println("UI-DIAGNOSTIC vm_cached=false")
++            } else {
++                // Only cached StateFlow data; no Activity, semantics or database access on failure.
++                println("UI-DIAGNOSTIC vm_cached=true loading=${snapshot.loading} busy=${snapshot.busy} " +
++                    "action_kind=${snapshot.actionResult?.kind} action_token=${snapshot.actionResult?.token} " +
++                    "image_import_result_present=${snapshot.imageImportResult != null} " +
++                    "character_style=${snapshot.settings.characterStyle} load_error_present=${snapshot.loadError != null} " +
++                    "operation_error_present=${snapshot.operationError != null} cleanup_warning_present=${snapshot.cleanupWarning != null}")
++            }
+         }
+     }
+ 
+@@ -99,6 +113,11 @@ class SaverAppFlowTest {
+     @get:Rule
+     val rules: TestRule = RuleChain.outerRule(databaseIsolation).around(compose).around(failureDiagnostics)
+ 
++    @Before
++    fun cacheModelForFailureDiagnostics() {
++        diagnosticModel = ViewModelProvider(compose.activity)[SaverViewModel::class.java]
++    }
++
+     @Test
+     fun requiredInputIsRejectedThenNewEventCanBeSavedAndEdited() {
+         openNewEvent()
+@@ -577,8 +596,8 @@ class SaverAppFlowTest {
+         awaitText("DDL Saver")
+         compose.onNodeWithText("设置").performClick()
+         compose.onNodeWithTag("character-style-CHIBI").assertIsSelected()
+-        compose.onNodeWithTag("character-style-CLASSIC").performClick()
+-        compose.onNodeWithTag("settings-save").performScrollTo().performClick()
++        compose.onNodeWithTag("character-style-CLASSIC").performClick().assertIsSelected()
++        compose.onNodeWithTag("settings-save").performScrollTo().assertIsDisplayed().assertIsEnabled().performClick()
+         awaitText("DDL Saver")
+         assertEquals(original, withRepository { settings.first() })
+     }
+@@ -678,6 +697,7 @@ class SaverAppFlowTest {
+         println("UI-RECREATE-BEGIN")
+         scenario.recreate()
+         scenario.onActivity { activity ->
++            diagnosticModel = ViewModelProvider(activity)[SaverViewModel::class.java]
+             assertTrue("recreate() must construct a different Activity instance",
+                 previousIdentity != System.identityHashCode(activity))
+             assertTrue("Recreation must retain the original launch identity",

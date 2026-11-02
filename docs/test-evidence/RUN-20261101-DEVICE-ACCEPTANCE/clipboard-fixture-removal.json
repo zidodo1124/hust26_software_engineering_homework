@@ -1,0 +1,9 @@
+{
+  "atUtc": "2026-11-02T03:19:37.114021+00:00",
+  "packageName": "cn.edu.hust.ddlsaver.qa.clipboard",
+  "method": "Uninstall only test tool newly installed by this run",
+  "result": "Success",
+  "noLongerInstalled": true,
+  "syntheticClipboardClearedBeforeRemoval": true,
+  "productPackageUntouched": true
+}

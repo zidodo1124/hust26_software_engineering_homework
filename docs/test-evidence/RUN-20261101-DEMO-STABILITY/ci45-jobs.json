@@ -1,0 +1,86 @@
+[
+  {
+    "id": 125092280241,
+    "name": "Build APK, run local tests and lint",
+    "status": "completed",
+    "conclusion": "failure",
+    "html_url": "https://github.com/zidodo1124/hust26_software_engineering_homework/actions/runs/41387758880/job/125092280241",
+    "steps": [
+      {
+        "number": 1,
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 2,
+        "name": "Check out source",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 3,
+        "name": "Set up JDK 17",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 4,
+        "name": "Set up Android SDK",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 5,
+        "name": "Build and check",
+        "status": "completed",
+        "conclusion": "failure"
+      },
+      {
+        "number": 6,
+        "name": "Upload checked debug APK",
+        "status": "completed",
+        "conclusion": "skipped"
+      },
+      {
+        "number": 7,
+        "name": "Upload test and lint reports",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 13,
+        "name": "Post Set up JDK 17",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 14,
+        "name": "Post Check out source",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 15,
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ],
+    "failureLines": [
+      "2026-11-02T04:22:11.5777160Z --- Failed to create image decoder with message 'incomplete input'",
+      "2026-11-02T04:22:12.0793041Z --- Failed to create image decoder with message 'unimplemented'",
+      "2026-11-02T04:22:48.0860430Z SaverAppFlowTest > characterStylePreviewRequiresSaveAndCanBeSwitchedBackAfterRecreation FAILED",
+      "2026-11-02T04:22:48.0861289Z     androidx.compose.ui.test.ComposeTimeoutException: Condition still not satisfied after 20000 ms",
+      "2026-11-02T04:22:51.4778039Z > Task :app:testDebugUnitTest FAILED",
+      "2026-11-02T04:23:26.5902983Z FAILURE: Build failed with an exception.",
+      "2026-11-02T04:23:26.5949886Z * What went wrong:",
+      "2026-11-02T04:23:26.5954157Z * Exception is:",
+      "2026-11-02T04:23:26.5954748Z org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:testDebugUnitTest'.",
+      "2026-11-02T04:23:26.5965182Z \tat org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)",
+      "2026-11-02T04:23:26.6028953Z Caused by: org.gradle.api.internal.exceptions.MarkedVerificationException: There were failing tests. See the report at: file:///home/runner/work/hust26_software_engineering_homework/hust26_software_engineering_homework/app/build/reports/tests/testDebugUnitTest/index.html",
+      "2026-11-02T04:23:26.6140464Z \tat org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)",
+      "2026-11-02T04:23:26.6196089Z BUILD FAILED in 4m 10s"
+    ]
+  }
+]

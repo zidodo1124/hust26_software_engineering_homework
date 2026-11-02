@@ -1,0 +1,71 @@
+{
+  "sampleStartUtc": "2026-11-02T02:33:03.955685+00:00",
+  "sampleEndUtc": "2026-11-02T02:33:05.105753+00:00",
+  "deviceEpochSeconds": 1793586782,
+  "scope": "Live repeated stable DB/WAL copy, QA-only local observation, not original-data preservation proof",
+  "attempts": 1,
+  "dbWalRepeatedBytesMatch": true,
+  "integrityCheck": "ok",
+  "events": [
+    {
+      "id": "c88aa580-25aa-4704-9439-bdbdec3a9b28",
+      "title": "QA-ACCEPT-1101-LOCK",
+      "deadlineAt": 1793593860000,
+      "sprintMinutes": 120,
+      "description": "",
+      "importance": "NORMAL",
+      "completedAt": 1793586781097,
+      "archivedAt": null,
+      "createdAt": 1793586341167,
+      "updatedAt": 1793586781097,
+      "revision": 2,
+      "sourceId": null
+    }
+  ],
+  "reminderPlans": [
+    {
+      "key": "DANGER:c88aa580-25aa-4704-9439-bdbdec3a9b28:1793593860000",
+      "kind": "DANGER",
+      "eventId": "c88aa580-25aa-4704-9439-bdbdec3a9b28",
+      "deadlineAt": 1793593860000,
+      "eventRevision": 1,
+      "triggerAt": 1793586660000,
+      "day": null,
+      "notificationTag": "event:c88aa580-25aa-4704-9439-bdbdec3a9b28:1793593860000:1793586660000:DANGER",
+      "active": 0,
+      "state": "SENT",
+      "lastAttemptAt": 1793586660065,
+      "lastError": null,
+      "cancelPending": 0
+    },
+    {
+      "key": "DEADLINE:c88aa580-25aa-4704-9439-bdbdec3a9b28:1793593860000",
+      "kind": "DEADLINE",
+      "eventId": "c88aa580-25aa-4704-9439-bdbdec3a9b28",
+      "deadlineAt": 1793593860000,
+      "eventRevision": 1,
+      "triggerAt": 1793590260000,
+      "day": null,
+      "notificationTag": "event:c88aa580-25aa-4704-9439-bdbdec3a9b28:1793593860000:1793590260000:DEADLINE",
+      "active": 0,
+      "state": "PENDING",
+      "lastAttemptAt": null,
+      "lastError": null,
+      "cancelPending": 0
+    }
+  ],
+  "reminderControl": [
+    {
+      "id": 1,
+      "alarmIdentity": "ddl-saver://reminders/wake",
+      "dailyDate": "2026-11-03",
+      "dailyMinuteOfDay": 480,
+      "scheduledTriggerAt": 1793664000000,
+      "desiredTriggerAt": 1793664000000,
+      "scheduleMode": "exact",
+      "alarmDirty": 0,
+      "lastError": null
+    }
+  ],
+  "temporaryPrivateDatabaseRemoved": true
+}

@@ -1,0 +1,46 @@
+{
+  "pidBefore": "present",
+  "pidAfter": "absent",
+  "notificationBefore": [
+    {
+      "tag": "event:c88aa580-25aa-4704-9439-bdbdec3a9b28:1793593860000:1793586660000:DANGER",
+      "kind": "event",
+      "observedUtc": "2026-11-02T02:31:31.245017+00:00",
+      "qaTitle": "QA-ACCEPT-1101-LOCK",
+      "mCreationTimeMs": 1793586660267,
+      "mUpdateTimeMs": 1793586660267,
+      "mRankingTimeMs": 1793586660259,
+      "qaTitlesVisibleInRedactedOutput": []
+    }
+  ],
+  "notificationAfter": [
+    {
+      "tag": "event:c88aa580-25aa-4704-9439-bdbdec3a9b28:1793593860000:1793586660000:DANGER",
+      "kind": "event",
+      "observedUtc": "2026-11-02T02:31:32.335774+00:00",
+      "qaTitle": "QA-ACCEPT-1101-LOCK",
+      "mCreationTimeMs": 1793586660267,
+      "mUpdateTimeMs": 1793586660267,
+      "mRankingTimeMs": 1793586660259,
+      "qaTitlesVisibleInRedactedOutput": []
+    }
+  ],
+  "condition": {
+    "atUtc": "2026-11-02T02:31:32.702098+00:00",
+    "deviceEpochSeconds": 1793586690,
+    "wakefulness": [
+      "Dozing"
+    ],
+    "keyguardShowing": true,
+    "keyguardSecure": true,
+    "keyguardInputRestricted": false,
+    "deviceIdle": {
+      "mForceIdle": "false",
+      "mScreenOn": "false",
+      "mCharging": "true",
+      "mState": "ACTIVE",
+      "mLightState": "ACTIVE"
+    }
+  },
+  "method": "am kill cached/background process; no force-stop"
+}

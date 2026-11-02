@@ -1,0 +1,114 @@
+[
+  {
+    "file": "qa-boot-plan.json",
+    "source": ".local-tools/device-acceptance-20261101/qa-boot-plan.json",
+    "sourceSha256AtArchive": "54963fd8f8e58c9597f3a2d778d4176f62ae387efcf93a8b562ecdca16ca06f7",
+    "archivedSha256": "54963fd8f8e58c9597f3a2d778d4176f62ae387efcf93a8b562ecdca16ca06f7",
+    "transformation": "Exact reviewed aggregate/QA-only metadata. Boot IDs are hashed; serial, full device dumps and private contents excluded. Timeout and unsuccessful automatic-window observations retained."
+  },
+  {
+    "file": "boot-prerequisite-restoration.json",
+    "source": ".local-tools/device-acceptance-20261101/boot-prerequisite-restoration.json",
+    "sourceSha256AtArchive": "f05b92aacbaffdaaf84e8e6cd01f8e78f2b3a58df8abacd1363eccb91820fae5",
+    "archivedSha256": "f05b92aacbaffdaaf84e8e6cd01f8e78f2b3a58df8abacd1363eccb91820fae5",
+    "transformation": "Exact reviewed aggregate/QA-only metadata. Boot IDs are hashed; serial, full device dumps and private contents excluded. Timeout and unsuccessful automatic-window observations retained."
+  },
+  {
+    "file": "boot-created-qa.json",
+    "source": ".local-tools/device-acceptance-20261101/boot-created-qa.json",
+    "sourceSha256AtArchive": "15ee060ecf6f509b28e32875064269ae2cce6b052a8d22408f243289a205ca58",
+    "archivedSha256": "15ee060ecf6f509b28e32875064269ae2cce6b052a8d22408f243289a205ca58",
+    "transformation": "Exact reviewed aggregate/QA-only metadata. Boot IDs are hashed; serial, full device dumps and private contents excluded. Timeout and unsuccessful automatic-window observations retained."
+  },
+  {
+    "file": "boot-before-reboot.json",
+    "source": ".local-tools/device-acceptance-20261101/boot-before-reboot.json",
+    "sourceSha256AtArchive": "b5cc9ae54cb575f6ce383cf79df728932630b8ec28ec3e7b7fe7dde0e455a023",
+    "archivedSha256": "b5cc9ae54cb575f6ce383cf79df728932630b8ec28ec3e7b7fe7dde0e455a023",
+    "transformation": "Exact reviewed aggregate/QA-only metadata. Boot IDs are hashed; serial, full device dumps and private contents excluded. Timeout and unsuccessful automatic-window observations retained."
+  },
+  {
+    "file": "boot-reconnect-observations.json",
+    "source": ".local-tools/device-acceptance-20261101/boot-reconnect-observations.json",
+    "sourceSha256AtArchive": "c49d967145be7315e5f1f242cd2673f6b8966519cb2c556036cc504728efb8a0",
+    "archivedSha256": "c49d967145be7315e5f1f242cd2673f6b8966519cb2c556036cc504728efb8a0",
+    "transformation": "Exact reviewed aggregate/QA-only metadata. Boot IDs are hashed; serial, full device dumps and private contents excluded. Timeout and unsuccessful automatic-window observations retained."
+  },
+  {
+    "file": "boot-reconnect-timeout.json",
+    "source": ".local-tools/device-acceptance-20261101/boot-reconnect-timeout.json",
+    "sourceSha256AtArchive": "71cfd07f60629855e7d9e50a3cea05b3a0260581125b53fc424c53c3299b72b0",
+    "archivedSha256": "71cfd07f60629855e7d9e50a3cea05b3a0260581125b53fc424c53c3299b72b0",
+    "transformation": "Exact reviewed aggregate/QA-only metadata. Boot IDs are hashed; serial, full device dumps and private contents excluded. Timeout and unsuccessful automatic-window observations retained."
+  },
+  {
+    "file": "boot-user-unlock-confirmation.json",
+    "source": ".local-tools/device-acceptance-20261101/boot-user-unlock-confirmation.json",
+    "sourceSha256AtArchive": "b428f89d1334d9246ac3458929e1c4dee3ec0d65bacf49f72ddb1760bfff1a83",
+    "archivedSha256": "b428f89d1334d9246ac3458929e1c4dee3ec0d65bacf49f72ddb1760bfff1a83",
+    "transformation": "Exact reviewed aggregate/QA-only metadata. Boot IDs are hashed; serial, full device dumps and private contents excluded. Timeout and unsuccessful automatic-window observations retained."
+  },
+  {
+    "file": "boot-after-reconnect.json",
+    "source": ".local-tools/device-acceptance-20261101/boot-after-reconnect.json",
+    "sourceSha256AtArchive": "9ab56f64b0167c19ff8b4dc4282a054e6fd2696c448f837d4bf7a4d278fe2c4e",
+    "archivedSha256": "9ab56f64b0167c19ff8b4dc4282a054e6fd2696c448f837d4bf7a4d278fe2c4e",
+    "transformation": "Exact reviewed aggregate/QA-only metadata. Boot IDs are hashed; serial, full device dumps and private contents excluded. Timeout and unsuccessful automatic-window observations retained."
+  },
+  {
+    "file": "boot-after-unlock.json",
+    "source": ".local-tools/device-acceptance-20261101/boot-after-unlock.json",
+    "sourceSha256AtArchive": "f89bc6d9fa66eaedc6104cfe17d68b9bc127f3cd7eb4e70fe048db18a90372fd",
+    "archivedSha256": "f89bc6d9fa66eaedc6104cfe17d68b9bc127f3cd7eb4e70fe048db18a90372fd",
+    "transformation": "Exact reviewed aggregate/QA-only metadata. Boot IDs are hashed; serial, full device dumps and private contents excluded. Timeout and unsuccessful automatic-window observations retained."
+  },
+  {
+    "file": "boot-after-unlock-qa.json",
+    "source": ".local-tools/device-acceptance-20261101/boot-after-unlock-qa.json",
+    "sourceSha256AtArchive": "f2e581444abc10efa0f0c7bba3a8042310f36271eeece24831ab8c679419e593",
+    "archivedSha256": "f2e581444abc10efa0f0c7bba3a8042310f36271eeece24831ab8c679419e593",
+    "transformation": "Exact reviewed aggregate/QA-only metadata. Boot IDs are hashed; serial, full device dumps and private contents excluded. Timeout and unsuccessful automatic-window observations retained."
+  },
+  {
+    "file": "boot-timed-observations.json",
+    "source": ".local-tools/device-acceptance-20261101/boot-timed-observations.json",
+    "sourceSha256AtArchive": "719f76fcff9ce5fb466fae6d3fb653d96933fb4cef612cb631e01000ca84dec3",
+    "archivedSha256": "719f76fcff9ce5fb466fae6d3fb653d96933fb4cef612cb631e01000ca84dec3",
+    "transformation": "Exact reviewed aggregate/QA-only metadata. Boot IDs are hashed; serial, full device dumps and private contents excluded. Timeout and unsuccessful automatic-window observations retained."
+  },
+  {
+    "file": "boot-result.json",
+    "source": ".local-tools/device-acceptance-20261101/boot-result.json",
+    "sourceSha256AtArchive": "ad9171e0fe5a583c2f14cb76eab1382dc7c75a967e2d35b3e9824673604c7664",
+    "archivedSha256": "ad9171e0fe5a583c2f14cb76eab1382dc7c75a967e2d35b3e9824673604c7664",
+    "transformation": "Exact reviewed aggregate/QA-only metadata. Boot IDs are hashed; serial, full device dumps and private contents excluded. Timeout and unsuccessful automatic-window observations retained."
+  },
+  {
+    "file": "boot-before-first-explicit-launch.json",
+    "source": ".local-tools/device-acceptance-20261101/boot-before-first-explicit-launch.json",
+    "sourceSha256AtArchive": "1c3420ea1f8c647f5e2a6f4e6eeecd1d7b13a67bdb26887bdd937018063da14f",
+    "archivedSha256": "1c3420ea1f8c647f5e2a6f4e6eeecd1d7b13a67bdb26887bdd937018063da14f",
+    "transformation": "Exact reviewed aggregate/QA-only metadata. Boot IDs are hashed; serial, full device dumps and private contents excluded. Timeout and unsuccessful automatic-window observations retained."
+  },
+  {
+    "file": "boot-before-first-explicit-launch-qa.json",
+    "source": ".local-tools/device-acceptance-20261101/boot-before-first-explicit-launch-qa.json",
+    "sourceSha256AtArchive": "f3d159494d23e1ea63d6648a202ad6f94c96d90873c4bd09155bf0c6157aa9b8",
+    "archivedSha256": "f3d159494d23e1ea63d6648a202ad6f94c96d90873c4bd09155bf0c6157aa9b8",
+    "transformation": "Exact reviewed aggregate/QA-only metadata. Boot IDs are hashed; serial, full device dumps and private contents excluded. Timeout and unsuccessful automatic-window observations retained."
+  },
+  {
+    "file": "boot-after-first-explicit-launch-qa.json",
+    "source": ".local-tools/device-acceptance-20261101/boot-after-first-explicit-launch-qa.json",
+    "sourceSha256AtArchive": "bc5353517c7235d903a070a6e201aa3138ee86c62abd0b141a9cf7bcb99a709a",
+    "archivedSha256": "bc5353517c7235d903a070a6e201aa3138ee86c62abd0b141a9cf7bcb99a709a",
+    "transformation": "Exact reviewed aggregate/QA-only metadata. Boot IDs are hashed; serial, full device dumps and private contents excluded. Timeout and unsuccessful automatic-window observations retained."
+  },
+  {
+    "file": "boot-explicit-launch-comparison.json",
+    "source": ".local-tools/device-acceptance-20261101/boot-explicit-launch-comparison.json",
+    "sourceSha256AtArchive": "4564da00ad161e495e3b6ab0f7f91d836b661c7b4e49d96bde9cd018672349c2",
+    "archivedSha256": "4564da00ad161e495e3b6ab0f7f91d836b661c7b4e49d96bde9cd018672349c2",
+    "transformation": "Exact reviewed aggregate/QA-only metadata. Boot IDs are hashed; serial, full device dumps and private contents excluded. Timeout and unsuccessful automatic-window observations retained."
+  }
+]

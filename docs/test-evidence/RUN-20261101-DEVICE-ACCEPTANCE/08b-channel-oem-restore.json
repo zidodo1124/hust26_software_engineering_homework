@@ -1,0 +1,13 @@
+{
+  "atUtc": "2026-11-02T02:49:14.200904+00:00",
+  "method": "Honor own app/channel UI silent false→true→false",
+  "beforeImportance": 3,
+  "afterImportance": 3,
+  "beforeObjectLineSha256": "b42f2dbd740bab715af8e94576c01d93b81e52d912e6cfc8c66cfcb42c7f9059",
+  "afterObjectLineSha256": "b42f2dbd740bab715af8e94576c01d93b81e52d912e6cfc8c66cfcb42c7f9059",
+  "normalizedImportanceObjectsEqual": true,
+  "changedFields": [],
+  "otherChangedFieldValues": {},
+  "silentSwitchFinalFalse": true,
+  "causalBoundary": "Importance was already 3 when sampled immediately before the approved silent-mode sequence, after navigating into Honor own notification-category UI. The exact entry/loading action that restored 2 to 3 was not isolated; the subsequent false→true→false sequence left the whole channel line unchanged."
+}

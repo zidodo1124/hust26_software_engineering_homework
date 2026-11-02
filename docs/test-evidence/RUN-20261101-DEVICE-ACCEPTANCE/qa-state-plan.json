@@ -1,0 +1,14 @@
+{
+  "createdPlanAtUtc": "2026-11-02T02:33:17.228069+00:00",
+  "title": "QA-ACCEPT-1101-STATE",
+  "deadlineBeijing": "2026-11-02T13:33:00+08:00",
+  "deadlineEpochMillis": 1793597580000,
+  "sprintMinutes": 120,
+  "expectedDangerTriggerEpochMillis": 1793590380000,
+  "deviceEpochSecondsAtPlanning": 1793586794,
+  "savedThroughUi": true,
+  "savedAtUtc": "2026-11-02T02:34:10.870264+00:00",
+  "remainingSecondsToDangerAtUiCheck": 3532.0,
+  "eventId": "c81a52e1-846b-4f13-83d1-6c43e5f4cd2a",
+  "verifiedTriggerAt": 1793590380000
+}

@@ -1,0 +1,19 @@
+{
+  "atUtc": "2026-11-02T03:06:36.380041+00:00",
+  "source": "Existing orange ClipData from prior successful paste; not recopied after force-stop",
+  "forceStoppedThenNormalLauncherStart": true,
+  "draftAttachmentCount": 2,
+  "previousAttachmentCount": 2,
+  "pasteSucceeded": false,
+  "diagnostics": [],
+  "originalSavedAttachmentsAndDescriptionUnchanged": true,
+  "syntheticDraftDescriptionRetained": true,
+  "privateFileCountBefore": 6,
+  "privateFileCountAfter": 6,
+  "newPrivateFiles": 0,
+  "removedPrivateFiles": 0,
+  "observedUiErrorMessages": [
+    "图片导入失败，请确认图片可读取且本机存储空间充足。"
+  ],
+  "actualAppDebuggable": true
+}

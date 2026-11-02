@@ -1,0 +1,80 @@
+{
+  "atUtc": "2026-11-02T02:53:29.532546+00:00",
+  "uiTexts": [
+    "系统通知：已允许",
+    "提醒方式：可使用精确提醒",
+    "待发送提醒：3"
+  ],
+  "notificationPolicy": {
+    "packageFilterValidated": true,
+    "appImportance": "DEFAULT",
+    "reminderChannelPolicies": [
+      {
+        "importance": 3,
+        "deleted": false
+      }
+    ],
+    "activeTargetNotificationCount": 0
+  },
+  "alarmPolicy": {
+    "atUtc": "2026-11-02T02:53:29.942020+00:00",
+    "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+    "alarms": [
+      {
+        "type": "RTC_WAKEUP",
+        "triggerEpochMillis": 1793590380000,
+        "systemDisplayTrigger": "2026-11-02 11:33:00.000",
+        "window": "0",
+        "exactAllowReason": "permission",
+        "reminderWakeActionConfirmed": true
+      }
+    ]
+  },
+  "postNotificationsGranted": true,
+  "exactAlarmAppOp": "allow",
+  "qaPlans": [
+    {
+      "key": "DANGER:c81a52e1-846b-4f13-83d1-6c43e5f4cd2a:1793597580000",
+      "kind": "DANGER",
+      "eventId": "c81a52e1-846b-4f13-83d1-6c43e5f4cd2a",
+      "deadlineAt": 1793597580000,
+      "eventRevision": 1,
+      "triggerAt": 1793590380000,
+      "day": null,
+      "notificationTag": "event:c81a52e1-846b-4f13-83d1-6c43e5f4cd2a:1793597580000:1793590380000:DANGER",
+      "active": 1,
+      "state": "PENDING",
+      "lastAttemptAt": null,
+      "lastError": null,
+      "cancelPending": 0
+    },
+    {
+      "key": "DEADLINE:c81a52e1-846b-4f13-83d1-6c43e5f4cd2a:1793597580000",
+      "kind": "DEADLINE",
+      "eventId": "c81a52e1-846b-4f13-83d1-6c43e5f4cd2a",
+      "deadlineAt": 1793597580000,
+      "eventRevision": 1,
+      "triggerAt": 1793593980000,
+      "day": null,
+      "notificationTag": "event:c81a52e1-846b-4f13-83d1-6c43e5f4cd2a:1793597580000:1793593980000:DEADLINE",
+      "active": 1,
+      "state": "PENDING",
+      "lastAttemptAt": null,
+      "lastError": null,
+      "cancelPending": 0
+    }
+  ],
+  "reminderControl": [
+    {
+      "id": 1,
+      "alarmIdentity": "ddl-saver://reminders/wake",
+      "dailyDate": "2026-11-03",
+      "dailyMinuteOfDay": 480,
+      "scheduledTriggerAt": 1793590380000,
+      "desiredTriggerAt": 1793590380000,
+      "scheduleMode": "exact",
+      "alarmDirty": 0,
+      "lastError": null
+    }
+  ]
+}

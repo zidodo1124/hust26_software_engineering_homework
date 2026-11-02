@@ -1,0 +1,94 @@
+[
+  {
+    "file": "original-today-count.json",
+    "source": ".local-tools/device-acceptance-20261101/original-today-count.json",
+    "sourceSha256AtArchive": "e80fc85df18490e3e77ca159c33311c938828f216d2e5017d3d84a042c8b7ed3",
+    "archivedSha256": "e80fc85df18490e3e77ca159c33311c938828f216d2e5017d3d84a042c8b7ed3",
+    "transformation": "Exact copy of reviewed QA-only or aggregate metadata; no notification raw output, user event text, database file, salt or device serial."
+  },
+  {
+    "file": "qa-lock-plan.json",
+    "source": ".local-tools/device-acceptance-20261101/qa-lock-plan.json",
+    "sourceSha256AtArchive": "195038ffa527f27badc5cbc633a99e49fab58c8077fe519c3ffd43365f8918b3",
+    "archivedSha256": "195038ffa527f27badc5cbc633a99e49fab58c8077fe519c3ffd43365f8918b3",
+    "transformation": "Exact copy of reviewed QA-only or aggregate metadata; no notification raw output, user event text, database file, salt or device serial."
+  },
+  {
+    "file": "lock-created.json",
+    "source": ".local-tools/device-acceptance-20261101/lock-created.json",
+    "sourceSha256AtArchive": "10b5bb346042bb49d5ce2d11b8ea51d8e45e5e049f5179874c5cae61627e3500",
+    "archivedSha256": "10b5bb346042bb49d5ce2d11b8ea51d8e45e5e049f5179874c5cae61627e3500",
+    "transformation": "Exact copy of reviewed QA-only or aggregate metadata; no notification raw output, user event text, database file, salt or device serial."
+  },
+  {
+    "file": "lock-pre-lock.json",
+    "source": ".local-tools/device-acceptance-20261101/lock-pre-lock.json",
+    "sourceSha256AtArchive": "c67a95d25c9b8398ef914279ab6a405a5e1007e2d21ac2f15dd91809928baa40",
+    "archivedSha256": "c67a95d25c9b8398ef914279ab6a405a5e1007e2d21ac2f15dd91809928baa40",
+    "transformation": "Exact copy of reviewed QA-only or aggregate metadata; no notification raw output, user event text, database file, salt or device serial."
+  },
+  {
+    "file": "lock-start.json",
+    "source": ".local-tools/device-acceptance-20261101/lock-start.json",
+    "sourceSha256AtArchive": "6f57aab2624707d7b397aec38612c87f45d2d53adfd4834b4f4478d7f1dd968a",
+    "archivedSha256": "6f57aab2624707d7b397aec38612c87f45d2d53adfd4834b4f4478d7f1dd968a",
+    "transformation": "Exact copy of reviewed QA-only or aggregate metadata; no notification raw output, user event text, database file, salt or device serial."
+  },
+  {
+    "file": "lock-second-sleep.json",
+    "source": ".local-tools/device-acceptance-20261101/lock-second-sleep.json",
+    "sourceSha256AtArchive": "a9b44aa2ef0cb176ef3cb4e858198311ce3656a5a78d3127354d23e77eb836c1",
+    "archivedSha256": "a9b44aa2ef0cb176ef3cb4e858198311ce3656a5a78d3127354d23e77eb836c1",
+    "transformation": "Exact copy of reviewed QA-only or aggregate metadata; no notification raw output, user event text, database file, salt or device serial."
+  },
+  {
+    "file": "lock-timed-observations.json",
+    "source": ".local-tools/device-acceptance-20261101/lock-timed-observations.json",
+    "sourceSha256AtArchive": "c67203aed196c45cf6ba8bcfec0cd10982029259bf77b2177f801436a1a006c3",
+    "archivedSha256": "c67203aed196c45cf6ba8bcfec0cd10982029259bf77b2177f801436a1a006c3",
+    "transformation": "Exact copy of reviewed QA-only or aggregate metadata; no notification raw output, user event text, database file, salt or device serial."
+  },
+  {
+    "file": "lock-before-cold-click.json",
+    "source": ".local-tools/device-acceptance-20261101/lock-before-cold-click.json",
+    "sourceSha256AtArchive": "3fb86dac2cb4359b7c1efd0f669488abd1c254588287203e71ef15681b23e67f",
+    "archivedSha256": "3fb86dac2cb4359b7c1efd0f669488abd1c254588287203e71ef15681b23e67f",
+    "transformation": "Exact copy of reviewed QA-only or aggregate metadata; no notification raw output, user event text, database file, salt or device serial."
+  },
+  {
+    "file": "lock-wake-for-click.json",
+    "source": ".local-tools/device-acceptance-20261101/lock-wake-for-click.json",
+    "sourceSha256AtArchive": "e549b4c1498ce31388584bf7bde453008733cd424e00841dca2f6bce583d81fe",
+    "archivedSha256": "e549b4c1498ce31388584bf7bde453008733cd424e00841dca2f6bce583d81fe",
+    "transformation": "Exact copy of reviewed QA-only or aggregate metadata; no notification raw output, user event text, database file, salt or device serial."
+  },
+  {
+    "file": "lock-cold-click-result.json",
+    "source": ".local-tools/device-acceptance-20261101/lock-cold-click-result.json",
+    "sourceSha256AtArchive": "40f729d51ea7cd2848aa79f7789d5988fb74b56606b6632fddd104022090f800",
+    "archivedSha256": "40f729d51ea7cd2848aa79f7789d5988fb74b56606b6632fddd104022090f800",
+    "transformation": "Exact copy. QA metadata only; screenshot visually reviewed by primary agent showing the synthetic LOCK detail, not private events."
+  },
+  {
+    "file": "lock-after-complete.json",
+    "source": ".local-tools/device-acceptance-20261101/lock-after-complete.json",
+    "sourceSha256AtArchive": "17aa379278e334777e00cdab47c420175a294afaa490f9c8a62871f2e1d1ac68",
+    "archivedSha256": "17aa379278e334777e00cdab47c420175a294afaa490f9c8a62871f2e1d1ac68",
+    "transformation": "Exact copy. QA metadata only; screenshot visually reviewed by primary agent showing the synthetic LOCK detail, not private events."
+  },
+  {
+    "file": "lock-completion-result.json",
+    "source": ".local-tools/device-acceptance-20261101/lock-completion-result.json",
+    "sourceSha256AtArchive": "b04f932a3d4a3770e163c7bc387994cdb82a3af8e606b57d3ba669e272298674",
+    "archivedSha256": "b04f932a3d4a3770e163c7bc387994cdb82a3af8e606b57d3ba669e272298674",
+    "transformation": "Exact copy after operator added notificationCancellationCausation explanation; captured values unchanged. The original shorter metadata hash is retained.",
+    "firstArchivedSha256BeforeAnnotation": "1c0a0efacc773f60d87312cec39ce9c7f64f6f502344645d04bf1fba773dbad3"
+  },
+  {
+    "file": "03-lock-cold-notification-detail.png",
+    "source": ".local-tools/device-acceptance-20261101/03-lock-cold-notification-detail.png",
+    "sourceSha256AtArchive": "5553bfd5308f7ba5b44521c8e2e77e6ee01913456b696a32c5f3408135857e8e",
+    "archivedSha256": "5553bfd5308f7ba5b44521c8e2e77e6ee01913456b696a32c5f3408135857e8e",
+    "transformation": "Exact copy. QA metadata only; screenshot visually reviewed by primary agent showing the synthetic LOCK detail, not private events."
+  }
+]

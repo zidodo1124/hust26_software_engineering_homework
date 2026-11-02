@@ -1,0 +1,47 @@
+{
+  "atUtc": "2026-11-02T03:40:54.718433+00:00",
+  "identity": {
+    "atUtc": "2026-11-02T03:40:54.996321+00:00",
+    "bootIdSha256": "ce5a19e1a42e9e12f8fc172ffcd0e956792a6318912ce7f877742223ccf331c5",
+    "uptimeSeconds": 271.43
+  },
+  "alarm": {
+    "atUtc": "2026-11-02T03:40:55.117670+00:00",
+    "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+    "alarms": []
+  },
+  "qaPlans": [
+    {
+      "key": "DANGER:81cd17d7-41cc-44f0-a077-9b06ab8fd1e6:1793598240000",
+      "kind": "DANGER",
+      "eventId": "81cd17d7-41cc-44f0-a077-9b06ab8fd1e6",
+      "deadlineAt": 1793598240000,
+      "eventRevision": 1,
+      "triggerAt": 1793591040000,
+      "day": null,
+      "notificationTag": "event:81cd17d7-41cc-44f0-a077-9b06ab8fd1e6:1793598240000:1793591040000:DANGER",
+      "active": 1,
+      "state": "PENDING",
+      "lastAttemptAt": null,
+      "lastError": null,
+      "cancelPending": 0
+    },
+    {
+      "key": "DEADLINE:81cd17d7-41cc-44f0-a077-9b06ab8fd1e6:1793598240000",
+      "kind": "DEADLINE",
+      "eventId": "81cd17d7-41cc-44f0-a077-9b06ab8fd1e6",
+      "deadlineAt": 1793598240000,
+      "eventRevision": 1,
+      "triggerAt": 1793594640000,
+      "day": null,
+      "notificationTag": "event:81cd17d7-41cc-44f0-a077-9b06ab8fd1e6:1793598240000:1793594640000:DEADLINE",
+      "active": 1,
+      "state": "PENDING",
+      "lastAttemptAt": null,
+      "lastError": null,
+      "cancelPending": 0
+    }
+  ],
+  "noProductLaunchSinceReboot": true,
+  "productForeground": false
+}

@@ -1,0 +1,26 @@
+{
+  "atUtc": "2026-11-02T02:53:11.519418+00:00",
+  "pidAfterStop": "absent",
+  "alarmBefore": {
+    "atUtc": "2026-11-02T02:53:10.079186+00:00",
+    "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+    "alarms": [
+      {
+        "type": "RTC_WAKEUP",
+        "triggerEpochMillis": 1793590380000,
+        "systemDisplayTrigger": "2026-11-02 11:33:00.000",
+        "window": "0",
+        "exactAllowReason": "permission",
+        "reminderWakeActionConfirmed": true
+      }
+    ]
+  },
+  "alarmAfterStop": {
+    "atUtc": "2026-11-02T02:53:11.519418+00:00",
+    "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+    "alarms": []
+  },
+  "qaPlansUnchanged": true,
+  "qaSnapshot": "state-stopped.json",
+  "note": "No notification delivery expected while force-stopped"
+}

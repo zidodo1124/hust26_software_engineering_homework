@@ -1,0 +1,11 @@
+{
+  "atUtc": "2026-11-02T02:27:03.506489+00:00",
+  "deviceEpochSeconds": 1793586421,
+  "expectedTriggerEpochMillis": 1793586660000,
+  "wakefulness": [
+    "Dozing"
+  ],
+  "keyguardShowing": false,
+  "targetPidPresent": true,
+  "notificationCountBeforeLock": 0
+}

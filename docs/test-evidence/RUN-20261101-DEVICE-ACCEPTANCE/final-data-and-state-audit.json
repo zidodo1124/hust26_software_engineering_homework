@@ -1,0 +1,103 @@
+{
+  "atUtc": "2026-11-02T03:51:33.498838+00:00",
+  "scope": "Stopped-app full-row salted-digest and attachment-byte final comparison; only own temporary QA UI deletions",
+  "checks": {
+    "allSixBusinessTablesExactlyUnchanged": true,
+    "originalAttachmentRowsAndBytesExactlyUnchanged": true,
+    "onlyOriginalAttachmentFilesRemain": true,
+    "allBusinessSettingsExactlyUnchanged": true,
+    "schemaStill4": true,
+    "allRecordedSystemSettingsRestored": true,
+    "notificationPolicyRestored": true,
+    "noActiveProductNotifications": true,
+    "physicalUsbPowerAndUpdatesRestored": true,
+    "forceIdleRestored": true,
+    "diagnosticPropertiesRestored": true,
+    "fixtureNoLongerInstalled": true,
+    "testedProductHashAndSignatureInstalled": true,
+    "qaHistoryInactiveWithoutPendingCancellation": true,
+    "originalSentHistoryUnchanged": true,
+    "reminderHasNoErrors": true
+  },
+  "businessTableCounts": {
+    "events": 3,
+    "sources": 1,
+    "tags": 1,
+    "event_tags": 1,
+    "custom_fields": 1,
+    "attachments": 4
+  },
+  "attachmentFileCount": 4,
+  "recordedSystemSettingComparisons": {
+    "fontScale": true,
+    "displaySize": true,
+    "displayDensity": true,
+    "postNotificationsGranted": true,
+    "exactAlarmAppOp": true,
+    "wifiOn": true,
+    "mobileData": true,
+    "airplaneMode": true,
+    "stayOnWhilePluggedIn": true,
+    "screenOffTimeout": true,
+    "lowPower": true
+  },
+  "reminderHistory": {
+    "atUtc": "2026-11-02T03:51:28.989680+00:00",
+    "allQaPlanCount": 9,
+    "allQaPlanInactive": true,
+    "qaPendingCancellationCount": 0,
+    "originalSentRowCount": 8,
+    "originalSentRowCountMatchesBaseline": true,
+    "originalSentRowsSaltedDigest": "903281849968b0f2621a1551f1e720535521c8fc2b4d6c4773b4a34adc9205e1",
+    "originalSentRowsExactlyMatchBaseline": true,
+    "legitimateNewDailySentCount": 1,
+    "qaSentHistoryRetainedCount": 3,
+    "allReminderErrors": 0,
+    "temporaryPrivateDatabaseRemoved": true
+  },
+  "actualBattery": {
+    "AC powered": "false",
+    "USB powered": "true",
+    "Wireless powered": "false",
+    "status": "2",
+    "level": "79",
+    "scale": "100",
+    "temperature": "340",
+    "updatesStopped": false
+  },
+  "deviceIdle": {
+    "mForceIdle": "false",
+    "mScreenOn": "true",
+    "mCharging": "true",
+    "mState": "ACTIVE",
+    "mLightState": "ACTIVE"
+  },
+  "logProperties": {
+    "log.tag.DDLSaver.Attachment": "",
+    "persist.log.tag.DDLSaver.Attachment": "",
+    "log.tag": "",
+    "persist.log.tag": "S"
+  },
+  "testFixtureAbsent": true,
+  "allRequiredChecksPassed": true,
+  "finalNormalLaunchAlarmPolicy": {
+    "atUtc": "2026-11-02T03:51:57.879098+00:00",
+    "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+    "alarms": [
+      {
+        "type": "RTC_WAKEUP",
+        "triggerEpochMillis": 1793664000000,
+        "systemDisplayTrigger": "2026-11-03 08:00:00.000",
+        "window": "0",
+        "exactAllowReason": "permission",
+        "reminderWakeActionConfirmed": true
+      }
+    ]
+  },
+  "finalProductHomeVerified": true,
+  "qaSearchCleared": true,
+  "temporaryUiXmlRemoved": true,
+  "noTemporaryPrivateDatabaseDirectories": true,
+  "readyToDisconnect": true,
+  "finishedAtUtc": "2026-11-02T03:51:58.290032+00:00"
+}

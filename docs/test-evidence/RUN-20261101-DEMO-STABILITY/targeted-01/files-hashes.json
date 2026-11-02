@@ -1,0 +1,67 @@
+[
+  {
+    "path": "gradle.log",
+    "sha256": "6054f976c7f9f6b5c4397b5dbd0be028cb643dbad28b965d79f95cc291ece7ad",
+    "bytes": 23458
+  },
+  {
+    "path": "source-after.json",
+    "sha256": "21dfa193d8500eee69d0ac08d53302ea4f5b62ebe1bd55c4411c72d1d12ea7c7",
+    "bytes": 11639
+  },
+  {
+    "path": "source-before.json",
+    "sha256": "21dfa193d8500eee69d0ac08d53302ea4f5b62ebe1bd55c4411c72d1d12ea7c7",
+    "bytes": 11639
+  },
+  {
+    "path": "source-diff.patch",
+    "sha256": "fe232d9b17dae434f6c02dd2574deca45915bffecc191b9b40065255c0de84a3",
+    "bytes": 19096
+  },
+  {
+    "path": "summary.json",
+    "sha256": "ddb022e217cf43f85b941be74910e586aa21aebb4ba629a3ceec8e9b36819370",
+    "bytes": 9686
+  },
+  {
+    "path": "test-results/TEST-cn.edu.hust.ddlsaver.platform.AttachmentImportDiagnosticsTest.xml",
+    "sha256": "fdaf594f604231c20754785a229e06778307f6ebb93939233a8435213e4e13a3",
+    "bytes": 3720
+  },
+  {
+    "path": "test-results/TEST-cn.edu.hust.ddlsaver.platform.AttachmentStoreTest.xml",
+    "sha256": "38e05c9a2b5f7a35d5af718acfae70f78a0d1d2c84bd47cbfd65fca116e2261c",
+    "bytes": 4304
+  },
+  {
+    "path": "test-results/TEST-cn.edu.hust.ddlsaver.reminders.ReminderEngineTest.xml",
+    "sha256": "42d57c09745c5b4ed8a271dddab5ffada75fd96b9fc9ab837bfcc43a249b5e5c",
+    "bytes": 3556
+  },
+  {
+    "path": "test-results/TEST-cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest.xml",
+    "sha256": "d84cd8d03b2329bbd7f05550c8bccaaaf139d8a09360262586b98d5496824022",
+    "bytes": 9355
+  },
+  {
+    "path": "test-results/TEST-cn.edu.hust.ddlsaver.reminders.ReminderRestoreIntegrationTest.xml",
+    "sha256": "8471b8a7e7596fe9fd3fdbffa0bc4e8e742fcbc34bc8212abf4387be3376e7e3",
+    "bytes": 2976
+  },
+  {
+    "path": "test-results/TEST-cn.edu.hust.ddlsaver.reminders.ReminderStatusCopyTest.xml",
+    "sha256": "d69a4eb64d3663ccba95e2d06f1714024b0194d2283257769f87646e64325ccc",
+    "bytes": 764
+  },
+  {
+    "path": "test-results/TEST-cn.edu.hust.ddlsaver.ui.AttachmentClipboardFlowTest.xml",
+    "sha256": "0a0effa3391001e075b67f4d30e6b544365ab5d847267be7d5f12b30d1052f74",
+    "bytes": 889
+  },
+  {
+    "path": "test-results/TEST-cn.edu.hust.ddlsaver.ui.SaverAppFlowTest.xml",
+    "sha256": "a0e8a152f244ea3ff279f0db2c36751ad49b16ecf021d43f251d8fe4a94f503a",
+    "bytes": 4199
+  }
+]

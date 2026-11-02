@@ -1,0 +1,64 @@
+{
+  "atUtc": "2026-11-02T03:46:17.036000+00:00",
+  "explicitNormalLauncherAfterAutomaticWindow": true,
+  "automaticWindowObserved": false,
+  "qaPlans": [
+    {
+      "key": "DANGER:81cd17d7-41cc-44f0-a077-9b06ab8fd1e6:1793598240000",
+      "kind": "DANGER",
+      "eventId": "81cd17d7-41cc-44f0-a077-9b06ab8fd1e6",
+      "deadlineAt": 1793598240000,
+      "eventRevision": 1,
+      "triggerAt": 1793591040000,
+      "day": null,
+      "notificationTag": "event:81cd17d7-41cc-44f0-a077-9b06ab8fd1e6:1793598240000:1793591040000:DANGER",
+      "active": 1,
+      "state": "SENT",
+      "lastAttemptAt": 1793591172453,
+      "lastError": null,
+      "cancelPending": 0
+    },
+    {
+      "key": "DEADLINE:81cd17d7-41cc-44f0-a077-9b06ab8fd1e6:1793598240000",
+      "kind": "DEADLINE",
+      "eventId": "81cd17d7-41cc-44f0-a077-9b06ab8fd1e6",
+      "deadlineAt": 1793598240000,
+      "eventRevision": 1,
+      "triggerAt": 1793594640000,
+      "day": null,
+      "notificationTag": "event:81cd17d7-41cc-44f0-a077-9b06ab8fd1e6:1793598240000:1793594640000:DEADLINE",
+      "active": 1,
+      "state": "PENDING",
+      "lastAttemptAt": null,
+      "lastError": null,
+      "cancelPending": 0
+    }
+  ],
+  "alarm": {
+    "atUtc": "2026-11-02T03:46:17.151312+00:00",
+    "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+    "alarms": [
+      {
+        "type": "RTC_WAKEUP",
+        "triggerEpochMillis": 1793594640000,
+        "systemDisplayTrigger": "2026-11-02 12:44:00.000",
+        "window": "0",
+        "exactAllowReason": "permission",
+        "reminderWakeActionConfirmed": true
+      }
+    ]
+  },
+  "notifications": [
+    {
+      "tag": "event:81cd17d7-41cc-44f0-a077-9b06ab8fd1e6:1793598240000:1793591040000:DANGER",
+      "kind": "event",
+      "observedUtc": "2026-11-02T03:46:17.350723+00:00",
+      "qaTitle": "QA-ACCEPT-1101-BOOT",
+      "mCreationTimeMs": 1793591172629,
+      "mUpdateTimeMs": 1793591172629,
+      "mRankingTimeMs": 1793591172625,
+      "qaTitlesVisibleInRedactedOutput": []
+    }
+  ],
+  "note": "Normal-launch recovery is distinct from automatic recovery after actual reboot; no boot broadcast was synthesized"
+}

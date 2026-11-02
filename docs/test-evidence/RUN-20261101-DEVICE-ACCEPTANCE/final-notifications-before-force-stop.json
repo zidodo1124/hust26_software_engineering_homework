@@ -1,0 +1,9 @@
+{
+  "scope": "After all UI QA deletions, before any final force-stop",
+  "observations": [
+    {
+      "atUtc": "2026-11-02T03:49:51.853773+00:00",
+      "activeTargetNotificationCount": 0
+    }
+  ]
+}

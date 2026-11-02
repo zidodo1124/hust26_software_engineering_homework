@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.ui.OceanUiRenderTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-11-02T04:22:19" hostname="LAPTOP-7OF0K1SP" time="0.721">
+  <properties/>
+  <testcase name="bothCharacterStylesRenderOnTheActualHomeScreen" classname="cn.edu.hust.ddlsaver.ui.OceanUiRenderTest" time="0.414"/>
+  <testcase name="narrowScreenWithLargeTextKeepsStatisticsReadableAndBothFiltersWork" classname="cn.edu.hust.ddlsaver.ui.OceanUiRenderTest" time="0.307"/>
+  <system-out><![CDATA[TEXT-LAYOUT 今日 DDL size=79 x 28 constraints=Constraints(minWidth = 0, maxWidth = 208, minHeight = 0, maxHeight = Infinity) paragraph=208.0x28.0 lines=1 overflowWidth=true overflowHeight=false
+TEXT-LINE 今日 DDL [0] left=0.0 right=77.75 top=0.0 bottom=28.0
+TEXT-LAYOUT 速通危险期 size=94 x 28 constraints=Constraints(minWidth = 0, maxWidth = 208, minHeight = 0, maxHeight = Infinity) paragraph=208.0x28.0 lines=1 overflowWidth=true overflowHeight=false
+TEXT-LINE 速通危险期 [0] left=0.0 right=93.0 top=0.0 bottom=28.0
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

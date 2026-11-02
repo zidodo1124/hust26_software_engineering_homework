@@ -1,0 +1,763 @@
+{
+  "expectedTriggerEpochMillis": 1793590320000,
+  "conditionScope": "Controlled system test deep idle, not natural Doze or extreme power saving",
+  "observed": true,
+  "enteredAt": {
+    "atUtc": "2026-11-02T03:26:23.584448+00:00",
+    "deviceEpochSeconds": 1793589981,
+    "wakefulness": [
+      "Dozing"
+    ],
+    "keyguardShowing": false,
+    "keyguardSecure": true,
+    "keyguardInputRestricted": false,
+    "deviceIdle": {
+      "mForceIdle": "true",
+      "mScreenOn": "true",
+      "mCharging": "true",
+      "mState": "IDLE",
+      "mLightState": "OVERRIDE"
+    }
+  },
+  "firstObserved": {
+    "condition": {
+      "atUtc": "2026-11-02T03:32:05.976279+00:00",
+      "deviceEpochSeconds": 1793590323,
+      "wakefulness": [
+        "Dozing"
+      ],
+      "keyguardShowing": true,
+      "keyguardSecure": true,
+      "keyguardInputRestricted": false,
+      "deviceIdle": {
+        "mForceIdle": "true",
+        "mScreenOn": "false",
+        "mCharging": "false",
+        "mState": "IDLE",
+        "mLightState": "OVERRIDE"
+      }
+    },
+    "notifications": [
+      {
+        "tag": "event:0bab49bc-9ef0-457e-b258-b799fa650254:1793597520000:1793590320000:DANGER",
+        "kind": "event",
+        "observedUtc": "2026-11-02T03:32:06.288298+00:00",
+        "qaTitle": "QA-ACCEPT-1101-IDLE",
+        "mCreationTimeMs": 1793590320171,
+        "mUpdateTimeMs": 1793590320171,
+        "mRankingTimeMs": 1793590320166,
+        "qaTitlesVisibleInRedactedOutput": []
+      }
+    ]
+  },
+  "restoration": {
+    "after": {
+      "atUtc": "2026-11-02T03:32:06.503156+00:00",
+      "battery": {
+        "AC powered": "false",
+        "USB powered": "true",
+        "Wireless powered": "false",
+        "status": "2",
+        "level": "79",
+        "scale": "100",
+        "temperature": "340",
+        "updatesStopped": false
+      },
+      "condition": {
+        "atUtc": "2026-11-02T03:32:06.925374+00:00",
+        "deviceEpochSeconds": 1793590324,
+        "wakefulness": [
+          "Dozing"
+        ],
+        "keyguardShowing": true,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "false",
+          "mScreenOn": "false",
+          "mCharging": "false",
+          "mState": "IDLE",
+          "mLightState": "OVERRIDE"
+        }
+      }
+    },
+    "operationErrors": [],
+    "forceIdleRestored": true,
+    "batteryUpdatesResumed": true,
+    "physicalUsbPowerReturned": true,
+    "batteryLevelNote": "Actual current measurement retained; original battery percentage not forced"
+  },
+  "samples": [
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:26:24.485269+00:00",
+        "deviceEpochSeconds": 1793589982,
+        "wakefulness": [
+          "Dozing"
+        ],
+        "keyguardShowing": true,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "true",
+          "mScreenOn": "false",
+          "mCharging": "false",
+          "mState": "IDLE",
+          "mLightState": "OVERRIDE"
+        }
+      },
+      "notifications": []
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:26:35.595361+00:00",
+        "deviceEpochSeconds": 1793589993,
+        "wakefulness": [
+          "Awake"
+        ],
+        "keyguardShowing": true,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "true",
+          "mScreenOn": "true",
+          "mCharging": "false",
+          "mState": "IDLE",
+          "mLightState": "OVERRIDE"
+        }
+      },
+      "notifications": []
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:26:46.392723+00:00",
+        "deviceEpochSeconds": 1793590003,
+        "wakefulness": [
+          "Awake"
+        ],
+        "keyguardShowing": true,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "true",
+          "mScreenOn": "true",
+          "mCharging": "false",
+          "mState": "IDLE",
+          "mLightState": "OVERRIDE"
+        }
+      },
+      "notifications": []
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:26:57.000282+00:00",
+        "deviceEpochSeconds": 1793590014,
+        "wakefulness": [
+          "Awake"
+        ],
+        "keyguardShowing": true,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "true",
+          "mScreenOn": "true",
+          "mCharging": "false",
+          "mState": "IDLE",
+          "mLightState": "OVERRIDE"
+        }
+      },
+      "notifications": []
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:27:07.621018+00:00",
+        "deviceEpochSeconds": 1793590025,
+        "wakefulness": [
+          "Awake"
+        ],
+        "keyguardShowing": true,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "true",
+          "mScreenOn": "true",
+          "mCharging": "false",
+          "mState": "IDLE",
+          "mLightState": "OVERRIDE"
+        }
+      },
+      "notifications": []
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:27:18.257876+00:00",
+        "deviceEpochSeconds": 1793590035,
+        "wakefulness": [
+          "Awake"
+        ],
+        "keyguardShowing": true,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "true",
+          "mScreenOn": "true",
+          "mCharging": "false",
+          "mState": "IDLE",
+          "mLightState": "OVERRIDE"
+        }
+      },
+      "notifications": []
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:27:28.888102+00:00",
+        "deviceEpochSeconds": 1793590046,
+        "wakefulness": [
+          "Dozing"
+        ],
+        "keyguardShowing": true,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "true",
+          "mScreenOn": "false",
+          "mCharging": "false",
+          "mState": "IDLE",
+          "mLightState": "OVERRIDE"
+        }
+      },
+      "notifications": []
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:27:39.551702+00:00",
+        "deviceEpochSeconds": 1793590057,
+        "wakefulness": [
+          "Dozing"
+        ],
+        "keyguardShowing": true,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "true",
+          "mScreenOn": "false",
+          "mCharging": "false",
+          "mState": "IDLE",
+          "mLightState": "OVERRIDE"
+        }
+      },
+      "notifications": []
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:27:50.225304+00:00",
+        "deviceEpochSeconds": 1793590067,
+        "wakefulness": [
+          "Dozing"
+        ],
+        "keyguardShowing": true,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "true",
+          "mScreenOn": "false",
+          "mCharging": "false",
+          "mState": "IDLE",
+          "mLightState": "OVERRIDE"
+        }
+      },
+      "notifications": []
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:28:00.843784+00:00",
+        "deviceEpochSeconds": 1793590078,
+        "wakefulness": [
+          "Dozing"
+        ],
+        "keyguardShowing": true,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "true",
+          "mScreenOn": "false",
+          "mCharging": "false",
+          "mState": "IDLE",
+          "mLightState": "OVERRIDE"
+        }
+      },
+      "notifications": []
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:28:11.450850+00:00",
+        "deviceEpochSeconds": 1793590088,
+        "wakefulness": [
+          "Dozing"
+        ],
+        "keyguardShowing": true,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "true",
+          "mScreenOn": "false",
+          "mCharging": "false",
+          "mState": "IDLE",
+          "mLightState": "OVERRIDE"
+        }
+      },
+      "notifications": []
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:28:22.083651+00:00",
+        "deviceEpochSeconds": 1793590099,
+        "wakefulness": [
+          "Dozing"
+        ],
+        "keyguardShowing": true,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "true",
+          "mScreenOn": "false",
+          "mCharging": "false",
+          "mState": "IDLE",
+          "mLightState": "OVERRIDE"
+        }
+      },
+      "notifications": []
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:28:32.703270+00:00",
+        "deviceEpochSeconds": 1793590110,
+        "wakefulness": [
+          "Dozing"
+        ],
+        "keyguardShowing": true,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "true",
+          "mScreenOn": "false",
+          "mCharging": "false",
+          "mState": "IDLE",
+          "mLightState": "OVERRIDE"
+        }
+      },
+      "notifications": []
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:28:43.412251+00:00",
+        "deviceEpochSeconds": 1793590120,
+        "wakefulness": [
+          "Dozing"
+        ],
+        "keyguardShowing": true,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "true",
+          "mScreenOn": "false",
+          "mCharging": "false",
+          "mState": "IDLE",
+          "mLightState": "OVERRIDE"
+        }
+      },
+      "notifications": []
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:28:54.032629+00:00",
+        "deviceEpochSeconds": 1793590131,
+        "wakefulness": [
+          "Dozing"
+        ],
+        "keyguardShowing": true,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "true",
+          "mScreenOn": "false",
+          "mCharging": "false",
+          "mState": "IDLE",
+          "mLightState": "OVERRIDE"
+        }
+      },
+      "notifications": []
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:29:04.665703+00:00",
+        "deviceEpochSeconds": 1793590142,
+        "wakefulness": [
+          "Dozing"
+        ],
+        "keyguardShowing": true,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "true",
+          "mScreenOn": "false",
+          "mCharging": "false",
+          "mState": "IDLE",
+          "mLightState": "OVERRIDE"
+        }
+      },
+      "notifications": []
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:29:15.332593+00:00",
+        "deviceEpochSeconds": 1793590152,
+        "wakefulness": [
+          "Dozing"
+        ],
+        "keyguardShowing": true,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "true",
+          "mScreenOn": "false",
+          "mCharging": "false",
+          "mState": "IDLE",
+          "mLightState": "OVERRIDE"
+        }
+      },
+      "notifications": []
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:29:25.984523+00:00",
+        "deviceEpochSeconds": 1793590163,
+        "wakefulness": [
+          "Dozing"
+        ],
+        "keyguardShowing": true,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "true",
+          "mScreenOn": "false",
+          "mCharging": "false",
+          "mState": "IDLE",
+          "mLightState": "OVERRIDE"
+        }
+      },
+      "notifications": []
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:29:36.634205+00:00",
+        "deviceEpochSeconds": 1793590174,
+        "wakefulness": [
+          "Dozing"
+        ],
+        "keyguardShowing": true,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "true",
+          "mScreenOn": "false",
+          "mCharging": "false",
+          "mState": "IDLE",
+          "mLightState": "OVERRIDE"
+        }
+      },
+      "notifications": []
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:29:47.271341+00:00",
+        "deviceEpochSeconds": 1793590184,
+        "wakefulness": [
+          "Dozing"
+        ],
+        "keyguardShowing": true,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "true",
+          "mScreenOn": "false",
+          "mCharging": "false",
+          "mState": "IDLE",
+          "mLightState": "OVERRIDE"
+        }
+      },
+      "notifications": []
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:29:57.901306+00:00",
+        "deviceEpochSeconds": 1793590195,
+        "wakefulness": [
+          "Dozing"
+        ],
+        "keyguardShowing": true,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "true",
+          "mScreenOn": "false",
+          "mCharging": "false",
+          "mState": "IDLE",
+          "mLightState": "OVERRIDE"
+        }
+      },
+      "notifications": []
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:30:08.540095+00:00",
+        "deviceEpochSeconds": 1793590206,
+        "wakefulness": [
+          "Dozing"
+        ],
+        "keyguardShowing": true,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "true",
+          "mScreenOn": "false",
+          "mCharging": "false",
+          "mState": "IDLE",
+          "mLightState": "OVERRIDE"
+        }
+      },
+      "notifications": []
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:30:19.184914+00:00",
+        "deviceEpochSeconds": 1793590216,
+        "wakefulness": [
+          "Dozing"
+        ],
+        "keyguardShowing": true,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "true",
+          "mScreenOn": "false",
+          "mCharging": "false",
+          "mState": "IDLE",
+          "mLightState": "OVERRIDE"
+        }
+      },
+      "notifications": []
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:30:29.819101+00:00",
+        "deviceEpochSeconds": 1793590227,
+        "wakefulness": [
+          "Dozing"
+        ],
+        "keyguardShowing": true,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "true",
+          "mScreenOn": "false",
+          "mCharging": "false",
+          "mState": "IDLE",
+          "mLightState": "OVERRIDE"
+        }
+      },
+      "notifications": []
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:30:40.449759+00:00",
+        "deviceEpochSeconds": 1793590237,
+        "wakefulness": [
+          "Dozing"
+        ],
+        "keyguardShowing": true,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "true",
+          "mScreenOn": "false",
+          "mCharging": "false",
+          "mState": "IDLE",
+          "mLightState": "OVERRIDE"
+        }
+      },
+      "notifications": []
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:30:51.088452+00:00",
+        "deviceEpochSeconds": 1793590248,
+        "wakefulness": [
+          "Dozing"
+        ],
+        "keyguardShowing": true,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "true",
+          "mScreenOn": "false",
+          "mCharging": "false",
+          "mState": "IDLE",
+          "mLightState": "OVERRIDE"
+        }
+      },
+      "notifications": []
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:31:01.745481+00:00",
+        "deviceEpochSeconds": 1793590259,
+        "wakefulness": [
+          "Dozing"
+        ],
+        "keyguardShowing": true,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "true",
+          "mScreenOn": "false",
+          "mCharging": "false",
+          "mState": "IDLE",
+          "mLightState": "OVERRIDE"
+        }
+      },
+      "notifications": []
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:31:12.426644+00:00",
+        "deviceEpochSeconds": 1793590269,
+        "wakefulness": [
+          "Dozing"
+        ],
+        "keyguardShowing": true,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "true",
+          "mScreenOn": "false",
+          "mCharging": "false",
+          "mState": "IDLE",
+          "mLightState": "OVERRIDE"
+        }
+      },
+      "notifications": []
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:31:23.125658+00:00",
+        "deviceEpochSeconds": 1793590280,
+        "wakefulness": [
+          "Dozing"
+        ],
+        "keyguardShowing": true,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "true",
+          "mScreenOn": "false",
+          "mCharging": "false",
+          "mState": "IDLE",
+          "mLightState": "OVERRIDE"
+        }
+      },
+      "notifications": []
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:31:33.841953+00:00",
+        "deviceEpochSeconds": 1793590291,
+        "wakefulness": [
+          "Dozing"
+        ],
+        "keyguardShowing": true,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "true",
+          "mScreenOn": "false",
+          "mCharging": "false",
+          "mState": "IDLE",
+          "mLightState": "OVERRIDE"
+        }
+      },
+      "notifications": []
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:31:44.571536+00:00",
+        "deviceEpochSeconds": 1793590302,
+        "wakefulness": [
+          "Dozing"
+        ],
+        "keyguardShowing": true,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "true",
+          "mScreenOn": "false",
+          "mCharging": "false",
+          "mState": "IDLE",
+          "mLightState": "OVERRIDE"
+        }
+      },
+      "notifications": []
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:31:55.277242+00:00",
+        "deviceEpochSeconds": 1793590312,
+        "wakefulness": [
+          "Dozing"
+        ],
+        "keyguardShowing": true,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "true",
+          "mScreenOn": "false",
+          "mCharging": "false",
+          "mState": "IDLE",
+          "mLightState": "OVERRIDE"
+        }
+      },
+      "notifications": []
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:32:05.976279+00:00",
+        "deviceEpochSeconds": 1793590323,
+        "wakefulness": [
+          "Dozing"
+        ],
+        "keyguardShowing": true,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "true",
+          "mScreenOn": "false",
+          "mCharging": "false",
+          "mState": "IDLE",
+          "mLightState": "OVERRIDE"
+        }
+      },
+      "notifications": [
+        {
+          "tag": "event:0bab49bc-9ef0-457e-b258-b799fa650254:1793597520000:1793590320000:DANGER",
+          "kind": "event",
+          "observedUtc": "2026-11-02T03:32:06.288298+00:00",
+          "qaTitle": "QA-ACCEPT-1101-IDLE",
+          "mCreationTimeMs": 1793590320171,
+          "mUpdateTimeMs": 1793590320171,
+          "mRankingTimeMs": 1793590320166,
+          "qaTitlesVisibleInRedactedOutput": []
+        }
+      ]
+    }
+  ]
+}

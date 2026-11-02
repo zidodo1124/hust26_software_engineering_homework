@@ -1,0 +1,14 @@
+{
+  "atUtc": "2026-11-02T03:51:28.989680+00:00",
+  "allQaPlanCount": 9,
+  "allQaPlanInactive": true,
+  "qaPendingCancellationCount": 0,
+  "originalSentRowCount": 8,
+  "originalSentRowCountMatchesBaseline": true,
+  "originalSentRowsSaltedDigest": "903281849968b0f2621a1551f1e720535521c8fc2b4d6c4773b4a34adc9205e1",
+  "originalSentRowsExactlyMatchBaseline": true,
+  "legitimateNewDailySentCount": 1,
+  "qaSentHistoryRetainedCount": 3,
+  "allReminderErrors": 0,
+  "temporaryPrivateDatabaseRemoved": true
+}

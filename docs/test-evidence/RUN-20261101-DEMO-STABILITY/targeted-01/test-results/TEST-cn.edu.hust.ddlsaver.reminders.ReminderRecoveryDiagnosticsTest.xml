@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" tests="16" skipped="0" failures="2" errors="0" timestamp="2026-11-02T04:30:50" hostname="LAPTOP-7OF0K1SP" time="3.13">
+  <properties/>
+  <testcase name="timeoutAndThrownFailureAreRecordedAndEachFinishExactlyOnce[28]" classname="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" time="0.124"/>
+  <testcase name="timeoutAndThrownFailureAreRecordedAndEachFinishExactlyOnce" classname="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" time="1.764"/>
+  <testcase name="returnedHealthErrorIsNotSuccessAndOnlyAllowlistedFieldsArePersisted[28]" classname="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" time="0.05"/>
+  <testcase name="returnedHealthErrorIsNotSuccessAndOnlyAllowlistedFieldsArePersisted" classname="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" time="0.034"/>
+  <testcase name="olderOverlappingAttemptCannotOverwriteNewerAttempt[28]" classname="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" time="0.026"/>
+  <testcase name="olderOverlappingAttemptCannotOverwriteNewerAttempt" classname="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" time="0.033"/>
+  <testcase name="releaseBuildDoesNotCreateOrOpenDiagnosticStorage[28]" classname="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" time="0.031"/>
+  <testcase name="releaseBuildDoesNotCreateOrOpenDiagnosticStorage" classname="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" time="0.034"/>
+  <testcase name="productionStorageIsOffMainThreadBoundedAndRetainsBootAcrossLaterTriggers[28]" classname="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" time="0.419"/>
+  <testcase name="productionStorageIsOffMainThreadBoundedAndRetainsBootAcrossLaterTriggers" classname="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" time="0.404"/>
+  <testcase name="cancellationIsNotSwallowedAndStillFinishesPendingResult[28]" classname="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" time="0.037">
+    <failure message="java.lang.AssertionError: expected same:&lt;java.util.concurrent.CancellationException: cancelled&gt; was not:&lt;java.util.concurrent.CancellationException: cancelled&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected same:&lt;java.util.concurrent.CancellationException: cancelled&gt; was not:&lt;java.util.concurrent.CancellationException: cancelled&gt;
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotSame(Assert.java:829)
+	at org.junit.Assert.assertSame(Assert.java:772)
+	at org.junit.Assert.assertSame(Assert.java:783)
+	at cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest$cancellationIsNotSwallowedAndStillFinishesPendingResult$1.invokeSuspend(ReminderRecoveryDiagnosticsTest.kt:155)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source)
+	at cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest.cancellationIsNotSwallowedAndStillFinishesPendingResult(ReminderRecoveryDiagnosticsTest.kt:145)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.robolectric.RobolectricTestRunner$HelperTestRunner$1.evaluate(RobolectricTestRunner.java:502)
+	at org.robolectric.internal.SandboxTestRunner$2.lambda$evaluate$2(SandboxTestRunner.java:285)
+	at org.robolectric.internal.bytecode.Sandbox.lambda$runOnMainThread$0(Sandbox.java:104)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+</failure>
+  </testcase>
+  <testcase name="cancellationIsNotSwallowedAndStillFinishesPendingResult" classname="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" time="0.041">
+    <failure message="java.lang.AssertionError: expected same:&lt;java.util.concurrent.CancellationException: cancelled&gt; was not:&lt;java.util.concurrent.CancellationException: cancelled&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected same:&lt;java.util.concurrent.CancellationException: cancelled&gt; was not:&lt;java.util.concurrent.CancellationException: cancelled&gt;
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotSame(Assert.java:829)
+	at org.junit.Assert.assertSame(Assert.java:772)
+	at org.junit.Assert.assertSame(Assert.java:783)
+	at cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest$cancellationIsNotSwallowedAndStillFinishesPendingResult$1.invokeSuspend(ReminderRecoveryDiagnosticsTest.kt:155)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source)
+	at cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest.cancellationIsNotSwallowedAndStillFinishesPendingResult(ReminderRecoveryDiagnosticsTest.kt:145)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.robolectric.RobolectricTestRunner$HelperTestRunner$1.evaluate(RobolectricTestRunner.java:502)
+	at org.robolectric.internal.SandboxTestRunner$2.lambda$evaluate$2(SandboxTestRunner.java:285)
+	at org.robolectric.internal.bytecode.Sandbox.lambda$runOnMainThread$0(Sandbox.java:104)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+</failure>
+  </testcase>
+  <testcase name="notificationBlockedIsDistinctFromCompletedApproximateScheduling[28]" classname="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" time="0.032"/>
+  <testcase name="notificationBlockedIsDistinctFromCompletedApproximateScheduling" classname="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" time="0.036"/>
+  <testcase name="storageFailureCannotSkipReconciliationOrPendingResultCompletion[28]" classname="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" time="0.029"/>
+  <testcase name="storageFailureCannotSkipReconciliationOrPendingResultCompletion" classname="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" time="0.035"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

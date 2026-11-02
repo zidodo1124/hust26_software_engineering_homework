@@ -1,0 +1,6 @@
+{
+  "todaySummary": "今日待办 · 0",
+  "scope": "Read-only UI filter before creating any acceptance fixtures",
+  "dailyNotificationPreviouslyObserved": false,
+  "limitation": "First-launch notifications were not captured before a deliberate force-stop; no claim of observed absence at that time"
+}

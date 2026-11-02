@@ -1,0 +1,72 @@
+{
+  "atUtc": "2026-11-02T02:38:27.064018+00:00",
+  "uiTexts": [
+    "系统通知：未允许或提醒通道已关闭",
+    "提醒方式：可使用精确提醒",
+    "提醒开关对应的计划会保留，但在系统通知可用前不会弹出通知，也不会安排系统唤醒。",
+    "待发送提醒：3"
+  ],
+  "notificationPolicy": {
+    "packageFilterValidated": true,
+    "appImportance": "NONE",
+    "reminderChannelPolicies": [
+      {
+        "importance": 3,
+        "deleted": false
+      }
+    ],
+    "activeTargetNotificationCount": 0
+  },
+  "alarmPolicy": {
+    "atUtc": "2026-11-02T02:38:27.455758+00:00",
+    "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+    "alarms": []
+  },
+  "postNotificationsGranted": false,
+  "exactAlarmAppOp": "allow",
+  "qaPlans": [
+    {
+      "key": "DANGER:c81a52e1-846b-4f13-83d1-6c43e5f4cd2a:1793597580000",
+      "kind": "DANGER",
+      "eventId": "c81a52e1-846b-4f13-83d1-6c43e5f4cd2a",
+      "deadlineAt": 1793597580000,
+      "eventRevision": 1,
+      "triggerAt": 1793590380000,
+      "day": null,
+      "notificationTag": "event:c81a52e1-846b-4f13-83d1-6c43e5f4cd2a:1793597580000:1793590380000:DANGER",
+      "active": 1,
+      "state": "PENDING",
+      "lastAttemptAt": null,
+      "lastError": null,
+      "cancelPending": 0
+    },
+    {
+      "key": "DEADLINE:c81a52e1-846b-4f13-83d1-6c43e5f4cd2a:1793597580000",
+      "kind": "DEADLINE",
+      "eventId": "c81a52e1-846b-4f13-83d1-6c43e5f4cd2a",
+      "deadlineAt": 1793597580000,
+      "eventRevision": 1,
+      "triggerAt": 1793593980000,
+      "day": null,
+      "notificationTag": "event:c81a52e1-846b-4f13-83d1-6c43e5f4cd2a:1793597580000:1793593980000:DEADLINE",
+      "active": 1,
+      "state": "PENDING",
+      "lastAttemptAt": null,
+      "lastError": null,
+      "cancelPending": 0
+    }
+  ],
+  "reminderControl": [
+    {
+      "id": 1,
+      "alarmIdentity": "ddl-saver://reminders/wake",
+      "dailyDate": "2026-11-03",
+      "dailyMinuteOfDay": 480,
+      "scheduledTriggerAt": null,
+      "desiredTriggerAt": null,
+      "scheduleMode": null,
+      "alarmDirty": 0,
+      "lastError": null
+    }
+  ]
+}

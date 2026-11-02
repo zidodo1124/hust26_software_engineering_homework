@@ -1,0 +1,33 @@
+{
+  "atUtc": "2026-11-02T03:40:45.550940+00:00",
+  "identity": {
+    "atUtc": "2026-11-02T03:40:45.682944+00:00",
+    "bootIdSha256": "ce5a19e1a42e9e12f8fc172ffcd0e956792a6318912ce7f877742223ccf331c5",
+    "uptimeSeconds": 262.12
+  },
+  "condition": {
+    "atUtc": "2026-11-02T03:40:45.985619+00:00",
+    "deviceEpochSeconds": 1793590844,
+    "wakefulness": [
+      "Awake"
+    ],
+    "keyguardShowing": false,
+    "keyguardSecure": true,
+    "keyguardInputRestricted": false,
+    "deviceIdle": {
+      "mForceIdle": "false",
+      "mScreenOn": "true",
+      "mCharging": "true",
+      "mState": "ACTIVE",
+      "mLightState": "ACTIVE"
+    }
+  },
+  "alarm": {
+    "atUtc": "2026-11-02T03:40:46.233118+00:00",
+    "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+    "alarms": []
+  },
+  "productForeground": false,
+  "noProductLaunchSinceReboot": true,
+  "reconnectedAfterInitialBoundedObservation": true
+}

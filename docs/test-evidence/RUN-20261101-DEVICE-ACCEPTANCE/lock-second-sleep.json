@@ -1,0 +1,37 @@
+{
+  "before": {
+    "atUtc": "2026-11-02T02:29:57.450088+00:00",
+    "deviceEpochSeconds": 1793586595,
+    "wakefulness": [
+      "Awake"
+    ],
+    "keyguardShowing": false,
+    "keyguardSecure": true,
+    "keyguardInputRestricted": false,
+    "deviceIdle": {
+      "mForceIdle": "false",
+      "mScreenOn": "true",
+      "mCharging": "true",
+      "mState": "ACTIVE",
+      "mLightState": "ACTIVE"
+    }
+  },
+  "after": {
+    "atUtc": "2026-11-02T02:29:58.064009+00:00",
+    "deviceEpochSeconds": 1793586595,
+    "wakefulness": [
+      "Dozing"
+    ],
+    "keyguardShowing": false,
+    "keyguardSecure": true,
+    "keyguardInputRestricted": false,
+    "deviceIdle": {
+      "mForceIdle": "false",
+      "mScreenOn": "true",
+      "mCharging": "true",
+      "mState": "ACTIVE",
+      "mLightState": "ACTIVE"
+    }
+  },
+  "note": "Observer issues dumpsys/date only; observed screen awake for an unknown cause. Second dedicated sleep action performed; earlier interrupted interval retained."
+}

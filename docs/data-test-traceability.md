@@ -1,6 +1,8 @@
 # 数据与信息组织需求—代码—测试追踪
 
-初次核对日期：2026-10-30；2026-10-31 同步局部需求确认。负责人方向：付泽文的数据与信息组织。既有 CI 追踪以 `main` 合入 PR #6 后的产品源码为依据；[专项需求](data-requirements.md)更新至 v0.3。本文件为 AI 辅助整理，待成员复核。历史实机结论、需求确认和本机自动测试分别以原记录为准。
+初次核对日期：2026-10-30；2026-10-31 同步局部需求确认，2026-11-01 补充独立本机界面回归。负责人方向：付泽文的数据与信息组织；本次独立补测不登记为其个人新增贡献。既有 CI 追踪以 `main` 合入 PR #6 后的产品源码为依据；[专项需求](data-requirements.md)更新至 v0.3。本文件为 AI 辅助整理，待成员复核。历史实机结论、需求确认和本机自动测试分别以原记录为准。
+
+2026-11-01 本轮补记：PR #10 的[规划建议](planning-extension-requirements.md)已合入讨论稿，7 项提案尚未实现，不加入下表“已执行”覆盖。合并后的本机基线 194 次执行通过；历史远程 CI #45 的 169 次执行有 1 项角色页面失败，两者见[当前稳定性批次](test-evidence/RUN-20261101-DEMO-STABILITY/README.md)。此前界面测试现已保存为 `778429e`；当前 0.3.4 源码 `bdcd76f` 的完整构建、179 方法／218 次执行通过，Lint 0／16，新包实机未验，历史数据测试结果不改。
 
 ## 本次核对的自动化证据
 
@@ -25,6 +27,7 @@ JUnit XML 中六个本轮新增或扩展测试方法均显示通过：同事项�
 | RT | [RoundTwoRepositoryTest.kt](../app/src/test/java/cn/edu/hust/ddlsaver/data/RoundTwoRepositoryTest.kt) | 真实 Room 仓库、事务和重开测试 |
 | QT | [EventQueryTest.kt](../app/src/test/java/cn/edu/hust/ddlsaver/domain/EventQueryTest.kt) | 搜索、筛选和排序规则测试 |
 | UT | [SaverAppFlowTest.kt](../app/src/test/java/cn/edu/hust/ddlsaver/ui/SaverAppFlowTest.kt) | Robolectric 下 Activity／Compose／Room 页面流程 |
+| CT | [ContentClipboardFlowTest.kt](../app/src/test/java/cn/edu/hust/ddlsaver/ui/ContentClipboardFlowTest.kt) | 本机真实页面的长描述复制、同名字段编辑／复制及取消／移除隔离 |
 | MT | [SaverDatabaseMigrationTest.kt](../app/src/test/java/cn/edu/hust/ddlsaver/data/SaverDatabaseMigrationTest.kt)、[CharacterStylePersistenceTest.kt](../app/src/test/java/cn/edu/hust/ddlsaver/data/CharacterStylePersistenceTest.kt) | 真实历史 schema 构造旧库并迁移 |
 
 ## 专项需求与验收场景追踪
@@ -34,8 +37,8 @@ JUnit XML 中六个本轮新增或扩展测试方法均显示通过：同事项�
 | DA-01 / FR-14 | Repo；RT 的 `namesAreTrimmedAndDuplicateNamesCannotBypassInactiveCatalogItems` 及 `disabledSameNamedCategoriesKeepOldRelationsAcrossReopenAndCanBeRestored` 覆盖去空白、同类判重、跨类同名 | DA-01 在界面按完整输入及提示执行；空白名称及其他输入边界按需求状态确认 | 部分自动覆盖；TC-04 整例未通过 |
 | DA-02 / FR-14、15 | Repo；RT 的 `renamedAndDisabledCategoriesRemainLinkedButCannotBeNewlyAssigned` 与 `disabledSameNamedCategoriesKeepOldRelationsAcrossReopenAndCanBeRestored` 覆盖改名、停用保留、阻止新增、恢复和重开 | DA-02 原样完整步骤与各状态事项的数据快照、界面检查 | 部分自动覆盖 |
 | DA-03 / FR-14、18 | Repo、Query；上述两个 RT 用例覆盖停用标签、判重、双标签筛选、移除与恢复 | 停用标签在实际页面筛选与完整重名反馈；需求中额外细节待审核 | 部分自动覆盖 |
-| DA-04 / FR-19 | Repo、Validation；RT 的 `sameNamedFieldsAndEmptyContentRemainIndependentAcrossEditsAndReopen` 覆盖同一事项同名、空内容、修改、移除与重开，并检查另一事项 | DA-04 的两条联系人复制和完整界面交互；空字段复制不作为该场景要求 | 部分自动覆盖；TC-07 整例未通过 |
-| DA-05 / FR-19 | Validation 的 `emptyFieldNamesAndDuplicateFieldIdsAreRejected`；RT 同名字段测试覆盖移除一条；UT 的 `activityRecreationKeepsUnsavedDraftAndDiscardRequiresConfirmation` 覆盖草稿保留及放弃 | 以同名字段为样本完成 DA-05 的空字段名、取消、移除及顺序完整页面流程 | 部分自动覆盖 |
+| DA-04 / FR-19 | Repo、Validation；RT 覆盖同名／空内容字段存储；CT 的 `sameNamedFieldsEditAndCopyIndependentlyWhileEmptyValueAndOtherEventRemain` 已通过本机页面验证：两条同名联系人分别复制，仅修改第二条，第一条、空内容字段及另一事项保持 | 原 DA 样本的最终设备完整流程；本机“重开”为返回列表再进详情，未验证系统杀进程；空字段复制不作为该场景要求 | 相关存储与界面子场景通过；TC-07 整例未通过 |
+| DA-05 / FR-19 | Validation 覆盖空字段名及重复 ID；RT 覆盖移除；CT 的 `cancellingFieldEditsThenRemovingOneDuplicatePreservesRemainingOrderAndOtherEvent` 已验证编辑后放弃、移除单个同名字段、剩余 ID／顺序与另一事项保持 | 空白字段名的完整页面提示、原 DA 样本及设备步骤；需求中未确认的边界继续待审 | 取消与移除的本机界面子场景通过；整例仍未完成 |
 | DA-06 / FR-18 | Query；QT 的 `keywordMatchesTitleDescriptionAndCustomFieldLabelsOrValuesIgnoringCase` 和 UT 的 `categoryManagementAndCustomFieldsPersistThenFilterTogether` | A—E 原样本的空关键词、无结果、清除及完成／归档排除一整组页面结果 | 部分自动覆盖；TC-14 整例未通过 |
 | DA-07 / FR-18 | Query；QT 的 `combinedFiltersRequireEveryConditionAndEverySelectedTag`；RT 分类恢复测试覆盖来源与两个标签交集 | A—E 全部单标签／双标签／日期组合和清空筛选的页面路径 | 部分自动覆盖 |
 | DA-08 / FR-18 | Query；QT 的 `keywordMatchesTitleDescriptionAndCustomFieldLabelsOrValuesIgnoringCase` 有英文大小写例子；新增 `multiWordKeywordMatchesContinuouslyAndCategoriesUseTheirOwnFilters` 检查连续多词与分类筛选，已在[本次 CI](test-evidence/RUN-20261031-SEARCH-CI/summary.json)中取得独立通过节点 | 本人已确认英文大小写、完整连续文字与多词不拆分；空关键词等未涉及细节待审核，DA-08 页面整例仍需验证 | 两项相关自动用例通过；整例仍未完成 |
@@ -50,6 +53,8 @@ JUnit XML 中六个本轮新增或扩展测试方法均显示通过：同事项�
 以上均不宣称所有组合已经执行。2026-10-31 本人确认关键词完整连续匹配、多词不拆分和英文大小写不敏感，以及同截止时间稳定排序、停用分类筛选历史事项；其他未涉及的边界仍待审核。后续依优先级选择真实缺口，不为增加数量而重复实现已有测试。
 
 ## 追踪结论和后续安排
+
+2026-11-01 的 CT 证据来自 [RUN-20261101-INDEPENDENT-UI](test-evidence/RUN-20261101-INDEPENDENT-UI/README.md)：基线 `ac1d978` 加未提交新增测试，生产代码未改。该本机批次与历史 PR CI 分开记录，不把当前远程 CI 的 169 次执行当作新增测试已在 CI 运行，也不把页面自动化替代最终实机验收。
 
 1. **代码与自动测试**：核心规则、分类维护、字段独立性、v1／v2／v3 迁移、写入失败和界面草稿已有相关自动测试证据；未因样本不完整而给整个 FR、DA 或 TC 下全面通过结论。
 2. **需求与设计**：确认剩余细节后同步主需求、设计及测试预期。当前 `sourceId` 未声明 Room 外键，Repository 在保存时校验来源；应用无永久删除来源的公开操作。若以后引入其他写入路径或永久删除来源，应重新评估一致性与迁移，不将该设计差异直接登记为已发生缺陷。

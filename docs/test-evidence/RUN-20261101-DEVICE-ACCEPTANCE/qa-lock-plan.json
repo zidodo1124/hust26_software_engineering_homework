@@ -1,0 +1,14 @@
+{
+  "createdPlanAtUtc": "2026-11-02T02:24:53.360285+00:00",
+  "title": "QA-ACCEPT-1101-LOCK",
+  "deadlineBeijing": "2026-11-02T12:31:00+08:00",
+  "deadlineEpochMillis": 1793593860000,
+  "sprintMinutes": 120,
+  "expectedDangerTriggerEpochMillis": 1793586660000,
+  "deviceEpochSecondsAtPlanning": 1793586290,
+  "savedThroughUi": true,
+  "verifiedAtUtc": "2026-11-02T02:26:27.382634+00:00",
+  "eventId": "c88aa580-25aa-4704-9439-bdbdec3a9b28",
+  "verifiedTriggerAt": 1793586660000,
+  "observationNote": "Creation completed; initial helper assertion expected zero-padded day; actual UI uses unpadded day. Parsed timestamp and persisted QA values match planned deadline. No duplicate creation."
+}

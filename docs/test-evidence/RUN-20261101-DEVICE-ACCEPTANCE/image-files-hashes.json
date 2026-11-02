@@ -1,0 +1,177 @@
+[
+  {
+    "file": "clipboard-fixture-install.json",
+    "source": ".local-tools/device-acceptance-20261101/clipboard-fixture-install.json",
+    "sourceSha256AtArchive": "7398c7bb5ea0c186c0521198b38bfb8242056bede109e8abf97626e89b4b9b68",
+    "archivedSha256": "7398c7bb5ea0c186c0521198b38bfb8242056bede109e8abf97626e89b4b9b68",
+    "transformation": "Exact copy of reviewed QA-only metadata; current-run installation status, not historical fixture state."
+  },
+  {
+    "file": "image-draft-navigation-check.json",
+    "source": ".local-tools/device-acceptance-20261101/image-draft-navigation-check.json",
+    "sourceSha256AtArchive": "d49d272c4ce9e13a71988fddfce0a973f939d23110159fb893f968a609c9306c",
+    "archivedSha256": "d49d272c4ce9e13a71988fddfce0a973f939d23110159fb893f968a609c9306c",
+    "transformation": "Exact copy of reviewed QA-only metadata; current-run installation status, not historical fixture state."
+  },
+  {
+    "file": "qa-image-plan.json",
+    "source": ".local-tools/device-acceptance-20261101/qa-image-plan.json",
+    "sourceSha256AtArchive": "4e8adeaf18316b484ed2d61dff62de5ca22742cd9b472bb667f69c33ea61c379",
+    "archivedSha256": "4e8adeaf18316b484ed2d61dff62de5ca22742cd9b472bb667f69c33ea61c379",
+    "transformation": "Exact QA-only copy. Image 12 visually reviewed by evidence agent: app draft and two synthetic fixture thumbnails only; no private content."
+  },
+  {
+    "file": "image-two-saved.json",
+    "source": ".local-tools/device-acceptance-20261101/image-two-saved.json",
+    "sourceSha256AtArchive": "827d01d8972587e823695b3666b8ad4ac26f81943271d4086e6f4791442e5b7d",
+    "archivedSha256": "827d01d8972587e823695b3666b8ad4ac26f81943271d4086e6f4791442e5b7d",
+    "transformation": "Exact QA-only copy. Image 12 visually reviewed by evidence agent: app draft and two synthetic fixture thumbnails only; no private content."
+  },
+  {
+    "file": "12-image-two-incremental-draft.png",
+    "source": ".local-tools/device-acceptance-20261101/12-image-two-incremental-draft.png",
+    "sourceSha256AtArchive": "09ac677da421e0c58d3fd3bf7b8699c65031ba03d80d72fd9267c97c0a8354b7",
+    "archivedSha256": "09ac677da421e0c58d3fd3bf7b8699c65031ba03d80d72fd9267c97c0a8354b7",
+    "transformation": "Exact QA-only copy. Image 12 visually reviewed by evidence agent: app draft and two synthetic fixture thumbnails only; no private content."
+  },
+  {
+    "file": "image-old-uri-probe.json",
+    "source": ".local-tools/device-acceptance-20261101/image-old-uri-probe.json",
+    "sourceSha256AtArchive": "25a593971c6c929a31870f7fc003f9071f6191707cf2b4dda250e7478a7641c3",
+    "archivedSha256": "25a593971c6c929a31870f7fc003f9071f6191707cf2b4dda250e7478a7641c3",
+    "transformation": "Exact QA-only copy. Image 13 visually reviewed by evidence agent: synthetic attachments and actual product error only; no private content."
+  },
+  {
+    "file": "image-after-old-uri-probe.json",
+    "source": ".local-tools/device-acceptance-20261101/image-after-old-uri-probe.json",
+    "sourceSha256AtArchive": "548ee271cac6aa7063fd5b9a52970ad9cf057dc0fee492e56e31fed27e255ea8",
+    "archivedSha256": "548ee271cac6aa7063fd5b9a52970ad9cf057dc0fee492e56e31fed27e255ea8",
+    "transformation": "Exact QA-only copy. Image 13 visually reviewed by evidence agent: synthetic attachments and actual product error only; no private content."
+  },
+  {
+    "file": "13-old-uri-paste-result.png",
+    "source": ".local-tools/device-acceptance-20261101/13-old-uri-paste-result.png",
+    "sourceSha256AtArchive": "9ff95f5977dd33ac772ef91b07d040dac6f9620c568034bd257186fa32f74b77",
+    "archivedSha256": "9ff95f5977dd33ac772ef91b07d040dac6f9620c568034bd257186fa32f74b77",
+    "transformation": "Exact QA-only copy. Image 13 visually reviewed by evidence agent: synthetic attachments and actual product error only; no private content."
+  },
+  {
+    "file": "image-before-force-stop.json",
+    "source": ".local-tools/device-acceptance-20261101/image-before-force-stop.json",
+    "sourceSha256AtArchive": "474d9a84470d7ea22daa4ca5763a54b06826232592945ecd33bf412fc32ebcf5",
+    "archivedSha256": "474d9a84470d7ea22daa4ca5763a54b06826232592945ecd33bf412fc32ebcf5",
+    "transformation": "Exact reviewed metadata copy. Application import_failed records and shell read-path probe remain separate; no raw URI, exception text or private content."
+  },
+  {
+    "file": "image-controlled-broken-probe.json",
+    "source": ".local-tools/device-acceptance-20261101/image-controlled-broken-probe.json",
+    "sourceSha256AtArchive": "75418acf89fac9d6857767ed2790d006c850045e382621e8b23c0b4d6c3d1f32",
+    "archivedSha256": "75418acf89fac9d6857767ed2790d006c850045e382621e8b23c0b4d6c3d1f32",
+    "transformation": "Exact reviewed metadata copy. Application import_failed records and shell read-path probe remain separate; no raw URI, exception text or private content."
+  },
+  {
+    "file": "image-foreground-interruption.json",
+    "source": ".local-tools/device-acceptance-20261101/image-foreground-interruption.json",
+    "sourceSha256AtArchive": "33859d9685f2a82e873ba4b07b6cef3b7f5c6f2bfc2725d55d014a476abee664",
+    "archivedSha256": "33859d9685f2a82e873ba4b07b6cef3b7f5c6f2bfc2725d55d014a476abee664",
+    "transformation": "Exact reviewed metadata copy. Application import_failed records and shell read-path probe remain separate; no raw URI, exception text or private content."
+  },
+  {
+    "file": "image-retry-saved.json",
+    "source": ".local-tools/device-acceptance-20261101/image-retry-saved.json",
+    "sourceSha256AtArchive": "6192ec844642f0826aa69221007eda61cf51eb6a874236e28f869f6d5ec50599",
+    "archivedSha256": "6192ec844642f0826aa69221007eda61cf51eb6a874236e28f869f6d5ec50599",
+    "transformation": "Exact reviewed metadata copy. Application import_failed records and shell read-path probe remain separate; no raw URI, exception text or private content."
+  },
+  {
+    "file": "image-before-diagnostic-retry.json",
+    "source": ".local-tools/device-acceptance-20261101/image-before-diagnostic-retry.json",
+    "sourceSha256AtArchive": "c1ac350b8aaa27e4721f5850477a6aee2db056b333bb1f9959e376d0ed01cbf6",
+    "archivedSha256": "c1ac350b8aaa27e4721f5850477a6aee2db056b333bb1f9959e376d0ed01cbf6",
+    "transformation": "Exact reviewed metadata copy. Application import_failed records and shell read-path probe remain separate; no raw URI, exception text or private content."
+  },
+  {
+    "file": "image-warm-draft-cancelled.json",
+    "source": ".local-tools/device-acceptance-20261101/image-warm-draft-cancelled.json",
+    "sourceSha256AtArchive": "89362252021fd2e83b5b37360b60f77b609b70a9f9c7fdc797de01f69d24e7c3",
+    "archivedSha256": "89362252021fd2e83b5b37360b60f77b609b70a9f9c7fdc797de01f69d24e7c3",
+    "transformation": "Exact reviewed metadata copy. Application import_failed records and shell read-path probe remain separate; no raw URI, exception text or private content."
+  },
+  {
+    "file": "image-old-uri-diagnostic.json",
+    "source": ".local-tools/device-acceptance-20261101/image-old-uri-diagnostic.json",
+    "sourceSha256AtArchive": "7a243c2357cb292815a991ef1879e743ee85a5e6106a50245cfda5dd0322c820",
+    "archivedSha256": "7a243c2357cb292815a991ef1879e743ee85a5e6106a50245cfda5dd0322c820",
+    "transformation": "Exact reviewed metadata copy. Application import_failed records and shell read-path probe remain separate; no raw URI, exception text or private content."
+  },
+  {
+    "file": "image-broken-diagnostic.json",
+    "source": ".local-tools/device-acceptance-20261101/image-broken-diagnostic.json",
+    "sourceSha256AtArchive": "846cb7c7933c69338a6ef18e77ba9da49e6a92fe80e0907f5866d498ca575022",
+    "archivedSha256": "846cb7c7933c69338a6ef18e77ba9da49e6a92fe80e0907f5866d498ca575022",
+    "transformation": "Exact reviewed metadata copy. Application import_failed records and shell read-path probe remain separate; no raw URI, exception text or private content."
+  },
+  {
+    "file": "image-diagnostic-retry-result.json",
+    "source": ".local-tools/device-acceptance-20261101/image-diagnostic-retry-result.json",
+    "sourceSha256AtArchive": "cb16cf0334cc6c5f109ede381b8abef41640a0a9963adfaff473e412d5dd077a",
+    "archivedSha256": "cb16cf0334cc6c5f109ede381b8abef41640a0a9963adfaff473e412d5dd077a",
+    "transformation": "Exact reviewed metadata copy. Application import_failed records and shell read-path probe remain separate; no raw URI, exception text or private content."
+  },
+  {
+    "file": "image-final-saved.json",
+    "source": ".local-tools/device-acceptance-20261101/image-final-saved.json",
+    "sourceSha256AtArchive": "6898e901df333da4aafe43fa056584a01a18eb984a2011c0fc6e5beb4f6bb8ea",
+    "archivedSha256": "6898e901df333da4aafe43fa056584a01a18eb984a2011c0fc6e5beb4f6bb8ea",
+    "transformation": "Exact reviewed metadata copy. Application import_failed records and shell read-path probe remain separate; no raw URI, exception text or private content."
+  },
+  {
+    "file": "image-tag-override.json",
+    "source": ".local-tools/device-acceptance-20261101/image-tag-override.json",
+    "sourceSha256AtArchive": "0613878bef2b8a02d294970ad2015df3f4b71400ff2c84398b6aaa89079c6ded",
+    "archivedSha256": "0613878bef2b8a02d294970ad2015df3f4b71400ff2c84398b6aaa89079c6ded",
+    "transformation": "Exact reviewed metadata copy. Application import_failed records and shell read-path probe remain separate; no raw URI, exception text or private content."
+  },
+  {
+    "file": "attachment-log-pipeline-probe.json",
+    "source": ".local-tools/device-acceptance-20261101/attachment-log-pipeline-probe.json",
+    "sourceSha256AtArchive": "4803c8aa9e61918fa8ad07e03285ad15f13d17e95592bb26df69439ef2d71b26",
+    "archivedSha256": "4803c8aa9e61918fa8ad07e03285ad15f13d17e95592bb26df69439ef2d71b26",
+    "transformation": "Exact reviewed metadata copy. Application import_failed records and shell read-path probe remain separate; no raw URI, exception text or private content."
+  },
+  {
+    "file": "clipboard-fixture-removal.json",
+    "source": ".local-tools/device-acceptance-20261101/clipboard-fixture-removal.json",
+    "sourceSha256AtArchive": "7f33083978a5f6b8619a112920ba09b1c4a41014937b6dd2893f36a230a88b9a",
+    "archivedSha256": "7f33083978a5f6b8619a112920ba09b1c4a41014937b6dd2893f36a230a88b9a",
+    "transformation": "Exact reviewed QA-only metadata. Raw preview images 14/15 reviewed but not archived because their system status area contains unrelated live activity content."
+  },
+  {
+    "file": "image-before-fixture-removal.json",
+    "source": ".local-tools/device-acceptance-20261101/image-before-fixture-removal.json",
+    "sourceSha256AtArchive": "20b6f86142b0fa0157af60d23179943c79dfc79216d3f837299a5aab76726c5a",
+    "archivedSha256": "20b6f86142b0fa0157af60d23179943c79dfc79216d3f837299a5aab76726c5a",
+    "transformation": "Exact reviewed QA-only metadata. Raw preview images 14/15 reviewed but not archived because their system status area contains unrelated live activity content."
+  },
+  {
+    "file": "image-after-fixture-removal.json",
+    "source": ".local-tools/device-acceptance-20261101/image-after-fixture-removal.json",
+    "sourceSha256AtArchive": "73418a1fd03baa5ac23160356fd60dbf4f59958754fd56fd012ccf5fad08c5b4",
+    "archivedSha256": "73418a1fd03baa5ac23160356fd60dbf4f59958754fd56fd012ccf5fad08c5b4",
+    "transformation": "Exact reviewed QA-only metadata. Raw preview images 14/15 reviewed but not archived because their system status area contains unrelated live activity content."
+  },
+  {
+    "file": "image-completed.json",
+    "source": ".local-tools/device-acceptance-20261101/image-completed.json",
+    "sourceSha256AtArchive": "50dfee7f04b5d9931557ce158dee0c33efcff8ffd9cd546dc47ea358a63fe347",
+    "archivedSha256": "50dfee7f04b5d9931557ce158dee0c33efcff8ffd9cd546dc47ea358a63fe347",
+    "transformation": "Exact reviewed QA-only metadata. Raw preview images 14/15 reviewed but not archived because their system status area contains unrelated live activity content."
+  },
+  {
+    "file": "image-final-result.json",
+    "source": ".local-tools/device-acceptance-20261101/image-final-result.json",
+    "sourceSha256AtArchive": "7f906adaa6bd08106b06529f3afa02d6bee2c516a70c2ff8fb93539f23b89471",
+    "archivedSha256": "7f906adaa6bd08106b06529f3afa02d6bee2c516a70c2ff8fb93539f23b89471",
+    "transformation": "Exact reviewed QA-only metadata. Raw preview images 14/15 reviewed but not archived because their system status area contains unrelated live activity content."
+  }
+]

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" tests="18" skipped="0" failures="0" errors="0" timestamp="2026-11-02T04:38:00" hostname="LAPTOP-7OF0K1SP" time="12.804">
+  <properties/>
+  <testcase name="reminderTapResetsHomeFiltersAndRoutesToLatestDetailOnce" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="0.519"/>
+  <testcase name="missingReminderTargetReturnsHomeWithExplanation" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="0.289"/>
+  <testcase name="requiredInputIsRejectedThenNewEventCanBeSavedAndEdited" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="1.023"/>
+  <testcase name="activityRecreationKeepsUnsavedDraftAndDiscardRequiresConfirmation" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="0.641"/>
+  <testcase name="categoryManagementAndCustomFieldsPersistThenFilterTogether" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="1.86"/>
+  <testcase name="staleEditShowsConflictAndKeepsDraftWithoutOverwritingNewerData" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="0.987"/>
+  <testcase name="reminderSettingsValidateAndPreserveIndependentOptions" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="0.642"/>
+  <testcase name="completedItemCanBeRecoveredFromHistoryAndDeleteCancellationPreservesIt" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="0.963"/>
+  <testcase name="reminderTapDuringDraftCanBeDeferredAcrossRotationWithoutLosingInput" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="0.457"/>
+  <testcase name="imageDraftSurvivesRotationAndCancel" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="0.792"/>
+  <testcase name="combinedSourceTagsKeywordAndDateFilterTheVisibleListWithoutChangingTodayCount" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="0.534"/>
+  <testcase name="failedFieldWriteKeepsDraftAndOriginalDataUntilRetrySucceeds" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="0.816"/>
+  <testcase name="characterStylePreviewRequiresSaveAndCanBeSwitchedBackAfterRecreation" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="0.617"/>
+  <testcase name="calendarCrossesMonthAndTodayShortcutClearsDateFilter" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="0.33"/>
+  <testcase name="batchDeleteCancellationPreservesAllAndConfirmationOnlyDeletesSelected" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="0.432"/>
+  <testcase name="imageRemovalCommitsOnlyAfterSave" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="1.285"/>
+  <testcase name="deniedNotificationPermissionAlwaysHasDirectSystemSettingsRecovery" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="0.182"/>
+  <testcase name="automaticAndManualExpiredArchiveKeepCompletionFlags" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="0.434"/>
+  <system-out><![CDATA[UI-RECREATE-BEGIN
+UI-RECREATE-END
+UI-RECREATE-BEGIN
+UI-RECREATE-END
+UI-RECREATE-BEGIN
+UI-RECREATE-END
+UI-RECREATE-BEGIN
+UI-RECREATE-END
+UI-RECREATE-BEGIN
+UI-RECREATE-END
+UI-RECREATE-BEGIN
+UI-RECREATE-END
+]]></system-out>
+  <system-err><![CDATA[Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+]]></system-err>
+</testsuite>

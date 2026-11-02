@@ -1,0 +1,63 @@
+{
+  "atUtc": "2026-11-02T03:46:11.817624+00:00",
+  "packageUserFlags": {
+    "installed": "true",
+    "hidden": "false",
+    "suspended": "false",
+    "stopped": "false",
+    "notLaunched": "false",
+    "enabled": "0"
+  },
+  "postNotificationsGranted": true,
+  "exactAlarmAppOp": "allow",
+  "notificationPolicy": {
+    "packageFilterValidated": true,
+    "appImportance": "DEFAULT",
+    "reminderChannelPolicies": [
+      {
+        "importance": 3,
+        "deleted": false
+      }
+    ],
+    "activeTargetNotificationCount": 0
+  },
+  "alarm": {
+    "atUtc": "2026-11-02T03:46:12.109308+00:00",
+    "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+    "alarms": []
+  },
+  "productProcessPresent": false,
+  "productForeground": false,
+  "qaPlans": [
+    {
+      "key": "DANGER:81cd17d7-41cc-44f0-a077-9b06ab8fd1e6:1793598240000",
+      "kind": "DANGER",
+      "eventId": "81cd17d7-41cc-44f0-a077-9b06ab8fd1e6",
+      "deadlineAt": 1793598240000,
+      "eventRevision": 1,
+      "triggerAt": 1793591040000,
+      "day": null,
+      "notificationTag": "event:81cd17d7-41cc-44f0-a077-9b06ab8fd1e6:1793598240000:1793591040000:DANGER",
+      "active": 1,
+      "state": "PENDING",
+      "lastAttemptAt": null,
+      "lastError": null,
+      "cancelPending": 0
+    },
+    {
+      "key": "DEADLINE:81cd17d7-41cc-44f0-a077-9b06ab8fd1e6:1793598240000",
+      "kind": "DEADLINE",
+      "eventId": "81cd17d7-41cc-44f0-a077-9b06ab8fd1e6",
+      "deadlineAt": 1793598240000,
+      "eventRevision": 1,
+      "triggerAt": 1793594640000,
+      "day": null,
+      "notificationTag": "event:81cd17d7-41cc-44f0-a077-9b06ab8fd1e6:1793598240000:1793594640000:DEADLINE",
+      "active": 1,
+      "state": "PENDING",
+      "lastAttemptAt": null,
+      "lastError": null,
+      "cancelPending": 0
+    }
+  ]
+}

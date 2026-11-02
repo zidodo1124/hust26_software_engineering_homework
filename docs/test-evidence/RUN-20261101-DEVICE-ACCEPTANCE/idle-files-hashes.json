@@ -1,0 +1,86 @@
+[
+  {
+    "file": "qa-idle-plan.json",
+    "source": ".local-tools/device-acceptance-20261101/qa-idle-plan.json",
+    "sourceSha256AtArchive": "d8d391da5d466397de549c62106ce0c25c83377ebd8f839b84e96911c0e3b429",
+    "archivedSha256": "d8d391da5d466397de549c62106ce0c25c83377ebd8f839b84e96911c0e3b429",
+    "transformation": "Exact reviewed QA-only/system-state metadata, including original transitional samples. No full notification dump or private system screenshot."
+  },
+  {
+    "file": "idle-created-qa.json",
+    "source": ".local-tools/device-acceptance-20261101/idle-created-qa.json",
+    "sourceSha256AtArchive": "3c22878dd2b0516ae019174fe52481a4e34cab086a0f2e7a9a6434eb7fe119ef",
+    "archivedSha256": "3c22878dd2b0516ae019174fe52481a4e34cab086a0f2e7a9a6434eb7fe119ef",
+    "transformation": "Exact reviewed QA-only/system-state metadata, including original transitional samples. No full notification dump or private system screenshot."
+  },
+  {
+    "file": "idle-before.json",
+    "source": ".local-tools/device-acceptance-20261101/idle-before.json",
+    "sourceSha256AtArchive": "bbdb36430e0ac8e76b521f9076ba12cb6becd1793fcb8d43bee44f912ff004e9",
+    "archivedSha256": "bbdb36430e0ac8e76b521f9076ba12cb6becd1793fcb8d43bee44f912ff004e9",
+    "transformation": "Exact reviewed QA-only/system-state metadata, including original transitional samples. No full notification dump or private system screenshot."
+  },
+  {
+    "file": "idle-start.json",
+    "source": ".local-tools/device-acceptance-20261101/idle-start.json",
+    "sourceSha256AtArchive": "47ef3ca0dec86c31a2f236e563999736d35a10a234e44fcdc70a36d9c88ee246",
+    "archivedSha256": "47ef3ca0dec86c31a2f236e563999736d35a10a234e44fcdc70a36d9c88ee246",
+    "transformation": "Exact reviewed QA-only/system-state metadata, including original transitional samples. No full notification dump or private system screenshot."
+  },
+  {
+    "file": "idle-timed-observations.json",
+    "source": ".local-tools/device-acceptance-20261101/idle-timed-observations.json",
+    "sourceSha256AtArchive": "17998d72719be2f5aa72240487a2eb13e877039e030ecdb7797fc8e1f1030411",
+    "archivedSha256": "17998d72719be2f5aa72240487a2eb13e877039e030ecdb7797fc8e1f1030411",
+    "transformation": "Exact reviewed QA-only/system-state metadata, including original transitional samples. No full notification dump or private system screenshot."
+  },
+  {
+    "file": "idle-result.json",
+    "source": ".local-tools/device-acceptance-20261101/idle-result.json",
+    "sourceSha256AtArchive": "f329e0b2a9f82f5a91df8677f121ee97eb6601421e64e624a00a432f677e59db",
+    "archivedSha256": "f329e0b2a9f82f5a91df8677f121ee97eb6601421e64e624a00a432f677e59db",
+    "transformation": "Exact reviewed QA-only/system-state metadata, including original transitional samples. No full notification dump or private system screenshot."
+  },
+  {
+    "file": "idle-restoration-settled.json",
+    "source": ".local-tools/device-acceptance-20261101/idle-restoration-settled.json",
+    "sourceSha256AtArchive": "75e5998fc54b8294b4e821110a4229ec1e9e08ee93f2b3ba5c6837c2e0d5d5cf",
+    "archivedSha256": "75e5998fc54b8294b4e821110a4229ec1e9e08ee93f2b3ba5c6837c2e0d5d5cf",
+    "transformation": "Exact reviewed QA-only/system-state metadata, including original transitional samples. No full notification dump or private system screenshot."
+  },
+  {
+    "file": "idle-user-unlock-confirmation.json",
+    "source": ".local-tools/device-acceptance-20261101/idle-user-unlock-confirmation.json",
+    "sourceSha256AtArchive": "2a9d0d041e06c69ce1c8f25cfa178d6dba3d2d12f82f4e68294ac41945cf02fe",
+    "archivedSha256": "2a9d0d041e06c69ce1c8f25cfa178d6dba3d2d12f82f4e68294ac41945cf02fe",
+    "transformation": "Exact reviewed QA-only metadata and relayed actual user confirmation. Normal launcher completion checked independently of notification click."
+  },
+  {
+    "file": "idle-notification-before-normal-launch.json",
+    "source": ".local-tools/device-acceptance-20261101/idle-notification-before-normal-launch.json",
+    "sourceSha256AtArchive": "07e097b0b8a57ebe8b550ab14a9dbad7e0b6dbd4900878b42d75b8b7f64dfa71",
+    "archivedSha256": "07e097b0b8a57ebe8b550ab14a9dbad7e0b6dbd4900878b42d75b8b7f64dfa71",
+    "transformation": "Exact reviewed QA-only metadata and relayed actual user confirmation. Normal launcher completion checked independently of notification click."
+  },
+  {
+    "file": "idle-notification-before-complete.json",
+    "source": ".local-tools/device-acceptance-20261101/idle-notification-before-complete.json",
+    "sourceSha256AtArchive": "bc6686803c6916016cf5fc1f05d566a2d8d746e81db63292301c4731835a59fa",
+    "archivedSha256": "bc6686803c6916016cf5fc1f05d566a2d8d746e81db63292301c4731835a59fa",
+    "transformation": "Exact reviewed QA-only metadata and relayed actual user confirmation. Normal launcher completion checked independently of notification click."
+  },
+  {
+    "file": "idle-completed-qa.json",
+    "source": ".local-tools/device-acceptance-20261101/idle-completed-qa.json",
+    "sourceSha256AtArchive": "9a068cad5ad72a616d4b8a046b7e066b21006fa29cfcb2bd5501291a748177a4",
+    "archivedSha256": "9a068cad5ad72a616d4b8a046b7e066b21006fa29cfcb2bd5501291a748177a4",
+    "transformation": "Exact reviewed QA-only metadata and relayed actual user confirmation. Normal launcher completion checked independently of notification click."
+  },
+  {
+    "file": "idle-completion-result.json",
+    "source": ".local-tools/device-acceptance-20261101/idle-completion-result.json",
+    "sourceSha256AtArchive": "2d950821cadbfe089323da9a50ff4e5544a34a49ee47b695a54670188cf32d37",
+    "archivedSha256": "2d950821cadbfe089323da9a50ff4e5544a34a49ee47b695a54670188cf32d37",
+    "transformation": "Exact reviewed QA-only metadata and relayed actual user confirmation. Normal launcher completion checked independently of notification click."
+  }
+]

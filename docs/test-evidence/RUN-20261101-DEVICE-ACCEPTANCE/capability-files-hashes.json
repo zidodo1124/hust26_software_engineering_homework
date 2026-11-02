@@ -1,0 +1,198 @@
+[
+  {
+    "file": "qa-state-plan.json",
+    "source": ".local-tools/device-acceptance-20261101/qa-state-plan.json",
+    "sourceSha256AtArchive": "9805524f9178357efcb3e85752e4f3a37e74283dd8982b6ba959a126c8906db6",
+    "archivedSha256": "9805524f9178357efcb3e85752e4f3a37e74283dd8982b6ba959a126c8906db6",
+    "transformation": "Exact copy of reviewed QA-only capability metadata; included settings screenshots were visually reviewed by primary agent."
+  },
+  {
+    "file": "state-created.json",
+    "source": ".local-tools/device-acceptance-20261101/state-created.json",
+    "sourceSha256AtArchive": "7c39770de7bdca2ec5c327b8affedca38d25504a9e2747283eac58e8f0386fe4",
+    "archivedSha256": "7c39770de7bdca2ec5c327b8affedca38d25504a9e2747283eac58e8f0386fe4",
+    "transformation": "Exact copy of reviewed QA-only capability metadata; included settings screenshots were visually reviewed by primary agent."
+  },
+  {
+    "file": "04-notification-baseline.json",
+    "source": ".local-tools/device-acceptance-20261101/04-notification-baseline.json",
+    "sourceSha256AtArchive": "64681bf4bf49f19cb080c92b3c25fa8fa8901ed0497dc9274cf93c4b5cc2942a",
+    "archivedSha256": "64681bf4bf49f19cb080c92b3c25fa8fa8901ed0497dc9274cf93c4b5cc2942a",
+    "transformation": "Exact copy of reviewed QA-only capability metadata; included settings screenshots were visually reviewed by primary agent."
+  },
+  {
+    "file": "04-notification-baseline-qa.json",
+    "source": ".local-tools/device-acceptance-20261101/04-notification-baseline-qa.json",
+    "sourceSha256AtArchive": "75e97e45f445206b123c64ec1434761483cc8ea74edf533e9903c1fdaf43a01d",
+    "archivedSha256": "75e97e45f445206b123c64ec1434761483cc8ea74edf533e9903c1fdaf43a01d",
+    "transformation": "Exact copy of reviewed QA-only capability metadata; included settings screenshots were visually reviewed by primary agent."
+  },
+  {
+    "file": "05-notification-off.json",
+    "source": ".local-tools/device-acceptance-20261101/05-notification-off.json",
+    "sourceSha256AtArchive": "76eedf4fbf60849eaed4cd7c1ea128fb2446076da981486ff763c087504bd4a4",
+    "archivedSha256": "76eedf4fbf60849eaed4cd7c1ea128fb2446076da981486ff763c087504bd4a4",
+    "transformation": "Exact copy of reviewed QA-only capability metadata; included settings screenshots were visually reviewed by primary agent."
+  },
+  {
+    "file": "05-notification-off-qa.json",
+    "source": ".local-tools/device-acceptance-20261101/05-notification-off-qa.json",
+    "sourceSha256AtArchive": "5af2a2f05874e6163d081f53e153e3b9834155372d9fda30efbad06d013f4d5f",
+    "archivedSha256": "5af2a2f05874e6163d081f53e153e3b9834155372d9fda30efbad06d013f4d5f",
+    "transformation": "Exact copy of reviewed QA-only capability metadata; included settings screenshots were visually reviewed by primary agent."
+  },
+  {
+    "file": "06-notification-restored.json",
+    "source": ".local-tools/device-acceptance-20261101/06-notification-restored.json",
+    "sourceSha256AtArchive": "0b99981d7a9370a659cb875bab2e087a4f82d579a4f36610f0ea244969524ad9",
+    "archivedSha256": "0b99981d7a9370a659cb875bab2e087a4f82d579a4f36610f0ea244969524ad9",
+    "transformation": "Exact copy of reviewed QA-only capability metadata; included settings screenshots were visually reviewed by primary agent."
+  },
+  {
+    "file": "06-notification-restored-qa.json",
+    "source": ".local-tools/device-acceptance-20261101/06-notification-restored-qa.json",
+    "sourceSha256AtArchive": "b7c4cfd49e137d7e16f5d1c48aff08aff4c1d1e027f7b176ec9c9a079d27e1b1",
+    "archivedSha256": "b7c4cfd49e137d7e16f5d1c48aff08aff4c1d1e027f7b176ec9c9a079d27e1b1",
+    "transformation": "Exact copy of reviewed QA-only capability metadata; included settings screenshots were visually reviewed by primary agent."
+  },
+  {
+    "file": "05-notification-off.png",
+    "source": ".local-tools/device-acceptance-20261101/05-notification-off.png",
+    "sourceSha256AtArchive": "290cfab0ca7a7be46a3f5b76c675310d75c0d8f3c60392ba4c0634de48efd249",
+    "archivedSha256": "290cfab0ca7a7be46a3f5b76c675310d75c0d8f3c60392ba4c0634de48efd249",
+    "transformation": "Exact copy of reviewed QA-only capability metadata; included settings screenshots were visually reviewed by primary agent."
+  },
+  {
+    "file": "06-notification-restored.png",
+    "source": ".local-tools/device-acceptance-20261101/06-notification-restored.png",
+    "sourceSha256AtArchive": "843698789d0dba062e73d7308b813d2b31acae6a16db0902afeed350605f61d7",
+    "archivedSha256": "843698789d0dba062e73d7308b813d2b31acae6a16db0902afeed350605f61d7",
+    "transformation": "Exact copy of reviewed QA-only capability metadata; included settings screenshots were visually reviewed by primary agent."
+  },
+  {
+    "file": "07-channel-off.json",
+    "source": ".local-tools/device-acceptance-20261101/07-channel-off.json",
+    "sourceSha256AtArchive": "44fb6222b992cd17187b26250ad9ddbf0bb7bc7b18df9b341bf4f1d422204cc8",
+    "archivedSha256": "44fb6222b992cd17187b26250ad9ddbf0bb7bc7b18df9b341bf4f1d422204cc8",
+    "transformation": "Exact copy of reviewed QA-only metadata. Initial channel re-enable at importance 2 is retained, not replaced by later recovery."
+  },
+  {
+    "file": "07-channel-off-qa.json",
+    "source": ".local-tools/device-acceptance-20261101/07-channel-off-qa.json",
+    "sourceSha256AtArchive": "496975f91ffd5751542f0b98eabff5a0894dd7f644a8d73f38fc4c514ecdb718",
+    "archivedSha256": "496975f91ffd5751542f0b98eabff5a0894dd7f644a8d73f38fc4c514ecdb718",
+    "transformation": "Exact copy of reviewed QA-only metadata. Initial channel re-enable at importance 2 is retained, not replaced by later recovery."
+  },
+  {
+    "file": "08-channel-restored.json",
+    "source": ".local-tools/device-acceptance-20261101/08-channel-restored.json",
+    "sourceSha256AtArchive": "92020db777d5624b9fa2b4acde9b5afd3853c90a10f495bb0622db8f22a48a2d",
+    "archivedSha256": "92020db777d5624b9fa2b4acde9b5afd3853c90a10f495bb0622db8f22a48a2d",
+    "transformation": "Exact copy of reviewed QA-only metadata. Initial channel re-enable at importance 2 is retained, not replaced by later recovery."
+  },
+  {
+    "file": "08-channel-restored-qa.json",
+    "source": ".local-tools/device-acceptance-20261101/08-channel-restored-qa.json",
+    "sourceSha256AtArchive": "11dddef0ed068db686ddb1ef35ad7be75a7244a5c235764a8694f1af82659bcd",
+    "archivedSha256": "11dddef0ed068db686ddb1ef35ad7be75a7244a5c235764a8694f1af82659bcd",
+    "transformation": "Exact copy of reviewed QA-only metadata. Initial channel re-enable at importance 2 is retained, not replaced by later recovery."
+  },
+  {
+    "file": "08b-channel-oem-restore.json",
+    "source": ".local-tools/device-acceptance-20261101/08b-channel-oem-restore.json",
+    "sourceSha256AtArchive": "0174f601c3c95a7844ff9848317b7d4b1b6ae18677638c0cff63d93ed60ff659",
+    "archivedSha256": "0174f601c3c95a7844ff9848317b7d4b1b6ae18677638c0cff63d93ed60ff659",
+    "transformation": "Exact copy of safe metadata. No private channel object text is archived; only hashes and observed fields."
+  },
+  {
+    "file": "08c-channel-baseline-restored.json",
+    "source": ".local-tools/device-acceptance-20261101/08c-channel-baseline-restored.json",
+    "sourceSha256AtArchive": "d0d3ad29737393910698778594afa343ca53a9be5c41b5c88f89c983fddca04d",
+    "archivedSha256": "d0d3ad29737393910698778594afa343ca53a9be5c41b5c88f89c983fddca04d",
+    "transformation": "Exact copy of safe metadata. No private channel object text is archived; only hashes and observed fields."
+  },
+  {
+    "file": "08c-channel-baseline-restored-qa.json",
+    "source": ".local-tools/device-acceptance-20261101/08c-channel-baseline-restored-qa.json",
+    "sourceSha256AtArchive": "084a8196eb7176aa421bcaaed884fb725bbfe04c79e9b3c71d4cce349f7dcf93",
+    "archivedSha256": "084a8196eb7176aa421bcaaed884fb725bbfe04c79e9b3c71d4cce349f7dcf93",
+    "transformation": "Exact copy of safe metadata. No private channel object text is archived; only hashes and observed fields."
+  },
+  {
+    "file": "09-exact-access-off.json",
+    "source": ".local-tools/device-acceptance-20261101/09-exact-access-off.json",
+    "sourceSha256AtArchive": "c8a0085c904cb8797b92899b6822da4481448f3f30c3714fd8d1dac190f6203f",
+    "archivedSha256": "c8a0085c904cb8797b92899b6822da4481448f3f30c3714fd8d1dac190f6203f",
+    "transformation": "Exact copy of reviewed QA-only metadata. 09/10 screenshots visually reviewed by evidence agent: application settings and status bar only, with capability text visible."
+  },
+  {
+    "file": "09-exact-access-off-qa.json",
+    "source": ".local-tools/device-acceptance-20261101/09-exact-access-off-qa.json",
+    "sourceSha256AtArchive": "1514d07fddecd4bd6255e4d8126acb7ffa6db6650819086ef275061d5ea5b7c4",
+    "archivedSha256": "1514d07fddecd4bd6255e4d8126acb7ffa6db6650819086ef275061d5ea5b7c4",
+    "transformation": "Exact copy of reviewed QA-only metadata. 09/10 screenshots visually reviewed by evidence agent: application settings and status bar only, with capability text visible."
+  },
+  {
+    "file": "10-exact-access-restored.json",
+    "source": ".local-tools/device-acceptance-20261101/10-exact-access-restored.json",
+    "sourceSha256AtArchive": "4b26f1856a4e8aaf4c13f801e5efef4e3ff5be758a7b02accdafc9d58ecbd3b0",
+    "archivedSha256": "4b26f1856a4e8aaf4c13f801e5efef4e3ff5be758a7b02accdafc9d58ecbd3b0",
+    "transformation": "Exact copy of reviewed QA-only metadata. 09/10 screenshots visually reviewed by evidence agent: application settings and status bar only, with capability text visible."
+  },
+  {
+    "file": "10-exact-access-restored-qa.json",
+    "source": ".local-tools/device-acceptance-20261101/10-exact-access-restored-qa.json",
+    "sourceSha256AtArchive": "eb1252c9d51c0d8eb4081f6b286fc62eab3930935d08f95c24a31f2b42a87be4",
+    "archivedSha256": "eb1252c9d51c0d8eb4081f6b286fc62eab3930935d08f95c24a31f2b42a87be4",
+    "transformation": "Exact copy of reviewed QA-only metadata. 09/10 screenshots visually reviewed by evidence agent: application settings and status bar only, with capability text visible."
+  },
+  {
+    "file": "11-state-reopened.json",
+    "source": ".local-tools/device-acceptance-20261101/11-state-reopened.json",
+    "sourceSha256AtArchive": "2df804cae072a379483ebb639d8440a57a7a545975cd3bca948590c068a5bc55",
+    "archivedSha256": "2df804cae072a379483ebb639d8440a57a7a545975cd3bca948590c068a5bc55",
+    "transformation": "Exact copy of reviewed QA-only metadata. 09/10 screenshots visually reviewed by evidence agent: application settings and status bar only, with capability text visible."
+  },
+  {
+    "file": "11-state-reopened-qa.json",
+    "source": ".local-tools/device-acceptance-20261101/11-state-reopened-qa.json",
+    "sourceSha256AtArchive": "577deda2d739f385fce496be566baf8c2235c174984cc6705afe623c7e71a6f4",
+    "archivedSha256": "577deda2d739f385fce496be566baf8c2235c174984cc6705afe623c7e71a6f4",
+    "transformation": "Exact copy of reviewed QA-only metadata. 09/10 screenshots visually reviewed by evidence agent: application settings and status bar only, with capability text visible."
+  },
+  {
+    "file": "state-before-force-stop.json",
+    "source": ".local-tools/device-acceptance-20261101/state-before-force-stop.json",
+    "sourceSha256AtArchive": "82ed98c28bfeef130c7482200f92d3361ba4ed624086c89e8128c1d628579d0b",
+    "archivedSha256": "82ed98c28bfeef130c7482200f92d3361ba4ed624086c89e8128c1d628579d0b",
+    "transformation": "Exact copy of reviewed QA-only metadata. 09/10 screenshots visually reviewed by evidence agent: application settings and status bar only, with capability text visible."
+  },
+  {
+    "file": "state-force-stop-result.json",
+    "source": ".local-tools/device-acceptance-20261101/state-force-stop-result.json",
+    "sourceSha256AtArchive": "fa47f909d32314d77ff891b972c252f491ec31421ace348c5b731279cd97cc32",
+    "archivedSha256": "fa47f909d32314d77ff891b972c252f491ec31421ace348c5b731279cd97cc32",
+    "transformation": "Exact copy of reviewed QA-only metadata. 09/10 screenshots visually reviewed by evidence agent: application settings and status bar only, with capability text visible."
+  },
+  {
+    "file": "09-exact-access-off.png",
+    "source": ".local-tools/device-acceptance-20261101/09-exact-access-off.png",
+    "sourceSha256AtArchive": "77f1fcecd4e3ba2cdbd1a3c8169b45af8243fe59f466129ddc178b46a85adf38",
+    "archivedSha256": "77f1fcecd4e3ba2cdbd1a3c8169b45af8243fe59f466129ddc178b46a85adf38",
+    "transformation": "Exact copy of reviewed QA-only metadata. 09/10 screenshots visually reviewed by evidence agent: application settings and status bar only, with capability text visible."
+  },
+  {
+    "file": "10-exact-access-restored.png",
+    "source": ".local-tools/device-acceptance-20261101/10-exact-access-restored.png",
+    "sourceSha256AtArchive": "b1a2e060a0c188dc8de7b5b8eb340d04bdd79e8adbeb5d86726f3fd27e601047",
+    "archivedSha256": "b1a2e060a0c188dc8de7b5b8eb340d04bdd79e8adbeb5d86726f3fd27e601047",
+    "transformation": "Exact copy of reviewed QA-only metadata. 09/10 screenshots visually reviewed by evidence agent: application settings and status bar only, with capability text visible."
+  },
+  {
+    "file": "state-stopped.json",
+    "source": ".local-tools/device-acceptance-20261101/state-stopped.json",
+    "sourceSha256AtArchive": "3783b5c88becf5ae902523803e7ad3b56296f36d534f526003745f1780d70d4d",
+    "archivedSha256": "3783b5c88becf5ae902523803e7ad3b56296f36d534f526003745f1780d70d4d",
+    "transformation": "Exact QA-only metadata copy; independently matched against pre-stop event/plan/control values."
+  }
+]

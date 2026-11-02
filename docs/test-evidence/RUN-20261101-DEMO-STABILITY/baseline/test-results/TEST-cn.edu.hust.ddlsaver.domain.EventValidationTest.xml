@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.domain.EventValidationTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-11-02T04:21:23" hostname="LAPTOP-7OF0K1SP" time="0.012">
+  <properties/>
+  <testcase name="sprintAndThresholdRejectNonPositiveOrOverflowingMinutes" classname="cn.edu.hust.ddlsaver.domain.EventValidationTest" time="0.007"/>
+  <testcase name="deadlineNormalizationRejectsOverflowInsteadOfWrapping" classname="cn.edu.hust.ddlsaver.domain.EventValidationTest" time="0.001"/>
+  <testcase name="negativeEpochMinuteNormalizationFloorsInsteadOfTruncatingTowardZero" classname="cn.edu.hust.ddlsaver.domain.EventValidationTest" time="0.0"/>
+  <testcase name="editRequiresAnOriginalRevisionAndNewEventCannotImpersonateEdit" classname="cn.edu.hust.ddlsaver.domain.EventValidationTest" time="0.001"/>
+  <testcase name="normalizesTitleAndMinutePrecisionWithoutChangingDescription" classname="cn.edu.hust.ddlsaver.domain.EventValidationTest" time="0.001"/>
+  <testcase name="blankTitleIsRejected" classname="cn.edu.hust.ddlsaver.domain.EventValidationTest" time="0.001"/>
+  <testcase name="positiveDurationAndAbsentSprintAreAccepted" classname="cn.edu.hust.ddlsaver.domain.EventValidationTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

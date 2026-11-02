@@ -1,0 +1,36 @@
+{
+  "atUtc": "2026-11-02T03:49:51.854774+00:00",
+  "approvedRecordedCount": 5,
+  "actualPresentBeforeCleanup": 5,
+  "deletedThroughUiCount": 5,
+  "remainingQaEvents": 0,
+  "reminderHistoryNotDeleted": true,
+  "deleted": [
+    {
+      "id": "81cd17d7-41cc-44f0-a077-9b06ab8fd1e6",
+      "title": "QA-ACCEPT-1101-BOOT",
+      "deletedThroughConfirmedUiAtUtc": "2026-11-02T03:47:11.784415+00:00"
+    },
+    {
+      "id": "0bab49bc-9ef0-457e-b258-b799fa650254",
+      "title": "QA-ACCEPT-1101-IDLE",
+      "deletedThroughConfirmedUiAtUtc": "2026-11-02T03:47:51.713651+00:00"
+    },
+    {
+      "id": "1e67cff9-7a64-49b2-9334-e584251c15c9",
+      "title": "QA-ACCEPT-1101-IMAGE",
+      "deletedThroughConfirmedUiAtUtc": "2026-11-02T03:48:31.485990+00:00"
+    },
+    {
+      "id": "c88aa580-25aa-4704-9439-bdbdec3a9b28",
+      "title": "QA-ACCEPT-1101-LOCK",
+      "deletedThroughConfirmedUiAtUtc": "2026-11-02T03:49:11.196395+00:00"
+    },
+    {
+      "id": "c81a52e1-846b-4f13-83d1-6c43e5f4cd2a",
+      "title": "QA-ACCEPT-1101-STATE",
+      "deletedThroughConfirmedUiAtUtc": "2026-11-02T03:49:50.508487+00:00"
+    }
+  ],
+  "productNotificationsCancelledBeforeForceStop": true
+}

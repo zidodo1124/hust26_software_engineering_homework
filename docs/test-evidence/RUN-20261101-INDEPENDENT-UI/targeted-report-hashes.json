@@ -1,0 +1,20 @@
+[
+  {
+    "file": "targeted-results/TEST-cn.edu.hust.ddlsaver.ui.AttachmentClipboardFlowTest.xml",
+    "originalSha256": "499b6951473849dd19d7622a99650311a1eb19972ece7bf85266f2309439a81a",
+    "archivedSha256": "0196f0e26b19159ec090929fab849ce9b9d3d6ec98480e32a469e9b9fba001d7",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "targeted-results/TEST-cn.edu.hust.ddlsaver.ui.ContentClipboardFlowTest.xml",
+    "originalSha256": "075fe0aefc82a886cec182563e751cdd10df6a8f65a910689992d6d6a6f3ed15",
+    "archivedSha256": "9d6b991ffbaeebf850fa52b0772499561b55ff50b0b4649a457c48e860756c81",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "diagnosticOutputRemoved": false
+    }
+  }
+]

@@ -1,6 +1,8 @@
 # 开发、构建与安装升级
 
-本文当前对应 `0.3.3`、`versionCode = 6`、Room schema v4，包名 `cn.edu.hust.ddlsaver`。修复 Q 版表情边缘残片后，完整构建成功，132 个不同测试方法／151 次执行全部通过，失败、错误、跳过均为 0；Lint 0 错误／16 条既有维护警告，见 [RUN-20261028-004](test-evidence/RUN-20261028-004/README.md)和[测试报告](test-report.md)。0.3.2 已完成设备升级和界面分项，0.3.3 也已完成同签名覆盖、表情与字号分项复验及恢复收尾。此前各版的本机与设备结果保留为独立批次。
+本文当前对应 `0.3.4`、`versionCode = 7`、Room schema v4；完整本机检查已通过 179 方法／218 次执行、Lint 0／16；手机仍为已验过分项的 `0.3.3`／6。包名 `cn.edu.hust.ddlsaver`。2026-10-28 修复 Q 版表情边缘残片后的历史检查为 132 个不同测试方法／151 次执行全部通过，失败、错误、跳过均为 0，Lint 0 错误／16 条警告，见 [RUN-20261028-004](test-evidence/RUN-20261028-004/README.md)。0.3.2 已完成设备升级和界面分项，0.3.3 也曾完成同签名覆盖、表情与字号分项复验及恢复收尾；这些设备记录不覆盖后续本地修改。最新本机结果与被测源码标识见[测试报告](test-report.md)，各轮证据独立保存。
+
+2026-11-01 本地补充图片导入失败诊断和提醒恢复／冷启动测试，最终本机构建、167 个方法／194 次执行通过，Lint 0／16，见 [RUN-20261101-RECOVERY-DIAGNOSTICS](test-evidence/RUN-20261101-RECOVERY-DIAGNOSTICS/README.md)。应用版本与 schema 保持不变，复现时须同时核对基线提交、7 份变动源码哈希及 APK 哈希。图片诊断只在调试包输出固定分类字段，下一次 OBS-01 的日志采集与同签名安装要求见[演示与验收准备](demo-and-acceptance.md#obs-01-的下次诊断采集)；该本机批次按用户选择没有连接手机，不能把本机检查当作设备验收。其后用户已连接荣耀 X50 并授权[独立实机验收](test-evidence/RUN-20261101-DEVICE-ACCEPTANCE/README.md)，同一构建已同签名覆盖，分项与收尾已完成，OBS-01／OBS-02 及未测范围保留；实际设备结果和历史本机结果分开记录。
 
 安装与使用步骤见[用户使用手册](user-guide.md)。功能及未完成项见[实现计划](implementation-plan.md)和[项目状态](../STATUS.md)；分工见[小组任务板](../team/README.md)。
 
@@ -197,3 +199,11 @@ adb install -r app/build/outputs/apk/debug/app-debug.apk
 ### 从 0.3.2 升级到 0.3.3
 
 0.3.3／6 修复 Q 版部分表情的图集边缘残片，在运行时对已审阅的固定区域置透明；源图片与许可文件保持原字节。数据库仍为 schema 4，不新增迁移、权限或依赖。继续使用同签名包覆盖安装，保留事项和设置。2026-10-28 11:55:38 UTC 已核对实际 0.3.3／6 包及当前数据、附件、设置、提醒保持；修复表情和 150% 字号卡片已在手机复验。12:03:23 UTC 完成 QA 清理、原数据复核，恢复经典形象与原字体缩放 1.0，结果见 RUN-20261028-004。
+
+### 从 0.3.3 升级到 0.3.4（本机检查通过，设备待验）
+
+当前源码 [bdcd76f](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/bdcd76f916aae546bd146ce1fb1a14859bcd5eb4)，此前增量提交 `778429e`，PR #10 合并基线 `c1e94f3`。0.3.4／7、schema 4 完整构建成功，28 份 JUnit XML、179 个不同方法／218 次执行，失败／错误／跳过各 0，Lint 0 错误／16 警告，源码前后哈希一致。警告总数仍为 16：新增恢复诊断 SharedPreferences.edit 的 1 条 UseKtx，原 ReminderRuntime 的 1 条 InlinedApi 消失，不能称为全部既有警告。 历史 CI #45 的等待失败仍保留未知根因，新源码检查见 [main 的 Android Actions](https://github.com/zidodo1124/hust26_software_engineering_homework/actions?query=branch%3Amain)。
+
+APK 为 15,119,011 字节，SHA-256 `690626883dd90684128959a53737b54c326352e3decb0dd46a707ac3d962ab90`；签名证书 SHA-256 为 `978833bcaf0fc001248f5d8501bfa1f9d1273922474ed601f2c60a4548a652b9`，与基线一致。当前包未安装设备；手机仍为 0.3.3／6。后续同签名覆盖并分别核对事项、附件字节、设置和提醒，不将旧设备证据当作新版验收。
+
+恢复诊断只在 debuggable 包写入应用私有 `reminder-recovery-debug` 偏好文件，记录固定来源的阶段、时刻、结果与能力／计数，不写业务内容或异常文本。独立单写入器最多保留 6 个待写来源槽和 1 个在途写入，业务恢复与 Receiver 收尾不等待磁盘；同来源中间阶段可合并，进程退出可能丢失未写记录，属于尽力留证，不承诺持久化必达。 BOOT 与后续 Alarm 独立保存；记录完成不保证系统 Alarm 保持或通知送达，无记录也不能单独证明广播未交付。静态 P2 已整改并独立复审通过，全部阶段证据见[本批目录](test-evidence/RUN-20261101-DEMO-STABILITY/README.md)。

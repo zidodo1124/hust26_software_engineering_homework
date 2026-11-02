@@ -1,0 +1,29 @@
+{
+  "battery": {
+    "AC powered": "false",
+    "USB powered": "true",
+    "Wireless powered": "false",
+    "status": "2",
+    "level": "79",
+    "scale": "100",
+    "temperature": "320",
+    "updatesStopped": false
+  },
+  "condition": {
+    "atUtc": "2026-11-02T03:32:21.963166+00:00",
+    "deviceEpochSeconds": 1793590339,
+    "wakefulness": [
+      "Dozing"
+    ],
+    "keyguardShowing": true,
+    "keyguardSecure": true,
+    "keyguardInputRestricted": false,
+    "deviceIdle": {
+      "mForceIdle": "false",
+      "mScreenOn": "false",
+      "mCharging": "true",
+      "mState": "ACTIVE",
+      "mLightState": "ACTIVE"
+    }
+  }
+}

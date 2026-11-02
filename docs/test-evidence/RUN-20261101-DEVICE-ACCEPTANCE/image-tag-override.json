@@ -1,0 +1,12 @@
+{
+  "startedAtUtc": "2026-11-02T03:15:35.642422+00:00",
+  "key": "log.tag.DDLSaver.Attachment",
+  "originalValue": "",
+  "temporaryValue": "W",
+  "originalGlobalPersistValue": "S",
+  "restored": true,
+  "restoredAtUtc": "2026-11-02T03:17:59.081126+00:00",
+  "finalValue": "",
+  "finalGlobalPersistValue": "S",
+  "workflowCompleted": true
+}

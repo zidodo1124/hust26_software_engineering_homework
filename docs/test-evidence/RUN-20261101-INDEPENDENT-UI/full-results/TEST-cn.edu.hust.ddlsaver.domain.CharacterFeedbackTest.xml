@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.domain.CharacterFeedbackTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-11-01T14:33:45" time="0.019">
+  <properties/>
+  <testcase name="everyStatusUsesExpectedExpressionAndReadableText" classname="cn.edu.hust.ddlsaver.domain.CharacterFeedbackTest" time="0.015"/>
+  <testcase name="dialogueIsStableWithinTimeBucketAndVariesWithoutRandomness" classname="cn.edu.hust.ddlsaver.domain.CharacterFeedbackTest" time="0.0"/>
+  <testcase name="emptyListHasNormalTextAndDefaultArtwork" classname="cn.edu.hust.ddlsaver.domain.CharacterFeedbackTest" time="0.0"/>
+  <testcase name="configurableThresholdAndAbsentSprintDoNotInventDanger" classname="cn.edu.hust.ddlsaver.domain.CharacterFeedbackTest" time="0.0"/>
+  <testcase name="allSixDialogueContextsRetainSixDistinctLinesAndStableStatus" classname="cn.edu.hust.ddlsaver.domain.CharacterFeedbackTest" time="0.001"/>
+  <testcase name="focusAndDialogueAreIndependentFromInputOrderAndImportance" classname="cn.edu.hust.ddlsaver.domain.CharacterFeedbackTest" time="0.0"/>
+  <testcase name="archivedAndCompletedItemsCannotDriveDangerOrOverdue" classname="cn.edu.hust.ddlsaver.domain.CharacterFeedbackTest" time="0.0"/>
+  <testcase name="explicitSuccessfulCompletionOverridesUrgencyButOldCompletedRowsNeverDo" classname="cn.edu.hust.ddlsaver.domain.CharacterFeedbackTest" time="0.0"/>
+  <testcase name="actionableDangerTakesPriorityThenOverdueThenSoon" classname="cn.edu.hust.ddlsaver.domain.CharacterFeedbackTest" time="0.0"/>
+  <testcase name="sprintAndDeadlineBoundariesReuseUrgencyRules" classname="cn.edu.hust.ddlsaver.domain.CharacterFeedbackTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

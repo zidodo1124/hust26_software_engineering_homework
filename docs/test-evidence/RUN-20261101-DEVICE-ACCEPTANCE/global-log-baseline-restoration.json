@@ -1,0 +1,22 @@
+{
+  "atUtc": "2026-11-02T03:51:25.275433+00:00",
+  "baselineGlobalValue": "S",
+  "before": {
+    "log.tag.DDLSaver.Attachment": "",
+    "persist.log.tag.DDLSaver.Attachment": "",
+    "log.tag": "",
+    "persist.log.tag": "M"
+  },
+  "purpose": "Exactly restore recorded baseline after reboot; not enabling diagnostic logging",
+  "authorization": "Parent explicitly authorized one M to S original-value restoration",
+  "mechanismOfPriorChange": "Not determined",
+  "after": {
+    "log.tag.DDLSaver.Attachment": "",
+    "persist.log.tag.DDLSaver.Attachment": "",
+    "log.tag": "",
+    "persist.log.tag": "S"
+  },
+  "readbackAtUtc": "2026-11-02T03:51:25.721257+00:00",
+  "singleWrite": true,
+  "restored": true
+}

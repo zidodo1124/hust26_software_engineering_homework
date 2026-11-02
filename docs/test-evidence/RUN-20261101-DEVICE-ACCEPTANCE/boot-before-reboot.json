@@ -1,0 +1,64 @@
+{
+  "atUtc": "2026-11-02T03:36:07.792474+00:00",
+  "battery": {
+    "AC powered": "false",
+    "USB powered": "true",
+    "Wireless powered": "false",
+    "status": "2",
+    "level": "79",
+    "scale": "100",
+    "temperature": "340",
+    "updatesStopped": false
+  },
+  "condition": {
+    "atUtc": "2026-11-02T03:36:06.841239+00:00",
+    "deviceEpochSeconds": 1793590564,
+    "wakefulness": [
+      "Awake"
+    ],
+    "keyguardShowing": false,
+    "keyguardSecure": true,
+    "keyguardInputRestricted": false,
+    "deviceIdle": {
+      "mForceIdle": "false",
+      "mScreenOn": "true",
+      "mCharging": "true",
+      "mState": "ACTIVE",
+      "mLightState": "ACTIVE"
+    }
+  },
+  "policy": {
+    "packageFilterValidated": true,
+    "appImportance": "DEFAULT",
+    "reminderChannelPolicies": [
+      {
+        "importance": 3,
+        "deleted": false
+      }
+    ],
+    "activeTargetNotificationCount": 0
+  },
+  "postNotificationsGranted": true,
+  "exactAlarmAllowed": true,
+  "originalDiagnosticLogPropertiesRestored": true,
+  "identity": {
+    "atUtc": "2026-11-02T03:36:07.997221+00:00",
+    "bootIdSha256": "bc3be11015920553f32eea5bff57e2b2f92b1e043090de578c83ed0df4046d6a",
+    "uptimeSeconds": 322024.55
+  },
+  "alarm": {
+    "atUtc": "2026-11-02T03:36:08.181427+00:00",
+    "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+    "alarms": [
+      {
+        "type": "RTC_WAKEUP",
+        "triggerEpochMillis": 1793591040000,
+        "systemDisplayTrigger": "2026-11-02 11:44:00.000",
+        "window": "0",
+        "exactAllowReason": "permission",
+        "reminderWakeActionConfirmed": true
+      }
+    ]
+  },
+  "productInForegroundBeforeReboot": false
+}

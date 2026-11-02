@@ -1,0 +1,286 @@
+{
+  "phase": "post-PR10-merge baseline",
+  "startedAtUtc": "2026-11-02T04:19:57.965339+00:00",
+  "baseCommit": "c1e94f3d80fcf4aa6d9983c4e3be5e7b4e0a1d48",
+  "command": [
+    "powershell",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "scripts/gradle.ps1",
+    "--no-daemon",
+    "--console=plain",
+    "--stacktrace",
+    "--continue",
+    "--max-workers=2",
+    ":app:cleanTestDebugUnitTest",
+    ":app:assembleDebug",
+    ":app:testDebugUnitTest",
+    ":app:lintDebug"
+  ],
+  "sourceFiles": [
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/platform/AttachmentStore.kt",
+      "sha256": "29fd16de6e003a4c39b367704adb6c022820435ea14150a806e3679b712e2ef5"
+    },
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/platform/AttachmentImportDiagnostics.kt",
+      "sha256": "21eb276bf02892ae61e04c93a563e77611f233743d9a789623999688d490dc54"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/platform/AttachmentImportDiagnosticsTest.kt",
+      "sha256": "5be64d722bfef8551a8b75aaf5c8ff340307431bc6c37a4bbd41777108854262"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/reminders/ReminderRestoreIntegrationTest.kt",
+      "sha256": "4e699a0337e527f81b9f15a503baf306587003da8c5e0bcc1e3dbf6a00aa4327"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/ui/ReminderColdLaunchTest.kt",
+      "sha256": "b73b89ea64d7830f6e3aeb48a1bf6e1a252233871054061e1eeafa8a9db13a04"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/ui/ContentClipboardFlowTest.kt",
+      "sha256": "64d75c5286857f317692225843906ea68212358c4874ea8a414a36cd04b4ad53"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/ui/AttachmentClipboardFlowTest.kt",
+      "sha256": "aef5ab82871f2c03535babc2a28b124af6f7420646fd646c999617ff1a8d48ec"
+    }
+  ],
+  "priorSevenSourceHashesMatch": true,
+  "runtime": "Windows / JDK 17 / Robolectric; no device operation",
+  "finishedAtUtc": "2026-11-02T04:22:39.325276+00:00",
+  "durationSeconds": 161.36,
+  "exitCode": 0,
+  "suites": 27,
+  "declared": {
+    "tests": 194,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "actual": {
+    "tests": 194,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "uniqueMethods": 167,
+  "uniqueMethodRule": "Classname plus test name with a trailing numeric [SDK] suffix removed",
+  "suiteResults": [
+    {
+      "name": "cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest",
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest",
+      "tests": 16,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.data.SaverDatabaseMigrationTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.domain.CharacterFeedbackTest",
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.domain.EventQueryTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.domain.EventValidationTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.domain.ExtendedEventValidationTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.domain.UrgencyRulesTest",
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.platform.AttachmentImportDiagnosticsTest",
+      "tests": 16,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.platform.AttachmentStoreTest",
+      "tests": 26,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.reminders.AndroidReminderPlatformTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.reminders.ReminderEngineTest",
+      "tests": 20,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.reminders.ReminderRestoreIntegrationTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.reminders.ReminderRulesTest",
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.reminders.ReminderStatusCopyTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.AttachmentClipboardFlowTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.CalendarGridTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.CharacterArtworkTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.CharacterAssetsTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.CharacterBubbleLayoutTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.ContentClipboardFlowTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.OceanThemeContrastTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.OceanUiRenderTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.ReminderColdLaunchTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.SaverAppFlowTest",
+      "tests": 18,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.SaverViewModelFeedbackTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "lint": {
+    "errors": 0,
+    "warnings": 16,
+    "ids": {
+      "ExifInterface": 1,
+      "InlinedApi": 1,
+      "GradleDependency": 10,
+      "ObsoleteSdkInt": 1,
+      "StaticFieldLeak": 1,
+      "UseKtx": 2
+    }
+  },
+  "apk": {
+    "bytes": 15490535,
+    "sha256": "6f30078bf0dfa95731afe9fae0c08f06dd19d048eb815fd2236022c90e19e65b",
+    "installedOnDevice": false,
+    "signatureVerificationExitCode": 0,
+    "certificateSha256": "978833bcaf0fc001248f5d8501bfa1f9d1273922474ed601f2c60a4548a652b9"
+  },
+  "allProductSourceBytesUnchanged": true,
+  "testTaskExecuted": true,
+  "cleanTestTaskExecuted": true,
+  "result": "BUILD SUCCESSFUL"
+}

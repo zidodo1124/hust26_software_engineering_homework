@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" tests="16" skipped="0" failures="0" errors="0" timestamp="2026-11-01T15:05:13" time="3.325">
+  <properties/>
+  <testcase name="manualCleanupArchivesExpiredCompletedItemsAndKeepsCompletionFlag" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.296"/>
+  <testcase name="observedRelationsAreCompleteSnapshotsDuringEdits" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.186"/>
+  <testcase name="disabledSameNamedCategoriesKeepOldRelationsAcrossReopenAndCanBeRestored" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.446"/>
+  <testcase name="staleEditorCannotEraseNewCustomFieldsOrAttachments" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.19"/>
+  <testcase name="completeV2EventCatalogsAndSettingsSurviveReopening" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.206"/>
+  <testcase name="settingsUpdatesAreIndependentAndAtomicValidationPreventsPartialSave" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.15"/>
+  <testcase name="renamedAndDisabledCategoriesRemainLinkedButCannotBeNewlyAssigned" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.249"/>
+  <testcase name="batchUsesOnlySelectedIdsPreservesIndependentFlagsAndDeletesTheirRelations" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.196"/>
+  <testcase name="failureDuringFieldInsertRollsBackEventRelationsAndReminderPlans" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.205"/>
+  <testcase name="autoArchiveIncludesOnlyExpiredUnfinishedRowsAndInvalidatesOldEdits" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.208"/>
+  <testcase name="failureInsideBatchTransactionRollsBackEarlierMutations" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.17"/>
+  <testcase name="attachmentIdsAndPathsCannotBeBorrowedFromAnotherEvent" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.201"/>
+  <testcase name="sameNamedFieldsAndEmptyContentRemainIndependentAcrossEditsAndReopen" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.217"/>
+  <testcase name="customFieldsBelongToEachEventEvenWhenTheirIdsMatch" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.148"/>
+  <testcase name="missingBatchMemberRejectsEveryOperationWithoutPartialChanges" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.136"/>
+  <testcase name="namesAreTrimmedAndDuplicateNamesCannotBypassInactiveCatalogItems" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.119"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

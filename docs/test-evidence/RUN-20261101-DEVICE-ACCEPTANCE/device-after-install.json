@@ -1,0 +1,54 @@
+{
+  "atUtc": "2026-11-02T02:21:27.407699+00:00",
+  "deviceEpochSeconds": "1793586085",
+  "model": "ALI-AN00",
+  "android": "15",
+  "api": "35",
+  "build": "ALI-AN00 9.0.0.230(CNC00E206R8P4)",
+  "fontScale": "1.0",
+  "displaySize": "Physical size: 1200x2652",
+  "displayDensity": "Physical density: 520",
+  "postNotificationsGranted": true,
+  "exactAlarmAppOp": "allow",
+  "wifiOn": "0",
+  "mobileData": "1",
+  "airplaneMode": "0",
+  "stayOnWhilePluggedIn": "0",
+  "screenOffTimeout": "600000",
+  "lowPower": "0",
+  "battery": {
+    "AC powered": "false",
+    "USB powered": "true",
+    "Wireless powered": "false",
+    "status": "2",
+    "level": "73",
+    "scale": "100",
+    "temperature": "360",
+    "updatesStopped": false
+  },
+  "deviceIdle": {
+    "mForceIdle": "false",
+    "mScreenOn": "true",
+    "mCharging": "true",
+    "mState": "ACTIVE",
+    "mLightState": "ACTIVE"
+  },
+  "notificationPolicy": {
+    "packageFilterValidated": true,
+    "appImportance": "DEFAULT",
+    "reminderChannelPolicies": [
+      {
+        "importance": 3,
+        "deleted": false
+      }
+    ],
+    "activeTargetNotificationCount": 0
+  },
+  "installed": {
+    "versionCode": 6,
+    "versionName": "0.3.3",
+    "bytes": 15490535,
+    "sha256": "6f30078bf0dfa95731afe9fae0c08f06dd19d048eb815fd2236022c90e19e65b",
+    "certificateSha256": "978833bcaf0fc001248f5d8501bfa1f9d1273922474ed601f2c60a4548a652b9"
+  }
+}

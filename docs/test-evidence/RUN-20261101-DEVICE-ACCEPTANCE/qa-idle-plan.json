@@ -1,0 +1,15 @@
+{
+  "createdPlanAtUtc": "2026-11-02T03:25:17.863506+00:00",
+  "title": "QA-ACCEPT-1101-IDLE",
+  "deadlineBeijing": "2026-11-02T13:32:00+08:00",
+  "deadlineEpochMillis": 1793597520000,
+  "sprintMinutes": 120,
+  "expectedDangerTriggerEpochMillis": 1793590320000,
+  "deviceEpochSecondsAtPlanning": 1793589915,
+  "savedThroughUi": true,
+  "savedAtUtc": "2026-11-02T03:26:10.824825+00:00",
+  "remainingSecondsToDangerAtUiCheck": 352.0,
+  "eventId": "0bab49bc-9ef0-457e-b258-b799fa650254",
+  "verifiedTriggerAt": 1793590320000,
+  "verifiedAtUtc": "2026-11-02T03:26:15.608751+00:00"
+}

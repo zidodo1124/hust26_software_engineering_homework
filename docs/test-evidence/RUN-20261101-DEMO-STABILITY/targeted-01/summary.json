@@ -1,0 +1,140 @@
+{
+  "phase": "0.3.4 targeted stability tests",
+  "startedAtUtc": "2026-11-02T04:28:37.496790+00:00",
+  "baseCommit": "778429e0e0b8311c491a3167400e95f4b085f08c",
+  "command": [
+    "powershell",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "scripts/gradle.ps1",
+    "--no-daemon",
+    "--console=plain",
+    "--stacktrace",
+    "--max-workers=2",
+    ":app:cleanTestDebugUnitTest",
+    ":app:testDebugUnitTest",
+    "--tests",
+    "*AttachmentImportDiagnosticsTest",
+    "--tests",
+    "*AttachmentStoreTest",
+    "--tests",
+    "*AttachmentClipboardFlowTest",
+    "--tests",
+    "*ReminderRecoveryDiagnosticsTest",
+    "--tests",
+    "*ReminderRestoreIntegrationTest",
+    "--tests",
+    "*ReminderEngineTest",
+    "--tests",
+    "*ReminderStatusCopyTest",
+    "--tests",
+    "*SaverAppFlowTest"
+  ],
+  "filters": [
+    "AttachmentImportDiagnosticsTest",
+    "AttachmentStoreTest",
+    "AttachmentClipboardFlowTest",
+    "ReminderRecoveryDiagnosticsTest",
+    "ReminderRestoreIntegrationTest",
+    "ReminderEngineTest",
+    "ReminderStatusCopyTest",
+    "SaverAppFlowTest"
+  ],
+  "runtime": "Windows / JDK 17 / Robolectric; no device operation",
+  "finishedAtUtc": "2026-11-02T04:31:31.161782+00:00",
+  "durationSeconds": 173.672,
+  "exitCode": 1,
+  "suites": 8,
+  "declared": {
+    "tests": 108,
+    "failures": 2,
+    "errors": 0,
+    "skipped": 0
+  },
+  "actual": {
+    "tests": 108,
+    "failures": 2,
+    "errors": 0,
+    "skipped": 0
+  },
+  "uniqueMethods": 77,
+  "uniqueMethodRule": "Classname plus test name with a trailing numeric [SDK] suffix removed",
+  "suiteResults": [
+    {
+      "name": "cn.edu.hust.ddlsaver.platform.AttachmentImportDiagnosticsTest",
+      "tests": 20,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.platform.AttachmentStoreTest",
+      "tests": 26,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.reminders.ReminderEngineTest",
+      "tests": 20,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest",
+      "tests": 16,
+      "failures": 2,
+      "errors": 0,
+      "skipped": 0,
+      "failuresDetail": [
+        {
+          "name": "cancellationIsNotSwallowedAndStillFinishesPendingResult[28]",
+          "type": "java.lang.AssertionError",
+          "message": "java.lang.AssertionError: expected same:<java.util.concurrent.CancellationException: cancelled> was not:<java.util.concurrent.CancellationException: cancelled>",
+          "text": "java.lang.AssertionError: expected same:<java.util.concurrent.CancellationException: cancelled> was not:<java.util.concurrent.CancellationException: cancelled>\n\tat org.junit.Assert.fail(Assert.java:89)\n\tat org.junit.Assert.failNotSame(Assert.java:829)\n\tat org.junit.Assert.assertSame(Assert.java:772)\n\tat org.junit.Assert.assertSame(Assert.java:783)\n\tat cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest$cancellationIsNotSwallowedAndStillFinishesPendingResult$1.invokeSuspend(ReminderRecoveryDiagnosticsTest.kt:155)\n\tat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)\n\tat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\n\tat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\n\tat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\n\tat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\n\tat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source)\n\tat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\n\tat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source)\n\tat cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest.cancellationIsNotSwallowedAndStillFinishesPendingResult(ReminderRecoveryDiagnosticsTest.kt:145)\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)\n\tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:569)\n\tat org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)\n\tat org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)\n\tat org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)\n\tat org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)\n\tat org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)\n\tat org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)\n\tat org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)\n\tat org.robolectric.RobolectricTestRunner$HelperTestRunner$1.evaluate(RobolectricTestRunner.java:502)\n\tat org.robolectric.internal.SandboxTestRunner$2.lambda$evaluate$2(SandboxTestRunner.java:285)\n\tat org.robolectric.internal.bytecode.Sandbox.lambda$runOnMainThread$0(Sandbox.java:104)\n\tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)\n\tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)\n\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)\n\tat java.base/java.lang.Thread.run(Thread.java:840)\n"
+        },
+        {
+          "name": "cancellationIsNotSwallowedAndStillFinishesPendingResult",
+          "type": "java.lang.AssertionError",
+          "message": "java.lang.AssertionError: expected same:<java.util.concurrent.CancellationException: cancelled> was not:<java.util.concurrent.CancellationException: cancelled>",
+          "text": "java.lang.AssertionError: expected same:<java.util.concurrent.CancellationException: cancelled> was not:<java.util.concurrent.CancellationException: cancelled>\n\tat org.junit.Assert.fail(Assert.java:89)\n\tat org.junit.Assert.failNotSame(Assert.java:829)\n\tat org.junit.Assert.assertSame(Assert.java:772)\n\tat org.junit.Assert.assertSame(Assert.java:783)\n\tat cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest$cancellationIsNotSwallowedAndStillFinishesPendingResult$1.invokeSuspend(ReminderRecoveryDiagnosticsTest.kt:155)\n\tat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)\n\tat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\n\tat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\n\tat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\n\tat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\n\tat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source)\n\tat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\n\tat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source)\n\tat cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest.cancellationIsNotSwallowedAndStillFinishesPendingResult(ReminderRecoveryDiagnosticsTest.kt:145)\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)\n\tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:569)\n\tat org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)\n\tat org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)\n\tat org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)\n\tat org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)\n\tat org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)\n\tat org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)\n\tat org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)\n\tat org.robolectric.RobolectricTestRunner$HelperTestRunner$1.evaluate(RobolectricTestRunner.java:502)\n\tat org.robolectric.internal.SandboxTestRunner$2.lambda$evaluate$2(SandboxTestRunner.java:285)\n\tat org.robolectric.internal.bytecode.Sandbox.lambda$runOnMainThread$0(Sandbox.java:104)\n\tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)\n\tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)\n\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)\n\tat java.base/java.lang.Thread.run(Thread.java:840)\n"
+        }
+      ]
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.reminders.ReminderRestoreIntegrationTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.reminders.ReminderStatusCopyTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.AttachmentClipboardFlowTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.SaverAppFlowTest",
+      "tests": 18,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "allProductSourceBytesUnchanged": true,
+  "testTaskExecuted": true,
+  "cleanTestTaskExecuted": true,
+  "result": "FAILED"
+}

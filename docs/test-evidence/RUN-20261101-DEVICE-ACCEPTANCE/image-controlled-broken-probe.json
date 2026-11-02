@@ -1,0 +1,11 @@
+{
+  "atUtc": "2026-11-02T03:10:10.168994+00:00",
+  "controlledBrokenImageRejected": true,
+  "draftImageCountKept": 3,
+  "privateFilesUnchanged": true,
+  "diagnostics": [],
+  "scope": "Synthetic decode failure, not evidence of OBS-01 real cause",
+  "observedUiErrorMessages": [
+    "文件不是可解码的图片，或图片已经损坏。"
+  ]
+}

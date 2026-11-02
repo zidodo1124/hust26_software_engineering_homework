@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.ui.AttachmentClipboardFlowTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-11-02T04:30:57" hostname="LAPTOP-7OF0K1SP" time="10.237">
+  <properties/>
+  <testcase name="successivePasteActionsAppendDifferentImagesAndPrivateCopiesSurviveSourceRemoval" classname="cn.edu.hust.ddlsaver.ui.AttachmentClipboardFlowTest" time="7.407"/>
+  <testcase name="mixedPasteFailureKeepsDraftAndSavedAttachmentThenFreshClipboardCanBeRetried" classname="cn.edu.hust.ddlsaver.ui.AttachmentClipboardFlowTest" time="2.83"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+]]></system-err>
+</testsuite>

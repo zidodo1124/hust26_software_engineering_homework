@@ -1,0 +1,15 @@
+{
+  "createdPlanAtUtc": "2026-11-02T03:35:02.577321+00:00",
+  "title": "QA-ACCEPT-1101-BOOT",
+  "deadlineBeijing": "2026-11-02T13:44:00+08:00",
+  "deadlineEpochMillis": 1793598240000,
+  "sprintMinutes": 120,
+  "expectedDangerTriggerEpochMillis": 1793591040000,
+  "deviceEpochSecondsAtPlanning": 1793590500,
+  "savedThroughUi": true,
+  "savedAtUtc": "2026-11-02T03:35:55.654038+00:00",
+  "remainingSecondsToDangerAtUiCheck": 487.0,
+  "eventId": "81cd17d7-41cc-44f0-a077-9b06ab8fd1e6",
+  "verifiedTriggerAt": 1793591040000,
+  "verifiedAtUtc": "2026-11-02T03:35:57.061396+00:00"
+}

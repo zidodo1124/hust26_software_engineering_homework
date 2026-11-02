@@ -1,0 +1,80 @@
+[
+  {
+    "file": "final-cleanup-before-qa.json",
+    "source": ".local-tools/device-acceptance-20261101/final-cleanup-before-qa.json",
+    "sourceSha256AtArchive": "244832731c896b2e399b47bfb0d09a96207ad3944ab6f07d920c324227502c69",
+    "archivedSha256": "244832731c896b2e399b47bfb0d09a96207ad3944ab6f07d920c324227502c69",
+    "transformation": "Exact reviewed safe metadata; original data represented only by counts and salted digests, salt and raw DB excluded. Initial failed restoration assertion retained alongside final audit."
+  },
+  {
+    "file": "final-cleanup-after-qa.json",
+    "source": ".local-tools/device-acceptance-20261101/final-cleanup-after-qa.json",
+    "sourceSha256AtArchive": "0a23bb82e9148d86ea28b1d0e326e9dab3567d2f7de346aded62dee11388edf6",
+    "archivedSha256": "0a23bb82e9148d86ea28b1d0e326e9dab3567d2f7de346aded62dee11388edf6",
+    "transformation": "Exact reviewed safe metadata; original data represented only by counts and salted digests, salt and raw DB excluded. Initial failed restoration assertion retained alongside final audit."
+  },
+  {
+    "file": "final-cleanup-result.json",
+    "source": ".local-tools/device-acceptance-20261101/final-cleanup-result.json",
+    "sourceSha256AtArchive": "36940b425878240bd6c18475ae203e3299097b786bd1253d47d31e48e158e865",
+    "archivedSha256": "36940b425878240bd6c18475ae203e3299097b786bd1253d47d31e48e158e865",
+    "transformation": "Exact reviewed safe metadata; original data represented only by counts and salted digests, salt and raw DB excluded. Initial failed restoration assertion retained alongside final audit."
+  },
+  {
+    "file": "final-notifications-before-force-stop.json",
+    "source": ".local-tools/device-acceptance-20261101/final-notifications-before-force-stop.json",
+    "sourceSha256AtArchive": "2f5a1c6925e098e7d8768a1120b2ee1dddb3e988d2f529b3be282f258e5005f1",
+    "archivedSha256": "2f5a1c6925e098e7d8768a1120b2ee1dddb3e988d2f529b3be282f258e5005f1",
+    "transformation": "Exact reviewed safe metadata; original data represented only by counts and salted digests, salt and raw DB excluded. Initial failed restoration assertion retained alongside final audit."
+  },
+  {
+    "file": "final-after-cleanup.json",
+    "source": ".local-tools/device-acceptance-20261101/final-after-cleanup.json",
+    "sourceSha256AtArchive": "3c32874eb911bfade39c1e79c72ee8c2e96b3ee1c196052e888f5fd2a278fbfa",
+    "archivedSha256": "3c32874eb911bfade39c1e79c72ee8c2e96b3ee1c196052e888f5fd2a278fbfa",
+    "transformation": "Exact reviewed safe metadata; original data represented only by counts and salted digests, salt and raw DB excluded. Initial failed restoration assertion retained alongside final audit."
+  },
+  {
+    "file": "device-final.json",
+    "source": ".local-tools/device-acceptance-20261101/device-final.json",
+    "sourceSha256AtArchive": "4fbe39500cdd6db99d90bf95b5139fe2c0f1a5e1d25c369804306545edd224c1",
+    "archivedSha256": "4fbe39500cdd6db99d90bf95b5139fe2c0f1a5e1d25c369804306545edd224c1",
+    "transformation": "Exact reviewed safe metadata; original data represented only by counts and salted digests, salt and raw DB excluded. Initial failed restoration assertion retained alongside final audit."
+  },
+  {
+    "file": "final-reminder-history-audit.json",
+    "source": ".local-tools/device-acceptance-20261101/final-reminder-history-audit.json",
+    "sourceSha256AtArchive": "5c0b99d523d3c48da8ccc396de9e42dd9493e15a97da49f39764736f00f9892a",
+    "archivedSha256": "5c0b99d523d3c48da8ccc396de9e42dd9493e15a97da49f39764736f00f9892a",
+    "transformation": "Exact reviewed safe metadata; original data represented only by counts and salted digests, salt and raw DB excluded. Initial failed restoration assertion retained alongside final audit."
+  },
+  {
+    "file": "final-data-and-state-audit-initial.json",
+    "source": ".local-tools/device-acceptance-20261101/final-data-and-state-audit-initial.json",
+    "sourceSha256AtArchive": "0d089ad3f65325e140645e0310260ef74bafc96443e006b634ea5f765f90c642",
+    "archivedSha256": "0d089ad3f65325e140645e0310260ef74bafc96443e006b634ea5f765f90c642",
+    "transformation": "Exact reviewed safe metadata; original data represented only by counts and salted digests, salt and raw DB excluded. Initial failed restoration assertion retained alongside final audit."
+  },
+  {
+    "file": "global-log-baseline-restoration.json",
+    "source": ".local-tools/device-acceptance-20261101/global-log-baseline-restoration.json",
+    "sourceSha256AtArchive": "4e735b87a8a3c37d57d0c353e4fd73bda4b92260f6a9c6fc421c8ef35821aff7",
+    "archivedSha256": "4e735b87a8a3c37d57d0c353e4fd73bda4b92260f6a9c6fc421c8ef35821aff7",
+    "transformation": "Exact reviewed safe metadata; original data represented only by counts and salted digests, salt and raw DB excluded. Initial failed restoration assertion retained alongside final audit."
+  },
+  {
+    "file": "final-data-and-state-audit.json",
+    "source": ".local-tools/device-acceptance-20261101/final-data-and-state-audit.json",
+    "sourceSha256AtArchive": "a015946a49dd5f52efb21a1ff9949e43d765d98c962cc4298cdac690eff82c10",
+    "archivedSha256": "a015946a49dd5f52efb21a1ff9949e43d765d98c962cc4298cdac690eff82c10",
+    "transformation": "Exact reviewed safe metadata; original data represented only by counts and salted digests, salt and raw DB excluded. Initial failed restoration assertion retained alongside final audit. Final operator appended home/alarm/ready-to-disconnect fields; previous audit fields verified identical.",
+    "firstArchivedSha256BeforeFinalHomeFields": "a015946a49dd5f52efb21a1ff9949e43d765d98c962cc4298cdac690eff82c10"
+  },
+  {
+    "file": "final-normal-launch-qa.json",
+    "source": ".local-tools/device-acceptance-20261101/final-normal-launch-qa.json",
+    "sourceSha256AtArchive": "e2033c0e219bda9ca54a7d92a2e975498ef2aa310194b449fae6aaa8dc369fd0",
+    "archivedSha256": "e2033c0e219bda9ca54a7d92a2e975498ef2aa310194b449fae6aaa8dc369fd0",
+    "transformation": "Exact reviewed QA-only final launcher observation; no original user contents."
+  }
+]

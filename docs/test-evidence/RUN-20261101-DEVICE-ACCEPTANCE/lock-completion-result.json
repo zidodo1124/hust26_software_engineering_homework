@@ -1,0 +1,9 @@
+{
+  "checkedAtUtc": "2026-11-02T02:33:05.513795+00:00",
+  "qaTitle": "QA-ACCEPT-1101-LOCK",
+  "completedThroughUi": true,
+  "allQaPlansInactive": true,
+  "pendingCancellationCount": 0,
+  "activeQaNotifications": 0,
+  "notificationCancellationCausation": "Not established: notification was clicked first and is autoCancel; only plan invalidation and absence at completion were observed"
+}

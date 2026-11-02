@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.reminders.ReminderStatusCopyTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-11-02T04:21:54" hostname="LAPTOP-7OF0K1SP" time="0.003">
+  <properties/>
+  <testcase name="settingsHintOnlyWhenCannotPost" classname="cn.edu.hust.ddlsaver.reminders.ReminderStatusCopyTest" time="0.002"/>
+  <testcase name="homeWarningSilentWhenAllReminderSwitchesOff" classname="cn.edu.hust.ddlsaver.reminders.ReminderStatusCopyTest" time="0.0"/>
+  <testcase name="homeWarningPrefersLastErrorThenPostThenExact" classname="cn.edu.hust.ddlsaver.reminders.ReminderStatusCopyTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,13 @@
+{
+  "review": {
+    "id": 5732043244,
+    "state": "APPROVED",
+    "commit_id": "d4e09428b4deb87110067ff356c78a3cb98f4eac",
+    "url": "https://github.com/zidodo1124/hust26_software_engineering_homework/pull/10#pullrequestreview-5732043244"
+  },
+  "merge": {
+    "sha": "c1e94f3d80fcf4aa6d9983c4e3be5e7b4e0a1d48",
+    "merged": true,
+    "message": "Pull Request successfully merged"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "atUtc": "2026-11-02T03:26:21.159428+00:00",
+  "battery": {
+    "AC powered": "false",
+    "USB powered": "true",
+    "Wireless powered": "false",
+    "status": "2",
+    "level": "78",
+    "scale": "100",
+    "temperature": "340",
+    "updatesStopped": false
+  },
+  "condition": {
+    "atUtc": "2026-11-02T03:26:21.742441+00:00",
+    "deviceEpochSeconds": 1793589979,
+    "wakefulness": [
+      "Awake"
+    ],
+    "keyguardShowing": false,
+    "keyguardSecure": true,
+    "keyguardInputRestricted": false,
+    "deviceIdle": {
+      "mForceIdle": "false",
+      "mScreenOn": "true",
+      "mCharging": "true",
+      "mState": "ACTIVE",
+      "mLightState": "ACTIVE"
+    }
+  },
+  "alarm": {
+    "atUtc": "2026-11-02T03:26:22.051642+00:00",
+    "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+    "alarms": [
+      {
+        "type": "RTC_WAKEUP",
+        "triggerEpochMillis": 1793590320000,
+        "systemDisplayTrigger": "2026-11-02 11:32:00.000",
+        "window": "0",
+        "exactAllowReason": "permission",
+        "reminderWakeActionConfirmed": true
+      }
+    ]
+  },
+  "policy": {
+    "packageFilterValidated": true,
+    "appImportance": "DEFAULT",
+    "reminderChannelPolicies": [
+      {
+        "importance": 3,
+        "deleted": false
+      }
+    ],
+    "activeTargetNotificationCount": 0
+  }
+}

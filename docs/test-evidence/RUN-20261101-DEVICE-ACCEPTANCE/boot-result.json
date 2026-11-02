@@ -1,0 +1,711 @@
+{
+  "expectedTriggerEpochMillis": 1793591040000,
+  "noProductLaunchSinceReboot": true,
+  "alarmRebuiltBeforeExplicitLaunch": false,
+  "observed": false,
+  "samples": [
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:40:55.678558+00:00",
+        "deviceEpochSeconds": 1793590853,
+        "wakefulness": [
+          "Awake"
+        ],
+        "keyguardShowing": false,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "false",
+          "mScreenOn": "true",
+          "mCharging": "true",
+          "mState": "ACTIVE",
+          "mLightState": "ACTIVE"
+        }
+      },
+      "notifications": [],
+      "productForeground": false,
+      "alarm": {
+        "atUtc": "2026-11-02T03:40:56.191964+00:00",
+        "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+        "alarms": []
+      }
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:41:06.520083+00:00",
+        "deviceEpochSeconds": 1793590864,
+        "wakefulness": [
+          "Awake"
+        ],
+        "keyguardShowing": false,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "false",
+          "mScreenOn": "true",
+          "mCharging": "true",
+          "mState": "ACTIVE",
+          "mLightState": "ACTIVE"
+        }
+      },
+      "notifications": [],
+      "productForeground": false,
+      "alarm": {
+        "atUtc": "2026-11-02T03:41:06.962902+00:00",
+        "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+        "alarms": []
+      }
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:41:17.250964+00:00",
+        "deviceEpochSeconds": 1793590875,
+        "wakefulness": [
+          "Awake"
+        ],
+        "keyguardShowing": false,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "false",
+          "mScreenOn": "true",
+          "mCharging": "true",
+          "mState": "ACTIVE",
+          "mLightState": "ACTIVE"
+        }
+      },
+      "notifications": [],
+      "productForeground": false,
+      "alarm": {
+        "atUtc": "2026-11-02T03:41:17.651402+00:00",
+        "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+        "alarms": []
+      }
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:41:27.972572+00:00",
+        "deviceEpochSeconds": 1793590886,
+        "wakefulness": [
+          "Awake"
+        ],
+        "keyguardShowing": false,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "false",
+          "mScreenOn": "true",
+          "mCharging": "true",
+          "mState": "ACTIVE",
+          "mLightState": "ACTIVE"
+        }
+      },
+      "notifications": [],
+      "productForeground": false,
+      "alarm": {
+        "atUtc": "2026-11-02T03:41:28.388378+00:00",
+        "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+        "alarms": []
+      }
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:41:38.727870+00:00",
+        "deviceEpochSeconds": 1793590896,
+        "wakefulness": [
+          "Awake"
+        ],
+        "keyguardShowing": false,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "false",
+          "mScreenOn": "true",
+          "mCharging": "true",
+          "mState": "ACTIVE",
+          "mLightState": "ACTIVE"
+        }
+      },
+      "notifications": [],
+      "productForeground": false,
+      "alarm": {
+        "atUtc": "2026-11-02T03:41:39.156365+00:00",
+        "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+        "alarms": []
+      }
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:41:49.523120+00:00",
+        "deviceEpochSeconds": 1793590907,
+        "wakefulness": [
+          "Awake"
+        ],
+        "keyguardShowing": false,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "false",
+          "mScreenOn": "true",
+          "mCharging": "true",
+          "mState": "ACTIVE",
+          "mLightState": "ACTIVE"
+        }
+      },
+      "notifications": [],
+      "productForeground": false,
+      "alarm": {
+        "atUtc": "2026-11-02T03:41:50.027739+00:00",
+        "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+        "alarms": []
+      }
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:42:00.400822+00:00",
+        "deviceEpochSeconds": 1793590918,
+        "wakefulness": [
+          "Awake"
+        ],
+        "keyguardShowing": false,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "false",
+          "mScreenOn": "true",
+          "mCharging": "true",
+          "mState": "ACTIVE",
+          "mLightState": "ACTIVE"
+        }
+      },
+      "notifications": [],
+      "productForeground": false,
+      "alarm": {
+        "atUtc": "2026-11-02T03:42:00.906963+00:00",
+        "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+        "alarms": []
+      }
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:42:11.237147+00:00",
+        "deviceEpochSeconds": 1793590929,
+        "wakefulness": [
+          "Awake"
+        ],
+        "keyguardShowing": false,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "false",
+          "mScreenOn": "true",
+          "mCharging": "true",
+          "mState": "ACTIVE",
+          "mLightState": "ACTIVE"
+        }
+      },
+      "notifications": [],
+      "productForeground": false,
+      "alarm": {
+        "atUtc": "2026-11-02T03:42:11.701775+00:00",
+        "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+        "alarms": []
+      }
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:42:22.045607+00:00",
+        "deviceEpochSeconds": 1793590940,
+        "wakefulness": [
+          "Awake"
+        ],
+        "keyguardShowing": false,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "false",
+          "mScreenOn": "true",
+          "mCharging": "true",
+          "mState": "ACTIVE",
+          "mLightState": "ACTIVE"
+        }
+      },
+      "notifications": [],
+      "productForeground": false,
+      "alarm": {
+        "atUtc": "2026-11-02T03:42:22.492697+00:00",
+        "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+        "alarms": []
+      }
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:42:32.874992+00:00",
+        "deviceEpochSeconds": 1793590951,
+        "wakefulness": [
+          "Awake"
+        ],
+        "keyguardShowing": false,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "false",
+          "mScreenOn": "true",
+          "mCharging": "true",
+          "mState": "ACTIVE",
+          "mLightState": "ACTIVE"
+        }
+      },
+      "notifications": [],
+      "productForeground": false,
+      "alarm": {
+        "atUtc": "2026-11-02T03:42:33.389116+00:00",
+        "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+        "alarms": []
+      }
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:42:43.745528+00:00",
+        "deviceEpochSeconds": 1793590961,
+        "wakefulness": [
+          "Awake"
+        ],
+        "keyguardShowing": false,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "false",
+          "mScreenOn": "true",
+          "mCharging": "true",
+          "mState": "ACTIVE",
+          "mLightState": "ACTIVE"
+        }
+      },
+      "notifications": [],
+      "productForeground": false,
+      "alarm": {
+        "atUtc": "2026-11-02T03:42:44.271927+00:00",
+        "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+        "alarms": []
+      }
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:42:54.634521+00:00",
+        "deviceEpochSeconds": 1793590972,
+        "wakefulness": [
+          "Awake"
+        ],
+        "keyguardShowing": false,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "false",
+          "mScreenOn": "true",
+          "mCharging": "true",
+          "mState": "ACTIVE",
+          "mLightState": "ACTIVE"
+        }
+      },
+      "notifications": [],
+      "productForeground": false,
+      "alarm": {
+        "atUtc": "2026-11-02T03:42:55.132205+00:00",
+        "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+        "alarms": []
+      }
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:43:05.479262+00:00",
+        "deviceEpochSeconds": 1793590983,
+        "wakefulness": [
+          "Awake"
+        ],
+        "keyguardShowing": false,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "false",
+          "mScreenOn": "true",
+          "mCharging": "true",
+          "mState": "ACTIVE",
+          "mLightState": "ACTIVE"
+        }
+      },
+      "notifications": [],
+      "productForeground": false,
+      "alarm": {
+        "atUtc": "2026-11-02T03:43:05.954033+00:00",
+        "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+        "alarms": []
+      }
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:43:16.336482+00:00",
+        "deviceEpochSeconds": 1793590994,
+        "wakefulness": [
+          "Awake"
+        ],
+        "keyguardShowing": false,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "false",
+          "mScreenOn": "true",
+          "mCharging": "true",
+          "mState": "ACTIVE",
+          "mLightState": "ACTIVE"
+        }
+      },
+      "notifications": [],
+      "productForeground": false,
+      "alarm": {
+        "atUtc": "2026-11-02T03:43:16.818081+00:00",
+        "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+        "alarms": []
+      }
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:43:27.192276+00:00",
+        "deviceEpochSeconds": 1793591005,
+        "wakefulness": [
+          "Awake"
+        ],
+        "keyguardShowing": false,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "false",
+          "mScreenOn": "true",
+          "mCharging": "true",
+          "mState": "ACTIVE",
+          "mLightState": "ACTIVE"
+        }
+      },
+      "notifications": [],
+      "productForeground": false,
+      "alarm": {
+        "atUtc": "2026-11-02T03:43:27.708597+00:00",
+        "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+        "alarms": []
+      }
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:43:38.090070+00:00",
+        "deviceEpochSeconds": 1793591016,
+        "wakefulness": [
+          "Awake"
+        ],
+        "keyguardShowing": false,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "false",
+          "mScreenOn": "true",
+          "mCharging": "true",
+          "mState": "ACTIVE",
+          "mLightState": "ACTIVE"
+        }
+      },
+      "notifications": [],
+      "productForeground": false,
+      "alarm": {
+        "atUtc": "2026-11-02T03:43:38.588382+00:00",
+        "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+        "alarms": []
+      }
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:43:48.931115+00:00",
+        "deviceEpochSeconds": 1793591027,
+        "wakefulness": [
+          "Awake"
+        ],
+        "keyguardShowing": false,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "false",
+          "mScreenOn": "true",
+          "mCharging": "true",
+          "mState": "ACTIVE",
+          "mLightState": "ACTIVE"
+        }
+      },
+      "notifications": [],
+      "productForeground": false,
+      "alarm": {
+        "atUtc": "2026-11-02T03:43:49.419381+00:00",
+        "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+        "alarms": []
+      }
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:43:59.780064+00:00",
+        "deviceEpochSeconds": 1793591037,
+        "wakefulness": [
+          "Awake"
+        ],
+        "keyguardShowing": false,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "false",
+          "mScreenOn": "true",
+          "mCharging": "true",
+          "mState": "ACTIVE",
+          "mLightState": "ACTIVE"
+        }
+      },
+      "notifications": [],
+      "productForeground": false,
+      "alarm": {
+        "atUtc": "2026-11-02T03:44:00.328846+00:00",
+        "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+        "alarms": []
+      }
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:44:10.703696+00:00",
+        "deviceEpochSeconds": 1793591048,
+        "wakefulness": [
+          "Awake"
+        ],
+        "keyguardShowing": false,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "false",
+          "mScreenOn": "true",
+          "mCharging": "true",
+          "mState": "ACTIVE",
+          "mLightState": "ACTIVE"
+        }
+      },
+      "notifications": [],
+      "productForeground": false,
+      "alarm": {
+        "atUtc": "2026-11-02T03:44:11.179874+00:00",
+        "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+        "alarms": []
+      }
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:44:21.526480+00:00",
+        "deviceEpochSeconds": 1793591059,
+        "wakefulness": [
+          "Awake"
+        ],
+        "keyguardShowing": false,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "false",
+          "mScreenOn": "true",
+          "mCharging": "true",
+          "mState": "ACTIVE",
+          "mLightState": "ACTIVE"
+        }
+      },
+      "notifications": [],
+      "productForeground": false,
+      "alarm": {
+        "atUtc": "2026-11-02T03:44:22.017827+00:00",
+        "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+        "alarms": []
+      }
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:44:32.376258+00:00",
+        "deviceEpochSeconds": 1793591070,
+        "wakefulness": [
+          "Awake"
+        ],
+        "keyguardShowing": false,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "false",
+          "mScreenOn": "true",
+          "mCharging": "true",
+          "mState": "ACTIVE",
+          "mLightState": "ACTIVE"
+        }
+      },
+      "notifications": [],
+      "productForeground": false,
+      "alarm": {
+        "atUtc": "2026-11-02T03:44:32.886238+00:00",
+        "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+        "alarms": []
+      }
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:44:43.240027+00:00",
+        "deviceEpochSeconds": 1793591081,
+        "wakefulness": [
+          "Awake"
+        ],
+        "keyguardShowing": false,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "false",
+          "mScreenOn": "true",
+          "mCharging": "true",
+          "mState": "ACTIVE",
+          "mLightState": "ACTIVE"
+        }
+      },
+      "notifications": [],
+      "productForeground": false,
+      "alarm": {
+        "atUtc": "2026-11-02T03:44:43.734547+00:00",
+        "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+        "alarms": []
+      }
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:44:54.074387+00:00",
+        "deviceEpochSeconds": 1793591092,
+        "wakefulness": [
+          "Awake"
+        ],
+        "keyguardShowing": false,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "false",
+          "mScreenOn": "true",
+          "mCharging": "true",
+          "mState": "ACTIVE",
+          "mLightState": "ACTIVE"
+        }
+      },
+      "notifications": [],
+      "productForeground": false,
+      "alarm": {
+        "atUtc": "2026-11-02T03:44:54.588566+00:00",
+        "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+        "alarms": []
+      }
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:45:04.941897+00:00",
+        "deviceEpochSeconds": 1793591103,
+        "wakefulness": [
+          "Awake"
+        ],
+        "keyguardShowing": false,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "false",
+          "mScreenOn": "true",
+          "mCharging": "true",
+          "mState": "ACTIVE",
+          "mLightState": "ACTIVE"
+        }
+      },
+      "notifications": [],
+      "productForeground": false,
+      "alarm": {
+        "atUtc": "2026-11-02T03:45:05.464069+00:00",
+        "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+        "alarms": []
+      }
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:45:15.789969+00:00",
+        "deviceEpochSeconds": 1793591113,
+        "wakefulness": [
+          "Awake"
+        ],
+        "keyguardShowing": false,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "false",
+          "mScreenOn": "true",
+          "mCharging": "true",
+          "mState": "ACTIVE",
+          "mLightState": "ACTIVE"
+        }
+      },
+      "notifications": [],
+      "productForeground": false,
+      "alarm": {
+        "atUtc": "2026-11-02T03:45:16.297042+00:00",
+        "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+        "alarms": []
+      }
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:45:26.659602+00:00",
+        "deviceEpochSeconds": 1793591124,
+        "wakefulness": [
+          "Awake"
+        ],
+        "keyguardShowing": false,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "false",
+          "mScreenOn": "true",
+          "mCharging": "true",
+          "mState": "ACTIVE",
+          "mLightState": "ACTIVE"
+        }
+      },
+      "notifications": [],
+      "productForeground": false,
+      "alarm": {
+        "atUtc": "2026-11-02T03:45:27.149731+00:00",
+        "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+        "alarms": []
+      }
+    },
+    {
+      "condition": {
+        "atUtc": "2026-11-02T03:45:37.480496+00:00",
+        "deviceEpochSeconds": 1793591135,
+        "wakefulness": [
+          "Awake"
+        ],
+        "keyguardShowing": false,
+        "keyguardSecure": true,
+        "keyguardInputRestricted": false,
+        "deviceIdle": {
+          "mForceIdle": "false",
+          "mScreenOn": "true",
+          "mCharging": "true",
+          "mState": "ACTIVE",
+          "mLightState": "ACTIVE"
+        }
+      },
+      "notifications": [],
+      "productForeground": false,
+      "alarm": {
+        "atUtc": "2026-11-02T03:45:37.981608+00:00",
+        "scope": "Current alarm stanzas matching product PendingIntent and reminder action only",
+        "alarms": []
+      }
+    }
+  ],
+  "boundedWindowEndedWithoutNotification": true
+}

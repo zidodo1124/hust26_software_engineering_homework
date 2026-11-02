@@ -1,0 +1,20 @@
+{
+  "atUtc": "2026-11-02T03:17:53.593355+00:00",
+  "draftImagesRetained": 4,
+  "privateFilesUnchanged": true,
+  "observedUiError": [
+    "文件不是可解码的图片，或图片已经损坏。"
+  ],
+  "diagnostics": [
+    {
+      "deviceEpoch": 1793589461.063,
+      "stage": "decode_image",
+      "scheme": "content",
+      "item": 1,
+      "count": 1,
+      "category": "validation",
+      "rollbackFailures": 0
+    }
+  ],
+  "syntheticControlledFault": true
+}

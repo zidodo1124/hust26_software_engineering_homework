@@ -1,0 +1,37 @@
+{
+  "recordedAtUtc": "2026-11-02T04:40:24.371751+00:00",
+  "sourceCommit": "bdcd76f916aae546bd146ce1fb1a14859bcd5eb4",
+  "sourceMatchesCommittedAppTree": true,
+  "version": {
+    "versionCode": 7,
+    "versionName": "0.3.4",
+    "schemaVersion": 4
+  },
+  "localResult": "passed",
+  "testExecutions": 218,
+  "independentMethods": 179,
+  "apk": {
+    "bytes": 15119011,
+    "sha256": "690626883dd90684128959a53737b54c326352e3decb0dd46a707ac3d962ab90",
+    "installedOnDevice": false,
+    "signatureVerificationExitCode": 0,
+    "certificateSha256": "978833bcaf0fc001248f5d8501bfa1f9d1273922474ed601f2c60a4548a652b9",
+    "certificateMatchesBaseline": true,
+    "badgingExitCode": 0,
+    "packageName": "cn.edu.hust.ddlsaver",
+    "versionCode": 7,
+    "versionName": "0.3.4"
+  },
+  "phoneOperationThisBatch": false,
+  "deviceProbe": {
+    "checkedAtUtc": "2026-11-02T04:32:28Z",
+    "readyDevices": 0,
+    "unauthorizedOrOfflineDevices": 0
+  },
+  "limitations": [
+    "OBS-01 source permission revocation mechanism remains open; actionable feedback only.",
+    "OBS-02 real reboot recovery remains open; diagnostic evidence is best-effort and is not proof of alarm retention or notification delivery.",
+    "Historical CI 45 UI timeout cause remains undetermined; subsequent local tests passed with additional diagnostics."
+  ],
+  "remoteCi": "Results after publication are available in GitHub Actions; no future result is asserted here."
+}

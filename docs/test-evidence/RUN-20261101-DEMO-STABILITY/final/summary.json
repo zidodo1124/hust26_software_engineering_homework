@@ -1,0 +1,618 @@
+{
+  "phase": "0.3.4 final complete stability validation",
+  "startedAtUtc": "2026-11-02T04:35:10.510483+00:00",
+  "baseCommit": "778429e0e0b8311c491a3167400e95f4b085f08c",
+  "command": [
+    "powershell",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "scripts/gradle.ps1",
+    "--no-daemon",
+    "--console=plain",
+    "--stacktrace",
+    "--continue",
+    "--max-workers=2",
+    ":app:cleanTestDebugUnitTest",
+    ":app:assembleDebug",
+    ":app:testDebugUnitTest",
+    ":app:lintDebug"
+  ],
+  "sourceVersion": {
+    "versionCode": 7,
+    "versionName": "0.3.4",
+    "schemaVersion": 4
+  },
+  "runtime": "Windows / JDK 17 / Robolectric; no device operation",
+  "supersedesTestAttempt": "../targeted",
+  "sourceFiles": [
+    {
+      "path": "app/schemas/cn.edu.hust.ddlsaver.data.SaverDatabase/1.json",
+      "sha256": "f1da82911704b4874e9289f9d89a7b135b24ca6ef18189393aa09fece37e8804"
+    },
+    {
+      "path": "app/schemas/cn.edu.hust.ddlsaver.data.SaverDatabase/2.json",
+      "sha256": "9d720a3d1cdc88fb0e2dd27eb6333630d61c2ab03106244cfaa3c1d9d76b7ef8"
+    },
+    {
+      "path": "app/schemas/cn.edu.hust.ddlsaver.data.SaverDatabase/3.json",
+      "sha256": "2750dabe27120980671b0950bf24d21dfafa2e558bd4636f5a3912a607aecf08"
+    },
+    {
+      "path": "app/schemas/cn.edu.hust.ddlsaver.data.SaverDatabase/4.json",
+      "sha256": "5cdcf7292d65fd7721087b938dbd47d1f72e1ad49d49a4f2b29aa37a43f9b032"
+    },
+    {
+      "path": "app/src/main/AndroidManifest.xml",
+      "sha256": "220e6293aaaabd85c05673ca8ba1abc327a3ba277b07874eafe72b01caa40689"
+    },
+    {
+      "path": "app/src/main/assets/character/.gitattributes",
+      "sha256": "8549d2c3750f45f90d6d3e1f2a5c6f84c198288f8472dc6cab11d28e63c87106"
+    },
+    {
+      "path": "app/src/main/assets/character/chibi/.gitattributes",
+      "sha256": "01890d0a4c6395cbebc852cfef3d63165770afe8938a4b5c2c98e456eace08cb"
+    },
+    {
+      "path": "app/src/main/assets/character/chibi/NOTICE.md",
+      "sha256": "585c7701b3cd3e6119a23c18dc17bd1bde30467ce4725bf45e7ab033c6403f4e"
+    },
+    {
+      "path": "app/src/main/assets/character/chibi/origin-LICENSE.txt",
+      "sha256": "e9c7575c5ccf1be7d9d94509d3c268436624eb35344f5f96c33f92bc44c51c23"
+    },
+    {
+      "path": "app/src/main/assets/character/chibi/sources.json",
+      "sha256": "0aa0bb9db434dada301f2ff4888de49410942a6248e53544c8581242898b6f9d"
+    },
+    {
+      "path": "app/src/main/assets/character/chibi/spritesheet.webp",
+      "sha256": "234f24a97c18195a00c6093da0090773e675993c169e92e7e13a24c37b323fa2"
+    },
+    {
+      "path": "app/src/main/assets/character/chibi/upstream-atlas-source.json",
+      "sha256": "332bc90765c18139992911563acd93c1e2ec871f67573af73769adfffe93ff06"
+    },
+    {
+      "path": "app/src/main/assets/character/chibi/upstream-LICENSE.txt",
+      "sha256": "85465f5b70d7843382115858f4f191349bdfd5e8c6478abb6967869124ca33ad"
+    },
+    {
+      "path": "app/src/main/assets/character/dsh-deep-whale-LICENSE.txt",
+      "sha256": "1349a4b6148492b44f629e64eed676612e234fe9a839e4f3b277c1482c8849f1"
+    },
+    {
+      "path": "app/src/main/assets/character/dsh-deep-whale-NOTICE.txt",
+      "sha256": "45e48ba5c3fc59e03c1a9559eaa04686f8d340d684f2970ce384a7578e7ef6dd"
+    },
+    {
+      "path": "app/src/main/assets/character/maid-left.webp",
+      "sha256": "af7bfd2e18505fc9d6f94cefd9febc92b31c1b2b66c756982d91fc7b93fb184c"
+    },
+    {
+      "path": "app/src/main/assets/character/NOTICE.md",
+      "sha256": "86052677c1013b79557c430b70facd1d3e3aa14ce91462b670d09c0d505f875e"
+    },
+    {
+      "path": "app/src/main/assets/character/sources.json",
+      "sha256": "72fa610c42997ad2c627ef742812ac05c872aa1d541f12721500385c15db6d9a"
+    },
+    {
+      "path": "app/src/main/assets/character/upstream-NOTICE.md",
+      "sha256": "1428a1740dff86038ef4c0e9ab73d7e0b9cebd170f4ef8615e8b4322cc097f81"
+    },
+    {
+      "path": "app/src/main/assets/character/whale-angry.webp",
+      "sha256": "63bb54126cf3acc785b251a19d465a8e388865badbdc7baf17bbad4b68057a02"
+    },
+    {
+      "path": "app/src/main/assets/character/whale-cheerful.webp",
+      "sha256": "117ed691623da550075056963764cee7a4cd14318d5ab87ce63d11926b83aa4b"
+    },
+    {
+      "path": "app/src/main/assets/character/whale-serious.webp",
+      "sha256": "2974cc4a814f6b1f95d907d22f62d9e0094dd7e538b6145e7c8a1dbb6154de34"
+    },
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/data/Entities.kt",
+      "sha256": "f707fa9b4540459c3cf6f4ec64ad1c2748f10f30e4a5be95d362f7db3a96225c"
+    },
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/data/RoomEventRepository.kt",
+      "sha256": "4d741246c81b889b7e0291bbe660bae611d6251f61184cd7302dbb4a3e7f886a"
+    },
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/data/SaverDao.kt",
+      "sha256": "f91fa2e51ff97c81397ba8c0e7ffe2adc8cd7b8e5d0e5f18498466af9520d730"
+    },
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/data/SaverDatabase.kt",
+      "sha256": "ca358f16e38e6a14a3b1e0eca368c78c2a636b90978922750b54a4c8f55a2345"
+    },
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/domain/CharacterFeedback.kt",
+      "sha256": "73e918698c448ea71ead513046db0e94960a2f8457d40241ec8f48b7fd63e148"
+    },
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/domain/CharacterStyle.kt",
+      "sha256": "48e3d6b7ec1ff08ed76ba32de43af9b6339ac08b4917ef15d1e19bc1b9d548d5"
+    },
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/domain/EventModels.kt",
+      "sha256": "eb655da18316837284b340bd9e69712a35ffd208daa152266bfd3da129ba638a"
+    },
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/domain/EventQuery.kt",
+      "sha256": "8ecb960909eb3e73871fc060f899884d4cb4d2e29e61f20a110966b9dcd98bfe"
+    },
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/domain/EventRepository.kt",
+      "sha256": "0218ae8948da8e70602a01501938d3c53812a894df6e16b9a8fe3c92dbfb0193"
+    },
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/domain/EventValidation.kt",
+      "sha256": "fed46f387f69a1ebc1339e9b7f1361296cd21654d9ba26a28371ee977479026c"
+    },
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/domain/UrgencyRules.kt",
+      "sha256": "f2127c50eb5e1294dc2eb3e110e5be5e050f46e6cc1fc6d83f3175655c180df4"
+    },
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/MainActivity.kt",
+      "sha256": "80039b3dcab213c15a624c690e97ceec0bf1394b8c53162b2e495e74cfc66321"
+    },
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/platform/AttachmentImportDiagnostics.kt",
+      "sha256": "21eb276bf02892ae61e04c93a563e77611f233743d9a789623999688d490dc54"
+    },
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/platform/AttachmentStore.kt",
+      "sha256": "1cd91eac842620d56c1ac2e8e4defbcaf9b6259d67d3aa0516a682b410e098c1"
+    },
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/reminders/AndroidReminderPlatform.kt",
+      "sha256": "6501bed8500483cdc331c88ce896bf27300f4141169b368148fe76932ca4ef49"
+    },
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/reminders/ReminderEngine.kt",
+      "sha256": "41b9c85966b933c6fc3ed003a88ffa66d54ffba40b03c4fcbe387b4ea190189e"
+    },
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/reminders/ReminderModels.kt",
+      "sha256": "cb80b9a3061f43ba0046cd62fdd72c5ff5e0fb7f4c0a0589ed2e45d3ffe97667"
+    },
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/reminders/ReminderPlanStore.kt",
+      "sha256": "c76ee05e0c7e813ebb284a20320f9de8a13eef9bcc723da2a375e97316ce760e"
+    },
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/reminders/ReminderRecoveryDiagnostics.kt",
+      "sha256": "73da5c45a7a3f318d88156055450eb2ff1b48c687d05e40277e1702c905e6bf5"
+    },
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/reminders/ReminderRuntime.kt",
+      "sha256": "e1c3cee0e8eb415ad0b6596e103d974fda9a0e95b007c0fea6cc29d3e901675a"
+    },
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/reminders/ReminderStatusCopy.kt",
+      "sha256": "2feb03cc034c6c5979ad0849c387aee2f31d359794d26814e482e7d020f068b3"
+    },
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/ui/AttachmentUi.kt",
+      "sha256": "2536785e8391aa61cc2fb295eec82f94be51d0078116d49e2f84f71df7b27be4"
+    },
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/ui/CategoryManager.kt",
+      "sha256": "4b49995ea34194015e7787cd0b0abf1555022ca6830ad0fcedd2405a20800f42"
+    },
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/ui/CharacterPanel.kt",
+      "sha256": "a65cc94e23af93dcf3a051d0507b9ba8b32b6539587c503d4ffb4901b84da476"
+    },
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/ui/EditorExtras.kt",
+      "sha256": "7a57442ae4e98108951276dcc80fccd194028aa404cf5ace13639c9939148436"
+    },
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/ui/EventEditor.kt",
+      "sha256": "556cc615a82dcff105ad083bfe09cfe293bbcb5d1eb9a3a81e722db69869123e"
+    },
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/ui/HomeScreen.kt",
+      "sha256": "b7f370235f5bf95f8a837f1c1bf54713806ba50744b1d823197bfabda6faf091"
+    },
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/ui/ReminderSettingsPanel.kt",
+      "sha256": "a216d9635db0ce78151403c05f26373221bc1a1111e2eae514515528228a6825"
+    },
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/ui/SaverApp.kt",
+      "sha256": "7bd083b55b59966a127e216942eed8ef70b03c84f6942348a45742447e35c56c"
+    },
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/ui/SaverTheme.kt",
+      "sha256": "2d7401cc9778f0d00ca08b12fa73d66f8b61f2e785bbc94e6dcd36410a132496"
+    },
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/ui/SaverViewModel.kt",
+      "sha256": "4643e1a095e783ca1394b890d36bd6f93b7a8f2eed99131dde8277c8674c9c6f"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_launcher.xml",
+      "sha256": "fbb482ee4aaf3ca68ba9986d8841aa1a7a014d63ebdcea89a26b10c2bfd4b57f"
+    },
+    {
+      "path": "app/src/main/res/values/strings.xml",
+      "sha256": "bc3ce40cfb4e26a52db4fe8ec9089601dc220765de428dd8fdf3ec392edf2669"
+    },
+    {
+      "path": "app/src/main/res/values/themes.xml",
+      "sha256": "76df74a55f977b838371e92ffd2e378e122c84806d499b7dd427260178d79d7e"
+    },
+    {
+      "path": "app/src/main/res/xml/data_extraction_rules.xml",
+      "sha256": "1aa32fb5d3d45d711c2da0634c5f9a1823527e78128307c74626db235550882b"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/data/CharacterStylePersistenceTest.kt",
+      "sha256": "d6fb4b67a711b54191c81ed188e90cd7b1ed3f05437463be4cd5dcf5f0136b7f"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/data/RoomEventRepositoryTest.kt",
+      "sha256": "a6a92c7698e34dfba1e89773a66cc63145581654cfb453efe234b62870efdbfa"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/data/RoundTwoRepositoryTest.kt",
+      "sha256": "fe47046da78f530236c9acb6e1733262d7dde35c838c1700a8b6265396e2f6c6"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/data/SaverDatabaseMigrationTest.kt",
+      "sha256": "f9fc48baa39f16354e323e25d1851b9137487f59556b9119e39291f2a96f0005"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/domain/CharacterFeedbackTest.kt",
+      "sha256": "e55bd52f360f595a6bc23b1eb4ae6272578fcd2884e2abf16a1b8f575fb6da23"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/domain/EventQueryTest.kt",
+      "sha256": "521ce626607227eae0e357afb4e2f16f45b48c6d091bd3486d5167be72fcdc49"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/domain/EventValidationTest.kt",
+      "sha256": "ea48f2bfd8be609caaf3076dbdea7c1848d80b44060fd268e21dcc578049f4dd"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/domain/ExtendedEventValidationTest.kt",
+      "sha256": "714b66a7fad6e7bd7a932202e671d2f99addc25023c340e05aa5688f186d0814"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/domain/UrgencyRulesTest.kt",
+      "sha256": "23555bfba8988939c6eb634ca83b44f679181eb354aba5f208fda3d802e82ab6"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/platform/AttachmentImportDiagnosticsTest.kt",
+      "sha256": "0137679440ff4693113fbff9c4da7f86257b2e5f6679ba98bf53841c3ae7fdd4"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/platform/AttachmentStoreTest.kt",
+      "sha256": "ab2fb3f9ebf3b04d6d7d9a3343def2d79a7a5ca23b6da45e2647266f448f8ea6"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/reminders/AndroidReminderPlatformTest.kt",
+      "sha256": "22a4230211f2995948ca574225bbe84f3ea685555766f15d8a37de2c90e0187f"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/reminders/ReminderEngineTest.kt",
+      "sha256": "4632f724bad2e96f34121545361062f575b51880ca0f277e7f2bf4c18a8efd41"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/reminders/ReminderRecoveryDiagnosticsTest.kt",
+      "sha256": "3361dfe31a84a850956ccec6d478e6fc58599dd9a4d9aeec3d95ac394e9fc30e"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/reminders/ReminderRestoreIntegrationTest.kt",
+      "sha256": "04c0f632fcc24ebb7a22134a94f63aaace98c9e7246eeef61ba165a5a2e175ec"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/reminders/ReminderRulesTest.kt",
+      "sha256": "046174542ee3a82d3c25e928979aa2ce1b9d0d2d03fb90514a56b85dd31e725c"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/reminders/ReminderStatusCopyTest.kt",
+      "sha256": "7fa5a8adbdba93b1ae29c763b1e9746d4b8c6a81d395c4f515811ad8ffdfccc1"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/ui/AttachmentClipboardFlowTest.kt",
+      "sha256": "4f3901e336515b90a66ef3d022b316d6a6c286754289107b5ac6407dfd6ea3d9"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/ui/CalendarGridTest.kt",
+      "sha256": "42ea9d533f0f57acd5a5227ee9b4d9e5d99fbf45b5a34de1ef6485ae2da4650a"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/ui/CharacterArtworkTest.kt",
+      "sha256": "a6cf6dc7c7db6d52f1df6cd98896db8e00700ff4a9b0b34cb539f2fa0593b002"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/ui/CharacterAssetsTest.kt",
+      "sha256": "224e0fd73278437734130e9932c531ffed8093c50be1581bdb45fcfb1e5e0bca"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/ui/CharacterBubbleLayoutTest.kt",
+      "sha256": "c2d2ca92c092fe4786d5ab40da71e61e94c9614bf1cfbd7c1a68d68b31be921d"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/ui/ContentClipboardFlowTest.kt",
+      "sha256": "64d75c5286857f317692225843906ea68212358c4874ea8a414a36cd04b4ad53"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/ui/OceanThemeContrastTest.kt",
+      "sha256": "e09fd250435f8c2ef0ff64e651008bdf8753cd0d532a028ef8d78aecd7795761"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/ui/OceanUiRenderTest.kt",
+      "sha256": "4c2890c0e9fddb353209f74c174f394f131f9107d6e1ebb4fbaf4931582b4ce8"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/ui/ReminderColdLaunchTest.kt",
+      "sha256": "b73b89ea64d7830f6e3aeb48a1bf6e1a252233871054061e1eeafa8a9db13a04"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/ui/SaverAppFlowTest.kt",
+      "sha256": "370ff4e13e3356cc2da400a759b90fdac55005c5c958565d99ed4443f194fb0a"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/ui/SaverViewModelFeedbackTest.kt",
+      "sha256": "5082cb230385949328f8886f35f3d7d081c1ffc9af513c34a16f96f3291a0b1a"
+    },
+    {
+      "path": "app/build.gradle.kts",
+      "sha256": "ca2a95cf16fa050503ffbdfbb87b2a6920432e98e0a8292cd6de9a361f25b877"
+    }
+  ],
+  "finishedAtUtc": "2026-11-02T04:38:44.548167+00:00",
+  "durationSeconds": 214.031,
+  "exitCode": 0,
+  "suites": 28,
+  "declared": {
+    "tests": 218,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "actual": {
+    "tests": 218,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "uniqueMethods": 179,
+  "uniqueMethodRule": "Classname plus test name with a trailing numeric [SDK] suffix removed",
+  "suiteResults": [
+    {
+      "name": "cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest",
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest",
+      "tests": 16,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.data.SaverDatabaseMigrationTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.domain.CharacterFeedbackTest",
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.domain.EventQueryTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.domain.EventValidationTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.domain.ExtendedEventValidationTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.domain.UrgencyRulesTest",
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.platform.AttachmentImportDiagnosticsTest",
+      "tests": 20,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.platform.AttachmentStoreTest",
+      "tests": 26,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.reminders.AndroidReminderPlatformTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.reminders.ReminderEngineTest",
+      "tests": 20,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest",
+      "tests": 20,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.reminders.ReminderRestoreIntegrationTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.reminders.ReminderRulesTest",
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.reminders.ReminderStatusCopyTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.AttachmentClipboardFlowTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.CalendarGridTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.CharacterArtworkTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.CharacterAssetsTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.CharacterBubbleLayoutTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.ContentClipboardFlowTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.OceanThemeContrastTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.OceanUiRenderTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.ReminderColdLaunchTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.SaverAppFlowTest",
+      "tests": 18,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.SaverViewModelFeedbackTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "lint": {
+    "errors": 0,
+    "warnings": 16,
+    "ids": {
+      "ExifInterface": 1,
+      "GradleDependency": 10,
+      "ObsoleteSdkInt": 1,
+      "StaticFieldLeak": 1,
+      "UseKtx": 3
+    }
+  },
+  "apk": {
+    "bytes": 15119011,
+    "sha256": "690626883dd90684128959a53737b54c326352e3decb0dd46a707ac3d962ab90",
+    "installedOnDevice": false,
+    "signatureVerificationExitCode": 0,
+    "certificateSha256": "978833bcaf0fc001248f5d8501bfa1f9d1273922474ed601f2c60a4548a652b9",
+    "certificateMatchesBaseline": true,
+    "badgingExitCode": 0,
+    "packageName": "cn.edu.hust.ddlsaver",
+    "versionCode": 7,
+    "versionName": "0.3.4"
+  },
+  "allProductSourceBytesUnchanged": true,
+  "testTaskExecuted": true,
+  "cleanTestTaskExecuted": true,
+  "result": "BUILD SUCCESSFUL"
+}

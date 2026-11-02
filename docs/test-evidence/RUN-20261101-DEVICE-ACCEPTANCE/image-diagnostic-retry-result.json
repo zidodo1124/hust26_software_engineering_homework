@@ -1,0 +1,38 @@
+{
+  "completed": true,
+  "oldUri": {
+    "atUtc": "2026-11-02T03:17:04.388454+00:00",
+    "priorSavedImages": 3,
+    "oldUriDraftImages": 3,
+    "oldUriSucceeded": false,
+    "diagnostics": [
+      {
+        "deviceEpoch": 1793589417.916,
+        "stage": "open_source",
+        "scheme": "content",
+        "item": 1,
+        "count": 1,
+        "category": "security_denied",
+        "rollbackFailures": 0
+      }
+    ],
+    "privateFileCountBefore": 7,
+    "privateFileCountAfter": 7,
+    "privateFilesUnchanged": true,
+    "sequence": "Fresh orange successful warm import, cancel warm draft, force-stop/reopen, paste unchanged orange ClipData"
+  },
+  "controlledBrokenDiagnostics": [
+    {
+      "deviceEpoch": 1793589461.063,
+      "stage": "decode_image",
+      "scheme": "content",
+      "item": 1,
+      "count": 1,
+      "category": "validation",
+      "rollbackFailures": 0
+    }
+  ],
+  "savedImages": 4,
+  "originalThreeSavedAttachmentsUnchanged": true,
+  "savedSyntheticDraftDescription": true
+}

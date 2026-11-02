@@ -1,0 +1,441 @@
+{
+  "run": "RUN-20261101-RECOVERY-DIAGNOSTICS",
+  "reviewedDate": "2026-11-01",
+  "baseCommit": "ac1d9785ac9ab74dbd34fc00bc8459eb923002bc",
+  "testedState": "Base commit plus all seven uncommitted source/test files listed here. Final hashes identify the successful second targeted and full check state; first-attempt failure reports are retained separately.",
+  "runtime": "Local Windows / JDK 17 / Robolectric; no device installation",
+  "version": "0.3.3",
+  "versionCode": 6,
+  "schema": 4,
+  "apk": {
+    "applicationId": "cn.edu.hust.ddlsaver",
+    "versionCode": 6,
+    "versionName": "0.3.3",
+    "bytes": 15490535,
+    "sha256": "6f30078bf0dfa95731afe9fae0c08f06dd19d048eb815fd2236022c90e19e65b",
+    "certificateSha256": "978833bcaf0fc001248f5d8501bfa1f9d1273922474ed601f2c60a4548a652b9",
+    "historicalDeviceApkCertificateSha256": "978833bcaf0fc001248f5d8501bfa1f9d1273922474ed601f2c60a4548a652b9",
+    "matchesHistoricalDeviceApkCertificate": true,
+    "installed": false
+  },
+  "sourceFiles": [
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/platform/AttachmentStore.kt",
+      "sha256": "29fd16de6e003a4c39b367704adb6c022820435ea14150a806e3679b712e2ef5"
+    },
+    {
+      "path": "app/src/main/java/cn/edu/hust/ddlsaver/platform/AttachmentImportDiagnostics.kt",
+      "sha256": "21eb276bf02892ae61e04c93a563e77611f233743d9a789623999688d490dc54"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/platform/AttachmentImportDiagnosticsTest.kt",
+      "sha256": "5be64d722bfef8551a8b75aaf5c8ff340307431bc6c37a4bbd41777108854262"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/reminders/ReminderRestoreIntegrationTest.kt",
+      "sha256": "4e699a0337e527f81b9f15a503baf306587003da8c5e0bcc1e3dbf6a00aa4327"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/ui/ReminderColdLaunchTest.kt",
+      "sha256": "b73b89ea64d7830f6e3aeb48a1bf6e1a252233871054061e1eeafa8a9db13a04"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/ui/ContentClipboardFlowTest.kt",
+      "sha256": "64d75c5286857f317692225843906ea68212358c4874ea8a414a36cd04b4ad53"
+    },
+    {
+      "path": "app/src/test/java/cn/edu/hust/ddlsaver/ui/AttachmentClipboardFlowTest.kt",
+      "sha256": "aef5ab82871f2c03535babc2a28b124af6f7420646fd646c999617ff1a8d48ec"
+    }
+  ],
+  "phases": {
+    "targeted-01-results": {
+      "suites": 3,
+      "declared": {
+        "tests": 21,
+        "failures": 8,
+        "errors": 0,
+        "skipped": 0
+      },
+      "actual": {
+        "executions": 21,
+        "failures": 8,
+        "errors": 0,
+        "skipped": 0
+      },
+      "uniqueMethods": 13,
+      "suiteResults": [
+        {
+          "name": "cn.edu.hust.ddlsaver.platform.AttachmentImportDiagnosticsTest",
+          "tests": 16,
+          "failures": 6,
+          "errors": 0,
+          "skipped": 0,
+          "failedTestNames": [
+            "failingLogBackendCannotReplaceTheOriginalImportFailure[28]",
+            "failingLogBackendCannotReplaceTheOriginalImportFailure",
+            "deniedSecondSourceReportsOnlyAllowlistedFieldsAfterBatchRollback[28]",
+            "deniedSecondSourceReportsOnlyAllowlistedFieldsAfterBatchRollback",
+            "nonDebuggableApplicationDoesNotLogImportFailures[28]",
+            "nonDebuggableApplicationDoesNotLogImportFailures"
+          ]
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.reminders.ReminderRestoreIntegrationTest",
+          "tests": 3,
+          "failures": 1,
+          "errors": 0,
+          "skipped": 0,
+          "failedTestNames": [
+            "explicitUnknownBroadcastDoesNotReconcileOrChangePersistedState"
+          ]
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.ui.ReminderColdLaunchTest",
+          "tests": 2,
+          "failures": 1,
+          "errors": 0,
+          "skipped": 0,
+          "failedTestNames": [
+            "realDailyNotificationPendingIntentColdLaunchesOnlyTodaysUnfinishedItems"
+          ]
+        }
+      ],
+      "result": "BUILD FAILED",
+      "duration": "2m 18s",
+      "log": "targeted-01.log",
+      "originalLogSha256": "952cc26c45c6230f25b3b6e413b805f177a28d2770e5bb4b8adeb26e3d85f94d",
+      "archivedLogSha256": "714dda80d113f98c418de2c462d22ce4d3d98dc3b652be9434d0d3851b6f7f0e",
+      "logRedaction": {
+        "hostnameAttributesRemoved": 0,
+        "pathPrefixReplacements": {
+          "[workspace]": 5,
+          "[user-home]": 4
+        },
+        "diagnosticOutputRemoved": false
+      },
+      "command": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/gradle.ps1 --no-daemon --console=plain --stacktrace --continue --max-workers=2 :app:testDebugUnitTest --tests cn.edu.hust.ddlsaver.platform.AttachmentImportDiagnosticsTest --tests cn.edu.hust.ddlsaver.reminders.ReminderRestoreIntegrationTest --tests cn.edu.hust.ddlsaver.ui.ReminderColdLaunchTest"
+    },
+    "targeted-02-results": {
+      "suites": 3,
+      "declared": {
+        "tests": 21,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "actual": {
+        "executions": 21,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "uniqueMethods": 13,
+      "suiteResults": [
+        {
+          "name": "cn.edu.hust.ddlsaver.platform.AttachmentImportDiagnosticsTest",
+          "tests": 16,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failedTestNames": []
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.reminders.ReminderRestoreIntegrationTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failedTestNames": []
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.ui.ReminderColdLaunchTest",
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failedTestNames": []
+        }
+      ],
+      "result": "BUILD SUCCESSFUL",
+      "duration": "1m 15s",
+      "log": "targeted-02.log",
+      "originalLogSha256": "3ca34d7c80c47c60ba44592c4b58a4c91f6e858dde5b97158b5d52c6207f24dd",
+      "archivedLogSha256": "7ca87b519e40b458a907c866ca062ab74133ca4494ba97bc6890e32202863c76",
+      "logRedaction": {
+        "hostnameAttributesRemoved": 0,
+        "pathPrefixReplacements": {
+          "[workspace]": 2
+        },
+        "diagnosticOutputRemoved": false
+      },
+      "command": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/gradle.ps1 --no-daemon --console=plain --stacktrace --continue --max-workers=2 :app:testDebugUnitTest --tests cn.edu.hust.ddlsaver.platform.AttachmentImportDiagnosticsTest --tests cn.edu.hust.ddlsaver.reminders.ReminderRestoreIntegrationTest --tests cn.edu.hust.ddlsaver.ui.ReminderColdLaunchTest"
+    },
+    "full-results": {
+      "suites": 27,
+      "declared": {
+        "tests": 194,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "actual": {
+        "executions": 194,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "uniqueMethods": 167,
+      "suiteResults": [
+        {
+          "name": "cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failedTestNames": []
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest",
+          "tests": 10,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failedTestNames": []
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest",
+          "tests": 16,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failedTestNames": []
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.data.SaverDatabaseMigrationTest",
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failedTestNames": []
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.domain.CharacterFeedbackTest",
+          "tests": 10,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failedTestNames": []
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.domain.EventQueryTest",
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failedTestNames": []
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.domain.EventValidationTest",
+          "tests": 7,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failedTestNames": []
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.domain.ExtendedEventValidationTest",
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failedTestNames": []
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.domain.UrgencyRulesTest",
+          "tests": 10,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failedTestNames": []
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.platform.AttachmentImportDiagnosticsTest",
+          "tests": 16,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failedTestNames": []
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.platform.AttachmentStoreTest",
+          "tests": 26,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failedTestNames": []
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.reminders.AndroidReminderPlatformTest",
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failedTestNames": []
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.reminders.ReminderEngineTest",
+          "tests": 20,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failedTestNames": []
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.reminders.ReminderRestoreIntegrationTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failedTestNames": []
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.reminders.ReminderRulesTest",
+          "tests": 10,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failedTestNames": []
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.reminders.ReminderStatusCopyTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failedTestNames": []
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.ui.AttachmentClipboardFlowTest",
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failedTestNames": []
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.ui.CalendarGridTest",
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failedTestNames": []
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.ui.CharacterArtworkTest",
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failedTestNames": []
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.ui.CharacterAssetsTest",
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failedTestNames": []
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.ui.CharacterBubbleLayoutTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failedTestNames": []
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.ui.ContentClipboardFlowTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failedTestNames": []
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.ui.OceanThemeContrastTest",
+          "tests": 1,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failedTestNames": []
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.ui.OceanUiRenderTest",
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failedTestNames": []
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.ui.ReminderColdLaunchTest",
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failedTestNames": []
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.ui.SaverAppFlowTest",
+          "tests": 18,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failedTestNames": []
+        },
+        {
+          "name": "cn.edu.hust.ddlsaver.ui.SaverViewModelFeedbackTest",
+          "tests": 1,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failedTestNames": []
+        }
+      ],
+      "lint": {
+        "errors": 0,
+        "warnings": 16,
+        "groups": {
+          "Warning:ExifInterface": 1,
+          "Warning:InlinedApi": 1,
+          "Warning:GradleDependency": 10,
+          "Warning:ObsoleteSdkInt": 1,
+          "Warning:StaticFieldLeak": 1,
+          "Warning:UseKtx": 2
+        }
+      },
+      "result": "BUILD SUCCESSFUL",
+      "duration": "3m 11s",
+      "log": "full-01.log",
+      "originalLogSha256": "fe5c8781846275c16e6dd586d12fe7318846c2c3733472514f806565bd79c8b3",
+      "archivedLogSha256": "fe5c8781846275c16e6dd586d12fe7318846c2c3733472514f806565bd79c8b3",
+      "logRedaction": {
+        "hostnameAttributesRemoved": 0,
+        "pathPrefixReplacements": {},
+        "diagnosticOutputRemoved": false
+      },
+      "command": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/gradle.ps1 --no-daemon --console=plain --stacktrace --continue --max-workers=2 :app:assembleDebug :app:testDebugUnitTest :app:lintDebug"
+    }
+  },
+  "uniqueMethodRule": "Class name plus testcase name after removing a trailing numeric [SDK] suffix only.",
+  "limits": [
+    "Targeted executions are included in full regression and are not summed across attempts.",
+    "Supported restore actions use manifest dispatch; the unknown-action guard directly invokes the production receiver.",
+    "Lost Alarm state is simulated and does not prove physical reboot, Doze, lock-screen delivery or device permission behavior.",
+    "Synthetic exception diagnostics do not identify or close the real OBS-01 cause.",
+    "The remote main CI has 169 executions and does not include these uncommitted local changes."
+  ],
+  "redaction": "Archived XML removes hostname and replaces workspace/user-home path prefixes. Test results and diagnostic output remain. Sensitive-looking URIs/tokens in failure assertions are deliberately synthetic test samples."
+}

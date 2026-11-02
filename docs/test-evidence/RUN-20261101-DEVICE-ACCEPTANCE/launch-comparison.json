@@ -1,0 +1,9 @@
+{
+  "schema4": true,
+  "allBusinessRowsUnchanged": true,
+  "allAttachmentBytesUnchanged": true,
+  "allSettingsUnchanged": true,
+  "allReminderRowsUnchanged": false,
+  "sentReminderRowsUnchanged": false,
+  "reminderControlUnchanged": false
+}

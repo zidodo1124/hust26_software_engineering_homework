@@ -1,0 +1,17 @@
+{
+  "atUtc": "2026-11-02T03:12:07.353520+00:00",
+  "probeKind": "shell log read-path probe, not application import diagnostics",
+  "probeExitCode": 0,
+  "probeStdoutEmpty": true,
+  "probeStderrEmpty": true,
+  "matchingProbeLines": 0,
+  "importFailedLines": 0,
+  "taggedLineCount": 0,
+  "properties": {
+    "log.tag.DDLSaver.Attachment": "",
+    "persist.log.tag.DDLSaver.Attachment": "",
+    "log.tag": "",
+    "persist.log.tag": "S"
+  },
+  "logSystemSettingsChanged": false
+}

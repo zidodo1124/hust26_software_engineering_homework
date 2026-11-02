@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.reminders.ReminderRestoreIntegrationTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-11-02T04:37:30" hostname="LAPTOP-7OF0K1SP" time="3.859">
+  <properties/>
+  <testcase name="everyDeclaredRestoreBroadcastRebuildsLostSystemAlarmFromUnchangedDurablePlans" classname="cn.edu.hust.ddlsaver.reminders.ReminderRestoreIntegrationTest" time="3.533"/>
+  <testcase name="unknownActionIsIgnoredByReceiverWithoutChangingDurableOrSystemState" classname="cn.edu.hust.ddlsaver.reminders.ReminderRestoreIntegrationTest" time="0.135"/>
+  <testcase name="restoreBroadcastRetainsPlansWithoutNotificationPermissionAndRebuildsAfterPermissionReturns" classname="cn.edu.hust.ddlsaver.reminders.ReminderRestoreIntegrationTest" time="0.191"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Intent = Intent { act=android.intent.action.BOOT_COMPLETED pkg=cn.edu.hust.ddlsaver }; Matching wrappers: [Wrapper[receiver=[cn.edu.hust.ddlsaver.reminders.ReminderRestoreReceiver@3ea1dc4f], context=[android.app.ContextImpl@578e6396], intentFilter=[android.content.IntentFilter@124f8b19]]]
+Intent = Intent { act=android.intent.action.TIME_SET pkg=cn.edu.hust.ddlsaver }; Matching wrappers: [Wrapper[receiver=[cn.edu.hust.ddlsaver.reminders.ReminderRestoreReceiver@3ea1dc4f], context=[android.app.ContextImpl@578e6396], intentFilter=[android.content.IntentFilter@124f8b19]]]
+Intent = Intent { act=android.intent.action.TIMEZONE_CHANGED pkg=cn.edu.hust.ddlsaver }; Matching wrappers: [Wrapper[receiver=[cn.edu.hust.ddlsaver.reminders.ReminderRestoreReceiver@3ea1dc4f], context=[android.app.ContextImpl@578e6396], intentFilter=[android.content.IntentFilter@124f8b19]]]
+Intent = Intent { act=android.intent.action.MY_PACKAGE_REPLACED pkg=cn.edu.hust.ddlsaver }; Matching wrappers: [Wrapper[receiver=[cn.edu.hust.ddlsaver.reminders.ReminderRestoreReceiver@3ea1dc4f], context=[android.app.ContextImpl@578e6396], intentFilter=[android.content.IntentFilter@124f8b19]]]
+Intent = Intent { act=android.app.action.SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED pkg=cn.edu.hust.ddlsaver }; Matching wrappers: [Wrapper[receiver=[cn.edu.hust.ddlsaver.reminders.ReminderRestoreReceiver@3ea1dc4f], context=[android.app.ContextImpl@578e6396], intentFilter=[android.content.IntentFilter@124f8b19]]]
+Intent = Intent { act=android.intent.action.BOOT_COMPLETED pkg=cn.edu.hust.ddlsaver }; Matching wrappers: [Wrapper[receiver=[cn.edu.hust.ddlsaver.reminders.ReminderRestoreReceiver@496cf7d9], context=[android.app.ContextImpl@e950099], intentFilter=[android.content.IntentFilter@6649145a]]]
+Intent = Intent { act=android.intent.action.BOOT_COMPLETED pkg=cn.edu.hust.ddlsaver }; Matching wrappers: [Wrapper[receiver=[cn.edu.hust.ddlsaver.reminders.ReminderRestoreReceiver@496cf7d9], context=[android.app.ContextImpl@e950099], intentFilter=[android.content.IntentFilter@6649145a]]]
+]]></system-err>
+</testsuite>

@@ -1,0 +1,284 @@
+[
+  {
+    "file": "full-results/lint-results-debug.xml",
+    "originalSha256": "ebd5ab78a36aabde1fbfc7aed6d1d1c3c7b4519fb0cb9847190f69d4ebaf303f",
+    "archivedSha256": "62fa4d61ef5020b003c8f0d2dec36c2f27c9ce5a44c667d507bd7e1ae1c348cb",
+    "redaction": {
+      "hostnameAttributesRemoved": 0,
+      "pathPrefixReplacements": {
+        "[workspace]": 16
+      },
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest.xml",
+    "originalSha256": "9eb023f3cf9c464165948e8633ced0a313eafcd3bc63a0f2bad00adfee3e09f0",
+    "archivedSha256": "eabf958999902c957b4fbb50b5d0daf2f77b42d4f55e08db34c8c544d239b42c",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "pathPrefixReplacements": {},
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest.xml",
+    "originalSha256": "6fd9e5f65d79c3df580d6bcf6672ddd7c5bfdf148a4ef07b6376582245867e33",
+    "archivedSha256": "388996ef80e9a93966f21deb4b0f360d1497b10fcf2f4af9c047bf08ae784e0d",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "pathPrefixReplacements": {},
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest.xml",
+    "originalSha256": "5c903ed95b590a1575f2ea4ead4cc818c5675ef8d3e505db000e834b0ea6d6ad",
+    "archivedSha256": "f930fd82608b6a62e91db5dc328d7598f912fce47daa5ae5da6615bd912cf88c",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "pathPrefixReplacements": {},
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.data.SaverDatabaseMigrationTest.xml",
+    "originalSha256": "e4b666e03bbee8e9f3c17384a39968e76aefc902bbf3438b6748c2f64da69d69",
+    "archivedSha256": "448f36398c902d761be9529c4aaa9ee32a098227f39f630a8b0a0e40eb816184",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "pathPrefixReplacements": {},
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.domain.CharacterFeedbackTest.xml",
+    "originalSha256": "049568a20c54167ab55fa55c5800851ccf312717eb46163d3ba1adfee63a15c1",
+    "archivedSha256": "2336ea6b96e652a94097cb095ca91bba478bee67c3202ff41479d1a91f02f9a2",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "pathPrefixReplacements": {},
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.domain.EventQueryTest.xml",
+    "originalSha256": "0d9b9c793ce2eb224d5c39f3a81a48b63c96925465278d16c54cf11d905213ba",
+    "archivedSha256": "ada6aa884230b703e040736193ad77214e8b1eb9279588fcddb57552ae3e0e7e",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "pathPrefixReplacements": {},
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.domain.EventValidationTest.xml",
+    "originalSha256": "1d1764d3e595e5f0597fef075adb4a381c76ae816c6f1e020164ec4188602625",
+    "archivedSha256": "f2ef9f3d54ccaa59e8e4ab4f8477c78b7d1aabdfea2155c8048dc1436cb51121",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "pathPrefixReplacements": {},
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.domain.ExtendedEventValidationTest.xml",
+    "originalSha256": "a0d385a90ea65defbe48af3df244921f0b4af0d079676f239a1b9c1ed0ebc92b",
+    "archivedSha256": "1b6c19b8486a4305e1cb6f12b07644b785e43b12ffc809aba072174e2143676a",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "pathPrefixReplacements": {},
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.domain.UrgencyRulesTest.xml",
+    "originalSha256": "22a5cce9f6e5dc9d44983be52159335c7c2cd9cab7318cb7985635bd1e288b9a",
+    "archivedSha256": "f4297642e4d3859f9c77f44903b8883d1dfc4b36e7ce987c2bd76a1417683e63",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "pathPrefixReplacements": {},
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.platform.AttachmentImportDiagnosticsTest.xml",
+    "originalSha256": "b8d5816e9fccf7d4bfee6c86cb5d90ce618d7ee5352f609304963debb76122da",
+    "archivedSha256": "4561e5ded40f337aa1bdfa8835a8d69080703b1b5692d9fc4b82e0b7937c1fde",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "pathPrefixReplacements": {},
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.platform.AttachmentStoreTest.xml",
+    "originalSha256": "05575568907cfb7981850aff81f88352f805e34e6fceb545c5e60f030b6749c1",
+    "archivedSha256": "a97395fc420bfdecd006e76ff645b57d25033361bbf17d73292ee17636597c5e",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "pathPrefixReplacements": {},
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.reminders.AndroidReminderPlatformTest.xml",
+    "originalSha256": "7b6d7d3a1c09e9d3080800a4d687ca937be8788451fbebaa2486560bfc5e054e",
+    "archivedSha256": "aaa758ebdccdff0f5f0a51f6cc9e81c01fa79af9a4a9edd39677ca30ec4b8d14",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "pathPrefixReplacements": {},
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.reminders.ReminderEngineTest.xml",
+    "originalSha256": "5e99bc08e53597fd4c3a7e8e996bc456328dfa96b4b47806aa0eed7137906e7b",
+    "archivedSha256": "7dedd700c230824d2cf73803b55c1c69217af057021a8f9f34fe9753689e26ab",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "pathPrefixReplacements": {},
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.reminders.ReminderRestoreIntegrationTest.xml",
+    "originalSha256": "07908ed7729a666d61b37fe2cd5487f9ec45c495c42ce55703450521e2212679",
+    "archivedSha256": "005304b08b5622daaa13030615cf661633ac25df4ae55a5ef9af30fe4f8f6321",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "pathPrefixReplacements": {},
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.reminders.ReminderRulesTest.xml",
+    "originalSha256": "88334dacf06e1b55416eb0b9dc1d9f13d7e284fd7468eda127bbcd20881b6f31",
+    "archivedSha256": "c1454c729fe2f6b1971d4295e0937e677b555c2abe53444c68fb502854a36d89",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "pathPrefixReplacements": {},
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.reminders.ReminderStatusCopyTest.xml",
+    "originalSha256": "07eded32c9cca8648e1906cdca2e50bcd0334e0a94a59d5f63ece2fc5dda19cd",
+    "archivedSha256": "10396f6d01f2a58411742a45415e04e8c451145f19376886ea0d317b9eb02770",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "pathPrefixReplacements": {},
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.ui.AttachmentClipboardFlowTest.xml",
+    "originalSha256": "d0874a511a533ab82f1231ab0731e51bd39d3c6d538c4730b7c4e61436f30e14",
+    "archivedSha256": "a6f64264bafc0a5253c0e8d1742c8b4b33b3ad885b3df86f17259fb247dd9f69",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "pathPrefixReplacements": {},
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.ui.CalendarGridTest.xml",
+    "originalSha256": "4762dc1624d9314e268e13f72941817ff3fadfbb2cb9e0d119e47ab60da77e6e",
+    "archivedSha256": "7b465cff6233d1026ebc274370f94022ca783e78cb91c2d2fa59b9bbe6e903cd",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "pathPrefixReplacements": {},
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.ui.CharacterArtworkTest.xml",
+    "originalSha256": "2c994f7a62ea36faa452cbc2188134b4adcb1ce824ebb19bc9765e8f00da640c",
+    "archivedSha256": "5b1a5f677e4f99c3df8bae917beb0eb27772eae09909590be10a3a79a38df8a5",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "pathPrefixReplacements": {},
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.ui.CharacterAssetsTest.xml",
+    "originalSha256": "cd766b2004c032e59a4b307acd4fd2f776dd6d6a43c5e1be9bdbd309c2958eff",
+    "archivedSha256": "46edc5fd65e4bce8e76c403fdd71d317aa8dcbb875355785073dc01d221f949c",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "pathPrefixReplacements": {},
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.ui.CharacterBubbleLayoutTest.xml",
+    "originalSha256": "59e540dc600dcfab618f450b41a73ccf5936c950ba28252fbead6d958de96aa9",
+    "archivedSha256": "b5b51341f75608ff0e6937f69d8a6679423b998eecb27bdfb2a44d8761ff06c5",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "pathPrefixReplacements": {},
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.ui.ContentClipboardFlowTest.xml",
+    "originalSha256": "1664d25feeb8e4677092d89b87f683fe2492dc1049b5e2ec2f56578824cc8ba2",
+    "archivedSha256": "d9a2419e4aa287633c654ea8f49da99199b82eb6878b25b74f16fe8762c5bb59",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "pathPrefixReplacements": {},
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.ui.OceanThemeContrastTest.xml",
+    "originalSha256": "dbc26c0ed08030e60abc5c44d3fabda3078138f172a368a95d92d1b0fb8291be",
+    "archivedSha256": "fb1af0c36bf56f7ad9fb1b1497cc70023a8e2ac581833f30d4ed8e0b37c4eb0b",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "pathPrefixReplacements": {},
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.ui.OceanUiRenderTest.xml",
+    "originalSha256": "3997b08aae596d7d11f205275eb768c377bd75593268f511798c1f45a8cd8715",
+    "archivedSha256": "0cf04236b01125eb8fde40e3ceef143c3c0068867a283b810b79e539f6c7e432",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "pathPrefixReplacements": {},
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.ui.ReminderColdLaunchTest.xml",
+    "originalSha256": "71fef7c21fd0c0066c9effde4c2b4c6c2043c64923362e9bd8cbea290e8cd867",
+    "archivedSha256": "eeb684433b52503a8f9d42afe8175ba50eec41630f2868592758a57cbebcb416",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "pathPrefixReplacements": {},
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.ui.SaverAppFlowTest.xml",
+    "originalSha256": "0393d06ccdd75f0f8069968336836c726b60c1894f38b9178225a025594c32f4",
+    "archivedSha256": "57b45a17c638f4ecd29b2824e4703ae9d90d8ff6d1fc4a91c3c1754a500d8f96",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "pathPrefixReplacements": {},
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "full-results/TEST-cn.edu.hust.ddlsaver.ui.SaverViewModelFeedbackTest.xml",
+    "originalSha256": "ffe52ee27d2c173edb8d02a3f0e777e60952595d712a7bbd2b41e0479cdb5879",
+    "archivedSha256": "fcf01039964b2f7b6c596ff52dccd68d6b3559fa92ea6a21f830a3f8dbb72de7",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "pathPrefixReplacements": {},
+      "diagnosticOutputRemoved": false
+    }
+  }
+]

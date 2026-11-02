@@ -1,0 +1,9 @@
+{
+  "atUtc": "2026-11-02T03:11:18.117551+00:00",
+  "targetOnlyForeground": false,
+  "foregroundClasses": [
+    "other"
+  ],
+  "pendingStage": "After fresh retry + controlled broken paste and draft description check, before Save button",
+  "uiInputStoppedByGuard": true
+}

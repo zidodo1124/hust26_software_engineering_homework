@@ -1,0 +1,34 @@
+[
+  {
+    "file": "targeted-01-results/TEST-cn.edu.hust.ddlsaver.platform.AttachmentImportDiagnosticsTest.xml",
+    "originalSha256": "bef743866c2effcd5f0f09d0e46909e03137463fbdebd81289d51508f0dab283",
+    "archivedSha256": "55d3a9960847e62bced0544e262d94251a02a7cc55887078aba10f95bcc11c4e",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "pathPrefixReplacements": {
+        "[user-home]": 8
+      },
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "targeted-01-results/TEST-cn.edu.hust.ddlsaver.reminders.ReminderRestoreIntegrationTest.xml",
+    "originalSha256": "fae8c83aded40abd0a8011bd08c554c4cd4f07a012df9ba04ff1bb5f8ee4efcb",
+    "archivedSha256": "d37b0f8733a8eeadf4f83a7babeb26f67685d705fbe9b84c1028ac4791d7f3bf",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "pathPrefixReplacements": {},
+      "diagnosticOutputRemoved": false
+    }
+  },
+  {
+    "file": "targeted-01-results/TEST-cn.edu.hust.ddlsaver.ui.ReminderColdLaunchTest.xml",
+    "originalSha256": "ad5a9c130f72108fa77e850c2d1e338c6aea35ef0af963fed0f76e8bf54b56bf",
+    "archivedSha256": "81c013f7277601de87de4577ba144f790ee57861de5d60083db4ada1ea391739",
+    "redaction": {
+      "hostnameAttributesRemoved": 1,
+      "pathPrefixReplacements": {},
+      "diagnosticOutputRemoved": false
+    }
+  }
+]
