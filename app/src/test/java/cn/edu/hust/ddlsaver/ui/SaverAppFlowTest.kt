@@ -148,6 +148,41 @@ class SaverAppFlowTest {
     }
 
     @Test
+    fun sprintTimeAcceptsHoursAndDaysAndReopensInLargestExactUnit() {
+        awaitText("DDL Saver")
+        compose.onNodeWithTag("nav-month").performClick()
+        compose.onNodeWithTag("calendar-create-selected").performClick()
+        awaitText("新建事项")
+        compose.onNodeWithTag("event-title").performTextInput("多单位速通")
+        // New items default to hours; 1.5 days must be stored as 2160 minutes.
+        compose.onNodeWithTag("event-sprint-unit-HOUR").performScrollTo().assertIsSelected()
+        compose.onNodeWithTag("event-sprint-unit-DAY").performScrollTo().performClick()
+        compose.onNodeWithTag("event-sprint").performScrollTo().performTextInput("1.5")
+        compose.onNodeWithText("共 1 天 12 小时。剩余时间不超过它时进入速通危险期（变红）。").performScrollTo().assertExists()
+        compose.onNodeWithText("按速通时长推算 · 北京时间").performScrollTo().assertExists()
+        compose.onNodeWithTag("event-save").performScrollTo().performClick()
+        awaitText("事项详情")
+        assertEquals(2160L, storedEvents().single().sprintMinutes)
+        compose.onAllNodesWithText("1 天 12 小时")[0].assertExists()
+
+        compose.onNodeWithText("编辑事项").performScrollTo().performClick()
+        awaitText("保存事项")
+        compose.onNodeWithTag("event-sprint").performScrollTo().assertTextContains("36")
+        compose.onNodeWithTag("event-sprint-unit-HOUR").assertIsSelected()
+        compose.onNodeWithTag("event-sprint").performTextReplacement("0.4")
+        compose.onNodeWithTag("event-sprint-unit-MINUTE").performScrollTo().performClick()
+        compose.onNodeWithText("时长至少 1 分钟。").performScrollTo().assertExists()
+        compose.onNodeWithTag("event-save").performScrollTo().performClick()
+        assertEquals(2160L, storedEvents().single().sprintMinutes)
+        compose.onNodeWithTag("event-sprint").performScrollTo().performTextReplacement("2")
+        compose.onNodeWithTag("event-sprint-unit-DAY").performScrollTo().performClick()
+        compose.onNodeWithTag("event-save").performScrollTo().performClick()
+        awaitText("事项详情")
+        assertEquals(2880L, storedEvents().single().sprintMinutes)
+        compose.onAllNodesWithText("2 天")[0].assertExists()
+    }
+
+    @Test
     fun timelineBlankSlotPrefillsEditorAndCancelKeepsViewAndDate() {
         awaitText("DDL Saver")
         val today = Instant.now().atZone(BeijingZone).toLocalDate()
@@ -723,7 +758,11 @@ class SaverAppFlowTest {
         withRepository { saveSettings(original) }
         reloadModel()
         compose.onNodeWithText("设置").performClick()
-        compose.onNodeWithTag("settings-urgent-minutes").performScrollTo().performTextReplacement("480")
+        compose.onNodeWithTag("settings-about-version").performScrollTo().assertTextContains("1.0.0", substring = true)
+        // 120 minutes is shown in the largest exact unit; typing 8 hours stores 480 minutes.
+        compose.onNodeWithTag("settings-urgent-minutes").performScrollTo().assertTextContains("2")
+        compose.onNodeWithTag("settings-urgent-minutes-unit-HOUR").assertIsSelected()
+        compose.onNodeWithTag("settings-urgent-minutes").performTextReplacement("8")
         compose.onNodeWithTag("settings-save").performScrollTo().performClick()
         awaitText("DDL Saver")
         assertEquals(original.copy(urgentMinutes = 480), withRepository { settings.first() })
@@ -735,7 +774,7 @@ class SaverAppFlowTest {
         compose.onNodeWithTag("settings-summary-time").performScrollTo().performTextReplacement("07:15")
         compose.onNodeWithTag("settings-deadline-lead").performScrollTo().performTextReplacement("0")
         compose.onNodeWithTag("settings-save").performScrollTo().performClick()
-        compose.onNodeWithText("请填大于 0 的整数分钟数，数值不能过大。").assertExists()
+        compose.onNodeWithText("时长至少 1 分钟。").assertExists()
         compose.onNodeWithTag("settings-deadline-lead").performScrollTo().performTextReplacement("30")
         compose.onNodeWithTag("settings-daily-enabled").performScrollTo().performClick()
         compose.onNodeWithTag("settings-save").performScrollTo().performClick()

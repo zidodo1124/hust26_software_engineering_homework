@@ -12,7 +12,6 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -22,7 +21,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import cn.edu.hust.ddlsaver.domain.AppSettings
 import cn.edu.hust.ddlsaver.domain.CharacterStyle
@@ -30,7 +28,12 @@ import cn.edu.hust.ddlsaver.domain.ExpiredPolicy
 import cn.edu.hust.ddlsaver.reminders.ReminderHealth
 import cn.edu.hust.ddlsaver.reminders.ReminderStatusCopy
 
-private const val SettingsMaxDurationMinutes = Long.MAX_VALUE / 60_000L
+/** Supporting text for a required duration setting: the error, the converted total, or the default hint. */
+internal fun durationHint(parse: DurationParse, submitted: Boolean, defaultHint: String): String = when (parse) {
+    is DurationParse.Invalid -> parse.message
+    is DurationParse.Valid -> "共 ${formatDuration(parse.minutes)}。$defaultHint"
+    DurationParse.Blank -> if (submitted) "请填写时长。" else defaultHint
+}
 
 internal fun parseSummaryMinuteOfDay(value: String): Int? {
     if (!Regex("\\d{2}:\\d{2}").matches(value.trim())) return null
@@ -52,15 +55,19 @@ internal fun SettingsScreen(
     onArchiveExpired: () -> Unit,
     onRefreshReminders: () -> Unit,
 ) {
-    val original = rememberSaveable { current.urgentMinutes.toString() }
+    val original = rememberSaveable { splitDuration(current.urgentMinutes).amount }
+    val originalUnit = rememberSaveable { splitDuration(current.urgentMinutes).unit.name }
     val originalPolicy = rememberSaveable { current.expiredPolicy.name }
     val originalDaily = rememberSaveable { current.dailySummaryEnabled }
     val originalTime = rememberSaveable { String.format(java.util.Locale.ROOT, "%02d:%02d", current.dailySummaryMinuteOfDay / 60, current.dailySummaryMinuteOfDay % 60) }
     val originalDanger = rememberSaveable { current.dangerReminderEnabled }
     val originalDeadline = rememberSaveable { current.deadlineReminderEnabled }
-    val originalLead = rememberSaveable { current.deadlineLeadMinutes.toString() }
+    val originalLead = rememberSaveable { splitDuration(current.deadlineLeadMinutes).amount }
+    val originalLeadUnit = rememberSaveable { splitDuration(current.deadlineLeadMinutes).unit.name }
     val originalStyle = rememberSaveable { current.characterStyle.name }
     var minutes by rememberSaveable { mutableStateOf(original) }
+    var minutesUnit by rememberSaveable { mutableStateOf(originalUnit) }
+    var leadUnit by rememberSaveable { mutableStateOf(originalLeadUnit) }
     var policy by rememberSaveable { mutableStateOf(originalPolicy) }
     var daily by rememberSaveable { mutableStateOf(originalDaily) }
     var summaryTime by rememberSaveable { mutableStateOf(originalTime) }
@@ -71,13 +78,16 @@ internal fun SettingsScreen(
     var confirmArchive by rememberSaveable { mutableStateOf(false) }
     var submitted by rememberSaveable { mutableStateOf(false) }
     var discardDialog by rememberSaveable { mutableStateOf(false) }
-    val parsed = minutes.trim().toLongOrNull()
-    val parsedLead = lead.trim().toLongOrNull()
+    val urgentParse = parseDuration(minutes, DurationUnit.fromStored(minutesUnit))
+    val leadParse = parseDuration(lead, DurationUnit.fromStored(leadUnit))
+    val parsed = (urgentParse as? DurationParse.Valid)?.minutes
+    val parsedLead = (leadParse as? DurationParse.Valid)?.minutes
     val parsedTime = parseSummaryMinuteOfDay(summaryTime)
-    val invalid = parsed == null || parsed <= 0 || parsed > SettingsMaxDurationMinutes
-    val invalidLead = parsedLead == null || parsedLead <= 0 || parsedLead > SettingsMaxDurationMinutes
-    val dirty = minutes != original || policy != originalPolicy || daily != originalDaily || summaryTime != originalTime ||
-        danger != originalDanger || deadline != originalDeadline || lead != originalLead || characterStyle != originalStyle
+    val invalid = parsed == null
+    val invalidLead = parsedLead == null
+    val dirty = minutes != original || minutesUnit != originalUnit || policy != originalPolicy || daily != originalDaily ||
+        summaryTime != originalTime || danger != originalDanger || deadline != originalDeadline || lead != originalLead ||
+        leadUnit != originalLeadUnit || characterStyle != originalStyle
     val back: () -> Unit = { if (!busy) { if (dirty) discardDialog = true else onBack() } }
     BackHandler(onBack = back)
     Column(Modifier.fillMaxSize()) {
@@ -93,11 +103,10 @@ internal fun SettingsScreen(
                 Column(Modifier.fillMaxWidth().padding(20.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
                     Text("临近截止", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold)
                     Text("设置截止前多久变橙色，进入速通危险期后优先变红。", color = Muted)
-                    OutlinedTextField(minutes, { minutes = it }, enabled = !busy,
-                        label = { Text("提前多少分钟") }, modifier = Modifier.fillMaxWidth().testTag("settings-urgent-minutes"),
-                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number), singleLine = true,
-                        isError = submitted && invalid,
-                        supportingText = { Text(if (submitted && invalid) "请填大于 0 的整数分钟数，数值不能过大。" else "默认 1440 分钟，也就是 24 小时。") })
+                    DurationField(minutes, DurationUnit.fromStored(minutesUnit), { minutes = it }, { minutesUnit = it.name },
+                        label = "截止前多久变橙色", tag = "settings-urgent-minutes", enabled = !busy,
+                        isError = urgentParse is DurationParse.Invalid || (submitted && invalid),
+                        supportingText = durationHint(urgentParse, submitted, "默认 1 天（24 小时）。"))
                 }
             }
             Text("通知提醒", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold)
@@ -109,12 +118,10 @@ internal fun SettingsScreen(
                 supportingText = { Text(if (submitted && parsedTime == null) "请按 HH:mm 填写时间，范围是 00:00 至 23:59。" else "默认早上 08:00 提醒，只汇总今天截止、未完成且未归档的事项。没有待办就不发。") })
             ReminderSwitch("进入速通危险期时提醒", danger, busy, "settings-danger-enabled") { danger = it }
             ReminderSwitch("临近截止时提醒", deadline, busy, "settings-deadline-enabled") { deadline = it }
-            OutlinedTextField(lead, { lead = it }, enabled = !busy,
-                label = { Text("提前多少分钟提醒") }, singleLine = true,
-                modifier = Modifier.fillMaxWidth().testTag("settings-deadline-lead"),
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                isError = submitted && invalidLead,
-                supportingText = { Text(if (submitted && invalidLead) "请填大于 0 的整数分钟数，数值不能过大。" else "默认提前 60 分钟通知，和事项变橙色的时间分开设置。") })
+            DurationField(lead, DurationUnit.fromStored(leadUnit), { lead = it }, { leadUnit = it.name },
+                label = "截止前多久提醒", tag = "settings-deadline-lead", enabled = !busy,
+                isError = leadParse is DurationParse.Invalid || (submitted && invalidLead),
+                supportingText = durationHint(leadParse, submitted, "默认提前 1 小时通知，和事项变橙色的时间分开设置。"))
             ReminderPermissionPanel(health, busy, onRefreshReminders)
             operationError?.let { ErrorNotice(it) }
             Text("过期事项处理", fontWeight = FontWeight.SemiBold)
@@ -144,7 +151,7 @@ internal fun SettingsScreen(
             Spacer(Modifier.height(8.dp))
             Text("时间与数据", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.SemiBold)
             Text("时间统一用北京时间。事项、图片和设置都存在这台手机上，平时不用注册，也不用联网。", color = Muted)
-            Text("HUSTer's DDL Saver · 花园鳗", color = Muted, style = MaterialTheme.typography.labelMedium)
+            AboutSection()
         }
     }
     if (discardDialog) DiscardDialog({ discardDialog = false }, { discardDialog = false; onBack() })
@@ -203,5 +210,23 @@ private fun ReminderPermissionPanel(health: ReminderHealth, busy: Boolean, onRef
                 enabled = !busy, modifier = Modifier.fillMaxWidth().testTag("request-exact-alarm")) { Text("允许精确提醒") }
         }
         TextButton(onRefresh, enabled = !busy, modifier = Modifier.testTag("refresh-reminders")) { Text("检查并安排提醒") }
+    }
+}
+
+/** Version and course information, so a reviewer can tell which build is installed. */
+@Composable
+internal fun AboutSection() {
+    val context = LocalContext.current
+    val version = remember(context) {
+        runCatching { context.packageManager.getPackageInfo(context.packageName, 0).versionName }.getOrNull() ?: "未知"
+    }
+    Surface(color = MaterialTheme.colorScheme.surface, shape = androidx.compose.foundation.shape.RoundedCornerShape(16.dp),
+        modifier = Modifier.fillMaxWidth().testTag("settings-about")) {
+        Column(Modifier.fillMaxWidth().padding(16.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+            Text("关于", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.SemiBold)
+            Text("HUSTer's DDL Saver $version", modifier = Modifier.testTag("settings-about-version"))
+            Text("华中科技大学 软件工程课程设计 · 花园鳗小组", color = Muted, style = MaterialTheme.typography.bodySmall)
+            Text("成员：支盟渊、付泽文、岳羽泉", color = Muted, style = MaterialTheme.typography.bodySmall)
+        }
     }
 }
