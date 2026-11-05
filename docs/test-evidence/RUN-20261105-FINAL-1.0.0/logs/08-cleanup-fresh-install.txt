@@ -1,0 +1,18 @@
+# cleanup + fresh install check 2026-11-05T12:34:15Z
+font_scale=1.0
+--- uninstall (removes QA data)
+Success
+--- fresh install of the same APK sha256=cb421de42cd4b548e5a4481f09b3aa9288ae780d4c76746807f78a50274f9234
+Performing Streamed Install
+Success
+versionCode=12 minSdk=26 targetSdk=35
+versionName=1.0.0
+--- cold start on empty data
+Status: ok
+LaunchState: COLD
+TotalTime: 1719
+--- remove pushed test images
+removed
+# restore permissions for demo 2026-11-05T12:36:54Z
+POST_NOTIFICATIONS granted
+SCHEDULE_EXACT_ALARM: allow

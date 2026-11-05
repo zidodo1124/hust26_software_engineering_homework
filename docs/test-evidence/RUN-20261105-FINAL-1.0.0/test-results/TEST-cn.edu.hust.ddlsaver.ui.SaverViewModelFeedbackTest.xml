@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.ui.SaverViewModelFeedbackTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-11-05T12:39:02" hostname="DESKTOP-QBAGC3T" time="0.152">
+  <properties/>
+  <testcase name="onlySuccessfulCompletionShowsFeedbackAndRestoreClearsIt" classname="cn.edu.hust.ddlsaver.ui.SaverViewModelFeedbackTest" time="0.152"/>
+  <system-out><![CDATA[FEEDBACK-CLOCK requestAt=106 successObservedAt=261 observationWindow=155
+FEEDBACK-CLOCK phase=strict-before-expiry beforeAdvance=261 target=5105
+FEEDBACK-CLOCK phase=strict-before-expiry afterAdvance=5105
+FEEDBACK-CLOCK phase=latest-possible-expiry beforeAdvance=5105 target=5261
+FEEDBACK-CLOCK phase=latest-possible-expiry afterAdvance=5261
+]]></system-out>
+  <system-err><![CDATA[Invalid ID 0x00000000.
+]]></system-err>
+</testsuite>

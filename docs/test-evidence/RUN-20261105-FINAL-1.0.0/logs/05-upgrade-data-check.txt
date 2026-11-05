@@ -1,0 +1,9 @@
+# data check after 0.3.5 -> 1.0.0 upgrade (read from a local copy, not committed)
+user_version(schema) = 5
+tables = 11 ['attachments', 'custom_fields', 'event_tags', 'events', 'recurrence_occurrences', 'recurrence_series', 'reminder_control', 'reminder_plans', 'settings', 'sources', 'tags']
+event title=QA-Upgrade-A sprintMinutes=120 deadlineAt=1794046440000
+event title=QA-Upgrade-B sprintMinutes=None deadlineAt=1793898960000
+attachments rows = 1
+attachment files on device = 1
+settings urgentMinutes = 120
+recurrence tables present = True

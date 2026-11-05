@@ -1,0 +1,7 @@
+# scheduled alarms for cn.edu.hust.ddlsaver at 12:26:57 UTC
+    RTC_WAKEUP #19: Alarm{dadc371 type 0 origWhen 1793881800000 whenElapsed 279784805 PendingIntent{355222: PendingIntentRecord{8b53513 cn.edu.hust.ddlsaver broadcastIntent}} cn.edu.hust.ddlsaver procName cn.edu.hust.ddlsaver}
+      tag=*walarm*:cn.edu.hust.ddlsaver.REMINDER_WAKE
+      type=RTC_WAKEUP origWhen=2026-11-05 20:30:00.000 window=0 exactAllowReason=permission repeatInterval=0 count=0 flags=0x5
+      whenElapsed=+3m4s533ms maxWhenElapsed=+3m4s533ms
+          type=RTC_WAKEUP tag=*walarm*:cn.edu.hust.ddlsaver.REMINDER_WAKE 
+          type=RTC_WAKEUP tag=*walarm*:cn.edu.hust.ddlsaver.REMINDER_WAKE 
