@@ -127,6 +127,8 @@ def build_reference(path: Path) -> None:
     paragraph_style(doc, "Toc Entry 1", SONG, 12, bold=True, line=1.5)
     paragraph_style(doc, "Toc Entry 2", SONG, 12, line=1.5, indent_first=Cm(0.84))
     paragraph_style(doc, "Source Code", MONO, 9, line=1.0, latin=MONO)
+    doc.styles["Source Code"].paragraph_format.keep_together = True
+    doc.styles["Source Code"].paragraph_format.widow_control = True
     try:
         set_font(doc.styles["Verbatim Char"], MONO, 9, latin=MONO)
     except KeyError:
@@ -163,7 +165,7 @@ def build_reference(path: Path) -> None:
             instr.set(qn("xml:space"), "preserve")
             instr.text = text
             run._r.append(instr)
-    set_font(run, SONG, 10.5)
+    set_font(run, SONG, 10.5, color=RGBColor(0, 0, 0))
     doc.save(path)
 
 
@@ -180,11 +182,9 @@ def image_width(src: str, base: Path) -> str:
             ratio = im.height / im.width
     except Exception:
         return "14.5cm"
-    if ratio > 1.6:
-        return "7.5cm"
-    if ratio > 1.0:
-        return "11cm"
-    return "14.5cm"
+    # Use the page width for diagrams, capped by a full-page figure's height.
+    # Fixed narrow widths made portrait sequence diagrams unnecessarily tiny.
+    return f"{min(14.5, 20.0 / ratio):.2f}cm"
 
 
 def static_toc(text: str) -> list[str]:
@@ -232,6 +232,7 @@ def postprocess(path: Path) -> None:
     doc = Document(path)
     for table in doc.tables:
         table.alignment = WD_TABLE_ALIGNMENT.CENTER
+        table.autofit = False
         tbl_pr = table._tbl.tblPr
         for old in tbl_pr.findall(qn("w:tblBorders")):
             tbl_pr.remove(old)
@@ -242,9 +243,43 @@ def postprocess(path: Path) -> None:
         for old in tbl_pr.findall(qn("w:tblLayout")):
             tbl_pr.remove(old)
         layout = OxmlElement("w:tblLayout")
-        layout.set(qn("w:type"), "autofit")
+        layout.set(qn("w:type"), "fixed")
         insert_ordered(tbl_pr, layout, TBL_AFTER_LAYOUT)
+        # Allocate more width to descriptive columns than to IDs and result fields.
+        # Use a capped character count so one long cell does not dominate the table.
+        weights = []
+        for column in table.columns:
+            lengths = sorted(
+                min(sum(2 if ord(ch) > 127 else 1 for ch in cell.text), 100)
+                for cell in column.cells
+            )
+            typical = lengths[(len(lengths) - 1) * 3 // 4] if lengths else 0
+            weights.append(max(10, typical) ** 0.5)
+        total = sum(weights)
+        for column, weight in zip(table.columns, weights):
+            width = Cm(14.66 * weight / total)
+            column.width = width
+            for cell in column.cells:
+                cell.width = width
+        margins = tbl_pr.find(qn("w:tblCellMar"))
+        if margins is None:
+            margins = OxmlElement("w:tblCellMar")
+            insert_ordered(tbl_pr, margins, {"tblLook", "tblCaption", "tblDescription"})
+        for side, value in (("top", 65), ("bottom", 65), ("left", 90), ("right", 90)):
+            element = margins.find(qn(f"w:{side}"))
+            if element is None:
+                element = OxmlElement(f"w:{side}")
+                margins.append(element)
+            element.set(qn("w:w"), str(value))
+            element.set(qn("w:type"), "dxa")
         for r_index, row in enumerate(table.rows):
+            tr_pr = row._tr.get_or_add_trPr()
+            if r_index == 0:
+                repeat = OxmlElement("w:tblHeader")
+                repeat.set(qn("w:val"), "true")
+                tr_pr.append(repeat)
+            no_split = OxmlElement("w:cantSplit")
+            tr_pr.append(no_split)
             for cell in row.cells:
                 for paragraph in cell.paragraphs:
                     paragraph.style = doc.styles["Compact"]

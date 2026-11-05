@@ -1,7 +1,6 @@
 @startuml seq-recurrence
 !include _style.iuml
 skinparam maxMessageSize 90
-skinparam ParticipantPadding 4
 autonumber
 actor 用户
 participant "EventEditor" as ED

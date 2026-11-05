@@ -1,6 +1,7 @@
 @startuml class
 !include _style.iuml
-hide empty members
+' The overview shows types and relationships; member details are in the report tables.
+hide members
 top to bottom direction
 skinparam dpi 130
 package domain {
