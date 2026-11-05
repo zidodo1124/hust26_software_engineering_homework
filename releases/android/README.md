@@ -1,39 +1,44 @@
 # DDL Saver 手机安装包
 
-[直接下载 0.3.7 安装压缩包](https://github.com/zidodo1124/hust26_software_engineering_homework/raw/refs/heads/main/releases/android/DDL-Saver-0.3.7-android.zip) · [查看仓库内文件](DDL-Saver-0.3.7-android.zip)
+## 最新版本 1.0.0（推荐）
 
-这是课程演示用的 **0.3.7（versionCode 10）debug 签名包**，适用于 **Android 8.0 及以上**。它与本轮荣耀 X50 实机检查所安装的 APK 完全一致。
+[下载 DDL-Saver-1.0.0.apk](https://github.com/zidodo1124/hust26_software_engineering_homework/raw/refs/heads/main/releases/android/DDL-Saver-1.0.0.apk) · [Releases 页面](https://github.com/zidodo1124/hust26_software_engineering_homework/releases/tag/v1.0.0) · [查看仓库内文件](DDL-Saver-1.0.0.apk)
 
-## 怎么安装
+<img src="download-qr.png" alt="扫码下载 1.0.0" width="160">
 
-1. 下载并解压 `DDL-Saver-0.3.7-android.zip`。
-2. 将里面的 `DDL-Saver-0.3.7/DDL-Saver-0.3.7.apk` 发送到手机，并下载到手机本地。
-3. 用手机的文件管理打开 APK；若系统询问，允许当前来源安装应用，然后点“安装”或“继续安装”。安装完成即可打开。
+手机扫码即可下载（二维码指向 Releases 中的同一个 APK）。适用于 **Android 8.0 及以上**。这是课程演示用的 debug 签名包，与 2026-11-05 在荣耀 X50 上完成真机验收的 APK 完全一致（见[验收记录](../../docs/test-evidence/RUN-20261105-FINAL-1.0.0/README.md)）。
 
-也可以直接在手机上下载、解压并安装。不需要电脑、USB 调试、Android Studio 或账号。压缩包内附有 `安装说明.txt`。
+### 怎么安装
 
-已装同签名旧版时可覆盖安装，保留本地数据；本轮已验证荣耀 X50 从 0.3.5 升级到 0.3.7。若提示签名不一致，请先保留旧版和数据，找队友获取同签名包，不要直接卸载。
+1. 在手机浏览器中下载 `DDL-Saver-1.0.0.apk`（或在电脑下载后发到手机）。
+2. 用手机的文件管理打开 APK；若系统询问，允许当前来源安装应用，然后点“安装”。
+3. 打开 DDL Saver，进入“设置”，点“设置系统通知权限”允许通知；Android 12 及以上建议再点“允许精确提醒”，打开“闹钟和提醒”。
 
-需要提醒时，在 App 设置中按提示开启通知及相关系统权限。手机的后台限制、锁屏和重启仍可能影响送达；这份安装包不代表这些场景已经全部通过验收。
+不需要电脑、USB 调试、Android Studio 或注册账号；应用不联网，数据只保存在手机上。
 
-## 版本和校验
+### 从旧版本升级
+
+1.0.0 使用新的签名证书，**不能直接覆盖 0.3.x**（系统会提示签名不一致）。请先卸载旧版再安装 1.0.0；卸载会清除旧版中的事项和图片，如有重要内容请先记下。之后的版本会沿用 1.0.0 的签名，可直接覆盖升级并保留数据。
+
+### 版本和校验
 
 | 项目 | 值 |
 | --- | --- |
 | 应用包名 | `cn.edu.hust.ddlsaver` |
-| 版本 | `0.3.7` / `10` |
+| 版本 | `1.0.0` / versionCode `12` |
 | 数据库版本 | `5` |
-| APK 大小 | `15,184,547` 字节 |
-| ZIP 大小 | `14,728,839` 字节 |
-| 产品源码 | [`295fb57`](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/295fb579035a2efecbf914f64e0c0bb2caf263b6) |
-| APK SHA-256 | `f3b263c210c20742dbb192cb847c1893b0ea9b4ff2b68a94d1c4da318ba088d9` |
-| ZIP SHA-256 | `d2d4089c875208b42e682a431862ea3054c467daf1ba39c5fed49128d6dd636c` |
-| 签名证书 SHA-256 | `978833bcaf0fc001248f5d8501bfa1f9d1273922474ed601f2c60a4548a652b9` |
+| APK 大小 | `15,282,839` 字节 |
+| 产品源码 | `main` 提交 [`3d8ee79`](https://github.com/zidodo1124/hust26_software_engineering_homework/commit/3d8ee79a8bf2e7fb3b474659b02612f0dfc92ac1)（PR #16） |
+| APK SHA-256 | `cb421de42cd4b548e5a4481f09b3aa9288ae780d4c76746807f78a50274f9234` |
+| 签名证书 SHA-256 | `8caa4a508d6f35066fe3a619b8ed7282688c04aa24e2614baf423e473bb113f7` |
 
-仓库中的 [SHA256SUMS.txt](SHA256SUMS.txt) 用于核对 0.3.7 ZIP 和 0.3.5 APK；0.3.7 ZIP 内的同名校验文件用于核对解压后的 APK。安装包没有包含用户事项、图片、数据库、签名密钥或开发工具。
+校验值也列在 [SHA256SUMS.txt](SHA256SUMS.txt)。安装包不包含任何用户数据、签名密钥或开发工具。
 
-查看[项目文档](../../docs/README.md)了解功能、演示步骤和源码位置。
+## 历史版本
 
-## 历史演示版 0.3.5
+| 版本 | 文件 | 说明 |
+| --- | --- | --- |
+| 0.3.7（versionCode 10） | [DDL-Saver-0.3.7-android.zip](DDL-Saver-0.3.7-android.zip) | 压缩包内含 APK 与安装说明；签名证书 `978833bc…52b9`；产品源码 `295fb57` |
+| 0.3.5（versionCode 8） | [DDL-Saver-0.3.5.apk](DDL-Saver-0.3.5.apk) | 0.3.5 演示版，与[当时实机核验的演示包](../../docs/demo-final-0.3.5.md)字节一致；签名同 0.3.7 |
 
-[下载 0.3.5 演示 APK](DDL-Saver-0.3.5.apk)（versionCode 8、数据库版本 4）。此文件与[当时实机核验的演示包](../../docs/demo-final-0.3.5.md)字节一致，用于复现原演示。日常安装仍推荐上面的 0.3.7 安装包；已有 0.3.7 或更新版本的设备不要降级到 0.3.5。
+历史版本只用于复现当时的演示，日常使用请安装 1.0.0。
