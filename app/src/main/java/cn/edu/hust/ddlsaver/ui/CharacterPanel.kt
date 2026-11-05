@@ -140,10 +140,25 @@ internal fun CharacterArtwork(style: CharacterStyle, state: CharacterState, modi
 
 /** Offline artwork; failure to decode never hides the textual status. */
 @Composable
-fun CharacterPanel(feedback: CharacterFeedback, modifier: Modifier = Modifier, style: CharacterStyle = CharacterStyle.CLASSIC) {
+fun CharacterPanel(feedback: CharacterFeedback, modifier: Modifier = Modifier, style: CharacterStyle = CharacterStyle.CLASSIC, compact: Boolean = false) {
     var creditsOpen by rememberSaveable { mutableStateOf(false) }
-    CharacterPanelLayout(feedback, modifier, style, onCredits = { creditsOpen = true }) { imageModifier ->
-        CharacterArtwork(style, feedback.state, imageModifier)
+    if (compact) {
+        Surface(modifier.testTag("character-panel"), color = MaterialTheme.colorScheme.surface, shape = MaterialTheme.shapes.large,
+            border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant)) {
+            Row(Modifier.fillMaxWidth().padding(14.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                CharacterArtwork(style, feedback.state, Modifier.size(64.dp))
+                Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                    Text("蓝色大肥鱼", style = MaterialTheme.typography.labelSmall, color = Ocean)
+                    Text(feedback.title, style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.SemiBold, modifier = Modifier.testTag("character-status"))
+                    Text(feedback.line, style = MaterialTheme.typography.bodySmall, color = Muted)
+                    TextButton({ creditsOpen = true }, contentPadding = PaddingValues(0.dp), modifier = Modifier.heightIn(min = 32.dp)) { Text("素材与署名", style = MaterialTheme.typography.labelSmall) }
+                }
+            }
+        }
+    } else {
+        CharacterPanelLayout(feedback, modifier, style, onCredits = { creditsOpen = true }) { imageModifier ->
+            CharacterArtwork(style, feedback.state, imageModifier)
+        }
     }
     if (creditsOpen) CharacterCreditsDialog(style = style) { creditsOpen = false }
 }

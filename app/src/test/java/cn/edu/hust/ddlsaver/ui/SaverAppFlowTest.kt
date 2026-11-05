@@ -28,6 +28,12 @@ import androidx.compose.ui.test.performScrollTo
 import androidx.compose.ui.test.performScrollToNode
 import androidx.compose.ui.test.performTextInput
 import androidx.compose.ui.test.performTextReplacement
+import androidx.compose.ui.test.performTouchInput
+import androidx.compose.ui.test.click
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.semantics.SemanticsActions
+import androidx.compose.ui.semantics.SemanticsProperties
+import androidx.compose.ui.test.performSemanticsAction
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.core.app.ActivityScenario
 import androidx.lifecycle.ViewModelProvider
@@ -116,6 +122,84 @@ class SaverAppFlowTest {
     @Before
     fun cacheModelForFailureDiagnostics() {
         diagnosticModel = ViewModelProvider(compose.activity)[SaverViewModel::class.java]
+    }
+
+    @Test
+    fun monthQuickCreatePrefillsDateAndReturnsToCalendarAfterSaving() {
+        awaitText("DDL Saver")
+        val date = Instant.now().atZone(BeijingZone).toLocalDate().withDayOfMonth(10)
+        compose.onNodeWithTag("nav-month").performClick()
+        compose.onNodeWithTag("calendar-date-$date", useUnmergedTree = true).performScrollTo().performClick()
+        compose.onNodeWithTag("calendar-create-selected").performClick()
+        awaitText("新建事项")
+        compose.onNodeWithText(date.toString()).assertExists()
+        compose.onNodeWithText("23:59").assertExists()
+        compose.onNodeWithTag("event-title").performTextInput("月历快捷事项")
+        compose.onNodeWithText("按默认 60 分钟展示 · 北京时间").performScrollTo().assertExists()
+        compose.onNodeWithTag("event-save").performScrollTo().performClick()
+        awaitText("事项详情")
+        val item = storedEvents().single()
+        assertEquals(date.atTime(23, 59).atZone(BeijingZone).toInstant().toEpochMilli(), item.deadlineAt)
+        assertNull(item.sprintMinutes)
+        compose.onNodeWithText("‹ 返回").performClick()
+        compose.onNodeWithTag("calendar-screen").assertExists()
+        compose.onNodeWithTag("calendar-selected-summary").performScrollTo()
+            .assertTextEquals("${date.monthValue}月${date.dayOfMonth}日 · 1 件事项")
+    }
+
+    @Test
+    fun timelineBlankSlotPrefillsEditorAndCancelKeepsViewAndDate() {
+        awaitText("DDL Saver")
+        val today = Instant.now().atZone(BeijingZone).toLocalDate()
+        compose.onNodeWithTag("nav-day").performClick()
+        compose.onNodeWithTag("calendar-current-time", useUnmergedTree = true).assertExists()
+        compose.onNodeWithTag("calendar-time-rules").performClick()
+        compose.onNodeWithText("日历时间规则").assertExists()
+        compose.onNodeWithText("知道了").performClick()
+        compose.onNodeWithTag("page-next").performClick()
+        compose.onNodeWithTag("page-period").assertTextEquals(today.plusDays(1).toString())
+        compose.onNodeWithTag("calendar-timeline").performSemanticsAction(SemanticsActions.ScrollBy) { it(0f, 150f) }
+        compose.waitForIdle()
+        val scroll = compose.onNodeWithTag("calendar-timeline").fetchSemanticsNode()
+            .config[SemanticsProperties.VerticalScrollAxisRange].value()
+        compose.onNodeWithTag("calendar-timeline").performTouchInput { click(Offset(width * 0.7f, height * 0.35f)) }
+        awaitText("新建事项")
+        compose.onNodeWithText(today.plusDays(1).toString()).assertExists()
+        compose.onNodeWithTag("editor-calendar-interval").performScrollTo().assertExists()
+        compose.onNodeWithText("‹ 返回").performClick()
+        compose.onNodeWithTag("page-period").assertTextEquals(today.plusDays(1).toString())
+        assertEquals(scroll, compose.onNodeWithTag("calendar-timeline").fetchSemanticsNode()
+            .config[SemanticsProperties.VerticalScrollAxisRange].value(), 0.5f)
+        assertTrue(storedEvents().isEmpty())
+        compose.onNodeWithTag("calendar-page-today").performClick()
+        compose.onNodeWithTag("page-period").assertTextEquals(today.toString())
+        compose.onNodeWithTag("calendar-current-time", useUnmergedTree = true).assertExists()
+    }
+
+    @Test
+    fun bottomNavigationOpensCalendarAndReturnsToSameViewAfterDetail() {
+        awaitText("DDL Saver")
+        val today = Instant.now().atZone(BeijingZone).toLocalDate()
+        val deadline = today.atTime(18, 0).atZone(BeijingZone).toInstant().toEpochMilli()
+        val item = withRepository { save(EventDraft(title = "日历测试事项", deadlineAt = deadline, sprintMinutes = 120)) }
+        reloadModel()
+        compose.onNodeWithTag("nav-month").performClick()
+        compose.onNodeWithTag("calendar-screen").assertExists()
+        compose.onNodeWithTag("month-title-${item.id}", useUnmergedTree = true).assertExists()
+        compose.onNodeWithTag("calendar-date-$today", useUnmergedTree = true).performClick()
+        compose.onNodeWithTag("calendar-selected-summary").performScrollTo()
+            .assertTextEquals("${today.monthValue}月${today.dayOfMonth}日 · 1 件事项")
+        compose.onNodeWithTag("event-card-${item.id}").performScrollTo().performClick()
+        awaitText("事项详情")
+        compose.onNodeWithText("‹ 返回").performClick()
+        compose.onNodeWithTag("calendar-screen").assertExists()
+        compose.onNodeWithTag("nav-week").performClick()
+        compose.onNodeWithTag("calendar-timeline").assertExists()
+        compose.onNodeWithTag("nav-day").performClick()
+        compose.onNodeWithTag("page-period").assertTextEquals(today.toString())
+        compose.onNodeWithTag("timeline-event-$today-${item.id}", useUnmergedTree = true).assertExists()
+        compose.onNodeWithTag("nav-home").performClick()
+        compose.onNodeWithTag("event-list").assertExists()
     }
 
     @Test

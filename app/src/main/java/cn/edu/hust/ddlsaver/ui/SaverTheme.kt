@@ -2,14 +2,20 @@ package cn.edu.hust.ddlsaver.ui
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Typography
+import androidx.compose.material3.Shapes
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 internal val Ink = Color(0xFF173653)
 internal val Muted = Color(0xFF52687E)
 internal val Ocean = Color(0xFF365DB8)
-internal val Paper = Color(0xFFF3F8FF)
+internal val Paper = Color(0xFFF5F7FB)
 internal val OceanMist = Color(0xFFE4EFFF)
 internal val OceanBorder = Color(0xFFC8D9F1)
 
@@ -54,5 +60,18 @@ internal val SaverColors = lightColorScheme(
 
 @Composable
 fun SaverTheme(content: @Composable () -> Unit) {
-    MaterialTheme(colorScheme = SaverColors, typography = Typography(), content = content)
+    MaterialTheme(colorScheme = SaverColors, shapes = Shapes(
+        extraSmall = RoundedCornerShape(6.dp), small = RoundedCornerShape(10.dp),
+        medium = RoundedCornerShape(14.dp), large = RoundedCornerShape(20.dp), extraLarge = RoundedCornerShape(24.dp)),
+        typography = Typography(
+            headlineSmall = TextStyle(fontSize = 25.sp, lineHeight = 34.sp, fontWeight = FontWeight.Bold),
+            titleLarge = TextStyle(fontSize = 21.sp, lineHeight = 29.sp, fontWeight = FontWeight.SemiBold),
+            titleMedium = TextStyle(fontSize = 17.sp, lineHeight = 25.sp, fontWeight = FontWeight.SemiBold),
+            bodyLarge = TextStyle(fontSize = 16.sp, lineHeight = 25.sp),
+            bodyMedium = TextStyle(fontSize = 14.sp, lineHeight = 22.sp),
+            bodySmall = TextStyle(fontSize = 12.sp, lineHeight = 19.sp),
+            labelLarge = TextStyle(fontSize = 14.sp, lineHeight = 20.sp, fontWeight = FontWeight.Medium),
+            labelMedium = TextStyle(fontSize = 12.sp, lineHeight = 18.sp, fontWeight = FontWeight.Medium),
+            labelSmall = TextStyle(fontSize = 11.sp, lineHeight = 16.sp, fontWeight = FontWeight.Medium),
+        ), content = content)
 }

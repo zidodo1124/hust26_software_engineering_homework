@@ -30,6 +30,8 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
@@ -87,6 +89,9 @@ fun SaverApp(model: SaverViewModel) {
     val state by model.state.collectAsStateWithLifecycle()
     val reminderHealth by model.reminderHealth.collectAsStateWithLifecycle()
     var screen by rememberSaveable { mutableStateOf("home") }
+    var calendarView by rememberSaveable { mutableStateOf("month") }
+    var detailOrigin by rememberSaveable { mutableStateOf("home") }
+    var prefilledDeadline by rememberSaveable { mutableStateOf<Long?>(null) }
     var selectedId by rememberSaveable { mutableStateOf<String?>(null) }
     var editorSession by rememberSaveable { mutableLongStateOf(0L) }
     var batchToken by rememberSaveable { mutableLongStateOf(0L) }
@@ -107,6 +112,7 @@ fun SaverApp(model: SaverViewModel) {
         val target = request.eventId?.let { id -> state.events.firstOrNull { it.id == id } }
         if (target != null) {
             selectedId = target.id
+            detailOrigin = "home"
             screen = "detail"
         } else {
             selectedId = null
@@ -156,7 +162,7 @@ fun SaverApp(model: SaverViewModel) {
             }
             "delete", "settings" -> {
                 if (result.kind == "settings") homeState.removeState("settings")
-                screen = "home"
+                screen = if (result.kind == "delete") detailOrigin else "home"
                 selectedId = null
             }
         }
@@ -175,12 +181,25 @@ fun SaverApp(model: SaverViewModel) {
             )
         }
     }
-    BackHandler(enabled = screen == "detail") { if (!working) screen = "home" }
+    BackHandler(enabled = screen == "detail") { if (!working) screen = detailOrigin }
 
     Scaffold(
         containerColor = Paper,
         // Reserve measured space for feedback instead of covering scrolled form/action buttons.
-        bottomBar = { SnackbarHost(snackbar, Modifier.navigationBarsPadding()) },
+        bottomBar = {
+            Column(if (screen == "home" || screen == "calendar") Modifier else Modifier.navigationBarsPadding()) {
+                SnackbarHost(snackbar)
+                if (screen == "home" || screen == "calendar") NavigationBar(Modifier.testTag("main-navigation"), containerColor = MaterialTheme.colorScheme.surface, tonalElevation = 0.dp) {
+                    NavigationBarItem(selected = screen == "home", onClick = { screen = "home" },
+                        icon = { PlannerNavigationIcon("home") }, label = { Text("事项") }, modifier = Modifier.testTag("nav-home"))
+                    listOf("month" to "月视图", "week" to "周视图", "day" to "日视图").forEach { (view, label) ->
+                        NavigationBarItem(selected = screen == "calendar" && calendarView == view,
+                            onClick = { calendarView = view; screen = "calendar" },
+                            icon = { PlannerNavigationIcon(view) }, label = { Text(label) }, modifier = Modifier.testTag("nav-$view"))
+                    }
+                }
+            }
+        },
         floatingActionButton = {
             if (screen == "home" && !state.loading && state.loadError == null) {
                 ExtendedFloatingActionButton(
@@ -188,6 +207,8 @@ fun SaverApp(model: SaverViewModel) {
                     onClick = {
                         if (!working) {
                         selectedId = null
+                        prefilledDeadline = null
+                        detailOrigin = "home"
                         homeState.removeState("editor-$editorSession")
                         editorSession++
                         model.clearOperationError()
@@ -216,9 +237,24 @@ fun SaverApp(model: SaverViewModel) {
                         initiallyToday = todayOnHome,
                         reminderWarning = ReminderStatusCopy.homeWarning(state.settings, reminderHealth),
                         onSettings = { model.clearOperationError(); screen = "settings" },
-                        onOpen = { selectedId = it; model.clearOperationError(); screen = "detail" },
+                        onOpen = { selectedId = it; detailOrigin = "home"; model.clearOperationError(); screen = "detail" },
                         onBatch = model::applyBatch,
                     )
+                }
+                screen == "calendar" -> homeState.SaveableStateProvider("calendar") {
+                    CalendarScreen(state = state, view = calendarView, onOpen = {
+                        selectedId = it; detailOrigin = "calendar"; model.clearOperationError(); screen = "detail"
+                    }, onCreate = { deadline ->
+                        if (!working) {
+                            selectedId = null
+                            prefilledDeadline = deadline
+                            detailOrigin = "calendar"
+                            homeState.removeState("editor-$editorSession")
+                            editorSession++
+                            model.clearOperationError()
+                            screen = "editor"
+                        }
+                    })
                 }
                 screen == "settings" -> homeState.SaveableStateProvider("settings") {
                     SettingsScreen(
@@ -256,6 +292,7 @@ fun SaverApp(model: SaverViewModel) {
                                 session = editorSession,
                                 initial = selected,
                                 now = state.now,
+                                prefilledDeadline = prefilledDeadline,
                                 busy = working,
                                 operationError = state.operationError,
                                 sources = state.sources, tags = state.tags,
@@ -271,7 +308,7 @@ fun SaverApp(model: SaverViewModel) {
                                     model.discardDraft(editorSession)
                                     homeState.removeState("editor-$editorSession")
                                     model.clearOperationError()
-                                    screen = if (selectedId == null) "home" else "detail"
+                                    screen = if (selectedId == null) detailOrigin else "detail"
                                 },
                                 onSave = { model.save(it, editorSession) },
                             )
@@ -281,7 +318,7 @@ fun SaverApp(model: SaverViewModel) {
                             event = selected,
                             state = state,
                             busy = working,
-                            onBack = { model.clearOperationError(); screen = "home" },
+                            onBack = { model.clearOperationError(); screen = detailOrigin },
                             onEdit = {
                                 homeState.removeState("editor-$editorSession")
                                 editorSession++
@@ -337,19 +374,19 @@ internal fun EventCard(event: DdlEvent, state: SaverUiState, onOpen: (String) ->
     val urgency = UrgencyRules.classify(event, state.now, state.settings.urgentMinutes)
     val colors = urgencyColors(urgency)
     Card(
-        modifier = Modifier.testTag("event-card-${event.id}"),
+        modifier = Modifier.fillMaxWidth().testTag("event-card-${event.id}"),
         onClick = { onOpen(event.id) },
         shape = RoundedCornerShape(20.dp),
         colors = CardDefaults.cardColors(containerColor = if (urgency == Urgency.OVERDUE) MaterialTheme.colorScheme.surfaceVariant else MaterialTheme.colorScheme.surface),
         border = BorderStroke(1.dp, if (urgency == Urgency.DANGER) Color(0xFFECC0C1) else MaterialTheme.colorScheme.outlineVariant),
     ) {
-        Column(Modifier.padding(18.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
                 StatusBadge(urgency)
                 Spacer(Modifier.weight(1f))
                 Text(importanceLabel(event.importance), color = Muted, style = MaterialTheme.typography.labelSmall)
             }
-            Text(event.title, fontSize = 18.sp, fontWeight = FontWeight.SemiBold, maxLines = 2, overflow = TextOverflow.Ellipsis)
+            Text(event.title, style = MaterialTheme.typography.titleMedium, maxLines = 2, overflow = TextOverflow.Ellipsis)
             val classification = listOfNotNull(event.source?.name) + event.tags.map { "#${it.name}" }
             if (classification.isNotEmpty()) {
                 Text(classification.joinToString(" · "), color = Ocean, maxLines = 2,
@@ -394,6 +431,10 @@ private fun DetailScreen(
                     HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
                     DetailLine("重要程度", importanceLabel(event.importance))
                     DetailLine("速通时间", event.sprintMinutes?.let(::formatDuration) ?: "未填写")
+                    DetailLine("日历时段", "${formatDeadline(calendarStart(event).toEpochMilli())} 至 ${formatDeadline(event.deadlineAt)}")
+                    Text("${calendarDurationLabel(event)}；开始时间由截止时间减去时长推算，非独立设置。" +
+                        if (event.sprintMinutes == null) "默认展示时长不会启用速通危险期提醒。" else "",
+                        color = Muted, style = MaterialTheme.typography.bodySmall)
                     DetailLine("完成状态", if (event.completedAt == null) "未完成" else "已完成")
                     if (event.recurrence != null) DetailLine("重复事项", "第 ${event.recurrence.index + 1} 次；编辑或删除时可选择范围")
                     DetailLine("归档状态", if (event.archivedAt == null) "未归档" else "已归档")

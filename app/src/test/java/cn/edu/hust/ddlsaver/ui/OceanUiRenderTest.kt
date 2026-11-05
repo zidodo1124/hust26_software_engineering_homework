@@ -50,15 +50,13 @@ class OceanUiRenderTest {
         awaitCharacter(CharacterStyle.CLASSIC)
         compose.onNodeWithText("蓝色大肥鱼").assertExists()
         compose.onNodeWithTag("character-status").assertTextEquals("进入速通危险期")
-        compose.onNodeWithTag("character-bubble").assertExists()
-        compose.onNodeWithTag("character-bubble-tail-start").assertExists()
+        compose.onNodeWithText("素材与署名").assertExists()
         saveScreenshot("home-classic.png")
         compose.runOnIdle { style.value = CharacterStyle.CHIBI }
         awaitCharacter(CharacterStyle.CHIBI)
         compose.onNodeWithText("蓝色大肥鱼").assertExists()
         compose.onNodeWithTag("character-status").assertTextEquals("进入速通危险期")
-        compose.onNodeWithTag("character-bubble").assertExists()
-        compose.onNodeWithTag("character-bubble-tail-start").assertExists()
+        compose.onNodeWithText("素材与署名").assertExists()
         saveScreenshot("home-chibi.png")
     }
 

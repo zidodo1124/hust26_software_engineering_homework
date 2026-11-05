@@ -84,7 +84,7 @@ internal fun HomeScreen(
         item {
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
                 Column(Modifier.weight(1f)) {
-                    Text("HUSTer's", color = Muted, style = MaterialTheme.typography.labelLarge)
+                    Text("HUSTer's · 事项管理", color = Muted, style = MaterialTheme.typography.labelMedium)
                     Text("DDL Saver", color = Ink, fontSize = 28.sp, fontWeight = FontWeight.Bold)
                 }
                 TextButton(onSettings, enabled = !busy) { Text("设置") }
@@ -92,8 +92,7 @@ internal fun HomeScreen(
         }
         item {
             Surface(color = OceanMist, shape = RoundedCornerShape(24.dp), border = BorderStroke(1.dp, OceanBorder)) {
-                Column(Modifier.fillMaxWidth().padding(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                    Text("重要的事，提前安排。", color = Ink, fontSize = 20.sp, fontWeight = FontWeight.SemiBold)
+                Column(Modifier.fillMaxWidth().padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
                     Text(DateTimeFormatter.ofPattern("M月d日 EEEE  HH:mm", Locale.CHINA).withZone(BeijingZone).format(state.now) + " · 北京时间",
                         color = Muted, style = MaterialTheme.typography.bodySmall)
                     val fontScale = LocalDensity.current.fontScale
@@ -129,11 +128,11 @@ internal fun HomeScreen(
                     unfocusedContainerColor = MaterialTheme.colorScheme.surface))
             Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                 TextButton({ filtersOpen = !filtersOpen }, modifier = Modifier.testTag("toggle-filters")) { Text("来源 / 标签") }
-                TextButton({ calendarOpen = !calendarOpen }, modifier = Modifier.testTag("toggle-calendar")) { Text("日历") }
+                TextButton({ calendarOpen = !calendarOpen }, modifier = Modifier.testTag("toggle-calendar")) { Text("日期筛选") }
                 TextButton({ selecting = !selecting; selectionJson = "[]" }, enabled = !busy, modifier = Modifier.testTag("toggle-batch")) { Text(if (selecting) "退出批量" else "批量管理") }
             }
         }
-        item { CharacterPanel(selectCharacterFeedback(state.events, state.now, state.settings, state.justCompleted), style = state.settings.characterStyle) }
+        item { CharacterPanel(selectCharacterFeedback(state.events, state.now, state.settings, state.justCompleted), style = state.settings.characterStyle, compact = true) }
         reminderWarning?.let { warning -> item {
             Surface(color = Color(0xFFFFF2D9), shape = RoundedCornerShape(14.dp)) {
                 Text(warning, Modifier.fillMaxWidth().padding(14.dp).testTag("home-reminder-warning"), color = Ink,
