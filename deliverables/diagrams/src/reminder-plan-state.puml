@@ -1,0 +1,16 @@
+@startuml reminder-plan-state
+!include _style.iuml
+hide empty description
+[*] --> PENDING : rebuild 生成计划\nkey = 类型:事项:截止时间
+PENDING --> CLAIMED : 到达 triggerAt，引擎认领
+CLAIMED --> SENT : 通知发送成功
+CLAIMED --> FAILED : 发送失败
+FAILED --> CLAIMED : 5 分钟后重试
+CLAIMED --> CLAIMED : 认领后中断，5 分钟后重新认领
+PENDING --> PENDING : 事项修改，触发时刻变化
+PENDING --> 已失效 : 事项完成 / 归档 / 删除 / 关闭提醒
+SENT --> 已失效 : 事项状态变化（取消已显示的通知）
+已失效 : active = false
+已失效 : cancelPending = true 直到通知取消成功
+SENT : 发送账本，同一原因不重复提醒
+@enduml

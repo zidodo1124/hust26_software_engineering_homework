@@ -1,0 +1,43 @@
+@startuml callgraph
+!include _style.iuml
+top to bottom direction
+rectangle "EventEditor\n(保存按钮)" as A
+rectangle "SaverViewModel.save" as B
+rectangle "SaverViewModel.perform" as B2
+rectangle "RoomEventRepository.save" as C
+rectangle "EventValidation.normalize" as D
+rectangle "reminderTransaction" as E
+rectangle "ReminderPlanStore.rebuild" as F
+rectangle "ReminderRules.eventPlans\n/ dailyPlan / nextWake" as G
+rectangle "ReminderRuntime.requestReconcile" as H
+rectangle "ReminderEngine.reconcile" as I
+rectangle "ReminderEngine.deliver" as J
+rectangle "AndroidReminderPlatform\n.scheduleAlarm / .post" as K
+rectangle "RecurrenceRules\n.missingBetween" as L
+rectangle "RoomEventRepository\n.createRecurrence" as M
+rectangle "HomeScreen / CalendarScreen" as N
+rectangle "EventQuery.select" as O
+rectangle "UrgencyRules.classify" as P
+rectangle "timelinePlacements\n/ calendarEventsOn" as Q
+rectangle "selectCharacterFeedback" as R
+A --> B
+B --> B2
+B2 --> C
+C --> D
+C --> M
+M --> L
+C --> E
+E --> F
+F --> G
+B2 --> H
+H --> I
+I --> F
+I --> J
+J --> K
+I --> K
+N --> O
+O --> P
+N --> Q
+N --> R
+R --> P
+@enduml

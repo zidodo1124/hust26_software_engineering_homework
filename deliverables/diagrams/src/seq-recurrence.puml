@@ -1,0 +1,29 @@
+@startuml seq-recurrence
+!include _style.iuml
+skinparam maxMessageSize 90
+skinparam ParticipantPadding 4
+autonumber
+actor 用户
+participant "EventEditor" as ED
+participant "RoomEventRepository" as RP
+participant "RecurrenceRules" as RR
+database "recurrence_series\nrecurrence_occurrences\nevents" as DB
+participant "ReminderEngine" as EN
+用户 -> ED : 选择“每周”，按次数 4 次结束
+ED -> RP : save(draft with RecurrenceSpec)
+RP -> RP : RecurrenceRule(首次截止, WEEKLY, count = 4)
+RP -> DB : 写系列模板 templateJson（标题、描述、分类、字段）
+RP -> RR : missingBetween(rule, 首次, max(首次, 现在) + 90 天, 已知序号)
+RR --> RP : 序号 0..3 及各自截止时间
+loop 每个缺失的周期
+  RP -> DB : 插入独立的 events 行 + occurrence(seriesId, index, eventId)
+end
+RP -> DB : 同一事务重建提醒计划
+== 以后打开应用或提醒唤醒时 ==
+EN -> RP : extendRecurrencesThrough(现在 + 90 天)
+RP -> RR : missingBetween(..., 排除已知与已跳过序号)
+RR --> RP : 只返回真正缺失的周期
+== 删除本次 ==
+用户 -> RP : delete(eventId)
+RP -> DB : 删除事项，occurrence 标记 skipped（不会再补生成）
+@enduml

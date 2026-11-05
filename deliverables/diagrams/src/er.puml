@@ -1,0 +1,84 @@
+@startuml er
+!include _style.iuml
+hide circle
+skinparam linetype ortho
+entity "事项 events" as E {
+  * id : TEXT <<PK>>
+  --
+  title, deadlineAt, sprintMinutes
+  description, importance
+  completedAt, archivedAt
+  createdAt, updatedAt, revision
+  sourceId
+}
+entity "来源 sources" as SRC {
+  * id <<PK>>
+  --
+  name, isActive
+}
+entity "标签 tags" as T {
+  * id <<PK>>
+  --
+  name, isActive
+}
+entity "事项-标签 event_tags" as ET {
+  * eventId <<PK,FK>>
+  * tagId <<PK,FK>>
+}
+entity "自定义字段 custom_fields" as CF {
+  * eventId <<PK,FK>>
+  * id <<PK>>
+  --
+  label, value, position
+}
+entity "图片附件 attachments" as A {
+  * id <<PK>>
+  --
+  eventId <<FK>>, relativePath (唯一)
+  mimeType, displayName, byteSize
+  width, height, position
+}
+entity "重复系列 recurrence_series" as RS {
+  * id <<PK>>
+  --
+  firstDeadline, frequency
+  untilEpochDay, occurrenceCount
+  monthlyAnchorDay, revision, templateJson
+}
+entity "重复周期 recurrence_occurrences" as RO {
+  * seriesId <<PK,FK>>
+  * occurrenceIndex <<PK>>
+  --
+  scheduledDeadline, eventId (唯一), skipped
+}
+entity "提醒计划 reminder_plans" as RP {
+  * key <<PK>>
+  --
+  kind, eventId, deadlineAt, eventRevision
+  triggerAt, day, notificationTag
+  active, state, lastAttemptAt, lastError, cancelPending
+}
+entity "提醒控制 reminder_control" as RC {
+  * id = 1 <<PK>>
+  --
+  dailyDate, dailyMinuteOfDay
+  scheduledTriggerAt, desiredTriggerAt, scheduleMode
+  alarmDirty, lastError
+}
+entity "设置 settings" as ST {
+  * id = 1 <<PK>>
+  --
+  urgentMinutes, expiredPolicy
+  dailySummaryEnabled, dailySummaryMinuteOfDay
+  dangerReminderEnabled, deadlineReminderEnabled
+  deadlineLeadMinutes, characterStyle
+}
+SRC |o..o{ E : 归类
+E ||--o{ ET
+T ||--o{ ET
+E ||--o{ CF
+E ||--o{ A
+RS ||--o{ RO
+RO |o..o| E : 生成
+E |o..o{ RP : 产生提醒
+@enduml

@@ -1,0 +1,44 @@
+@startuml architecture
+!include _style.iuml
+package "表示层 ui（Jetpack Compose）" as UI {
+  [MainActivity\n单 Activity 入口] as MA
+  [SaverApp\n页面切换 / 底部导航] as APP
+  [HomeScreen / CalendarScreen\nEventEditor / DetailScreen\nSettingsScreen / CategoryManager] as SCR
+  [SaverViewModel\nUI 状态 StateFlow] as VM
+}
+package "领域层 domain（纯 Kotlin）" as DOM {
+  [EventModels / EventValidation] as MOD
+  [UrgencyRules / EventQuery\nRecurrenceRules / CharacterFeedback] as RULE
+  interface "EventRepository" as IREPO
+}
+package "数据层 data（Room / SQLite）" as DATA {
+  [RoomEventRepository\n事务与业务写入] as REPO
+  [SaverDao] as DAO
+  database "ddl-saver.db\nschema 5 · 11 张表" as DB
+}
+package "提醒 reminders" as REM {
+  [ReminderRuntime\nReminderEngine] as ENG
+  [ReminderPlanStore\nReminderRules] as PLAN
+  [AndroidReminderPlatform] as PLAT
+}
+package "平台 platform" as PF {
+  [AttachmentStore\n图片私有副本] as ATT
+}
+MA --> APP
+APP --> SCR
+SCR --> VM : 用户操作
+VM --> SCR : UI 状态
+VM --> IREPO
+VM --> ATT
+VM --> ENG : 请求协调
+REPO ..|> IREPO
+REPO --> MOD
+REPO --> RULE
+REPO --> DAO
+DAO --> DB
+REPO --> PLAN : 同一事务重建计划
+ENG --> PLAN
+ENG --> PLAT
+PLAT --> [AlarmManager\nNotificationManager] : Android API
+ATT --> [ContentResolver\nPhoto Picker / 剪贴板] : Android API
+@enduml

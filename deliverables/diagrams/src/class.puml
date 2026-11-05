@@ -1,0 +1,130 @@
+@startuml class
+!include _style.iuml
+hide empty members
+top to bottom direction
+skinparam dpi 130
+package domain {
+  class DdlEvent <<data>> {
+    id: String
+    title: String
+    deadlineAt: Long
+    sprintMinutes: Long?
+    importance: Importance
+    completedAt: Long?
+    archivedAt: Long?
+    revision: Long
+    source: Category?
+    tags: List<Category>
+    customFields: List<CustomField>
+    attachments: List<AttachmentRef>
+    recurrence: RecurrenceRef?
+  }
+  class EventDraft <<data>> {
+    id: String?
+    expectedRevision: Long?
+    recurrence: RecurrenceSpec?
+    applyToFuture: Boolean
+    stopAfterThis: Boolean
+  }
+  class AppSettings <<data>> {
+    urgentMinutes: Long
+    expiredPolicy: ExpiredPolicy
+    dailySummaryMinuteOfDay: Int
+    deadlineLeadMinutes: Long
+    characterStyle: CharacterStyle
+  }
+  enum Urgency {
+    NORMAL
+    SOON
+    DANGER
+    OVERDUE
+    COMPLETED
+    ARCHIVED
+  }
+  interface EventRepository {
+    +events: Flow<List<DdlEvent>>
+    +save(draft): DdlEvent
+    +setCompleted(id, completed)
+    +setArchived(id, archived)
+    +delete(id)
+    +applyBatch(ids, operation)
+    +saveSettings(settings)
+  }
+  class UrgencyRules <<object>> {
+    +classify(event, now, urgentMinutes): Urgency
+    +isToday(event, now): Boolean
+  }
+  class EventQuery <<object>> {
+    +select(events, filter, now, settings): List<DdlEvent>
+  }
+  class RecurrenceRules <<object>> {
+    +occurrenceAt(rule, index)
+    +between(rule, from, through)
+    +missingBetween(rule, from, through, known)
+  }
+  class EventValidation <<object>> {
+    +normalize(draft): EventDraft
+  }
+}
+package data {
+  class RoomEventRepository {
+    +save(draft): DdlEvent
+    +createRecurrence(draft, rule, through)
+    +deleteRecurrenceFollowing(eventId)
+    +extendRecurrencesThrough(through)
+    -reminderTransaction(action)
+  }
+  class SaverDatabase <<RoomDatabase>> {
+    +dao(): SaverDao
+    +create(context)
+  }
+  interface SaverDao
+}
+package reminders {
+  class ReminderEngine {
+    +reconcile(forceReschedule): ReminderHealth
+    -deliver(keys, now)
+  }
+  class ReminderPlanStore <<object>> {
+    +rebuild(dao, now)
+  }
+  interface ReminderPlatform {
+    +scheduleAlarm(triggerAt, exact)
+    +post(notification)
+    +cancelNotification(tag)
+  }
+  class AndroidReminderPlatform
+}
+package ui {
+  class SaverViewModel {
+    +state: StateFlow<SaverUiState>
+    +save(draft, session)
+    +applyBatch(ids, operation)
+    +importImages(session, uris)
+    +saveSettings(settings)
+  }
+}
+package platform {
+  class AttachmentStore {
+    +importImages(uris): List<AttachmentRef>
+    +discardUnreferenced(...)
+    +loadPreview(ref): Bitmap
+  }
+}
+RoomEventRepository ..|> EventRepository
+RoomEventRepository --> SaverDatabase
+SaverDatabase --> SaverDao
+RoomEventRepository ..> EventValidation
+RoomEventRepository ..> RecurrenceRules
+RoomEventRepository ..> ReminderPlanStore
+SaverViewModel --> EventRepository
+SaverViewModel --> AttachmentStore
+SaverViewModel ..> ReminderEngine : 经 ReminderRuntime
+ReminderEngine --> ReminderPlanStore
+ReminderEngine --> ReminderPlatform
+AndroidReminderPlatform ..|> ReminderPlatform
+EventRepository ..> DdlEvent
+EventRepository ..> EventDraft
+UrgencyRules ..> Urgency
+EventQuery ..> UrgencyRules
+@enduml

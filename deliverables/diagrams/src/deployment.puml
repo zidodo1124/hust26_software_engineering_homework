@@ -1,0 +1,29 @@
+@startuml deployment
+!include _style.iuml
+node "Android 手机（Android 8.0 – 15）" {
+  artifact "DDL-Saver-1.0.0.apk\ncn.edu.hust.ddlsaver" as APK
+  folder "应用私有存储" {
+    database "databases/ddl-saver.db" as DB
+    folder "files/attachments/*.img" as IMG
+  }
+  component "AlarmManager" as AM
+  component "NotificationManager\n（通道 ddl_reminders_v1）" as NM
+  component "系统相册选择器 / 剪贴板" as PICK
+}
+node "开发与构建" {
+  component "JDK 17 + Gradle 8.11.1\nAGP 8.9.2 + Android SDK 35" as GR
+  component "GitHub Actions\n（ubuntu-24.04）" as CI
+}
+APK --> DB : Room
+APK --> IMG : 复制、读取、清理
+APK --> AM : 定时唤醒
+APK --> NM : 发送通知
+APK --> PICK : 读取用户选择的图片
+GR --> APK : assembleDebug
+CI ..> APK : 每次 PR 构建、测试、Lint
+note bottom of APK
+  无网络权限，不连接服务器；
+  只申请 POST_NOTIFICATIONS、
+  SCHEDULE_EXACT_ALARM、RECEIVE_BOOT_COMPLETED
+end note
+@enduml
