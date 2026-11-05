@@ -55,7 +55,8 @@ import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
-private const val MaxDurationMinutes = Long.MAX_VALUE / 60_000L
+private val PreviewFormat = DateTimeFormatter.ofPattern("M月d日 HH:mm")
+private val PreviewFormatWithYear = DateTimeFormatter.ofPattern("yyyy年M月d日 HH:mm")
 
 @Composable
 internal fun EventEditor(
@@ -80,7 +81,8 @@ internal fun EventEditor(
     val initialDateTime = remember(session) { (initial?.deadlineAt ?: prefilledDeadline)?.let { Instant.ofEpochMilli(it).atZone(BeijingZone) } }
     val initialTitle = rememberSaveable(session) { initial?.title.orEmpty() }
     val initialDescription = rememberSaveable(session) { initial?.description.orEmpty() }
-    val initialSprint = rememberSaveable(session) { initial?.sprintMinutes?.toString().orEmpty() }
+    val initialSprint = rememberSaveable(session) { splitDuration(initial?.sprintMinutes).amount }
+    val initialSprintUnit = rememberSaveable(session) { splitDuration(initial?.sprintMinutes).unit.name }
     val initialImportance = rememberSaveable(session) { (initial?.importance ?: Importance.NORMAL).name }
     val initialDate by rememberSaveable(session) { mutableStateOf<String?>(initialDateTime?.toLocalDate()?.toString()) }
     val initialTime by rememberSaveable(session) {
@@ -109,6 +111,7 @@ internal fun EventEditor(
     var title by rememberSaveable(session) { mutableStateOf(initialTitle) }
     var description by rememberSaveable(session) { mutableStateOf(initialDescription) }
     var sprint by rememberSaveable(session) { mutableStateOf(initialSprint) }
+    var sprintUnitName by rememberSaveable(session) { mutableStateOf(initialSprintUnit) }
     var importanceName by rememberSaveable(session) { mutableStateOf(initialImportance) }
     var date by rememberSaveable(session) { mutableStateOf(initialDate) }
     var time by rememberSaveable(session) { mutableStateOf(initialTime) }
@@ -125,12 +128,14 @@ internal fun EventEditor(
     var submitted by rememberSaveable(session) { mutableStateOf(false) }
     var discardDialog by rememberSaveable(session) { mutableStateOf(false) }
     val dirty = title != initialTitle || description != initialDescription || sprint != initialSprint ||
-        importanceName != initialImportance || date != initialDate || time != initialTime ||
+        (sprint.isNotBlank() && sprintUnitName != initialSprintUnit) || importanceName != initialImportance || date != initialDate || time != initialTime ||
         sourceId != initialSource || tagsJson != initialTags || fieldsJson != initialFields || imagesJson != initialImages ||
         repeatName != originalRepeatName || repeatEnd != originalRepeatEnd || repeatCount != originalRepeatCount ||
         repeatUntil != originalRepeatUntil || applyToFuture
-    val sprintValue = sprint.trim().toLongOrNull()
-    val invalidSprint = sprint.isNotBlank() && (sprintValue == null || sprintValue <= 0L || sprintValue > MaxDurationMinutes)
+    val sprintUnit = DurationUnit.fromStored(sprintUnitName)
+    val sprintParse = parseDuration(sprint, sprintUnit)
+    val sprintValue = (sprintParse as? DurationParse.Valid)?.minutes
+    val invalidSprint = sprintParse is DurationParse.Invalid
     val invalidRepeat = (initial?.recurrence == null || applyToFuture) && repeatName != "NONE" && (images.isNotEmpty() ||
         (repeatEnd == "COUNT" && (repeatCount.toIntOrNull() == null || (repeatCount.toIntOrNull() ?: 0) <= 0)) ||
         (repeatEnd == "DATE" && (repeatUntil?.let(LocalDate::parse)?.let { end ->
@@ -190,22 +195,30 @@ internal fun EventEditor(
                     }
                 }
             }
-            OutlinedTextField(
-                value = sprint, onValueChange = { sprint = it }, enabled = !busy,
-                label = { Text("速通时间（分钟，选填）") },
-                supportingText = { Text(if (submitted && invalidSprint) "请填大于 0 的整数分钟数，数值不能过大。" else "填做完所需的最少分钟数。日历开始时间＝截止时间－速通时长；留空时按 60 分钟展示，不启用速通危险期提醒。") },
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number), singleLine = true,
-                isError = submitted && invalidSprint, modifier = Modifier.fillMaxWidth(), shape = RoundedCornerShape(16.dp),
+            DurationField(
+                amount = sprint, unit = sprintUnit,
+                onAmountChange = { sprint = it }, onUnitChange = { sprintUnitName = it.name },
+                label = "速通时间（选填）", tag = "event-sprint", enabled = !busy, isError = invalidSprint,
+                supportingText = when (sprintParse) {
+                    is DurationParse.Invalid -> sprintParse.message
+                    is DurationParse.Valid -> "共 ${formatDuration(sprintParse.minutes)}。剩余时间不超过它时进入速通危险期（变红）。"
+                    DurationParse.Blank -> "做完这件事至少要多久，可按分钟、小时或天填写；留空不启用速通危险期提醒。"
+                },
             )
             if (date != null && time != null && !invalidSprint) {
                 val deadline = LocalDate.parse(date).atTime(LocalTime.parse(time)).atZone(BeijingZone)
                 val start = deadline.minusMinutes(sprintValue ?: 60L)
+                val thisYear = now.atZone(BeijingZone).year
+                val format = if (start.year != thisYear || deadline.year != thisYear) PreviewFormatWithYear else PreviewFormat
                 Surface(color = OceanMist, shape = MaterialTheme.shapes.medium) {
                     Column(Modifier.fillMaxWidth().padding(14.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
                         Text("日历展示时段", style = MaterialTheme.typography.labelLarge, color = Ocean)
-                        Text("${start.format(DateTimeFormatter.ofPattern("M月d日 HH:mm"))} 至 ${deadline.format(DateTimeFormatter.ofPattern("M月d日 HH:mm"))}",
+                        Text("${start.format(format)} 至 ${deadline.format(format)}",
                             style = MaterialTheme.typography.bodyMedium, modifier = Modifier.testTag("editor-calendar-interval"))
                         Text(if (sprintValue == null) "按默认 60 分钟展示 · 北京时间" else "按速通时长推算 · 北京时间", color = Muted, style = MaterialTheme.typography.bodySmall)
+                        if (deadline.toInstant().isBefore(now)) Text("截止时间已过，保存后会显示为已逾期。",
+                            color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodySmall,
+                            modifier = Modifier.testTag("editor-past-deadline"))
                     }
                 }
             }
@@ -283,7 +296,7 @@ internal fun EventEditor(
                         onSave(
                             EventDraft(
                                 id = initial?.id, title = title, deadlineAt = deadline,
-                                sprintMinutes = if (sprint.isBlank()) null else sprintValue,
+                                sprintMinutes = sprintValue,
                                 description = description, importance = Importance.valueOf(importanceName),
                                 expectedRevision = expectedRevision,
                                 sourceId = sourceId, tagIds = tagIds, customFields = fields, attachments = images,
