@@ -94,7 +94,7 @@
 | 来源空交集 | [来源空交集汇总](device/source-filter/calendar-source-empty-intersection-result.json)，仅 4→0→4，无正向来源／多标签或分类编辑覆盖 |
 | 最终清理 | [5 条 QA 清理结果](device/cleanup/final-cleanup-result.json)、[18 项最终审计](device/cleanup/final-data-and-state-audit.json)、[提醒账本比对](device/cleanup/final-reminder-history-audit.json)、[30 份安全记录清单](device/cleanup/files-hashes.json) |
 
-供当前开发机交付的同字节副本为 `.local-tools/demo-delivery-0.3.5/DDL-Saver-0.3.5.apk`，已重新核对 SHA-256 与本页正式包一致；APK 本身不进入 Git。本机获取说明见[交付页](../../demo-final-0.3.5.md)。
+原开发机的同字节交付副本为 `.local-tools/demo-delivery-0.3.5/DDL-Saver-0.3.5.apk`。[仓库中的演示安装包](../../../releases/android/DDL-Saver-0.3.5.apk)与本页正式包的 SHA-256 一致，交付说明见[交付页](../../demo-final-0.3.5.md)。
 
 ## 结果追加规则
 
