@@ -590,8 +590,15 @@ internal fun importanceLabel(importance: Importance): String = when (importance)
     Importance.HIGH -> "高重要度"
 }
 
-internal fun formatDuration(minutes: Long): String = when {
-    minutes < 60 -> "$minutes 分钟"
-    minutes % 60L == 0L -> "${minutes / 60} 小时"
-    else -> "${minutes / 60} 小时 ${minutes % 60} 分钟"
+/** 90 → "1 小时 30 分钟", 1440 → "1 天", 2160 → "1 天 12 小时". */
+internal fun formatDuration(minutes: Long): String {
+    if (minutes < 60) return "$minutes 分钟"
+    val days = minutes / (24 * 60)
+    val hours = minutes % (24 * 60) / 60
+    val rest = minutes % 60
+    return listOfNotNull(
+        days.takeIf { it > 0 }?.let { "$it 天" },
+        hours.takeIf { it > 0 }?.let { "$it 小时" },
+        rest.takeIf { it > 0 }?.let { "$it 分钟" },
+    ).joinToString(" ")
 }
