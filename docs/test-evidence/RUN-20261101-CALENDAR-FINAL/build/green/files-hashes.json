@@ -1,0 +1,44 @@
+[
+  {
+    "file": "run.json",
+    "source": ".local-tools/calendar-final-20261101/green/run.json",
+    "sha256": "3134a7deb59b68740118202ca9734ede4d08d1df70276683b466c201a2185eef",
+    "bytes": 857,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "summary.json",
+    "source": ".local-tools/calendar-final-20261101/green/summary.json",
+    "sha256": "d46749dc80f22b74fad989b81142879bde4297d28c53336eadd98d222ebc1994",
+    "bytes": 1502,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "source-before.json",
+    "source": ".local-tools/calendar-final-20261101/green/source-before.json",
+    "sha256": "d5ca40a1e4382e2b70ba5869837880111359d4b4998f9d51e36ce7f198e5ef0b",
+    "bytes": 11921,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "source-after.json",
+    "source": ".local-tools/calendar-final-20261101/green/source-after.json",
+    "sha256": "d5ca40a1e4382e2b70ba5869837880111359d4b4998f9d51e36ce7f198e5ef0b",
+    "bytes": 11921,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "source-diff.patch",
+    "source": ".local-tools/calendar-final-20261101/green/source-diff.patch",
+    "sha256": "313f8c873c406919b0fe9e85b4896c9c358a9aed4c61b0238ffe90c5e6361372",
+    "bytes": 4460,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "gradle.log",
+    "source": ".local-tools/calendar-final-20261101/green/gradle.log",
+    "sha256": "63e756241defc2cf36d65cd3d54cc68a70c7b9f9316799fd58f2fd5a4a50c429",
+    "bytes": 2059,
+    "transformation": "None; reviewed safe source bytes"
+  }
+]

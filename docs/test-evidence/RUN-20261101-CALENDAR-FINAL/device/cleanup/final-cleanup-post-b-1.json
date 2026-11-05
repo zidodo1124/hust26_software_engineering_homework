@@ -1,0 +1,114 @@
+{
+  "sampleStartUtc": "2026-11-02T07:57:10.643989+00:00",
+  "sampleEndUtc": "2026-11-02T07:57:11.714815+00:00",
+  "deviceEpochSeconds": 1793606228,
+  "scope": "Live repeated stable DB/WAL copy, QA-only local observation, not original-data preservation proof",
+  "attempts": 1,
+  "dbWalRepeatedBytesMatch": true,
+  "integrityCheck": "ok",
+  "events": [
+    {
+      "id": "52cf335a-9c14-45ff-b66b-13a98f908a04",
+      "title": "QA-CAL-1101-C",
+      "deadlineAt": 1793721000000,
+      "sprintMinutes": null,
+      "description": "",
+      "importance": "NORMAL",
+      "completedAt": null,
+      "archivedAt": null,
+      "createdAt": 1793604919984,
+      "updatedAt": 1793604919984,
+      "revision": 1,
+      "sourceId": null
+    },
+    {
+      "id": "1ddb90d5-9555-42e7-9825-00adac39fe46",
+      "title": "QA-CAL-1101-D",
+      "deadlineAt": 1798711200000,
+      "sprintMinutes": null,
+      "description": "",
+      "importance": "NORMAL",
+      "completedAt": null,
+      "archivedAt": null,
+      "createdAt": 1793604973450,
+      "updatedAt": 1793604973450,
+      "revision": 1,
+      "sourceId": null
+    },
+    {
+      "id": "1836eebc-cad5-4bbe-8ff6-f7ad56ec3acc",
+      "title": "QA-CAL-1101-E",
+      "deadlineAt": 1798797600000,
+      "sprintMinutes": null,
+      "description": "",
+      "importance": "NORMAL",
+      "completedAt": null,
+      "archivedAt": null,
+      "createdAt": 1793605029703,
+      "updatedAt": 1793605029703,
+      "revision": 1,
+      "sourceId": null
+    }
+  ],
+  "reminderPlans": [
+    {
+      "key": "DEADLINE:1836eebc-cad5-4bbe-8ff6-f7ad56ec3acc:1798797600000",
+      "kind": "DEADLINE",
+      "eventId": "1836eebc-cad5-4bbe-8ff6-f7ad56ec3acc",
+      "deadlineAt": 1798797600000,
+      "eventRevision": 1,
+      "triggerAt": 1798794000000,
+      "day": null,
+      "notificationTag": "event:1836eebc-cad5-4bbe-8ff6-f7ad56ec3acc:1798797600000:1798794000000:DEADLINE",
+      "active": 1,
+      "state": "PENDING",
+      "lastAttemptAt": null,
+      "lastError": null,
+      "cancelPending": 0
+    },
+    {
+      "key": "DEADLINE:1ddb90d5-9555-42e7-9825-00adac39fe46:1798711200000",
+      "kind": "DEADLINE",
+      "eventId": "1ddb90d5-9555-42e7-9825-00adac39fe46",
+      "deadlineAt": 1798711200000,
+      "eventRevision": 1,
+      "triggerAt": 1798707600000,
+      "day": null,
+      "notificationTag": "event:1ddb90d5-9555-42e7-9825-00adac39fe46:1798711200000:1798707600000:DEADLINE",
+      "active": 1,
+      "state": "PENDING",
+      "lastAttemptAt": null,
+      "lastError": null,
+      "cancelPending": 0
+    },
+    {
+      "key": "DEADLINE:52cf335a-9c14-45ff-b66b-13a98f908a04:1793721000000",
+      "kind": "DEADLINE",
+      "eventId": "52cf335a-9c14-45ff-b66b-13a98f908a04",
+      "deadlineAt": 1793721000000,
+      "eventRevision": 1,
+      "triggerAt": 1793717400000,
+      "day": null,
+      "notificationTag": "event:52cf335a-9c14-45ff-b66b-13a98f908a04:1793721000000:1793717400000:DEADLINE",
+      "active": 1,
+      "state": "PENDING",
+      "lastAttemptAt": null,
+      "lastError": null,
+      "cancelPending": 0
+    }
+  ],
+  "reminderControl": [
+    {
+      "id": 1,
+      "alarmIdentity": "ddl-saver://reminders/wake",
+      "dailyDate": "2026-11-03",
+      "dailyMinuteOfDay": 480,
+      "scheduledTriggerAt": 1793664000000,
+      "desiredTriggerAt": 1793664000000,
+      "scheduleMode": "exact",
+      "alarmDirty": 0,
+      "lastError": null
+    }
+  ],
+  "temporaryPrivateDatabaseRemoved": true
+}

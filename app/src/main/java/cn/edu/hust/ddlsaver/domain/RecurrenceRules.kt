@@ -67,7 +67,7 @@ object RecurrenceRules {
             val occurrence = occurrenceAt(rule, index) ?: break
             if (occurrence.deadline > through) break
             if (occurrence.deadline >= from) {
-                require(result.size < maxResults) { "查询周期过大，请缩小日期范围" }
+                require(result.size < maxResults) { "这段日期里的重复事项太多了，请缩小日期范围。" }
                 result.add(occurrence)
             }
             index++

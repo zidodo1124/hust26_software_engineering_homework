@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" tests="25" skipped="0" failures="0" errors="0" timestamp="2026-11-02T10:52:26" hostname="LAPTOP-7OF0K1SP" time="9.204">
+  <properties/>
+  <testcase name="editingMonthlyFollowingKeepsAnchorWhenFirstMonthIsShort" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.687"/>
+  <testcase name="manualCleanupArchivesExpiredCompletedItemsAndKeepsCompletionFlag" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.357"/>
+  <testcase name="stoppingRepeatKeepsCurrentAndCompletedFutureButRemovesOtherFutureEvents" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.498"/>
+  <testcase name="observedRelationsAreCompleteSnapshotsDuringEdits" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.27"/>
+  <testcase name="deletingThisAndFutureStopsGenerationButPreservesCompletedHistory" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.536"/>
+  <testcase name="convertingExistingEventToRepeatKeepsIdentityAndRollsBackOnFailure" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.371"/>
+  <testcase name="disabledSameNamedCategoriesKeepOldRelationsAcrossReopenAndCanBeRestored" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.548"/>
+  <testcase name="deletingOneOccurrencePreservesOtherPeriodsAndInvalidatesItsReminder" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.379"/>
+  <testcase name="staleEditorCannotEraseNewCustomFieldsOrAttachments" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.219"/>
+  <testcase name="editingThisAndFuturePreservesHistoryAndUpdatesLaterGeneratedEvents" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.783"/>
+  <testcase name="savingRepeatDraftAndExtendingWindowPreservesIndependentStates" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.605"/>
+  <testcase name="completeV2EventCatalogsAndSettingsSurviveReopening" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.375"/>
+  <testcase name="editingRepeatFrequencyAndEndRecomputesFutureWithoutTouchingHistory" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.464"/>
+  <testcase name="settingsUpdatesAreIndependentAndAtomicValidationPreventsPartialSave" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.223"/>
+  <testcase name="renamedAndDisabledCategoriesRemainLinkedButCannotBeNewlyAssigned" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.405"/>
+  <testcase name="batchUsesOnlySelectedIdsPreservesIndependentFlagsAndDeletesTheirRelations" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.295"/>
+  <testcase name="failureDuringFieldInsertRollsBackEventRelationsAndReminderPlans" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.26"/>
+  <testcase name="recurrenceTemplateSurvivesReopenAndGenerationIsIdempotent" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.317"/>
+  <testcase name="autoArchiveIncludesOnlyExpiredUnfinishedRowsAndInvalidatesOldEdits" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.304"/>
+  <testcase name="failureInsideBatchTransactionRollsBackEarlierMutations" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.2"/>
+  <testcase name="attachmentIdsAndPathsCannotBeBorrowedFromAnotherEvent" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.214"/>
+  <testcase name="sameNamedFieldsAndEmptyContentRemainIndependentAcrossEditsAndReopen" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.272"/>
+  <testcase name="customFieldsBelongToEachEventEvenWhenTheirIdsMatch" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.232"/>
+  <testcase name="missingBatchMemberRejectsEveryOperationWithoutPartialChanges" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.219"/>
+  <testcase name="namesAreTrimmedAndDuplicateNamesCannotBypassInactiveCatalogItems" classname="cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest" time="0.167"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

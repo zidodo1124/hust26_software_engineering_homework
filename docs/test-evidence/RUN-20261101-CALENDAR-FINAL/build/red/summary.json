@@ -1,0 +1,64 @@
+{
+  "phase": "0.3.5 week calendar collapse regression red",
+  "startedAtUtc": "2026-11-02T07:23:27.143308+00:00",
+  "baseCommit": "5df4320a3f481488cb4137dbdac8be1fa9358a91",
+  "command": [
+    "powershell",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "scripts/gradle.ps1",
+    "--no-daemon",
+    "--console=plain",
+    "--stacktrace",
+    "--max-workers=2",
+    ":app:cleanTestDebugUnitTest",
+    ":app:testDebugUnitTest",
+    "--tests",
+    "*SaverAppFlowTest.collapsingWeekCalendarPreservesWholeWeekUntilADayIsSelected"
+  ],
+  "filters": [
+    "SaverAppFlowTest.collapsingWeekCalendarPreservesWholeWeekUntilADayIsSelected"
+  ],
+  "runtime": "Windows / JDK 17 / Robolectric; no device operation",
+  "finishedAtUtc": "2026-11-02T07:24:28.641448+00:00",
+  "durationSeconds": 61.5,
+  "exitCode": 1,
+  "suites": 1,
+  "declared": {
+    "tests": 1,
+    "failures": 1,
+    "errors": 0,
+    "skipped": 0
+  },
+  "actual": {
+    "tests": 1,
+    "failures": 1,
+    "errors": 0,
+    "skipped": 0
+  },
+  "uniqueMethods": 1,
+  "uniqueMethodRule": "Classname plus test name with a trailing numeric [SDK] suffix removed",
+  "suiteResults": [
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.SaverAppFlowTest",
+      "tests": 1,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0,
+      "failuresDetail": [
+        {
+          "name": "collapsingWeekCalendarPreservesWholeWeekUntilADayIsSelected",
+          "type": "java.lang.AssertionError",
+          "message": "java.lang.AssertionError: Failed to assert the following: (Text + EditableText = [2026-11-09 \u81f3 2026-11-15 \u7684\u4e8b\u9879 \u00b7 2])\nSemantics of the node:\nNode #677 at (l=20.0, t=557.0, r=333.0, b=593.0)px, Tag: 'list-summary'\nText = '[2026-11-09 \u7684\u4e8b\u9879 \u00b7 1]'\nActions = [ClearTextSubstitution, GetTextLayoutResult, SetTextSubstitution, ShowTextSubstitution]\nHas 8 siblings\nSelector used: (TestTag = 'list-summary')\n",
+          "text": "java.lang.AssertionError: Failed to assert the following: (Text + EditableText = [2026-11-09 \u81f3 2026-11-15 \u7684\u4e8b\u9879 \u00b7 2])\nSemantics of the node:\nNode #677 at (l=20.0, t=557.0, r=333.0, b=593.0)px, Tag: 'list-summary'\nText = '[2026-11-09 \u7684\u4e8b\u9879 \u00b7 1]'\nActions = [ClearTextSubstitution, GetTextLayoutResult, SetTextSubstitution, ShowTextSubstitution]\nHas 8 siblings\nSelector used: (TestTag = 'list-summary')\n\n\tat androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:260)\n\tat androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:250)\n\tat androidx.compose.ui.test.AssertionsKt.assertTextEquals(Assertions.kt:181)\n\tat androidx.compose.ui.test.AssertionsKt.assertTextEquals$default(Assertions.kt:177)\n\tat cn.edu.hust.ddlsaver.ui.SaverAppFlowTest.collapsingWeekCalendarPreservesWholeWeekUntilADayIsSelected$assertWholeWeekIsVisible(SaverAppFlowTest.kt:446)\n\tat cn.edu.hust.ddlsaver.ui.SaverAppFlowTest.collapsingWeekCalendarPreservesWholeWeekUntilADayIsSelected(SaverAppFlowTest.kt:457)\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)\n\tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:569)\n\tat org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)\n\tat org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)\n\tat org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)\n\tat org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)\n\tat org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)\n\tat org.junit.rules.TestWatcher$1.evaluate(TestWatcher.java:61)\n\tat org.junit.rules.ExternalResource$1.evaluate(ExternalResource.java:54)\n\tat androidx.compose.ui.test.junit4.AndroidComposeTestRule$apply$1$evaluate$1.invoke(AndroidComposeTestRule.android.kt:295)\n\tat androidx.compose.ui.test.junit4.AndroidComposeTestRule$apply$1$evaluate$1.invoke(AndroidComposeTestRule.android.kt:295)\n\tat androidx.compose.ui.test.AndroidComposeUiTestEnvironment$AndroidComposeUiTestImpl.withDisposableContent(ComposeUiTest.android.kt:565)\n\tat androidx.compose.ui.test.AndroidComposeUiTestEnvironment$runTest$1$1$1$1$1$1.invoke(ComposeUiTest.android.kt:370)\n\tat androidx.compose.ui.test.AndroidComposeUiTestEnvironment.withComposeIdlingResource(ComposeUiTest.android.kt:439)\n\tat androidx.compose.ui.test.AndroidComposeUiTestEnvironment.access$withComposeIdlingResource(ComposeUiTest.android.kt:235)\n\tat androidx.compose.ui.test.AndroidComposeUiTestEnvironment$runTest$1$1$1$1$1.invoke(ComposeUiTest.android.kt:369)\n\tat androidx.compose.ui.test.AndroidComposeUiTestEnvironment.withWindowRecomposer(ComposeUiTest.android.kt:413)\n\tat androidx.compose.ui.test.AndroidComposeUiTestEnvironment.access$withWindowRecomposer(ComposeUiTest.android.kt:235)\n\tat androidx.compose.ui.test.AndroidComposeUiTestEnvironment$runTest$1$1$1$1.invoke(ComposeUiTest.android.kt:368)\n\tat androidx.compose.ui.test.AndroidComposeUiTestEnvironment.withTestCoroutines(ComposeUiTest.android.kt:426)\n\tat androidx.compose.ui.test.AndroidComposeUiTestEnvironment.access$withTestCoroutines(ComposeUiTest.android.kt:235)\n\tat androidx.compose.ui.test.AndroidComposeUiTestEnvironment$runTest$1$1$1.invoke(ComposeUiTest.android.kt:367)\n\tat androidx.compose.ui.test.IdlingStrategy.withStrategy(IdlingStrategy.android.kt:55)\n\tat androidx.compose.ui.test.AndroidComposeUiTestEnvironment$runTest$1$1.invoke(ComposeUiTest.android.kt:366)\n\tat androidx.compose.ui.test.IdlingResourceRegistry.withRegistry(IdlingResourceRegistry.jvm.kt:148)\n\tat androidx.compose.ui.test.AndroidComposeUiTestEnvironment$runTest$1.invoke(ComposeUiTest.android.kt:365)\n\tat androidx.compose.ui.test.ComposeRootRegistry.withRegistry(ComposeRootRegistry.android.kt:139)\n\tat androidx.compose.ui.test.AndroidComposeUiTestEnvironment.runTest(ComposeUiTest.android.kt:364)\n\tat androidx.compose.ui.test.junit4.AndroidComposeTestRule$apply$1.evaluate(AndroidComposeTestRule.android.kt:295)\n\tat org.junit.rules.ExternalResource$1.evaluate(ExternalResource.java:54)\n\tat org.junit.rules.RunRules.evaluate(RunRules.java:20)\n\tat org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)\n\tat org.robolectric.RobolectricTestRunner$HelperTestRunner$1.evaluate(RobolectricTestRunner.java:502)\n\tat org.robolectric.internal.SandboxTestRunner$2.lambda$evaluate$2(SandboxTestRunner.java:285)\n\tat org.robolectric.internal.bytecode.Sandbox.lambda$runOnMainThread$0(Sandbox.java:104)\n\tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)\n\tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)\n\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)\n\tat java.base/java.lang.Thread.run(Thread.java:840)\n"
+        }
+      ]
+    }
+  ],
+  "allProductSourceBytesUnchanged": true,
+  "testTaskExecuted": true,
+  "cleanTestTaskExecuted": true,
+  "result": "FAILED"
+}

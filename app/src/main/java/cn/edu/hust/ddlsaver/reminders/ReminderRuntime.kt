@@ -47,7 +47,7 @@ class ReminderRuntime private constructor(private val app: Context) {
 
     private fun failure(error: Exception): ReminderHealth {
         val failed = mutableHealth.value.copy(
-            lastError = "提醒恢复暂未完成（${error.javaClass.simpleName}），下次打开时将重试。")
+            lastError = "提醒还没恢复成功（${error.javaClass.simpleName}），下次打开时会重试。")
         mutableHealth.value = failed
         Log.e("DDLReminder", "Reminder reconciliation failed: ${error.javaClass.simpleName}")
         return failed

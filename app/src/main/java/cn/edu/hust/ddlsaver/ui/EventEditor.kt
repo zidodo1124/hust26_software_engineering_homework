@@ -149,18 +149,18 @@ internal fun EventEditor(
             Modifier.weight(1f).verticalScroll(rememberScrollState()).padding(horizontal = 20.dp).padding(bottom = 24.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
-            Text("填写标题和截止时间即可保存，其余信息按需补充。", color = Muted, style = MaterialTheme.typography.bodyMedium)
+            Text("填好标题和截止时间就能保存，其他内容可以以后再补。", color = Muted, style = MaterialTheme.typography.bodyMedium)
             OutlinedTextField(
                 value = title, onValueChange = { title = it }, enabled = !busy,
                 label = { Text("事项标题 *") }, placeholder = { Text("例如：提交软件工程实验报告") },
                 modifier = Modifier.fillMaxWidth().testTag("event-title"), shape = RoundedCornerShape(16.dp),
                 isError = submitted && title.isBlank(), minLines = 1, maxLines = 4,
-                supportingText = if (submitted && title.isBlank()) { { Text("请填写事项标题。") } } else null,
+                supportingText = if (submitted && title.isBlank()) { { Text("给事项填个标题吧。") } } else null,
             )
             Surface(color = Color.White, shape = RoundedCornerShape(18.dp)) {
                 Column(Modifier.fillMaxWidth().padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
                     Text("截止时间 *", fontWeight = FontWeight.SemiBold)
-                    Text("按北京时间填写，精确到分钟。", color = Muted, style = MaterialTheme.typography.bodySmall)
+                    Text("日期和时间都按北京时间填写。", color = Muted, style = MaterialTheme.typography.bodySmall)
                     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                         OutlinedButton(
                             onClick = {
@@ -186,14 +186,14 @@ internal fun EventEditor(
                         ) { Text(time ?: "选择时间") }
                     }
                     if (submitted && (date == null || time == null)) {
-                        Text("请选择完整的截止日期和时间。", color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodySmall)
+                        Text("还需要选好截止日期和时间。", color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodySmall)
                     }
                 }
             }
             OutlinedTextField(
                 value = sprint, onValueChange = { sprint = it }, enabled = !busy,
                 label = { Text("速通时间（分钟，选填）") },
-                supportingText = { Text(if (submitted && invalidSprint) "请输入有效的正整数分钟数。" else "日历开始时间＝截止时间－速通时长。留空时日历按 60 分钟展示，不启用速通危险期提醒。") },
+                supportingText = { Text(if (submitted && invalidSprint) "请填大于 0 的整数分钟数，数值不能过大。" else "填做完所需的最少分钟数。日历开始时间＝截止时间－速通时长；留空时按 60 分钟展示，不启用速通危险期提醒。") },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number), singleLine = true,
                 isError = submitted && invalidSprint, modifier = Modifier.fillMaxWidth(), shape = RoundedCornerShape(16.dp),
             )
@@ -219,7 +219,7 @@ internal fun EventEditor(
                     }
                 }
                 if (repeatName != "NONE") {
-                    Text("重复事项不支持图片；编辑或删除时可选择范围。", color = Muted, style = MaterialTheme.typography.bodySmall)
+                    Text("重复事项暂时不能加图片。修改或删除时，可选本次或本次及后续。", color = Muted, style = MaterialTheme.typography.bodySmall)
                     Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                         listOf("NONE" to "不结束", "COUNT" to "按次数", "DATE" to "按日期").forEach { (value, label) ->
                             FilterChip(repeatEnd == value, { repeatEnd = value }, enabled = !busy,
@@ -234,7 +234,7 @@ internal fun EventEditor(
                         DatePickerDialog(context, { _, year, month, day -> repeatUntil = LocalDate.of(year, month + 1, day).toString() },
                             chosen.year, chosen.monthValue - 1, chosen.dayOfMonth).show()
                     }, enabled = !busy, modifier = Modifier.testTag("repeat-until")) { Text(repeatUntil ?: "选择结束日期（含当天）") }
-                    if (submitted && invalidRepeat) Text("请检查结束日期、次数，且移除图片附件。", color = MaterialTheme.colorScheme.error)
+                    if (submitted && invalidRepeat) Text("请检查结束日期或次数，并移除图片附件。", color = MaterialTheme.colorScheme.error)
                 }
             }
             if (initial?.recurrence != null && initial.completedAt == null && initial.archivedAt == null) Column {
@@ -245,7 +245,7 @@ internal fun EventEditor(
                     FilterChip(applyToFuture, { applyToFuture = true }, enabled = !busy,
                         label = { Text("本次及后续") }, modifier = Modifier.testTag("edit-this-and-future"))
                 }
-                if (applyToFuture) Text("后续已完成或归档事项保留；更改截止时间会重新计算后续周期。", color = Muted,
+                if (applyToFuture) Text("后面已完成或归档的事项会保留。改了截止时间，后续日期也会重新计算。", color = Muted,
                     style = MaterialTheme.typography.bodySmall)
             }
             Column {
@@ -259,11 +259,11 @@ internal fun EventEditor(
                         )
                     }
                 }
-                Text("用于标记事项的重要性，不影响按时间计算的紧急状态。", color = Muted, style = MaterialTheme.typography.bodySmall)
+                Text("重要不等于紧急，这个标记不会改变按时间判断的紧急状态。", color = Muted, style = MaterialTheme.typography.bodySmall)
             }
             OutlinedTextField(
                 value = description, onValueChange = { description = it }, enabled = !busy,
-                label = { Text("事项描述（选填）") }, placeholder = { Text("任务要求、提交方式或相关网址") },
+                label = { Text("事项描述（选填）") }, placeholder = { Text("要做什么、怎么提交，也可以贴个网址") },
                 modifier = Modifier.fillMaxWidth().testTag("event-description"), minLines = 5, maxLines = 12, shape = RoundedCornerShape(16.dp),
             )
             EventCategories(sources, tags, sourceId, tagIds, initialSource, DraftJson.ids(initialTags), busy,
@@ -273,7 +273,7 @@ internal fun EventEditor(
                 AttachmentEditor(images, busy, onImportImages,
                     onRemove = { id -> imagesJson = DraftJson.attachments(images.filterNot { it.id == id }) },
                     onError = onImageError)
-            } else Text("重复事项不支持图片附件。", color = Muted, style = MaterialTheme.typography.bodySmall)
+            } else Text("重复事项暂时不能加图片。", color = Muted, style = MaterialTheme.typography.bodySmall)
             operationError?.let { ErrorNotice(it) }
             Button(
                 onClick = {
@@ -314,8 +314,8 @@ internal fun EventEditor(
 internal fun DiscardDialog(onKeepEditing: () -> Unit, onDiscard: () -> Unit) {
     AlertDialog(
         onDismissRequest = onKeepEditing,
-        title = { Text("放弃尚未保存的修改？") },
-        text = { Text("本次填写或修改的内容将不会保存。已保存的事项不受影响。") },
+        title = { Text("放弃未保存的修改？") },
+        text = { Text("这次填写或修改的内容不会保存，之前保存的事项不受影响。") },
         confirmButton = { TextButton(onClick = onDiscard) { Text("放弃修改") } },
         dismissButton = { TextButton(onClick = onKeepEditing) { Text("继续编辑") } },
     )

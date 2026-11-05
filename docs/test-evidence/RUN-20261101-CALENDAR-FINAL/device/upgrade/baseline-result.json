@@ -1,0 +1,43 @@
+{
+  "atUtc": "2026-11-02T07:21:13.006317+00:00",
+  "installed": {
+    "versionCode": 7,
+    "versionName": "0.3.4",
+    "bytes": 15119011,
+    "sha256": "690626883dd90684128959a53737b54c326352e3decb0dd46a707ac3d962ab90",
+    "certificateSha256": "978833bcaf0fc001248f5d8501bfa1f9d1273922474ed601f2c60a4548a652b9"
+  },
+  "condition": {
+    "atUtc": "2026-11-02T07:21:04.477252+00:00",
+    "deviceEpochSeconds": 1793604061,
+    "wakefulness": [
+      "Awake"
+    ],
+    "keyguardShowing": false,
+    "keyguardSecure": true,
+    "keyguardInputRestricted": false,
+    "deviceIdle": {
+      "mForceIdle": "false",
+      "mScreenOn": "true",
+      "mCharging": "true",
+      "mState": "ACTIVE",
+      "mLightState": "ACTIVE"
+    }
+  },
+  "counts": {
+    "events": 3,
+    "sources": 1,
+    "tags": 1,
+    "event_tags": 1,
+    "custom_fields": 1,
+    "attachments": 4
+  },
+  "reminderCount": 33,
+  "originalSentCount": 14,
+  "allExistingSentKeysIncludedInPrivateBaseline": true,
+  "activeReminderCount": 2,
+  "pendingCancellationCount": 0,
+  "schema": 4,
+  "productStartedOrForceStopped": false,
+  "newBatchPrefix": "QA-CAL-1101"
+}

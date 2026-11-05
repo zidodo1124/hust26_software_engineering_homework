@@ -1,0 +1,11 @@
+{
+  "atUtc": "2026-11-02T11:02:42.391808+00:00",
+  "installed": {
+    "versionCode": 8,
+    "versionName": "0.3.5",
+    "sha256": "e689b896156514a9da7b8be57c67b3399e51e244328782f4f73ca2595fde2cd4",
+    "certificateSha256": "978833bcaf0fc001248f5d8501bfa1f9d1273922474ed601f2c60a4548a652b9"
+  },
+  "targetSha256": "f3b263c210c20742dbb192cb847c1893b0ea9b4ff2b68a94d1c4da318ba088d9",
+  "sameCertificate": true
+}

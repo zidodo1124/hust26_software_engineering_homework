@@ -1,0 +1,8 @@
+{
+  "scope": "New optional direct re-expansion UI supplement only",
+  "observation": "The helper searched upward for the month-mode chip immediately after verifying the query at the home-page top; the chip was below the viewport. The bounded 12-scroll lookup exited without changing data or calendar mode.",
+  "productFailureObserved": false,
+  "originalEvidenceRewritten": false,
+  "rootReviewedCorrection": "Anchor the currently selected calendar date below the home header before seeking the mode chip; one corrected run only. If this also blocks, skip the optional supplement.",
+  "qaItemsEdited": false
+}

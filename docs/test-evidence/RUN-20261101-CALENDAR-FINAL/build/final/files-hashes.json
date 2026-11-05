@@ -1,0 +1,72 @@
+[
+  {
+    "file": "run.json",
+    "source": ".local-tools/calendar-final-20261101/final/run.json",
+    "sha256": "c3ebeee56a851825e2fcee5acab0b65315568ca3a2098531cbad54171f52a97f",
+    "bytes": 16681,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "summary.json",
+    "source": ".local-tools/calendar-final-20261101/final/summary.json",
+    "sha256": "d37247c3834bf10edd6533812bf8d2bb457854b006a97962ff87c9773541fc78",
+    "bytes": 22619,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "verification.json",
+    "source": ".local-tools/calendar-final-20261101/final/verification.json",
+    "sha256": "c02bf3b2277395f583de0cf4d95b02ffe428b590c63638ae8eac977d68fa2448",
+    "bytes": 1324,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "source-before.json",
+    "source": ".local-tools/calendar-final-20261101/final/source-before.json",
+    "sha256": "d5ca40a1e4382e2b70ba5869837880111359d4b4998f9d51e36ce7f198e5ef0b",
+    "bytes": 11921,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "source-after.json",
+    "source": ".local-tools/calendar-final-20261101/final/source-after.json",
+    "sha256": "d5ca40a1e4382e2b70ba5869837880111359d4b4998f9d51e36ce7f198e5ef0b",
+    "bytes": 11921,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "apk-badging.txt",
+    "source": ".local-tools/calendar-final-20261101/final/apk-badging.txt",
+    "sha256": "36e90b693fd46ca05e7ce3cc7b59554a4be538c1e540c916e249729d6d375346",
+    "bytes": 5709,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "apk-signature.txt",
+    "source": ".local-tools/calendar-final-20261101/final/apk-signature.txt",
+    "sha256": "653c0924577c8fbc19bdac4a651bcea112c994086a62f8e53ed8af7f4e9754fe",
+    "bytes": 972,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "lint-results-debug.xml",
+    "source": ".local-tools/calendar-final-20261101/final/lint-results-debug.xml",
+    "sha256": "4ce198092a0bdedad0180dea8b828d20d7a45eefd11ffad2d9efd4828d96e1bb",
+    "bytes": 15684,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "lint-results-debug.txt",
+    "source": ".local-tools/calendar-final-20261101/final/lint-results-debug.txt",
+    "sha256": "2310c068901f61e45c195ff318f002a2acc303d7de07aeb4827c0e52a44036da",
+    "bytes": 8691,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "gradle.log",
+    "source": ".local-tools/calendar-final-20261101/final/gradle.log",
+    "sha256": "5e227d3aca1050bb852d774511c2549ad3e0bbea5b890318b6c5023c2c196ab2",
+    "bytes": 3703,
+    "transformation": "None; reviewed safe source bytes"
+  }
+]

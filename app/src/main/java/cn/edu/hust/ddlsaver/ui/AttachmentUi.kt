@@ -68,7 +68,7 @@ fun AttachmentEditor(
     }
     Column(Modifier.fillMaxWidth().testTag("attachment-editor"), verticalArrangement = Arrangement.spacedBy(10.dp)) {
         Text("图片附件 · ${attachments.size} 张", fontWeight = FontWeight.SemiBold)
-        Text("可一次选择多张图片，也可粘贴已复制的图片。单张不超过 20 MiB、1 亿像素。", color = Muted, style = MaterialTheme.typography.bodySmall)
+        Text("选相册里的图片，或复制图片后粘贴到这里。可多选，单张限 20 MiB、1 亿像素。", color = Muted, style = MaterialTheme.typography.bodySmall)
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
             OutlinedButton(
                 modifier = Modifier.weight(1f).testTag("attachment-pick"),
@@ -77,7 +77,7 @@ fun AttachmentEditor(
                     try {
                         picker.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
                     } catch (_: Exception) {
-                        onError("暂时无法打开相册。请检查手机的相册或文件应用后重试。")
+                        onError("相册没打开，请检查手机上的相册或文件应用后再试。")
                     }
                 },
             ) { Text("从相册选择") }
@@ -92,10 +92,10 @@ fun AttachmentEditor(
                             clip.getItemAt(index).uri?.takeIf { it.scheme == "content" || it.scheme == "file" }
                         }
                         if (uris.isEmpty()) {
-                            onError("剪贴板中没有可用图片。请先复制图片本身，或使用“从相册选择”；图片网址不能直接导入。")
+                            onError("剪贴板里没找到图片。请复制图片本身，或点“从相册选择”；图片网址不能直接导入。")
                         } else onImportUris(uris)
                     } catch (_: Exception) {
-                        onError("暂时无法粘贴这张图片。请重新复制，或使用“从相册选择”。")
+                        onError("这张图片没能粘贴进来，请重新复制，或点“从相册选择”。")
                     }
                 },
             ) { Text("粘贴图片") }
@@ -109,7 +109,7 @@ fun AttachmentGallery(attachments: List<AttachmentRef>) {
     Column(Modifier.fillMaxWidth().testTag("attachment-gallery"), verticalArrangement = Arrangement.spacedBy(10.dp)) {
         Text("图片附件 · ${attachments.size} 张", fontWeight = FontWeight.SemiBold)
         if (attachments.isEmpty()) {
-            Text("暂无图片，可在“编辑事项”中添加。", color = Muted, style = MaterialTheme.typography.bodySmall)
+            Text("还没有图片。普通事项可以点“编辑事项”添加。", color = Muted, style = MaterialTheme.typography.bodySmall)
         } else AttachmentStrip(attachments)
     }
 }
@@ -189,7 +189,7 @@ private fun Preview(attachment: AttachmentRef, maxDimension: Int, contentScale: 
         } catch (cancelled: CancellationException) {
             throw cancelled
         } catch (failure: Exception) {
-            PreviewState.Failed(failure.message ?: "图片暂时无法读取。")
+            PreviewState.Failed(failure.message ?: "这张图片暂时打不开。")
         }
     }
     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {

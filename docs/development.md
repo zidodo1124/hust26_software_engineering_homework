@@ -1,10 +1,12 @@
 # 开发、构建与安装升级
 
-本文的本批构建与设备记录对应 `bdcd76f` 的 `0.3.4`、`versionCode = 7`、Room schema v4；完整本机检查已通过 179 方法／218 次执行、Lint 0／16；荣耀 X50 已同签名覆盖为 `0.3.4`／7，原数据保持及本样本图片提示／重试／回滚分项通过，本批分项及收尾已完成，OBS-02 自动恢复仍未通过。包名 `cn.edu.hust.ddlsaver`。2026-10-28 修复 Q 版表情边缘残片后的历史检查为 132 个不同测试方法／151 次执行全部通过，失败、错误、跳过均为 0，Lint 0 错误／16 条警告，见 [RUN-20261028-004](test-evidence/RUN-20261028-004/README.md)。0.3.2 已完成设备升级和界面分项，0.3.3 也曾完成同签名覆盖、表情与字号分项复验及恢复收尾；这些设备记录不覆盖后续本地修改。最新本机结果与被测源码标识见[测试报告](test-report.md)，各轮证据独立保存。
+**当前本地开发基准（2026-11-02）：** `codex/local-sync-20261102`／产品提交 `295fb57`，**0.3.7／10、schema 5**。在已同步 PR #14、保留周历折叠修复的 0.3.6 基础上更新用户文案，依赖和数据结构不变。完整构建通过，29 份 XML／197 个不同方法／236 次执行全通过，失败／错误／跳过均 0；Lint 0 错误／16 警告，见[本轮本机证据](test-evidence/RUN-20261102-COPY-REFRESH/README.md)。当前源码入口见[功能导航](source-navigation.md)。随后已将同一 0.3.7 包覆盖安装到荣耀 X50，正常首启、4→5 迁移及原数据保持通过；设备检查范围见[项目状态](project/STATUS.md)。下方 0.3.5 及更早批次继续表示对应设备／历史结果。
 
-2026-11-01 本地补充图片导入失败诊断和提醒恢复／冷启动测试，最终本机构建、167 个方法／194 次执行通过，Lint 0／16，见 [RUN-20261101-RECOVERY-DIAGNOSTICS](test-evidence/RUN-20261101-RECOVERY-DIAGNOSTICS/README.md)。应用版本与 schema 保持不变，复现时须同时核对基线提交、7 份变动源码哈希及 APK 哈希。图片诊断只在调试包输出固定分类字段，下一次 OBS-01 的日志采集与同签名安装要求见[演示与验收准备](demo-and-acceptance.md#obs-01-的下次诊断采集)；该本机批次按用户选择没有连接手机，不能把本机检查当作设备验收。其后用户已连接荣耀 X50 并授权[独立实机验收](test-evidence/RUN-20261101-DEVICE-ACCEPTANCE/README.md)，同一构建已同签名覆盖，分项与收尾已完成，OBS-01／OBS-02 及未测范围保留；实际设备结果和历史本机结果分开记录。
+此前 0.3.5 演示版使用冻结演示分支 `codex/demo-final-20261101`，产品源码 `f024ecea4b287c7a8768c2dc62af9be9228c9ae6`，版本 **0.3.5／versionCode 8、Room schema 4**，包名 `cn.edu.hust.ddlsaver`，依赖不变。本机完整构建成功，29 份 XML／185 个不同方法／224 次执行全部通过，失败／错误／跳过各 0，Lint 0 错误／16 警告；荣耀 X50 已完成同签名覆盖和正常首启；实际包版本、APK 哈希与证书匹配，原六表、4 附件、设置、33 条提醒及原 14 条 SENT 保持。月格、周／日、折叠重开、空周期、跨年及关键词分项已通过；完成状态、详情返回和来源空交集也已通过；07:59:33 UTC 最终 18 项审计全部通过，5 条 QA 已清理，原数据／附件／设置及全部原 33 条提醒保持；新分支远程 CI 尚无结果。本机 APK SHA-256 为 `e689b896156514a9da7b8be57c67b3399e51e244328782f4f73ca2595fde2cd4`，证书与原安装包一致。准确构建命令、产物与阶段结果见[0.3.5 证据](test-evidence/RUN-20261101-CALENDAR-FINAL/README.md)，代码阅读路径见[交付页](demo-final-0.3.5.md)。持续变化的 `main` 和 PR #14 迁移不纳入本包。
 
-安装与使用步骤见[用户使用手册](user-guide.md)。功能及未完成项见[实现计划](implementation-plan.md)和[项目状态](../STATUS.md)；分工见[小组任务板](../team/README.md)。
+以下为此前历史批次：2026-11-01 本地补充图片导入失败诊断和提醒恢复／冷启动测试，最终本机构建、167 个方法／194 次执行通过，Lint 0／16，见 [RUN-20261101-RECOVERY-DIAGNOSTICS](test-evidence/RUN-20261101-RECOVERY-DIAGNOSTICS/README.md)。应用版本与 schema 保持不变，复现时须同时核对基线提交、7 份变动源码哈希及 APK 哈希。图片诊断只在调试包输出固定分类字段，下一次 OBS-01 的日志采集与同签名安装要求见[演示与验收准备](demo-and-acceptance.md#obs-01-的下次诊断采集)；该本机批次按用户选择没有连接手机，不能把本机检查当作设备验收。其后用户已连接荣耀 X50 并授权[独立实机验收](test-evidence/RUN-20261101-DEVICE-ACCEPTANCE/README.md)，同一构建已同签名覆盖，分项与收尾已完成，OBS-01／OBS-02 及未测范围保留；实际设备结果和历史本机结果分开记录。
+
+安装与使用步骤见[用户使用手册](user-guide.md)。功能及未完成项见[实现计划](implementation-plan.md)和[项目状态](project/STATUS.md)；分工见[小组任务板](../team/README.md)。
 
 ## 1. 准备环境
 
@@ -58,7 +60,7 @@ macOS／Linux 使用 `./gradlew` 并配置各自的 JDK 17 与 SDK 路径。开�
 | JVM／Robolectric 测试报告 | `app/build/reports/tests/testDebugUnitTest/index.html` |
 | JUnit XML | `app/build/test-results/testDebugUnitTest/` |
 | Android Lint 报告 | `app/build/reports/lint-results-debug.html` |
-| Room schema | `app/schemas/cn.edu.hust.ddlsaver.data.SaverDatabase/`；保留 `1.json`、`2.json`，第三轮编译导出 `3.json`，结构变更随代码提交并检查迁移 |
+| Room schema | `app/schemas/cn.edu.hust.ddlsaver.data.SaverDatabase/`；保留 `1.json` 至 `5.json`；当前本地 schema 5，结构变更随代码提交并检查全部显式迁移 |
 
 `build/` 产物和工具缓存不提交 Git；与验证结论相关的精简证据保存到 `docs/test-evidence/`，实际结果见[测试记录](test-records.md)。
 

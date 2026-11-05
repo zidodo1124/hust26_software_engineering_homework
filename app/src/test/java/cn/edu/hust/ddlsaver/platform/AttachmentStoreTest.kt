@@ -138,7 +138,7 @@ class AttachmentStoreTest {
             store.importImages(listOf(Uri.fromFile(first), deniedUri))
         }
 
-        assertTrue(failure.message.orEmpty().contains("导入失败"))
+        assertTrue(failure.message.orEmpty().contains("图片没加上"))
         assertTrue(copies.listFiles().orEmpty().isEmpty())
         assertTrue(first.exists())
     }
@@ -276,7 +276,7 @@ class AttachmentStoreTest {
 
         val failure = expectAttachmentFailure { store.loadPreview(refs[0]) }
 
-        assertTrue(failure.message.orEmpty().contains("不存在"))
+        assertTrue(failure.message.orEmpty().contains("已经不在了"))
         assertTrue(File(copies, refs[1].relativePath).isFile)
     }
 

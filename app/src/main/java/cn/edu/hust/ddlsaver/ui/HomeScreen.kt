@@ -58,7 +58,7 @@ internal fun HomeScreen(
     val mode = EventListMode.valueOf(modeName)
     val anchorDate = LocalDate.parse(calendarAnchor)
     val weekStart = anchorDate.minusDays((anchorDate.dayOfWeek.value - 1).toLong())
-    val inWeekView = calendarOpen && calendarView == "week" && quickFilter == "all"
+    val inWeekView = calendarView == "week" && quickFilter == "all"
     val dateFilter = if (quickFilter == "today") today else if (inWeekView) null else selectedDate?.let(LocalDate::parse)
     val filtered = EventQuery.select(state.events, EventFilter(mode = mode, keyword = query, sourceId = sourceId,
         tagIds = tagIds, date = dateFilter, dangerOnly = quickFilter == "danger"), state.now, state.settings)
@@ -93,6 +93,7 @@ internal fun HomeScreen(
         item {
             Surface(color = OceanMist, shape = RoundedCornerShape(24.dp), border = BorderStroke(1.dp, OceanBorder)) {
                 Column(Modifier.fillMaxWidth().padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                    Text("今日事，今日毕", color = Ink, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold)
                     Text(DateTimeFormatter.ofPattern("M月d日 EEEE  HH:mm", Locale.CHINA).withZone(BeijingZone).format(state.now) + " · 北京时间",
                         color = Muted, style = MaterialTheme.typography.bodySmall)
                     val fontScale = LocalDensity.current.fontScale
@@ -147,7 +148,7 @@ internal fun HomeScreen(
                     state.sources.forEach { item -> FilterChip(sourceId == item.id, { sourceId = item.id },
                         label = { Text(item.name + if (item.isActive) "" else "（已停用）") }, modifier = Modifier.testTag("filter-source-${item.id}")) }
                 }
-                Text("标签（需同时包含所选标签）", fontWeight = FontWeight.SemiBold)
+                Text("标签（同时匹配所选标签）", fontWeight = FontWeight.SemiBold)
                 Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     state.tags.forEach { item -> FilterChip(item.id in tagIds,
                         { tagsJson = DraftJson.ids(if (item.id in tagIds) tagIds - item.id else tagIds + item.id) },
@@ -200,7 +201,7 @@ internal fun HomeScreen(
                 TextButton({ clearFilters() }, modifier = Modifier.testTag("clear-filters")) { Text("清除筛选") }
             }
             if (selecting) {
-                Text("已选 ${selected.size} 件。切换筛选不会清空已选事项。", color = Muted)
+                Text("已选 ${selected.size} 件，切换筛选也会保留选择。", color = Muted)
                 Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState())) {
                     TextButton({ selectionJson = DraftJson.ids(selected + filtered.map { it.id }) }, enabled = !busy) { Text("全选当前结果") }
                     TextButton({ selectionJson = "[]" }, enabled = !busy) { Text("清空选择") }
@@ -216,12 +217,12 @@ internal fun HomeScreen(
         if (filtered.isEmpty()) item {
             Text(when {
                 query.isNotBlank() || sourceId != null || tagIds.isNotEmpty() || selectedDate != null ->
-                    "没有找到符合条件的事项。可以调整条件，或点击“清除筛选”。"
-                quickFilter == "today" -> "今天暂无待办。点击“清除筛选”可查看其他日期的事项。"
-                quickFilter == "danger" -> "目前没有处于速通危险期的事项。点击“清除筛选”可查看全部待办。"
-                mode == EventListMode.COMPLETED -> "暂无已完成事项。完成事项后，可在这里查看记录。"
-                mode == EventListMode.ARCHIVED -> "暂无归档事项。归档可保留记录，并停止相关提醒。"
-                else -> "暂无待办。点击“新建事项”，记下下一件需要完成的事。"
+                    "没找到符合条件的事项，换个条件或点“清除筛选”试试。"
+                quickFilter == "today" -> "今天没有待办，点“清除筛选”看看其他日期。"
+                quickFilter == "danger" -> "暂时没有进入速通危险期的事项，点“清除筛选”查看全部待办。"
+                mode == EventListMode.COMPLETED -> "还没有完成记录，做完的事项会放在这里。"
+                mode == EventListMode.ARCHIVED -> "还没有归档记录。归档会保留事项，停止相关提醒。"
+                else -> "暂时没待办，有新安排就点“新建事项”记下来。"
             }, color = Muted, modifier = Modifier.padding(vertical = 20.dp))
         }
         items(current, key = { it.id }) { event ->
@@ -237,7 +238,7 @@ internal fun HomeScreen(
     deleteJson?.let { frozenJson ->
         val frozen = DraftJson.ids(frozenJson)
         AlertDialog(onDismissRequest = { if (!busy) deleteJson = null }, title = { Text("永久删除选中的 ${frozen.size} 件事项？") },
-            text = { Text("所选事项及其附件副本将永久删除，无法恢复。相册原图不受影响。") },
+            text = { Text("选中的事项和 App 内的附件副本会永久删除，无法恢复。相册原图不受影响。") },
             confirmButton = { TextButton({ deleteJson = null; onBatch(frozen, BatchOperation.DELETE) }, enabled = !busy,
                 modifier = Modifier.testTag("batch-confirm-delete")) { Text("确认删除") } },
             dismissButton = { TextButton({ deleteJson = null }, enabled = !busy) { Text("取消") } })
@@ -272,7 +273,7 @@ private fun CalendarPeriod(view: String, anchor: LocalDate, today: LocalDate, co
                     }
                 }
             }
-            Text(if (view == "week") "查看本周事项；点击日期查看当天。逾期待办单独展示。" else "查看当天事项；逾期待办单独展示。",
+            Text(if (view == "week") "这里是这一周的事项，点日期可看当天。逾期待办会单独列出。" else "这里是当天事项，逾期待办会单独列出。",
                 color = Muted, style = MaterialTheme.typography.bodySmall)
         }
     }
@@ -321,7 +322,7 @@ internal fun MonthCalendar(month: YearMonth, selected: LocalDate?, today: LocalD
                     }
                 }
             } }
-            Text("日期下方显示符合当前列表和筛选条件的事项数；选择日期查看详情。“今日 DDL”始终统计北京时间的今天。", color = Muted, style = MaterialTheme.typography.bodySmall)
+            Text("日期下的数字是当前筛选结果，点日期可看事项。“今日 DDL”按北京时间统计，不随所选日期变化。", color = Muted, style = MaterialTheme.typography.bodySmall)
         }
     }
 }

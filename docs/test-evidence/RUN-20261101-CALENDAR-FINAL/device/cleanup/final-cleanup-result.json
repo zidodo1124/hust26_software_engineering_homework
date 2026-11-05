@@ -1,0 +1,41 @@
+{
+  "atUtc": "2026-11-02T07:59:09.610143+00:00",
+  "approvedRecordedCount": 5,
+  "deletedThroughUiCount": 5,
+  "remainingQaEvents": 0,
+  "deleted": [
+    {
+      "id": "e6c0a446-12c0-4f98-b388-8ce255bbaffe",
+      "title": "QA-CAL-1101-A",
+      "deletedThroughConfirmedUiAtUtc": "2026-11-02T07:56:33.123994+00:00"
+    },
+    {
+      "id": "31c87c30-8ccd-4b8d-b05d-529f1f54d14d",
+      "title": "QA-CAL-1101-B",
+      "deletedThroughConfirmedUiAtUtc": "2026-11-02T07:57:11.827826+00:00"
+    },
+    {
+      "id": "52cf335a-9c14-45ff-b66b-13a98f908a04",
+      "title": "QA-CAL-1101-C",
+      "deletedThroughConfirmedUiAtUtc": "2026-11-02T07:57:50.172839+00:00"
+    },
+    {
+      "id": "1ddb90d5-9555-42e7-9825-00adac39fe46",
+      "title": "QA-CAL-1101-D",
+      "deletedThroughConfirmedUiAtUtc": "2026-11-02T07:58:28.879574+00:00"
+    },
+    {
+      "id": "1836eebc-cad5-4bbe-8ff6-f7ad56ec3acc",
+      "title": "QA-CAL-1101-E",
+      "deletedThroughConfirmedUiAtUtc": "2026-11-02T07:59:07.008855+00:00"
+    }
+  ],
+  "currentQaNotificationsCancelled": true,
+  "allCurrentQaPlansInactive": true,
+  "qaPendingCancellationCount": 0,
+  "qaReminderAndSentHistoryKeysRetained": true,
+  "originalSentRowsUnchanged": true,
+  "reminderLedgerNotDeleted": true,
+  "forceStopUsed": false,
+  "automaticDeleteRetry": false
+}

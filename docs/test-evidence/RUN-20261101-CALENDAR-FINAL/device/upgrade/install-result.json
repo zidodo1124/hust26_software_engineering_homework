@@ -1,0 +1,27 @@
+{
+  "atUtc": "2026-11-02T07:32:17.129760+00:00",
+  "method": "One adb install -r; read-only package verification after stdout parser assertion",
+  "installCommandReturnedExitZero": true,
+  "originalStdoutExactTextNotRetained": true,
+  "initialHelperAssertionWasOutputEqualsSuccess": true,
+  "installRetried": false,
+  "targetInstalledIndependentlyVerified": true,
+  "installed": {
+    "versionCode": 8,
+    "versionName": "0.3.5",
+    "bytes": 15551000,
+    "sha256": "e689b896156514a9da7b8be57c67b3399e51e244328782f4f73ca2595fde2cd4",
+    "certificateSha256": "978833bcaf0fc001248f5d8501bfa1f9d1273922474ed601f2c60a4548a652b9"
+  },
+  "comparison": {
+    "schema4": true,
+    "allBusinessRowsUnchanged": true,
+    "allAttachmentBytesUnchanged": true,
+    "allSettingsUnchanged": true,
+    "allReminderRowsUnchanged": true,
+    "sentReminderRowsUnchanged": true,
+    "reminderControlUnchanged": true
+  },
+  "productExplicitlyLaunched": false,
+  "forceStopUsed": false
+}

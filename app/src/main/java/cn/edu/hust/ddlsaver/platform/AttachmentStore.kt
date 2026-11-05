@@ -58,8 +58,8 @@ class AttachmentStore(context: Context) {
                 // A denied private-file operation must not be presented as a source URI permission issue.
                 val sourceAccessDenied = failure is SecurityException && diagnostics.stage in sourceAccessStages
                 val message = if (sourceAccessDenied) {
-                    "图片导入失败：来源访问权限不可用。请重新复制图片，或使用“从相册选择”重新添加。"
-                } else "图片导入失败，请确认图片可读取且本机存储空间充足。"
+                    "图片没加上：没有读取这张图片的权限。请重新复制图片，或点“从相册选择”再添加。"
+                } else "图片没加上，请检查图片能否打开，以及手机存储空间是否够用。"
                 AttachmentException(message, failure)
             }
         }
@@ -107,7 +107,7 @@ class AttachmentStore(context: Context) {
                     if (maxDimension <= 0) throw AttachmentException("图片预览尺寸无效。")
                     ensureDirectory()
                     val file = checkedFile(ref.relativePath)
-                    if (!file.isFile) throw AttachmentException("图片副本已不存在，请重新添加。")
+                    if (!file.isFile) throw AttachmentException("保存的图片已经不在了，请重新添加。")
                     val bounds = readBounds(file)
                     val limit = maxDimension.coerceAtMost(MAX_PREVIEW_DIMENSION)
                     var sample = 1
@@ -118,16 +118,16 @@ class AttachmentStore(context: Context) {
                     val bitmap = decodePrivateImage(
                         file,
                         BitmapFactory.Options().apply { inSampleSize = sample },
-                    ) ?: throw AttachmentException("图片无法预览，请重新添加可读取的图片。")
+                    ) ?: throw AttachmentException("这张图片打不开，请重新添加能正常打开的图片。")
                     orient(bitmap, file)
                 } catch (cancelled: CancellationException) {
                     throw cancelled
                 } catch (failure: AttachmentException) {
                     throw failure
                 } catch (failure: Exception) {
-                    throw AttachmentException("图片无法预览，请确认文件仍然可读取。", failure)
+                    throw AttachmentException("这张图片暂时打不开，请重新添加后再试。", failure)
                 } catch (failure: OutOfMemoryError) {
-                    throw AttachmentException("当前可用内存不足，暂时无法预览图片。", failure)
+                    throw AttachmentException("内存不够，暂时看不了这张图片。", failure)
                 }
             }
         }
@@ -138,24 +138,24 @@ class AttachmentStore(context: Context) {
         diagnostics: AttachmentImportDiagnostics,
     ): AttachmentRef {
         if (uri.scheme != "content" && uri.scheme != "file") {
-            throw AttachmentException("请选择或粘贴可读取的图片，图片网址不能直接作为附件。")
+            throw AttachmentException("图片网址不能直接添加，请选择或粘贴图片本身。")
         }
         val declaredType = if (uri.scheme == "content") resolver.getType(uri)
         else URLConnection.guessContentTypeFromName(uri.lastPathSegment)
         if (declaredType != null && declaredType != "application/octet-stream" &&
             !declaredType.startsWith("image/", ignoreCase = true)
-        ) throw AttachmentException("所选内容不是图片，请重新选择。")
+        ) throw AttachmentException("选中的内容不是图片，请重新选择。")
 
         diagnostics.stage = AttachmentImportDiagnostics.Stage.CREATE_COPY
         val id = UUID.randomUUID().toString()
         val temporary = checkedFile("$id.part", allowTemporary = true)
         val destination = checkedFile("$id.img")
-        if (!temporary.createNewFile()) throw AttachmentException("暂时无法创建图片副本，请重试。")
+        if (!temporary.createNewFile()) throw AttachmentException("没能创建图片副本，请再试一次。")
         created += temporary
         var byteCount = 0L
         diagnostics.stage = AttachmentImportDiagnostics.Stage.OPEN_SOURCE
         val source = resolver.openInputStream(uri)
-            ?: throw AttachmentException("无法读取所选图片，请重新选择并允许访问。")
+            ?: throw AttachmentException("读不到这张图片，请重新选择并允许访问。")
         source.use { input ->
             diagnostics.stage = AttachmentImportDiagnostics.Stage.WRITE_COPY
             temporary.outputStream().buffered().use { output ->
@@ -171,7 +171,7 @@ class AttachmentStore(context: Context) {
                     if (count == 0) continue
                     byteCount += count
                     if (byteCount > MAX_IMAGE_BYTES) {
-                        throw AttachmentException("单张图片不能超过 20 MiB，请压缩后重新添加。")
+                        throw AttachmentException("这张图片超过了 20 MiB，请压缩后再添加。")
                     }
                     diagnostics.stage = AttachmentImportDiagnostics.Stage.WRITE_COPY
                     output.write(buffer, 0, count)
@@ -189,13 +189,13 @@ class AttachmentStore(context: Context) {
         val validationBitmap = decodePrivateImage(
             temporary,
             BitmapFactory.Options().apply { inSampleSize = validationSample },
-        ) ?: throw AttachmentException("图片内容已经损坏，无法读取，请重新选择。")
+        ) ?: throw AttachmentException("这张图片读不出来，可能已损坏，请换一张。")
         validationBitmap.recycle()
         currentCoroutineContext().ensureActive()
         diagnostics.stage = AttachmentImportDiagnostics.Stage.COMMIT_COPY
-        if (destination.exists()) throw AttachmentException("图片副本标识冲突，请重试。")
+        if (destination.exists()) throw AttachmentException("保存图片时编号重复了，请再试一次。")
         created += destination
-        if (!temporary.renameTo(destination)) throw AttachmentException("图片副本保存失败，请检查可用存储。")
+        if (!temporary.renameTo(destination)) throw AttachmentException("图片没保存下来，请检查手机存储空间。")
         return AttachmentRef(
             id = id,
             relativePath = destination.name,
@@ -212,9 +212,9 @@ class AttachmentStore(context: Context) {
         decodePrivateImage(file, bounds)
         if (bounds.outWidth <= 0 || bounds.outHeight <= 0 ||
             bounds.outMimeType?.startsWith("image/") != true
-        ) throw AttachmentException("文件不是可解码的图片，或图片已经损坏。")
+        ) throw AttachmentException("读不出图片内容，可能是格式不支持或文件已损坏。")
         if (bounds.outWidth.toLong() * bounds.outHeight > MAX_IMAGE_PIXELS) {
-            throw AttachmentException("图片像素超过 1 亿，请缩小尺寸后重新添加。")
+            throw AttachmentException("这张图片超过 1 亿像素，请缩小尺寸后再添加。")
         }
         return bounds
     }
@@ -239,20 +239,20 @@ class AttachmentStore(context: Context) {
 
     private fun validateReference(ref: AttachmentRef) {
         if (!imageName.matches(ref.relativePath) || ref.relativePath != "${ref.id}.img") {
-            throw AttachmentException("图片引用无效，请重新添加。")
+            throw AttachmentException("图片信息有误，请重新添加。")
         }
     }
 
     private fun ensureDirectory() {
         if (Files.isSymbolicLink(root.toPath()) || root.canonicalFile.parentFile != appContext.filesDir.canonicalFile) {
-            throw AttachmentException("图片存储目录无效。")
+            throw AttachmentException("图片存储目录有问题，暂时无法使用。")
         }
-        if (!root.isDirectory && !root.mkdirs()) throw AttachmentException("无法创建图片存储目录。")
+        if (!root.isDirectory && !root.mkdirs()) throw AttachmentException("没能创建图片存储目录，请检查手机存储空间。")
     }
 
     private fun checkedFile(name: String, allowTemporary: Boolean = false): File {
         if (!(if (allowTemporary) ownedName else imageName).matches(name)) {
-            throw AttachmentException("图片路径无效，请重新添加。")
+            throw AttachmentException("图片保存位置有误，请重新添加。")
         }
         val file = File(root, name)
         if (Files.isSymbolicLink(file.toPath()) || file.canonicalFile.parentFile != root.canonicalFile) {
@@ -263,7 +263,7 @@ class AttachmentStore(context: Context) {
 
     private fun deleteOwnedFile(file: File) {
         if (file.exists() && !file.delete()) {
-            throw AttachmentException("暂时无法清理未使用的图片副本，下次打开时将重试。")
+            throw AttachmentException("没用到的图片副本还没清理完，下次打开时会重试。")
         }
     }
 

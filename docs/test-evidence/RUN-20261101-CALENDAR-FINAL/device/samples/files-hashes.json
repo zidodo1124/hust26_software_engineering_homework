@@ -1,0 +1,79 @@
+[
+  {
+    "file": "qa-a-plan.json",
+    "source": ".local-tools/calendar-device-20261101/qa-a-plan.json",
+    "sha256": "f3236299b960c4075032b03c8d06183f775ddc709f094781ce971e5408a824f7",
+    "bytes": 345,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "qa-b-plan.json",
+    "source": ".local-tools/calendar-device-20261101/qa-b-plan.json",
+    "sha256": "d32eb0a9bcfcbab87f10e7737d7464dea4f515d1a32af6e470d3303fd980eaa5",
+    "bytes": 345,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "qa-c-plan.json",
+    "source": ".local-tools/calendar-device-20261101/qa-c-plan.json",
+    "sha256": "f28757a414d84af29163f88cab2a4480f8ae41d07117aea4cd13c7826fc02165",
+    "bytes": 345,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "qa-d-plan.json",
+    "source": ".local-tools/calendar-device-20261101/qa-d-plan.json",
+    "sha256": "4fe5830a75db74b6d54dc15feebf0604bf8bf9077ea978d6fbc424a8dce3e8c7",
+    "bytes": 345,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "qa-e-plan.json",
+    "source": ".local-tools/calendar-device-20261101/qa-e-plan.json",
+    "sha256": "b96fd1960ff54fcac49588913cac3b5f966cead088f0ba000c0c86dc051a21ed",
+    "bytes": 345,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "created-a-qa.json",
+    "source": ".local-tools/calendar-device-20261101/created-a-qa.json",
+    "sha256": "40c1d36b24a0a0106ea9b079b93e8f1734ab6bf6ce3832dc2a8eccc7471faefb",
+    "bytes": 1714,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "created-b-qa.json",
+    "source": ".local-tools/calendar-device-20261101/created-b-qa.json",
+    "sha256": "ecfafdc5f8f8e661c5d5939ae4f491e6ffadc89f41b0278217b753c2b04dcf43",
+    "bytes": 2642,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "created-c-qa.json",
+    "source": ".local-tools/calendar-device-20261101/created-c-qa.json",
+    "sha256": "4692c1818cbc4438dd06c420af51264ca9916b09279a8d555a59c6c484ab116b",
+    "bytes": 3570,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "created-d-qa.json",
+    "source": ".local-tools/calendar-device-20261101/created-d-qa.json",
+    "sha256": "549db211648c822ca847cf16fca297dfd34faf97ee303142fcaaef6ec1811c39",
+    "bytes": 4498,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "created-e-qa.json",
+    "source": ".local-tools/calendar-device-20261101/created-e-qa.json",
+    "sha256": "3579a8cd910cda9d15189db2bf8d3f6f8486e2d635f197e286055e6fda64b69a",
+    "bytes": 5426,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "calendar-samples-created.json",
+    "source": ".local-tools/calendar-device-20261101/calendar-samples-created.json",
+    "sha256": "1dc848e310f6d5c725435e67bed984c6d936100f0ee60ba1b1aaa893f545d0e9",
+    "bytes": 268,
+    "transformation": "None; reviewed safe source bytes"
+  }
+]

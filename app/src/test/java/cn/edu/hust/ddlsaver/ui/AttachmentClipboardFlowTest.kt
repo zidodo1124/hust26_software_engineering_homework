@@ -163,8 +163,8 @@ class AttachmentClipboardFlowTest {
         paste(Uri.fromFile(newSource), deniedUri)
         compose.waitUntil(20_000) { !model.state.value.busy && model.state.value.operationError != null }
         val error = checkNotNull(model.state.value.operationError)
-        assertTrue(error.contains("图片导入失败"))
-        assertTrue(error.contains("来源访问权限不可用"))
+        assertTrue(error.contains("图片没加上"))
+        assertTrue(error.contains("没有读取这张图片的权限"))
         assertTrue(error.contains("重新复制图片"))
         assertTrue(error.contains("从相册选择"))
         compose.onNodeWithText(error).assertExists()

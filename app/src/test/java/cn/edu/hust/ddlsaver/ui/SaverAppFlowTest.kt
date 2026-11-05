@@ -239,8 +239,8 @@ class SaverAppFlowTest {
     fun requiredInputIsRejectedThenNewEventCanBeSavedAndEdited() {
         openNewEvent()
         compose.onNodeWithTag("event-save").performScrollTo().performClick()
-        compose.onNodeWithText("请填写事项标题。").assertExists()
-        compose.onNodeWithText("请选择完整的截止日期和时间。").assertExists()
+        compose.onNodeWithText("给事项填个标题吧。").assertExists()
+        compose.onNodeWithText("还需要选好截止日期和时间。").assertExists()
         compose.onNodeWithText("事项详情").assertDoesNotExist()
         assertTrue(storedEvents().isEmpty())
 
@@ -286,7 +286,7 @@ class SaverAppFlowTest {
                 description = "其他位置的新描述", expectedRevision = original.revision))
         }
         compose.onNodeWithTag("event-save").performScrollTo().performClick()
-        awaitText("这条事项已被修改，请重新打开后再编辑。")
+        awaitText("这条事项刚被修改过，请重新打开再编辑。")
         compose.onNodeWithTag("event-title").performScrollTo().assertTextContains("尚未保存的标题")
         compose.onNodeWithTag("event-description").performScrollTo().assertTextContains("尚未保存的描述")
         compose.onNodeWithTag("field-label-0").performScrollTo().assertTextContains("联系人")
@@ -312,7 +312,7 @@ class SaverAppFlowTest {
                BEGIN SELECT RAISE(ABORT, 'simulated write failure'); END""".trimIndent()
         )
         compose.onNodeWithTag("event-save").performScrollTo().performClick()
-        awaitText("操作未完成，请重试。当前填写的内容已保留。")
+        awaitText("操作没成功，填写的内容还在，可以再试一次。")
         compose.onNodeWithTag("event-title").performScrollTo().assertTextContains("重试后的标题")
         compose.onNodeWithTag("event-description").performScrollTo().assertTextContains("需要保留的描述")
         compose.onNodeWithTag("field-label-0").performScrollTo().assertTextContains("触发测试")
@@ -386,7 +386,7 @@ class SaverAppFlowTest {
         compose.onNodeWithTag("field-value-0").performScrollTo().assertTextContains("东九楼")
 
         compose.onNodeWithText("‹ 返回").performClick()
-        compose.onNodeWithText("放弃尚未保存的修改？").assertExists()
+        compose.onNodeWithText("放弃未保存的修改？").assertExists()
         compose.onNodeWithText("继续编辑").performClick()
         compose.onNodeWithTag("event-title").performScrollTo().assertTextContains("尚未保存的标题")
         compose.onNodeWithText("‹ 返回").performClick()
@@ -537,6 +537,54 @@ class SaverAppFlowTest {
     }
 
     @Test
+    fun collapsingWeekCalendarPreservesWholeWeekUntilADayIsSelected() {
+        awaitText("DDL Saver")
+        val today = Instant.now().atZone(BeijingZone).toLocalDate()
+        val monday = today.minusDays((today.dayOfWeek.value - 1).toLong()).plusWeeks(1)
+        val tuesday = monday.plusDays(1)
+        fun deadline(date: java.time.LocalDate) = date.atTime(18, 0).atZone(BeijingZone).toInstant().toEpochMilli()
+        val seeded = withRepository {
+            listOf(
+                save(EventDraft(title = "下周一事项", deadlineAt = deadline(monday))),
+                save(EventDraft(title = "下周二事项", deadlineAt = deadline(tuesday))),
+                save(EventDraft(title = "周范围以外事项", deadlineAt = deadline(monday.plusWeeks(1))))
+            )
+        }
+        reloadModel()
+        scrollHomeTag("toggle-calendar")
+        compose.onNodeWithTag("toggle-calendar").performClick()
+        scrollHomeTag("calendar-view-week")
+        compose.onNodeWithTag("calendar-view-week").performClick()
+        scrollHomeTag("period-next")
+        compose.onNodeWithTag("period-next").performClick()
+
+        fun assertWholeWeekIsVisible() {
+            scrollHomeTag("list-summary")
+            compose.onNodeWithTag("list-summary").assertTextEquals("$monday 至 ${monday.plusDays(6)} 的事项 · 2")
+            seeded.take(2).forEach { event ->
+                compose.onNodeWithTag("event-list").performScrollToNode(hasText(event.title))
+                compose.onNodeWithText(event.title).assertIsDisplayed()
+            }
+            assertEquals(seeded.toSet(), storedEvents().toSet())
+        }
+
+        assertWholeWeekIsVisible()
+        scrollHomeTag("toggle-calendar")
+        compose.onNodeWithTag("toggle-calendar").performClick()
+        assertWholeWeekIsVisible()
+        scrollHomeTag("toggle-calendar")
+        compose.onNodeWithTag("toggle-calendar").performClick()
+        assertWholeWeekIsVisible()
+        scrollHomeTag("week-day-$tuesday")
+        compose.onNodeWithTag("week-day-$tuesday").performClick()
+        scrollHomeTag("list-summary")
+        compose.onNodeWithTag("list-summary").assertTextEquals("$tuesday 的事项 · 1")
+        compose.onNodeWithTag("event-list").performScrollToNode(hasText(seeded[1].title))
+        compose.onNodeWithText(seeded[1].title).assertIsDisplayed()
+        assertEquals(seeded.toSet(), storedEvents().toSet())
+    }
+
+    @Test
     fun calendarCrossesMonthAndTodayShortcutClearsDateFilter() {
         awaitText("DDL Saver")
         val today = Instant.now().atZone(BeijingZone).toLocalDate()
@@ -682,12 +730,12 @@ class SaverAppFlowTest {
         compose.onNodeWithText("设置").performClick()
         compose.onNodeWithTag("settings-summary-time").performScrollTo().performTextReplacement("24:00")
         compose.onNodeWithTag("settings-save").performScrollTo().performClick()
-        compose.onNodeWithText("请输入 00:00 至 23:59 的时间。").assertExists()
+        compose.onNodeWithText("请按 HH:mm 填写时间，范围是 00:00 至 23:59。").assertExists()
         assertEquals(original.copy(urgentMinutes = 480), withRepository { settings.first() })
         compose.onNodeWithTag("settings-summary-time").performScrollTo().performTextReplacement("07:15")
         compose.onNodeWithTag("settings-deadline-lead").performScrollTo().performTextReplacement("0")
         compose.onNodeWithTag("settings-save").performScrollTo().performClick()
-        compose.onNodeWithText("请输入有效的正整数分钟数。").assertExists()
+        compose.onNodeWithText("请填大于 0 的整数分钟数，数值不能过大。").assertExists()
         compose.onNodeWithTag("settings-deadline-lead").performScrollTo().performTextReplacement("30")
         compose.onNodeWithTag("settings-daily-enabled").performScrollTo().performClick()
         compose.onNodeWithTag("settings-save").performScrollTo().performClick()
@@ -779,7 +827,7 @@ class SaverAppFlowTest {
     fun missingReminderTargetReturnsHomeWithExplanation() {
         awaitText("DDL Saver")
         sendReminderIntent(eventId = "deleted-test-item")
-        awaitText("这条提醒对应的事项已不存在。")
+        awaitText("这条提醒里的事项已经不在了。")
         compose.onNodeWithText("DDL Saver").assertExists()
         assertNull(ViewModelProvider(compose.activity)[SaverViewModel::class.java].state.value.reminderNavigation)
         assertTrue(storedEvents().isEmpty())

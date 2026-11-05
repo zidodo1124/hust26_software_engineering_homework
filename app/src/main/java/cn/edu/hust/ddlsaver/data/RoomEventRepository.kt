@@ -43,7 +43,7 @@ class RoomEventRepository(
         val normalized = EventValidation.normalize(draft)
         val template = RecurrenceTemplate.encode(normalized)
         if (rule.firstDeadline.toEpochMilli() != normalized.deadlineAt || through < rule.firstDeadline) {
-            throw EventValidationException("重复规则的首次截止时间或生成范围无效。")
+            throw EventValidationException("首次截止时间或生成日期范围不对，请检查重复设置。")
         }
         return reminderTransaction {
             validateRelations("", normalized, null)
@@ -61,7 +61,7 @@ class RoomEventRepository(
     }
 
     private suspend fun materializeRecurrence(id: String, from: Instant, through: Instant): Int {
-        val series = dao.findRecurrenceSeries(id) ?: throw EventValidationException("重复系列已不存在。")
+        val series = dao.findRecurrenceSeries(id) ?: throw EventValidationException("这组重复事项已经不在了。")
         if (series.occurrenceCount == 0) return 0
         val rule = RecurrenceRule(Instant.ofEpochMilli(series.firstDeadline), RecurrenceFrequency.valueOf(series.frequency),
             series.untilEpochDay?.let(LocalDate::ofEpochDay), series.occurrenceCount, series.monthlyAnchorDay)
@@ -89,7 +89,7 @@ class RoomEventRepository(
         normalized.recurrence?.takeUnless { normalized.applyToFuture }?.let { spec ->
             val first = Instant.ofEpochMilli(normalized.deadlineAt)
             val rule = try { RecurrenceRule(first, spec.frequency, spec.untilDate, spec.count) }
-                catch (_: IllegalArgumentException) { throw EventValidationException("重复结束条件无效，请检查日期或次数。") }
+                catch (_: IllegalArgumentException) { throw EventValidationException("重复的结束日期或次数不对，请检查一下。") }
             val horizon = maxOf(first, clock.instant()).plusSeconds(90L * 86_400L)
             if (normalized.id != null) return convertToRecurrence(normalized, rule, horizon)
             val seriesId = createRecurrence(normalized.copy(recurrence = null), rule, horizon)
@@ -105,7 +105,7 @@ class RoomEventRepository(
             if (normalized.stopAfterThis) return@reminderTransaction stopSeriesAfterOccurrence(normalized, previous)
             if (normalized.applyToFuture) return@reminderTransaction updateSeriesFromOccurrence(normalized, previous)
             if (previous != null && normalized.attachments.isNotEmpty() && dao.recurrenceForEvent(previous.id) != null) {
-                throw EventValidationException("重复事项不支持图片附件。")
+                throw EventValidationException("重复事项还不能带图片，请先移除图片。")
             }
             validateRelations(id, normalized, previous)
             val row = if (previous == null) {
@@ -141,19 +141,19 @@ class RoomEventRepository(
     }
 
     private suspend fun stopSeriesAfterOccurrence(draft: EventDraft, previous: EventEntity?): DdlEvent {
-        val current = previous ?: throw EventValidationException("请选择重复事项。")
-        val occurrence = dao.recurrenceForEvent(current.id) ?: throw EventValidationException("这不是重复事项。")
+        val current = previous ?: throw EventValidationException("请先选择一条重复事项。")
+        val occurrence = dao.recurrenceForEvent(current.id) ?: throw EventValidationException("这条事项没有设置重复。")
         if (!draft.applyToFuture || current.completedAt != null || current.archivedAt != null) {
-            throw EventValidationException("请选择未完成的重复事项并应用于后续。")
+            throw EventValidationException("请选择未完成且未归档的重复事项，并选择“本次及后续”。")
         }
-        val series = dao.findRecurrenceSeries(occurrence.seriesId) ?: throw EventValidationException("重复系列已不存在。")
+        val series = dao.findRecurrenceSeries(occurrence.seriesId) ?: throw EventValidationException("这组重复事项已经不在了。")
         val limit = try { Math.toIntExact(Math.addExact(occurrence.occurrenceIndex, 1L)) } catch (_: ArithmeticException) {
-            throw EventValidationException("周期序号超出支持范围。")
+            throw EventValidationException("重复次数超出了支持范围。")
         }
         val saved = save(draft.copy(recurrence = null, applyToFuture = false, stopAfterThis = false))
         if (dao.updateRecurrenceSeries(series.copy(occurrenceCount = minOf(series.occurrenceCount ?: limit, limit),
                 untilEpochDay = null, revision = Math.addExact(series.revision, 1L))) != 1) {
-            throw EventValidationException("重复系列已不存在。")
+            throw EventValidationException("这组重复事项已经不在了。")
         }
         dao.recurrenceOccurrences(series.id).filter { it.occurrenceIndex > occurrence.occurrenceIndex }.forEach { item ->
             val row = item.eventId?.let { dao.findEvent(it) } ?: return@forEach
@@ -169,7 +169,7 @@ class RoomEventRepository(
         val template = RecurrenceTemplate.encode(draft.copy(id = null, expectedRevision = null, recurrence = null))
         return reminderTransaction {
             val id = checkNotNull(draft.id)
-            if (dao.recurrenceForEvent(id) != null) throw EventValidationException("此事项已属于重复系列。")
+            if (dao.recurrenceForEvent(id) != null) throw EventValidationException("这条事项已经设置过重复了。")
             val existing = save(draft.copy(recurrence = null))
             val seriesId = UUID.randomUUID().toString()
             dao.insertRecurrenceSeries(RecurrenceSeriesEntity(seriesId, existing.deadlineAt, rule.frequency.name,
@@ -181,12 +181,12 @@ class RoomEventRepository(
     }
 
     private suspend fun updateSeriesFromOccurrence(draft: EventDraft, previous: EventEntity?): DdlEvent {
-        val current = previous ?: throw EventValidationException("请选择重复事项。")
-        val occurrence = dao.recurrenceForEvent(current.id) ?: throw EventValidationException("这不是重复事项。")
-        if (current.completedAt != null || current.archivedAt != null) throw EventValidationException("已完成或归档事项不能修改本次及后续。")
-        if (draft.attachments.isNotEmpty()) throw EventValidationException("重复事项不支持图片附件。")
+        val current = previous ?: throw EventValidationException("请先选择一条重复事项。")
+        val occurrence = dao.recurrenceForEvent(current.id) ?: throw EventValidationException("这条事项没有设置重复。")
+        if (current.completedAt != null || current.archivedAt != null) throw EventValidationException("这条事项已完成或归档，只能修改本次。")
+        if (draft.attachments.isNotEmpty()) throw EventValidationException("重复事项还不能带图片，请先移除图片。")
         validateRelations(current.id, draft, current)
-        val series = dao.findRecurrenceSeries(occurrence.seriesId) ?: throw EventValidationException("重复系列已不存在。")
+        val series = dao.findRecurrenceSeries(occurrence.seriesId) ?: throw EventValidationException("这组重复事项已经不在了。")
         val oldFrequency = RecurrenceFrequency.valueOf(series.frequency)
         val frequency = draft.recurrence?.frequency ?: oldFrequency
         val untilDate = if (draft.recurrence != null) draft.recurrence.untilDate else series.untilEpochDay?.let(LocalDate::ofEpochDay)
@@ -209,15 +209,15 @@ class RoomEventRepository(
             first.toInstant().toEpochMilli()
         }
         val updatedRule = try { RecurrenceRule(Instant.ofEpochMilli(firstDeadline), frequency, untilDate, count, anchorDay) }
-            catch (_: IllegalArgumentException) { throw EventValidationException("新截止日期超出了重复结束日期。") }
+            catch (_: IllegalArgumentException) { throw EventValidationException("新的截止日期晚于重复结束日期，请调整日期。") }
         if (RecurrenceRules.occurrenceAt(updatedRule, occurrence.occurrenceIndex)?.deadline?.toEpochMilli() != draft.deadlineAt) {
-            throw EventValidationException("新截止日期超出结束范围，或无法按当前月重复规则表示；可选择仅修改本次。")
+            throw EventValidationException("这个日期超出了结束范围，或与按月重复的规则对不上。可以选择“仅本次”修改。")
         }
         val template = RecurrenceTemplate.encode(draft.copy(id = null, expectedRevision = null, recurrence = null, applyToFuture = false))
         if (dao.updateRecurrenceSeries(series.copy(firstDeadline = firstDeadline, frequency = frequency.name,
                 untilEpochDay = untilDate?.toEpochDay(), occurrenceCount = count, templateJson = template,
                 monthlyAnchorDay = anchorDay, revision = Math.addExact(series.revision, 1L))) != 1) {
-            throw EventValidationException("重复系列已不存在。")
+            throw EventValidationException("这组重复事项已经不在了。")
         }
         val now = clock.millis()
         dao.recurrenceOccurrences(series.id).filter { it.occurrenceIndex >= occurrence.occurrenceIndex }.forEach { item ->
@@ -246,15 +246,15 @@ class RoomEventRepository(
     suspend fun deleteRecurrenceFollowing(eventId: String) {
         reminderTransaction {
             val event = dao.findEvent(eventId) ?: throw EventNotFoundException()
-            val occurrence = dao.recurrenceForEvent(eventId) ?: throw EventValidationException("这不是重复事项。")
-            if (event.completedAt != null || event.archivedAt != null) throw EventValidationException("已完成或归档事项不能删除本次及后续。")
-            val series = dao.findRecurrenceSeries(occurrence.seriesId) ?: throw EventValidationException("重复系列已不存在。")
+            val occurrence = dao.recurrenceForEvent(eventId) ?: throw EventValidationException("这条事项没有设置重复。")
+            if (event.completedAt != null || event.archivedAt != null) throw EventValidationException("这条事项已完成或归档，只能删除本次。")
+            val series = dao.findRecurrenceSeries(occurrence.seriesId) ?: throw EventValidationException("这组重复事项已经不在了。")
             val limit = try { Math.toIntExact(occurrence.occurrenceIndex) } catch (_: ArithmeticException) {
-                throw EventValidationException("周期序号超出支持范围。")
+                throw EventValidationException("重复次数超出了支持范围。")
             }
             if (dao.updateRecurrenceSeries(series.copy(occurrenceCount = minOf(series.occurrenceCount ?: limit, limit),
                     untilEpochDay = null, revision = Math.addExact(series.revision, 1L))) != 1) {
-                throw EventValidationException("重复系列已不存在。")
+                throw EventValidationException("这组重复事项已经不在了。")
             }
             dao.recurrenceOccurrences(series.id).filter { it.occurrenceIndex >= occurrence.occurrenceIndex }.forEach { item ->
                 val row = item.eventId?.let { dao.findEvent(it) } ?: return@forEach
@@ -284,22 +284,22 @@ class RoomEventRepository(
 
     private suspend fun validateRelations(id: String, draft: EventDraft, previous: EventEntity?) {
         draft.sourceId?.let { sourceId ->
-            val source = dao.findSource(sourceId) ?: throw EventValidationException("所选来源已不存在，请重新选择。")
+            val source = dao.findSource(sourceId) ?: throw EventValidationException("选的来源已经不在了，请重新选择。")
             if (!source.isActive && previous?.sourceId != sourceId) {
-                throw EventValidationException("该来源已停用，不能添加到新事项。")
+                throw EventValidationException("这个来源已停用，不能再添加到事项里。")
             }
         }
         val previousTags = if (previous == null) emptySet() else dao.eventTagIds(id).toSet()
         draft.tagIds.forEach { tagId ->
-            val tag = dao.findTag(tagId) ?: throw EventValidationException("所选标签已不存在，请重新选择。")
+            val tag = dao.findTag(tagId) ?: throw EventValidationException("选的标签已经不在了，请重新选择。")
             if (!tag.isActive && tagId !in previousTags) {
-                throw EventValidationException("该标签已停用，不能新增关联。")
+                throw EventValidationException("这个标签已停用，不能再添加到事项里。")
             }
         }
         draft.attachments.forEach { attachment ->
             val owners = dao.findAttachmentOwners(attachment.id, attachment.relativePath)
             if (owners.any { it.eventId != id || it.id != attachment.id || it.relativePath != attachment.relativePath }) {
-                throw EventValidationException("图片已被其他事项使用，或附件标识不一致，请重新导入。")
+                throw EventValidationException("这张图片已被其他事项使用，或图片信息不一致，请重新添加。")
             }
         }
     }
@@ -410,12 +410,12 @@ class RoomEventRepository(
         val normalized = EventValidation.normalizeCategoryName(name)
         return reminderTransaction {
             if (dao.readSources().any { it.id != id && it.name.equals(normalized, ignoreCase = true) }) {
-                throw EventValidationException("已有同名来源，请使用或恢复原来源。")
+                throw EventValidationException("已经有同名来源了，请选用已有来源，或先恢复停用的来源。")
             }
             val row = if (id == null) SourceEntity(UUID.randomUUID().toString(), normalized)
-            else (dao.findSource(id) ?: throw EventValidationException("来源已不存在。")).copy(name = normalized)
+            else (dao.findSource(id) ?: throw EventValidationException("这个来源已经不在了。")).copy(name = normalized)
             if (id == null) dao.insertSource(row) else if (dao.updateSource(row) != 1) {
-                throw EventValidationException("来源已不存在。")
+                throw EventValidationException("这个来源已经不在了。")
             }
             row.toDomain()
         }
@@ -423,8 +423,8 @@ class RoomEventRepository(
 
     override suspend fun setSourceActive(id: String, active: Boolean) {
         reminderTransaction {
-            val row = dao.findSource(id) ?: throw EventValidationException("来源已不存在。")
-            if (dao.updateSource(row.copy(isActive = active)) != 1) throw EventValidationException("来源已不存在。")
+            val row = dao.findSource(id) ?: throw EventValidationException("这个来源已经不在了。")
+            if (dao.updateSource(row.copy(isActive = active)) != 1) throw EventValidationException("这个来源已经不在了。")
         }
     }
 
@@ -432,12 +432,12 @@ class RoomEventRepository(
         val normalized = EventValidation.normalizeCategoryName(name)
         return reminderTransaction {
             if (dao.readTags().any { it.id != id && it.name.equals(normalized, ignoreCase = true) }) {
-                throw EventValidationException("已有同名标签，请使用或恢复原标签。")
+                throw EventValidationException("已经有同名标签了，请选用已有标签，或先恢复停用的标签。")
             }
             val row = if (id == null) TagEntity(UUID.randomUUID().toString(), normalized)
-            else (dao.findTag(id) ?: throw EventValidationException("标签已不存在。")).copy(name = normalized)
+            else (dao.findTag(id) ?: throw EventValidationException("这个标签已经不在了。")).copy(name = normalized)
             if (id == null) dao.insertTag(row) else if (dao.updateTag(row) != 1) {
-                throw EventValidationException("标签已不存在。")
+                throw EventValidationException("这个标签已经不在了。")
             }
             row.toDomain()
         }
@@ -445,8 +445,8 @@ class RoomEventRepository(
 
     override suspend fun setTagActive(id: String, active: Boolean) {
         reminderTransaction {
-            val row = dao.findTag(id) ?: throw EventValidationException("标签已不存在。")
-            if (dao.updateTag(row.copy(isActive = active)) != 1) throw EventValidationException("标签已不存在。")
+            val row = dao.findTag(id) ?: throw EventValidationException("这个标签已经不在了。")
+            if (dao.updateTag(row.copy(isActive = active)) != 1) throw EventValidationException("这个标签已经不在了。")
         }
     }
 

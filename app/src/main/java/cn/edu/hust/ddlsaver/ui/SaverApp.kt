@@ -118,7 +118,7 @@ fun SaverApp(model: SaverViewModel) {
             selectedId = null
             screen = "home"
             if (request.eventId != null) snackbarScope.launch {
-                snackbar.showSnackbar("这条提醒对应的事项已不存在。", withDismissAction = true)
+                snackbar.showSnackbar("这条提醒里的事项已经不在了。", withDismissAction = true)
             }
         }
         model.acknowledgeReminderNavigation(request.token)
@@ -225,9 +225,9 @@ fun SaverApp(model: SaverViewModel) {
             when {
                 state.loading -> LoadingContent()
                 state.loadError != null -> StatusContent(
-                    title = "暂时无法打开事项",
+                    title = "事项暂时打不开",
                     message = state.loadError.orEmpty(),
-                    actionLabel = "重新读取",
+                    actionLabel = "重新加载",
                     onAction = model::reload,
                 )
                 screen == "home" -> homeState.SaveableStateProvider("home-$homeGeneration") {
@@ -283,7 +283,7 @@ fun SaverApp(model: SaverViewModel) {
                 else -> {
                     val selected = state.events.firstOrNull { it.id == selectedId }
                     if (selectedId != null && selected == null) {
-                        StatusContent("事项已不存在", "这件事项可能已被删除，请返回列表查看其他事项。", "返回列表") {
+                        StatusContent("事项已不存在", "这件事项可能已经删了，回列表看看其他事项吧。", "返回列表") {
                             selectedId = null; screen = "home"
                         }
                     } else if (screen == "editor") {
@@ -331,7 +331,7 @@ fun SaverApp(model: SaverViewModel) {
                             onDeleteFollowing = { model.deleteFollowing(selected) },
                         )
                     } else {
-                        StatusContent("选择一件事项", "从首页查看或创建你的 DDL。", "返回首页") {
+                        StatusContent("选择一件事项", "回首页选一件，或点“新建事项”记下来。", "返回首页") {
                             screen = "home"
                         }
                     }
@@ -344,7 +344,7 @@ fun SaverApp(model: SaverViewModel) {
             AlertDialog(
                 onDismissRequest = { model.deferReminderNavigation(request.token) },
                 title = { Text("查看通知中的事项？") },
-                text = { Text("当前页面可能有未保存的修改。选择“稍后查看”可继续编辑；选择“放弃修改并打开”将直接查看通知中的事项。") },
+                text = { Text("当前修改可能还没保存。点“稍后查看”继续编辑；点“放弃修改并打开”会丢弃这些修改，打开通知里的事项。") },
                 dismissButton = { TextButton({ model.deferReminderNavigation(request.token) }, modifier = Modifier.testTag("reminder-defer")) { Text("稍后查看") } },
                 confirmButton = { TextButton({
                     if (screen == "editor") {
@@ -451,7 +451,7 @@ private fun DetailScreen(
                         }) { Text(if (copied) "已复制" else "复制全文") }
                     }
                     SelectionContainer {
-                        Text(event.description.ifEmpty { "暂无描述，可在“编辑事项”中补充。" }, color = if (event.description.isEmpty()) Muted else Ink)
+                        Text(event.description.ifEmpty { "还没写描述，点“编辑事项”可以补上。" }, color = if (event.description.isEmpty()) Muted else Ink)
                     }
                 }
             }
@@ -479,7 +479,7 @@ private fun DetailScreen(
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 OutlinedButton(onClick = onEdit, enabled = !busy, modifier = Modifier.weight(1f)) { Text("编辑事项") }
                 OutlinedButton(onClick = onArchive, enabled = !busy, modifier = Modifier.weight(1f)) {
-                    Text(if (event.archivedAt == null) "归档" else "恢复归档")
+                    Text(if (event.archivedAt == null) "归档" else "移出归档")
                 }
             }
             TextButton(onClick = { confirmDelete = true }, enabled = !busy, modifier = Modifier.align(Alignment.CenterHorizontally)) {
@@ -495,8 +495,8 @@ private fun DetailScreen(
             text = {
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     Text(event.title, maxLines = 4, overflow = TextOverflow.Ellipsis, fontWeight = FontWeight.SemiBold)
-                    Text(if (event.recurrence == null) "将永久删除这件事项及其附件副本，无法恢复。相册原图不受影响。"
-                        else "可删除本次，或停止并删除本次及后续未完成事项；已完成或归档事项保留。删除无法恢复。")
+                    Text(if (event.recurrence == null) "这件事项和 App 内的附件副本会永久删除，无法恢复。相册原图不受影响。"
+                        else if (event.completedAt != null || event.archivedAt != null) "只删除这一次，不影响其他重复事项。删除后无法恢复。" else "只删本次不会影响其他周期；删除本次及后续会停止重复，保留已完成或归档记录。删除后无法恢复。")
                 }
             },
             confirmButton = {
@@ -544,7 +544,7 @@ private fun LoadingContent() {
     Column(Modifier.fillMaxSize(), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
         CircularProgressIndicator()
         Spacer(Modifier.height(16.dp))
-        Text("正在读取事项…", color = Muted)
+        Text("正在加载事项…", color = Muted)
     }
 }
 

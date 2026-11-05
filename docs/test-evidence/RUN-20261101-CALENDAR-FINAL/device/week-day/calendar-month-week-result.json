@@ -1,0 +1,17 @@
+{
+  "atUtc": "2026-11-02T07:43:20.867783+00:00",
+  "monthInitialCounts": {
+    "2026-11-02": 2,
+    "2026-11-03": 1
+  },
+  "monthCountsNotNarrowedBySelectedDay": true,
+  "currentWeekCount": 3,
+  "collapsedWeekCountStillThree": true,
+  "emptyNextWeekVerified": true,
+  "todayReturnsCurrentWeek": true,
+  "directDayChipVerified": true,
+  "weekDayOpensDayView": true,
+  "dayTodayCount": 2,
+  "keywordRefinementCount": 1,
+  "keywordRestorationCount": 2
+}

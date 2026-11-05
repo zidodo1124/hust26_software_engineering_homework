@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-11-02T07:25:47" hostname="LAPTOP-7OF0K1SP" time="14.994">
+  <properties/>
+  <testcase name="collapsingWeekCalendarPreservesWholeWeekUntilADayIsSelected" classname="cn.edu.hust.ddlsaver.ui.SaverAppFlowTest" time="14.994"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Invalid ID 0x00000000.
+]]></system-err>
+</testsuite>

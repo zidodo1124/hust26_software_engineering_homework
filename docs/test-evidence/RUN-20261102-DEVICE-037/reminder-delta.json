@@ -1,0 +1,45 @@
+{
+  "evidenceReadAtUtc": "2026-11-02T11:21:34.443599+00:00",
+  "scope": "Read-only comparison of saved before/final snapshots; no phone or ledger mutation.",
+  "timeReference": "Host UTC recorded with final DB snapshot; final phone screenshot shows the corresponding Beijing minute. No system clock was changed.",
+  "beforeSnapshotAtUtc": "2026-11-02T11:06:13.129014+00:00",
+  "finalSnapshotAtUtc": "2026-11-02T11:16:36.268757+00:00",
+  "beforePlanCount": 46,
+  "finalPlanCount": 46,
+  "planKeySetsUnchanged": true,
+  "originalSentCount": 17,
+  "originalSentKeysPreserved": true,
+  "originalSentTerminalStatesPreserved": true,
+  "originalSentFieldsExceptActiveUnchanged": true,
+  "originalSentExactRowsUnchanged": false,
+  "originalSentSchedulingChanges": [
+    {
+      "changedFields": [
+        "active"
+      ],
+      "beforeActive": 1,
+      "afterActive": 0,
+      "onlyActiveChanged": true,
+      "active1to0": true,
+      "deadlinePassedByFinalSnapshot": true,
+      "stateStillSent": true,
+      "allOtherFieldsUnchanged": true
+    }
+  ],
+  "onlyExpectedDeadlineDeactivations": true,
+  "finalSentCount": 18,
+  "newlySentCount": 1,
+  "newlySentDetails": [
+    {
+      "kind": "DANGER",
+      "existedBefore": true,
+      "beforeState": "PENDING",
+      "afterState": "SENT",
+      "triggerWithinObservedWindow": true,
+      "attemptAtOrAfterTrigger": true,
+      "deadlinePassedByFinalSnapshot": true
+    }
+  ],
+  "deliveryLimit": "SENT is the saved app ledger state; this copy-review run did not separately verify notification delivery or tapping.",
+  "strictCheckFilePreserved": "final-checks.json"
+}

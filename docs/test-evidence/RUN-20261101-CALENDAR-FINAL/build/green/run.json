@@ -1,0 +1,28 @@
+{
+  "phase": "0.3.5 week calendar collapse regression green",
+  "startedAtUtc": "2026-11-02T07:25:00.425707+00:00",
+  "baseCommit": "5df4320a3f481488cb4137dbdac8be1fa9358a91",
+  "command": [
+    "powershell",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "scripts/gradle.ps1",
+    "--no-daemon",
+    "--console=plain",
+    "--stacktrace",
+    "--max-workers=2",
+    ":app:cleanTestDebugUnitTest",
+    ":app:testDebugUnitTest",
+    "--tests",
+    "*SaverAppFlowTest.collapsingWeekCalendarPreservesWholeWeekUntilADayIsSelected"
+  ],
+  "filters": [
+    "SaverAppFlowTest.collapsingWeekCalendarPreservesWholeWeekUntilADayIsSelected"
+  ],
+  "runtime": "Windows / JDK 17 / Robolectric; no device operation",
+  "finishedAtUtc": "2026-11-02T07:26:03.863641+00:00",
+  "durationSeconds": 63.453,
+  "exitCode": 0
+}

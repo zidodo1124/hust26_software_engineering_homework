@@ -85,7 +85,7 @@ class SaverViewModel(application: Application) : AndroidViewModel(application) {
                     reminders.requestReconcile()
                 }
             } catch (cancelled: CancellationException) { throw cancelled }
-            catch (_: Exception) { mutableState.update { it.copy(loading = false, loadError = "暂时无法读取本机数据，请重试。") } }
+            catch (_: Exception) { mutableState.update { it.copy(loading = false, loadError = "暂时没能读出手机里的数据，请再试一次。") } }
         }
     }
 
@@ -112,7 +112,7 @@ class SaverViewModel(application: Application) : AndroidViewModel(application) {
         policyJob = viewModelScope.launch {
             try { repository.applyExpiredPolicy() }
             catch (cancelled: CancellationException) { throw cancelled }
-            catch (_: Exception) { mutableState.update { it.copy(cleanupWarning = "自动归档暂未完成，将在下次刷新时重试。") } }
+            catch (_: Exception) { mutableState.update { it.copy(cleanupWarning = "自动归档还没完成，下次刷新时会再试。") } }
         }
     }
 
@@ -151,8 +151,8 @@ class SaverViewModel(application: Application) : AndroidViewModel(application) {
                 }
             } catch (cancelled: CancellationException) { mutableState.update { it.copy(busy = false) }; throw cancelled }
             catch (error: Exception) { mutableState.update { it.copy(busy = false,
-                operationError = if (error is AttachmentException) error.message ?: "图片导入失败，请重新选择。"
-                else "图片导入失败，请重新选择。") } }
+                operationError = if (error is AttachmentException) error.message ?: "图片没能导入，请重新选一次。"
+                else "图片没能导入，请重新选一次。") } }
         }
     }
 
@@ -212,7 +212,7 @@ class SaverViewModel(application: Application) : AndroidViewModel(application) {
         repository.saveSettings(settings)
         try { repository.applyExpiredPolicy() }
         catch (cancelled: CancellationException) { throw cancelled }
-        catch (_: Exception) { mutableState.update { it.copy(cleanupWarning = "设置已保存，过期事项暂未归档，将在下次刷新时重试。") } }
+        catch (_: Exception) { mutableState.update { it.copy(cleanupWarning = "设置已保存，过期事项还没归档，下次刷新时会再试。") } }
         null to null
     }
     fun saveCategory(isSource: Boolean, id: String?, name: String) = perform("category") {
@@ -231,7 +231,7 @@ class SaverViewModel(application: Application) : AndroidViewModel(application) {
         catch (cancelled: CancellationException) { throw cancelled }
         catch (_: Exception) { cleanupFailed() }
     }
-    private fun cleanupFailed() = mutableState.update { it.copy(cleanupWarning = "数据操作已完成，部分闲置图片暂未清理，将在后续启动时重试。") }
+    private fun cleanupFailed() = mutableState.update { it.copy(cleanupWarning = "操作已完成，还有些不用的图片没清理掉，下次打开 App 时会再试。") }
     private fun perform(kind: String, completionFeedback: Boolean = false, action: suspend () -> Pair<String?, Long?>) {
         if (mutableState.value.busy || mutableState.value.actionResult != null || mutableState.value.imageImportResult != null) return
         mutableState.update { it.copy(busy = true, operationError = null) }
@@ -251,8 +251,8 @@ class SaverViewModel(application: Application) : AndroidViewModel(application) {
             } catch (cancelled: CancellationException) { mutableState.update { it.copy(busy = false) }; throw cancelled }
             catch (error: Exception) {
                 val message = if (error is EventValidationException || error is EventConflictException || error is EventNotFoundException)
-                    error.message ?: "请检查填写内容后重试。"
-                else "操作未完成，请重试。当前填写的内容已保留。"
+                    error.message ?: "请检查一下填写的内容，再试一次。"
+                else "操作没成功，填写的内容还在，可以再试一次。"
                 mutableState.update { it.copy(busy = false, operationError = message) }
             }
         }

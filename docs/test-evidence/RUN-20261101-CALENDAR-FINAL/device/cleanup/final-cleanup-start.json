@@ -1,0 +1,29 @@
+{
+  "atUtc": "2026-11-02T07:55:54.385338+00:00",
+  "approvedRecordedCount": 5,
+  "approved": [
+    {
+      "id": "e6c0a446-12c0-4f98-b388-8ce255bbaffe",
+      "title": "QA-CAL-1101-A"
+    },
+    {
+      "id": "31c87c30-8ccd-4b8d-b05d-529f1f54d14d",
+      "title": "QA-CAL-1101-B"
+    },
+    {
+      "id": "52cf335a-9c14-45ff-b66b-13a98f908a04",
+      "title": "QA-CAL-1101-C"
+    },
+    {
+      "id": "1ddb90d5-9555-42e7-9825-00adac39fe46",
+      "title": "QA-CAL-1101-D"
+    },
+    {
+      "id": "1836eebc-cad5-4bbe-8ff6-f7ad56ec3acc",
+      "title": "QA-CAL-1101-E"
+    }
+  ],
+  "uiOnly": true,
+  "automaticDeleteRetry": false,
+  "forceStopUsed": false
+}

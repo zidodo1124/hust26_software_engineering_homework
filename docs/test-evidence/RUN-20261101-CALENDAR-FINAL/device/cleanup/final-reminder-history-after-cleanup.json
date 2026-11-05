@@ -1,0 +1,37 @@
+{
+  "atUtc": "2026-11-02T07:59:09.605137+00:00",
+  "scope": "Stable live snapshot; exact private original SENT key set; recorded QA IDs only",
+  "dbWalRepeatedBytesMatch": true,
+  "readAttempts": 1,
+  "integrityCheck": "ok",
+  "originalSentRowCount": 14,
+  "originalSentRowCountMatchesBaseline": true,
+  "originalSentRowsSaltedDigest": "ae1e6fb1d37b0d15df2d2c71effac95975e3a731121094793982a4bbe7e91146",
+  "originalSentRowsExactlyMatchBaseline": true,
+  "originalReminderRowCount": 33,
+  "originalReminderRowCountMatchesBaseline": true,
+  "originalReminderRowsSaltedDigest": "a8cbceff9a1fdad0a116e81c5ca91e3aa2c03eeeea5818e683138098d271b51a",
+  "originalReminderRowsExactlyMatchBaseline": true,
+  "originalReminderComparisonScope": "All ledger rows excluding exact recorded current-batch QA event IDs; no ledger mutations",
+  "allQaPlanCount": 5,
+  "allQaPlanInactive": true,
+  "qaPendingCancellationCount": 0,
+  "qaPlanKeysSaltedDigest": "df12ecceb3b28b775fb263d2e9acf8f291d549ced9c7fbc79873cda5a9c8b98e",
+  "qaSentKeysSaltedDigest": "26ce1fb133d60fb0c4a819c92fd6baeb4deddc452638934aee51142e8ec37f3f",
+  "qaSentHistoryRetainedCount": 0,
+  "qaPlanCountsByTitle": {
+    "QA-CAL-1101-A": 1,
+    "QA-CAL-1101-B": 1,
+    "QA-CAL-1101-C": 1,
+    "QA-CAL-1101-D": 1,
+    "QA-CAL-1101-E": 1
+  },
+  "legitimateNewDailySentCount": 0,
+  "allReminderErrorCount": 0,
+  "control": {
+    "alarmDirty": 0,
+    "desiredTriggerAt": 1793664000000,
+    "hasError": false
+  },
+  "temporaryPrivateDatabaseRemoved": true
+}

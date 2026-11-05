@@ -10,12 +10,12 @@ object ReminderStatusCopy {
     /** 首页横幅；无问题时返回 null。 */
     fun homeWarning(settings: AppSettings, health: ReminderHealth): String? {
         if (!anyReminderEnabled(settings)) return null
-        health.lastError?.let { return "提醒暂未安排完成，请前往设置重新检查：$it" }
+        health.lastError?.let { return "提醒没安排好，到“设置”里检查一下：$it" }
         if (!health.canPost) {
-            return "系统通知尚未开启或提醒通道已关闭。如需接收提醒，请前往“设置”检查通知权限与通道。"
+            return "系统通知没开，或提醒通道已关闭。到“设置”里检查通知权限和提醒通道。"
         }
         if (!health.canScheduleExact) {
-            return "当前使用近似提醒，通知可能延迟。可前往“设置”允许精确提醒。"
+            return "现在使用近似提醒，通知可能晚一些。可到“设置”里允许精确提醒。"
         }
         return null
     }
@@ -23,6 +23,6 @@ object ReminderStatusCopy {
     /** 设置页：系统尚不可发通知时，说明计划仍保留。 */
     fun settingsPlansRetainedHint(health: ReminderHealth): String? =
         if (!health.canPost) {
-            "提醒开关对应的计划会保留，但在系统通知可用前不会弹出通知，也不会安排系统唤醒。"
+            "提醒计划会保留。开启系统通知前，不会弹出通知，也不会安排系统唤醒。"
         } else null
 }

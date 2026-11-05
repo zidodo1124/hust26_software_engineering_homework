@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.ui.ContentClipboardFlowTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-11-02T07:28:38" hostname="LAPTOP-7OF0K1SP" time="10.501">
+  <properties/>
+  <testcase name="longDescriptionCopiesEveryCharacterAfterSavingAndReopening" classname="cn.edu.hust.ddlsaver.ui.ContentClipboardFlowTest" time="5.784"/>
+  <testcase name="cancellingFieldEditsThenRemovingOneDuplicatePreservesRemainingOrderAndOtherEvent" classname="cn.edu.hust.ddlsaver.ui.ContentClipboardFlowTest" time="2.924"/>
+  <testcase name="sameNamedFieldsEditAndCopyIndependentlyWhileEmptyValueAndOtherEventRemain" classname="cn.edu.hust.ddlsaver.ui.ContentClipboardFlowTest" time="1.793"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+]]></system-err>
+</testsuite>

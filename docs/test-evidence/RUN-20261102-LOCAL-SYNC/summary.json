@@ -1,0 +1,68 @@
+{
+  "startedAtUtc": "2026-11-02T09:54:45.695188+00:00",
+  "completedAtUtc": "2026-11-02T10:00:08.142907+00:00",
+  "exitCode": 0,
+  "versionName": "0.3.6",
+  "versionCode": 9,
+  "schema": 5,
+  "sourceChangedDuringBuild": false,
+  "tests": {
+    "suiteXmlCount": 29,
+    "uniqueMethodCount": 197,
+    "executionCount": 236,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "weekCollapseRegression": [
+    {
+      "class": "cn.edu.hust.ddlsaver.ui.SaverAppFlowTest",
+      "name": "collapsingWeekCalendarPreservesWholeWeekUntilADayIsSelected",
+      "failure": false,
+      "error": false,
+      "skipped": false
+    }
+  ],
+  "lint": {
+    "errors": 0,
+    "warnings": 16,
+    "issues": 16
+  },
+  "apk": {
+    "path": "app/build/outputs/apk/debug/app-debug.apk",
+    "bytes": 15184547,
+    "sha256": "84cb2026fa087c4623f4fa948c2e1b2cd3006574e6aae424ff887e4eb791702c"
+  },
+  "reportMtimeUtc": {
+    "app/build/test-results/testDebugUnitTest/TEST-cn.edu.hust.ddlsaver.data.CharacterStylePersistenceTest.xml": "2026-11-02T09:59:35.142454+00:00",
+    "app/build/test-results/testDebugUnitTest/TEST-cn.edu.hust.ddlsaver.data.RoomEventRepositoryTest.xml": "2026-11-02T09:59:35.146442+00:00",
+    "app/build/test-results/testDebugUnitTest/TEST-cn.edu.hust.ddlsaver.data.RoundTwoRepositoryTest.xml": "2026-11-02T09:59:35.139292+00:00",
+    "app/build/test-results/testDebugUnitTest/TEST-cn.edu.hust.ddlsaver.data.SaverDatabaseMigrationTest.xml": "2026-11-02T09:59:35.125472+00:00",
+    "app/build/test-results/testDebugUnitTest/TEST-cn.edu.hust.ddlsaver.domain.CharacterFeedbackTest.xml": "2026-11-02T09:59:35.128489+00:00",
+    "app/build/test-results/testDebugUnitTest/TEST-cn.edu.hust.ddlsaver.domain.EventQueryTest.xml": "2026-11-02T09:59:35.145447+00:00",
+    "app/build/test-results/testDebugUnitTest/TEST-cn.edu.hust.ddlsaver.domain.EventValidationTest.xml": "2026-11-02T09:59:35.131613+00:00",
+    "app/build/test-results/testDebugUnitTest/TEST-cn.edu.hust.ddlsaver.domain.ExtendedEventValidationTest.xml": "2026-11-02T09:59:35.135640+00:00",
+    "app/build/test-results/testDebugUnitTest/TEST-cn.edu.hust.ddlsaver.domain.RecurrenceRulesTest.xml": "2026-11-02T09:59:35.136835+00:00",
+    "app/build/test-results/testDebugUnitTest/TEST-cn.edu.hust.ddlsaver.domain.UrgencyRulesTest.xml": "2026-11-02T09:59:35.147772+00:00",
+    "app/build/test-results/testDebugUnitTest/TEST-cn.edu.hust.ddlsaver.platform.AttachmentImportDiagnosticsTest.xml": "2026-11-02T09:59:35.120900+00:00",
+    "app/build/test-results/testDebugUnitTest/TEST-cn.edu.hust.ddlsaver.platform.AttachmentStoreTest.xml": "2026-11-02T09:59:35.150236+00:00",
+    "app/build/test-results/testDebugUnitTest/TEST-cn.edu.hust.ddlsaver.reminders.AndroidReminderPlatformTest.xml": "2026-11-02T09:59:35.146442+00:00",
+    "app/build/test-results/testDebugUnitTest/TEST-cn.edu.hust.ddlsaver.reminders.ReminderEngineTest.xml": "2026-11-02T09:59:35.132613+00:00",
+    "app/build/test-results/testDebugUnitTest/TEST-cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest.xml": "2026-11-02T09:59:35.135640+00:00",
+    "app/build/test-results/testDebugUnitTest/TEST-cn.edu.hust.ddlsaver.reminders.ReminderRestoreIntegrationTest.xml": "2026-11-02T09:59:35.152235+00:00",
+    "app/build/test-results/testDebugUnitTest/TEST-cn.edu.hust.ddlsaver.reminders.ReminderRulesTest.xml": "2026-11-02T09:59:35.129482+00:00",
+    "app/build/test-results/testDebugUnitTest/TEST-cn.edu.hust.ddlsaver.reminders.ReminderStatusCopyTest.xml": "2026-11-02T09:59:35.130588+00:00",
+    "app/build/test-results/testDebugUnitTest/TEST-cn.edu.hust.ddlsaver.ui.AttachmentClipboardFlowTest.xml": "2026-11-02T09:59:35.127481+00:00",
+    "app/build/test-results/testDebugUnitTest/TEST-cn.edu.hust.ddlsaver.ui.CalendarGridTest.xml": "2026-11-02T09:59:35.120900+00:00",
+    "app/build/test-results/testDebugUnitTest/TEST-cn.edu.hust.ddlsaver.ui.CharacterArtworkTest.xml": "2026-11-02T09:59:35.137951+00:00",
+    "app/build/test-results/testDebugUnitTest/TEST-cn.edu.hust.ddlsaver.ui.CharacterAssetsTest.xml": "2026-11-02T09:59:35.124206+00:00",
+    "app/build/test-results/testDebugUnitTest/TEST-cn.edu.hust.ddlsaver.ui.CharacterBubbleLayoutTest.xml": "2026-11-02T09:59:35.139292+00:00",
+    "app/build/test-results/testDebugUnitTest/TEST-cn.edu.hust.ddlsaver.ui.ContentClipboardFlowTest.xml": "2026-11-02T09:59:35.124206+00:00",
+    "app/build/test-results/testDebugUnitTest/TEST-cn.edu.hust.ddlsaver.ui.OceanThemeContrastTest.xml": "2026-11-02T09:59:35.133639+00:00",
+    "app/build/test-results/testDebugUnitTest/TEST-cn.edu.hust.ddlsaver.ui.OceanUiRenderTest.xml": "2026-11-02T09:59:35.144448+00:00",
+    "app/build/test-results/testDebugUnitTest/TEST-cn.edu.hust.ddlsaver.ui.ReminderColdLaunchTest.xml": "2026-11-02T09:59:35.151225+00:00",
+    "app/build/test-results/testDebugUnitTest/TEST-cn.edu.hust.ddlsaver.ui.SaverAppFlowTest.xml": "2026-11-02T09:59:35.142454+00:00",
+    "app/build/test-results/testDebugUnitTest/TEST-cn.edu.hust.ddlsaver.ui.SaverViewModelFeedbackTest.xml": "2026-11-02T09:59:35.126483+00:00",
+    "app/build/reports/lint-results-debug.xml": "2026-11-02T10:00:07.658340+00:00"
+  }
+}

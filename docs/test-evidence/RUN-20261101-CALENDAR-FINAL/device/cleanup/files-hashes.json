@@ -1,0 +1,212 @@
+[
+  {
+    "file": "device-final.json",
+    "source": ".local-tools/calendar-device-20261101/device-final.json",
+    "sha256": "881c04404ab47f9a97767ea9cbe33f6fd10aaa218dc9498bdf3f0334de0f0c00",
+    "bytes": 1452,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "final-after-cleanup.json",
+    "source": ".local-tools/calendar-device-20261101/final-after-cleanup.json",
+    "sha256": "e2ea8696d31047b443ecc912f100dde20df965115ce50d32193920d2773a1b80",
+    "bytes": 3051,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "final-cleanup-after-qa.json",
+    "source": ".local-tools/calendar-device-20261101/final-cleanup-after-qa.json",
+    "sha256": "486b62ee575906108603b3963cc82470d2ec7a30c9d62bf29382a2803b1c9a83",
+    "bytes": 780,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "final-cleanup-before-qa.json",
+    "source": ".local-tools/calendar-device-20261101/final-cleanup-before-qa.json",
+    "sha256": "2bc8e13684825084334a42d6c718e1a05947d484bf5f13f1190b813c4c8b6c59",
+    "bytes": 5565,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "final-cleanup-confirmation-a.json",
+    "source": ".local-tools/calendar-device-20261101/final-cleanup-confirmation-a.json",
+    "sha256": "c424621469aa698d9b98bf0f854a454aff1d60aefc561ffe1815c93be54a821e",
+    "bytes": 198,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "final-cleanup-confirmation-b.json",
+    "source": ".local-tools/calendar-device-20261101/final-cleanup-confirmation-b.json",
+    "sha256": "f57eff6bf6e2f41a00fa39978207f3300e89b4768e60b6e62c15213cc967f0d0",
+    "bytes": 198,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "final-cleanup-confirmation-c.json",
+    "source": ".local-tools/calendar-device-20261101/final-cleanup-confirmation-c.json",
+    "sha256": "2caf670e581471109be86ec2ae24befc823289e642ed797557a115b1a40837a1",
+    "bytes": 198,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "final-cleanup-confirmation-d.json",
+    "source": ".local-tools/calendar-device-20261101/final-cleanup-confirmation-d.json",
+    "sha256": "4b4322f14540b74719d567f295de5b2f2ff874a4ee5da925ca7c78fc9f322e36",
+    "bytes": 198,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "final-cleanup-confirmation-e.json",
+    "source": ".local-tools/calendar-device-20261101/final-cleanup-confirmation-e.json",
+    "sha256": "0a70bb541239ac6ce966f6ce2a1732dfeb7591c2512abbef2ba09edfa2a01723",
+    "bytes": 198,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "final-cleanup-post-a-1.json",
+    "source": ".local-tools/calendar-device-20261101/final-cleanup-post-a-1.json",
+    "sha256": "55eb8d4d86a53ad9393c5a7a414d3f139b8da2187038bb76b65be9ca33f026e1",
+    "bytes": 4507,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "final-cleanup-post-b-1.json",
+    "source": ".local-tools/calendar-device-20261101/final-cleanup-post-b-1.json",
+    "sha256": "91e7f45ce6c5b960e5caf44ae43ed7bdb3eae9e4e4fa173c03b46090685be43e",
+    "bytes": 3570,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "final-cleanup-post-c-1.json",
+    "source": ".local-tools/calendar-device-20261101/final-cleanup-post-c-1.json",
+    "sha256": "7344e47f01d50130918977b0f96d72241a7850ab8d4c2a1ebdc9ac5a678ab1dd",
+    "bytes": 2642,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "final-cleanup-post-d-1.json",
+    "source": ".local-tools/calendar-device-20261101/final-cleanup-post-d-1.json",
+    "sha256": "d3efa9e38cd60645214fd23c6d58b4744f4eea9a44b5cc06e61665472c267293",
+    "bytes": 1714,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "final-cleanup-post-e-1.json",
+    "source": ".local-tools/calendar-device-20261101/final-cleanup-post-e-1.json",
+    "sha256": "fa04154422d8cb2bae4b9fa515ee3c472818f48c2cbf1a55d004a73403351788",
+    "bytes": 780,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "final-cleanup-pre-a.json",
+    "source": ".local-tools/calendar-device-20261101/final-cleanup-pre-a.json",
+    "sha256": "57b303d92c805498814ba12a1afc12bb364290e10bbcdfc15dea6448fafaf2d7",
+    "bytes": 5435,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "final-cleanup-pre-b.json",
+    "source": ".local-tools/calendar-device-20261101/final-cleanup-pre-b.json",
+    "sha256": "be140fc2ce3a4906f8f15b91aabad505c427bc4f58cb59d4bf91a7ff798acda1",
+    "bytes": 4507,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "final-cleanup-pre-c.json",
+    "source": ".local-tools/calendar-device-20261101/final-cleanup-pre-c.json",
+    "sha256": "e8fb09c79869139b434489fd607b5c07b07ddb51d53a7a407fc9f1c1e0dbe439",
+    "bytes": 3570,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "final-cleanup-pre-d.json",
+    "source": ".local-tools/calendar-device-20261101/final-cleanup-pre-d.json",
+    "sha256": "aee089bf799ae9b454eb3b36ac8ccf390f83164704c0fc5e97355461033c77e7",
+    "bytes": 2642,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "final-cleanup-pre-e.json",
+    "source": ".local-tools/calendar-device-20261101/final-cleanup-pre-e.json",
+    "sha256": "00525db6c9783358511ed25fc1c4ec0bec0557cec7e2ff466a3138d1b2207551",
+    "bytes": 1714,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "final-cleanup-progress.json",
+    "source": ".local-tools/calendar-device-20261101/final-cleanup-progress.json",
+    "sha256": "1f08ad25b453d2062f02014c0eaa1742ff4583764485974c0ac425028a3af31b",
+    "bytes": 942,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "final-cleanup-result.json",
+    "source": ".local-tools/calendar-device-20261101/final-cleanup-result.json",
+    "sha256": "551b527b7622a51e9cf28e891e96051fc664fb91bfe29b1793e8eaa6d076feae",
+    "bytes": 1351,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "final-cleanup-start.json",
+    "source": ".local-tools/calendar-device-20261101/final-cleanup-start.json",
+    "sha256": "8f67e0d58d67e69c1a3fe9e6f702155232f8825a915fb19ccaba0046bfdf3460",
+    "bytes": 686,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "final-data-and-state-audit.json",
+    "source": ".local-tools/calendar-device-20261101/final-data-and-state-audit.json",
+    "sha256": "a3c0b09691c65cfec56d533143f68adbea5b3e4e708c1be25cb73e8fa6befa7d",
+    "bytes": 4881,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "final-normal-launch-qa.json",
+    "source": ".local-tools/calendar-device-20261101/final-normal-launch-qa.json",
+    "sha256": "65986c88be2fd79b3b16a42e53fd19fc1830984d760780c82d5a8ebfe92395ae",
+    "bytes": 780,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "final-qa-notification-cancellation.json",
+    "source": ".local-tools/calendar-device-20261101/final-qa-notification-cancellation.json",
+    "sha256": "3a9a2d83817b40cba86c661b9bfb6fde6c4eea99929262886499cd4c4db43612",
+    "bytes": 541,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "final-qa-notifications.json",
+    "source": ".local-tools/calendar-device-20261101/final-qa-notifications.json",
+    "sha256": "e878317648f81738060d00912b2e3cd5215c1188fa73440469c1b8ae036c6e8b",
+    "bytes": 350,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "final-reminder-history-after-cleanup.json",
+    "source": ".local-tools/calendar-device-20261101/final-reminder-history-after-cleanup.json",
+    "sha256": "a960d7d898b8d00ea2aa68e34a65bc2a4fd82f08377f65e7cf95f531dea908bc",
+    "bytes": 1538,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "final-reminder-history-audit.json",
+    "source": ".local-tools/calendar-device-20261101/final-reminder-history-audit.json",
+    "sha256": "5fb679cf34544a4791176acd70ddb85c08cb2c16c66b8361b1fd6093b80c27cc",
+    "bytes": 1538,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "final-reminder-history-before-cleanup.json",
+    "source": ".local-tools/calendar-device-20261101/final-reminder-history-before-cleanup.json",
+    "sha256": "3168ad89d8c8e65c45c0e166ddecd83dfc2a139c749f76d1668f4ee8be57fcb7",
+    "bytes": 1539,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "final-audit-template-annotation.json",
+    "source": ".local-tools/calendar-device-20261101/final-audit-template-annotation.json",
+    "sha256": "3cc973c0ec7619b4b8ed153759bae5d85f896db91a62667d64900c9089992b32",
+    "bytes": 1431,
+    "transformation": "None; reviewed safe source bytes"
+  }
+]

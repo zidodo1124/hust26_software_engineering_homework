@@ -1,0 +1,9 @@
+{
+  "installStartedUtc": "2026-11-02T07:31:02.400391+00:00",
+  "adbCommandReturnedExitZero": true,
+  "helperStoppedAt": "assert output == 'Success'",
+  "exactStdoutNotRetained": true,
+  "interpretation": "Output parser precondition did not hold; installation status must be established by actual installed version, bytes, hash and certificate",
+  "installRetried": false,
+  "nextAction": "Read-only actual package identity and original-data comparison"
+}

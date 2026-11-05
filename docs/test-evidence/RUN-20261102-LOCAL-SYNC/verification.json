@@ -1,0 +1,35 @@
+{
+  "passed": true,
+  "checks": {
+    "gradleExitZero": true,
+    "buildSuccessful": true,
+    "unitTestTaskExecuted": true,
+    "allTestAndLintReportsFresh": true,
+    "trackedProductInputsUnchangedDuringBuild": true,
+    "allTestsPassed": true,
+    "weekCollapseRegressionExecutedAndPassed": true,
+    "lintHasNoErrors": true,
+    "apkVersionConfirmed": true,
+    "sourceVersionConfirmed": true,
+    "schema5Confirmed": true,
+    "apkHashStillMatches": true,
+    "productDiffCheckPassed": true
+  },
+  "testCounts": {
+    "suiteXmlCount": 29,
+    "uniqueMethodCount": 197,
+    "executionCount": 236,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "lint": {
+    "errors": 0,
+    "warnings": 16,
+    "issues": 16
+  },
+  "headSha": "4dd432086a522183c0a60e77ff8d2184d876dcb8",
+  "sourceInputFileCount": 95,
+  "startedAtUtc": "2026-11-02T09:54:45.695188+00:00",
+  "completedAtUtc": "2026-11-02T10:00:08.142907+00:00"
+}

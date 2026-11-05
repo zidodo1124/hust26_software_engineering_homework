@@ -121,7 +121,7 @@ class ContentClipboardFlowTest {
         compose.onNodeWithTag("field-label-1").performScrollTo().performTextReplacement("尚未保存的新名称")
         compose.onNodeWithTag("field-value-1").performScrollTo().performTextReplacement("尚未保存的新内容")
         compose.onNodeWithText("‹ 返回").performClick()
-        compose.onNodeWithText("放弃尚未保存的修改？").assertExists()
+        compose.onNodeWithText("放弃未保存的修改？").assertExists()
         compose.onNodeWithText("放弃修改").performClick()
         awaitText("事项详情")
         assertEquals(original, storedEvents().single { it.id == original.id })

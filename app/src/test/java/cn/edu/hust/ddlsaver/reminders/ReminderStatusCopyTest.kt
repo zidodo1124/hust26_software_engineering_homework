@@ -19,7 +19,7 @@ class ReminderStatusCopyTest {
 
     @Test fun homeWarningPrefersLastErrorThenPostThenExact() {
         val err = ReminderHealth(canPost = true, canScheduleExact = true, lastError = "安排失败")
-        assertTrue(ReminderStatusCopy.homeWarning(enabled, err)!!.contains("重新检查"))
+        assertTrue(ReminderStatusCopy.homeWarning(enabled, err)!!.contains("检查一下"))
         val noPost = ReminderHealth(canPost = false, canScheduleExact = true)
         val postMsg = ReminderStatusCopy.homeWarning(enabled, noPost)!!
         assertTrue(postMsg.contains("通知权限") || postMsg.contains("提醒通道"))

@@ -1,0 +1,37 @@
+{
+  "atUtc": "2026-11-02T11:06:13.257162+00:00",
+  "before": {
+    "versionCode": 8,
+    "versionName": "0.3.5",
+    "sha256": "e689b896156514a9da7b8be57c67b3399e51e244328782f4f73ca2595fde2cd4",
+    "certificateSha256": "978833bcaf0fc001248f5d8501bfa1f9d1273922474ed601f2c60a4548a652b9"
+  },
+  "targetSha256": "f3b263c210c20742dbb192cb847c1893b0ea9b4ff2b68a94d1c4da318ba088d9",
+  "sameCertificate": true,
+  "fontScale": "1.0",
+  "wmSize": "Physical size: 1200x2652",
+  "wmDensity": "Physical density: 520",
+  "screenshot": "00-before.png",
+  "dataCounts": {
+    "events": 7,
+    "sources": 1,
+    "tags": 1,
+    "event_tags": 1,
+    "custom_fields": 2,
+    "attachments": 5
+  },
+  "schema": 4,
+  "settings": [
+    {
+      "id": 1,
+      "urgentMinutes": 1440,
+      "expiredPolicy": "KEEP",
+      "dailySummaryEnabled": 1,
+      "dailySummaryMinuteOfDay": 480,
+      "dangerReminderEnabled": 1,
+      "deadlineReminderEnabled": 1,
+      "deadlineLeadMinutes": 60,
+      "characterStyle": "CHIBI"
+    }
+  ]
+}

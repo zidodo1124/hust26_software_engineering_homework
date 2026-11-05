@@ -1,0 +1,86 @@
+[
+  {
+    "file": "december-31-count.json",
+    "source": ".local-tools/calendar-device-20261101/december-31-count.json",
+    "sha256": "caafb18ebaad9e2eab9d3dc3067828cdce2fc1fc2673e6e7d51e8c2250f38bdc",
+    "bytes": 160,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "december-31-summary.json",
+    "source": ".local-tools/calendar-device-20261101/december-31-summary.json",
+    "sha256": "1ffaaa1b4feee6077e68f0c3fd7f8d424bf5102dd08ab96b7543f0ef2da5093a",
+    "bytes": 647,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "cross-year-week-two.json",
+    "source": ".local-tools/calendar-device-20261101/cross-year-week-two.json",
+    "sha256": "b6d7cb44479d143619d1327d63e9d0ef98df0d96953fb2b1d1d8b82f884400f4",
+    "bytes": 467,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "03-cross-year-week.png",
+    "source": ".local-tools/calendar-device-20261101/03-cross-year-week.png",
+    "sha256": "082cc0618daff1de89c273794853d738cb9172861b6e8becd914c74e51257de3",
+    "bytes": 239136,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "03-cross-year-week-scope.json",
+    "source": ".local-tools/calendar-device-20261101/03-cross-year-week-scope.json",
+    "sha256": "b74ede7e9ffecbd6d9836367be9794e3840f35abe8e7cfed62b7d389d6af4cba",
+    "bytes": 191,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "cross-year-day-dec31.json",
+    "source": ".local-tools/calendar-device-20261101/cross-year-day-dec31.json",
+    "sha256": "36d9f79a1d95f0e07010f9c0a6616cc134cac6bd8ea294ce7f6335a33644fa3b",
+    "bytes": 300,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "cross-year-day-jan1.json",
+    "source": ".local-tools/calendar-device-20261101/cross-year-day-jan1.json",
+    "sha256": "fe5c7569c165316e9e2a3be9e80a94170674bcf8ab16ac7773eda781a170e3f2",
+    "bytes": 300,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "04-january-first-day.png",
+    "source": ".local-tools/calendar-device-20261101/04-january-first-day.png",
+    "sha256": "82e9237a6cab6b591be8276fb6b1496000f5948320cfb147a5f400f2ed3d6b33",
+    "bytes": 386191,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "04-january-first-day-scope.json",
+    "source": ".local-tools/calendar-device-20261101/04-january-first-day-scope.json",
+    "sha256": "c66cfeff0d4d92ce8ecd9a37f65b8bc0fa9cec04b54d5cd86334a4fd31405845",
+    "bytes": 191,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "january-second-empty.json",
+    "source": ".local-tools/calendar-device-20261101/january-second-empty.json",
+    "sha256": "a5b2726b24c8e52f62ea61cc145cb2003ee8a4826812e15e0493f8d8d10137bf",
+    "bytes": 275,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "cross-year-today-reset.json",
+    "source": ".local-tools/calendar-device-20261101/cross-year-today-reset.json",
+    "sha256": "9557000d6f5ec63f38b46058e14daa7c22d51bc681b9fcc40032c6f79b1154ad",
+    "bytes": 300,
+    "transformation": "None; reviewed safe source bytes"
+  },
+  {
+    "file": "calendar-cross-year-result.json",
+    "source": ".local-tools/calendar-device-20261101/calendar-cross-year-result.json",
+    "sha256": "564b2dfaca4ef4544107d42163b2757e95f4986bccd2381577517995c3e58f39",
+    "bytes": 261,
+    "transformation": "None; reviewed safe source bytes"
+  }
+]

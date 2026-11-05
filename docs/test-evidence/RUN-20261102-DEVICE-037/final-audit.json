@@ -1,0 +1,69 @@
+{
+  "evidenceReadAtUtc": "2026-11-02T11:21:34.454749+00:00",
+  "deviceStateAsOfUtc": "2026-11-02T11:16:36.268757+00:00",
+  "passed": true,
+  "checks": {
+    "businessPreserved": true,
+    "imagesPreserved": true,
+    "settingsRestored": true,
+    "fontRestored": true,
+    "noQaCreated": true,
+    "schema5": true,
+    "recurrenceCountUnchanged": true,
+    "installed037IdentityConfirmed": true,
+    "appForeground": true,
+    "notForceStopped": true,
+    "currentProcessHasNoFatalCrashRecord": true,
+    "displaySizeUnchanged": true,
+    "displayDensityUnchanged": true,
+    "originalSentKeysPreserved": true,
+    "originalSentTerminalStatesPreserved": true,
+    "originalSentNonSchedulingFieldsUnchanged": true,
+    "onlyDeadlineRelatedActiveChanges": true,
+    "noReminderKeysAddedOrRemoved": true,
+    "noSavedQaCreated": true,
+    "originalTypefacePreserved": true,
+    "noNewFontOrThemeOperationExecuted": true
+  },
+  "installed": {
+    "versionCode": 10,
+    "versionName": "0.3.7",
+    "sha256": "f3b263c210c20742dbb192cb847c1893b0ea9b4ff2b68a94d1c4da318ba088d9",
+    "certificateSha256": "978833bcaf0fc001248f5d8501bfa1f9d1273922474ed601f2c60a4548a652b9"
+  },
+  "businessCounts": {
+    "events": 7,
+    "sources": 1,
+    "tags": 1,
+    "event_tags": 1,
+    "custom_fields": 2,
+    "attachments": 5
+  },
+  "attachmentCount": 5,
+  "settings": [
+    {
+      "id": 1,
+      "urgentMinutes": 1440,
+      "expiredPolicy": "KEEP",
+      "dailySummaryEnabled": 1,
+      "dailySummaryMinuteOfDay": 480,
+      "dangerReminderEnabled": 1,
+      "deadlineReminderEnabled": 1,
+      "deadlineLeadMinutes": 60,
+      "characterStyle": "CHIBI"
+    }
+  ],
+  "fontScale": "1.0",
+  "typeface": "Original user handwriting typeface retained; no theme/font-family changes were performed.",
+  "userCorrection": "User clarified only font size, prefers the restored 1.0; do not switch typeface or theme.",
+  "strictComparisonNote": "The earlier final-checks.json intentionally remains false for exact SENT-row equality: one original SENT row only changed active 1 to 0 after its deadline. Keys, SENT state and every other column remained unchanged. See reminder-delta.json.",
+  "deviceHandedBack": true,
+  "finalScreenshot": "21-final-home.png",
+  "phoneActionsEndedBeforeEvidenceProcessing": true,
+  "qaCreatedCount": 0,
+  "qaDeletedCount": 0,
+  "originalItemsEditedOrDeleted": false,
+  "forceStopUsed": false,
+  "rebootUsed": false,
+  "timeChanged": false
+}

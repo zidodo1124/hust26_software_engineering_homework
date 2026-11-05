@@ -1,0 +1,10 @@
+{
+  "scope": "Clarification of the preserved before-upgrade.json scope template, not replacement evidence",
+  "baselineFile": "before-upgrade.json",
+  "baselineObservedUtc": "2026-11-02T07:21:13.006317+00:00",
+  "actualPhase": "pre-install read-only baseline of installed 0.3.4/versionCode 7",
+  "templateIssue": "The borrowed snapshot helper used the phrase after upgrade in its generic live snapshot scope; this baseline was captured before the 0.3.5 installation",
+  "corroboratingFiles": ["baseline-result.json", "device-before.json", "read-only-preflight.json"],
+  "originalBaselineBytesPreserved": true,
+  "baselineRecaptured": false
+}

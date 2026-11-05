@@ -1,0 +1,56 @@
+{
+  "sampleStartUtc": "2026-11-02T07:58:28.881216+00:00",
+  "sampleEndUtc": "2026-11-02T07:58:30.000244+00:00",
+  "deviceEpochSeconds": 1793606307,
+  "scope": "Live repeated stable DB/WAL copy, QA-only local observation, not original-data preservation proof",
+  "attempts": 1,
+  "dbWalRepeatedBytesMatch": true,
+  "integrityCheck": "ok",
+  "events": [
+    {
+      "id": "1836eebc-cad5-4bbe-8ff6-f7ad56ec3acc",
+      "title": "QA-CAL-1101-E",
+      "deadlineAt": 1798797600000,
+      "sprintMinutes": null,
+      "description": "",
+      "importance": "NORMAL",
+      "completedAt": null,
+      "archivedAt": null,
+      "createdAt": 1793605029703,
+      "updatedAt": 1793605029703,
+      "revision": 1,
+      "sourceId": null
+    }
+  ],
+  "reminderPlans": [
+    {
+      "key": "DEADLINE:1836eebc-cad5-4bbe-8ff6-f7ad56ec3acc:1798797600000",
+      "kind": "DEADLINE",
+      "eventId": "1836eebc-cad5-4bbe-8ff6-f7ad56ec3acc",
+      "deadlineAt": 1798797600000,
+      "eventRevision": 1,
+      "triggerAt": 1798794000000,
+      "day": null,
+      "notificationTag": "event:1836eebc-cad5-4bbe-8ff6-f7ad56ec3acc:1798797600000:1798794000000:DEADLINE",
+      "active": 1,
+      "state": "PENDING",
+      "lastAttemptAt": null,
+      "lastError": null,
+      "cancelPending": 0
+    }
+  ],
+  "reminderControl": [
+    {
+      "id": 1,
+      "alarmIdentity": "ddl-saver://reminders/wake",
+      "dailyDate": "2026-11-03",
+      "dailyMinuteOfDay": 480,
+      "scheduledTriggerAt": 1793664000000,
+      "desiredTriggerAt": 1793664000000,
+      "scheduleMode": "exact",
+      "alarmDirty": 0,
+      "lastError": null
+    }
+  ],
+  "temporaryPrivateDatabaseRemoved": true
+}

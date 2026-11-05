@@ -1,9 +1,11 @@
 # HUSTer's DDL Saver 技术清单
 
 - 小组：花园鳗。
-- 更新日期：2026-11-01。
+- 更新日期：2026-11-02。
 - 依据：用户允许根据项目需要选择语言和框架，并要求集中说明实际采用的技术。
-- 版本标识：远程 main `99490e6` 与本批已测 `bdcd76f` 均为 `0.3.4`、`versionCode = 7`、Room schema v4；下述本机与设备结果仅对应 `bdcd76f`，完整本机检查 179 方法／218 次执行通过、Lint 0／16，荣耀 X50 已同签名覆盖为 `0.3.4`／7，原数据保持及本样本图片提示／重试／回滚分项通过，本批[设备分项及收尾](test-evidence/RUN-20261101-DEVICE-034/README.md)已完成，OBS-02 自动恢复仍未通过。原有实现保留海蓝主题、经典／Q 版选择及 36 条台词气泡，修复 Q 版部分表情边缘残片；数据库结构和依赖版本不变。0.3.3 角色修复当时的完整本机检查为 132 方法／151 次执行通过，实际设备范围见[测试报告](test-report.md)，各版证据分别保留。
+- 当前本地：`codex/local-sync-20261102`／`295fb57`，0.3.7／10、schema 5，已纳入 PR #14；本轮仅调整文案，依赖不变。29 份 XML／197 个不同方法／236 次执行全通过，失败／错误／跳过均 0；Lint 0 错误／16 警告。见[本机证据](test-evidence/RUN-20261102-COPY-REFRESH/README.md)和[源码导航](source-navigation.md)。
+- 当前手机：荣耀 X50 已同签名覆盖 **0.3.7／10、schema 5**，产品 `295fb57`；正常首启、4→5 迁移及原数据保持已核对。最新设备检查范围见[项目状态](project/STATUS.md)。
+- 0.3.5 历史手机记录：冻结演示分支 `codex/demo-final-20261101`，产品源码 `f024ece`，0.3.5／versionCode 8、Room schema v4；依赖不变。完整本机 185 方法／224 次执行通过、Lint 0／16；荣耀 X50 安装与首启数据保持，月格、周／日与跨年等分项通过，完成状态、详情返回与来源空交集通过，07:59:33 UTC 最终 18 项审计全部通过，5 条 QA 已清理，原数据／附件／设置及全部原 33 条提醒保持。准确范围见[本轮证据](test-evidence/RUN-20261101-CALENDAR-FINAL/README.md)。主线后续迁移不纳入本包，OBS-01／OBS-02 仍开放。
 
 本文用于回答“项目使用什么技术、各自负责什么、为什么选择、实际使用哪个版本”。后续新增、替换或移除依赖时同步更新，具体模块和接口见[设计文档](design.md)，安装与日常操作见[用户使用手册](user-guide.md)。
 
@@ -18,10 +20,10 @@ Kotlin 支持与 Java 互操作，Compose 提供基于 Kotlin 的原生界面开
 | 类别 | 本轮选择 | 在项目中的用途 | 当前采用状态 | 版本记录 |
 | --- | --- | --- | --- | --- |
 | 实现语言 | Kotlin | 业务规则、界面状态和数据访问 | 已集成 | Kotlin 与 Compose 编译插件均为 2.1.20 |
-| 界面 | Jetpack Compose、Material 3 | 首页卡片、表单、详情、分类管理、月份日历、组合筛选、批量选择、设置和角色气泡 | 沿用现有组件绘制气泡并适配窄屏／大字号；0.3.2 已有目标机操作与 150% 字号分项，0.3.3 修复版也已复验气泡及字号布局 | Compose BOM 2025.04.01；库版本由 BOM 管理 |
+| 界面 | Jetpack Compose、Material 3 | 首页卡片、表单、详情、分类管理、月／周／日日历、组合筛选、批量选择、设置和角色气泡 | 沿用现有组件绘制气泡并适配窄屏／大字号；0.3.2 已有目标机操作与 150% 字号分项，0.3.3 修复版也已复验气泡及字号布局 | Compose BOM 2025.04.01；库版本由 BOM 管理 |
 | Activity 与界面状态 | Activity Compose、AndroidX ViewModel / Lifecycle | Activity 入口、页面状态、生命周期感知订阅及操作协调 | 已集成 | Activity 1.10.1；Lifecycle 2.9.0 |
 | 异步与数据订阅 | Kotlin Coroutines / Flow | 数据库观察、后台数据操作和页面更新 | 已集成 | 1.10.2 |
-| 结构化存储 | Room / SQLite | 保存事项、分类关联、字段、附件元数据、设置及持久化提醒计划／系统调度状态；业务变化与计划重建同事务 | schema v4 新增角色形象字段，显式 `MIGRATION_3_4` 保留原迁移链 | Room 2.7.1；schema 版本 4 |
+| 结构化存储 | Room / SQLite | 保存事项、分类关联、字段、附件元数据、设置、提醒与重复系列／周期；业务变化与计划重建同事务 | schema 5 共 11 表，`MIGRATION_4_5` 增加系列和周期表，保留原迁移链 | Room 2.7.1；当前本地与手机均为 schema 5；历史 0.3.5 冻结包为 4 |
 | 代码生成 | KSP | 生成 Room 数据访问实现并导出 schema | 已配置 | 2.1.20-1.0.32 |
 | 文件与图片导入 | Activity Result、Photo Picker、ClipboardManager、ContentResolver | 相册多选、主动粘贴可读图片 URI，流式保存私有副本 | 已集成 `PickMultipleVisualMedia` / `ImageOnly`；兼容回退由 Activity 契约提供 | 使用既有 Activity 1.10.1 及 Android 平台 API；无新增依赖 |
 | 图片校验与展示 | BitmapFactory、android.media.ExifInterface、Matrix | 图片边界与真实解码校验、采样缩略图／预览、EXIF 方向处理 | 已集成 `platform/AttachmentStore.kt`；文件操作在 IO 调度器执行并由互斥锁协调 | Android 平台 API；未引入 Coil、Glide 或 AndroidX ExifInterface |
@@ -37,7 +39,7 @@ Kotlin 支持与 Java 互操作，Compose 提供基于 Kotlin 的原生界面开
 
 Room 是 SQLite 的访问封装，适合本项目的本地结构化数据；数据及附件生命周期的具体安排属于项目设计，不由库自动解决。[Room 官方文档](https://developer.android.com/training/data-storage/room)。
 
-本轮通过 `addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)` 执行显式升级，保留历史 schema 文件并测试旧库数据，不启用破坏性重建。[Room 迁移说明](https://developer.android.com/training/data-storage/room/migrating-db-versions)。图片选择只访问用户选定的内容，选择器不可用时由 Activity 契约回退；剪贴板中的图片引用通过 ContentResolver 读取。[Photo Picker](https://developer.android.com/training/data-storage/shared/photo-picker)、[复制粘贴](https://developer.android.com/develop/ui/views/touch-and-input/copy-paste)。
+本轮通过 `addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5)` 执行显式升级，保留历史 schema 文件并测试旧库数据，不启用破坏性重建。[Room 迁移说明](https://developer.android.com/training/data-storage/room/migrating-db-versions)。图片选择只访问用户选定的内容，选择器不可用时由 Activity 契约回退；剪贴板中的图片引用通过 ContentResolver 读取。[Photo Picker](https://developer.android.com/training/data-storage/shared/photo-picker)、[复制粘贴](https://developer.android.com/develop/ui/views/touch-and-input/copy-paste)。
 
 解码前读取图片尺寸，再用采样控制预览内存；当前为 320 像素缩略目标及 1600 像素预览目标。[Android 大图加载说明](https://developer.android.com/topic/performance/graphics/load-bitmap)。20 MiB／100 MP 单图保护、24 小时孤儿副本保留期是本项目工程参数，不是新增第三方依赖、平台统一限制或用户已确认的业务上限，详见[图片设计](design.md#6-d-05-图片导入与附件生命周期)。
 
@@ -72,7 +74,7 @@ Room 是 SQLite 的访问封装，适合本项目的本地结构化数据；数�
 | 权限与电量设置 | 每个通知测试批次记录通知权限、定时访问条件及电量优化设置 |
 | 系统时间 | 记录设备时区；应用业务日期统一按北京时间解释 |
 | SDK 范围 | `minSdk = 26`、`targetSdk = 35`、`compileSdk = 35`；声明范围不代表所有设备已测 |
-| 应用版本 | 当前 `versionName = 0.3.4`、`versionCode = 7`；包名 `cn.edu.hust.ddlsaver`；schema v4；历史设备结果按各批实际版本记录 |
+| 应用版本 | 当前本地与手机 `versionName = 0.3.7`、`versionCode = 10`；包名 `cn.edu.hust.ddlsaver`；schema 5；历史设备结果按各批实际版本记录 |
 | 构建证据 | 保存实际依赖版本、构建命令、代码提交号和 APK 标识，关联[测试记录](test-records.md) |
 
 ## 5. 实机测试辅助工具
@@ -95,4 +97,4 @@ Room 是 SQLite 的访问封装，适合本项目的本地结构化数据；数�
 3. 替换方案时，记录原因和受影响的设计、测试用例，保留相应 Git 修改记录。
 4. 依赖已集成、构建成功和实机测试通过分别记录；一种状态不能代替另一种。
 
-当前未采用云服务、账户系统、OCR 或生成式对话服务。具体功能范围以[需求分析](requirements.md)为准，开发进展见[项目状态](../STATUS.md)。
+当前未采用云服务、账户系统、OCR 或生成式对话服务。具体功能范围以[需求分析](requirements.md)为准，开发进展见[项目状态](project/STATUS.md)。

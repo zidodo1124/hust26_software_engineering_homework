@@ -1,0 +1,44 @@
+{
+  "checks": {
+    "completeBuildSucceeded": true,
+    "freshFullTestsExecuted": true,
+    "declaredAndActualTestCountsAgree": true,
+    "noTestFailuresErrorsOrSkips": true,
+    "newRegressionIncludedAndPassed": true,
+    "recurrenceRulesSuiteIncluded": true,
+    "lintHasNoErrors": true,
+    "productSourceBytesFrozen": true,
+    "versionAndSchemaExpected": true,
+    "apkVersionAndPackageExpected": true,
+    "apkSignatureVerifiedAndCompatible": true,
+    "fixedApkBytesAndShaMatch": true
+  },
+  "allPassed": true,
+  "sourceCommit": "f024ecea4b287c7a8768c2dc62af9be9228c9ae6",
+  "suites": 29,
+  "methods": 185,
+  "executions": 224,
+  "lint": {
+    "errors": 0,
+    "warnings": 16,
+    "ids": {
+      "ExifInterface": 1,
+      "GradleDependency": 10,
+      "ObsoleteSdkInt": 1,
+      "StaticFieldLeak": 1,
+      "UseKtx": 3
+    }
+  },
+  "apk": {
+    "bytes": 15551000,
+    "sha256": "e689b896156514a9da7b8be57c67b3399e51e244328782f4f73ca2595fde2cd4",
+    "installedOnDevice": false,
+    "signatureVerificationExitCode": 0,
+    "certificateSha256": "978833bcaf0fc001248f5d8501bfa1f9d1273922474ed601f2c60a4548a652b9",
+    "certificateMatchesBaseline": true,
+    "badgingExitCode": 0,
+    "packageName": "cn.edu.hust.ddlsaver",
+    "versionCode": 8,
+    "versionName": "0.3.5"
+  }
+}

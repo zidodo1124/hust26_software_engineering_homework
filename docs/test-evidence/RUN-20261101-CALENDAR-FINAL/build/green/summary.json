@@ -1,0 +1,56 @@
+{
+  "phase": "0.3.5 week calendar collapse regression green",
+  "startedAtUtc": "2026-11-02T07:25:00.425707+00:00",
+  "baseCommit": "5df4320a3f481488cb4137dbdac8be1fa9358a91",
+  "command": [
+    "powershell",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "scripts/gradle.ps1",
+    "--no-daemon",
+    "--console=plain",
+    "--stacktrace",
+    "--max-workers=2",
+    ":app:cleanTestDebugUnitTest",
+    ":app:testDebugUnitTest",
+    "--tests",
+    "*SaverAppFlowTest.collapsingWeekCalendarPreservesWholeWeekUntilADayIsSelected"
+  ],
+  "filters": [
+    "SaverAppFlowTest.collapsingWeekCalendarPreservesWholeWeekUntilADayIsSelected"
+  ],
+  "runtime": "Windows / JDK 17 / Robolectric; no device operation",
+  "finishedAtUtc": "2026-11-02T07:26:03.863641+00:00",
+  "durationSeconds": 63.453,
+  "exitCode": 0,
+  "suites": 1,
+  "declared": {
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "actual": {
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "uniqueMethods": 1,
+  "uniqueMethodRule": "Classname plus test name with a trailing numeric [SDK] suffix removed",
+  "suiteResults": [
+    {
+      "name": "cn.edu.hust.ddlsaver.ui.SaverAppFlowTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "allProductSourceBytesUnchanged": true,
+  "testTaskExecuted": true,
+  "cleanTestTaskExecuted": true,
+  "result": "BUILD SUCCESSFUL"
+}
