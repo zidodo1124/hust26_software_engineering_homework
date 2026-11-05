@@ -1,0 +1,34 @@
+@startuml seq-image
+!include _style.iuml
+skinparam maxMessageSize 90
+skinparam ParticipantPadding 4
+autonumber
+actor 用户
+participant "AttachmentEditor" as AE
+participant "系统相册选择器\n/ 剪贴板" as PK
+participant "SaverViewModel" as VM
+participant "AttachmentStore" as AS
+participant "ContentResolver" as CR
+用户 -> AE : 从相册选择 / 粘贴图片
+AE -> PK : PickMultipleVisualMedia
+PK --> AE : content:// URI 列表
+AE -> VM : importImages(session, uris)
+VM -> AS : importImages(uris)（IO 线程，互斥锁）
+loop 每张图片
+  AS -> CR : openInputStream(uri)
+  AS -> AS : 流式写入 .part 临时文件（> 20 MiB 拒绝）
+  AS -> AS : 读取尺寸并解码缩略样本，验证是真图片
+  AS -> AS : 改名为 <uuid>.img 私有副本
+end
+alt 任一失败
+  AS -> AS : rollback：删除本次已创建的文件
+  AS --> VM : AttachmentException（中文错误提示）
+else 全部成功
+  AS --> VM : List<AttachmentRef>
+end
+VM --> AE : ImageImportResult → 草稿中显示缩略图
+note over VM, AS
+  保存成功前副本只属于草稿；取消或移除时
+  按数据库引用清理，24 小时孤儿文件兜底回收。
+end note
+@enduml

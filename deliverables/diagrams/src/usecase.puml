@@ -1,0 +1,38 @@
+@startuml usecase
+!include _style.iuml
+left to right direction
+actor "大学生用户" as U
+actor "Android 系统\n（闹钟 / 通知栏）" as S
+rectangle "HUSTer's DDL Saver" {
+  usecase "新建 / 编辑事项" as UC1
+  usecase "设置速通时间\n（分钟 / 小时 / 天）" as UC1a
+  usecase "添加图片附件" as UC2
+  usecase "管理来源、标签\n与自定义字段" as UC3
+  usecase "搜索与组合筛选" as UC4
+  usecase "查看月 / 周 / 日历" as UC5
+  usecase "时段快捷新建" as UC5a
+  usecase "完成、归档、删除\n与批量操作" as UC6
+  usecase "设置重复事项" as UC7
+  usecase "配置提醒与系统权限" as UC8
+  usecase "接收提醒通知" as UC9
+  usecase "点击通知查看详情" as UC9a
+  usecase "查看首页统计\n与角色提示" as UC10
+  usecase "选择角色形象" as UC11
+}
+U --> UC1
+U --> UC3
+U --> UC4
+U --> UC5
+U --> UC6
+U --> UC7
+U --> UC8
+U --> UC10
+U --> UC11
+UC1 <.. UC1a : <<include>>
+UC1 <.. UC2 : <<extend>>
+UC5 <.. UC5a : <<extend>>
+UC5a ..> UC1 : <<include>>
+S --> UC9
+UC9 <.. UC9a : <<extend>>
+U --> UC9a
+@enduml

@@ -1,5 +1,7 @@
 # DDL Saver 文档总入口
 
+> **课程最终提交材料（1.0.0）：** 选题报告、需求规格说明书、设计说明书、测试报告、关键源码说明、小组分工的最终版集中在 [deliverables/](../deliverables/README.md)，每份都有 Markdown 和 Word 两种格式。本目录保留开发过程中的各版本文档与测试证据。1.0.0 安装包见 [releases/android/](../releases/android/README.md)。
+
 所有项目说明从这里查找。原根目录的 `README.md`、`STATUS.md`、`idea.md`、`task_finish_tips.md` 已集中到 [`project/`](project/README.md)；工程根目录保留代码与构建文件。
 
 ## 手机安装包（0.3.7）

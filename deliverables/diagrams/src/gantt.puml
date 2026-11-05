@@ -1,0 +1,24 @@
+@startgantt gantt
+!include _style.iuml
+printscale daily zoom 3
+Project starts 2026-10-26
+-- 选题与需求 --
+[选题、需求访谈与需求初稿] as [R] starts 2026-10-26 and ends 2026-10-27
+[数据组织需求细化（付泽文）] starts 2026-10-30 and ends 2026-10-31
+[规划扩展需求（付泽文）] starts 2026-11-01 and ends 2026-11-02
+-- 设计与实现 --
+[第一轮：事项、存储、首页] as [I1] starts 2026-10-27 and ends 2026-10-27
+[第二轮：分类、附件、日历、批量] starts 2026-10-27 and ends 2026-10-27
+[第三轮：通知提醒与角色] starts 2026-10-27 and ends 2026-10-28
+[Q 版形象、气泡与修复（0.3.1–0.3.3）] starts 2026-10-28 and ends 2026-10-28
+[提醒复核与边界测试（岳羽泉）] starts 2026-11-01 and ends 2026-11-01
+[月历数量、周/日视图（付泽文）] starts 2026-11-01 and ends 2026-11-02
+[重复事项（付泽文）] starts 2026-11-02 and ends 2026-11-02
+[独立日历页 0.3.8（付泽文）] starts 2026-11-02 and ends 2026-11-05
+[多单位时长与 1.0.0（支盟渊）] starts 2026-11-05 and ends 2026-11-05
+-- 测试与交付 --
+[数据模块自动化测试（付泽文）] starts 2026-10-30 and ends 2026-10-31
+[荣耀 X50 真机验收（多批次）] starts 2026-10-27 and ends 2026-11-02
+[1.0.0 真机验收与发布（支盟渊）] starts 2026-11-05 and ends 2026-11-05
+[提交文档整理] starts 2026-11-05 and ends 2026-11-05
+@endgantt

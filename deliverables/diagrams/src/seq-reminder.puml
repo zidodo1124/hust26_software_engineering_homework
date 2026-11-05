@@ -1,0 +1,29 @@
+@startuml seq-reminder
+!include _style.iuml
+skinparam maxMessageSize 90
+skinparam ParticipantPadding 4
+autonumber
+participant "AlarmManager" as AM
+participant "ReminderAlarmReceiver" as RCV
+participant "ReminderEngine" as EN
+database "reminder_plans" as RPL
+participant "AndroidReminderPlatform" as PF
+participant "通知栏" as NB
+actor 用户
+participant "MainActivity" as MA
+participant "SaverApp" as APP
+AM -> RCV : 到达 triggerAt（精确或近似唤醒）
+RCV -> EN : reconcile()
+EN -> EN : 扩展重复事项到未来 90 天
+EN -> RPL : rebuild：按事项与设置重算计划
+EN -> RPL : 取出到期且未发送的计划
+EN -> RPL : 标记 CLAIMED（独立事务留痕）
+EN -> PF : post(通知：标题 + 截止时间)
+PF -> NB : NotificationManager.notify(tag)
+EN -> RPL : 标记 SENT（失败则 FAILED，5 分钟后重试）
+EN -> PF : scheduleAlarm(下一次最早触发时刻)
+用户 -> NB : 点击通知
+NB -> MA : PendingIntent（eventId）
+MA -> APP : handleReminderIntent → requestReminderNavigation
+APP -> APP : 重新读取数据；有草稿先保护，再打开事项详情
+@enduml

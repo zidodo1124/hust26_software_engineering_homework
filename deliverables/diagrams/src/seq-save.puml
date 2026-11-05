@@ -1,0 +1,37 @@
+@startuml seq-save
+!include _style.iuml
+skinparam maxMessageSize 90
+skinparam ParticipantPadding 4
+autonumber
+actor 用户
+participant "EventEditor" as ED
+participant "SaverViewModel" as VM
+participant "RoomEventRepository" as RP
+participant "EventValidation" as V
+database "Room 事务" as TX
+participant "ReminderPlanStore" as PS
+participant "ReminderRuntime\n/ ReminderEngine" as RT
+participant "SaverApp" as APP
+用户 -> ED : 填写标题、截止时间、速通时间（数字+单位）
+ED -> ED : parseDuration 换算为分钟并校验
+用户 -> ED : 点“保存事项”
+ED -> VM : save(EventDraft, session)
+VM -> RP : save(draft)
+RP -> V : normalize(draft)
+V --> RP : 规范化草稿 / 校验异常
+alt 带重复规则
+  RP -> RP : createRecurrence / convertToRecurrence\n（生成未来 90 天内的周期事项）
+else 普通事项
+  RP -> TX : 开始事务
+  RP -> TX : 检查修订号（冲突则抛 EventConflictException）
+  RP -> TX : 写 events 及标签、字段、附件
+  RP -> PS : rebuild(dao, now)
+  PS -> TX : 重建提醒计划与下一次唤醒时刻
+  TX --> RP : 提交
+end
+RP --> VM : 已保存的 DdlEvent
+VM -> RT : requestReconcile()
+RT -> RT : 安排 AlarmManager 唤醒
+VM --> APP : ActionResult(kind = save, eventId, revision)
+APP -> APP : 数据流到达该修订号后切到“事项详情”
+@enduml

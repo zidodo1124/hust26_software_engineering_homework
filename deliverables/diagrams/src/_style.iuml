@@ -1,0 +1,35 @@
+' Shared look for all project diagrams (PlantUML, rendered with the built-in smetana layout; no Graphviz needed).
+!pragma layout smetana
+skinparam dpi 160
+skinparam defaultFontName "Microsoft YaHei"
+skinparam defaultFontSize 13
+skinparam shadowing false
+skinparam roundCorner 10
+skinparam backgroundColor #FFFFFF
+skinparam ArrowColor #365DB8
+skinparam ArrowFontColor #173653
+skinparam ActorBorderColor #365DB8
+skinparam UsecaseBorderColor #365DB8
+skinparam UsecaseBackgroundColor #E4EFFF
+skinparam ClassBorderColor #365DB8
+skinparam ClassBackgroundColor #F5F8FF
+skinparam ClassHeaderBackgroundColor #E4EFFF
+skinparam PackageBorderColor #52687E
+skinparam PackageBackgroundColor #FAFCFF
+skinparam ComponentBorderColor #365DB8
+skinparam ComponentBackgroundColor #E4EFFF
+skinparam NodeBorderColor #52687E
+skinparam NodeBackgroundColor #F5F8FF
+skinparam StateBorderColor #365DB8
+skinparam StateBackgroundColor #E4EFFF
+skinparam ActivityBorderColor #365DB8
+skinparam ActivityBackgroundColor #E4EFFF
+skinparam ActivityDiamondBorderColor #365DB8
+skinparam ActivityDiamondBackgroundColor #FFF6E0
+skinparam ParticipantBorderColor #365DB8
+skinparam ParticipantBackgroundColor #E4EFFF
+skinparam SequenceLifeLineBorderColor #8FA6C2
+skinparam NoteBackgroundColor #FFF9E6
+skinparam NoteBorderColor #D9B45A
+skinparam DatabaseBorderColor #365DB8
+skinparam DatabaseBackgroundColor #E4EFFF
