@@ -73,10 +73,11 @@ internal fun EventEditor(
     onRegisterDraft: (List<AttachmentRef>, List<AttachmentRef>) -> Unit,
     onCancel: () -> Unit,
     onSave: (EventDraft) -> Unit,
+    prefilledDeadline: Long? = null,
 ) {
     val context = LocalContext.current
     // Freeze both initial values and the revision. New database emissions must not rewrite a draft.
-    val initialDateTime = remember(session) { initial?.let { Instant.ofEpochMilli(it.deadlineAt).atZone(BeijingZone) } }
+    val initialDateTime = remember(session) { (initial?.deadlineAt ?: prefilledDeadline)?.let { Instant.ofEpochMilli(it).atZone(BeijingZone) } }
     val initialTitle = rememberSaveable(session) { initial?.title.orEmpty() }
     val initialDescription = rememberSaveable(session) { initial?.description.orEmpty() }
     val initialSprint = rememberSaveable(session) { initial?.sprintMinutes?.toString().orEmpty() }
@@ -192,10 +193,22 @@ internal fun EventEditor(
             OutlinedTextField(
                 value = sprint, onValueChange = { sprint = it }, enabled = !busy,
                 label = { Text("速通时间（分钟，选填）") },
-                supportingText = { Text(if (submitted && invalidSprint) "请填大于 0 的整数分钟数，数值不能过大。" else "填做完所需的最少分钟数。剩余时间不够或刚好够时会变红，留空不开启。") },
+                supportingText = { Text(if (submitted && invalidSprint) "请填大于 0 的整数分钟数，数值不能过大。" else "填做完所需的最少分钟数。日历开始时间＝截止时间－速通时长；留空时按 60 分钟展示，不启用速通危险期提醒。") },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number), singleLine = true,
                 isError = submitted && invalidSprint, modifier = Modifier.fillMaxWidth(), shape = RoundedCornerShape(16.dp),
             )
+            if (date != null && time != null && !invalidSprint) {
+                val deadline = LocalDate.parse(date).atTime(LocalTime.parse(time)).atZone(BeijingZone)
+                val start = deadline.minusMinutes(sprintValue ?: 60L)
+                Surface(color = OceanMist, shape = MaterialTheme.shapes.medium) {
+                    Column(Modifier.fillMaxWidth().padding(14.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                        Text("日历展示时段", style = MaterialTheme.typography.labelLarge, color = Ocean)
+                        Text("${start.format(DateTimeFormatter.ofPattern("M月d日 HH:mm"))} 至 ${deadline.format(DateTimeFormatter.ofPattern("M月d日 HH:mm"))}",
+                            style = MaterialTheme.typography.bodyMedium, modifier = Modifier.testTag("editor-calendar-interval"))
+                        Text(if (sprintValue == null) "按默认 60 分钟展示 · 北京时间" else "按速通时长推算 · 北京时间", color = Muted, style = MaterialTheme.typography.bodySmall)
+                    }
+                }
+            }
             if (initial?.recurrence == null || applyToFuture) Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
                 Text("重复", fontWeight = FontWeight.SemiBold)
                 Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
