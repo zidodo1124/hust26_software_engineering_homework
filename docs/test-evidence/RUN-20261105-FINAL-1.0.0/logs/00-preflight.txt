@@ -1,0 +1,11 @@
+# preflight 2026-11-05T12:13:30Z (UTC)
+model=ALI-AN00 brand=HONOR
+android=15 sdk=35
+build=ALI-AN00 9.0.0.230(CNC00E206R8P4)
+magicos=MagicOS_9.0.0
+timezone=Asia/Shanghai device_time=2026-11-05T20:13:36+0800
+screen=Physical size: 1200x2652 density=Physical density: 520
+font_scale=1.0
+--- installed before test
+versionCode=10 minSdk=26 targetSdk=35
+versionName=0.3.7

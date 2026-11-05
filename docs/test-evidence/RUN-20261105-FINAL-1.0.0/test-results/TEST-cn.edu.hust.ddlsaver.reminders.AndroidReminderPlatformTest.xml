@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.reminders.AndroidReminderPlatformTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-11-05T12:38:32" hostname="DESKTOP-QBAGC3T" time="1.377">
+  <properties/>
+  <testcase name="systemAlarmUsesStableExplicitImmutableTokenAndSupportsCancelAndExactDenial[28]" classname="cn.edu.hust.ddlsaver.reminders.AndroidReminderPlatformTest" time="0.064"/>
+  <testcase name="systemAlarmUsesStableExplicitImmutableTokenAndSupportsCancelAndExactDenial" classname="cn.edu.hust.ddlsaver.reminders.AndroidReminderPlatformTest" time="1.118"/>
+  <testcase name="sameTagRetryReplacesWhileOtherReasonsAndEventsStayIndependent[28]" classname="cn.edu.hust.ddlsaver.reminders.AndroidReminderPlatformTest" time="0.047"/>
+  <testcase name="sameTagRetryReplacesWhileOtherReasonsAndEventsStayIndependent" classname="cn.edu.hust.ddlsaver.reminders.AndroidReminderPlatformTest" time="0.059"/>
+  <testcase name="eventAndDailyNotificationsDispatchIndependentImmutableActivityRoutes[28]" classname="cn.edu.hust.ddlsaver.reminders.AndroidReminderPlatformTest" time="0.049"/>
+  <testcase name="eventAndDailyNotificationsDispatchIndependentImmutableActivityRoutes" classname="cn.edu.hust.ddlsaver.reminders.AndroidReminderPlatformTest" time="0.04"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

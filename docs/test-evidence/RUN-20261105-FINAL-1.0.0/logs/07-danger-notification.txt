@@ -1,0 +1,6 @@
+# notifications from cn.edu.hust.ddlsaver at 12:30:18 UTC (dumpsys notification, filtered to this package)
+    NotificationRecord(0x0923b901: pkg=cn.edu.hust.ddlsaver user=UserHandle{0} id=0 tag=event:f06a1555-5d6c-4623-9e7f-cc8dd21b0534:1793887200000:1793881800000:DANGER importance=3 key=0|cn.edu.hust.ddlsaver|0|event:f06a1555-5d6c-4623-9e7f-cc8dd21b0534:1793887200000:1793881800000:DANGER|10186: Notification(channel=*** shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONLY_ALERT_ONCE|AUTO_CANCEL color=0x00000000 category=reminder vis=PRIVATE))
+            when=1793881800205/1793881800205
+                android.title=String (QA-Danger-90min)
+                android.text=String (该冲刺了。11月5日 22:00 截止（北京时间）。)
+                android.bigText=String (该冲刺了。11月5日 22:00 截止（北京时间）。)

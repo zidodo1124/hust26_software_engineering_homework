@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" tests="20" skipped="0" failures="0" errors="0" timestamp="2026-11-05T12:38:36" hostname="DESKTOP-QBAGC3T" time="0.869">
+  <properties/>
+  <testcase name="timeoutAndThrownFailureAreRecordedAndEachFinishExactlyOnce[28]" classname="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" time="0.072"/>
+  <testcase name="timeoutAndThrownFailureAreRecordedAndEachFinishExactlyOnce" classname="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" time="0.109"/>
+  <testcase name="returnedHealthErrorIsNotSuccessAndOnlyAllowlistedFieldsArePersisted[28]" classname="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" time="0.029"/>
+  <testcase name="returnedHealthErrorIsNotSuccessAndOnlyAllowlistedFieldsArePersisted" classname="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" time="0.031"/>
+  <testcase name="olderOverlappingAttemptCannotOverwriteNewerAttempt[28]" classname="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" time="0.018"/>
+  <testcase name="olderOverlappingAttemptCannotOverwriteNewerAttempt" classname="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" time="0.02"/>
+  <testcase name="releaseBuildDoesNotCreateOrOpenDiagnosticStorage[28]" classname="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" time="0.022"/>
+  <testcase name="releaseBuildDoesNotCreateOrOpenDiagnosticStorage" classname="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" time="0.028"/>
+  <testcase name="stalledWriterDoesNotDelayReconciliationOrFinishAndQueueRetainsLatestSixTriggers[28]" classname="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" time="0.042"/>
+  <testcase name="stalledWriterDoesNotDelayReconciliationOrFinishAndQueueRetainsLatestSixTriggers" classname="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" time="0.046"/>
+  <testcase name="lateOlderSnapshotCannotReplaceNewerQueuedAttemptOrPhase[28]" classname="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" time="0.018"/>
+  <testcase name="lateOlderSnapshotCannotReplaceNewerQueuedAttemptOrPhase" classname="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" time="0.023"/>
+  <testcase name="productionStorageIsOffMainThreadBoundedAndRetainsBootAcrossLaterTriggers[28]" classname="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" time="0.099"/>
+  <testcase name="productionStorageIsOffMainThreadBoundedAndRetainsBootAcrossLaterTriggers" classname="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" time="0.095"/>
+  <testcase name="cancellationIsNotSwallowedAndStillFinishesPendingResult[28]" classname="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" time="0.029"/>
+  <testcase name="cancellationIsNotSwallowedAndStillFinishesPendingResult" classname="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" time="0.037"/>
+  <testcase name="notificationBlockedIsDistinctFromCompletedApproximateScheduling[28]" classname="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" time="0.041"/>
+  <testcase name="notificationBlockedIsDistinctFromCompletedApproximateScheduling" classname="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" time="0.047"/>
+  <testcase name="storageFailureCannotSkipReconciliationOrPendingResultCompletion[28]" classname="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" time="0.031"/>
+  <testcase name="storageFailureCannotSkipReconciliationOrPendingResultCompletion" classname="cn.edu.hust.ddlsaver.reminders.ReminderRecoveryDiagnosticsTest" time="0.032"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

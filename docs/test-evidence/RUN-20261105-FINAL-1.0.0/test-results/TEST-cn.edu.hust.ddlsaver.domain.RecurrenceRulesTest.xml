@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.domain.RecurrenceRulesTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-11-05T12:38:22" hostname="DESKTOP-QBAGC3T" time="0.004">
+  <properties/>
+  <testcase name="oldSeriesCanBeQueriedDirectlyAndResultLimitIsEnforced" classname="cn.edu.hust.ddlsaver.domain.RecurrenceRulesTest" time="0.002"/>
+  <testcase name="monthlyUsesOriginalDayAcrossShortAndLeapMonths" classname="cn.edu.hust.ddlsaver.domain.RecurrenceRulesTest" time="0.001"/>
+  <testcase name="endDateIsInclusiveAndCountIncludesFirst" classname="cn.edu.hust.ddlsaver.domain.RecurrenceRulesTest" time="0.0"/>
+  <testcase name="rejectsInvalidRulesAndRanges" classname="cn.edu.hust.ddlsaver.domain.RecurrenceRulesTest" time="0.0"/>
+  <testcase name="missingPeriodsNeverRecreateKnownOrSkippedIndexes" classname="cn.edu.hust.ddlsaver.domain.RecurrenceRulesTest" time="0.001"/>
+  <testcase name="rangeIsInclusiveAndDoesNotInventAnEarlierOccurrence" classname="cn.edu.hust.ddlsaver.domain.RecurrenceRulesTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

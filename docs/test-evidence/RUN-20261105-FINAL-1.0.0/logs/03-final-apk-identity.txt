@@ -1,0 +1,8 @@
+source_commit=3d8ee79a8bf2e7fb3b474659b02612f0dfc92ac1
+apk=DDL-Saver-1.0.0.apk size=15282839
+apk_sha256=cb421de42cd4b548e5a4481f09b3aa9288ae780d4c76746807f78a50274f9234
+Signer #1 certificate DN: C=US, O=Android, CN=Android Debug
+Signer #1 certificate SHA-256 digest: 8caa4a508d6f35066fe3a619b8ed7282688c04aa24e2614baf423e473bb113f7
+package: name='cn.edu.hust.ddlsaver' versionCode='12' versionName='1.0.0' platformBuildVersionName='15' platformBuildVersionCode='35' compileSdkVersion='35' compileSdkVersionCodename='15'
+targetSdkVersion:'35'
+application-label:'HUSTer's DDL Saver'

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.edu.hust.ddlsaver.platform.AttachmentImportDiagnosticsTest" tests="20" skipped="0" failures="0" errors="0" timestamp="2026-11-05T12:38:22" hostname="DESKTOP-QBAGC3T" time="8.018">
+  <properties/>
+  <testcase name="deniedSourceCloseStillRollsBackAndOffersReselection[28]" classname="cn.edu.hust.ddlsaver.platform.AttachmentImportDiagnosticsTest" time="2.575"/>
+  <testcase name="deniedSourceCloseStillRollsBackAndOffersReselection" classname="cn.edu.hust.ddlsaver.platform.AttachmentImportDiagnosticsTest" time="4.779"/>
+  <testcase name="successfulImportAndCancellationDoNotEmitFailureDiagnostics[28]" classname="cn.edu.hust.ddlsaver.platform.AttachmentImportDiagnosticsTest" time="0.094"/>
+  <testcase name="successfulImportAndCancellationDoNotEmitFailureDiagnostics" classname="cn.edu.hust.ddlsaver.platform.AttachmentImportDiagnosticsTest" time="0.066"/>
+  <testcase name="destinationCollisionReportsCommitAndPreservesThePreexistingFile[28]" classname="cn.edu.hust.ddlsaver.platform.AttachmentImportDiagnosticsTest" time="0.041"/>
+  <testcase name="destinationCollisionReportsCommitAndPreservesThePreexistingFile" classname="cn.edu.hust.ddlsaver.platform.AttachmentImportDiagnosticsTest" time="0.043"/>
+  <testcase name="missingSourceIsReportedAtOpenWithoutLoggingItsPath[28]" classname="cn.edu.hust.ddlsaver.platform.AttachmentImportDiagnosticsTest" time="0.027"/>
+  <testcase name="missingSourceIsReportedAtOpenWithoutLoggingItsPath" classname="cn.edu.hust.ddlsaver.platform.AttachmentImportDiagnosticsTest" time="0.03"/>
+  <testcase name="failingLogBackendCannotReplaceTheOriginalImportFailure[28]" classname="cn.edu.hust.ddlsaver.platform.AttachmentImportDiagnosticsTest" time="0.029"/>
+  <testcase name="failingLogBackendCannotReplaceTheOriginalImportFailure" classname="cn.edu.hust.ddlsaver.platform.AttachmentImportDiagnosticsTest" time="0.034"/>
+  <testcase name="invalidImageReportsDecodeValidationWithoutLoggingImageContents[28]" classname="cn.edu.hust.ddlsaver.platform.AttachmentImportDiagnosticsTest" time="0.029"/>
+  <testcase name="invalidImageReportsDecodeValidationWithoutLoggingImageContents" classname="cn.edu.hust.ddlsaver.platform.AttachmentImportDiagnosticsTest" time="0.038"/>
+  <testcase name="deniedSecondSourceReportsOnlyAllowlistedFieldsAfterBatchRollback[28]" classname="cn.edu.hust.ddlsaver.platform.AttachmentImportDiagnosticsTest" time="0.046"/>
+  <testcase name="deniedSecondSourceReportsOnlyAllowlistedFieldsAfterBatchRollback" classname="cn.edu.hust.ddlsaver.platform.AttachmentImportDiagnosticsTest" time="0.041"/>
+  <testcase name="deniedPrivateStorageAccessDoesNotRecommendRecopyingTheSource[28]" classname="cn.edu.hust.ddlsaver.platform.AttachmentImportDiagnosticsTest" time="0.024"/>
+  <testcase name="deniedPrivateStorageAccessDoesNotRecommendRecopyingTheSource" classname="cn.edu.hust.ddlsaver.platform.AttachmentImportDiagnosticsTest" time="0.028"/>
+  <testcase name="unusablePrivateDirectoryIsDistinctFromSourceReadFailure[28]" classname="cn.edu.hust.ddlsaver.platform.AttachmentImportDiagnosticsTest" time="0.023"/>
+  <testcase name="unusablePrivateDirectoryIsDistinctFromSourceReadFailure" classname="cn.edu.hust.ddlsaver.platform.AttachmentImportDiagnosticsTest" time="0.02"/>
+  <testcase name="nonDebuggableApplicationDoesNotLogImportFailures[28]" classname="cn.edu.hust.ddlsaver.platform.AttachmentImportDiagnosticsTest" time="0.025"/>
+  <testcase name="nonDebuggableApplicationDoesNotLogImportFailures" classname="cn.edu.hust.ddlsaver.platform.AttachmentImportDiagnosticsTest" time="0.025"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

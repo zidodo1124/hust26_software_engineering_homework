@@ -1,0 +1,6 @@
+# install rebuilt demo-v0.3.5 (schema 4), signed with this PC's debug key
+apk_sha256=c115eaf4799bc1086143a8127a40162c81b59f60845fe9a1dcffd47d68cfaf70
+Performing Streamed Install
+Success
+versionCode=8 minSdk=26 targetSdk=35
+versionName=0.3.5
