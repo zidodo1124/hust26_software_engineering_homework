@@ -2,17 +2,17 @@
 
 > **课程最终提交材料（1.0.0）：** 选题报告、需求规格说明书、设计说明书、测试报告、关键源码说明、小组分工的最终版集中在 [deliverables/](../deliverables/README.md)，每份都有 Markdown 和 Word 两种格式。本目录保留开发过程中的各版本文档与测试证据。1.0.0 安装包见 [releases/android/](../releases/android/README.md)。
 
-所有项目说明从这里查找。原根目录的 `README.md`、`STATUS.md`、`idea.md`、`task_finish_tips.md` 已集中到 [`project/`](project/README.md)；工程根目录保留代码与构建文件。
+所有项目说明从这里查找。课程要求、选题想法和历次状态记录集中在 [`project/`](project/README.md)；工程根目录的新版 [README](../README.md) 提供项目简介、下载与材料入口。
 
-## 手机安装包（0.3.7）
+## 手机安装包（1.0.0）
 
-**[下载 DDL Saver 0.3.7 安装压缩包](https://github.com/zidodo1124/hust26_software_engineering_homework/raw/refs/heads/main/releases/android/DDL-Saver-0.3.7-android.zip)**
+**[下载 DDL-Saver-1.0.0.apk](https://github.com/zidodo1124/hust26_software_engineering_homework/raw/refs/heads/main/releases/android/DDL-Saver-1.0.0.apk)**（也可在 [Releases](https://github.com/zidodo1124/hust26_software_engineering_homework/releases/tag/v1.0.0) 下载）
 
-1. 下载并解压 ZIP，找到里面的 `DDL-Saver-0.3.7.apk`。
-2. 把 APK 发到 Android 手机，用文件管理打开，按系统提示允许安装。
-3. 安装后打开 DDL Saver 即可使用，无需电脑调试或注册账号。
+1. 把 APK 下载到 Android 手机（Android 8.0 及以上），用文件管理打开，按系统提示允许安装。
+2. 打开 DDL Saver，在“设置”中允许通知和精确提醒。
+3. 从 0.3.x 升级需先卸载旧版（1.0.0 更换了签名证书）。
 
-支持 Android 8.0 及以上。这是课程演示包，与本轮荣耀 X50 上验证的 APK 完全一致；仓库位置为 [`releases/android/`](../releases/android/README.md)，里面有安装说明和 SHA-256 校验值。已有同签名版本可覆盖升级；若提示签名不符，请先联系队友确认版本，保留旧 App 和数据。
+该 APK 与 2026-11-05 荣耀 X50 真机验收的安装包完全一致；SHA-256 与历史版本见 [`releases/android/`](../releases/android/README.md)。
 
 ## 现在最常用的材料
 
@@ -24,7 +24,7 @@
 | 参考原五分钟路线，准备当前手机演示 | [版本提示与演示入口](acceptance-demo/README.md) · [现场速查卡](acceptance-demo/03-five-minute-cue-card.md) · [准备清单](acceptance-demo/01-preparation.md) |
 | 老师问到当前手机版的实现 | [当前源码导航](source-navigation.md)；原 0.3.5 的固定源码与问答见[历史答辩入口](acceptance-code-guide/README.md) |
 
-**当前版本：** 本地源码与荣耀 X50 均为 **0.3.7／10、schema 5**，产品提交 `295fb57`。手机已完成同签名覆盖、正常首启和 4→5 迁移，原数据保持。五分钟脚本和原答辩材料仍固定于 `demo-v0.3.5`，基本操作可供排练参考；新版按钮名称见[文案对照](user-guide.md)，讲当前实现请用[源码导航](source-navigation.md)。本轮手机检查的实际范围见[项目状态](project/STATUS.md)。
+**当前版本：** 1.0.0／12、schema 5，`main` 提交 `3d8ee79`；荣耀 X50 真机验收见 [RUN-20261105-FINAL-1.0.0](test-evidence/RUN-20261105-FINAL-1.0.0/README.md)。五分钟演示脚本和原答辩材料固定于 `demo-v0.3.5`，基本操作可供排练参考；讲当前实现请用[关键源码说明](../deliverables/05-关键源码说明.md)。
 
 ## 项目、课程与协作
 

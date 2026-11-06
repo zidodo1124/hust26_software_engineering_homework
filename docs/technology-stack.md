@@ -1,10 +1,12 @@
 # HUSTer's DDL Saver 技术清单
 
+**当前基准：** 1.0.0／12、schema 5，产品源码 `3d8ee79`；Kotlin、Compose、Room 和构建依赖沿用下表版本。新增时长单位与独立日历的实现见[最终设计说明书](../deliverables/03-设计说明书.md)。1.0.0 的自动化及实机证据见[最终测试报告](../deliverables/04-测试报告.md)，下方各日期快照仅表示当时的状态。
+
 - 小组：花园鳗。
-- 更新日期：2026-11-02。
+- 更新日期：2026-11-05。
 - 依据：用户允许根据项目需要选择语言和框架，并要求集中说明实际采用的技术。
-- 当前本地：`codex/local-sync-20261102`／`295fb57`，0.3.7／10、schema 5，已纳入 PR #14；本轮仅调整文案，依赖不变。29 份 XML／197 个不同方法／236 次执行全通过，失败／错误／跳过均 0；Lint 0 错误／16 警告。见[本机证据](test-evidence/RUN-20261102-COPY-REFRESH/README.md)和[源码导航](source-navigation.md)。
-- 当前手机：荣耀 X50 已同签名覆盖 **0.3.7／10、schema 5**，产品 `295fb57`；正常首启、4→5 迁移及原数据保持已核对。最新设备检查范围见[项目状态](project/STATUS.md)。
+- 2026-11-02 本地历史记录：`codex/local-sync-20261102`／`295fb57`，0.3.7／10、schema 5，已纳入 PR #14；本轮仅调整文案，依赖不变。29 份 XML／197 个不同方法／236 次执行全通过，失败／错误／跳过均 0；Lint 0 错误／16 警告。见[本机证据](test-evidence/RUN-20261102-COPY-REFRESH/README.md)和[源码导航](source-navigation.md)。
+- 2026-11-02 手机历史记录：荣耀 X50 已同签名覆盖 **0.3.7／10、schema 5**，产品 `295fb57`；正常首启、4→5 迁移及原数据保持已核对。最新设备检查范围见[项目状态](project/STATUS.md)。
 - 0.3.5 历史手机记录：冻结演示分支 `codex/demo-final-20261101`，产品源码 `f024ece`，0.3.5／versionCode 8、Room schema v4；依赖不变。完整本机 185 方法／224 次执行通过、Lint 0／16；荣耀 X50 安装与首启数据保持，月格、周／日与跨年等分项通过，完成状态、详情返回与来源空交集通过，07:59:33 UTC 最终 18 项审计全部通过，5 条 QA 已清理，原数据／附件／设置及全部原 33 条提醒保持。准确范围见[本轮证据](test-evidence/RUN-20261101-CALENDAR-FINAL/README.md)。主线后续迁移不纳入本包，OBS-01／OBS-02 仍开放。
 
 本文用于回答“项目使用什么技术、各自负责什么、为什么选择、实际使用哪个版本”。后续新增、替换或移除依赖时同步更新，具体模块和接口见[设计文档](design.md)，安装与日常操作见[用户使用手册](user-guide.md)。
@@ -30,9 +32,9 @@ Kotlin 支持与 Java 互操作，Compose 提供基于 Kotlin 的原生界面开
 | 提醒调度 | AlarmManager | 安排截止相关定时任务，处理取消和重建 | 第三轮统一最早到期 Alarm 已加入，具体检查见 RUN-005 | Android 平台 API；精确访问独立检查，无能力时明确近似模式 |
 | 通知呈现 | Android 通知接口 | 每日汇总和单项提醒，以及通知点击 | 第三轮使用平台 NotificationManager／NotificationChannel，稳定 tag 与点击路由已加入 | Android 平台 API；Android 13+ POST_NOTIFICATIONS，未新增兼容库 |
 | 角色反馈 | 本地 WebP、BitmapFactory、Bitmap 与纯 Kotlin 台词规则 | 经典立绘／Q 版选择、36 条本地预设台词、状态优先级与成功完成短暂反馈；台词以气泡呈现 | 图集在 IO 线程解码，提取帧并对固定排除区置透明，随后回收临时图；保持画布及其他像素，源文件、许可与署名随包保留 | 无新增第三方运行依赖，素材见[角色记录](character-assets.md) |
-| 业务规则测试 | JUnit、Coroutines Test | 时间边界、状态规则、组合查询、字段与附件元数据校验 | 当前结果见[测试报告](test-report.md)，不同方法与配置执行分别统计 | JUnit 4.13.2；Coroutines Test 1.10.2 |
+| 业务规则测试 | JUnit、Coroutines Test | 时间边界、状态规则、组合查询、字段与附件元数据校验 | 当前结果见[测试报告](../deliverables/04-测试报告.md)，不同方法与配置执行分别统计 | JUnit 4.13.2；Coroutines Test 1.10.2 |
 | 本地 Android 行为测试 | Robolectric、AndroidX Test Core、Room Testing | 在开发机 JVM 中检查 Room 事务、真实 v1／v2 文件迁移、附件平台行为及重开持久化 | 第三轮本机提醒、迁移及资源检查通过，不能替代实机验证 | Robolectric 4.14.1；Test Core 1.6.1；Room Testing 2.7.1 |
-| 本地界面流程测试 | Compose UI Test JUnit4、测试宿主 Manifest | 在 Robolectric 中操作界面，检查草稿、筛选、批量、重建及气泡长文本／字号布局 | 当前结果见[测试报告](test-report.md)，不同方法与配置执行分别统计；渲染图不作为实机截图 | 由 Compose BOM 2025.04.01 管理 |
+| 本地界面流程测试 | Compose UI Test JUnit4、测试宿主 Manifest | 在 Robolectric 中操作界面，检查草稿、筛选、批量、重建及气泡长文本／字号布局 | 当前结果见[测试报告](../deliverables/04-测试报告.md)，不同方法与配置执行分别统计；渲染图不作为实机截图 | 由 Compose BOM 2025.04.01 管理 |
 | 实机与设备测试 | ADB、UIAutomator 界面采集、Python 操作助手与截图审阅 | 在荣耀 X50 顺序操作真实页面并记录结果 | 第二轮功能、v0.3.0 通知和 v0.3.2 形象／字号分项已有记录；0.3.3 已完成覆盖、修复表情／字号复验和 QA 收尾，未测条件继续保留 | Android 15／API 35、MagicOS 9.0.0；Platform Tools 37.0.1 |
 
 版本依据为根目录 [build.gradle.kts](../build.gradle.kts)、[app/build.gradle.kts](../app/build.gradle.kts)和 [Gradle Wrapper 配置](../gradle/wrapper/gradle-wrapper.properties)。以上“已集成”表示依赖或代码已加入工程，不单独代表构建、测试或实机检查通过。文本复制和图片 URI 粘贴已接入；能否从某个外部应用复制图片，取决于其剪贴板内容及访问授权，普通图片网址不直接导入。
@@ -74,7 +76,7 @@ Room 是 SQLite 的访问封装，适合本项目的本地结构化数据；数�
 | 权限与电量设置 | 每个通知测试批次记录通知权限、定时访问条件及电量优化设置 |
 | 系统时间 | 记录设备时区；应用业务日期统一按北京时间解释 |
 | SDK 范围 | `minSdk = 26`、`targetSdk = 35`、`compileSdk = 35`；声明范围不代表所有设备已测 |
-| 应用版本 | 当前本地与手机 `versionName = 0.3.7`、`versionCode = 10`；包名 `cn.edu.hust.ddlsaver`；schema 5；历史设备结果按各批实际版本记录 |
+| 应用版本 | 当前本地与手机 `versionName = 1.0.0`、`versionCode = 12`；包名 `cn.edu.hust.ddlsaver`；schema 5；历史设备结果按各批实际版本记录 |
 | 构建证据 | 保存实际依赖版本、构建命令、代码提交号和 APK 标识，关联[测试记录](test-records.md) |
 
 ## 5. 实机测试辅助工具

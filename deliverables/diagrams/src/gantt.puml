@@ -1,9 +1,9 @@
 @startgantt gantt
 !include _style.iuml
 printscale daily zoom 3
-Project starts 2026-10-26
+Project starts 2026-10-27
 -- 选题与需求 --
-[选题、需求访谈与需求初稿] as [R] starts 2026-10-26 and ends 2026-10-27
+[选题、需求访谈与需求初稿] as [R] starts 2026-10-27 and ends 2026-10-27
 [数据组织需求细化（付泽文）] starts 2026-10-30 and ends 2026-10-31
 [规划扩展需求（付泽文）] starts 2026-11-01 and ends 2026-11-02
 -- 设计与实现 --

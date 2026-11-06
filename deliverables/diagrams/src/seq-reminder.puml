@@ -1,7 +1,6 @@
 @startuml seq-reminder
 !include _style.iuml
 skinparam maxMessageSize 90
-skinparam ParticipantPadding 4
 autonumber
 participant "AlarmManager" as AM
 participant "ReminderAlarmReceiver" as RCV

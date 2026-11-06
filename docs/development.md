@@ -1,6 +1,8 @@
 # 开发、构建与安装升级
 
-**当前本地开发基准（2026-11-02）：** `codex/local-sync-20261102`／产品提交 `295fb57`，**0.3.7／10、schema 5**。在已同步 PR #14、保留周历折叠修复的 0.3.6 基础上更新用户文案，依赖和数据结构不变。完整构建通过，29 份 XML／197 个不同方法／236 次执行全通过，失败／错误／跳过均 0；Lint 0 错误／16 警告，见[本轮本机证据](test-evidence/RUN-20261102-COPY-REFRESH/README.md)。当前源码入口见[功能导航](source-navigation.md)。随后已将同一 0.3.7 包覆盖安装到荣耀 X50，正常首启、4→5 迁移及原数据保持通过；设备检查范围见[项目状态](project/STATUS.md)。下方 0.3.5 及更早批次继续表示对应设备／历史结果。
+**当前版本（2026-11-05）：** 1.0.0／versionCode 12、Room schema 5，产品源码合并提交 `3d8ee79`。多单位时长与独立日历已包含在此版本；本机 31 个测试类、212 个不同方法、251 次执行全通过，Lint 0 错误／16 警告，见[1.0.0 证据](test-evidence/RUN-20261105-FINAL-1.0.0/README.md)。当前发布包和签名说明见[安装包目录](../releases/android/README.md)，课程用架构与源码入口见[关键源码说明](../deliverables/05-关键源码说明.md)。下列旧版本记录保留为复现依据。
+
+**2026-11-02 历史开发基准：** `codex/local-sync-20261102`／产品提交 `295fb57`，**0.3.7／10、schema 5**。在已同步 PR #14、保留周历折叠修复的 0.3.6 基础上更新用户文案，依赖和数据结构不变。完整构建通过，29 份 XML／197 个不同方法／236 次执行全通过，失败／错误／跳过均 0；Lint 0 错误／16 警告，见[本轮本机证据](test-evidence/RUN-20261102-COPY-REFRESH/README.md)。当前源码入口见[功能导航](source-navigation.md)。随后已将同一 0.3.7 包覆盖安装到荣耀 X50，正常首启、4→5 迁移及原数据保持通过；设备检查范围见[项目状态](project/STATUS.md)。下方 0.3.5 及更早批次继续表示对应设备／历史结果。
 
 此前 0.3.5 演示版使用冻结演示分支 `codex/demo-final-20261101`，产品源码 `f024ecea4b287c7a8768c2dc62af9be9228c9ae6`，版本 **0.3.5／versionCode 8、Room schema 4**，包名 `cn.edu.hust.ddlsaver`，依赖不变。本机完整构建成功，29 份 XML／185 个不同方法／224 次执行全部通过，失败／错误／跳过各 0，Lint 0 错误／16 警告；荣耀 X50 已完成同签名覆盖和正常首启；实际包版本、APK 哈希与证书匹配，原六表、4 附件、设置、33 条提醒及原 14 条 SENT 保持。月格、周／日、折叠重开、空周期、跨年及关键词分项已通过；完成状态、详情返回和来源空交集也已通过；07:59:33 UTC 最终 18 项审计全部通过，5 条 QA 已清理，原数据／附件／设置及全部原 33 条提醒保持；新分支远程 CI 尚无结果。本机 APK SHA-256 为 `e689b896156514a9da7b8be57c67b3399e51e244328782f4f73ca2595fde2cd4`，证书与原安装包一致。准确构建命令、产物与阶段结果见[0.3.5 证据](test-evidence/RUN-20261101-CALENDAR-FINAL/README.md)，代码阅读路径见[交付页](demo-final-0.3.5.md)。持续变化的 `main` 和 PR #14 迁移不纳入本包。
 
@@ -23,7 +25,7 @@
 
 可用 Android Studio 打开仓库根目录，通过 SDK Manager 安装所需组件，并将 Gradle JDK 设为 JDK 17。也可安装官方 [Android 命令行工具](https://developer.android.com/studio#command-tools)和 [Temurin JDK](https://adoptium.net/temurin/releases/?version=17)后使用命令行。
 
-本次开发机的工具安装在被忽略的 `.local-tools/`，没有修改系统 Java。该目录不进入 Git，队友克隆后需要准备自己的环境。`local.properties` 只保存本机 SDK 路径，不提交。
+SDK、免安装 pandoc 和项目辅助工具可放在被忽略的 `.local-tools/`；JDK 17 也可使用已有安装。构建前明确设置本次进程的 `JAVA_HOME`，避免误用系统 PATH 中的 Java 8。该目录不进入 Git，队友克隆后需要准备自己的环境。`local.properties` 只保存本机 SDK 路径，不提交。
 
 如果使用系统已安装的工具，在 PowerShell 设置当前会话环境；以下路径应改成自己的实际位置：
 
