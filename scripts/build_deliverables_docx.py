@@ -265,11 +265,15 @@ def postprocess(path: Path) -> None:
         if margins is None:
             margins = OxmlElement("w:tblCellMar")
             insert_ordered(tbl_pr, margins, {"tblLook", "tblCaption", "tblDescription"})
-        for side, value in (("top", 65), ("bottom", 65), ("left", 90), ("right", 90)):
+        # CT_TblCellMar is an ordered sequence: top, left (start), bottom, right (end).
+        # Re-append every side in that order so existing pandoc margins end up correctly ordered too.
+        for side, value in (("top", 65), ("left", 90), ("bottom", 65), ("right", 90)):
             element = margins.find(qn(f"w:{side}"))
             if element is None:
                 element = OxmlElement(f"w:{side}")
-                margins.append(element)
+            else:
+                margins.remove(element)
+            margins.append(element)
             element.set(qn("w:w"), str(value))
             element.set(qn("w:type"), "dxa")
         for r_index, row in enumerate(table.rows):
